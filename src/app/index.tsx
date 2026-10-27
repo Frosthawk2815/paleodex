@@ -37,7 +37,7 @@ export default function TimelineScreen() {
       })}
 
       <Text style={[styles.footnote, { color: palette.muted }]}>
-        Ma = millions of years ago. Dates from the International Chronostratigraphic Chart (2023).
+        Ma = millions of years ago. Dates from the ICS International Chronostratigraphic Chart (2026).
       </Text>
     </ScrollView>
   );

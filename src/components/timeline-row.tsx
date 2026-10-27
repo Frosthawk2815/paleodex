@@ -32,19 +32,13 @@ export function TimelineRow({ period, isFirst, isLast }: Props) {
                 { backgroundColor: period.color },
                 isFirst && styles.stripeTop,
                 isLast && styles.stripeBottom,
-                period.informal && styles.stripeInformal,
               ]}
             />
             <View style={[styles.dot, { backgroundColor: period.color, borderColor: palette.background }]} />
           </View>
 
           <View style={[styles.card, { backgroundColor: palette.card, borderColor: palette.border }]}>
-            <View style={styles.titleLine}>
-              <Text style={[styles.name, { color: palette.text }]}>{period.name}</Text>
-              {period.informal && (
-                <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>Informal</Text>
-              )}
-            </View>
+            <Text style={[styles.name, { color: palette.text }]}>{period.name}</Text>
             <Text style={[styles.tagline, { color: palette.muted }]}>{period.tagline}</Text>
             <Text style={[styles.meta, { color: palette.text }]}>
               {rangeLabel(period)} · {durationLabel(period)}
@@ -87,9 +81,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
   },
-  stripeInformal: {
-    opacity: 0.5,
-  },
   dot: {
     marginTop: 18,
     width: 16,
@@ -106,23 +97,9 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     gap: 4,
   },
-  titleLine: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
   name: {
     fontSize: 18,
     fontWeight: '700',
-  },
-  badge: {
-    fontSize: 11,
-    fontWeight: '600',
-    paddingHorizontal: 6,
-    paddingVertical: 1,
-    borderWidth: 1,
-    borderRadius: 6,
-    overflow: 'hidden',
   },
   tagline: {
     fontSize: 14,

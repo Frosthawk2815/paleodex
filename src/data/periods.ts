@@ -1,4 +1,4 @@
-// Ages come from the International Chronostratigraphic Chart (ICS v2023/09).
+// Ages come from the ICS International Chronostratigraphic Chart (version 2026-06).
 // "Ma" means millions of years ago. Colours are the official ICS chart colours.
 
 export type Era = 'Paleozoic' | 'Mesozoic' | 'Cenozoic';
@@ -14,10 +14,6 @@ export type Period = {
   summary: string;
   highlights: string[];
   ending: string;
-  // The Anthropocene is a proposed unit, not an official period.
-  informal?: boolean;
-  rangeLabel?: string;
-  durationLabel?: string;
 };
 
 export const ERAS: { name: Era; blurb: string }[] = [
@@ -248,30 +244,19 @@ export const PERIODS: Period[] = [
     ],
     ending: 'Still ongoing. We are living in it.',
   },
-  {
-    id: 'anthropocene',
-    name: 'Anthropocene',
-    era: 'Cenozoic',
-    startMa: 0.000075,
-    endMa: 0,
-    color: '#9E9E9E',
-    informal: true,
-    rangeLabel: 'c. 1950 CE – present',
-    durationLabel: 'about 75 years',
-    tagline: 'The age of human impact',
-    summary:
-      'A proposed name for the time when human activity became a dominant force on Earth’s geology and climate. In 2024 geologists voted against making it an official unit, but it is widely used informally.',
-    highlights: [
-      'The proposed start is around 1950, at the beginning of the "Great Acceleration"',
-      'Plutonium from nuclear tests forms a worldwide marker layer in sediments',
-      'Crawford Lake in Canada was proposed as the reference site',
-      'Plastics, concrete and rising carbon dioxide leave lasting traces in the rock record',
-    ],
-    ending: 'Not an official period, and still unfolding.',
-  },
 ];
 
 export const OLDEST_MA = PERIODS[0].startMa;
+
+// The Anthropocene is a proposed series, not an official one: in 2024 geologists voted
+// against adding it to the chart. It is shown as an informal last series of the Quaternary.
+export const ANTHROPOCENE = {
+  name: 'Anthropocene',
+  color: '#9E9E9E',
+  rangeLabel: 'c. 1950 CE – present',
+  durationLabel: 'about 75 years',
+  note: 'A proposed series for the time when human activity became a dominant force on Earth’s geology and climate, starting around 1950. Plutonium fallout from nuclear tests marks it worldwide, and Crawford Lake in Canada was put forward as its reference site. In 2024 geologists voted against making it official, but the name is widely used informally.',
+};
 
 export function getPeriod(id: string | undefined): Period | undefined {
   return PERIODS.find((p) => p.id === id);
@@ -283,15 +268,40 @@ function formatMa(ma: number): string {
 }
 
 export function rangeLabel(p: Period): string {
-  if (p.rangeLabel) return p.rangeLabel;
   const end = p.endMa === 0 ? 'present' : `${formatMa(p.endMa)} Ma`;
   return `${formatMa(p.startMa)} – ${end}`;
 }
 
 export function durationLabel(p: Period): string {
-  if (p.durationLabel) return p.durationLabel;
   const my = p.startMa - p.endMa;
   return `${my < 10 ? my.toFixed(1) : Math.round(my)} million years`;
+}
+
+// Ages for series and stages keep the chart's own precision. Anything under a
+// million years old reads better in years ("11,700 years ago").
+function withCommas(n: number): string {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function years(ma: number): string {
+  return withCommas(Math.round(ma * 1_000_000));
+}
+
+export function spanRange(startMa: number, endMa: number): string {
+  if (startMa < 1) {
+    return endMa === 0 ? `${years(startMa)} years ago – present` : `${years(startMa)} – ${years(endMa)} years ago`;
+  }
+  return endMa === 0 ? `${startMa} Ma – present` : `${startMa} – ${endMa} Ma`;
+}
+
+export function spanDuration(startMa: number, endMa: number): string {
+  const my = startMa - endMa;
+  if (my >= 1) {
+    const rounded = my >= 10 ? Math.round(my) : Math.round(my * 10) / 10;
+    return `${rounded} million years`;
+  }
+  const yrs = Number((my * 1_000_000).toPrecision(3));
+  return `${withCommas(yrs)} years`;
 }
 
 // Picks black or white text for readable contrast on a period colour.

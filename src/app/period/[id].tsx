@@ -2,6 +2,7 @@ import { Link, Stack, useLocalSearchParams } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { SeriesTimeline } from '@/components/series-timeline';
 import { durationLabel, getPeriod, PERIODS, rangeLabel, textOn } from '@/data/periods';
 import { usePalette } from '@/hooks/use-palette';
 
@@ -33,9 +34,7 @@ export default function PeriodScreen() {
       <Stack.Screen options={{ title: period.name }} />
 
       <View style={[styles.banner, { backgroundColor: period.color }]}>
-        <Text style={[styles.era, { color: onColor }]}>
-          {period.era} Era{period.informal ? ' · Informal' : ''}
-        </Text>
+        <Text style={[styles.era, { color: onColor }]}>{period.era} Era</Text>
         <Text style={[styles.name, { color: onColor }]}>{period.name}</Text>
         <Text style={[styles.tagline, { color: onColor }]}>{period.tagline}</Text>
       </View>
@@ -46,6 +45,8 @@ export default function PeriodScreen() {
       </View>
 
       <Text style={[styles.body, { color: palette.text }]}>{period.summary}</Text>
+
+      <SeriesTimeline period={period} />
 
       <Text style={[styles.heading, { color: palette.text }]}>Life and events</Text>
       {period.highlights.map((h) => (
