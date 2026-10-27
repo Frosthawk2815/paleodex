@@ -37,6 +37,17 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "c981cffc-713b-42ba-aefc-84f4da68b0a3"
+      }
+    },
+    "owner": "frosthawk2815s-team"
   }
 }
