@@ -13,7 +13,8 @@ import {
 import Svg, { Path } from 'react-native-svg';
 
 import { textOn } from '@/data/periods';
-import { IMPACT_MA } from '@/lib/impact';
+import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
+import { EVENT_LEAD_MA, EXTINCTIONS, type Extinction } from '@/lib/extinctions';
 import { ALL_TIME, ancestors, type Level, stepLevel, stepUnits, type Unit, unitAt, UNITS_BY_LEVEL } from '@/lib/time';
 
 const ALL_TIME_PX_PER_MY = 6;
@@ -44,7 +45,7 @@ function tickLabel(ma: number): string {
 
 type Props = {
   onChange: (timeMa: number) => void;
-  // Called when the K/T impact marker is tapped.
+  // Called when the K/Pg (asteroid) marker is tapped.
   onImpact: () => void;
 };
 
@@ -141,12 +142,12 @@ export function TimeBar({ onChange, onImpact }: Props) {
 
   const resetZoom = () => go(time.current, ALL_TIME);
 
-  const jumpToImpact = () => {
-    // Land just before the boundary so the asteroid is still in the sky.
-    const t = IMPACT_MA + 0.3;
+  // Land just before the boundary, still in the period the extinction ended.
+  const jumpToExtinction = (e: Extinction) => {
+    const t = e.ma + EVENT_LEAD_MA;
     const inside = t <= focus.startMa && t >= focus.endMa;
     go(t, inside ? focus : (unitAt(focus.level, t) ?? ALL_TIME));
-    onImpact();
+    if (e.cause === 'asteroid') onImpact();
   };
 
   const visible = (u: Unit) => u.startMa > focus.endMa && u.endMa < focus.startMa;
@@ -154,7 +155,7 @@ export function TimeBar({ onChange, onImpact }: Props) {
   const step0 = tickStep(pxPerMy);
   const ticks: number[] = [];
   for (let t = Math.ceil(focus.endMa / step0) * step0; t <= focus.startMa + 1e-9; t += step0) ticks.push(Number(t.toPrecision(12)));
-  const impactVisible = IMPACT_MA <= focus.startMa && IMPACT_MA >= focus.endMa;
+  const markers = EXTINCTIONS.filter((e) => e.ma <= focus.startMa && e.ma >= focus.endMa);
   const crumbs = ancestors(focus);
 
   return (
@@ -221,16 +222,18 @@ export function TimeBar({ onChange, onImpact }: Props) {
                     {tickLabel(t)}
                   </Text>
                 ))}
-                {impactVisible && (
+                {markers.map((e) => (
                   <Pressable
-                    onPress={jumpToImpact}
+                    key={e.id}
+                    onPress={() => jumpToExtinction(e)}
                     accessibilityRole="button"
-                    accessibilityLabel="Jump to the Chicxulub asteroid impact"
-                    hitSlop={8}
-                    style={[styles.impactMarker, { left: x(IMPACT_MA) - 34, top: 14 }]}>
-                    <Text style={styles.impactText}>☄ K/T</Text>
+                    accessibilityLabel={`Jump to the ${e.name}: ${e.causeText}`}
+                    hitSlop={6}
+                    style={[styles.eventMarker, { left: x(e.ma) - 30 }]}>
+                    <ExtinctionIcon cause={e.cause} />
+                    <Text style={[styles.eventText, { color: CAUSE_COLORS[e.cause] }]}>{e.short}</Text>
                   </Pressable>
-                )}
+                ))}
               </View>
             </View>
           </ScrollView>
@@ -345,13 +348,16 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontVariant: ['tabular-nums'],
   },
-  impactMarker: {
+  eventMarker: {
     position: 'absolute',
-    width: 68,
+    top: 14,
+    width: 60,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    gap: 2,
   },
-  impactText: {
-    color: '#FFB347',
+  eventText: {
     fontSize: 11,
     fontWeight: '700',
   },

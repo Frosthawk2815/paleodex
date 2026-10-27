@@ -6,7 +6,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Globe } from '@/components/globe';
 import { TimeBar } from '@/components/time-bar';
-import { asteroidVisible } from '@/lib/impact';
+import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
+import { extinctionAt } from '@/lib/extinctions';
 import { contextAt, timeLabel } from '@/lib/time';
 
 export default function GlobeScreen() {
@@ -17,6 +18,7 @@ export default function GlobeScreen() {
   // The globe can lag a frame behind the timeline so scrolling stays smooth.
   const globeTime = useDeferredValue(timeMa);
   const { period, series, stage } = contextAt(timeMa);
+  const extinction = extinctionAt(timeMa);
 
   const onGlobeArea = (e: LayoutChangeEvent) => {
     const { width, height } = e.nativeEvent.layout;
@@ -38,7 +40,14 @@ export default function GlobeScreen() {
         <Text style={styles.subContext} numberOfLines={1}>
           {[series?.name, stage?.name].filter(Boolean).join(' · ')}
         </Text>
-        {asteroidVisible(timeMa) && <Text style={styles.impact}>☄ Chicxulub asteroid · the end of the Cretaceous</Text>}
+        {extinction && (
+          <View style={styles.event}>
+            <ExtinctionIcon cause={extinction.cause} size={16} />
+            <Text style={[styles.impact, { color: CAUSE_COLORS[extinction.cause] }]} numberOfLines={2}>
+              {extinction.name} · {extinction.causeText}
+            </Text>
+          </View>
+        )}
         {period && (
           <Link href={{ pathname: '/period/[id]', params: { id: period.id } }} style={styles.link}>
             About the {period.name} ›
@@ -106,11 +115,19 @@ const styles = StyleSheet.create({
     flex: 1,
     overflow: 'hidden',
   },
+  event: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'stretch',
+    gap: 6,
+    marginTop: 4,
+  },
   impact: {
-    color: '#FFB347',
     fontSize: 14,
     fontWeight: '700',
-    marginTop: 4,
+    flexShrink: 1,
+    textAlign: 'center',
   },
   hint: {
     color: 'rgba(255,255,255,0.5)',
