@@ -6,17 +6,20 @@ import Svg, { Circle, Defs, Ellipse, G, Line, LinearGradient, Path, RadialGradie
 import { asteroidVisible } from '@/lib/impact';
 import { EARTH_RADIUS_KM, MOON_DISTANCE_TODAY_KM, MOON_RADIUS_KM, moonDistanceKm } from '@/lib/moon';
 import { geographyAt, landCentre, QUATERNARY_MA } from '@/lib/geography';
-import { chicxulubAt } from '@/lib/plates';
+import { EXTINCTIONS, extinctionAt } from '@/lib/extinctions';
+import { siteAt } from '@/lib/plates';
 
 const GRATICULE = geoGraticule10();
+// SVG text defaults to a serif font on the web; match the app's sans-serif.
+const SVG_FONT = Platform.OS === 'web' ? 'system-ui, -apple-system, Segoe UI, Roboto, sans-serif' : undefined;
 const DRAG_DEGREES_PER_PIXEL = 0.4;
 const MAX_ZOOM = 24; // roughly country scale
 const MIN_EARTH_PX = 7; // Earth and Moon are drawn at least this big when zoomed far out
 const MIN_MOON_PX = 3;
 
 // lon/lat are spin offsets in degrees; zoom 1 fits the globe to the screen.
-// `anchor` is what the globe faces: the continents, or the impact site after jumping to it.
-type Camera = { lon: number; lat: number; zoom: number; anchor: 'land' | 'impact' };
+// `anchor` is what the globe faces: the continents, or an extinction's site (by id) after jumping to it.
+type Camera = { lon: number; lat: number; zoom: number; anchor: string };
 
 const clampZoom = (z: number) => Math.min(MAX_ZOOM, Math.max(0.001, z));
 
@@ -95,19 +98,22 @@ type Props = {
   timeMa: number;
   width: number;
   height: number;
-  // Changes each time the timeline's impact marker is tapped; the globe then turns to Yucatán.
-  focusImpact: number;
+  // Set each time an extinction marker with a site is tapped; the globe then turns to that site.
+  focus: { id: string; n: number } | null;
 };
 
-export function Globe({ timeMa, width: w, height: h, focusImpact }: Props) {
+const K_PG = EXTINCTIONS.find((e) => e.cause === 'asteroid')!;
+
+export function Globe({ timeMa, width: w, height: h, focus }: Props) {
   const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land' });
   const [pan] = useState(() => createCameraResponder(setCamera));
-  const [seenFocus, setSeenFocus] = useState(focusImpact);
+  const [seenFocus, setSeenFocus] = useState(focus);
   const container = useRef<HostInstance>(null);
 
-  if (seenFocus !== focusImpact) {
-    setSeenFocus(focusImpact);
-    setCamera({ lon: 0, lat: 0, zoom: 6, anchor: 'impact' });
+  if (seenFocus !== focus) {
+    setSeenFocus(focus);
+    const site = EXTINCTIONS.find((e) => e.id === focus?.id)?.site;
+    if (focus && site) setCamera({ lon: 0, lat: 0, zoom: site.zoom, anchor: focus.id });
   }
 
   // Mouse wheel / trackpad zoom on the web.
@@ -147,10 +153,13 @@ export function Globe({ timeMa, width: w, height: h, focusImpact }: Props) {
   const geo = useMemo(() => geographyAt(step), [step]);
   const centre = useMemo(() => landCentre(geo.land), [geo]);
   const showAsteroid = asteroidVisible(timeMa);
-  const impactSite = useMemo(() => chicxulubAt(step), [step]);
-  const anchor = camera.anchor === 'impact' && showAsteroid ? 'impact' : 'land';
-  const rotLon = anchor === 'impact' ? -impactSite[0] + camera.lon : -centre[0] + camera.lon;
-  const rotLat = anchor === 'impact' ? -impactSite[1] + camera.lat : -centre[1] * 0.6 + camera.lat;
+  const impactSite = useMemo(() => siteAt(K_PG.site!, step), [step]);
+  // Keep facing a focused site while the timeline is still at its event.
+  const current = extinctionAt(timeMa);
+  const anchorSite = current?.site && camera.anchor === current.id ? current.site : undefined;
+  const anchorPos = anchorSite ? siteAt(anchorSite, step) : undefined;
+  const rotLon = anchorPos ? -anchorPos[0] + camera.lon : -centre[0] + camera.lon;
+  const rotLat = anchorPos ? -anchorPos[1] + camera.lat : -centre[1] * 0.6 + camera.lat;
 
   const { land, shelf, grid, projection } = useMemo(() => {
     const p = geoOrthographic()
@@ -194,6 +203,14 @@ export function Globe({ timeMa, width: w, height: h, focusImpact }: Props) {
     ? `Earth–Moon: ${fmtKm(moonKm)} km (today ${fmtKm(MOON_DISTANCE_TODAY_KM)} km)`
     : [seaLevel, scale].filter(Boolean).join(' · ');
   const enlarged = moonOnScreen && rPx < MIN_EARTH_PX * 1.5;
+
+  // Label the place tied to the current extinction (other than the asteroid, which is drawn).
+  let siteLabel: { x: number; y: number; name: string } | null = null;
+  if (current?.site && current.cause !== 'asteroid' && earthR > 60) {
+    const pos = siteAt(current.site, step);
+    const sp = projection(pos);
+    if (sp && geoDistance(pos, [-rotLon, -rotLat]) < Math.PI / 2 - 0.05) siteLabel = { x: sp[0], y: sp[1], name: current.site.name };
+  }
 
   const zoomBy = (f: number) => setCamera((c) => ({ ...c, zoom: clampZoom(Math.max(c.zoom, minZoom) * f) }));
 
@@ -259,6 +276,20 @@ export function Globe({ timeMa, width: w, height: h, focusImpact }: Props) {
           <Path d={land} fill="#9DBF7A" stroke="#9DBF7A" strokeWidth={zoom > 2 ? 2.5 : 0.8} strokeLinejoin="round" />
           <Circle cx={ex} cy={ey} r={earthR} fill="url(#shade)" />
 
+          {siteLabel && (
+            <G>
+              <Circle cx={siteLabel.x} cy={siteLabel.y} r={14} fill="#FF7043" opacity={0.25} />
+              <Circle cx={siteLabel.x} cy={siteLabel.y} r={5} fill="#FF7043" stroke="#FFFFFF" strokeWidth={1.5} />
+              {/* A dark copy underneath keeps the label readable over land or sea. */}
+              <SvgText fontFamily={SVG_FONT} x={siteLabel.x} y={siteLabel.y - 20} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={13} fontWeight="700" textAnchor="middle">
+                {siteLabel.name}
+              </SvgText>
+              <SvgText fontFamily={SVG_FONT} x={siteLabel.x} y={siteLabel.y - 20} fill="#FFFFFF" fontSize={13} fontWeight="700" textAnchor="middle">
+                {siteLabel.name}
+              </SvgText>
+            </G>
+          )}
+
           {asteroid && (
             <G>
               <Path
@@ -278,13 +309,13 @@ export function Globe({ timeMa, width: w, height: h, focusImpact }: Props) {
                   <Ellipse key={i} cx={mx + x * moonR} cy={ey + y * moonR} rx={rx * moonR} ry={ry * moonR} fill="#5E6166" opacity={0.45} />
                 ))}
               <Line x1={ex + earthR + 4} y1={ey} x2={mx - moonR - 4} y2={ey} stroke="#FFFFFF" strokeOpacity={0.35} strokeDasharray="2 4" />
-              <SvgText x={(ex + mx) / 2} y={ey - 10} fill="#FFFFFF" fillOpacity={0.8} fontSize={12} textAnchor="middle">
+              <SvgText fontFamily={SVG_FONT} x={(ex + mx) / 2} y={ey - 10} fill="#FFFFFF" fillOpacity={0.8} fontSize={12} textAnchor="middle">
                 {`${fmtKm(moonKm)} km`}
               </SvgText>
-              <SvgText x={mx} y={ey + moonR + 16} fill="#FFFFFF" fillOpacity={0.7} fontSize={12} textAnchor="middle">
+              <SvgText fontFamily={SVG_FONT} x={mx} y={ey + moonR + 16} fill="#FFFFFF" fillOpacity={0.7} fontSize={12} textAnchor="middle">
                 Moon
               </SvgText>
-              <SvgText x={ex} y={ey + earthR + 16} fill="#FFFFFF" fillOpacity={0.7} fontSize={12} textAnchor="middle">
+              <SvgText fontFamily={SVG_FONT} x={ex} y={ey + earthR + 16} fill="#FFFFFF" fillOpacity={0.7} fontSize={12} textAnchor="middle">
                 Earth
               </SvgText>
             </G>

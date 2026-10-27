@@ -45,15 +45,15 @@ function tickLabel(ma: number): string {
 
 type Props = {
   onChange: (timeMa: number) => void;
-  // Called when the K/Pg (asteroid) marker is tapped.
-  onImpact: () => void;
+  // Called when a marker for an extinction with a site (e.g. Chicxulub) is tapped.
+  onSite: (e: Extinction) => void;
 };
 
 // A horizontal strip of geological time, oldest on the left; whatever sits under the centre
 // marker is the selected time. Tapping an era, period, series or stage zooms the strip to just
 // that unit. The arrows step to the next or previous unit one level down, and the middle
 // button zooms back out to all of time without moving the marker.
-export function TimeBar({ onChange, onImpact }: Props) {
+export function TimeBar({ onChange, onSite }: Props) {
   const scroll = useRef<ScrollViewInstance>(null);
   const [viewWidth, setViewWidth] = useState(0);
   const [focus, setFocus] = useState<Unit>(ALL_TIME);
@@ -147,7 +147,7 @@ export function TimeBar({ onChange, onImpact }: Props) {
     const t = e.ma + EVENT_LEAD_MA;
     const inside = t <= focus.startMa && t >= focus.endMa;
     go(t, inside ? focus : (unitAt(focus.level, t) ?? ALL_TIME));
-    if (e.cause === 'asteroid') onImpact();
+    if (e.site) onSite(e);
   };
 
   const visible = (u: Unit) => u.startMa > focus.endMa && u.endMa < focus.startMa;

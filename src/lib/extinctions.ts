@@ -2,6 +2,9 @@ import { IMPACT_MA } from '@/lib/impact';
 
 export type Cause = 'sun' | 'ice' | 'anoxia' | 'volcano' | 'asteroid';
 
+// A place on the globe tied to an event: a present-day position and the plate that carries it.
+export type Site = { name: string; lon: number; lat: number; plate: number; zoom: number };
+
 export type Extinction = {
   id: string;
   name: string;
@@ -11,6 +14,8 @@ export type Extinction = {
   cause: Cause;
   causeText: string;
   bigFive: boolean;
+  // If set, tapping the marker also turns the globe to this place.
+  site?: Site;
 };
 
 // The Big Five mass extinctions (the Late Devonian as its two pulses), plus the end-Cambrian.
@@ -60,6 +65,8 @@ export const EXTINCTIONS: Extinction[] = [
     cause: 'volcano',
     causeText: 'Siberian Traps eruptions',
     bigFive: true,
+    // Centre of the Tunguska basin, the heart of the traps; plate 401 (Siberia) in PALEOMAP.
+    site: { name: 'Siberian Traps', lon: 100, lat: 65, plate: 401, zoom: 3 },
   },
   {
     id: 'end-triassic',
@@ -78,6 +85,8 @@ export const EXTINCTIONS: Extinction[] = [
     cause: 'asteroid',
     causeText: 'Chicxulub asteroid impact',
     bigFive: true,
+    // Chicxulub crater, Yucatán; plate 205 in PALEOMAP.
+    site: { name: 'Chicxulub', lon: -89.5, lat: 21.4, plate: 205, zoom: 6 },
   },
 ];
 

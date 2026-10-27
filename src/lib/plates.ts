@@ -100,10 +100,7 @@ export function rotatePoint(q: Quat, lon: number, lat: number): [number, number]
   return [Math.atan2(y, x) / DEG, Math.asin(Math.max(-1, Math.min(1, z))) / DEG];
 }
 
-// Chicxulub crater, Yucatán (present-day centre), on plate 205 in the PALEOMAP model.
-const CHICXULUB = { lon: -89.5, lat: 21.4, plate: 205 };
-
-// Where the Chicxulub impact site was at `time` (lon, lat).
-export function chicxulubAt(time: number): [number, number] {
-  return rotatePoint(plateRotation(CHICXULUB.plate, time), CHICXULUB.lon, CHICXULUB.lat);
+// Where a present-day place on `plate` was at `time` (lon, lat).
+export function siteAt(site: { lon: number; lat: number; plate: number }, time: number): [number, number] {
+  return rotatePoint(plateRotation(site.plate, time), site.lon, site.lat);
 }

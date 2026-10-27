@@ -14,7 +14,7 @@ export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
   const [timeMa, setTimeMa] = useState(0);
   const [area, setArea] = useState({ width: 0, height: 0 });
-  const [focusImpact, setFocusImpact] = useState(0);
+  const [focus, setFocus] = useState<{ id: string; n: number } | null>(null);
   // The globe can lag a frame behind the timeline so scrolling stays smooth.
   const globeTime = useDeferredValue(timeMa);
   const { period, series, stage } = contextAt(timeMa);
@@ -57,11 +57,11 @@ export default function GlobeScreen() {
 
       <View style={styles.globeArea} onLayout={onGlobeArea}>
         {area.width > 0 && (
-          <Globe timeMa={globeTime} width={area.width} height={area.height} focusImpact={focusImpact} />
+          <Globe timeMa={globeTime} width={area.width} height={area.height} focus={focus} />
         )}
       </View>
 
-      <TimeBar onChange={setTimeMa} onImpact={() => setFocusImpact((n) => n + 1)} />
+      <TimeBar onChange={setTimeMa} onSite={(e) => setFocus((f) => ({ id: e.id, n: (f?.n ?? 0) + 1 }))} />
       <Text style={styles.hint}>Slide or tap the timeline to travel in time · drag to spin · pinch to zoom</Text>
       <Text style={styles.credit}>
         Land and sea: Scotese & Wright (2018) PALEOMAP · Sea level: Spratt & Lisiecki (2016), Bintanja & van de Wal (2008)
