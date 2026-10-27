@@ -2,6 +2,7 @@
 
 The app reconstructs continents on the device, so this script only exports:
   - coastlines.json: present-day coastline polygons with their plate ID and valid time
+  - coastlines-detailed.json: the same at higher detail, used when zoomed in close
   - rotations.json:  the plate rotation model, trimmed to the last ~600 million years
 
 Model: Merdith, A.S., et al. (2021). Extending full-plate tectonic models into deep time:
@@ -21,8 +22,11 @@ import sys
 import pygplates
 
 MAX_TIME = 600.0  # Ma; a little older than the Cambrian so interpolation has a bracket
-TOLERANCE_DEG = 0.25  # simplification tolerance (angle on the sphere)
-MIN_AREA_SR = 2e-5  # drop islands smaller than ~800 km²
+# (simplification tolerance in degrees, smallest island kept in steradians)
+LEVELS = {
+    'coastlines.json': (0.25, 2e-5),  # ~28 km detail, islands over ~800 km²
+    'coastlines-detailed.json': (0.08, 5e-6),  # ~9 km detail, islands over ~200 km²
+}
 SCALE = 100  # coordinates stored as integers in hundredths of a degree
 
 
@@ -59,7 +63,7 @@ def simplify(points, tol):
     return [p for p, k in zip(points, keep) if k]
 
 
-def export_coastlines(path):
+def export_coastlines(path, tolerance_deg, min_area_sr):
     features = []
     total_points = 0
     for f in pygplates.FeatureCollection(path):
@@ -68,13 +72,13 @@ def export_coastlines(path):
             continue
         plate = f.get_reconstruction_plate_id()
         for g in f.get_geometries():
-            if not isinstance(g, pygplates.PolygonOnSphere) or g.get_area() < MIN_AREA_SR:
+            if not isinstance(g, pygplates.PolygonOnSphere) or g.get_area() < min_area_sr:
                 continue
             # The globe renderer (d3-geo) expects exterior rings to run clockwise.
             if g.get_orientation() == pygplates.PolygonOnSphere.Orientation.counter_clockwise:
                 g = pygplates.PolygonOnSphere(list(reversed(g.get_points())))
             pts = g.to_lat_lon_list()
-            pts = simplify(pts + [pts[0]], math.radians(TOLERANCE_DEG))[:-1]
+            pts = simplify(pts + [pts[0]], math.radians(tolerance_deg))[:-1]
             if len(pts) < 3:
                 continue
             flat = []
@@ -131,13 +135,16 @@ def export_rotations(path):
 def main():
     model_dir, out_dir = sys.argv[1], sys.argv[2]
     os.makedirs(out_dir, exist_ok=True)
-    features, n = export_coastlines(os.path.join(model_dir, 'shapes_coastlines_Merdith_et_al_v2.gpmlz'))
+    coast_path = os.path.join(model_dir, 'shapes_coastlines_Merdith_et_al_v2.gpmlz')
+    for name, (tolerance, min_area) in LEVELS.items():
+        features, n = export_coastlines(coast_path, tolerance, min_area)
+        with open(os.path.join(out_dir, name), 'w') as fh:
+            json.dump(features, fh, separators=(',', ':'))
+        print(f'{name}: {len(features)} polygons, {n} points')
     rotations = export_rotations(os.path.join(model_dir, '1000_0_rotfile_Merdith_et_al.rot'))
-    with open(os.path.join(out_dir, 'coastlines.json'), 'w') as fh:
-        json.dump(features, fh, separators=(',', ':'))
     with open(os.path.join(out_dir, 'rotations.json'), 'w') as fh:
         json.dump(rotations, fh, separators=(',', ':'))
-    print(f'{len(features)} polygons, {n} points; {len(rotations)} moving plates')
+    print(f'rotations.json: {len(rotations)} moving plates')
 
 
 if __name__ == '__main__':

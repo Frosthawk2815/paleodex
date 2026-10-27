@@ -13,6 +13,7 @@ import {
 
 import { OLDEST_MA, PERIODS, textOn } from '@/data/periods';
 import { SERIES_BY_PERIOD } from '@/data/subdivisions';
+import { IMPACT_MA } from '@/lib/impact';
 import { ERA_SPANS } from '@/lib/time';
 
 const PX_PER_MY = 6;
@@ -28,11 +29,13 @@ const width = (start: number, end: number) => (start - end) * PX_PER_MY;
 
 type Props = {
   onChange: (timeMa: number) => void;
+  // Called when the K/T impact marker is tapped.
+  onImpact: () => void;
 };
 
 // A horizontal strip of geological time, oldest on the left. Whatever sits under the
 // centre marker is the selected time. It starts scrolled to the present day.
-export function TimeBar({ onChange }: Props) {
+export function TimeBar({ onChange, onImpact }: Props) {
   const scroll = useRef<ScrollViewInstance>(null);
   const [viewWidth, setViewWidth] = useState(0);
   const positioned = useRef(false);
@@ -135,6 +138,18 @@ export function TimeBar({ onChange }: Props) {
                 </Text>
               ))}
               <Text style={[styles.tick, { left: x(0) - 30 }]}>Today</Text>
+              <Pressable
+                onPress={() => {
+                  // Land just before the boundary so the asteroid is still in the sky.
+                  jumpTo(IMPACT_MA + 0.3);
+                  onImpact();
+                }}
+                accessibilityRole="button"
+                accessibilityLabel="Jump to the Chicxulub asteroid impact"
+                hitSlop={8}
+                style={[styles.impactMarker, { left: x(IMPACT_MA) - 34 }]}>
+                <Text style={styles.impactText}>☄ K/T</Text>
+              </Pressable>
             </View>
           </View>
         </ScrollView>
@@ -212,6 +227,16 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,0.55)',
     fontSize: 11,
     fontVariant: ['tabular-nums'],
+  },
+  impactMarker: {
+    position: 'absolute',
+    width: 68,
+    alignItems: 'center',
+  },
+  impactText: {
+    color: '#FFB347',
+    fontSize: 11,
+    fontWeight: '700',
   },
   marker: {
     position: 'absolute',

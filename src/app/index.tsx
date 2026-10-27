@@ -6,19 +6,21 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Globe } from '@/components/globe';
 import { TimeBar } from '@/components/time-bar';
+import { asteroidVisible } from '@/lib/impact';
 import { contextAt, timeLabel } from '@/lib/time';
 
 export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
   const [timeMa, setTimeMa] = useState(0);
-  const [globeSize, setGlobeSize] = useState(0);
+  const [area, setArea] = useState({ width: 0, height: 0 });
+  const [focusImpact, setFocusImpact] = useState(0);
   // The globe can lag a frame behind the timeline so scrolling stays smooth.
   const globeTime = useDeferredValue(timeMa);
   const { period, series, stage } = contextAt(timeMa);
 
   const onGlobeArea = (e: LayoutChangeEvent) => {
     const { width, height } = e.nativeEvent.layout;
-    setGlobeSize(Math.floor(Math.min(width - 32, height - 16, 520)));
+    setArea({ width: Math.floor(width), height: Math.floor(height) });
   };
 
   return (
@@ -36,6 +38,7 @@ export default function GlobeScreen() {
         <Text style={styles.subContext} numberOfLines={1}>
           {[series?.name, stage?.name].filter(Boolean).join(' · ')}
         </Text>
+        {asteroidVisible(timeMa) && <Text style={styles.impact}>☄ Chicxulub asteroid · the end of the Cretaceous</Text>}
         {period && (
           <Link href={{ pathname: '/period/[id]', params: { id: period.id } }} style={styles.link}>
             About the {period.name} ›
@@ -44,11 +47,13 @@ export default function GlobeScreen() {
       </View>
 
       <View style={styles.globeArea} onLayout={onGlobeArea}>
-        {globeSize > 0 && <Globe timeMa={globeTime} size={globeSize} />}
+        {area.width > 0 && (
+          <Globe timeMa={globeTime} width={area.width} height={area.height} focusImpact={focusImpact} />
+        )}
       </View>
 
-      <TimeBar onChange={setTimeMa} />
-      <Text style={styles.hint}>Slide the timeline to travel in time · drag the globe to spin it</Text>
+      <TimeBar onChange={setTimeMa} onImpact={() => setFocusImpact((n) => n + 1)} />
+      <Text style={styles.hint}>Slide the timeline to travel in time · drag to spin · pinch to zoom</Text>
       <Text style={styles.credit}>Continents: Merdith et al. (2021) plate model</Text>
     </View>
   );
@@ -95,8 +100,13 @@ const styles = StyleSheet.create({
   },
   globeArea: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  impact: {
+    color: '#FFB347',
+    fontSize: 14,
+    fontWeight: '700',
+    marginTop: 4,
   },
   hint: {
     color: 'rgba(255,255,255,0.5)',
