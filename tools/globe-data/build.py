@@ -1,104 +1,188 @@
-"""Builds the globe data in src/data/globe/ from the Merdith et al. (2021) plate model.
+"""Builds the globe data in src/data/globe/.
 
-The app reconstructs continents on the device, so this script only exports:
-  - coastlines.json: present-day coastline polygons with their plate ID and valid time
-  - coastlines-detailed.json: the same at higher detail, used when zoomed in close
-  - rotations.json:  the plate rotation model, trimmed to the last ~600 million years
+Outputs
+  paleogeography.json  land and shallow-sea polygons through time
+  rotations.json       the PALEOMAP plate rotation model, trimmed to the last ~600 million years
+  sealevel.json        global sea level for the Quaternary, one value per thousand years
 
-Model: Merdith, A.S., et al. (2021). Extending full-plate tectonic models into deep time:
-Linking the Neoproterozoic and the Phanerozoic. Earth-Science Reviews, 214, 103477.
-Files: rotation 1000_0_rotfile_Merdith_et_al.rot, coastlines shapes_coastlines_Merdith_et_al_v2.gpmlz,
-as distributed in https://github.com/GPlates/gplates-web-service (django/GWS/data/deprecated/MODELS/MERDITH2021).
+Sources (all CC BY 4.0 or public domain)
+  - Land and sea: Scotese, C.R. & Wright, N. (2018) PALEOMAP Paleodigital Elevation Models
+    (PaleoDEMS) for the Phanerozoic. https://doi.org/10.5281/zenodo.5460860
+    (the 6 arc-minute netCDF files, one per 5 million years from 0 to 540 Ma)
+  - Plates: PALEOMAP Global Plate Model v2d3 (Scotese 2016), the model the PaleoDEMs were built on.
+    PALEOMAP_PlateModel.rot and PALEOMAP_PlatePolygons.gpmlz, as distributed in
+    https://github.com/GPlates/gplates-web-service (django/GWS/data/deprecated/MODELS/PALEOMAP).
+  - Sea level 0-798 ka: Spratt, R.M. & Lisiecki, L.E. (2016) A Late Pleistocene sea level stack.
+    Climate of the Past 12, 1079-1092 (NOAA Paleoclimatology: spratt2016.txt, long PC1).
+  - Sea level 798 ka-3 Ma: Bintanja, R. & van de Wal, R.S.W. (2008) North American ice-sheet dynamics
+    and the onset of 100,000-year glacial cycles. Nature 454, 869-872 (NOAA: bintanja2008.txt).
 
-Usage (needs `pip install pygplates`):
-  python tools/globe-data/build.py <model-dir> src/data/globe
+How it works
+  Each PaleoDEM is a map of elevation in "paleo" coordinates for its age. Cells above sea level
+  are land; cells down to -200 m are shallow sea. Each region is split by the tectonic plate it sat
+  on at that age, then rotated back to present-day coordinates. The app rotates the pieces
+  forward to any time, so continents move smoothly and coastlines change every 5 million years.
+
+  The Quaternary (last 2.58 million years) uses the modern map instead, at four sea levels chosen
+  from the sea-level curve. The modern PaleoDEM stores depth in 40 m steps: 0 covers roughly
+  0 to -40 m (e.g. Dogger Bank), -40 covers -40 to -80 m and -80 covers -80 to -120 m.
+  Low-lying land is stored as 40, so land is anything above 20 m.
+
+Usage (needs pygplates, netCDF4, numpy, scipy, rasterio, shapely)
+  python tools/globe-data/build.py <paleodem-6min-dir> <paleomap-model-dir> <sealevel-dir> src/data/globe
 """
 
+import base64
+import glob
 import json
 import math
 import os
+import re
+import struct
 import sys
 
+import netCDF4
+import numpy as np
 import pygplates
+import rasterio.features
+from rasterio.transform import from_origin
+from scipy.ndimage import distance_transform_edt
+from shapely.geometry import shape
+from shapely.geometry.polygon import orient
 
-MAX_TIME = 600.0  # Ma; a little older than the Cambrian so interpolation has a bracket
-# (simplification tolerance in degrees, smallest island kept in steradians)
-LEVELS = {
-    'coastlines.json': (0.25, 2e-5),  # ~28 km detail, islands over ~800 km²
-    'coastlines-detailed.json': (0.08, 5e-6),  # ~9 km detail, islands over ~200 km²
-}
-SCALE = 100  # coordinates stored as integers in hundredths of a degree
+MAX_TIME = 600.0
+QUATERNARY_MA = 2.58
 
+# Deep time: land at 0.5° (the PaleoDEMs were drawn at 1°), shallow sea at 1°.
+LAND_RES = 0.5
+SHELF_RES = 1.0
+# Quaternary: the modern map is genuinely detailed, so use 0.2° for land.
+QUAT_LAND_RES = 0.2
+QUAT_SHELF_RES = 0.5
 
-def to_xyz(lat, lon):
-    la, lo = math.radians(lat), math.radians(lon)
-    return (math.cos(la) * math.cos(lo), math.cos(la) * math.sin(lo), math.sin(la))
-
-
-def angle_to_great_circle(p, a, b):
-    # Angular distance from p to the great circle through a and b.
-    n = (a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0])
-    nn = math.sqrt(sum(c * c for c in n))
-    if nn < 1e-12:
-        return math.acos(max(-1.0, min(1.0, sum(x * y for x, y in zip(p, a)))))
-    return abs(math.asin(max(-1.0, min(1.0, sum(x * y for x, y in zip(p, n)) / nn))))
-
-
-def simplify(points, tol):
-    # Douglas-Peucker on the sphere, for a closed ring of (lat, lon) points.
-    xyz = [to_xyz(*p) for p in points]
-    keep = [False] * len(points)
-    keep[0] = keep[-1] = True
-    stack = [(0, len(points) - 1)]
-    while stack:
-        i, j = stack.pop()
-        best, idx = 0.0, -1
-        for k in range(i + 1, j):
-            d = angle_to_great_circle(xyz[k], xyz[i], xyz[j])
-            if d > best:
-                best, idx = d, k
-        if idx >= 0 and best > tol:
-            keep[idx] = True
-            stack += [(i, idx), (idx, j)]
-    return [p for p, k in zip(points, keep) if k]
+# Quaternary sea-level steps: (lowest sea level the step is used for, land threshold on the DEM).
+# A depth class is treated as exposed once sea level is 20 m below its value.
+QUATERNARY_LEVELS = [
+    (-20, 20),  # today's coastline
+    (-60, -20),  # 0 class exposed: Dogger Bank, much of the southern North Sea, Sunda shallows
+    (-100, -60),  # -40 class exposed: English Channel, Bering Strait, most of the Sunda Shelf
+    (-999, -100),  # -80 class exposed: last glacial maximum, about -120 m
+]
 
 
-def export_coastlines(path, tolerance_deg, min_area_sr):
-    features = []
-    total_points = 0
-    for f in pygplates.FeatureCollection(path):
-        begin, end = f.get_valid_time()
-        if end >= MAX_TIME:
+def load_dem(path):
+    d = netCDF4.Dataset(path)
+    lat = d['latitude'][:]
+    z = d['z'][:].filled(-9999).astype(np.float32)
+    if lat[0] < lat[-1]:
+        z = z[::-1]
+    return z[:1800, :3600]  # 0.1° cells, rows from 90°N, columns from 180°W
+
+
+def downsample(z, res):
+    k = int(round(res / 0.1))
+    return z.reshape(1800 // k, k, 3600 // k, k).mean(axis=(1, 3))
+
+
+def plate_raster(plate_polygons, rotation_model, age, res):
+    """Plate ID for each cell at `age`, from the reconstructed plate polygons."""
+    reconstructed = []
+    pygplates.reconstruct(plate_polygons, rotation_model, reconstructed, age, anchor_plate_id=0)
+    wrapper = pygplates.DateLineWrapper()
+    shapes = []
+    for r in reconstructed:
+        geometry = r.get_reconstructed_geometry()
+        if not isinstance(geometry, pygplates.PolygonOnSphere):
             continue
-        plate = f.get_reconstruction_plate_id()
-        for g in f.get_geometries():
-            if not isinstance(g, pygplates.PolygonOnSphere) or g.get_area() < min_area_sr:
-                continue
-            # The globe renderer (d3-geo) expects exterior rings to run clockwise.
-            if g.get_orientation() == pygplates.PolygonOnSphere.Orientation.counter_clockwise:
-                g = pygplates.PolygonOnSphere(list(reversed(g.get_points())))
-            pts = g.to_lat_lon_list()
-            pts = simplify(pts + [pts[0]], math.radians(tolerance_deg))[:-1]
-            if len(pts) < 3:
-                continue
-            flat = []
-            for lat, lon in pts:
-                flat += [round(lon * SCALE), round(lat * SCALE)]
-            total_points += len(pts)
-            features.append(
-                {
-                    'p': plate,
-                    'b': None if math.isinf(begin) else round(begin, 3),
-                    'e': 0 if math.isinf(end) else round(end, 3),
-                    'r': flat,
-                }
-            )
-    return features, total_points
+        plate = r.get_feature().get_reconstruction_plate_id()
+        for w in wrapper.wrap(geometry):
+            ring = [(p.get_longitude(), p.get_latitude()) for p in w.get_exterior_points()]
+            if len(ring) >= 3:
+                shapes.append(({'type': 'Polygon', 'coordinates': [ring]}, plate))
+    h, w = int(180 / res), int(360 / res)
+    raster = rasterio.features.rasterize(
+        shapes, out_shape=(h, w), transform=from_origin(-180, 90, res, res), fill=0, dtype='int32'
+    )
+    # Cells no plate polygon covers take the nearest plate.
+    if (raster == 0).any():
+        idx = distance_transform_edt(raster == 0, return_distances=False, return_indices=True)
+        raster = raster[tuple(idx)]
+    return raster
+
+
+def densify(coords, max_step=2.0):
+    out = [coords[0]]
+    for (x0, y0), (x1, y1) in zip(coords, coords[1:]):
+        n = int(math.ceil(max(abs(x1 - x0), abs(y1 - y0)) / max_step))
+        for i in range(1, n + 1):
+            out.append((x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n))
+    return out
+
+
+def encode_ring(points):
+    """Int16 little-endian, hundredths of a degree, first point absolute then deltas; base64."""
+    vals = []
+    prev = None
+    for lon, lat in points:
+        x, y = round(lon * 100), round(lat * 100)
+        if prev is None:
+            vals += [x, y]
+        else:
+            dx = (x - prev[0] + 18000) % 36000 - 18000  # wrap longitude
+            vals += [dx, y - prev[1]]
+        prev = (x, y)
+    return base64.b64encode(struct.pack(f'<{len(vals)}h', *vals)).decode('ascii')
+
+
+def polygons(mask, plates, res, rotation_model, age, min_cells=5):
+    """Polygons of `mask`, split by plate and rotated to present-day coordinates."""
+    labels = np.where(mask, plates, 0).astype('int32')
+    out = []
+    count = 0
+    inverse = {}
+    for geom, plate in rasterio.features.shapes(labels, mask=mask, transform=from_origin(-180, 90, res, res)):
+        g = shape(geom)
+        if g.area < min_cells * res * res:
+            continue
+        g = g.simplify(res * 0.85, preserve_topology=True)
+        if g.is_empty or g.geom_type != 'Polygon':
+            continue
+        g = orient(g, sign=-1.0)  # exterior clockwise, holes anticlockwise (what d3-geo expects)
+        plate = int(plate)
+        if plate not in inverse:
+            inverse[plate] = rotation_model.get_rotation(age, plate, anchor_plate_id=0).get_inverse()
+        rot = inverse[plate]
+        rings = []
+        for ring in [g.exterior, *g.interiors]:
+            coords = list(ring.coords)
+            pts = densify(coords)[:-1]
+            present = []
+            for lon, lat in pts:
+                la, lo = (rot * pygplates.PointOnSphere(max(-90.0, min(90.0, lat)), lon)).to_lat_lon()
+                present.append((lo, la))
+            if len(present) >= 3:
+                rings.append(encode_ring(present))
+                count += len(present)
+        if rings:
+            out.append([plate, *rings])
+    return out, count
+
+
+def slice_entry(z, plate_polygons, rotation_model, age, land_res, shelf_res, land_threshold):
+    zl = downsample(z, land_res)
+    zs = downsample(z, shelf_res)
+    land, n1 = polygons(
+        zl > land_threshold, plate_raster(plate_polygons, rotation_model, age, land_res), land_res, rotation_model, age
+    )
+    shelf_mask = (zs > land_threshold - 220) & (zs <= land_threshold)
+    shelf, n2 = polygons(
+        shelf_mask, plate_raster(plate_polygons, rotation_model, age, shelf_res), shelf_res, rotation_model, age
+    )
+    return {'land': land, 'shelf': shelf}, n1 + n2
 
 
 def export_rotations(path):
     # PLATES4 rotation file: moving_plate time lat lon angle fixed_plate ! comment
-    sequences = {}
     order = []
     with open(path, encoding='utf-8', errors='replace') as fh:
         for line in fh:
@@ -112,7 +196,7 @@ def export_rotations(path):
                 )
             except ValueError:
                 continue
-            if moving == 999:  # comment lines
+            if moving == 999:
                 continue
             key = (moving, fixed)
             if not order or order[-1][0] != key:
@@ -120,31 +204,81 @@ def export_rotations(path):
             order[-1][1].append([time, lat, lon, angle])
     out = {}
     for (moving, fixed), samples in order:
-        # Keep samples up to the first one older than MAX_TIME.
-        trimmed = []
+        kept = []
         for s in samples:
-            trimmed.append(s)
+            kept.append(s)
             if s[0] > MAX_TIME:
                 break
-        if trimmed[0][0] > MAX_TIME:
+        if kept[-1][0] < 0 or kept[0][0] > MAX_TIME:
             continue
-        out.setdefault(str(moving), []).append({'f': fixed, 's': trimmed})
+        out.setdefault(str(moving), []).append({'f': fixed, 's': kept})
     return out
 
 
+def sea_level_curve(sealevel_dir):
+    """Global sea level (m) every 1,000 years from today back to 2,580 ka."""
+    spratt = {}
+    with open(os.path.join(sealevel_dir, 'spratt2016.txt')) as fh:
+        for line in fh:
+            parts = line.split('\t')
+            if parts and re.fullmatch(r'\d+', parts[0].strip()):
+                spratt[int(parts[0])] = float(parts[5])  # long PC1
+    bintanja = {}
+    with open(os.path.join(sealevel_dir, 'bintanja2008.txt')) as fh:
+        for line in fh:
+            parts = line.split()
+            if len(parts) == 9 and re.fullmatch(r'-?\d+(\.\d+)?', parts[0]):
+                # Bintanja's column is sea-level lowering (positive = lower), so flip the sign.
+                bintanja[round(float(parts[0]) * 10)] = -float(parts[8])
+    # The Spratt & Lisiecki stack reads about +9 m at 0 ka; shift it so today is 0 m.
+    # That puts the last glacial maximum near -125 m, in line with standard estimates.
+    offset = spratt[0]
+    spratt = {k: v - offset for k, v in spratt.items()}
+    values = []
+    for ka in range(0, int(QUATERNARY_MA * 1000) + 1):
+        v = spratt.get(ka)
+        if v is None or math.isnan(v):
+            v = bintanja[ka * 10]
+        values.append(round(v, 1))
+    return values
+
+
 def main():
-    model_dir, out_dir = sys.argv[1], sys.argv[2]
-    os.makedirs(out_dir, exist_ok=True)
-    coast_path = os.path.join(model_dir, 'shapes_coastlines_Merdith_et_al_v2.gpmlz')
-    for name, (tolerance, min_area) in LEVELS.items():
-        features, n = export_coastlines(coast_path, tolerance, min_area)
-        with open(os.path.join(out_dir, name), 'w') as fh:
-            json.dump(features, fh, separators=(',', ':'))
-        print(f'{name}: {len(features)} polygons, {n} points')
-    rotations = export_rotations(os.path.join(model_dir, '1000_0_rotfile_Merdith_et_al.rot'))
+    dem_dir, model_dir, sealevel_dir, out_dir = sys.argv[1:5]
+    rotation_model = pygplates.RotationModel(os.path.join(model_dir, 'PALEOMAP_PlateModel.rot'))
+    plate_polygons = pygplates.FeatureCollection(os.path.join(model_dir, 'PALEOMAP_PlatePolygons.gpmlz'))
+
+    files = {}
+    for p in glob.glob(os.path.join(dem_dir, '*.nc')):
+        m = re.search(r'_([0-9.]+)Ma\.nc$', p)
+        if m:
+            files[float(m.group(1))] = p
+
+    slices = []
+    total = 0
+    for age in sorted(files):
+        if age == 0:
+            continue
+        entry, n = slice_entry(load_dem(files[age]), plate_polygons, rotation_model, age, LAND_RES, SHELF_RES, 20)
+        slices.append({'age': age, **entry})
+        total += n
+        print(f'{age:>6} Ma: {len(entry["land"])} land, {len(entry["shelf"])} shelf polygons, {n} points', flush=True)
+
+    modern = load_dem(files[0.0])
+    quaternary = []
+    for min_sea_level, threshold in QUATERNARY_LEVELS:
+        entry, n = slice_entry(modern, plate_polygons, rotation_model, 0.0, QUAT_LAND_RES, QUAT_SHELF_RES, threshold)
+        quaternary.append({'minSeaLevel': min_sea_level, **entry})
+        total += n
+        print(f'Quaternary (sea level down to {min_sea_level} m): {n} points', flush=True)
+
+    with open(os.path.join(out_dir, 'paleogeography.json'), 'w') as fh:
+        json.dump({'slices': slices, 'quaternary': quaternary}, fh, separators=(',', ':'))
     with open(os.path.join(out_dir, 'rotations.json'), 'w') as fh:
-        json.dump(rotations, fh, separators=(',', ':'))
-    print(f'rotations.json: {len(rotations)} moving plates')
+        json.dump(export_rotations(os.path.join(model_dir, 'PALEOMAP_PlateModel.rot')), fh, separators=(',', ':'))
+    with open(os.path.join(out_dir, 'sealevel.json'), 'w') as fh:
+        json.dump({'stepKa': 1, 'metres': sea_level_curve(sealevel_dir)}, fh, separators=(',', ':'))
+    print(f'total points: {total}')
 
 
 if __name__ == '__main__':

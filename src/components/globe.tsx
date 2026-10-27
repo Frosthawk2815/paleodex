@@ -5,12 +5,12 @@ import Svg, { Circle, Defs, Ellipse, G, Line, LinearGradient, Path, RadialGradie
 
 import { asteroidVisible } from '@/lib/impact';
 import { EARTH_RADIUS_KM, MOON_DISTANCE_TODAY_KM, MOON_RADIUS_KM, moonDistanceKm } from '@/lib/moon';
-import { chicxulubAt, landCentre, reconstructCoastlines } from '@/lib/plates';
+import { geographyAt, landCentre, QUATERNARY_MA } from '@/lib/geography';
+import { chicxulubAt } from '@/lib/plates';
 
 const GRATICULE = geoGraticule10();
 const DRAG_DEGREES_PER_PIXEL = 0.4;
 const MAX_ZOOM = 24; // roughly country scale
-const DETAIL_ZOOM = 2.5; // switch to detailed coastlines from here
 const MIN_EARTH_PX = 7; // Earth and Moon are drawn at least this big when zoomed far out
 const MIN_MOON_PX = 3;
 
@@ -141,18 +141,18 @@ export function Globe({ timeMa, width: w, height: h, focusImpact }: Props) {
   const mx = ex + moonDistPx;
   const moonOnScreen = mx - moonR < w;
 
-  const detail = zoom >= DETAIL_ZOOM ? 'detailed' : 'normal';
-  // Recompute in steps of 0.1 million years; finer steps don't visibly move the continents.
-  const step = Math.round(timeMa * 10) / 10;
-  const rings = useMemo(() => reconstructCoastlines(step, detail), [step, detail]);
-  const centre = useMemo(() => landCentre(reconstructCoastlines(step)), [step]);
+  // Recompute in steps of 0.1 million years (finer steps don't visibly move the continents),
+  // or 1,000 years in the Quaternary, where sea level changes quickly.
+  const step = timeMa > QUATERNARY_MA ? Math.round(timeMa * 10) / 10 : Math.round(timeMa * 1000) / 1000;
+  const geo = useMemo(() => geographyAt(step), [step]);
+  const centre = useMemo(() => landCentre(geo.land), [geo]);
   const showAsteroid = asteroidVisible(timeMa);
   const impactSite = useMemo(() => chicxulubAt(step), [step]);
   const anchor = camera.anchor === 'impact' && showAsteroid ? 'impact' : 'land';
   const rotLon = anchor === 'impact' ? -impactSite[0] + camera.lon : -centre[0] + camera.lon;
   const rotLat = anchor === 'impact' ? -impactSite[1] + camera.lat : -centre[1] * 0.6 + camera.lat;
 
-  const { land, grid, projection } = useMemo(() => {
+  const { land, shelf, grid, projection } = useMemo(() => {
     const p = geoOrthographic()
       .scale(earthR)
       .translate([ex, ey])
@@ -165,11 +165,12 @@ export function Globe({ timeMa, width: w, height: h, focusImpact }: Props) {
       .precision(zoom > 4 ? 0.2 : 0.5);
     const path = geoPath(p);
     return {
-      land: path({ type: 'MultiPolygon', coordinates: rings.map((ring) => [ring]) }) ?? '',
+      land: path({ type: 'MultiPolygon', coordinates: geo.land }) ?? '',
+      shelf: path({ type: 'MultiPolygon', coordinates: geo.shelf }) ?? '',
       grid: earthR > 40 ? (path(GRATICULE) ?? '') : '',
       projection: p,
     };
-  }, [rings, earthR, ex, ey, rotLon, rotLat, w, h, zoom]);
+  }, [geo, earthR, ex, ey, rotLon, rotLat, w, h, zoom]);
 
   // The asteroid hangs just above the impact site, enlarged so it shows at country zoom.
   let asteroid: { x: number; y: number; size: number } | null = null;
@@ -187,11 +188,11 @@ export function Globe({ timeMa, width: w, height: h, focusImpact }: Props) {
   }
 
   const kmAcross = (w / rPx) * EARTH_RADIUS_KM;
+  const seaLevel = geo.seaLevel !== undefined ? `Sea level ${geo.seaLevel > 0 ? '+' : ''}${Math.round(geo.seaLevel)} m` : '';
+  const scale = zoom > 1.5 ? `About ${fmtKm(Number(kmAcross.toPrecision(2)))} km across` : '';
   const readout = moonOnScreen
     ? `Earth–Moon: ${fmtKm(moonKm)} km (today ${fmtKm(MOON_DISTANCE_TODAY_KM)} km)`
-    : zoom > 1.5
-      ? `About ${fmtKm(Number(kmAcross.toPrecision(2)))} km across`
-      : '';
+    : [seaLevel, scale].filter(Boolean).join(' · ');
   const enlarged = moonOnScreen && rPx < MIN_EARTH_PX * 1.5;
 
   const zoomBy = (f: number) => setCamera((c) => ({ ...c, zoom: clampZoom(Math.max(c.zoom, minZoom) * f) }));
@@ -253,7 +254,8 @@ export function Globe({ timeMa, width: w, height: h, focusImpact }: Props) {
           <Circle cx={ex} cy={ey} r={earthR + 6} fill="url(#glow)" />
           <Circle cx={ex} cy={ey} r={earthR} fill="url(#ocean)" />
           {grid !== '' && <Path d={grid} stroke="#FFFFFF" strokeOpacity={0.08} strokeWidth={0.6} fill="none" />}
-          {/* Outlining land in its own colour hides hairline gaps between neighbouring plate fragments. */}
+          {/* Outlines in the fill colour hide hairline gaps between neighbouring plate fragments. */}
+          <Path d={shelf} fill="#2F6F9A" stroke="#2F6F9A" strokeWidth={zoom > 2 ? 2 : 0.8} strokeLinejoin="round" />
           <Path d={land} fill="#9DBF7A" stroke="#9DBF7A" strokeWidth={zoom > 2 ? 2.5 : 0.8} strokeLinejoin="round" />
           <Circle cx={ex} cy={ey} r={earthR} fill="url(#shade)" />
 

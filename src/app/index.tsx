@@ -53,8 +53,10 @@ export default function GlobeScreen() {
       </View>
 
       <TimeBar onChange={setTimeMa} onImpact={() => setFocusImpact((n) => n + 1)} />
-      <Text style={styles.hint}>Slide the timeline to travel in time · drag to spin · pinch to zoom</Text>
-      <Text style={styles.credit}>Continents: Merdith et al. (2021) plate model</Text>
+      <Text style={styles.hint}>Slide or tap the timeline to travel in time · drag to spin · pinch to zoom</Text>
+      <Text style={styles.credit}>
+        Land and sea: Scotese & Wright (2018) PALEOMAP · Sea level: Spratt & Lisiecki (2016), Bintanja & van de Wal (2008)
+      </Text>
     </View>
   );
 }
@@ -63,6 +65,8 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: '#05070D',
+    // Dragging the globe with a mouse shouldn't select the page's text on the web.
+    userSelect: 'none',
   },
   header: {
     alignItems: 'center',

@@ -1,45 +1,17 @@
-// Moves present-day coastlines back to where they were at a given time, using the
-// plate rotation model (Merdith et al. 2021). This mirrors how GPlates reconstructs
-// features by plate ID: each plate's rotation is interpolated between the model's
-// finite rotations, then chained through its fixed plates down to the anchor plate 0.
+// Plate rotations from the PALEOMAP Global Plate Model v2d3 (Scotese 2016), the model the
+// PaleoDEM maps were built on. This mirrors how GPlates moves features by plate ID: each
+// plate's rotation is interpolated between the model's finite rotations, then chained
+// through its fixed plates down to the anchor plate 0.
 
-import coastlinesDetailedData from '@/data/globe/coastlines-detailed.json';
-import coastlinesData from '@/data/globe/coastlines.json';
 import rotationsData from '@/data/globe/rotations.json';
 
-type Quat = [number, number, number, number]; // w, x, y, z
+export type Quat = [number, number, number, number]; // w, x, y, z
 type Sample = number[]; // [time, poleLat, poleLon, angle]
 type Sequence = { f: number; s: Sample[] };
-type Coastline = { p: number; b: number | null; e: number; r: number[] };
 
 const ROTATIONS = rotationsData as unknown as Record<string, Sequence[]>;
-const SCALE = 100;
-const DEG = Math.PI / 180;
+export const DEG = Math.PI / 180;
 const IDENTITY: Quat = [1, 0, 0, 0];
-
-type Level = { coastlines: Coastline[]; xyz?: Float64Array[] };
-const LEVELS: Record<'normal' | 'detailed', Level> = {
-  normal: { coastlines: coastlinesData as unknown as Coastline[] },
-  detailed: { coastlines: coastlinesDetailedData as unknown as Coastline[] },
-};
-
-// Present-day coastline points as unit vectors, computed the first time a level is used.
-function levelXyz(level: Level): Float64Array[] {
-  if (!level.xyz) {
-    level.xyz = level.coastlines.map((c) => {
-      const out = new Float64Array((c.r.length / 2) * 3);
-      for (let i = 0, j = 0; i < c.r.length; i += 2, j += 3) {
-        const lon = (c.r[i] / SCALE) * DEG;
-        const lat = (c.r[i + 1] / SCALE) * DEG;
-        out[j] = Math.cos(lat) * Math.cos(lon);
-        out[j + 1] = Math.cos(lat) * Math.sin(lon);
-        out[j + 2] = Math.sin(lat);
-      }
-      return out;
-    });
-  }
-  return level.xyz;
-}
 
 function fromPole(lat: number, lon: number, angle: number): Quat {
   const la = lat * DEG;
@@ -108,7 +80,7 @@ export function plateRotation(plate: number, time: number, cache = new Map<numbe
   return q;
 }
 
-function rotate(q: Quat, x: number, y: number, z: number): [number, number, number] {
+export function rotate(q: Quat, x: number, y: number, z: number): [number, number, number] {
   const [w, qx, qy, qz] = q;
   // v' = v + 2w(q×v) + 2q×(q×v)
   const cx = qy * z - qz * y;
@@ -128,49 +100,7 @@ export function rotatePoint(q: Quat, lon: number, lat: number): [number, number]
   return [Math.atan2(y, x) / DEG, Math.asin(Math.max(-1, Math.min(1, z))) / DEG];
 }
 
-export type Ring = [number, number][]; // [lon, lat]
-
-// All coastline polygons that existed at `time`, moved to their positions then.
-// The detailed level is for close-up zoom; it has about three times as many points.
-export function reconstructCoastlines(time: number, detail: 'normal' | 'detailed' = 'normal'): Ring[] {
-  const level = LEVELS[detail];
-  const allXyz = levelXyz(level);
-  const cache = new Map<number, Quat>();
-  const rings: Ring[] = [];
-  level.coastlines.forEach((c, idx) => {
-    if (c.e > time || (c.b !== null && c.b < time)) return;
-    const q = plateRotation(c.p, time, cache);
-    const xyz = allXyz[idx];
-    const ring: Ring = [];
-    for (let j = 0; j < xyz.length; j += 3) {
-      const [x, y, z] = rotate(q, xyz[j], xyz[j + 1], xyz[j + 2]);
-      ring.push([Math.atan2(y, x) / DEG, Math.asin(Math.max(-1, Math.min(1, z))) / DEG]);
-    }
-    ring.push(ring[0]);
-    rings.push(ring);
-  });
-  return rings;
-}
-
-// Average position of the land at `time`, used to turn the globe towards the continents.
-export function landCentre(rings: Ring[]): [number, number] {
-  let x = 0;
-  let y = 0;
-  let z = 0;
-  for (const ring of rings) {
-    for (const [lon, lat] of ring) {
-      const la = lat * DEG;
-      const lo = lon * DEG;
-      x += Math.cos(la) * Math.cos(lo);
-      y += Math.cos(la) * Math.sin(lo);
-      z += Math.sin(la);
-    }
-  }
-  const n = Math.hypot(x, y, z) || 1;
-  return [Math.atan2(y, x) / DEG, Math.asin(z / n) / DEG];
-}
-
-// Chicxulub crater, Yucatán (present-day centre), carried by plate 205 in the model.
+// Chicxulub crater, Yucatán (present-day centre), on plate 205 in the PALEOMAP model.
 const CHICXULUB = { lon: -89.5, lat: 21.4, plate: 205 };
 
 // Where the Chicxulub impact site was at `time` (lon, lat).
