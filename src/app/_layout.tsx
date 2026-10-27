@@ -1,5 +1,14 @@
-import { Stack } from "expo-router";
+import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
+import { useColorScheme } from 'react-native';
 
 export default function RootLayout() {
-  return <Stack />;
+  const colorScheme = useColorScheme();
+  return (
+    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <Stack>
+        <Stack.Screen name="index" options={{ title: 'PaleoDex', headerLargeTitle: true }} />
+        <Stack.Screen name="period/[id]" options={{ title: '' }} />
+      </Stack>
+    </ThemeProvider>
+  );
 }
