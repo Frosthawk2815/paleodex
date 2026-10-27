@@ -1,78 +1,114 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Link } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { useDeferredValue, useState } from 'react';
+import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { TimelineRow } from '@/components/timeline-row';
-import { ERAS, OLDEST_MA, PERIODS } from '@/data/periods';
-import { usePalette } from '@/hooks/use-palette';
+import { Globe } from '@/components/globe';
+import { TimeBar } from '@/components/time-bar';
+import { contextAt, timeLabel } from '@/lib/time';
 
-export default function TimelineScreen() {
-  const palette = usePalette();
+export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
+  const [timeMa, setTimeMa] = useState(0);
+  const [globeSize, setGlobeSize] = useState(0);
+  // The globe can lag a frame behind the timeline so scrolling stays smooth.
+  const globeTime = useDeferredValue(timeMa);
+  const { period, series, stage } = contextAt(timeMa);
+
+  const onGlobeArea = (e: LayoutChangeEvent) => {
+    const { width, height } = e.nativeEvent.layout;
+    setGlobeSize(Math.floor(Math.min(width - 32, height - 16, 520)));
+  };
 
   return (
-    <ScrollView
-      style={{ backgroundColor: palette.background }}
-      contentInsetAdjustmentBehavior="automatic"
-      contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 32 }]}>
-      <Text style={[styles.intro, { color: palette.muted }]}>
-        {OLDEST_MA} million years of life, from the Cambrian explosion to today. Tap a period to explore it.
-      </Text>
+    <View style={[styles.screen, { paddingTop: insets.top + 12, paddingBottom: insets.bottom + 8 }]}>
+      <StatusBar style="light" />
 
-      {ERAS.map((era) => {
-        const periods = PERIODS.filter((p) => p.era === era.name);
-        return (
-          <View key={era.name} style={styles.era}>
-            <Text style={[styles.eraName, { color: palette.text }]}>{era.name} Era</Text>
-            <Text style={[styles.eraBlurb, { color: palette.muted }]}>{era.blurb}</Text>
-            {periods.map((period, i) => (
-              <TimelineRow
-                key={period.id}
-                period={period}
-                isFirst={i === 0}
-                isLast={i === periods.length - 1}
-              />
-            ))}
-          </View>
-        );
-      })}
+      <View style={styles.header}>
+        <Text style={styles.app}>PaleoDex</Text>
+        <Text style={styles.time} accessibilityLiveRegion="polite">
+          {timeLabel(timeMa)}
+        </Text>
+        <Text style={styles.context} numberOfLines={1}>
+          {period ? `${period.era} Era · ${period.name}` : ''}
+        </Text>
+        <Text style={styles.subContext} numberOfLines={1}>
+          {[series?.name, stage?.name].filter(Boolean).join(' · ')}
+        </Text>
+        {period && (
+          <Link href={{ pathname: '/period/[id]', params: { id: period.id } }} style={styles.link}>
+            About the {period.name} ›
+          </Link>
+        )}
+      </View>
 
-      <Text style={[styles.footnote, { color: palette.muted }]}>
-        Ma = millions of years ago. Dates from the ICS International Chronostratigraphic Chart (2026).
-      </Text>
-    </ScrollView>
+      <View style={styles.globeArea} onLayout={onGlobeArea}>
+        {globeSize > 0 && <Globe timeMa={globeTime} size={globeSize} />}
+      </View>
+
+      <TimeBar onChange={setTimeMa} />
+      <Text style={styles.hint}>Slide the timeline to travel in time · drag the globe to spin it</Text>
+      <Text style={styles.credit}>Continents: Merdith et al. (2021) plate model</Text>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  content: {
-    width: '100%',
-    maxWidth: 720,
-    alignSelf: 'center',
+  screen: {
+    flex: 1,
+    backgroundColor: '#05070D',
+  },
+  header: {
+    alignItems: 'center',
     paddingHorizontal: 16,
-    paddingTop: 16,
+    gap: 2,
   },
-  intro: {
-    fontSize: 15,
-    lineHeight: 21,
-    marginBottom: 8,
-  },
-  era: {
-    marginTop: 20,
-  },
-  eraName: {
+  app: {
+    color: 'rgba(255,255,255,0.55)',
     fontSize: 13,
     fontWeight: '700',
-    letterSpacing: 1,
+    letterSpacing: 1.5,
     textTransform: 'uppercase',
   },
-  eraBlurb: {
-    fontSize: 14,
-    marginTop: 2,
-    marginBottom: 8,
+  time: {
+    color: '#FFFFFF',
+    fontSize: 26,
+    fontWeight: '800',
+    fontVariant: ['tabular-nums'],
+    marginTop: 4,
   },
-  footnote: {
+  context: {
+    color: 'rgba(255,255,255,0.75)',
+    fontSize: 15,
+  },
+  subContext: {
+    color: 'rgba(255,255,255,0.55)',
+    fontSize: 14,
+  },
+  link: {
+    color: '#9CC8FF',
+    fontSize: 15,
+    fontWeight: '600',
+    marginTop: 6,
+    paddingVertical: 4,
+  },
+  globeArea: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  hint: {
+    color: 'rgba(255,255,255,0.5)',
     fontSize: 12,
-    marginTop: 24,
     textAlign: 'center',
+    marginTop: 4,
+    paddingHorizontal: 16,
+  },
+  credit: {
+    color: 'rgba(255,255,255,0.35)',
+    fontSize: 10,
+    textAlign: 'center',
+    marginTop: 2,
   },
 });

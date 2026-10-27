@@ -6,7 +6,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="index" options={{ title: 'PaleoDex', headerLargeTitle: true }} />
+        <Stack.Screen name="index" options={{ title: 'PaleoDex', headerShown: false }} />
         <Stack.Screen name="period/[id]" options={{ title: '' }} />
       </Stack>
     </ThemeProvider>

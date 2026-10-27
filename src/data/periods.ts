@@ -16,10 +16,11 @@ export type Period = {
   ending: string;
 };
 
-export const ERAS: { name: Era; blurb: string }[] = [
-  { name: 'Paleozoic', blurb: 'Ancient life: from the first animals to the first forests' },
-  { name: 'Mesozoic', blurb: 'Middle life: the age of reptiles and dinosaurs' },
-  { name: 'Cenozoic', blurb: 'Recent life: the age of mammals' },
+// Era colours are the official ICS chart colours.
+export const ERAS: { name: Era; color: string }[] = [
+  { name: 'Paleozoic', color: '#99C08D' },
+  { name: 'Mesozoic', color: '#67C5CA' },
+  { name: 'Cenozoic', color: '#F2F91D' },
 ];
 
 export const PERIODS: Period[] = [
