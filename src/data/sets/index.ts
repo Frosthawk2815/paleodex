@@ -1,5 +1,7 @@
 import { CENOZOIC } from '@/data/sets/cenozoic';
 import { CRETACEOUS } from '@/data/sets/cretaceous';
+import { ICE_AGE } from '@/data/sets/ice-age';
+import { MEDIA_CENOZOIC } from '@/data/sets/media-cenozoic';
 import { MEDIA_EARLY } from '@/data/sets/media-early';
 import { MEDIA_EARLY_CRETACEOUS } from '@/data/sets/media-early-cretaceous';
 import { MEDIA_LATE_CRETACEOUS } from '@/data/sets/media-late-cretaceous';
@@ -9,4 +11,4 @@ import { TRIASSIC_JURASSIC } from '@/data/sets/triassic-jurassic';
 import type { DataSet } from '@/data/sets/types';
 
 // Content bundles merged into EVENTS, CLADES and SPECIES, oldest first.
-export const SETS: DataSet[] = [PALEOZOIC, TRIASSIC_JURASSIC, MEDIA_EARLY, CRETACEOUS, MEDIA_EARLY_CRETACEOUS, MEDIA_LATE_CRETACEOUS, CENOZOIC, MODERN];
+export const SETS: DataSet[] = [PALEOZOIC, TRIASSIC_JURASSIC, MEDIA_EARLY, CRETACEOUS, MEDIA_EARLY_CRETACEOUS, MEDIA_LATE_CRETACEOUS, CENOZOIC, MEDIA_CENOZOIC, MODERN, ICE_AGE];

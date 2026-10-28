@@ -314,9 +314,18 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
       ? visibleSkulls(timeMa, rangeId).flatMap(({ id, lastSeen }) => {
           const pos: [number, number] = [lastSeen.lon, lastSeen.lat];
           const xy = projection(pos);
-          return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05 ? [{ id, xy, name: speciesName(id) }] : [];
+          return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05
+            ? [{ id, xy, name: speciesName(id), country: lastSeen.country }]
+            : [];
         })
       : [];
+  // Several species last seen in the same country are stacked in a column, one label per row,
+  // rather than on top of each other.
+  for (const sk of skulls) {
+    const same = skulls.filter((o) => o.country === sk.country);
+    const k = same.indexOf(sk);
+    if (same.length > 1) sk.xy = [sk.xy[0] + (k % 2 === 0 ? -16 : 16), sk.xy[1] + (k - (same.length - 1) / 2) * 58];
+  }
   const moonReadout = `Moon · ${fmtKm(moonKm)} km from Earth`;
   // In the Earth–Moon view, tapping the Moon opens the close-up.
   const moonHit = !moonMode && moonOnScreen ? Math.max(44, moonR * 2 + 16) : 0;

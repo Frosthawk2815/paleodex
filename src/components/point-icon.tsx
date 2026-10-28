@@ -1,4 +1,5 @@
-import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
+import { useId } from 'react';
+import Svg, { Circle, ClipPath, Defs, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 
 export type PointIconKind =
   | 'flag'
@@ -223,6 +224,8 @@ type Props = { kind: PointIconKind; x: number; y: number; size: number; color?: 
 // A marker icon to place inside an existing <Svg> (e.g. on the globe), centred on (x, y).
 export function PointIconShape({ kind, x, y, size, color = '#FFD54A' }: Props) {
   const s = size / 24;
+  // Badge artwork is clipped to its circle (ids can't contain the colons useId makes).
+  const clipId = `badge${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   return (
     <G transform={`translate(${x - 12 * s} ${y - 12 * s}) scale(${s})`}>
       {kind === 'flag' ? (
@@ -233,8 +236,15 @@ export function PointIconShape({ kind, x, y, size, color = '#FFD54A' }: Props) {
         <SkullFlag />
       ) : (
         <G>
+          <Defs>
+            <ClipPath id={clipId}>
+              <Circle cx={12} cy={12} r={11} />
+            </ClipPath>
+          </Defs>
           <Ellipse cx={12} cy={23.5} rx={7} ry={1.6} fill="#000000" opacity={0.35} />
-          <Art kind={kind} />
+          <G clipPath={`url(#${clipId})`}>
+            <Art kind={kind} />
+          </G>
           <Circle cx={12} cy={12} r={11} fill="none" stroke="#FFFFFF" strokeWidth={1.4} />
         </G>
       )}

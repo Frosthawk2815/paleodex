@@ -59,8 +59,8 @@ def region_geometry(r, countries):
     if excluded:
         geoms = [g for name, (cont, g) in countries.items() if g in geoms and name not in excluded]
     g = unary_union(geoms)
-    if 'latMin' in r or 'latMax' in r:
-        g = g.intersection(box(-180, r.get('latMin', -90), 180, r.get('latMax', 90)))
+    if any(k in r for k in ('latMin', 'latMax', 'lonMin', 'lonMax')):
+        g = g.intersection(box(r.get('lonMin', -180), r.get('latMin', -90), r.get('lonMax', 180), r.get('latMax', 90)))
     return g
 
 
