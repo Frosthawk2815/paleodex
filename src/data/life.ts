@@ -23,8 +23,10 @@ export type Species = {
   placeText: string;
   // Formations in PaleoDex (event ids) the species is found in, in the order to show them.
   formations: string[];
-  // Other formations it's known from that aren't in PaleoDex yet.
-  otherFormations?: string[];
+  // Position along the family tree, used to order relatives: a higher number branched off
+  // later (closer to the most recent species). Two species are as close as the lower of their
+  // numbers, so this treats each family as a ladder of successive branches (approximate).
+  phylo?: number;
   summary: string[];
   facts?: { label: string; value: string }[];
   keywords?: string[];
@@ -86,6 +88,7 @@ export const CLADES: Clade[] = [
 export const SPECIES: Species[] = [
   {
     id: 'tyrannosaurus-rex',
+    phylo: 20,
     name: 'Tyrannosaurus rex',
     common: 'T. rex',
     clade: 'tyrannosaurinae',
@@ -93,7 +96,6 @@ export const SPECIES: Species[] = [
     ageText: 'About 68 to 66 million years ago (latest Cretaceous)',
     placeText: 'Western North America',
     formations: ['hell-creek', 'ojo-alamo'],
-    otherFormations: ['Lance (Wyoming)', 'Scollard (Alberta)', 'Frenchman (Saskatchewan)', 'North Horn (Utah)'],
     summary: [
       'Tyrannosaurus rex, the “tyrant lizard king”, was one of the largest meat-eating land animals ever. It was the top predator of western North America in the last two million years before the asteroid impact, living alongside Triceratops and Edmontosaurus.',
       'Adults reached about 12 m long and around 8 tonnes. A 1.5 m skull, banana-sized teeth and one of the strongest bites of any land animal let it crush bone. Its arms were short but muscular, with two fingers.',
@@ -113,6 +115,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: 'nanotyrannus-lancensis',
+    phylo: 10,
     name: 'Nanotyrannus lancensis',
     common: 'Nanotyrannus',
     clade: 'tyrannosauroidea',
@@ -120,7 +123,6 @@ export const SPECIES: Species[] = [
     ageText: 'About 67 to 66 million years ago',
     placeText: 'Montana, Wyoming and the Dakotas, USA',
     formations: ['hell-creek'],
-    otherFormations: ['Lance (Wyoming)'],
     summary: [
       'A slender tyrannosaur about 5 to 6 m long from the very end of the Cretaceous. For decades many experts treated its fossils as young T. rex; a 2025 study of the “Dueling Dinosaurs” fossil argued it was a separate, small adult species. Where it sits in the tyrannosaur family is still debated.',
     ],
@@ -128,29 +130,43 @@ export const SPECIES: Species[] = [
   },
   {
     id: 'tyrannosaurus-mcraeensis',
+    phylo: 19,
     name: 'Tyrannosaurus mcraeensis',
     clade: 'tyrannosaurinae',
     status: 'brief',
     ageText: 'About 73 to 71 million years ago',
     placeText: 'New Mexico, USA (Hall Lake Formation)',
     formations: [],
-    otherFormations: ['Hall Lake (New Mexico)'],
     summary: ['A Tyrannosaurus species named in 2024 from a partial skull, several million years older than T. rex. Not all researchers accept it as distinct.'],
   },
   {
     id: 'tarbosaurus-bataar',
+    phylo: 18,
     name: 'Tarbosaurus bataar',
     common: 'Tarbosaurus',
     clade: 'tyrannosaurinae',
-    status: 'brief',
-    ageText: 'About 70 million years ago',
-    placeText: 'Mongolia and China (Nemegt Formation)',
-    formations: [],
-    otherFormations: ['Nemegt (Mongolia)'],
-    summary: ['Asia’s giant tyrannosaurid, a close relative of T. rex, up to about 10 m long.'],
+    status: 'full',
+    ageText: 'About 70 million years ago (latest Cretaceous)',
+    placeText: 'Gobi Desert, Mongolia',
+    formations: ['nemegt'],
+    summary: [
+      'Tarbosaurus, the “alarming lizard”, was the giant tyrannosaurid of Late Cretaceous Asia and the top predator of the Nemegt river plains in what is now the Gobi Desert. It is one of the closest relatives of Tyrannosaurus; some researchers even place it in the same genus, as Tyrannosaurus bataar.',
+      'It grew to about 10 m long and 4 to 5 tonnes, a little smaller and more lightly built than T. rex. Its skull was narrower, so its eyes faced less forwards, and its lower jaw had a bony lock that stiffened it for biting. Its arms were the smallest, for its size, of any tyrannosaurid.',
+      'It is known from dozens of skeletons, from hatchling-sized juveniles to adults, making it one of the best-understood tyrannosaurs. Young ones had slimmer skulls and probably hunted smaller prey than adults. Tooth marks on bones show it fed on the duck-billed Saurolophus and on the giant, long-armed Deinocheirus.',
+      'Its fossils are prized by collectors. In 2012 a smuggled skeleton was seized in the United States before it could be sold, and returned to Mongolia in 2013.',
+    ],
+    facts: [
+      { label: 'Named', value: 'Evgeny Maleev, 1955 (first as Tyrannosaurus bataar)' },
+      { label: 'Length', value: 'About 10 m' },
+      { label: 'Weight', value: 'About 4 to 5 tonnes' },
+      { label: 'Diet', value: 'Meat: duck-bills, sauropods and others' },
+      { label: 'Closest relative', value: 'Tyrannosaurus' },
+    ],
+    keywords: ['tarbo', 'alarming lizard', 'tyrannosaurus bataar', 'mongolia', 'gobi'],
   },
   {
     id: 'daspletosaurus-torosus',
+    phylo: 17,
     name: 'Daspletosaurus torosus',
     common: 'Daspletosaurus',
     clade: 'tyrannosaurinae',
@@ -158,11 +174,11 @@ export const SPECIES: Species[] = [
     ageText: 'About 77 to 75 million years ago',
     placeText: 'Alberta, Canada (Oldman Formation)',
     formations: [],
-    otherFormations: ['Oldman (Alberta)'],
     summary: ['A heavily built tyrannosaurine about 9 m long, one of the earlier relatives on the line to Tyrannosaurus.'],
   },
   {
     id: 'lythronax-argestes',
+    phylo: 15,
     name: 'Lythronax argestes',
     common: 'Lythronax',
     clade: 'tyrannosaurinae',
@@ -170,11 +186,11 @@ export const SPECIES: Species[] = [
     ageText: 'About 80 million years ago',
     placeText: 'Utah, USA (Wahweap Formation)',
     formations: [],
-    otherFormations: ['Wahweap (Utah)'],
     summary: ['An early tyrannosaurine with a short, broad skull and forward-facing eyes.'],
   },
   {
     id: 'teratophoneus-curriei',
+    phylo: 16,
     name: 'Teratophoneus curriei',
     common: 'Teratophoneus',
     clade: 'tyrannosaurinae',
@@ -182,23 +198,23 @@ export const SPECIES: Species[] = [
     ageText: 'About 76 million years ago',
     placeText: 'Utah, USA (Kaiparowits Formation)',
     formations: [],
-    otherFormations: ['Kaiparowits (Utah)'],
     summary: ['A mid-sized, short-snouted tyrannosaurine from southern Laramidia.'],
   },
   {
     id: 'alioramus-remotus',
+    phylo: 13,
     name: 'Alioramus remotus',
     common: 'Alioramus',
     clade: 'tyrannosaurinae',
     status: 'brief',
     ageText: 'About 70 million years ago',
-    placeText: 'Mongolia (Nemegt Formation)',
-    formations: [],
-    otherFormations: ['Nemegt (Mongolia)'],
+    placeText: 'Gobi Desert, Mongolia',
+    formations: ['nemegt'],
     summary: ['A lightly built, long-snouted tyrannosaurid with a row of small bumps along its nose.'],
   },
   {
     id: 'qianzhousaurus-sinensis',
+    phylo: 14,
     name: 'Qianzhousaurus sinensis',
     common: 'Qianzhousaurus',
     clade: 'tyrannosaurinae',
@@ -206,11 +222,11 @@ export const SPECIES: Species[] = [
     ageText: 'About 66 million years ago',
     placeText: 'Jiangxi, China (Nanxiong Formation)',
     formations: [],
-    otherFormations: ['Nanxiong (China)'],
     summary: ['A long-snouted relative of Alioramus, nicknamed “Pinocchio rex”.'],
   },
   {
     id: 'albertosaurus-sarcophagus',
+    phylo: 12,
     name: 'Albertosaurus sarcophagus',
     common: 'Albertosaurus',
     clade: 'albertosaurinae',
@@ -218,11 +234,11 @@ export const SPECIES: Species[] = [
     ageText: 'About 71 to 68 million years ago',
     placeText: 'Alberta, Canada (Horseshoe Canyon Formation)',
     formations: [],
-    otherFormations: ['Horseshoe Canyon (Alberta)'],
     summary: ['A lighter, faster relative of T. rex about 9 m long. A bonebed of many individuals suggests it may sometimes have lived in groups.'],
   },
   {
     id: 'gorgosaurus-libratus',
+    phylo: 11,
     name: 'Gorgosaurus libratus',
     common: 'Gorgosaurus',
     clade: 'albertosaurinae',
@@ -230,11 +246,11 @@ export const SPECIES: Species[] = [
     ageText: 'About 77 to 75 million years ago',
     placeText: 'Alberta, Canada and Montana, USA (Dinosaur Park Formation)',
     formations: [],
-    otherFormations: ['Dinosaur Park (Alberta)'],
     summary: ['The best-known albertosaurine, from dozens of skeletons, about 8 to 9 m long.'],
   },
   {
     id: 'appalachiosaurus-montgomeriensis',
+    phylo: 9,
     name: 'Appalachiosaurus montgomeriensis',
     common: 'Appalachiosaurus',
     clade: 'tyrannosauroidea',
@@ -246,6 +262,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: 'dryptosaurus-aquilunguis',
+    phylo: 8,
     name: 'Dryptosaurus aquilunguis',
     common: 'Dryptosaurus',
     clade: 'tyrannosauroidea',
@@ -257,6 +274,7 @@ export const SPECIES: Species[] = [
   },
   {
     id: 'timurlengia-euotica',
+    phylo: 7,
     name: 'Timurlengia euotica',
     common: 'Timurlengia',
     clade: 'tyrannosauroidea',
@@ -264,11 +282,11 @@ export const SPECIES: Species[] = [
     ageText: 'About 90 million years ago',
     placeText: 'Uzbekistan (Bissekty Formation)',
     formations: [],
-    otherFormations: ['Bissekty (Uzbekistan)'],
     summary: ['A horse-sized tyrannosaur whose braincase shows the keen hearing that later giants inherited.'],
   },
   {
     id: 'moros-intrepidus',
+    phylo: 6,
     name: 'Moros intrepidus',
     common: 'Moros',
     clade: 'tyrannosauroidea',
@@ -276,11 +294,11 @@ export const SPECIES: Species[] = [
     ageText: 'About 96 million years ago',
     placeText: 'Utah, USA (Cedar Mountain Formation)',
     formations: [],
-    otherFormations: ['Cedar Mountain (Utah)'],
     summary: ['A small, fast tyrannosaur from soon after the family arrived in North America from Asia.'],
   },
   {
     id: 'yutyrannus-huali',
+    phylo: 3,
     name: 'Yutyrannus huali',
     common: 'Yutyrannus',
     clade: 'tyrannosauroidea',
@@ -288,12 +306,12 @@ export const SPECIES: Species[] = [
     ageText: 'About 125 million years ago (Early Cretaceous)',
     placeText: 'Liaoning, China (Yixian Formation)',
     formations: [],
-    otherFormations: ['Yixian (China)'],
     summary: ['A 9 m tyrannosaur covered in long filament-like feathers: the largest feathered animal known from direct evidence.'],
     keywords: ['feathered'],
   },
   {
     id: 'dilong-paradoxus',
+    phylo: 4,
     name: 'Dilong paradoxus',
     common: 'Dilong',
     clade: 'tyrannosauroidea',
@@ -301,12 +319,12 @@ export const SPECIES: Species[] = [
     ageText: 'About 126 million years ago (Early Cretaceous)',
     placeText: 'Liaoning, China (Yixian Formation)',
     formations: [],
-    otherFormations: ['Yixian (China)'],
     summary: ['A small, early tyrannosaur about 2 m long with simple feathers.'],
     keywords: ['feathered'],
   },
   {
     id: 'eotyrannus-lengi',
+    phylo: 5,
     name: 'Eotyrannus lengi',
     common: 'Eotyrannus',
     clade: 'tyrannosauroidea',
@@ -314,11 +332,11 @@ export const SPECIES: Species[] = [
     ageText: 'About 127 million years ago (Early Cretaceous)',
     placeText: 'Isle of Wight, England (Wessex Formation)',
     formations: [],
-    otherFormations: ['Wessex (England)'],
     summary: ['A lightly built early tyrannosaur about 4 to 5 m long with long arms.'],
   },
   {
     id: 'guanlong-wucaii',
+    phylo: 2,
     name: 'Guanlong wucaii',
     common: 'Guanlong',
     clade: 'tyrannosauroidea',
@@ -326,11 +344,11 @@ export const SPECIES: Species[] = [
     ageText: 'About 160 million years ago (Late Jurassic)',
     placeText: 'Xinjiang, China (Shishugou Formation)',
     formations: [],
-    otherFormations: ['Shishugou (China)'],
     summary: ['One of the earliest tyrannosaurs, about 3 m long, with a tall, thin crest on its head.'],
   },
   {
     id: 'proceratosaurus-bradleyi',
+    phylo: 1,
     name: 'Proceratosaurus bradleyi',
     common: 'Proceratosaurus',
     clade: 'tyrannosauroidea',

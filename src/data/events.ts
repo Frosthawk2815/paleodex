@@ -190,4 +190,53 @@ export const EVENTS: HistoryEvent[] = [
     ],
     keywords: ['ojo alamo', 'naashoibito', 'kimbeto', 'san juan basin', 'new mexico', 'alamosaurus', 'formation', 'cretaceous', 'paleocene'],
   },
+  {
+    id: 'nemegt',
+    kind: 'Rock formation',
+    title: 'Nemegt Formation',
+    dateText: 'About 70 million years ago (latest Cretaceous, Maastrichtian)',
+    placeText: 'Nemegt Basin, Gobi Desert, southern Mongolia',
+    points: [
+      {
+        // Nemegt Basin, plate 628 in PALEOMAP.
+        body: 'earth',
+        lon: 100.9,
+        lat: 43.6,
+        plate: 628,
+        label: 'Nemegt (forming)',
+        fromMa: 71,
+        toMa: 69,
+        jumpMa: 70,
+        jumpLabel: 'Where it formed, about 70 million years ago',
+        zoom: 4,
+        // River channels, floodplains and lakes.
+        icon: 'river',
+      },
+      {
+        body: 'earth',
+        lon: 100.9,
+        lat: 43.6,
+        plate: 628,
+        label: 'Nemegt today',
+        fromMa: PRESENT_FROM,
+        toMa: 0,
+        jumpMa: 0,
+        jumpLabel: 'Where it is today',
+        zoom: 4,
+        icon: 'pickaxe',
+      },
+    ],
+    summary: [
+      'The Nemegt Formation is a set of river sandstones and mudstones in the Gobi Desert of southern Mongolia. Unlike the dune deposits beneath it, it was laid down in a wetter time, by rivers winding across floodplains dotted with lakes and woodland.',
+      'It holds one of the richest latest-Cretaceous dinosaur faunas in Asia: the tyrannosaurids Tarbosaurus and Alioramus, the duck-billed Saurolophus, the long-armed Deinocheirus and Therizinosaurus, armoured Tarchia, long-necked titanosaurs, and many small feathered dinosaurs, alongside turtles and crocodile relatives.',
+      'Soviet expeditions in the 1940s and the Polish–Mongolian expeditions of the 1960s and 70s made it famous, and it is still one of the world’s great dinosaur hunting grounds.',
+    ],
+    facts: [
+      { label: 'Where today', value: 'Nemegt Basin, Ömnögovi Province, Mongolia' },
+      { label: 'Rocks', value: 'River sandstone, mudstone and conglomerate' },
+      { label: 'Setting', value: 'Rivers, floodplains and lakes' },
+      { label: 'Famous finds', value: 'Tarbosaurus, Deinocheirus, Therizinosaurus, Saurolophus' },
+    ],
+    keywords: ['nemegt', 'gobi', 'mongolia', 'deinocheirus', 'therizinosaurus', 'saurolophus', 'formation', 'cretaceous', 'maastrichtian'],
+  },
 ];

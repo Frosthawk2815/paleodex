@@ -81,6 +81,30 @@ export const info = StyleSheet.create({
     color: 'rgba(255,255,255,0.35)',
     fontSize: 14,
   },
+  tabs: {
+    flexDirection: 'row',
+    marginTop: 10,
+    padding: 3,
+    borderRadius: 12,
+    backgroundColor: 'rgba(255,255,255,0.08)',
+  },
+  tab: {
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 8,
+    borderRadius: 9,
+  },
+  tabOn: {
+    backgroundColor: 'rgba(255,255,255,0.18)',
+  },
+  tabText: {
+    color: 'rgba(255,255,255,0.6)',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  tabTextOn: {
+    color: '#FFFFFF',
+  },
   chips: {
     flexDirection: 'row',
     flexWrap: 'wrap',

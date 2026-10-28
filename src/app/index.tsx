@@ -190,7 +190,14 @@ export default function GlobeScreen() {
               />
             )}
             {selected.kind === 'species' && speciesById(selected.id) && (
-              <SpeciesInfo species={speciesById(selected.id)!} onBack={backToGlobe} onOpenClade={openClade} onJump={jumpAndShow} />
+              <SpeciesInfo
+                key={selected.id}
+                species={speciesById(selected.id)!}
+                onBack={backToGlobe}
+                onOpenClade={openClade}
+                onOpenSpecies={openSpecies}
+                onJump={jumpAndShow}
+              />
             )}
             {selected.kind === 'clade' && cladeById(selected.id) && (
               <CladeInfo clade={cladeById(selected.id)!} onBack={backToGlobe} onOpenClade={openClade} onOpenSpecies={openSpecies} />
