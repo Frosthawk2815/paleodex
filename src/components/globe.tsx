@@ -1,6 +1,6 @@
 import { geoDistance, geoGraticule10, geoOrthographic, geoPath } from 'd3-geo';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { PanResponder, Platform, Pressable, type HostInstance, StyleSheet, Text, View } from 'react-native';
+import { PanResponder, Platform, Pressable, type HostInstance, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle, Defs, G, Line, LinearGradient, Path, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
 
 import { asteroidVisible } from '@/lib/impact';
@@ -14,6 +14,7 @@ import { moonView } from '@/lib/moon-surface';
 import { FLAG_FOOT, PointIconShape } from '@/components/point-icon';
 import { phaseCentre, phaseIndexAt, phasePolygons, rangeOf, visibleSkulls } from '@/lib/ranges';
 import { speciesById } from '@/lib/life';
+import { declutter, type Group } from '@/lib/declutter';
 
 const GRATICULE = geoGraticule10();
 // SVG text defaults to a serif font on the web; match the app's sans-serif.
@@ -162,6 +163,8 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land', view: 'earth', moonZoom: 1 });
   const [pan] = useState(() => createCameraResponder(setCamera, onDragging));
   const [seenFocus, setSeenFocus] = useState(focus);
+  // A group of overlapping markers the user tapped while fully zoomed in: pick one from a list.
+  const [chooser, setChooser] = useState<Marker[] | null>(null);
   const container = useRef<HostInstance>(null);
 
   if (seenFocus !== focus) {
@@ -305,7 +308,8 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
       }
       const pos = pointPosition(v.point, step);
       const xy = projection(pos);
-      return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05 ? [{ ...v, xy }] : [];
+      const onScreen = xy && xy[0] > -40 && xy[0] < w + 40 && xy[1] > -60 && xy[1] < h + 40;
+      return xy && onScreen && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05 ? [{ ...v, xy }] : [];
     },
   );
   // Skull flags where the last of a species was seen alive, until that date.
@@ -326,6 +330,34 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
     const k = same.indexOf(sk);
     if (same.length > 1) sk.xy = [sk.xy[0] + (k % 2 === 0 ? -16 : 16), sk.xy[1] + (k - (same.length - 1) / 2) * 58];
   }
+  // Overlapping markers are grouped: the one the camera is following leads, then trackways and
+  // events, then dig sites. Labels that would collide with one already drawn are hidden.
+  const priority = (m: Marker) =>
+    camera.anchor === `event:${m.event.id}:${m.index}` ? 0 : m.event.kind === 'Rock formation' ? 2 : 1;
+  const groupLabel = (g: { lead: Marker; members: Marker[] }) =>
+    g.members.length > 1 ? `${g.lead.point.label} +${g.members.length - 1}` : g.lead.point.label;
+  // Icon areas relative to the spot: flags stand up and to the right of it, badges sit above it;
+  // a count bubble adds a little to the top right.
+  const iconArea = (g: { lead: Marker; members: Marker[] }) => {
+    const flag = FLAG_FOOT[g.lead.point.icon ?? 'flag'] !== undefined;
+    const r = flag ? { x0: -6, y0: -36, x1: 30, y1: 2 } : { x0: -18, y0: -40, x1: 18, y1: 3 };
+    return g.members.length > 1 ? { ...r, x1: Math.max(r.x1, 27), y0: Math.min(r.y0, -46) } : r;
+  };
+  const sideGap = (g: { lead: Marker; members: Marker[] }) =>
+    (FLAG_FOOT[g.lead.point.icon ?? 'flag'] !== undefined ? 30 : 20) + (g.members.length > 1 ? 9 : 0);
+  const groups = declutter(markers, { xy: (m) => m.xy, priority, label: groupLabel, labelOffset: 6, radius: 46, icon: iconArea, sideGap,
+    bounds: { x0: 2, y0: 0, x1: w - 2, y1: h },
+    mustLabel: (g) => priority(g.lead) === 0,
+  });
+  // Tapping a group zooms in on it until its markers separate; when that can't help, list them.
+  const openGroup = (g: Group<Marker>) => {
+    if (g.members.length === 1) return onSelectEvent(g.lead.event, g.lead.index);
+    const spread = Math.max(...g.members.map((m) => Math.hypot(m.xy[0] - g.xy[0], m.xy[1] - g.xy[1])));
+    const canZoom = moonMode ? camera.moonZoom < MAX_MOON_ZOOM : zoom < MAX_ZOOM / 1.5;
+    if (!canZoom || spread < 1) return setChooser(g.members);
+    if (moonMode) setCamera((c) => ({ ...c, moonZoom: Math.min(MAX_MOON_ZOOM, c.moonZoom * 2) }));
+    else setCamera({ lon: 0, lat: 0, zoom: clampZoom(zoom * 2.5), anchor: `event:${g.lead.event.id}:${g.lead.index}`, view: 'earth', moonZoom: 1 });
+  };
   const moonReadout = `Moon · ${fmtKm(moonKm)} km from Earth`;
   // In the Earth–Moon view, tapping the Moon opens the close-up.
   const moonHit = !moonMode && moonOnScreen ? Math.max(44, moonR * 2 + 16) : 0;
@@ -432,7 +464,11 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
             </G>
           )}
 
-          {markers.map(({ event, point, index, xy }) => (
+          {groups.map((g) => {
+            const { event, point, index } = g.lead;
+            const xy = g.xy;
+            const label = groupLabel(g);
+            return (
             <G key={`${event.id}-${index}`}>
               {FLAG_FOOT[point.icon ?? 'flag'] ? (
                 // Flags stand with the foot of the pole on the spot.
@@ -449,14 +485,28 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
                   <PointIconShape kind={point.icon!} x={xy[0]} y={xy[1] - 21} size={36} />
                 </G>
               )}
-              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 18} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={13} fontWeight="700" textAnchor="middle">
-                {point.label}
-              </SvgText>
-              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 18} fill="#FFFFFF" fontSize={13} fontWeight="700" textAnchor="middle">
-                {point.label}
-              </SvgText>
+              {g.members.length > 1 && (
+                // How many markers are grouped here.
+                <G>
+                  <Circle cx={xy[0] + 17} cy={xy[1] - 36} r={9} fill="#FF7043" stroke="#FFFFFF" strokeWidth={1.5} />
+                  <SvgText fontFamily={SVG_FONT} x={xy[0] + 17} y={xy[1] - 32} fill="#FFFFFF" fontSize={11} fontWeight="800" textAnchor="middle">
+                    {g.members.length > 99 ? '99+' : String(g.members.length)}
+                  </SvgText>
+                </G>
+              )}
+              {g.showLabel && g.label && (
+                <G>
+                  <SvgText fontFamily={SVG_FONT} x={g.label.x} y={g.label.y} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={13} fontWeight="700" textAnchor={g.label.anchor}>
+                    {label}
+                  </SvgText>
+                  <SvgText fontFamily={SVG_FONT} x={g.label.x} y={g.label.y} fill="#FFFFFF" fontSize={13} fontWeight="700" textAnchor={g.label.anchor}>
+                    {label}
+                  </SvgText>
+                </G>
+              )}
             </G>
-          ))}
+            );
+          })}
 
           {skulls.map(({ id, xy, name }) => (
             <G key={`skull-${id}`}>
@@ -495,15 +545,43 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           style={[styles.hit, { left: mx - moonHit / 2, top: ey - moonHit / 2, width: moonHit, height: moonHit }]}
         />
       )}
-      {markers.map(({ event, index, xy }) => (
+      {groups.map((g) => (
         <Pressable
-          key={`${event.id}-${index}-hit`}
-          onPress={() => onSelectEvent(event, index)}
+          key={`${g.lead.event.id}-${g.lead.index}-hit`}
+          onPress={() => openGroup(g)}
           accessibilityRole="button"
-          accessibilityLabel={`${event.title}: read more`}
-          style={[styles.hit, { left: xy[0] - 24, top: xy[1] - 30, width: 48, height: 60 }]}
+          accessibilityLabel={
+            g.members.length > 1 ? `${g.lead.event.title} and ${g.members.length - 1} more here: zoom in` : `${g.lead.event.title}: read more`
+          }
+          style={[styles.hit, { left: g.xy[0] - 24, top: g.xy[1] - 30, width: 48, height: 60 }]}
         />
       ))}
+      {chooser && (
+        <View style={styles.chooser}>
+          <View style={styles.chooserHead}>
+            <Text style={styles.chooserTitle}>{chooser.length} places here</Text>
+            <Pressable onPress={() => setChooser(null)} accessibilityRole="button" accessibilityLabel="Close the list" hitSlop={10}>
+              <Text style={styles.rangeClose}>✕</Text>
+            </Pressable>
+          </View>
+          <ScrollView style={styles.chooserList}>
+            {chooser.map((m) => (
+              <Pressable
+                key={`${m.event.id}-${m.index}-pick`}
+                onPress={() => {
+                  setChooser(null);
+                  onSelectEvent(m.event, m.index);
+                }}
+                accessibilityRole="button"
+                accessibilityLabel={`${m.event.title}: read more`}
+                style={({ pressed }) => [styles.chooserItem, pressed && { opacity: 0.6 }]}>
+                <Text style={styles.chooserItemTitle}>{m.event.title}</Text>
+                <Text style={styles.chooserItemSub}>{m.event.kind}</Text>
+              </Pressable>
+            ))}
+          </ScrollView>
+        </View>
+      )}
       {skulls.map(({ id, xy, name }) => (
         <Pressable
           key={`skull-${id}-hit`}
@@ -599,6 +677,47 @@ const styles = StyleSheet.create({
   },
   hit: {
     position: 'absolute',
+  },
+  chooser: {
+    position: 'absolute',
+    left: 16,
+    right: 16,
+    bottom: 16,
+    maxHeight: 260,
+    borderRadius: 14,
+    backgroundColor: 'rgba(10,14,24,0.94)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(255,255,255,0.3)',
+    paddingVertical: 8,
+  },
+  chooserHead: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 14,
+    paddingBottom: 6,
+  },
+  chooserTitle: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  chooserList: {
+    paddingHorizontal: 8,
+  },
+  chooserItem: {
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+    borderRadius: 8,
+  },
+  chooserItemTitle: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  chooserItemSub: {
+    color: 'rgba(255,255,255,0.65)',
+    fontSize: 12,
   },
   back: {
     position: 'absolute',
