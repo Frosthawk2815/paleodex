@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-790 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+789 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -293,7 +293,6 @@
 | 150 Ma | *Zby atlanticus* | Zby | Sauropods and relatives | Lourinhã Formation |
 | 150 Ma | *Draconyx loureiroi* | Draconyx | Iguanodonts | Lourinhã Formation |
 | 150 Ma | *Dacentrurus armatus* | Dacentrurus | Stegosaurs | Lourinhã Formation |
-| 150 Ma | *Torvosaurus gurneyi* | Torvosaurus gurneyi | Megalosaurs and spinosaurs | Lourinhã Formation |
 | 148 Ma | *Pliosaurus funkei* | Pliosaurus funkei | Plesiosaurs and relatives | Agardhfjellet Formation (Slottsmøya) |
 | 148 Ma | *Palvennia hoybergeti* | Palvennia | Ichthyosaurs | Agardhfjellet Formation (Slottsmøya) |
 | 148 Ma | *Cryopterygius kristiansenae* | Cryopterygius | Ichthyosaurs | Agardhfjellet Formation (Slottsmøya) |
