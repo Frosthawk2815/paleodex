@@ -5,11 +5,15 @@ import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { EVENTS, type HistoryEvent } from '@/data/events';
 import { type Extinction, EXTINCTIONS } from '@/lib/extinctions';
 import { type Unit, UNITS_BY_LEVEL } from '@/lib/time';
+import { type Clade, CLADES, SPECIES, type Species } from '@/data/life';
+import { speciesInClade } from '@/lib/life';
 
 export type SearchResult =
   | { kind: 'event'; event: HistoryEvent }
   | { kind: 'extinction'; extinction: Extinction }
-  | { kind: 'unit'; unit: Unit };
+  | { kind: 'unit'; unit: Unit }
+  | { kind: 'species'; species: Species }
+  | { kind: 'clade'; clade: Clade };
 
 type Item = { key: string; title: string; subtitle: string; words: string; result: SearchResult };
 
@@ -28,6 +32,21 @@ const EXTINCTION_WORDS: Record<string, string> = {
 const fmtMa = (ma: number) => (ma >= 1 ? `${Number(ma.toPrecision(5))} Ma` : `${Math.round(ma * 1_000_000).toLocaleString('en-US')} years ago`);
 
 const ITEMS: Item[] = [
+  // Species first, so "t rex" finds the animal before the places it's found.
+  ...SPECIES.map((s) => ({
+    key: `species:${s.id}`,
+    title: s.name,
+    subtitle: `Species${s.common ? ` · ${s.common}` : ''} · ${s.ageText.replace(/ \(.*\)$/, '')}`,
+    words: [s.name, s.common ?? '', ...(s.keywords ?? [])].join(' ').toLowerCase(),
+    result: { kind: 'species' as const, species: s },
+  })),
+  ...CLADES.map((c) => ({
+    key: `clade:${c.id}`,
+    title: c.common,
+    subtitle: `Group · ${c.name} · ${speciesInClade(c.id).length} species`,
+    words: [c.common, c.name].join(' ').toLowerCase(),
+    result: { kind: 'clade' as const, clade: c },
+  })),
   ...EVENTS.map((e) => ({
     key: `event:${e.id}`,
     title: e.title,
@@ -55,7 +74,7 @@ const ITEMS: Item[] = [
 
 function search(query: string): Item[] {
   const q = query.trim().toLowerCase();
-  if (!q) return ITEMS.filter((i) => i.result.kind !== 'unit');
+  if (!q) return ITEMS.filter((i) => i.result.kind === 'event' || i.result.kind === 'extinction' || i.result.kind === 'clade');
   const starts = ITEMS.filter((i) => i.title.toLowerCase().startsWith(q));
   const contains = ITEMS.filter((i) => !starts.includes(i) && i.words.includes(q));
   return [...starts, ...contains].slice(0, 30);
@@ -107,7 +126,17 @@ export function SearchPanel({ onSelect, onClose }: Props) {
                 <View
                   style={[
                     styles.swatch,
-                    { backgroundColor: item.result.kind === 'unit' ? item.result.unit.color : CAUSE_COLORS.sun },
+                    {
+                      backgroundColor:
+                        item.result.kind === 'unit'
+                          ? item.result.unit.color
+                          : item.result.kind === 'species'
+                            ? '#FF9EC7'
+                            : item.result.kind === 'clade'
+                              ? '#C9B6FF'
+                              : CAUSE_COLORS.sun,
+                      borderRadius: item.result.kind === 'species' || item.result.kind === 'clade' ? 7 : 4,
+                    },
                   ]}
                 />
               )}

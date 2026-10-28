@@ -1,6 +1,6 @@
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 
-export type PointIconKind = 'flag' | 'us-flag' | 'swamp' | 'dunes' | 'pickaxe';
+export type PointIconKind = 'flag' | 'us-flag' | 'swamp' | 'river' | 'dunes' | 'pickaxe';
 
 // Where the foot of each flagpole is in the 24×24 box, so it can stand on the spot.
 export const FLAG_FOOT: Partial<Record<PointIconKind, [number, number]>> = { flag: [12, 19], 'us-flag': [7, 22] };
@@ -20,6 +20,19 @@ function Art({ kind }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag'> }) {
         <Line x1={15.5} y1={15} x2={15.5} y2={7.5} stroke="#5B3A22" strokeWidth={1.2} />
         <Path d="M15.5 7.5 Q12.5 6 11 8 M15.5 7.5 Q18.5 6 20 8 M15.5 7.5 Q14 4.5 12.5 4.8 M15.5 7.5 Q17 4.5 18.5 4.8" stroke="#8ED86E" strokeWidth={1.3} fill="none" strokeLinecap="round" />
         <Path d="M11 16 L10.4 12.5 M12 16 L12.3 12 M18.5 15.6 L18.9 12.6" stroke="#A6E07A" strokeWidth={0.9} strokeLinecap="round" />
+      </G>
+    );
+  }
+  if (kind === 'river') {
+    // A river winding across a green floodplain, with trees along its banks.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill="#7FA95A" />
+        <Path d="M2 9 Q12 6 22 9 L22 4 Q12 0 2 4 Z" fill="#BFE3F2" opacity={0.9} />
+        <Path d="M6 22 Q9 16 13 15 Q18 14 17 9.5 Q16.5 7 20 6" stroke="#3A7CA5" strokeWidth={2.6} fill="none" strokeLinecap="round" />
+        <Circle cx={7} cy={12} r={2.2} fill="#3F7A35" />
+        <Circle cx={18.5} cy={15.5} r={2.4} fill="#3F7A35" />
+        <Circle cx={12.5} cy={10} r={1.6} fill="#4C8C3F" />
       </G>
     );
   }

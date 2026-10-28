@@ -13,14 +13,20 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Line } from 'react-native-svg';
 
+import { CladeInfo } from '@/components/clade-info';
 import { EventInfo } from '@/components/event-info';
+import { SpeciesInfo } from '@/components/species-info';
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { Globe } from '@/components/globe';
 import { type SearchResult, SearchPanel } from '@/components/search-panel';
 import { TimeBar, type TimeBarHandle } from '@/components/time-bar';
 import type { HistoryEvent } from '@/data/events';
 import { extinctionAt } from '@/lib/extinctions';
+import { cladeById, formationById, pastPointIndex, speciesById } from '@/lib/life';
 import { contextAt, timeLabel } from '@/lib/time';
+
+// What the information section below the globe is showing.
+type Selection = { kind: 'event'; event: HistoryEvent } | { kind: 'species'; id: string } | { kind: 'clade'; id: string };
 
 type Focus = { kind: 'site' | 'moon' | 'event'; id: string; index?: number; n: number };
 
@@ -32,7 +38,7 @@ export default function GlobeScreen() {
   const [timeMa, setTimeMa] = useState(0);
   const [area, setArea] = useState({ width: 0, height: 0 });
   const [focus, setFocus] = useState<Focus | null>(null);
-  const [selected, setSelected] = useState<HistoryEvent | null>(null);
+  const [selected, setSelected] = useState<Selection | null>(null);
   const [searching, setSearching] = useState(false);
   // While the globe is being dragged, the page itself shouldn't scroll.
   const [dragging, setDragging] = useState(false);
@@ -58,14 +64,20 @@ export default function GlobeScreen() {
     setArea({ width: Math.floor(width), height: Math.floor(height) });
   };
 
-  // Open an event's information section and scroll down to it.
-  const selectEvent = (e: HistoryEvent) => {
-    if (selected?.id === e.id && infoY.current !== null) {
-      page.current?.scrollTo({ y: infoY.current, animated: true });
-    } else {
-      scrollToInfo.current = true;
-      setSelected(e);
-    }
+  // Show something in the information section and scroll down to it.
+  const openInfo = (next: Selection) => {
+    setSelected(next);
+    if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: true });
+    else scrollToInfo.current = true;
+  };
+  const selectEvent = (e: HistoryEvent) => openInfo({ kind: 'event', event: e });
+  const openSpecies = (id: string) => openInfo({ kind: 'species', id });
+  const openClade = (id: string) => openInfo({ kind: 'clade', id });
+  const backToGlobe = () => page.current?.scrollTo({ y: 0, animated: true });
+  // Jump to a point and scroll back up to see it on the globe.
+  const jumpAndShow = (e: HistoryEvent, index: number) => {
+    jumpToPoint(e, index);
+    backToGlobe();
   };
 
   const onInfoLayout = (e: LayoutChangeEvent) => {
@@ -80,10 +92,17 @@ export default function GlobeScreen() {
     setSearching(false);
     if (r.kind === 'unit') bar.current?.zoomTo(r.unit);
     else if (r.kind === 'extinction') bar.current?.jumpToExtinction(r.extinction);
-    else {
+    else if (r.kind === 'event') {
       // Land at the event's first point (for formations, where they formed) with its marker showing.
       jumpToPoint(r.event, 0);
-      setSelected(r.event);
+      setSelected({ kind: 'event', event: r.event });
+    } else if (r.kind === 'species') {
+      // Land in the past at the first formation it's found in, and open its description.
+      const formation = r.species.formations.map(formationById).find((f) => f !== undefined);
+      if (formation) jumpToPoint(formation, pastPointIndex(formation));
+      openSpecies(r.species.id);
+    } else {
+      openClade(r.clade.id);
     }
   };
 
@@ -160,15 +179,22 @@ export default function GlobeScreen() {
 
         {selected && (
           <View onLayout={onInfoLayout}>
-            <EventInfo
-              event={selected}
-              timeMa={timeMa}
-              onBack={() => page.current?.scrollTo({ y: 0, animated: true })}
-              onJump={(i) => {
-                jumpToPoint(selected, i);
-                page.current?.scrollTo({ y: 0, animated: true });
-              }}
-            />
+            {selected.kind === 'event' && (
+              <EventInfo
+                event={selected.event}
+                timeMa={timeMa}
+                onBack={backToGlobe}
+                onJump={(i) => jumpAndShow(selected.event, i)}
+                onOpenSpecies={openSpecies}
+                onOpenClade={openClade}
+              />
+            )}
+            {selected.kind === 'species' && speciesById(selected.id) && (
+              <SpeciesInfo species={speciesById(selected.id)!} onBack={backToGlobe} onOpenClade={openClade} onJump={jumpAndShow} />
+            )}
+            {selected.kind === 'clade' && cladeById(selected.id) && (
+              <CladeInfo clade={cladeById(selected.id)!} onBack={backToGlobe} onOpenClade={openClade} onOpenSpecies={openSpecies} />
+            )}
           </View>
         )}
       </ScrollView>

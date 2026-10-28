@@ -3,6 +3,10 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import type { HistoryEvent } from '@/data/events';
 import { pointVisible } from '@/lib/events';
 import { PointIcon } from '@/components/point-icon';
+import { SpeciesRow } from '@/components/clade-info';
+import { info } from '@/components/info-styles';
+import type { Clade, Species } from '@/data/life';
+import { familyOf, speciesInFormation } from '@/lib/life';
 
 type Props = {
   event: HistoryEvent;
@@ -10,10 +14,21 @@ type Props = {
   onBack: () => void;
   // Jump the timeline and globe to one of the event's points.
   onJump: (index: number) => void;
+  onOpenSpecies: (id: string) => void;
+  onOpenClade: (id: string) => void;
 };
 
 // The information section shown below the globe for a selected event.
-export function EventInfo({ event, timeMa, onBack, onJump }: Props) {
+export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpenClade }: Props) {
+  // Species found here, grouped by family (e.g. tyrannosaurs).
+  const families: { family: Clade | undefined; members: Species[] }[] = [];
+  for (const s of speciesInFormation(event.id)) {
+    const family = familyOf(s);
+    const group = families.find((f) => f.family?.id === family?.id);
+    if (group) group.members.push(s);
+    else families.push({ family, members: [s] });
+  }
+
   return (
     <View style={styles.wrap}>
       <Pressable onPress={onBack} accessibilityRole="button" style={({ pressed }) => [styles.back, pressed && styles.pressed]}>
@@ -56,6 +71,32 @@ export function EventInfo({ event, timeMa, onBack, onJump }: Props) {
           {p}
         </Text>
       ))}
+
+      {families.length > 0 && (
+        <>
+          <Text style={info.heading}>Life found here</Text>
+          {families.map(({ family, members }) => (
+            <View key={family?.id ?? 'other'} style={{ gap: 6 }}>
+              {family && (
+                <View style={info.chips}>
+                  <Pressable
+                    onPress={() => onOpenClade(family.id)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`All ${family.common.toLowerCase()}`}
+                    style={({ pressed }) => [info.chip, pressed && info.pressed]}>
+                    <Text style={info.chipText}>{family.common} ›</Text>
+                  </Pressable>
+                </View>
+              )}
+              <View style={info.list}>
+                {members.map((s) => (
+                  <SpeciesRow key={s.id} species={s} onPress={() => onOpenSpecies(s.id)} />
+                ))}
+              </View>
+            </View>
+          ))}
+        </>
+      )}
 
       <View style={styles.facts}>
         {event.facts.map((f) => (
