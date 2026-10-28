@@ -8,8 +8,8 @@ import { EARTH_RADIUS_KM, MOON_DISTANCE_TODAY_KM, MOON_RADIUS_KM, moonDistanceKm
 import { geographyAt, landCentre, QUATERNARY_MA } from '@/lib/geography';
 import { EXTINCTIONS, extinctionAt } from '@/lib/extinctions';
 import { siteAt } from '@/lib/plates';
-import type { HistoryEvent } from '@/data/events';
-import { eventsOnMoon } from '@/lib/events';
+import { pointPosition, pointVisible, visiblePoints } from '@/lib/events';
+import { EVENTS, type EventPoint, type HistoryEvent } from '@/data/events';
 import { moonView } from '@/lib/moon-surface';
 
 const GRATICULE = geoGraticule10();
@@ -98,6 +98,19 @@ const ROCK = [
   [0.6, -0.7],
 ];
 
+type Marker = { event: HistoryEvent; point: EventPoint; index: number; xy: [number, number] };
+
+// Rock formations get a different marker colour from other events.
+const markerColor = (e: HistoryEvent) => (e.kind === 'Rock formation' ? '#FF9EC7' : '#FFD54A');
+
+// The event point a camera anchor ('event:<id>:<index>') refers to, if it's showing at `timeMa`.
+function anchoredPoint(anchor: string, timeMa: number): EventPoint | undefined {
+  if (!anchor.startsWith('event:')) return undefined;
+  const [, id, index] = anchor.split(':');
+  const point = EVENTS.find((e) => e.id === id)?.points[Number(index)];
+  return point && point.body === 'earth' && pointVisible(point, timeMa) ? point : undefined;
+}
+
 const fmtKm = (km: number) => Math.round(km).toLocaleString('en-US');
 
 function rockPath(x: number, y: number, size: number): string {
@@ -110,9 +123,10 @@ type Props = {
   height: number;
   // Set each time something asks the globe to look at a place: an extinction's site, or the
   // Moon for an event there.
-  focus: { kind: 'site' | 'moon'; id: string; n: number } | null;
-  // Called when an event's marker is tapped.
-  onSelectEvent: (e: HistoryEvent) => void;
+  // For 'event', `index` is which of the event's points to look at.
+  focus: { kind: 'site' | 'moon' | 'event'; id: string; index?: number; n: number } | null;
+  // Called when an event's marker is tapped (with the index of the point tapped).
+  onSelectEvent: (e: HistoryEvent, index: number) => void;
   // Called when a drag on the globe starts (true) and ends (false). Must be a stable function.
   onDragging?: (active: boolean) => void;
 };
@@ -127,8 +141,11 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
 
   if (seenFocus !== focus) {
     setSeenFocus(focus);
-    if (focus?.kind === 'moon') {
+    const point = focus?.kind === 'event' ? EVENTS.find((e) => e.id === focus.id)?.points[focus.index ?? 0] : undefined;
+    if (focus?.kind === 'moon' || point?.body === 'moon') {
       setCamera((c) => ({ ...c, view: 'moon', moonZoom: 1.3 }));
+    } else if (focus && point) {
+      setCamera({ lon: 0, lat: 0, zoom: point.zoom ?? 4, anchor: `event:${focus.id}:${focus.index ?? 0}`, view: 'earth', moonZoom: 1 });
     } else {
       const site = EXTINCTIONS.find((e) => e.id === focus?.id)?.site;
       if (focus && site) setCamera({ lon: 0, lat: 0, zoom: site.zoom, anchor: focus.id, view: 'earth', moonZoom: 1 });
@@ -176,7 +193,9 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   // Keep facing a focused site while the timeline is still at its event.
   const current = extinctionAt(timeMa);
   const anchorSite = current?.site && camera.anchor === current.id ? current.site : undefined;
-  const anchorPos = anchorSite ? siteAt(anchorSite, step) : undefined;
+  // ...or an event point after jumping to it, while that point is showing.
+  const anchorPoint = anchoredPoint(camera.anchor, timeMa);
+  const anchorPos = anchorSite ? siteAt(anchorSite, step) : anchorPoint ? pointPosition(anchorPoint, step) : undefined;
   const rotLon = anchorPos ? -anchorPos[0] + camera.lon : -centre[0] + camera.lon;
   const rotLat = anchorPos ? -anchorPos[1] + camera.lat : -centre[1] * 0.6 + camera.lat;
 
@@ -240,15 +259,19 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   const moonCy = moonMode ? h / 2 : ey;
   const moonDrawR = moonMode ? bigMoonR : moonR;
   const moonSurface = useMemo(() => moonView(moonCx, moonCy, moonDrawR), [moonCx, moonCy, moonDrawR]);
-  const moonEvents = eventsOnMoon(timeMa);
-  const markers = moonMode
-    ? moonEvents.flatMap((e) =>
-        e.points
-          .filter((p) => p.body === 'moon')
-          .map((p) => ({ event: e, point: p, xy: moonSurface.project(p.lon, p.lat) }))
-          .filter((m): m is { event: HistoryEvent; point: (typeof e.points)[number]; xy: [number, number] } => m.xy !== null),
-      )
-    : [];
+  // Event markers: on the Moon in the close-up, otherwise on Earth (when it's big enough).
+  const centreLonLat: [number, number] = [-rotLon, -rotLat];
+  const markers: Marker[] = (moonMode ? visiblePoints('moon', timeMa) : earthR > 40 ? visiblePoints('earth', timeMa) : []).flatMap(
+    (v) => {
+      if (moonMode) {
+        const xy = moonSurface.project(v.point.lon, v.point.lat);
+        return xy ? [{ ...v, xy }] : [];
+      }
+      const pos = pointPosition(v.point, step);
+      const xy = projection(pos);
+      return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05 ? [{ ...v, xy }] : [];
+    },
+  );
   const moonReadout = `Moon · ${fmtKm(moonKm)} km from Earth`;
   // In the Earth–Moon view, tapping the Moon opens the close-up.
   const moonHit = !moonMode && moonOnScreen ? Math.max(44, moonR * 2 + 16) : 0;
@@ -352,12 +375,12 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
             </G>
           )}
 
-          {markers.map(({ event, point, xy }) => (
-            <G key={`${event.id}-${point.label}`}>
-              <Circle cx={xy[0]} cy={xy[1]} r={13} fill="#FFD54A" opacity={0.25} />
+          {markers.map(({ event, point, index, xy }) => (
+            <G key={`${event.id}-${index}`}>
+              <Circle cx={xy[0]} cy={xy[1]} r={13} fill={markerColor(event)} opacity={0.25} />
               <Line x1={xy[0]} y1={xy[1]} x2={xy[0]} y2={xy[1] - 22} stroke="#FFFFFF" strokeWidth={1.5} />
-              <Path d={`M ${xy[0]} ${xy[1] - 22} L ${xy[0] + 12} ${xy[1] - 18} L ${xy[0]} ${xy[1] - 14} Z`} fill="#FFD54A" />
-              <Circle cx={xy[0]} cy={xy[1]} r={3.5} fill="#FFD54A" stroke="#FFFFFF" strokeWidth={1} />
+              <Path d={`M ${xy[0]} ${xy[1] - 22} L ${xy[0] + 12} ${xy[1] - 18} L ${xy[0]} ${xy[1] - 14} Z`} fill={markerColor(event)} />
+              <Circle cx={xy[0]} cy={xy[1]} r={3.5} fill={markerColor(event)} stroke="#FFFFFF" strokeWidth={1} />
               <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 20} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={13} fontWeight="700" textAnchor="middle">
                 {point.label}
               </SvgText>
@@ -392,10 +415,10 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           style={[styles.hit, { left: mx - moonHit / 2, top: ey - moonHit / 2, width: moonHit, height: moonHit }]}
         />
       )}
-      {markers.map(({ event, point, xy }) => (
+      {markers.map(({ event, index, xy }) => (
         <Pressable
-          key={`${event.id}-${point.label}-hit`}
-          onPress={() => onSelectEvent(event)}
+          key={`${event.id}-${index}-hit`}
+          onPress={() => onSelectEvent(event, index)}
           accessibilityRole="button"
           accessibilityLabel={`${event.title}: read more`}
           style={[styles.hit, { left: xy[0] - 24, top: xy[1] - 30, width: 48, height: 60 }]}

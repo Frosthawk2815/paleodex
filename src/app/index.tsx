@@ -19,11 +19,10 @@ import { Globe } from '@/components/globe';
 import { type SearchResult, SearchPanel } from '@/components/search-panel';
 import { TimeBar, type TimeBarHandle } from '@/components/time-bar';
 import type { HistoryEvent } from '@/data/events';
-import { justAfterMa } from '@/lib/events';
 import { extinctionAt } from '@/lib/extinctions';
 import { contextAt, timeLabel } from '@/lib/time';
 
-type Focus = { kind: 'site' | 'moon'; id: string; n: number };
+type Focus = { kind: 'site' | 'moon' | 'event'; id: string; index?: number; n: number };
 
 export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
@@ -46,7 +45,13 @@ export default function GlobeScreen() {
   const { period, series, stage } = contextAt(timeMa);
   const extinction = extinctionAt(timeMa);
 
-  const lookAt = (kind: Focus['kind'], id: string) => setFocus((f) => ({ kind, id, n: (f?.n ?? 0) + 1 }));
+  const lookAt = (kind: Focus['kind'], id: string, index?: number) => setFocus((f) => ({ kind, id, index, n: (f?.n ?? 0) + 1 }));
+
+  // Move the timeline to one of an event's points and turn the globe (or Moon) to it.
+  const jumpToPoint = (e: HistoryEvent, index: number) => {
+    bar.current?.goToTime(e.points[index].jumpMa);
+    lookAt('event', e.id, index);
+  };
 
   const onGlobeArea = (e: LayoutChangeEvent) => {
     const { width, height } = e.nativeEvent.layout;
@@ -76,9 +81,8 @@ export default function GlobeScreen() {
     if (r.kind === 'unit') bar.current?.zoomTo(r.unit);
     else if (r.kind === 'extinction') bar.current?.jumpToExtinction(r.extinction);
     else {
-      // Land just after the event so its marker is showing, and look at where it happened.
-      bar.current?.goToTime(justAfterMa(r.event));
-      if (r.event.points.some((p) => p.body === 'moon')) lookAt('moon', r.event.id);
+      // Land at the event's first point (for formations, where they formed) with its marker showing.
+      jumpToPoint(r.event, 0);
       setSelected(r.event);
     }
   };
@@ -156,7 +160,15 @@ export default function GlobeScreen() {
 
         {selected && (
           <View onLayout={onInfoLayout}>
-            <EventInfo event={selected} onBack={() => page.current?.scrollTo({ y: 0, animated: true })} />
+            <EventInfo
+              event={selected}
+              timeMa={timeMa}
+              onBack={() => page.current?.scrollTo({ y: 0, animated: true })}
+              onJump={(i) => {
+                jumpToPoint(selected, i);
+                page.current?.scrollTo({ y: 0, animated: true });
+              }}
+            />
           </View>
         )}
       </ScrollView>
