@@ -284,6 +284,21 @@ export const CLADES: Clade[] = [
     family: true,
     description: 'Low, broad plant-eaters covered in bony plates, some with tail clubs.',
   },
+  {
+    id: 'pterosauria',
+    name: 'Pterosauria',
+    common: 'Pterosaurs',
+    parent: 'archosauria',
+    description: 'Flying reptiles, close cousins of dinosaurs, with wings of skin stretched from a hugely long fourth finger. They were the first vertebrates to fly and died out at the asteroid impact.',
+  },
+  {
+    id: 'azhdarchidae',
+    name: 'Azhdarchidae',
+    common: 'Azhdarchids',
+    parent: 'pterosauria',
+    family: true,
+    description: 'The last and largest pterosaurs: toothless, long-necked giants that stalked the ground like storks, some with wingspans over 10 m.',
+  },
 ];
 
 export const SPECIES: Species[] = [
@@ -1128,5 +1143,26 @@ export const SPECIES: Species[] = [
       { label: 'Diet', value: 'Fish' },
     ],
     keywords: ['lepisosteus', 'gar', 'fish'],
+  },
+  {
+    id: 'infernodrakon-hastacollis',
+    name: 'Infernodrakon hastacollis',
+    common: 'Infernodrakon',
+    clade: 'azhdarchidae',
+    status: 'full',
+    ageText: 'About 67 million years ago',
+    placeText: 'Montana, USA',
+    formations: ['hell-creek'],
+    summary: [
+      'Infernodrakon, the “dragon from hell”, is the first pterosaur named from Hell Creek. It was an azhdarchid with a wingspan of about 4 m, a medium-sized member of the family of giant, long-necked pterosaurs that included Quetzalcoatlus.',
+      'It is known from a single neck vertebra found in Montana in 2002, first thought to belong to Quetzalcoatlus. A 2025 study found its shape was different enough to make it a new species, more closely related to Arambourgiania from the Middle East than to Quetzalcoatlus. Like its relatives it probably walked on all fours, picking off small animals on the ground.',
+    ],
+    facts: [
+      { label: 'Named', value: 'Henry Thomas, David Hone, Timothy Gomes and Joseph Peterson, 2025' },
+      { label: 'Wingspan', value: 'About 4 m' },
+      { label: 'Known from', value: 'One neck vertebra' },
+      { label: 'Diet', value: 'Small animals' },
+    ],
+    keywords: ['infernodrakon', 'pterosaur', 'pterodactyl', 'azhdarchid', 'dragon from hell'],
   },
 ];
