@@ -1239,7 +1239,7 @@ export const MEDIA_EARLY: DataSet = {
       formations: ['lourinha'],
       phylo: 2.2,
       summary: [
-        'A giant brachiosaurid, perhaps about 25 m long, the largest dinosaur known from Portugal, a close relative of Brachiosaurus. It is the star of an episode of Walking with Dinosaurs (2025).',
+        'A giant brachiosaurid, perhaps about 25 m long, the largest dinosaur known from Portugal, a close relative of Brachiosaurus.',
       ],
       facts: [
         { label: 'Named', value: 'Albert-Félix de Lapparent and Georges Zbyszewski, 1957; genus by Miguel Antunes and Octávio Mateus, 2003' },
@@ -1323,7 +1323,7 @@ export const MEDIA_EARLY: DataSet = {
     {
       id: 'pliosaurus-funkei',
       name: 'Pliosaurus funkei',
-      common: 'Predator X',
+      common: 'Pliosaurus funkei',
       clade: 'sauropterygia',
       status: 'full',
       ageText: 'About 148 million years ago',

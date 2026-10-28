@@ -161,7 +161,7 @@ export const MODERN: DataSet = {
       formations: [],
       summary: [
         'The “Tasmanian tiger”, a dog-sized meat-eating marsupial with stripes across its back and a stiff tail. Females carried their young in a backward-facing pouch. It looked so much like a dog because it evolved to fill the same role.',
-        'It died out on mainland Australia about 3,200 years ago, perhaps because of people and the arrival of the dingo, and survived only in Tasmania. European settlers paid bounties for killing them, and the last known thylacine, often called Benjamin, died at Hobart’s Beaumaris Zoo on 7 September 1936.',
+        'It died out on mainland Australia about 3,200 years ago, perhaps because of people and the arrival of the dingo, and survived only in Tasmania. European settlers paid bounties for killing them, and the last known thylacine died at Hobart’s Beaumaris Zoo on 7 September 1936. The name “Benjamin” often given to it first appeared decades later and is not recorded from the time.',
       ],
       facts: [
         { label: 'Named', value: 'George Harris, 1808' },

@@ -1039,7 +1039,7 @@ export const TRIASSIC_JURASSIC: DataSet = {
       formations: ['morrison'],
       summary: [
         'A plant-eater about 7–9 m long with two alternating rows of tall bony plates along its back and four tail spikes, nicknamed the “thagomizer”. Its plates were probably for display. Allosaurus bones have been found with wounds matching its tail spikes.',
-        'Its brain was famously small, about the size of a lime. The most complete specimen, “Sophie”, is in the Natural History Museum, London.',
+        'Its brain was small for its size, weighing perhaps 80 g. The most complete specimen, “Sophie”, is in the Natural History Museum, London.',
       ],
       facts: [
         { label: 'Named', value: 'Othniel Marsh, 1887' },

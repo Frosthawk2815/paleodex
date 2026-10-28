@@ -536,7 +536,7 @@ export const MEDIA_CENOZOIC: DataSet = {
       placeText: 'Inner Mongolia, China',
       formations: ['irdin-manha'],
       summary: [
-        'Known only from a single skull 83 cm long, the largest skull of any land mammal meat-eater. It was long pictured as a giant wolf-like predator, but it was a hoofed mammal related to whales and hippos, and may have eaten almost anything.',
+        'Known only from a single skull 83 cm long, the largest skull of any land mammal meat-eater. It was long pictured as a giant wolf-like predator, but it was an even-toed hoofed mammal, part of the group that includes pigs, hippos and whales; its exact relatives and diet are debated.',
       ],
       facts: [
         { label: 'Named', value: 'Henry Fairfield Osborn, 1924' },
@@ -892,15 +892,14 @@ export const MEDIA_CENOZOIC: DataSet = {
       formations: ['chongzuo-caves'],
       phylo: 0.5,
       summary: [
-        'The largest ape ever, perhaps 3 m tall and 200–300 kg, a relative of the orangutan. It is known only from four jaws and about 2,000 teeth, first recognised by Ralph von Koenigswald in 1935 among “dragon teeth” sold in a Hong Kong pharmacy. It ate fruit and plants in the forest, and died out when the forests changed.',
+        'Probably the largest ape ever, a relative of the orangutan. It is known only from four jaws and about 2,000 teeth, so its size is a guess from those: estimates of up to about 3 m tall and 200–300 kg are very uncertain. The teeth were first recognised by Ralph von Koenigswald in 1935 among “dragon teeth” sold in a Hong Kong pharmacy. It ate fruit and plants in the forest, and died out when the forests changed.',
       ],
       facts: [
         { label: 'Named', value: 'Ralph von Koenigswald, 1935' },
-        { label: 'Height', value: 'Perhaps about 3 m' },
-        { label: 'Weight', value: 'About 200–300 kg' },
+        { label: 'Size', value: 'Unknown; estimates up to about 3 m and 200–300 kg' },
         { label: 'On screen', value: 'ARK: Survival Evolved' },
       ],
-      keywords: ['gigantopithecus', 'giant ape', 'bigfoot', 'king kong', 'pleistocene'],
+      keywords: ['gigantopithecus', 'giant ape', 'pleistocene'],
     },
   ],
 };

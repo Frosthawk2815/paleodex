@@ -28,14 +28,14 @@ export const ICE_AGE: DataSet = {
       placeText: 'Northern Europe and Asia',
       formations: [],
       summary: [
-        'A shaggy, cold-adapted rhino about 3.5 m long with a flattened front horn over 1 m long, used to sweep snow off grass. Frozen carcasses from Siberia preserve its fur and stomach contents, and it was painted on the walls of Chauvet cave in France more than 30,000 years ago.',
+        'A shaggy, cold-adapted rhino about 3.5 m long with a flattened front horn over 1 m long, worn on its underside, probably from sweeping snow aside to reach grass. Frozen carcasses from Siberia preserve its fur and stomach contents, and it was painted on the walls of Chauvet cave in France more than 30,000 years ago.',
         'Its decline seems to have followed the warming at the end of the last glacial period more than human hunting.',
       ],
       facts: [
         { label: 'Named', value: 'Johann Friedrich Blumenbach, 1799' },
         { label: 'Length', value: 'About 3.5 m' },
         { label: 'Weight', value: 'About 2 tonnes' },
-        { label: 'On screen', value: 'Prehistoric Planet: Ice Age (2023), Ice Age films, ARK' },
+        { label: 'On screen', value: 'Prehistoric Planet: Ice Age (2023), ARK: Survival Evolved' },
       ],
       keywords: ['woolly rhino', 'woolly rhinoceros', 'coelodonta', 'ice age'],
     },
@@ -98,14 +98,14 @@ export const ICE_AGE: DataSet = {
     {
       id: 'elasmotherium-sibiricum',
       name: 'Elasmotherium sibiricum',
-      common: 'Siberian unicorn',
+      common: 'Elasmotherium',
       clade: 'rhinocerotidae',
       status: 'full',
       ageText: 'About 800,000 to 39,000 years ago',
       placeText: 'Steppes of Ukraine, Russia and Kazakhstan',
       formations: [],
       summary: [
-        'A giant rhino about 4.5 m long and 3.5–4 tonnes with a huge bony dome on its forehead that probably carried a single long horn, earning it the name “Siberian unicorn”. Dating in 2018 showed it survived until about 39,000 years ago, overlapping with modern humans.',
+        'A giant rhino about 4.5 m long and 3.5–4 tonnes with a huge bony dome on its forehead that supported a horn. The horn itself, made of keratin, has never been found, so its size is unknown, despite popular pictures of a long “Siberian unicorn” horn. Dating in 2018 showed it survived until about 39,000 years ago, overlapping with modern humans.',
       ],
       facts: [
         { label: 'Named', value: 'Gotthelf Fischer von Waldheim, 1808' },
@@ -217,7 +217,7 @@ export const ICE_AGE: DataSet = {
       placeText: 'Southern North America to northern South America',
       formations: [],
       summary: [
-        'The North American glyptodont, a giant armadillo relative about 2.5 m long under a domed shell of more than 1,000 bony plates. Glyptodonts crossed from South America over the new Panama land bridge. Glyptodonts feature in Prehistoric Planet: Ice Age.',
+        'The North American glyptodont, a giant armadillo relative about 2.5 m long under a domed shell of more than 1,000 bony plates. Glyptodonts crossed from South America over the new Panama land bridge.',
       ],
       facts: [
         { label: 'Named', value: 'Henry Fairfield Osborn, 1903' },
@@ -342,7 +342,7 @@ export const ICE_AGE: DataSet = {
       ageText: 'About 1.6 million to 45,000 years ago',
       placeText: 'Australia',
       formations: [],
-      summary: ['A leopard-sized marsupial predator, about 100–160 kg, with the strongest bite for its size of any mammal, slicing cheek teeth, and a huge thumb claw. Scratch marks in caves show it could climb, perhaps raising young in caves and dragging prey into trees.'],
+      summary: ['A leopard-sized marsupial predator, about 100–160 kg, with one of the strongest bites for its size of any known mammal predator, slicing cheek teeth, and a huge thumb claw. Scratch marks in caves show it could climb, perhaps raising young in caves and dragging prey into trees.'],
       facts: [
         { label: 'Named', value: 'Richard Owen, 1859' },
         { label: 'Weight', value: 'About 100–160 kg' },
@@ -410,7 +410,7 @@ export const ICE_AGE: DataSet = {
       placeText: 'South Island, New Zealand',
       formations: [],
       summary: [
-        'The largest eagle ever, females weighing 10–15 kg with a wingspan of 2.6–3 m and talons as big as a tiger’s claws. It hunted moa, many times its own weight. When people wiped out the moa it lost its prey and died out too. Māori tradition remembers it as Pouākai or Te Hōkioi. DNA shows its closest relative is the small little eagle of Australia.',
+        'The largest eagle ever, females weighing 10–15 kg with a wingspan of 2.6–3 m and massive talons. It hunted moa, many times its own weight. When people wiped out the moa it lost its prey and died out too. Māori tradition remembers it as Pouākai or Te Hōkioi. DNA shows its closest relative is the small little eagle of Australia.',
       ],
       facts: [
         { label: 'Named', value: 'Julius von Haast, 1872' },
@@ -445,7 +445,7 @@ export const ICE_AGE: DataSet = {
       ageText: 'Until about 12,000 years ago',
       placeText: 'Cyprus',
       formations: [],
-      summary: ['A dwarf elephant only about 1.4 m tall and 200 kg, a tenth the size of its straight-tusked ancestor, which shrank after reaching Cyprus. It died out soon after people arrived on the island. Dwarf elephants feature in Prehistoric Planet: Ice Age.'],
+      summary: ['A dwarf elephant only about 1.4 m tall and 200 kg, a tenth the size of its straight-tusked ancestor, which shrank after reaching Cyprus. It died out soon after people arrived on the island.'],
       facts: [
         { label: 'Named', value: 'Dorothea Bate, 1903' },
         { label: 'Height', value: 'About 1.4 m' },

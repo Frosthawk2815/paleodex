@@ -638,20 +638,20 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
     {
       id: 'sarcosuchus-imperator',
       name: 'Sarcosuchus imperator',
-      common: 'SuperCroc',
+      common: 'Sarcosuchus',
       clade: 'pholidosauridae',
       status: 'full',
       ageText: 'About 125 to 112 million years ago',
       placeText: 'Niger and Brazil',
       formations: ['elrhaz'],
       summary: [
-        'One of the largest crocodile relatives ever, about 9–9.5 m long and up to 8 tonnes, with a long snout ending in a bulbous bulla. It ate big fish and probably ambushed dinosaurs at the water’s edge. Paul Sereno’s 2000 expedition made it famous as “SuperCroc”.',
+        'One of the largest crocodile relatives ever, about 9–9.5 m long and up to 8 tonnes, with a long snout ending in a bulbous bulla. Its diet is inferred from its size and skull: probably big fish and other animals, perhaps including dinosaurs at the water’s edge. Paul Sereno’s 2000 expedition and the documentary that followed nicknamed it “SuperCroc”.',
       ],
       facts: [
         { label: 'Named', value: 'France de Broin and Philippe Taquet, 1966' },
         { label: 'Length', value: 'About 9–9.5 m' },
         { label: 'Weight', value: 'Up to about 8 tonnes' },
-        { label: 'Diet', value: 'Fish and dinosaurs' },
+        { label: 'Diet', value: 'Probably fish and other large animals' },
         { label: 'On screen', value: 'ARK: Survival Evolved' },
       ],
       keywords: ['sarcosuchus', 'supercroc', 'giant crocodile', 'cretaceous'],
@@ -1148,13 +1148,13 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
     {
       id: 'kaprosuchus-saharicus',
       name: 'Kaprosuchus saharicus',
-      common: 'BoarCroc',
+      common: 'Kaprosuchus',
       clade: 'mahajangasuchidae',
       status: 'full',
       ageText: 'About 95 million years ago',
       placeText: 'Niger',
       formations: ['echkar'],
-      summary: ['A land-dwelling crocodile relative about 6 m long with three sets of tusk-like teeth sticking up and down like a boar’s, and long legs for running down prey on land.'],
+      summary: ['A land-dwelling crocodile relative about 6 m long with three sets of tusk-like teeth sticking up and down, which led to the nickname “BoarCroc”. It is known from a single skull; its long-legged, running build is inferred from relatives.'],
       facts: [
         { label: 'Named', value: 'Paul Sereno and Hans Larsson, 2009' },
         { label: 'Length', value: 'About 6 m' },
@@ -1208,7 +1208,7 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
       formations: ['huincul'],
       phylo: 2.5,
       summary: [
-        'Perhaps the largest land animal ever, estimated at about 30–35 m long and 65–75 tonnes, though it is known from only a few bones, including vertebrae 1.6 m tall. A newborn would have been about the size of a large dog.',
+        'Perhaps the largest land animal ever, estimated at about 30–35 m long and 65–75 tonnes, though it is known from only a few bones, including vertebrae 1.6 m tall.',
       ],
       facts: [
         { label: 'Named', value: 'José Bonaparte and Rodolfo Coria, 1993' },

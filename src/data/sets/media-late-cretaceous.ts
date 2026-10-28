@@ -437,7 +437,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       placeText: 'Texas and across southern North America',
       formations: ['aguja'],
       summary: [
-        'A giant alligator relative about 8–10 m long with teeth as big as bananas and a skull up to 1.5 m long. Bite marks on hadrosaur and tyrannosaur bones show it ambushed dinosaurs at the water’s edge. Its name means “terrible crocodile”.',
+        'A giant alligator relative about 8–10 m long with a skull up to 1.5 m long and thick, blunt back teeth suited to crushing turtles. Bite marks on hadrosaur and tyrannosaur bones show it ambushed dinosaurs at the water’s edge. Its name means “terrible crocodile”.',
       ],
       facts: [
         { label: 'Named', value: 'Edwin Colbert and Roland Bird, 1954' },
@@ -603,7 +603,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       placeText: 'Alaska, USA',
       formations: ['prince-creek'],
       summary: [
-        'The Arctic Pachyrhinosaurus, about 6–8 m long, with a big bony boss over its nose and spikes on its frill. Huge bonebeds show herds lived on the North Slope, perhaps all year round. Herds of Pachyrhinosaurus feature in Prehistoric Planet and in Walking with Dinosaurs (2025).',
+        'The Arctic Pachyrhinosaurus, about 6–8 m long, with a big bony boss over its nose and spikes on its frill. Huge bonebeds show herds lived on the North Slope, perhaps all year round.',
       ],
       facts: [
         { label: 'Named', value: 'Anthony Fiorillo and Ronald Tykoski, 2012' },
@@ -623,7 +623,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       formations: ['prince-creek'],
       phylo: 16.5,
       summary: [
-        'An Arctic tyrannosaur, perhaps 6 m long, known from skull fragments. It was first thought to be a dwarf, but later finds suggest it may have been larger. Its name means “polar bear lizard” in Iñupiaq. Prehistoric Planet showed it with a thick coat of feathers.',
+        'An Arctic tyrannosaur, perhaps 6 m long, known from skull fragments. It was first thought to be a dwarf, but later finds suggest it may have been larger. Its name means “polar bear lizard” in Iñupiaq. Whether it had feathers is not known from its fossils.',
       ],
       facts: [
         { label: 'Named', value: 'Anthony Fiorillo and Ronald Tykoski, 2014' },
@@ -658,7 +658,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       placeText: 'Romania',
       formations: ['hateg'],
       summary: [
-        'A giant azhdarchid pterosaur with a wingspan of about 10–12 m and an unusually short, thick, heavily built neck and broad skull. With no big theropods on its island, it was probably the top predator, stalking dwarf dinosaurs on the ground.',
+        'A giant azhdarchid pterosaur with a wingspan of about 10–12 m and an unusually short, thick, heavily built neck and broad skull. No big theropods are known from its island, and a 2017 study suggested it may have been the top predator, hunting dwarf dinosaurs on the ground.',
       ],
       facts: [
         { label: 'Named', value: 'Eric Buffetaut, Dan Grigorescu and Zoltán Csiki, 2002' },
@@ -878,7 +878,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       placeText: 'New Zealand',
       formations: ['maungataniwha'],
       phylo: 7,
-      summary: ['An elasmosaur, a long-necked plesiosaur, about 8 m long, from the southern seas around Zealandia. It features in Prehistoric Planet.'],
+      summary: ['An elasmosaur, a long-necked plesiosaur, about 8 m long, from the southern seas around Zealandia.'],
       facts: [
         { label: 'Named', value: 'Joan Wiffen and William Moisley, 1986' },
         { label: 'Length', value: 'About 8 m' },
@@ -997,7 +997,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       formations: ['lameta'],
       phylo: 3.7,
       summary: [
-        'The first titanosaur named, by Richard Lydekker in 1877 from two tail vertebrae found near Jabalpur, and the namesake of the whole group. The bones are too incomplete to tell it apart from other titanosaurs, so the name is now considered doubtful. A giant “Titanosaurus” appears in Jurassic World Rebirth.',
+        'The first titanosaur named, by Richard Lydekker in 1877 from two tail vertebrae found near Jabalpur, and the namesake of the whole group. The bones are too incomplete to tell it apart from other titanosaurs, so the name is now considered doubtful. The giant “Titanosaurus” of Jurassic World Rebirth is a generic film sauropod: nothing is known of the real animal’s size or appearance beyond those vertebrae.',
       ],
       facts: [
         { label: 'Named', value: 'Richard Lydekker, 1877' },
@@ -1031,7 +1031,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       ageText: 'About 67 million years ago',
       placeText: 'Morocco',
       formations: ['ouled-abdoun'],
-      summary: ['A nyctosaurid pterosaur with a wingspan of about 4–5 m, one of several pterosaurs from the last years of the Cretaceous that show pterosaurs were still diverse before the asteroid. Prehistoric Planet showed males displaying their crests.'],
+      summary: ['A nyctosaurid pterosaur with a wingspan of about 4–5 m, one of several pterosaurs from the last years of the Cretaceous that show pterosaurs were still diverse before the asteroid. Some specimens have bigger crests than others, which may reflect differences between the sexes.'],
       facts: [
         { label: 'Named', value: 'Nicholas Longrich and colleagues, 2018' },
         { label: 'Wingspan', value: 'About 4–5 m' },
@@ -1371,7 +1371,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       ageText: 'About 70 million years ago',
       placeText: 'Mongolia',
       formations: ['nemegt'],
-      summary: ['A turkey-sized, long-legged alvarezsaur with short, powerful arms ending in a single big claw, probably for ripping open termite nests. Prehistoric Planet showed it digging for insects.'],
+      summary: ['A turkey-sized, long-legged alvarezsaur with short, powerful arms ending in a single big claw, probably for breaking into insect nests.'],
       facts: [
         { label: 'Named', value: 'Altangerel Perle and colleagues, 1993' },
         { label: 'Length', value: 'About 1 m' },

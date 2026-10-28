@@ -308,7 +308,7 @@ export const CENOZOIC: DataSet = {
       placeText: 'Wyoming, USA',
       formations: ['green-river'],
       summary: [
-        'A herring relative up to about 65 cm long with an upturned mouth. Some fossils have a Knightia stuck in their mouths, choked while swallowing it.',
+        'A herring relative up to about 65 cm long with an upturned mouth. Some fossils have a Knightia stuck in their mouths, apparently choked while swallowing it.',
       ],
       facts: [
         { label: 'Named', value: 'Edward Drinker Cope, 1877' },
@@ -504,7 +504,7 @@ export const CENOZOIC: DataSet = {
       placeText: 'Nebraska and the Great Plains, USA',
       formations: ['ashfall'],
       summary: [
-        'A barrel-bodied, short-legged rhino about 4 m long with a single small horn on its nose, shaped rather like a hippo, and perhaps living partly in water. More than 100 skeletons lie in the Ashfall “rhino barn”, including mothers with calves, some still suckling.',
+        'A barrel-bodied, short-legged rhino about 4 m long with a single small horn on its nose, shaped rather like a hippo. It was long thought to live partly in water like one, but chemical studies of its teeth suggest it grazed on land. More than 100 skeletons lie in the Ashfall “rhino barn”, including mothers with calves, some still suckling.',
       ],
       facts: [
         { label: 'Named', value: 'John Bell Hatcher, 1894' },
@@ -565,7 +565,7 @@ export const CENOZOIC: DataSet = {
       placeText: 'North America and western South America',
       formations: ['la-brea'],
       summary: [
-        'The famous sabre-toothed cat, about the size of a lion but more heavily built, with 18 cm upper canines. It probably wrestled prey to the ground with its powerful forelimbs, then bit its throat. Over 2,000 have come from La Brea, the most common big mammal there, and many have healed injuries, suggesting the group cared for injured members.',
+        'The famous sabre-toothed cat, about the size of a lion but more heavily built, with 18 cm upper canines. It probably wrestled prey to the ground with its powerful forelimbs, then bit its throat. Over 2,000 have come from La Brea, the most common big mammal there, and many have healed injuries, which some researchers take as a sign that it lived in groups. This is debated.',
       ],
       facts: [
         { label: 'Named', value: 'Joseph Leidy, 1869' },
@@ -586,7 +586,7 @@ export const CENOZOIC: DataSet = {
       placeText: 'North America, from Alaska to Mexico',
       formations: ['la-brea'],
       summary: [
-        'A huge lion-like cat, about 25% bigger than an African lion, that hunted horses, bison and camels across North America. It was rare at La Brea, perhaps because it was clever enough to avoid the tar.',
+        'A huge lion-like cat, about 25% bigger than an African lion, that hunted horses, bison and camels across North America. It is much rarer than Smilodon at La Brea.',
       ],
       facts: [
         { label: 'Named', value: 'Joseph Leidy, 1853' },

@@ -111,7 +111,7 @@ export const CRETACEOUS: DataSet = {
       icon: 'river',
       summary: [
         'The red escarpments of the Kem Kem hold the remains of a vast river system flowing north into the Tethys Sea, full of giant fish: coelacanths, lungfish and huge sawskates.',
-        'Strangely, almost all its large animals were predators: Spinosaurus, Carcharodontosaurus, Deltadromeus and big crocodiles. Much of the food chain was built on fish, and it has been called “the most dangerous place in the history of planet Earth”.',
+        'Strangely, almost all its large animals were predators: Spinosaurus, Carcharodontosaurus, Deltadromeus and big crocodiles. Much of the food chain was built on fish. Part of this imbalance may come from bones from different times and places being mixed together in the river deposits.',
       ],
       facts: [
         { label: 'Age', value: 'About 97 million years ago' },
@@ -928,7 +928,7 @@ export const CRETACEOUS: DataSet = {
       placeText: 'North Africa',
       formations: ['kem-kem'],
       summary: [
-        'A giant sawskate, a ray with a long, saw-like snout edged with barbed teeth, perhaps 8 m long. It slashed through shoals of fish in the Kem Kem rivers and was probably a favourite food of Spinosaurus.',
+        'A giant sawskate, a ray with a long, saw-like snout edged with barbed teeth, perhaps 8 m long. It slashed through shoals of fish in the Kem Kem rivers and may have been prey for Spinosaurus.',
       ],
       facts: [
         { label: 'Named', value: 'Émile Haug, 1905' },
