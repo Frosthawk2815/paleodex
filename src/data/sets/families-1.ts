@@ -61,7 +61,7 @@ export const FAMILIES_1: DataSet = {
     }),
   ],
   clades: [
-    { id: 'chordata', name: 'Chordata', common: 'Chordates', description: 'Animals with a stiff rod (notochord) along the back at some stage of life, including the vertebrates and small relatives such as lancelets and sea squirts.' },
+    { id: 'chordata', name: 'Chordata', common: 'Chordates', parent: 'animalia', description: 'Animals with a stiff rod (notochord) along the back at some stage of life, including the vertebrates and small relatives such as lancelets and sea squirts.' },
     { id: 'osteostraci', name: 'Osteostraci', common: 'Osteostracans', parent: 'vertebrata', family: true, description: 'Jawless fish with a horseshoe-shaped bony head shield, the closest jawless relatives of jawed vertebrates.' },
     { id: 'hybodontiformes', name: 'Hybodontiformes', common: 'Hybodont sharks', parent: 'chondrichthyes', family: true, description: 'Sharks with a spine in front of each back fin, common from the Permian to the end of the Cretaceous.' },
     { id: 'symmoriiformes', name: 'Symmoriiformes', common: 'Symmoriiform sharks', parent: 'chondrichthyes', family: true, description: 'Palaeozoic sharks, many of whose males carried strange spines or brushes on their heads or backs.' },

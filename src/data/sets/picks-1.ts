@@ -178,11 +178,4 @@ export const PICKS_1: DataSet = {
       ],
     },
   },
-  eventNotes: {
-    'burgess-shale': {
-      invertebrates: [
-        { tier: 'superstar', title: 'Hallucigenia: the animal drawn upside down', text: 'Hallucigenia sparsa was a lobopodian, a worm-like animal up to about 3.5 cm long that walked on slender, clawed legs, with two rows of stiff spines along its back. It was first reconstructed upside down, walking on its spines, with its legs taken for tentacles, and also back to front. Chinese relatives showed which way up it went in 1991, and in 2015 its true head was found, with simple eyes and a ring of teeth around its mouth. Its relatives include today’s velvet worms.' },
-      ],
-    },
-  },
 };

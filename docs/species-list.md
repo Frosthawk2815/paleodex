@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-865 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+907 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -9,30 +9,65 @@
 |---|---|---|---|---|
 | 518 Ma | *Myllokunmingia fengjiaoa* | Myllokunmingia | Earliest vertebrates | Chengjiang biota (Maotianshan Shale) |
 | 518 Ma | *Haikouichthys ercaicunensis* | Haikouichthys | Earliest vertebrates | Chengjiang biota (Maotianshan Shale) |
+| 518 Ma | *Fuxianhuia protensa* | Fuxianhuia | Arthropods | Chengjiang biota (Maotianshan Shale) |
+| 518 Ma | *Amplectobelua symbrachiata* | Amplectobelua | Radiodonts | Chengjiang biota (Maotianshan Shale) |
+| 518 Ma | *Hallucigenia fortis* | Hallucigenia fortis | Lobopodians | Chengjiang biota (Maotianshan Shale) |
+| 518 Ma | *Microdictyon sinicum* | Microdictyon | Lobopodians | Chengjiang biota (Maotianshan Shale) |
+| 518 Ma | *Luolishania longicruris* | Luolishania | Lobopodians | Chengjiang biota (Maotianshan Shale) |
+| 518 Ma | *Eoredlichia intermedia* | Eoredlichia | Trilobites | Chengjiang biota (Maotianshan Shale) |
+| 518 Ma | *Timorebestia koprii* | Timorebestia | Arrow worms | Sirius Passet |
+| 518 Ma | *Halkieria evangelista* | Halkieria | Animals | Sirius Passet |
+| 518 Ma | *Kerygmachela kierkegaardi* | Kerygmachela | Lobopodians | Sirius Passet |
+| 518 Ma | *Pambdelurion whittingtoni* | Pambdelurion | Lobopodians | Sirius Passet |
+| 518 Ma | *Buenellus higginsi* | Buenellus | Trilobites | Sirius Passet |
+| 514 Ma | *Redlichia rex* | Redlichia rex | Trilobites | Emu Bay Shale |
 | 508 Ma | *Metaspriggina walcotti* | Metaspriggina | Earliest vertebrates | Burgess Shale |
+| 508 Ma | *Anomalocaris canadensis* | Anomalocaris | Radiodonts | Burgess Shale |
+| 508 Ma | *Pikaia gracilens* | Pikaia | Chordates | Burgess Shale |
+| 508 Ma | *Marrella splendens* | Marrella | Arthropods | Burgess Shale |
+| 508 Ma | *Olenoides serratus* | Olenoides | Trilobites | Burgess Shale |
+| 508 Ma | *Ogygopsis klotzi* | Ogygopsis | Trilobites | Burgess Shale |
+| 508 Ma | *Hallucigenia sparsa* | Hallucigenia | Lobopodians | Burgess Shale |
+| 508 Ma | *Opabinia regalis* | Opabinia | Arthropods | Burgess Shale |
+| 508 Ma | *Wiwaxia corrugata* | Wiwaxia | Molluscs | Burgess Shale |
+| 508 Ma | *Ottoia prolifica* | Ottoia | Penis worms | Burgess Shale |
+| 508 Ma | *Vauxia gracilenta* | Vauxia | Sponges | Burgess Shale |
+| 507 Ma | *Elrathia kingii* | Elrathia | Trilobites | Wheeler Shale |
 
 ## Ordovician
 
 | Age | Species | Common name | Family / group | Where |
 |---|---|---|---|---|
+| 478 Ma | *Aegirocassis benmoulai* | Aegirocassis | Radiodonts | Fezouata Biota |
 | 460 Ma | *Sacabambaspis janvieri* | Sacabambaspis | Armoured jawless fish | Anzaldo Formation |
 | 455 Ma | *Astraspis desiderata* | Astraspis | Armoured jawless fish | Harding Sandstone |
 | 455 Ma | *Eriptychius americanus* | Eriptychius | Armoured jawless fish | Harding Sandstone |
+| 450 Ma | *Triarthrus eatoni* | Triarthrus | Trilobites | Beecher’s Trilobite Bed |
 | 444 Ma | *Promissum pulchrum* | Promissum | Conodonts | Soom Shale |
+| 444 Ma | *Onychopterella augusti* | Onychopterella | Sea scorpions | Soom Shale |
+| 444 Ma | *Mucronaspis olini* | Mucronaspis | Trilobites | Soom Shale |
 
 ## Silurian
 
 | Age | Species | Common name | Family / group | Where |
 |---|---|---|---|---|
+| 430 Ma | *Aquilonifer spinosus* | Aquilonifer | Arthropods | Herefordshire Lagerstätte |
+| 430 Ma | *Offacolus kingi* | Offacolus | Chelicerates | Herefordshire Lagerstätte |
 | 423 Ma | *Guiyu oneiros* | Guiyu | Lobe-finned fish | Kuanti Formation |
 | 423 Ma | *Entelognathus primordialis* | Entelognathus | Placoderms | Kuanti Formation |
+| 420 Ma | *Eurypterus remipes* | Eurypterus | Sea scorpions | Bertie Group (Bertie Waterlime) |
+| 420 Ma | *Acutiramus macrophthalmus* | Acutiramus | Sea scorpions | Bertie Group (Bertie Waterlime) |
 
 ## Devonian
 
 | Age | Species | Common name | Family / group | Where |
 |---|---|---|---|---|
+| 407 Ma | *Rhyniognatha hirsti* | Rhyniognatha | Arthropods | Rhynie Chert |
+| 407 Ma | *Eophalangium sheari* | Eophalangium | Chelicerates | Rhynie Chert |
+| 407 Ma | *Rhyniella praecursor* | Rhyniella | Insects and relatives | Rhynie Chert |
 | 405 Ma | *Drepanaspis gemuendenensis* | Drepanaspis | Armoured jawless fish | Hunsrück Slate |
 | 405 Ma | *Gemuendina stuertzi* | Gemuendina | Placoderms | Hunsrück Slate |
+| 405 Ma | *Schinderhannes bartelsi* | Schinderhannes | Radiodonts | Hunsrück Slate |
 | 390 Ma | *Dipterus valenciennesi* | Dipterus | Lungfish | Achanarras Fish Bed |
 | 390 Ma | *Coccosteus cuspidatus* | Coccosteus | Placoderms | Achanarras Fish Bed |
 | 390 Ma | *Pterichthyodes milleri* | Pterichthyodes | Placoderms | Achanarras Fish Bed |
@@ -73,15 +108,22 @@
 | 335 Ma | *Westlothiana lizziae* | Westlothiana | Early amniote relatives | East Kirkton Limestone |
 | 335 Ma | *Balanerpeton woodi* | Balanerpeton | Temnospondyls | East Kirkton Limestone |
 | 335 Ma | *Eucritta melanolimnetes* | Eucritta | Fishapods and the first tetrapods | East Kirkton Limestone |
+| 335 Ma | *Pulmonoscorpius kirktonensis* | Pulmonoscorpius | Chelicerates | East Kirkton Limestone |
 | 318 Ma | *Falcatus falcatus* | Falcatus | Symmoriiform sharks | Bear Gulch Limestone |
 | 318 Ma | *Harpagofututor volsellorhinus* | Harpagofututor | Ratfish and relatives | Bear Gulch Limestone |
 | 318 Ma | *Echinochimaera meltoni* | Echinochimaera | Ratfish and relatives | Bear Gulch Limestone |
 | 318 Ma | *Allenypterus montanus* | Allenypterus | Coelacanths | Bear Gulch Limestone |
 | 316 Ma | *Hylonomus lyelli* | Hylonomus | Early reptiles | Joggins Formation |
 | 316 Ma | *Dendrerpeton acadianum* | Dendrerpeton | Temnospondyls | Joggins Formation |
+| 316 Ma | *Arthropleura armata* | Arthropleura | Millipedes and centipedes | Joggins Formation |
+| 316 Ma | *Dendropupa vetusta* | Dendropupa | Molluscs | Joggins Formation |
 | 309 Ma | *Amphibamus grandiceps* | Amphibamus | Temnospondyls | Mazon Creek (Francis Creek Shale) |
 | 309 Ma | *Bandringa rayi* | Bandringa | Sharks and rays | Mazon Creek (Francis Creek Shale) |
 | 309 Ma | *Rhabdoderma exiguum* | Rhabdoderma | Coelacanths | Mazon Creek (Francis Creek Shale) |
+| 309 Ma | *Tullimonstrum gregarium* | Tully monster | Animals | Mazon Creek (Francis Creek Shale) |
+| 309 Ma | *Euproops danae* | Euproops | Chelicerates | Mazon Creek (Francis Creek Shale) |
+| 309 Ma | *Essexella asherae* | Essexella | Jellyfish, corals and relatives | Mazon Creek (Francis Creek Shale) |
+| 300 Ma | *Meganeura monyi* | Meganeura | Insects and relatives | Commentry coal basin |
 
 ## Permian
 

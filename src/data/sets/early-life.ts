@@ -20,10 +20,6 @@ export const EARLY_LIFE: DataSet = {
         { label: 'Rocks', value: 'Dark mudstone' },
       ],
       invertebrates: [
-        { tier: 'superstar', title: 'Timorebestia: the “terror beast” worm', text: 'Timorebestia koprii, described in 2024, was a swimming predator over 30 cm long with fins and jaws inside its head, a relative of today’s tiny arrow worms. Its gut holds the remains of the spiny arthropod Isoxys, and it was among the largest swimming predators of its time.' },
-        { tier: 'microceleb', title: 'Halkieria', text: 'Halkieria evangelista, a slug-like animal covered in rows of small scales with a shell at each end, whose relationships to molluscs and brachiopods are still debated.' },
-        { tier: 'microceleb', title: 'Lobopodians and early arthropods', text: 'Kerygmachela and Pambdelurion, lobopodians with flaps along their sides and grasping front limbs, show steps towards the first arthropods.' },
-        { tier: 'pleb', title: 'Trilobites', text: 'Trilobites, including Buenellus.' },
         { tier: 'pleb', title: 'Sponges', text: 'Sponges.' },
       ],
       keywords: ['sirius passet', 'greenland', 'cambrian', 'halkieria', 'timorebestia', 'cambrian explosion'],
@@ -42,7 +38,6 @@ export const EARLY_LIFE: DataSet = {
       ],
       invertebrates: [
         { tier: 'superstar', title: 'Anomalocaris eyes', text: 'Isolated compound eyes described in 2011, each with more than 16,000 lenses, are thought to belong to Anomalocaris. They show this early top predator had eyesight as sharp as many living insects.' },
-        { tier: 'microceleb', title: 'Redlichia rex', text: 'A large trilobite up to about 15 cm long with spiny legs, named in 2020. Injured trilobites in the same rocks suggest it may have attacked other trilobites, even its own kind.' },
         { tier: 'pleb', title: 'Other arthropods', text: 'Isoxys and other small swimming arthropods.' },
       ],
       keywords: ['emu bay', 'kangaroo island', 'australia', 'cambrian', 'anomalocaris', 'eyes', 'redlichia'],
@@ -60,7 +55,6 @@ export const EARLY_LIFE: DataSet = {
         { label: 'Rocks', value: 'Thin-bedded shale and limestone' },
       ],
       invertebrates: [
-        { tier: 'superstar', title: 'Elrathia kingii', text: 'Probably the most collected trilobite in the world, a small, flat trilobite about 2–4 cm long found in huge numbers. Many are preserved complete, as moulted shells or whole animals.' },
         { tier: 'microceleb', title: 'Radiodonts', text: 'Radiodonts, relatives of Anomalocaris, including filter-feeding and sediment-sifting kinds, are known from their frontal appendages and occasional whole bodies.' },
         { tier: 'pleb', title: 'Sponges and brachiopods', text: 'Sponges and brachiopods.' },
       ],
@@ -79,7 +73,6 @@ export const EARLY_LIFE: DataSet = {
         { label: 'Rocks', value: 'Shale and siltstone' },
       ],
       invertebrates: [
-        { tier: 'superstar', title: 'Aegirocassis: a giant filter-feeding radiodont', text: 'Aegirocassis benmoulai grew to over 2 m long, the largest radiodont known. Its head appendages were fringed with fine spines for filtering plankton, like a baleen whale, and its body showed two rows of flaps on each side, clues to how arthropod limbs evolved. It is named after Mohamed Ben Moula, who found it.' },
         { tier: 'microceleb', title: 'Marrellomorphs and early horseshoe crab relatives', text: 'Large marrellomorphs with long, swept-back spines, relatives of the Burgess Shale lace crab, and early relatives of horseshoe crabs.' },
         { tier: 'pleb', title: 'Trilobites', text: 'Trilobites.' },
       ],
@@ -115,7 +108,6 @@ export const EARLY_LIFE: DataSet = {
         { label: 'Rocks', value: 'Black shale with pyrite' },
       ],
       invertebrates: [
-        { tier: 'superstar', title: 'Triarthrus with its legs', text: 'Triarthrus eatoni, a small trilobite, is preserved in pyrite with its legs, gills and antennae, which are almost never found. These fossils showed for the first time how trilobite limbs were arranged, and some females preserve eggs.' },
         { tier: 'pleb', title: 'Graptolites', text: 'Graptolites.' },
       ],
       keywords: ['beecher', 'trilobite bed', 'new york', 'ordovician', 'triarthrus', 'pyrite'],
@@ -133,8 +125,6 @@ export const EARLY_LIFE: DataSet = {
         { label: 'Rocks', value: 'Volcanic ash with calcite nodules' },
       ],
       invertebrates: [
-        { tier: 'superstar', title: 'Aquilonifer: the kite-runner', text: 'Aquilonifer spinosus, a tiny arthropod named in 2016, has smaller animals attached to its body by long threads, like kites on strings. They are probably its young, an unusual form of parental care.' },
-        { tier: 'microceleb', title: 'Offacolus', text: 'Offacolus kingi, a tiny early relative of horseshoe crabs and sea spiders.' },
         { tier: 'pleb', title: 'Molluscs, worms and starfish relatives', text: 'Molluscs, worms, sponges and starfish relatives, all a few millimetres to centimetres long.' },
       ],
       keywords: ['herefordshire', 'england', 'silurian', 'aquilonifer', 'offacolus', '3d'],
@@ -152,8 +142,6 @@ export const EARLY_LIFE: DataSet = {
         { label: 'Rocks', value: 'Dolomite (waterlime)' },
       ],
       invertebrates: [
-        { tier: 'superstar', title: 'Eurypterus remipes', text: 'A sea scorpion about 20 cm long, one of the most common eurypterid fossils, and the state fossil of New York since 1984.' },
-        { tier: 'microceleb', title: 'Giant sea scorpions', text: 'Larger predatory sea scorpions such as Acutiramus and Pterygotus, with long grasping claws, some over 1 m long.' },
         { tier: 'pleb', title: 'Other arthropods', text: 'Small crustaceans and horseshoe crab relatives.' },
       ],
       keywords: ['bertie', 'waterlime', 'new york', 'silurian', 'eurypterid', 'sea scorpion'],
@@ -172,9 +160,6 @@ export const EARLY_LIFE: DataSet = {
         { label: 'Rocks', value: 'Chert (silica) from hot springs' },
       ],
       invertebrates: [
-        { tier: 'superstar', title: 'Rhyniognatha: insect or centipede?', text: 'Rhyniognatha hirsti, known only from a tiny head with jaws, was long called the oldest insect, possibly even a winged one. A 2017 restudy found it is more likely a centipede-like myriapod. The question is not fully settled.' },
-        { tier: 'microceleb', title: 'Eophalangium, the oldest harvestman', text: 'Eophalangium sheari is preserved in such detail that its reproductive organs survive, and it looks very much like living harvestmen (daddy-long-legs).' },
-        { tier: 'microceleb', title: 'Rhyniella', text: 'Rhyniella praecursor, a springtail, among the oldest six-legged animals known.' },
         { tier: 'pleb', title: 'Trigonotarbids and mites', text: 'Trigonotarbids (extinct spider relatives), mites and small freshwater crustaceans.' },
       ],
       keywords: ['rhynie', 'chert', 'scotland', 'devonian', 'early land animals', 'rhyniognatha'],
@@ -192,7 +177,6 @@ export const EARLY_LIFE: DataSet = {
         { label: 'Rocks', value: 'Slate with pyrite' },
       ],
       invertebrates: [
-        { tier: 'superstar', title: 'Schinderhannes: a late radiodont', text: 'Schinderhannes bartelsi, described in 2009 from a single specimen, is a radiodont living about 100 million years after the Cambrian, showing that relatives of Anomalocaris survived far longer than once thought.' },
         { tier: 'microceleb', title: 'Starfish and brittle stars', text: 'Many kinds of starfish and brittle stars, often preserved whole.' },
         { tier: 'pleb', title: 'Crinoids and arthropods', text: 'Sea lilies (crinoids), trilobites and other arthropods.' },
       ],
@@ -242,12 +226,6 @@ export const EARLY_LIFE: DataSet = {
       facts: [{ label: 'Named', value: 'Louis Agassiz, 1835' }], keywords: ['cheirolepis', 'ray-finned fish', 'devonian'] },
   ],
   eventNotes: {
-    'harding-sandstone': {
-      invertebrates: [{ tier: 'microceleb', title: 'Shallow-sea life', text: 'Brachiopods, molluscs and trace fossils of burrowing animals from a shallow, nearshore sea where some of the earliest fish lived.' }],
-    },
-    'soom-shale': {
-      invertebrates: [{ tier: 'superstar', title: 'Onychopterella and soft-bodied survivors', text: 'Cold, low-oxygen water preserved soft parts, including the sea scorpion Onychopterella with its gut and muscles, and Promissum, a conodont known from a whole head with eyes. The fauna lived through the glaciation at the end of the Ordovician.' }],
-    },
     miguasha: {
       invertebrates: [{ tier: 'microceleb', title: 'Scorpions', text: 'Rare scorpions washed into the estuary, a reminder that arthropods had colonised the land by then.' }],
     },

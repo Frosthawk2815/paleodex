@@ -30,21 +30,6 @@ export const PALEOZOIC: DataSet = {
         { label: 'Status', value: 'UNESCO World Heritage Site (2012)' },
       ],
       invertebrates: [
-        {
-          tier: 'superstar',
-          title: 'Fuxianhuia and the first arthropod brains',
-          text: 'Fuxianhuia protensa, a shrimp-like early arthropod, is preserved at Chengjiang with its brain and nerves, showing that a complex, three-part brain like those of living insects and crustaceans had already evolved 518 million years ago. The giant swimming predators Anomalocaris and Amplectobelua hunted in the same sea.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'Lobopodians: worms with legs',
-          text: 'Soft, worm-like animals walking on stubby legs, many with spines or plates along their backs. Hallucigenia fortis, Microdictyon sinicum and Luolishania are among them. Their relatives gave rise to velvet worms, water bears and the arthropods.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'Trilobites',
-          text: 'Some of the earliest trilobites, such as Eoredlichia intermedia and Yunnanocephalus, are preserved here with their legs and antennae, which are almost never found elsewhere.',
-        },
         { tier: 'pleb', title: 'Sponges', text: 'Sponges.' },
         { tier: 'pleb', title: 'Brachiopods', text: 'Brachiopods.' },
         { tier: 'pleb', title: 'Priapulid worms', text: 'Priapulid worms.' },
@@ -77,30 +62,7 @@ export const PALEOZOIC: DataSet = {
         { label: 'Status', value: 'UNESCO World Heritage Site (1980)' },
       ],
       invertebrates: [
-        {
-          tier: 'superstar',
-          title: 'Anomalocaris: the first top predator',
-          text: 'Anomalocaris canadensis was a radiodont, a swimming relative of the arthropods with a pair of spiny grasping limbs in front of its mouth, big stalked eyes and flaps along its sides. At up to 40 cm or more long it was one of the largest animals of its time, and one of the first big predators.',
-        },
-        {
-          tier: 'superstar',
-          title: 'Pikaia: a cousin of the vertebrates',
-          text: 'Pikaia gracilens, a small, ribbon-shaped swimmer with a stiff rod along its back and blocks of muscle, is an early chordate: not a vertebrate itself, but a member of the larger group that vertebrates belong to.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'Lace crabs',
-          text: 'Marrella splendens, nicknamed the “lace crab”, is the most common animal in the Burgess Shale, with tens of thousands of specimens: a small arthropod with long sweeping spines on its head.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'Trilobites',
-          text: 'Trilobites such as Olenoides serratus, preserved here with legs and antennae, and the large-eyed Ogygopsis klotzi, crawled the sea floor.',
-        },
-        { tier: 'pleb', title: 'Sponges', text: 'Sponges.' },
         { tier: 'pleb', title: 'Brachiopods', text: 'Brachiopods.' },
-        { tier: 'pleb', title: 'Priapulid worms', text: 'Priapulid worms.' },
-        { tier: 'pleb', title: 'Scaly slug-like molluscs', text: 'Scaly, slug-like early molluscs.' },
       ],
       keywords: ['burgess', 'walcott', 'yoho', 'british columbia', 'canada', 'cambrian', 'opabinia', 'hallucigenia', 'anomalocaris', 'pikaia'],
     }),
@@ -157,16 +119,6 @@ export const PALEOZOIC: DataSet = {
         { label: 'Setting', value: 'A cold sea near the South Pole, just after the ice age peaked' },
       ],
       invertebrates: [
-        {
-          tier: 'microceleb',
-          title: 'Sea scorpions',
-          text: 'Eurypterids, or sea scorpions, distant relatives of horseshoe crabs and spiders. Onychopterella augusti from the Soom Shale is preserved with its legs, gills and even muscles, showing how it swam with its paddle-shaped back legs.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'Trilobites',
-          text: 'Mucronaspis olini, a cold-water trilobite that spread worldwide during the end-Ordovician ice age.',
-        },
         { tier: 'pleb', title: 'Brachiopods', text: 'Brachiopods.' },
       ],
       keywords: ['soom', 'cederberg', 'south africa', 'ordovician', 'conodont', 'ice age', 'hirnantian'],
@@ -338,11 +290,6 @@ export const PALEOZOIC: DataSet = {
       ],
       invertebrates: [
         {
-          tier: 'superstar',
-          title: 'Pulmonoscorpius: a scorpion as long as your arm',
-          text: 'Pulmonoscorpius kirktonensis, at up to about 70 cm long, was one of the largest scorpions ever. It breathed air with book lungs, like living scorpions, and was one of the top predators on land when vertebrates were only just arriving there.',
-        },
-        {
           tier: 'microceleb',
           title: 'Sea scorpions',
           text: 'Hibbertopterus, a giant eurypterid that raked through mud with blade-like legs. Trackways show it could also walk across land.',
@@ -377,16 +324,6 @@ export const PALEOZOIC: DataSet = {
         { label: 'Famous find', value: 'Hylonomus, the oldest known reptile' },
       ],
       invertebrates: [
-        {
-          tier: 'superstar',
-          title: 'Arthropleura: the giant millipede',
-          text: 'Arthropleura was a millipede relative up to about 2.6 m long, the largest land invertebrate ever. Its wide trackways cross the Joggins rocks. Rich oxygen in the Carboniferous air may have helped arthropods grow so big.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'The first land snails',
-          text: 'Tiny snails such as Dendropupa vetusta, found by Dawson inside the fossil tree stumps, are among the oldest known snails to live on land.',
-        },
         { tier: 'pleb', title: 'Millipedes', text: 'Millipedes.' },
         { tier: 'pleb', title: 'Freshwater clams', text: 'Freshwater clams.' },
       ],
@@ -416,17 +353,6 @@ export const PALEOZOIC: DataSet = {
         { label: 'Famous find', value: 'The Tully monster, Illinois’s state fossil' },
       ],
       invertebrates: [
-        {
-          tier: 'microceleb',
-          title: 'The Tully monster',
-          text: 'Tullimonstrum gregarium, found by Francis Tully in 1955, was a soft-bodied swimmer with eyes on a crossbar and a long proboscis ending in toothed jaws. What it was is still debated: some have argued it was a vertebrate, but most recent studies suggest an invertebrate.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'Horseshoe crabs',
-          text: 'Euproops danae, a small, spiny horseshoe crab, is a common Mazon Creek fossil. Horseshoe crabs have barely changed in shape in 300 million years.',
-        },
-        { tier: 'pleb', title: 'Jellyfish', text: 'Jellyfish.' },
         { tier: 'pleb', title: 'Shrimp', text: 'Shrimp.' },
         { tier: 'pleb', title: 'Insects', text: 'Insects.' },
       ],
@@ -456,11 +382,6 @@ export const PALEOZOIC: DataSet = {
         { label: 'Insects described by', value: 'Charles Brongniart, 1880s–1890s' },
       ],
       invertebrates: [
-        {
-          tier: 'superstar',
-          title: 'Meganeura: the giant griffinfly',
-          text: 'Meganeura monyi had a wingspan of about 70 cm, one of the largest insects that ever lived. It was a griffinfly, an early relative of dragonflies, and hunted other insects on the wing. Its size may have been possible because the air then held more oxygen than today.',
-        },
         {
           tier: 'microceleb',
           title: 'Six-winged insects',
