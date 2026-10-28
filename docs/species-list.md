@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-576 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+577 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -217,6 +217,7 @@
 | 127 Ma | *Ceratosuchops inferodios* | Ceratosuchops | Baryonychines | Wessex Formation |
 | 127 Ma | *Riparovenator milnerae* | Riparovenator | Baryonychines | Wessex Formation |
 | 127 Ma | *Camarillasaurus cirugedae* | Camarillasaurus | Spinosaurines | Camarillas Formation |
+| 127 Ma | *Invictibellatrix amberina* | Invictibellatrix | Megaraptorans | Wessex Formation |
 | 126 Ma | *Concavenator corcovatus* | Concavenator | Allosaurs and relatives | Las Hoyas (La Huérguina Formation) |
 | 126 Ma | *Pelecanimimus polyodon* | Pelecanimimus | Ostrich dinosaurs | Las Hoyas (La Huérguina Formation) |
 | 126 Ma | *Iguanodon bernissartensis* | Iguanodon | Iguanodonts | Sainte-Barbe Clays (Bernissart) |
