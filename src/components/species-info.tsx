@@ -6,7 +6,7 @@ import { PointIcon } from '@/components/point-icon';
 import type { HistoryEvent } from '@/data/events';
 import type { Species } from '@/data/life';
 import { SpeciesRow } from '@/components/clade-info';
-import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf, speciesById } from '@/lib/life';
+import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf, speciesById, trackwaysOf } from '@/lib/life';
 import { rangeOf } from '@/lib/ranges';
 import { timeLabel } from '@/lib/time';
 
@@ -29,7 +29,10 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
   const family = familyOf(species);
   const relatives = relativesOf(species);
   const formations = species.formations.map(formationById).filter((f): f is HistoryEvent => f !== undefined);
-  const events = (species.events ?? []).map(eventById).filter((e): e is HistoryEvent => e !== undefined);
+  // Events it is linked to, plus trackways it made (without repeats).
+  const events = [...(species.events ?? []).map(eventById), ...trackwaysOf(species.id)]
+    .filter((e): e is HistoryEvent => e !== undefined)
+    .filter((e, i, all) => all.findIndex((o) => o.id === e.id) === i);
   const range = rangeOf(species.id);
 
   return (

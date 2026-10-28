@@ -6,7 +6,9 @@ import { PointIcon } from '@/components/point-icon';
 import { SpeciesRow } from '@/components/clade-info';
 import { info } from '@/components/info-styles';
 import type { Clade, Species } from '@/data/life';
-import { familyOf, speciesAtEvent, speciesInFormation } from '@/lib/life';
+import { familyOf, speciesAtEvent, speciesById, speciesInFormation } from '@/lib/life';
+
+const CERTAINTY = { known: 'Trackmaker', likely: 'Likely trackmaker', possible: 'Possible trackmaker' } as const;
 
 type Props = {
   event: HistoryEvent;
@@ -72,11 +74,30 @@ export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpen
         </Text>
       ))}
 
-      {speciesAtEvent(event.id).length > 0 && (
+      {event.trackmakers && event.trackmakers.length > 0 && (
+        <>
+          <Text style={info.heading}>Who made the tracks</Text>
+          <View style={info.list}>
+            {event.trackmakers.map((t) => {
+              const s = speciesById(t.id);
+              return s ? (
+                <View key={t.id}>
+                  <SpeciesRow species={s} onPress={() => onOpenSpecies(t.id)} />
+                  <Text style={[info.rowNote, styles.trackNote]}>
+                    {CERTAINTY[t.certainty]}. {t.note}
+                  </Text>
+                </View>
+              ) : null;
+            })}
+          </View>
+        </>
+      )}
+
+      {speciesAtEvent(event.id).filter((s) => !event.trackmakers?.some((t) => t.id === s.id)).length > 0 && (
         <>
           <Text style={info.heading}>Who was there</Text>
           <View style={info.list}>
-            {speciesAtEvent(event.id).map((s) => (
+            {speciesAtEvent(event.id).filter((s) => !event.trackmakers?.some((t) => t.id === s.id)).map((s) => (
               <SpeciesRow key={s.id} species={s} onPress={() => onOpenSpecies(s.id)} />
             ))}
           </View>
@@ -158,6 +179,11 @@ function TierNotes({ heading, notes }: { heading: string; notes?: InvertebrateNo
 }
 
 const styles = StyleSheet.create({
+  trackNote: {
+    paddingHorizontal: 14,
+    paddingBottom: 10,
+    marginTop: -6,
+  },
   wrap: {
     width: '100%',
     maxWidth: 720,

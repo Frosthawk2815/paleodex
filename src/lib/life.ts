@@ -37,6 +37,9 @@ export const speciesAtEvent = (eventId: string) => SPECIES.filter((s) => s.event
 
 export const eventById = (id: string) => EVENTS.find((e) => e.id === id);
 
+// Trackways a species is known or thought to have made.
+export const trackwaysOf = (speciesId: string) => EVENTS.filter((e) => e.trackmakers?.some((t) => t.id === speciesId));
+
 // The family a species is listed under in a formation (the nearest clade marked as a family).
 export function familyOf(s: Species): Clade | undefined {
   const path = cladePath(s.clade);

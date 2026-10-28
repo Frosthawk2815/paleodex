@@ -32,6 +32,9 @@ export type EventPoint = {
 //   pleb        just a mention that they were there
 export type InvertebrateNote = { tier: 'superstar' | 'microceleb' | 'pleb'; title: string; text: string };
 
+// Who made a trackway, and how sure scientists are.
+export type Trackmaker = { id: string; certainty: 'known' | 'likely' | 'possible'; note: string };
+
 export type HistoryEvent = {
   id: string;
   kind: string;
@@ -45,6 +48,8 @@ export type HistoryEvent = {
   // Very species-rich vertebrate groups (bats, rodents and the like), noted in the same three
   // tiers as invertebrates rather than given species entries.
   groupNotes?: InvertebrateNote[];
+  // For trackways: the species that made the prints, if known.
+  trackmakers?: Trackmaker[];
   // Extra words the search should match.
   keywords: string[];
 };
@@ -86,8 +91,10 @@ const BASE_EVENTS: HistoryEvent[] = [
       { label: 'On the surface', value: '21 hours 36 minutes, about 2½ hours of it outside' },
       { label: 'Samples returned', value: '21.5 kg of lunar rock and soil' },
       { label: 'Splashdown', value: '24 July 1969, Pacific Ocean' },
+      { label: 'Footprints', value: 'Laid 21 July 1969; with no wind or rain on the Moon, they should last for millions of years unless disturbed' },
     ],
-    keywords: ['moon landing', 'apollo', 'armstrong', 'aldrin', 'collins', 'tranquility', 'tranquillity', 'eagle', 'nasa', 'anthropocene'],
+    trackmakers: [{ id: 'homo-sapiens', certainty: 'known', note: 'Neil Armstrong and Buzz Aldrin left the first footprints on another world.' }],
+    keywords: ['moon landing', 'apollo', 'armstrong', 'aldrin', 'collins', 'tranquility', 'tranquillity', 'eagle', 'nasa', 'anthropocene', 'footprints', 'trackway'],
   },
   {
     id: 'hell-creek',

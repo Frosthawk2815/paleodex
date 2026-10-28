@@ -15,13 +15,21 @@ export type PointIconKind =
   | 'forest'
   | 'ash'
   | 'tar'
-  | 'pickaxe';
+  | 'pickaxe'
+  | 'track-flag'
+  | 'human-track-flag';
 
 // Where the foot of each flagpole is in the 24×24 box, so it can stand on the spot.
-export const FLAG_FOOT: Partial<Record<PointIconKind, [number, number]>> = { flag: [12, 19], 'us-flag': [7, 22], skull: [7, 22] };
+export const FLAG_FOOT: Partial<Record<PointIconKind, [number, number]>> = {
+  flag: [12, 19],
+  'us-flag': [7, 22],
+  skull: [7, 22],
+  'track-flag': [7, 22],
+  'human-track-flag': [7, 22],
+};
 
 // Badge artwork drawn in a 24×24 box centred on (12, 12).
-function Art({ kind }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag' | 'skull'> }) {
+function Art({ kind }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag' | 'skull' | 'track-flag' | 'human-track-flag'> }) {
   if (kind === 'swamp') {
     // A lush, Everglades-like swamp: still water, reeds and trees.
     return (
@@ -219,6 +227,34 @@ function SkullFlag() {
   );
 }
 
+// A sand-coloured flag with a footprint: a known fossil trackway. Three-toed for dinosaurs and other
+// animals, a human foot for hominin tracks.
+function TrackFlag({ human }: { human: boolean }) {
+  return (
+    <G>
+      <Circle cx={7} cy={22} r={1.6} fill="#FFFFFF" />
+      <Line x1={7} y1={22} x2={7} y2={1.5} stroke="#E6E6E6" strokeWidth={1.3} strokeLinecap="round" />
+      <Path d="M7 2.5 L22 2.5 L19.5 7.75 L22 13 L7 13 Z" fill="#E9D7A8" stroke="#FFFFFF" strokeWidth={0.6} />
+      {human ? (
+        <G fill="#6B4A2B">
+          <Ellipse cx={13.2} cy={9.3} rx={1.9} ry={3} />
+          <Circle cx={12.1} cy={5.2} r={0.75} />
+          <Circle cx={13.5} cy={4.9} r={0.6} />
+          <Circle cx={14.6} cy={5.3} r={0.5} />
+          <Circle cx={15.3} cy={6.0} r={0.45} />
+        </G>
+      ) : (
+        <G stroke="#6B4A2B" strokeLinecap="round" fill="none">
+          <Path d="M13.6 10.6 L10.6 5.2" strokeWidth={1.4} />
+          <Path d="M13.6 10.6 L13.6 4" strokeWidth={1.5} />
+          <Path d="M13.6 10.6 L16.6 5.2" strokeWidth={1.4} />
+          <Ellipse cx={13.6} cy={10.9} rx={1.7} ry={1.2} fill="#6B4A2B" stroke="none" />
+        </G>
+      )}
+    </G>
+  );
+}
+
 type Props = { kind: PointIconKind; x: number; y: number; size: number; color?: string };
 
 // A marker icon to place inside an existing <Svg> (e.g. on the globe), centred on (x, y).
@@ -234,6 +270,8 @@ export function PointIconShape({ kind, x, y, size, color = '#FFD54A' }: Props) {
         <UsFlag />
       ) : kind === 'skull' ? (
         <SkullFlag />
+      ) : kind === 'track-flag' || kind === 'human-track-flag' ? (
+        <TrackFlag human={kind === 'human-track-flag'} />
       ) : (
         <G>
           <Defs>
