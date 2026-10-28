@@ -22,6 +22,7 @@ export const TREE_1: DataSet = {
       summary: [
         'Upland river plains between the rising Rocky Mountains and the Western Interior Seaway, with a seasonal, fairly dry climate and volcanoes to the west.',
         'In 1978 Jack Horner and Bob Makela found nests of baby duck-billed dinosaurs at “Egg Mountain” near Choteau, the first evidence that some dinosaurs cared for their young in colonies. The same rocks hold horned dinosaurs, tyrannosaurs and small feathered theropods.',
+        'Egg clutches at Egg Mountain were first credited to the small plant-eater Orodromeus. Embryos inside them later showed they were laid by a troodontid, and the Orodromeus bones nearby may be its prey.',
       ],
       facts: [
         { label: 'Age', value: 'About 76 million years ago' },
@@ -48,6 +49,7 @@ export const TREE_1: DataSet = {
       summary: [
         'Phosphate beds from a warm, shallow sea along the southern shore of the Tethys, part of the same belt of phosphate deposits that runs to Morocco. Mining here since the 1930s has turned up fish, sharks and marine reptiles.',
         'In 1943 a railway worker found an unusually long, hollow bone, later recognised as the neck vertebra of a giant azhdarchid pterosaur, Arambourgiania, one of the first giant pterosaurs known.',
+        'Sharks are the commonest fossils. Marine reptiles include the mosasaurs Prognathodon, Globidens (with crushing teeth for shellfish) and Halisaurus, along with long-necked plesiosaurs, sea turtles and crocodile relatives, most known from scattered bones and teeth.',
       ],
       facts: [
         { label: 'Age', value: 'About 70 million years ago' },
