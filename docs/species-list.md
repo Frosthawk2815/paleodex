@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-628 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+671 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -16,6 +16,7 @@
 | Age | Species | Common name | Family / group | Where |
 |---|---|---|---|---|
 | 455 Ma | *Astraspis desiderata* | Astraspis | Armoured jawless fish | Harding Sandstone |
+| 455 Ma | *Eriptychius americanus* | Eriptychius | Armoured jawless fish | Harding Sandstone |
 | 444 Ma | *Promissum pulchrum* | Promissum | Conodonts | Soom Shale |
 
 ## Silurian
@@ -34,14 +35,28 @@
 | 380 Ma | *Gogonasus andrewsae* | Gogonasus | Fishapods and the first tetrapods | Gogo Formation |
 | 380 Ma | *Griphognathus whitei* | Griphognathus | Lungfish | Gogo Formation |
 | 380 Ma | *Onychodus jandemarrai* | Onychodus | Lobe-finned fish | Gogo Formation |
+| 380 Ma | *Escuminaspis laticeps* | Escuminaspis | Osteostracans | Escuminac Formation (Miguasha) |
+| 380 Ma | *Bothriolepis canadensis* | Bothriolepis | Placoderms | Escuminac Formation (Miguasha) |
+| 380 Ma | *Incisoscutum ritchiei* | Incisoscutum | Placoderms | Gogo Formation |
+| 380 Ma | *Compagopiscis croucheri* | Compagopiscis | Placoderms | Gogo Formation |
+| 380 Ma | *Mimipiscis toombsi* | Mimipiscis | Ray-finned fish | Gogo Formation |
+| 380 Ma | *Moythomasia durgaringa* | Moythomasia | Ray-finned fish | Gogo Formation |
+| 380 Ma | *Eusthenopteron foordi* | Eusthenopteron | Fishapods and the first tetrapods | Escuminac Formation (Miguasha) |
+| 380 Ma | *Elpistostege watsoni* | Elpistostege | Fishapods and the first tetrapods | Escuminac Formation (Miguasha) |
+| 380 Ma | *Miguashaia bureaui* | Miguashaia | Coelacanths | Escuminac Formation (Miguasha) |
+| 380 Ma | *Chirodipterus australis* | Chirodipterus | Lungfish | Gogo Formation |
+| 380 Ma | *Scaumenacia curta* | Scaumenacia | Lungfish | Escuminac Formation (Miguasha) |
 | 375 Ma | *Tiktaalik roseae* | Tiktaalik | Fishapods and the first tetrapods | Fram Formation |
+| 375 Ma | *Laccognathus embryi* | Laccognathus | Fishapods and the first tetrapods | Fram Formation |
 | 364 Ma | *Acanthostega gunnari* | Acanthostega | Fishapods and the first tetrapods | Britta Dal Formation |
 | 364 Ma | *Ichthyostega stensioi* | Ichthyostega | Fishapods and the first tetrapods | Britta Dal Formation |
 | 364 Ma | *Hynerpeton bassetti* | Hynerpeton | Fishapods and the first tetrapods | Catskill Formation (Red Hill) |
 | 364 Ma | *Hyneria lindae* | Hyneria | Fishapods and the first tetrapods | Catskill Formation (Red Hill) |
 | 364 Ma | *Groenlandaspis pennsylvanica* | Groenlandaspis | Placoderms | Catskill Formation (Red Hill) |
+| 364 Ma | *Densignathus rowei* | Densignathus | Fishapods and the first tetrapods | Catskill Formation (Red Hill) |
 | 360 Ma | *Dunkleosteus terrelli* | Dunkleosteus | Placoderms | Cleveland Shale |
 | 360 Ma | *Cladoselache fyleri* | Cladoselache | Early sharks | Cleveland Shale |
+| 360 Ma | *Titanichthys agassizii* | Titanichthys | Placoderms | Cleveland Shale |
 
 ## Carboniferous
 
@@ -50,10 +65,15 @@
 | 335 Ma | *Westlothiana lizziae* | Westlothiana | Early amniote relatives | East Kirkton Limestone |
 | 335 Ma | *Balanerpeton woodi* | Balanerpeton | Temnospondyls | East Kirkton Limestone |
 | 335 Ma | *Eucritta melanolimnetes* | Eucritta | Fishapods and the first tetrapods | East Kirkton Limestone |
+| 318 Ma | *Falcatus falcatus* | Falcatus | Symmoriiform sharks | Bear Gulch Limestone |
+| 318 Ma | *Harpagofututor volsellorhinus* | Harpagofututor | Ratfish and relatives | Bear Gulch Limestone |
+| 318 Ma | *Echinochimaera meltoni* | Echinochimaera | Ratfish and relatives | Bear Gulch Limestone |
+| 318 Ma | *Allenypterus montanus* | Allenypterus | Coelacanths | Bear Gulch Limestone |
 | 316 Ma | *Hylonomus lyelli* | Hylonomus | Early reptiles | Joggins Formation |
 | 316 Ma | *Dendrerpeton acadianum* | Dendrerpeton | Temnospondyls | Joggins Formation |
 | 309 Ma | *Amphibamus grandiceps* | Amphibamus | Temnospondyls | Mazon Creek (Francis Creek Shale) |
 | 309 Ma | *Bandringa rayi* | Bandringa | Sharks and rays | Mazon Creek (Francis Creek Shale) |
+| 309 Ma | *Rhabdoderma exiguum* | Rhabdoderma | Coelacanths | Mazon Creek (Francis Creek Shale) |
 
 ## Permian
 
@@ -63,6 +83,7 @@
 | 285 Ma | *Edaphosaurus pogonias* | Edaphosaurus | Sail-backed plant-eaters | Texas Red Beds |
 | 285 Ma | *Eryops megacephalus* | Eryops | Temnospondyls | Texas Red Beds |
 | 285 Ma | *Diplocaulus magnicornis* | Diplocaulus | Lepospondyls | Texas Red Beds |
+| 285 Ma | *Gnathorhiza serrata* | Gnathorhiza | Lungfish | Texas Red Beds |
 | 279 Ma | *Mesosaurus tenuidens* | Mesosaurus | Mesosaurs | Irati Formation |
 | 279 Ma | *Stereosternum tumidum* | Stereosternum | Mesosaurs | Irati Formation |
 | 275 Ma | *Helicoprion davisii* | Helicoprion | Buzz-saw sharks | Phosphoria Formation |
@@ -71,6 +92,8 @@
 | 263 Ma | *Bradysaurus baini* | Bradysaurus | Pareiasaurs | Tapinocephalus Assemblage Zone, Karoo |
 | 258 Ma | *Coelurosauravus jaekeli* | Coelurosauravus | Gliding reptiles | Kupferschiefer |
 | 258 Ma | *Protorosaurus speneri* | Protorosaurus | Reptiles | Kupferschiefer |
+| 258 Ma | *Palaeoniscum freieslebeni* | Palaeoniscum | Ray-finned fish | Kupferschiefer |
+| 258 Ma | *Coelacanthus granulatus* | Coelacanthus | Coelacanths | Kupferschiefer |
 | 256 Ma | *Gorgonops torvus* | Gorgonops | Gorgonopsians | Cistecephalus Assemblage Zone, Karoo |
 | 256 Ma | *Diictodon feliceps* | Diictodon | Dicynodonts | Cistecephalus Assemblage Zone, Karoo |
 | 256 Ma | *Cistecephalus microrhinus* | Cistecephalus | Dicynodonts | Cistecephalus Assemblage Zone, Karoo |
@@ -93,6 +116,8 @@
 | 242 Ma | *Ticinosuchus ferox* | Ticinosuchus | Rauisuchians | Monte San Giorgio (Besano Formation) |
 | 242 Ma | *Askeptosaurus italicus* | Askeptosaurus | Reptiles | Monte San Giorgio (Besano Formation) |
 | 242 Ma | *Serpianosaurus mirigiolensis* | Serpianosaurus | Plesiosaurs and relatives | Monte San Giorgio (Besano Formation) |
+| 242 Ma | *Saurichthys curionii* | Saurichthys | Saurichthyids | Monte San Giorgio (Besano Formation) |
+| 242 Ma | *Birgeria stensioei* | Birgeria | Ray-finned fish | Monte San Giorgio (Besano Formation) |
 | 230 Ma | *Eoraptor lunensis* | Eoraptor | Sauropods and relatives | Ischigualasto Formation |
 | 230 Ma | *Herrerasaurus ischigualastensis* | Herrerasaurus | Herrerasaurs | Ischigualasto Formation |
 | 230 Ma | *Eodromaeus murphi* | Eodromaeus | Theropods | Ischigualasto Formation |
@@ -130,6 +155,9 @@
 | 182.5 Ma | *Stenopterygius quadriscissus* | Stenopterygius | Ichthyosaurs | Posidonia Shale |
 | 182.5 Ma | *Macrospondylus bollensis* | Macrospondylus | Sea crocodiles | Posidonia Shale |
 | 182.5 Ma | *Dorygnathus banthensis* | Dorygnathus | Rhamphorhynchids | Posidonia Shale |
+| 182.5 Ma | *Hybodus hauffianus* | Hybodus | Hybodont sharks | Posidonia Shale |
+| 182.5 Ma | *Lepidotes elvensis* | Lepidotes | Ray-finned fish | Posidonia Shale |
+| 182.5 Ma | *Pachycormus macropterus* | Pachycormus | Pachycormids | Posidonia Shale |
 | 166.5 Ma | *Proceratosaurus bradleyi* | Proceratosaurus | Tyrannosaurs | Great Oolite Group |
 | 166.5 Ma | *Megalosaurus bucklandii* | Megalosaurus | Megalosaurs and spinosaurs | Great Oolite Group |
 | 163 Ma | *Liopleurodon ferox* | Liopleurodon | Plesiosaurs and relatives | Oxford Clay Formation |
@@ -185,6 +213,7 @@
 | 150.8 Ma | *Anurognathus ammoni* | Anurognathus | Anurognathids | Solnhofen Limestone |
 | 150.8 Ma | *Ctenochasma elegans* | Ctenochasma | Comb-jawed pterosaurs | Solnhofen Limestone |
 | 150.8 Ma | *Germanodactylus cristatus* | Germanodactylus | Germanodactylids | Solnhofen Limestone |
+| 150.8 Ma | *Leptolepides sprattiformis* | Leptolepides | Ray-finned fish | Solnhofen Limestone |
 | 150 Ma | *Lusotitan atalaiensis* | Lusotitan | Brachiosaurs and relatives | Lourinhã Formation |
 | 150 Ma | *Torvosaurus gurneyi* | Torvosaurus | Megalosaurs and spinosaurs | Lourinhã Formation |
 | 150 Ma | *Lourinhanosaurus antunesi* | Lourinhanosaurus | Allosaurs and relatives | Lourinhã Formation |
@@ -284,6 +313,9 @@
 | 111 Ma | *Santanaraptor placidus* | Santanaraptor | Coelurosaurs | Romualdo Formation (Santana Group) |
 | 111 Ma | *Mirischia asymmetrica* | Mirischia | Compsognathids | Romualdo Formation (Santana Group) |
 | 111 Ma | *Angaturama limai* | Angaturama | Spinosaurines | Romualdo Formation (Santana Group) |
+| 111 Ma | *Rhacolepis buccalis* | Rhacolepis | Ray-finned fish | Romualdo Formation (Santana Group) |
+| 111 Ma | *Calamopleurus cylindricus* | Calamopleurus | Bowfins | Romualdo Formation (Santana Group) |
+| 111 Ma | *Tharrhias araripis* | Tharrhias | Milkfish relatives | Romualdo Formation (Santana Group) |
 | 103 Ma | *Kronosaurus queenslandicus* | Kronosaurus | Plesiosaurs and relatives | Toolebuc Formation |
 | 103 Ma | *Platypterygius australis* | Platypterygius | Ichthyosaurs | Toolebuc Formation |
 | 101 Ma | *Patagotitan mayorum* | Patagotitan | Titanosaurs | Cerro Barcino Formation |
@@ -363,6 +395,11 @@
 | 85 Ma | *Notosuchus terrestris* | Notosuchus | Notosuchians | Bajo de la Carpa Formation |
 | 85 Ma | *Dinilysia patagonica* | Dinilysia | Lizards and snakes | Bajo de la Carpa Formation |
 | 85 Ma | *Viavenator exxoni* | Viavenator | Abelisaurids | Bajo de la Carpa Formation |
+| 85 Ma | *Squalicorax falcatus* | Squalicorax | Mackerel sharks | Niobrara Formation (Smoky Hill Chalk) |
+| 85 Ma | *Ptychodus mortoni* | Ptychodus | Sharks and rays | Niobrara Formation (Smoky Hill Chalk) |
+| 85 Ma | *Ichthyodectes ctenodon* | Ichthyodectes | Ichthyodectids | Niobrara Formation (Smoky Hill Chalk) |
+| 85 Ma | *Pachyrhizodus caninus* | Pachyrhizodus | Ray-finned fish | Niobrara Formation (Smoky Hill Chalk) |
+| 85 Ma | *Enchodus petrosus* | Enchodus | Lizardfish relatives | Niobrara Formation (Smoky Hill Chalk) |
 | 82 Ma | *Aerosteon riocoloradensis* | Aerosteon | Megaraptorids | Anacleto Formation |
 | 82 Ma | *Aucasaurus garridoi* | Aucasaurus | Abelisaurids | Anacleto Formation |
 | 82 Ma | *Abelisaurus comahuensis* | Abelisaurus | Abelisaurids | Anacleto Formation |
@@ -577,6 +614,9 @@
 | 52 Ma | *Borealosuchus wilsoni* | Borealosuchus wilsoni | Crocodylians | Green River Formation (Fossil Butte) |
 | 52 Ma | *Phareodus encaustus* | Phareodus | Bonytongues | Green River Formation (Fossil Butte) |
 | 52 Ma | *Mioplosus labracoides* | Mioplosus | Perch-like fish | Green River Formation (Fossil Butte) |
+| 52 Ma | *Crossopholis magnicaudatus* | Crossopholis | Sturgeons and paddlefish | Green River Formation (Fossil Butte) |
+| 52 Ma | *Notogoneus osculus* | Notogoneus | Milkfish relatives | Green River Formation (Fossil Butte) |
+| 52 Ma | *Priscacara serrata* | Priscacara | Perch-like fish | Green River Formation (Fossil Butte) |
 | 48 Ma | *Pakicetus inachus* | Pakicetus | Whales | Kuldana Formation |
 | 48 Ma | *Ambulocetus natans* | Ambulocetus | Whales | Kuldana Formation |
 | 47.5 Ma | *Darwinius masillae* | Darwinius (“Ida”) | Adapiforms | Messel Pit |
@@ -587,6 +627,8 @@
 | 47.5 Ma | *Kopidodon macrognathus* | Kopidodon | Placental relatives | Messel Pit |
 | 47.5 Ma | *Messelornis cristata* | Messelornis | Birds | Messel Pit |
 | 47.5 Ma | *Diplocynodon darwini* | Diplocynodon | Crocodylians | Messel Pit |
+| 47.5 Ma | *Atractosteus strausi* | Messel gar | Gars | Messel Pit |
+| 47.5 Ma | *Cyclurus kehreri* | Messel bowfin | Bowfins | Messel Pit |
 | 42 Ma | *Andrewsarchus mongoliensis* | Andrewsarchus | Placental relatives | Irdin Manha Formation |
 | 42 Ma | *Gobiatherium mirificum* | Gobiatherium | Uintatheres | Irdin Manha Formation |
 | 39 Ma | *Basilosaurus isis* | Basilosaurus | Whales | Wadi Al-Hitan (Valley of the Whales) |
@@ -632,6 +674,7 @@
 | 9 Ma | *Acrophoca longirostris* | Acrophoca | Seals | Pisco Formation |
 | 9 Ma | *Spheniscus urbinai* | Urbina’s penguin | Penguins | Pisco Formation |
 | 9 Ma | *Odobenocetops peruvianus* | Odobenocetops | Whales | Pisco Formation |
+| 9 Ma | *Cosmopolitodus hastalis* | Broad-toothed mako | Mackerel sharks | Pisco Formation |
 | 6 Ma | *Thylacosmilus atrox* | Thylacosmilus | Sparassodonts | Andalhuala Formation |
 | 6 Ma | *Argentavis magnificens* | Argentavis | Teratorns | Andalhuala Formation |
 | 6 Ma | *Andalgalornis steulleti* | Andalgalornis | Terror birds | Andalhuala Formation |

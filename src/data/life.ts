@@ -42,6 +42,7 @@ export type Species = {
 const BASE_CLADES: Clade[] = [
   {
     id: 'vertebrata',
+    parent: 'chordata',
     name: 'Vertebrata',
     common: 'Vertebrates',
     description: 'Animals with a backbone: fish, amphibians, reptiles, birds and mammals.',
