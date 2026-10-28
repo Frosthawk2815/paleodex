@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-747 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+790 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -151,6 +151,8 @@
 | 230 Ma | *Proterochampsa barrionuevoi* | Proterochampsa | Reptiles | Ischigualasto Formation |
 | 230 Ma | *Venaticosuchus rusconii* | Venaticosuchus | Ornithosuchids | Ischigualasto Formation |
 | 230 Ma | *Aetosauroides scagliai* | Aetosauroides | Aetosaurs | Ischigualasto Formation |
+| 230 Ma | *Sanjuansaurus gordilloi* | Sanjuansaurus | Herrerasaurs | Ischigualasto Formation |
+| 230 Ma | *Panphagia protos* | Panphagia | Sauropods and relatives | Ischigualasto Formation |
 | 212 Ma | *Coelophysis bauri* | Coelophysis | Coelophysids | Chinle Formation |
 | 212 Ma | *Postosuchus kirkpatricki* | Postosuchus | Rauisuchians | Chinle Formation |
 | 212 Ma | *Placerias hesternus* | Placerias | Dicynodonts | Chinle Formation |
@@ -170,6 +172,12 @@
 
 | Age | Species | Common name | Family / group | Where |
 |---|---|---|---|---|
+| 200 Ma | *Heterodontosaurus tucki* | Heterodontosaurus | Heterodontosaurs | Elliot Formation |
+| 200 Ma | *Lesothosaurus diagnosticus* | Lesothosaurus | Ornithischians | Elliot Formation |
+| 200 Ma | *Massospondylus carinatus* | Massospondylus | Sauropods and relatives | Elliot Formation |
+| 200 Ma | *Aardonyx celestae* | Aardonyx | Sauropods and relatives | Elliot Formation |
+| 200 Ma | *Antetonitrus ingenipes* | Antetonitrus | Sauropods and relatives | Elliot Formation |
+| 200 Ma | *Dracovenator regenti* | Dracovenator | Dilophosaurs | Elliot Formation |
 | 196 Ma | *Ichthyosaurus communis* | Ichthyosaurus | Ichthyosaurs | Blue Lias and Charmouth Mudstone (Jurassic Coast) |
 | 196 Ma | *Plesiosaurus dolichodeirus* | Plesiosaurus | Plesiosaurs and relatives | Blue Lias and Charmouth Mudstone (Jurassic Coast) |
 | 196 Ma | *Dimorphodon macronyx* | Dimorphodon | Dimorphodontids | Blue Lias and Charmouth Mudstone (Jurassic Coast) |
@@ -198,6 +206,10 @@
 | 182.5 Ma | *Hauffiosaurus zanoni* | Hauffiosaurus | Plesiosaurs and relatives | Posidonia Shale |
 | 182.5 Ma | *Pelagosaurus typus* | Pelagosaurus | Sea crocodiles | Posidonia Shale |
 | 182.5 Ma | *Campylognathoides liasicus* | Campylognathoides | Pterosaurs | Posidonia Shale |
+| 168 Ma | *Shunosaurus lii* | Shunosaurus | Sauropods and relatives | Lower Shaximiao Formation (Dashanpu) |
+| 168 Ma | *Omeisaurus tianfuensis* | Omeisaurus | Mamenchisaurs | Lower Shaximiao Formation (Dashanpu) |
+| 168 Ma | *Huayangosaurus taibaii* | Huayangosaurus | Stegosaurs | Lower Shaximiao Formation (Dashanpu) |
+| 168 Ma | *Gasosaurus constructus* | Gasosaurus | Theropods | Lower Shaximiao Formation (Dashanpu) |
 | 166.5 Ma | *Proceratosaurus bradleyi* | Proceratosaurus | Tyrannosaurs | Great Oolite Group |
 | 166.5 Ma | *Megalosaurus bucklandii* | Megalosaurus | Megalosaurs and spinosaurs | Great Oolite Group |
 | 163 Ma | *Liopleurodon ferox* | Liopleurodon | Plesiosaurs and relatives | Oxford Clay Formation |
@@ -208,6 +220,8 @@
 | 163 Ma | *Peloneustes philarchus* | Peloneustes | Plesiosaurs and relatives | Oxford Clay Formation |
 | 163 Ma | *Simolestes vorax* | Simolestes | Plesiosaurs and relatives | Oxford Clay Formation |
 | 163 Ma | *Muraenosaurus leedsii* | Muraenosaurus | Plesiosaurs and relatives | Oxford Clay Formation |
+| 163 Ma | *Loricatosaurus priscus* | Loricatosaurus | Stegosaurs | Oxford Clay Formation |
+| 163 Ma | *Eustreptospondylus oxoniensis* | Eustreptospondylus | Megalosaurs and spinosaurs | Oxford Clay Formation |
 | 160 Ma | *Guanlong wucaii* | Guanlong | Tyrannosaurs | Shishugou Formation |
 | 160 Ma | *Limusaurus inextricabilis* | Limusaurus | Ceratosaurs | Shishugou Formation |
 | 160 Ma | *Mamenchisaurus sinocanadorum* | Mamenchisaurus | Mamenchisaurs | Shishugou Formation |
@@ -221,6 +235,11 @@
 | 160 Ma | *Aorun zhaoi* | Aorun | Coelurosaurs | Shishugou Formation |
 | 160 Ma | *Wukongopterus lii* | Wukongopterus | Wukongopterids | Tiaojishan Formation |
 | 160 Ma | *Kunpengopterus sinensis* | Kunpengopterus | Wukongopterids | Tiaojishan Formation |
+| 160 Ma | *Tianyulong confuciusi* | Tianyulong | Heterodontosaurs | Tiaojishan Formation |
+| 160 Ma | *Yinlong downsi* | Yinlong | Ornithischians | Shishugou Formation |
+| 160 Ma | *Jiangjunosaurus junggarensis* | Jiangjunosaurus | Stegosaurs | Shishugou Formation |
+| 160 Ma | *Xiaotingia zhengi* | Xiaotingia | Anchiornithids | Tiaojishan Formation |
+| 160 Ma | *Eosinopteryx brevipenna* | Eosinopteryx | Anchiornithids | Tiaojishan Formation |
 | 154 Ma | *Europasaurus holgeri* | Europasaurus | Brachiosaurs and relatives | Langenberg Quarry (Süntel Formation) |
 | 152 Ma | *Giraffatitan brancai* | Giraffatitan | Brachiosaurs and relatives | Tendaguru Formation |
 | 152 Ma | *Kentrosaurus aethiopicus* | Kentrosaurus | Stegosaurs | Tendaguru Formation |
@@ -247,6 +266,10 @@
 | 151 Ma | *Gargoyleosaurus parkpinorum* | Gargoyleosaurus | Armoured dinosaurs | Morrison Formation |
 | 151 Ma | *Fruitadens haagarorum* | Fruitadens | Heterodontosaurs | Morrison Formation |
 | 151 Ma | *Docodon victor* | Docodon | Docodonts | Morrison Formation |
+| 151 Ma | *Allosaurus jimmadseni* | Allosaurus jimmadseni | Allosaurs and relatives | Morrison Formation |
+| 151 Ma | *Allosaurus anax* | Allosaurus anax | Allosaurs and relatives | Morrison Formation |
+| 151 Ma | *Marshosaurus bicentesimus* | Marshosaurus | Megalosaurs and spinosaurs | Morrison Formation |
+| 151 Ma | *Stokesosaurus clevelandi* | Stokesosaurus | Tyrannosaurs | Morrison Formation |
 | 150.8 Ma | *Archaeopteryx lithographica* | Archaeopteryx | Archaeopteryx and kin | Solnhofen Limestone |
 | 150.8 Ma | *Compsognathus longipes* | Compsognathus | Compsognathids | Solnhofen Limestone |
 | 150.8 Ma | *Rhamphorhynchus muensteri* | Rhamphorhynchus | Rhamphorhynchids | Solnhofen Limestone |
@@ -269,6 +292,8 @@
 | 150 Ma | *Dinheirosaurus lourinhanensis* | Dinheirosaurus | Diplodocids | Lourinhã Formation |
 | 150 Ma | *Zby atlanticus* | Zby | Sauropods and relatives | Lourinhã Formation |
 | 150 Ma | *Draconyx loureiroi* | Draconyx | Iguanodonts | Lourinhã Formation |
+| 150 Ma | *Dacentrurus armatus* | Dacentrurus | Stegosaurs | Lourinhã Formation |
+| 150 Ma | *Torvosaurus gurneyi* | Torvosaurus gurneyi | Megalosaurs and spinosaurs | Lourinhã Formation |
 | 148 Ma | *Pliosaurus funkei* | Pliosaurus funkei | Plesiosaurs and relatives | Agardhfjellet Formation (Slottsmøya) |
 | 148 Ma | *Palvennia hoybergeti* | Palvennia | Ichthyosaurs | Agardhfjellet Formation (Slottsmøya) |
 | 148 Ma | *Cryopterygius kristiansenae* | Cryopterygius | Ichthyosaurs | Agardhfjellet Formation (Slottsmøya) |
@@ -280,6 +305,7 @@
 | 132 Ma | *Utahraptor ostrommaysi* | Utahraptor | Raptors | Cedar Mountain Formation (Yellow Cat Member) |
 | 132 Ma | *Falcarius utahensis* | Falcarius | Therizinosaurs | Cedar Mountain Formation (Yellow Cat Member) |
 | 132 Ma | *Gastonia burgei* | Gastonia | Armoured dinosaurs | Cedar Mountain Formation (Yellow Cat Member) |
+| 132 Ma | *Cedarosaurus weiskopfae* | Cedarosaurus | Brachiosaurs and relatives | Cedar Mountain Formation (Yellow Cat Member) |
 | 129 Ma | *Baryonyx walkeri* | Baryonyx | Baryonychines | Weald Clay (Smokejacks Pit) |
 | 128 Ma | *Iberospinus natarioi* | Iberospinus | Spinosaurines | Papo Seco Formation |
 | 128 Ma | *Siamosaurus suteethorni* | Siamosaurus | Spinosaurids | Sao Khua Formation |
@@ -328,6 +354,12 @@
 | 124.6 Ma | *Jinzhousaurus yangi* | Jinzhousaurus | Iguanodonts | Yixian Formation |
 | 124.6 Ma | *Hyphalosaurus lingyuanensis* | Hyphalosaurus | Choristoderes | Yixian Formation |
 | 124.6 Ma | *Yabeinosaurus tenuis* | Yabeinosaurus | Lizards and snakes | Yixian Formation |
+| 124.6 Ma | *Liaoceratops yanzigouensis* | Liaoceratops | Ornithischians | Yixian Formation |
+| 124.6 Ma | *Jeholosaurus shangyuanensis* | Jeholosaurus | Thescelosaurids | Yixian Formation |
+| 124.6 Ma | *Sinocalliopteryx gigas* | Sinocalliopteryx | Compsognathids | Yixian Formation |
+| 124.6 Ma | *Huaxiagnathus orientalis* | Huaxiagnathus | Compsognathids | Yixian Formation |
+| 124.6 Ma | *Sinovenator changii* | Sinovenator | Troodontids | Yixian Formation |
+| 124.6 Ma | *Jianchangosaurus yixianensis* | Jianchangosaurus | Therizinosaurs | Yixian Formation |
 | 121 Ma | *Riojavenatrix lacustris* | Riojavenatrix | Baryonychines | Enciso Group |
 | 120 Ma | *Microraptor zhaoianus* | Microraptor | Raptors | Jiufotang Formation |
 | 120 Ma | *Jeholornis prima* | Jeholornis | Birds | Jiufotang Formation |
@@ -346,7 +378,7 @@
 | 115 Ma | *Ouranosaurus nigeriensis* | Ouranosaurus | Iguanodonts | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Suchomimus tenerensis* | Suchomimus | Baryonychines | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Nigersaurus taqueti* | Nigersaurus | Rebbachisaurs | Elrhaz Formation (Gadoufaoua) |
-| 115 Ma | *Kryptops palaios* | Kryptops | Ceratosaurs | Elrhaz Formation (Gadoufaoua) |
+| 115 Ma | *Kryptops palaios* | Kryptops | Abelisaurids | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Lurdusaurus arenatus* | Lurdusaurus | Iguanodonts | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Eocarcharia dinops* | Eocarcharia | Allosaurs and relatives | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Araripesuchus wegeneri* | Araripesuchus | Notosuchians | Elrhaz Formation (Gadoufaoua) |
@@ -356,6 +388,8 @@
 | 112 Ma | *Acrocanthosaurus atokensis* | Acrocanthosaurus | Allosaurs and relatives | Antlers Formation |
 | 112 Ma | *Sauroposeidon proteles* | Sauroposeidon | Brachiosaurs and relatives | Antlers Formation |
 | 112 Ma | *Microvenator celer* | Microvenator | Oviraptorosaurs | Cloverly Formation |
+| 112 Ma | *Aquilops americanus* | Aquilops | Ornithischians | Cloverly Formation |
+| 112 Ma | *Zephyrosaurus schaffi* | Zephyrosaurus | Thescelosaurids | Cloverly Formation |
 | 111 Ma | *Irritator challengeri* | Irritator | Spinosaurines | Romualdo Formation (Santana Group) |
 | 111 Ma | *Tropeognathus mesembrinus* | Tropeognathus | Anhanguerids | Romualdo Formation (Santana Group) |
 | 111 Ma | *Tapejara wellnhoferi* | Tapejara | Tapejarids | Romualdo Formation (Santana Group) |
@@ -380,7 +414,7 @@
 | 98 Ma | *Andesaurus delgadoi* | Andesaurus | Titanosaurs | Candeleros Formation |
 | 98 Ma | *Limaysaurus tessonei* | Limaysaurus | Rebbachisaurs | Candeleros Formation |
 | 98 Ma | *Buitreraptor gonzalezorum* | Buitreraptor | Raptors | Candeleros Formation |
-| 98 Ma | *Ekrixinatosaurus novasi* | Ekrixinatosaurus | Ceratosaurs | Candeleros Formation |
+| 98 Ma | *Ekrixinatosaurus novasi* | Ekrixinatosaurus | Abelisaurids | Candeleros Formation |
 | 98 Ma | *Najash rionegrina* | Najash | Lizards and snakes | Candeleros Formation |
 | 97 Ma | *Spinosaurus aegyptiacus* | Spinosaurus | Spinosaurines | Kem Kem Group; Bahariya Formation |
 | 97 Ma | *Carcharodontosaurus saharicus* | Carcharodontosaurus | Allosaurs and relatives | Kem Kem Group |
@@ -404,12 +438,12 @@
 | 96.5 Ma | *Eolambia caroljonesa* | Eolambia | Iguanodonts | Cedar Mountain Formation (Mussentuchit Member) |
 | 96 Ma | *Spinosaurus mirabilis* | Spinosaurus mirabilis | Spinosaurines | Farak Formation |
 | 95 Ma | *Kaprosuchus saharicus* | Kaprosuchus | Mahajangasuchids | Echkar Formation |
-| 95 Ma | *Rugops primus* | Rugops | Ceratosaurs | Echkar Formation |
+| 95 Ma | *Rugops primus* | Rugops | Abelisaurids | Echkar Formation |
 | 95 Ma | *Carcharodontosaurus iguidensis* | Carcharodontosaurus iguidensis | Allosaurs and relatives | Echkar Formation |
 | 95 Ma | *Argentinosaurus huinculensis* | Argentinosaurus | Titanosaurs | Huincul Formation |
 | 95 Ma | *Mapusaurus roseae* | Mapusaurus | Allosaurs and relatives | Huincul Formation |
 | 95 Ma | *Meraxes gigas* | Meraxes | Allosaurs and relatives | Huincul Formation |
-| 95 Ma | *Skorpiovenator bustingorryi* | Skorpiovenator | Ceratosaurs | Huincul Formation |
+| 95 Ma | *Skorpiovenator bustingorryi* | Skorpiovenator | Abelisaurids | Huincul Formation |
 | 95 Ma | *Laganosuchus thaumastos* | Laganosuchus | Archosaurs | Echkar Formation |
 | 95 Ma | *Ilokelesia aguadagrandensis* | Ilokelesia | Ceratosaurs | Huincul Formation |
 | 95 Ma | *Australovenator wintonensis* | Australovenator | Megaraptorids | Winton Formation |
@@ -417,10 +451,13 @@
 | 95 Ma | *Savannasaurus elliottorum* | Savannasaurus | Titanosaurs | Winton Formation |
 | 95 Ma | *Wintonotitan wattsi* | Wintonotitan | Sauropods and relatives | Winton Formation |
 | 95 Ma | *Isisfordia duncani* | Isisfordia | Archosaurs | Winton Formation |
+| 95 Ma | *Cathartesaura anaerobica* | Cathartesaura | Rebbachisaurs | Huincul Formation |
 | 92 Ma | *Gigantoraptor erlianensis* | Gigantoraptor | Caenagnathids | Iren Dabasu Formation |
 | 92 Ma | *Alectrosaurus olseni* | Alectrosaurus | Tyrannosaurs | Iren Dabasu Formation |
 | 92 Ma | *Archaeornithomimus asiaticus* | Archaeornithomimus | Ostrich dinosaurs | Iren Dabasu Formation |
 | 92 Ma | *Bactrosaurus johnsoni* | Bactrosaurus | Duck-billed dinosaurs | Iren Dabasu Formation |
+| 92 Ma | *Erliansaurus bellamanus* | Erliansaurus | Therizinosaurs | Iren Dabasu Formation |
+| 92 Ma | *Neimongosaurus yangi* | Neimongosaurus | Therizinosaurs | Iren Dabasu Formation |
 | 91 Ma | *Timurlengia euotica* | Timurlengia | Tyrannosaurs | Bissekty Formation |
 | 91 Ma | *Levnesovia transoxiana* | Levnesovia | Iguanodonts | Bissekty Formation |
 | 91 Ma | *Turanoceratops tardabilis* | Turanoceratops | Horned dinosaurs | Bissekty Formation |
@@ -460,6 +497,7 @@
 | 85 Ma | *Ectenosaurus clidastoides* | Ectenosaurus | Mosasaurs | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Protostega gigas* | Protostega | Giant sea turtles | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Comahuesuchus brachybuccalis* | Comahuesuchus | Notosuchians | Bajo de la Carpa Formation |
+| 85 Ma | *Velocisaurus unicus* | Velocisaurus | Ceratosaurs | Bajo de la Carpa Formation |
 | 82 Ma | *Aerosteon riocoloradensis* | Aerosteon | Megaraptorids | Anacleto Formation |
 | 82 Ma | *Aucasaurus garridoi* | Aucasaurus | Abelisaurids | Anacleto Formation |
 | 82 Ma | *Abelisaurus comahuensis* | Abelisaurus | Abelisaurids | Anacleto Formation |
@@ -530,6 +568,7 @@
 | 73 Ma | *Kryptobaatar dashzevegi* | Kryptobaatar | Multituberculates | Djadochta Formation |
 | 73 Ma | *Zalambdalestes lechei* | Zalambdalestes | Placental relatives | Djadochta Formation |
 | 73 Ma | *Estesia mongoliensis* | Estesia | Lizards and snakes | Djadochta Formation |
+| 73 Ma | *Khaan mckennai* | Khaan | Oviraptorids | Djadochta Formation |
 | 72.5 Ma | *Tyrannosaurus mcraeensis* | Tyrannosaurus mcraeensis | Tyrannosaurs | Hall Lake Formation |
 | 72.5 Ma | *Sierraceratops turneri* | Sierraceratops | Horned dinosaurs | Hall Lake Formation |
 | 72 Ma | *Sinoceratops zhuchengensis* | Sinoceratops | Horned dinosaurs | Wangshi Group (Zhucheng) |
@@ -548,6 +587,7 @@
 | 70.5 Ma | *Arrhinoceratops brachyops* | Arrhinoceratops | Horned dinosaurs | Horseshoe Canyon Formation |
 | 70.5 Ma | *Eotriceratops xerinsularis* | Eotriceratops | Horned dinosaurs | Horseshoe Canyon Formation |
 | 70.5 Ma | *Albertavenator curriei* | Albertavenator | Troodontids | Horseshoe Canyon Formation |
+| 70.5 Ma | *Parksosaurus warreni* | Parksosaurus | Thescelosaurids | Horseshoe Canyon Formation |
 | 70 Ma | *Tarbosaurus bataar* | Tarbosaurus | Tyrannosaurs | Nemegt Formation |
 | 70 Ma | *Alioramus remotus* | Alioramus | Tyrannosaurs | Nemegt Formation |
 | 70 Ma | *Alioramus altai* | Alioramus altai | Tyrannosaurs | Nemegt Formation |
@@ -555,7 +595,7 @@
 | 70 Ma | *Saurolophus angustirostris* | Saurolophus | Duck-billed dinosaurs | Nemegt Formation |
 | 70 Ma | *Therizinosaurus cheloniformis* | Therizinosaurus | Therizinosaurs | Nemegt Formation |
 | 70 Ma | *Opisthocoelicaudia skarzynskii* | Opisthocoelicaudia | Titanosaurs | Nemegt Formation |
-| 70 Ma | *Carnotaurus sastrei* | Carnotaurus | Ceratosaurs | La Colonia Formation |
+| 70 Ma | *Carnotaurus sastrei* | Carnotaurus | Abelisaurids | La Colonia Formation |
 | 70 Ma | *Gallimimus bullatus* | Gallimimus | Ostrich dinosaurs | Nemegt Formation |
 | 70 Ma | *Mononykus olecranus* | Mononykus | Alvarezsaurs | Nemegt Formation |
 | 70 Ma | *Prenocephale prenes* | Prenocephale | Dome-headed dinosaurs | Nemegt Formation |
@@ -572,6 +612,9 @@
 | 70 Ma | *Bonapartesaurus rionegrensis* | Bonapartesaurus | Duck-billed dinosaurs | Allen Formation |
 | 70 Ma | *Lapampasaurus cholinoi* | Lapampasaurus | Duck-billed dinosaurs | Allen Formation |
 | 70 Ma | *Kawanectes lafquenianum* | Kawanectes | Plesiosaurs and relatives | Allen Formation |
+| 70 Ma | *Homalocephale calathocercos* | Homalocephale | Dome-headed dinosaurs | Nemegt Formation |
+| 70 Ma | *Rinchenia mongoliensis* | Rinchenia | Oviraptorids | Nemegt Formation |
+| 70 Ma | *Anserimimus planinychus* | Anserimimus | Ostrich dinosaurs | Nemegt Formation |
 | 69 Ma | *Qianzhousaurus sinensis* | Qianzhousaurus | Tyrannosaurs | Nanxiong Formation |
 | 69 Ma | *Huanansaurus ganzhouensis* | Huanansaurus | Oviraptorids | Nanxiong Formation |
 | 69 Ma | *Corythoraptor jacobsi* | Corythoraptor | Oviraptorids | Nanxiong Formation |
@@ -588,7 +631,7 @@
 | 68 Ma | *Telmatosaurus transsylvanicus* | Telmatosaurus | Duck-billed dinosaurs | Hațeg Basin |
 | 68 Ma | *Zalmoxes robustus* | Zalmoxes | Iguanodonts | Hațeg Basin |
 | 68 Ma | *Balaur bondoc* | Balaur | Raptors | Hațeg Basin |
-| 68 Ma | *Majungasaurus crenatissimus* | Majungasaurus | Ceratosaurs | Maevarano Formation |
+| 68 Ma | *Majungasaurus crenatissimus* | Majungasaurus | Abelisaurids | Maevarano Formation |
 | 68 Ma | *Rapetosaurus krausei* | Rapetosaurus | Titanosaurs | Maevarano Formation |
 | 68 Ma | *Masiakasaurus knopfleri* | Masiakasaurus | Ceratosaurs | Maevarano Formation |
 | 68 Ma | *Beelzebufo ampinga* | Devil frog | Frogs | Maevarano Formation |
@@ -603,7 +646,7 @@
 | 67.2 Ma | *Quetzalcoatlus northropi* | Quetzalcoatlus | Azhdarchids | Javelina Formation |
 | 67.2 Ma | *Alamosaurus sanjuanensis* | Alamosaurus | Titanosaurs | Javelina Formation |
 | 67 Ma | *Dryptosaurus aquilunguis* | Dryptosaurus | Tyrannosaurs | New Egypt Formation |
-| 67 Ma | *Rajasaurus narmadensis* | Rajasaurus | Ceratosaurs | Lameta Formation |
+| 67 Ma | *Rajasaurus narmadensis* | Rajasaurus | Abelisaurids | Lameta Formation |
 | 67 Ma | *Isisaurus colberti* | Isisaurus | Titanosaurs | Lameta Formation |
 | 67 Ma | *Titanosaurus indicus* | Titanosaurus | Titanosaurs | Lameta Formation |
 | 67 Ma | *Sanajeh indicus* | Sanajeh | Lizards and snakes | Lameta Formation |

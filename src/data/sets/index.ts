@@ -18,7 +18,9 @@ import { ECOLOGY_1 } from '@/data/sets/ecology-1';
 import { FAMILIES_1 } from '@/data/sets/families-1';
 import { FAMILIES_2 } from '@/data/sets/families-2';
 import { FAMILIES_3 } from '@/data/sets/families-3';
+import { FAMILIES_4 } from '@/data/sets/families-4';
+import { FAMILIES_5 } from '@/data/sets/families-5';
 import type { DataSet } from '@/data/sets/types';
 
 // Content bundles merged into EVENTS, CLADES and SPECIES, oldest first.
-export const SETS: DataSet[] = [PALEOZOIC, TRIASSIC_JURASSIC, MEDIA_EARLY, CRETACEOUS, MEDIA_EARLY_CRETACEOUS, MEDIA_LATE_CRETACEOUS, CENOZOIC, MEDIA_CENOZOIC, MODERN, ICE_AGE, TREE_1, TREE_2, TREE_3, PICKS_1, PICKS_2, PICKS_3, ECOLOGY_1, FAMILIES_1, FAMILIES_2, FAMILIES_3];
+export const SETS: DataSet[] = [PALEOZOIC, TRIASSIC_JURASSIC, MEDIA_EARLY, CRETACEOUS, MEDIA_EARLY_CRETACEOUS, MEDIA_LATE_CRETACEOUS, CENOZOIC, MEDIA_CENOZOIC, MODERN, ICE_AGE, TREE_1, TREE_2, TREE_3, PICKS_1, PICKS_2, PICKS_3, ECOLOGY_1, FAMILIES_1, FAMILIES_2, FAMILIES_3, FAMILIES_4, FAMILIES_5];
