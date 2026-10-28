@@ -10,7 +10,7 @@ export const MODERN: DataSet = {
       id: 'hominidae',
       name: 'Hominidae',
       common: 'Great apes and humans',
-      parent: 'eutheria',
+      parent: 'primates',
       family: true,
       description: 'Orangutans, gorillas, chimpanzees and bonobos, and humans with our extinct relatives.',
     },
@@ -82,6 +82,7 @@ export const MODERN: DataSet = {
   species: [
     {
       id: 'homo-sapiens',
+      phylo: 3,
       name: 'Homo sapiens',
       common: 'Human',
       clade: 'hominidae',
@@ -106,6 +107,7 @@ export const MODERN: DataSet = {
     },
     {
       id: 'homo-neanderthalensis',
+      phylo: 2,
       name: 'Homo neanderthalensis',
       common: 'Neanderthal',
       clade: 'hominidae',
@@ -149,6 +151,7 @@ export const MODERN: DataSet = {
     },
     {
       id: 'thylacinus-cynocephalus',
+      phylo: 2,
       name: 'Thylacinus cynocephalus',
       common: 'Thylacine',
       clade: 'thylacinidae',
@@ -298,6 +301,7 @@ export const MODERN: DataSet = {
     },
     {
       id: 'equus-quagga-quagga',
+      phylo: 3,
       name: 'Equus quagga quagga',
       common: 'Quagga',
       clade: 'equidae',
