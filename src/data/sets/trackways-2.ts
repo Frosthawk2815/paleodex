@@ -4,6 +4,40 @@ import { trackway } from '@/data/sets/trackway';
 import type { DataSet } from '@/data/sets/types';
 
 export const TRACKWAYS_2: DataSet = {
+  clades: [
+    {
+      id: 'cetiosauridae',
+      name: 'Cetiosauridae',
+      common: 'Cetiosaurs',
+      parent: 'sauropodomorpha',
+      family: true,
+      description: 'Early long-necked sauropods of the Middle Jurassic, outside the later diplodocoids and macronarians. Whether they form a true family or just a grade of early sauropods is debated.',
+    },
+  ],
+  species: [
+    {
+      id: 'cetiosaurus-oxoniensis',
+      name: 'Cetiosaurus oxoniensis',
+      common: 'Cetiosaurus',
+      clade: 'cetiosauridae',
+      status: 'full',
+      ageText: 'About 168 to 166 million years ago (Middle Jurassic, Bathonian)',
+      placeText: 'Oxfordshire and Rutland, England',
+      formations: ['great-oolite'],
+      summary: [
+        'A long-necked plant-eater about 16 m long, the first sauropod ever named. Richard Owen named the genus in 1841 from huge vertebrae and thought they came from a giant sea-going reptile, hence the name “whale lizard”. Only when John Phillips dug up three skeletons near Bletchingdon, Oxfordshire, in 1869–70 and named this species in 1871 did it become clear it was a land animal.',
+        'A fairly complete skeleton found in a quarry near Rutland Water in 1968, the “Rutland dinosaur”, is mounted in Leicester. Cetiosaurus is thought to have made the 220 m trackway at Dewars Farm, the longest known in Europe, though no bones were found with the prints.',
+      ],
+      facts: [
+        { label: 'Genus named', value: 'Richard Owen, 1841' },
+        { label: 'Species named', value: 'John Phillips, 1871' },
+        { label: 'Length', value: 'About 16 m' },
+        { label: 'Diet', value: 'Plants' },
+        { label: 'Name trouble', value: 'For a century many unrelated sauropod bones were lumped into Cetiosaurus; in 2014 the ICZN fixed C. oxoniensis as the type species' },
+      ],
+      keywords: ['cetiosaurus', 'whale lizard', 'sauropod', 'owen', 'rutland dinosaur', 'bletchingdon', 'jurassic', 'dewars farm'],
+    },
+  ],
   events: [
     // ── Palaeozoic ──
     trackway({
@@ -149,21 +183,24 @@ export const TRACKWAYS_2: DataSet = {
       keywords: ['skye', 'brothers point', 'scotland', 'jurassic', 'deltapodus'],
     }),
     trackway({
-      id: 'dewars-farm', title: 'Dewars Farm Quarry trackways', short: 'Dewars Farm',
-      dateText: 'About 166 million years ago (Middle Jurassic)', placeText: 'Near Bicester, Oxfordshire, England',
+      id: 'dewars-farm', title: 'Dewars Farm Quarry trackways (“Dinosaur Highway”)', short: 'Dewars Farm',
+      dateText: 'About 166 million years ago (Middle Jurassic, Bathonian)', placeText: 'Near Bicester, Oxfordshire, England',
       lon: -1.35, lat: 51.82, plate: 315, fromMa: 167, toMa: 165, jumpMa: 166,
       summary: [
-        'Five trackways, the longest about 150 m, uncovered in a working quarry after worker Gary Johnson noticed bumps in the clay. Excavated in 2024 and announced in January 2025, it is Britain’s largest dinosaur track site.',
-        'Four trails were made by sauropods, probably like Cetiosaurus. The fifth, of large three-toed prints, was made by a theropod, probably Megalosaurus.',
+        'Hundreds of footprints on what was a shallow tropical lagoon shore, uncovered in a working limestone quarry after worker Gary Johnson noticed odd bumps in the clay. A first dig in 2024, announced in January 2025, exposed five trackways, the longest more than 150 m: four of sauropods and one of a large theropod whose path crosses theirs.',
+        'A second dig in summer 2025, announced in October 2025 by the Oxford University Museum of Natural History and the University of Birmingham, followed one sauropod trail for about 220 m from first to last exposed print, nearly 100 footprints each close to a metre long. It is the longest sauropod trackway known in Europe, longer than Plagne in France (about 155 m), and may be the longest known anywhere. It may extend further still under unquarried rock.',
       ],
       facts: [
         { label: 'Laid', value: 'About 166 million years ago' },
-        { label: 'Found', value: 'Gary Johnson, 2023; excavated 2024' },
+        { label: 'Found', value: 'Gary Johnson, quarry worker; dug 2024 and 2025' },
+        { label: 'Longest trackway', value: 'About 220 m, one sauropod (2025 dig)' },
+        { label: 'Also called', value: 'The “Dinosaur Highway”' },
       ],
       trackmakers: [
-        { id: 'megalosaurus-bucklandii', certainty: 'likely', note: 'The only large theropod known from rocks of this age in the region; Megalosaurus was first named from nearby Oxfordshire.' },
+        { id: 'cetiosaurus-oxoniensis', certainty: 'likely', note: 'The researchers think the sauropod tracks were made by Cetiosaurus, the sauropod known from bones of the same age in Oxfordshire. No bones were found with the tracks, and some palaeontologists think naming the maker goes too far.' },
+        { id: 'megalosaurus-bucklandii', certainty: 'likely', note: 'The only large theropod known from rocks of this age in the region; Megalosaurus was first named from nearby Stonesfield.' },
       ],
-      keywords: ['dewars farm', 'oxfordshire', 'bicester', 'england', 'jurassic', 'megalosaurus', 'sauropod'],
+      keywords: ['dewars farm', 'oxfordshire', 'bicester', 'england', 'jurassic', 'megalosaurus', 'cetiosaurus', 'sauropod', 'dinosaur highway', 'longest trackway'],
     }),
     trackway({
       id: 'purgatoire', title: 'Purgatoire River tracksite', short: 'Purgatoire',

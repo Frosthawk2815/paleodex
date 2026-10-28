@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-938 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+939 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -286,6 +286,7 @@
 | 168 Ma | *Gasosaurus constructus* | Gasosaurus | Theropods | Lower Shaximiao Formation (Dashanpu) |
 | 166.5 Ma | *Proceratosaurus bradleyi* | Proceratosaurus | Tyrannosaurs | Great Oolite Group |
 | 166.5 Ma | *Megalosaurus bucklandii* | Megalosaurus | Megalosaurs and spinosaurs | Great Oolite Group |
+| 166.5 Ma | *Cetiosaurus oxoniensis* | Cetiosaurus | Cetiosaurs | Great Oolite Group |
 | 163 Ma | *Liopleurodon ferox* | Liopleurodon | Plesiosaurs and relatives | Oxford Clay Formation |
 | 163 Ma | *Cryptoclidus eurymerus* | Cryptoclidus | Plesiosaurs and relatives | Oxford Clay Formation |
 | 163 Ma | *Ophthalmosaurus icenicus* | Ophthalmosaurus | Ichthyosaurs | Oxford Clay Formation |
