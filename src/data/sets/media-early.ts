@@ -403,7 +403,7 @@ export const MEDIA_EARLY: DataSet = {
       icon: 'sea',
       summary: [
         'Black shale from a cool sea at high northern latitudes, with methane seeps on the sea floor. Expeditions from the University of Oslo from 2004 found dozens of marine reptile skeletons on the slopes of Spitsbergen.',
-        'The most famous is “Predator X”, the giant pliosaur Pliosaurus funkei, with a skull about 2 m long. Plesiosaurs and ichthyosaurs swam in the same sea.',
+        'The most famous is the giant pliosaur Pliosaurus funkei, nicknamed “Predator X” before it had a scientific name. Plesiosaurs and ichthyosaurs swam in the same sea.',
       ],
       facts: [
         { label: 'Age', value: 'About 148 million years ago' },
@@ -1331,12 +1331,13 @@ export const MEDIA_EARLY: DataSet = {
       formations: ['agardhfjellet'],
       phylo: 4,
       summary: [
-        'A giant pliosaur about 10–13 m long with a skull about 2 m long, nicknamed “Predator X” in a 2009 documentary. Its bite has been estimated at four times that of T. rex.',
+        'A giant pliosaur, a short-necked, big-headed relative of plesiosaurs, from the Late Jurassic seas of Svalbard. It was formally named in 2012 from two partial skeletons. That study estimated a length of roughly 10–13 m, but the skulls are incomplete, so its true size is uncertain.',
+        'Before it was named, it was publicised as “Predator X”, the subject of a 2009 documentary. Claims made then, such as a bite four times stronger than T. rex’s, came from the documentary and press coverage, not from the scientific description.',
       ],
       facts: [
         { label: 'Named', value: 'Espen Knutsen, Patrick Druckenmiller and Jørn Hurum, 2012' },
-        { label: 'Length', value: 'About 10–13 m' },
-        { label: 'Diet', value: 'Marine reptiles and big fish' },
+        { label: 'Length', value: 'Roughly 10–13 m (uncertain)' },
+        { label: 'Diet', value: 'Probably marine reptiles and big fish' },
         { label: 'On screen', value: 'Predator X (2009)' },
       ],
       keywords: ['pliosaurus', 'predator x', 'pliosaur', 'svalbard', 'jurassic'],
