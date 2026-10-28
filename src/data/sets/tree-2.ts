@@ -15,7 +15,7 @@ export const TREE_2: DataSet = {
     { id: 'docodonta', name: 'Docodonta', common: 'Docodonts', parent: 'mammalia', family: true, description: 'Early mammal relatives of the Jurassic with complex grinding teeth; some swam, dug or glided.' },
     { id: 'osteoglossiformes', name: 'Osteoglossiformes', common: 'Bonytongues', parent: 'actinopterygii', family: true, description: 'Fish with toothed tongues, such as the arowana and arapaima.' },
     { id: 'perciformes', name: 'Perciformes', common: 'Perch-like fish', parent: 'actinopterygii', family: true, description: 'Spiny-finned fish such as perch and bass, one of the largest groups of vertebrates.' },
-    { id: 'shuvosauridae', name: 'Shuvosauridae', common: 'Shuvosaurids', parent: 'archosauria', family: true, description: 'Toothless, two-legged Triassic reptiles on the crocodile side of the family tree that looked remarkably like ostrich dinosaurs.' },
+    { id: 'shuvosauridae', name: 'Shuvosauridae', common: 'Shuvosaurids', parent: 'poposauroidea', family: true, description: 'Toothless, two-legged Triassic reptiles on the crocodile side of the family tree that looked remarkably like ostrich dinosaurs.' },
   ],
   species: [
     // Morrison
