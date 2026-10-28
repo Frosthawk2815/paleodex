@@ -6,7 +6,7 @@ import { PointIcon } from '@/components/point-icon';
 import type { HistoryEvent } from '@/data/events';
 import type { Species } from '@/data/life';
 import { SpeciesRow } from '@/components/clade-info';
-import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf } from '@/lib/life';
+import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf, speciesById } from '@/lib/life';
 import { rangeOf } from '@/lib/ranges';
 import { timeLabel } from '@/lib/time';
 
@@ -187,6 +187,23 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
             </Text>
           ))}
 
+          {species.related && species.related.length > 0 && (
+            <>
+              <Text style={info.heading}>Related forms</Text>
+              <View style={info.list}>
+                {species.related.map((r) => {
+                  const other = speciesById(r.id);
+                  return other ? (
+                    <View key={r.id}>
+                      <SpeciesRow species={other} onPress={() => onOpenSpecies(r.id)} />
+                      <Text style={[info.rowNote, styles.relatedNote]}>{r.note}</Text>
+                    </View>
+                  ) : null;
+                })}
+              </View>
+            </>
+          )}
+
           {species.facts && (
             <View style={info.facts}>
               {species.facts.map((f) => (
@@ -208,6 +225,11 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
 }
 
 const styles = StyleSheet.create({
+  relatedNote: {
+    paddingHorizontal: 14,
+    paddingBottom: 10,
+    marginTop: -6,
+  },
   swatch: {
     width: 26,
     height: 26,

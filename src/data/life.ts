@@ -27,6 +27,9 @@ export type Species = {
   formations: string[];
   // Events (ids in EVENTS) the species is tied to, e.g. Homo sapiens and the Moon landing.
   events?: string[];
+  // Closely related forms to link from this species' page, each with a note on how they relate
+  // (e.g. a possible juvenile of it).
+  related?: { id: string; note: string }[];
   // Position along the family tree, used to order relatives: a higher number branched off
   // later (closer to the most recent species). Two species are as close as the lower of their
   // numbers, so this treats each family as a ladder of successive branches (approximate).
@@ -661,8 +664,8 @@ const BASE_SPECIES: Species[] = [
     placeText: 'Western North America',
     formations: ['hell-creek', 'lance'],
     summary: [
-      'A horned dinosaur close to Triceratops in size but with a longer, thinner frill pierced by two large openings. Its skull, up to about 2.7 m long including the frill, is one of the largest of any land animal.',
-      'In 2010 researchers proposed that Torosaurus is simply fully mature Triceratops, its frill thinning and opening up with age. Others have pointed to differences that don’t fit, and the question is still argued.',
+      'A horned dinosaur close to Triceratops in size, which lived alongside it, but with a longer, thinner frill pierced by two large openings and edged with small bony points. Its skull, up to about 2.7 m long including the frill, is one of the largest of any land animal.',
+      'It is much rarer than Triceratops in Hell Creek and Lance rocks, and is also known from Saskatchewan to New Mexico.',
     ],
     facts: [
       { label: 'Named', value: 'Othniel Charles Marsh, 1891' },
@@ -723,7 +726,12 @@ const BASE_SPECIES: Species[] = [
     formations: ['hell-creek', 'lance'],
     summary: [
       'The largest dome-headed dinosaur, about 4.5 m long, with a skull roof up to 25 cm thick fringed by bony knobs and spikes.',
-      'Whether it head-butted is debated, but healed injuries on many domes suggest they did fight with their heads. The spiky Stygimoloch and Dracorex from Hell Creek may be young Pachycephalosaurus whose skulls changed shape as they grew.',
+      'Whether it head-butted is debated, but healed injuries on many domes suggest they did fight with their heads.',
+      'It shared Hell Creek with two other spiky-headed pachycephalosaurs: Stygimoloch, with a narrow dome ringed by long horns, and the flat-headed Dracorex. Dracorex may be a juvenile, or the other sex, of Pachycephalosaurus, of Stygimoloch, or of both.',
+    ],
+    related: [
+      { id: 'stygimoloch-spinifer', note: 'A spiky, narrow-domed pachycephalosaur from the same rocks' },
+      { id: 'dracorex-hogwartsia', note: 'Flat-headed and spiky: possibly a juvenile or the other sex of Pachycephalosaurus, Stygimoloch or both' },
     ],
     facts: [
       { label: 'Named', value: 'Charles Gilmore, 1931 (as Troodon wyomingensis)' },

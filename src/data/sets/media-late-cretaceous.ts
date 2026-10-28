@@ -150,7 +150,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       icon: 'forest',
       summary: [
         'River sediments from a coastal plain at about 80° north, closer to the pole than today. Dinosaurs here lived through months of winter darkness, cold and occasional snow, in forests of conifers and flowering shrubs.',
-        'They included herds of Pachyrhinosaurus and Edmontosaurus, the small tyrannosaur Nanuqsaurus and troodontids. Babies found here show dinosaurs nested in the Arctic rather than migrating away.',
+        'They included herds of Pachyrhinosaurus and the duck-billed Ugrunaaluk, the small tyrannosaur Nanuqsaurus and troodontids. Babies found here show dinosaurs nested in the Arctic rather than migrating away.',
       ],
       facts: [
         { label: 'Age', value: 'About 69 million years ago' },
@@ -635,13 +635,15 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
     {
       id: 'ugrunaaluk-kuukpikensis',
       name: 'Ugrunaaluk kuukpikensis',
-      common: 'Arctic Edmontosaurus',
+      common: 'Ugrunaaluk',
       clade: 'hadrosauridae',
       status: 'full',
       ageText: 'About 69 million years ago',
       placeText: 'Alaska, USA',
       formations: ['prince-creek'],
-      summary: ['Thousands of bones of young duck-billed dinosaurs from the Liscomb bonebed. Named as a new genus in 2015, it is now usually treated as Edmontosaurus.'],
+      summary: [
+        'A duck-billed dinosaur from Alaska’s North Slope, a close relative of Edmontosaurus, known from thousands of bones in the Liscomb bonebed, mostly of young animals that died together. It lived far north of any other hadrosaur, through months of polar darkness. Its name means “ancient grazer” in Iñupiaq.',
+      ],
       facts: [
         { label: 'Named', value: 'Hirotsugu Mori and colleagues, 2015' },
         { label: 'Length', value: 'Adults about 9 m' },
@@ -1221,7 +1223,12 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       placeText: 'Montana, Wyoming and South Dakota, USA',
       formations: ['hell-creek'],
       summary: [
-        'A dome-headed dinosaur with a narrow dome ringed by long spikes. Many palaeontologists think it is a teenage Pachycephalosaurus, whose dome grew as its spikes shrank. Its name means “horned devil from the River Styx”.',
+        'A dome-headed dinosaur about 3 m long with a tall, narrow dome ringed by long horns, living in Hell Creek alongside the larger Pachycephalosaurus. Its name means “horned devil from the River Styx”.',
+        'The flat-headed Dracorex, from the same rocks, may be a juvenile, or the other sex, of Stygimoloch, of Pachycephalosaurus, or of both.',
+      ],
+      related: [
+        { id: 'pachycephalosaurus-wyomingensis', note: 'The larger dome-headed dinosaur of the same rocks' },
+        { id: 'dracorex-hogwartsia', note: 'Flat-headed and spiky: possibly a juvenile or the other sex of Stygimoloch, Pachycephalosaurus or both' },
       ],
       facts: [
         { label: 'Named', value: 'Peter Galton and Hans-Dieter Sues, 1983' },
@@ -1239,7 +1246,14 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       ageText: 'About 67 to 66 million years ago',
       placeText: 'South Dakota, USA',
       formations: ['hell-creek'],
-      summary: ['A flat-headed, spiky pachycephalosaur whose name, “dragon king of Hogwarts”, was chosen by children at the Children’s Museum of Indianapolis. It is probably a young Pachycephalosaurus.'],
+      summary: [
+        'A pachycephalosaur with a flat, undomed skull covered in knobs and spikes, known from one skull. Its name, “dragon king of Hogwarts”, was chosen with children at the Children’s Museum of Indianapolis.',
+        'Its flat head has led some researchers to interpret it as a juvenile of Stygimoloch or Pachycephalosaurus, with the dome growing later; differences in head ornaments could also be differences between the sexes. It may relate to either or both.',
+      ],
+      related: [
+        { id: 'stygimoloch-spinifer', note: 'Possibly the adult, or the other sex, of Dracorex' },
+        { id: 'pachycephalosaurus-wyomingensis', note: 'Possibly the adult, or the other sex, of Dracorex' },
+      ],
       facts: [
         { label: 'Named', value: 'Robert Bakker and colleagues, 2006' },
         { label: 'Length', value: 'About 2.4 m' },

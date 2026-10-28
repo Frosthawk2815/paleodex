@@ -463,7 +463,7 @@ export const TRIASSIC_JURASSIC: DataSet = {
       common: 'Compsognathids',
       parent: 'coelurosauria',
       family: true,
-      description: 'Small, long-legged coelurosaurs, among the first dinosaurs found with feathers.',
+      description: 'Small, long-legged predatory coelurosaurs of Late Jurassic Europe, such as Compsognathus.',
     },
     {
       id: 'archaeopterygidae',

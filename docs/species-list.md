@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-408 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+411 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -172,7 +172,9 @@
 | 126 Ma | *Amargasaurus cazaui* | Amargasaurus | Dicraeosaurs | La Amarga Formation |
 | 124.6 Ma | *Yutyrannus huali* | Yutyrannus | Tyrannosaurs | Yixian Formation |
 | 124.6 Ma | *Dilong paradoxus* | Dilong | Tyrannosaurs | Yixian Formation |
-| 124.6 Ma | *Sinosauropteryx prima* | Sinosauropteryx | Compsognathids | Yixian Formation |
+| 124.6 Ma | *Sinosauropteryx prima* | Sinosauropteryx | Sinosauropterygids | Yixian Formation |
+| 124.6 Ma | *Sinosauropteryx lingyuanensis* | Sinosauropteryx lingyuanensis | Sinosauropterygids | Yixian Formation |
+| 124.6 Ma | *Huadanosaurus sinensis* | Huadanosaurus | Sinosauropterygids | Yixian Formation |
 | 124.6 Ma | *Confuciusornis sanctus* | Confuciusornis | Confuciusornithids | Yixian Formation |
 | 124.6 Ma | *Repenomamus robustus* | Repenomamus | Gobiconodonts | Yixian Formation |
 | 124.6 Ma | *Psittacosaurus lujiatunensis* | Psittacosaurus | Parrot-beaked dinosaurs | Yixian Formation |
@@ -290,6 +292,7 @@
 | 70.5 Ma | *Atrociraptor marshalli* | Atrociraptor | Raptors | Horseshoe Canyon Formation |
 | 70 Ma | *Tarbosaurus bataar* | Tarbosaurus | Tyrannosaurs | Nemegt Formation |
 | 70 Ma | *Alioramus remotus* | Alioramus | Tyrannosaurs | Nemegt Formation |
+| 70 Ma | *Alioramus altai* | Alioramus altai | Tyrannosaurs | Nemegt Formation |
 | 70 Ma | *Deinocheirus mirificus* | Deinocheirus | Ostrich dinosaurs | Nemegt Formation |
 | 70 Ma | *Saurolophus angustirostris* | Saurolophus | Duck-billed dinosaurs | Nemegt Formation |
 | 70 Ma | *Therizinosaurus cheloniformis* | Therizinosaurus | Therizinosaurs | Nemegt Formation |
@@ -303,7 +306,7 @@
 | 69 Ma | *Corythoraptor jacobsi* | Corythoraptor | Oviraptorids | Nanxiong Formation |
 | 69 Ma | *Pachyrhinosaurus perotorum* | Pachyrhinosaurus (Alaska) | Horned dinosaurs | Prince Creek Formation |
 | 69 Ma | *Nanuqsaurus hoglundi* | Nanuqsaurus | Tyrannosaurs | Prince Creek Formation |
-| 69 Ma | *Ugrunaaluk kuukpikensis* | Arctic Edmontosaurus | Duck-billed dinosaurs | Prince Creek Formation |
+| 69 Ma | *Ugrunaaluk kuukpikensis* | Ugrunaaluk | Duck-billed dinosaurs | Prince Creek Formation |
 | 69 Ma | *Tuarangisaurus keyesi* | Tuarangisaurus | Plesiosaurs and relatives | Maungataniwha Sandstone (Mangahouanga) |
 | 69 Ma | *Taniwhasaurus oweni* | Taniwhasaurus | Mosasaurs | Maungataniwha Sandstone (Mangahouanga) |
 | 68 Ma | *Hatzegopteryx thambema* | Hatzegopteryx | Azhdarchids | Hațeg Basin |
