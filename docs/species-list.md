@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-542 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+550 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -403,6 +403,8 @@
 | 70 Ma | *Nemegtosaurus mongoliensis* | Nemegtosaurus | Titanosaurs | Nemegt Formation |
 | 70 Ma | *Nemegtomaia barsboldi* | Nemegtomaia | Oviraptorids | Nemegt Formation |
 | 70 Ma | *Adasaurus mongoliensis* | Adasaurus | Raptors | Nemegt Formation |
+| 70 Ma | *Bonapartenykus ultimus* | Bonapartenykus | Alvarezsaurs | Allen Formation |
+| 70 Ma | *Austroraptor cabazai* | Austroraptor | Raptors | Allen Formation |
 | 69 Ma | *Qianzhousaurus sinensis* | Qianzhousaurus | Tyrannosaurs | Nanxiong Formation |
 | 69 Ma | *Huanansaurus ganzhouensis* | Huanansaurus | Oviraptorids | Nanxiong Formation |
 | 69 Ma | *Corythoraptor jacobsi* | Corythoraptor | Oviraptorids | Nanxiong Formation |
@@ -534,12 +536,15 @@
 | 17 Ma | *Borhyaena tuberata* | Borhyaena | Sparassodonts | Santa Cruz Formation |
 | 17 Ma | *Astrapotherium magnum* | Astrapotherium | Astrapotheres | Santa Cruz Formation |
 | 17 Ma | *Nesodon imbricatus* | Nesodon | Notoungulates | Santa Cruz Formation |
+| 17 Ma | *Patagornis marshi* | Patagornis | Terror birds | Santa Cruz Formation |
+| 17 Ma | *Psilopterus bachmanni* | Psilopterus | Terror birds | Santa Cruz Formation |
 | 15 Ma | *Obdurodon dicksoni* | Obdurodon | Monotremes | Riversleigh |
 | 15 Ma | *Nimbacinus dicksoni* | Nimbacinus | Thylacines | Riversleigh |
 | 15 Ma | *Wakaleo schouteni* | Wakaleo | Marsupial lions | Riversleigh |
 | 15 Ma | *Ekaltadeta ima* | Ekaltadeta | Kangaroos | Riversleigh |
 | 15 Ma | *Mekosuchus whitehunterensis* | Mekosuchus | Crocodylians | Riversleigh |
 | 15 Ma | *Nimbadon lavarackorum* | Nimbadon | Diprotodonts | Riversleigh |
+| 15 Ma | *Kelenken guillermoi* | Kelenken | Terror birds | Collón Curá Formation |
 | 11.9 Ma | *Teleoceras major* | Teleoceras | Rhinos | Ashfall Fossil Beds |
 | 11.9 Ma | *Cormohipparion occidentale* | Cormohipparion | Horses and zebras | Ashfall Fossil Beds |
 | 11.9 Ma | *Pseudhipparion gratum* | Pseudhipparion | Horses and zebras | Ashfall Fossil Beds |
@@ -554,6 +559,8 @@
 | 9 Ma | *Odobenocetops peruvianus* | Odobenocetops | Whales | Pisco Formation |
 | 6 Ma | *Thylacosmilus atrox* | Thylacosmilus | Sparassodonts | Andalhuala Formation |
 | 6 Ma | *Argentavis magnificens* | Argentavis | Teratorns | Andalhuala Formation |
+| 6 Ma | *Andalgalornis steulleti* | Andalgalornis | Terror birds | Andalhuala Formation |
+| 3.5 Ma | *Llallawavis scagliai* | Llallawavis | Terror birds | Chapadmalal sea cliffs |
 | 3.2 Ma | *Australopithecus afarensis* | Lucy’s species | Great apes and humans | Hadar Formation |
 
 ## Quaternary
@@ -562,6 +569,7 @@
 |---|---|---|---|---|
 | 2.5 Ma | *Glyptotherium texanum* | Glyptotherium | Glyptodonts | range map — Southern North America to northern South America |
 | 2 Ma | *Thylacinus cynocephalus* | Thylacine | Thylacines | range map — Australia and New Guinea; finally only Tasmania |
+| 2 Ma | *Titanis walleri* | Titanis | Terror birds | Santa Fe River sites |
 | 1.6 Ma | *Diprotodon optatum* | Diprotodon | Diprotodonts | range map — Australia |
 | 1.6 Ma | *Thylacoleo carnifex* | Marsupial lion | Marsupial lions | range map — Australia |
 | 1.5 Ma | *Homotherium latidens* | Scimitar-toothed cat | Cats | range map — Europe and Asia |
