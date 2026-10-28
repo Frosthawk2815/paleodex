@@ -146,16 +146,10 @@ export const TRIASSIC_JURASSIC: DataSet = {
       invertebrates: [
         {
           tier: 'microceleb',
-          title: 'Ammonites',
-          text: 'Coiled, shelled relatives of squid and octopus, so common here that the beaches are paved with them. Promicroceras, Arnioceras and the big Coroniceras are among the many kinds used to date the layers precisely.',
-        },
-        {
-          tier: 'microceleb',
           title: 'Belemnites',
           text: 'Squid-like animals with a bullet-shaped internal shell. Mary Anning found fossil ink sacs in them, and the dried ink could still be used to draw with.',
         },
         { tier: 'pleb', title: 'Sea lilies', text: 'Sea lilies (crinoids).' },
-        { tier: 'pleb', title: 'Oysters', text: 'Curled oysters known as “devil’s toenails”.' },
       ],
       keywords: ['lyme regis', 'charmouth', 'blue lias', 'jurassic coast', 'dorset', 'mary anning', 'jurassic', 'ichthyosaur', 'plesiosaur'],
     }),
@@ -183,17 +177,6 @@ export const TRIASSIC_JURASSIC: DataSet = {
         { label: 'Named after', value: 'The flat clam once called Posidonia (now Bositra)' },
       ],
       invertebrates: [
-        {
-          tier: 'superstar',
-          title: 'Giant sea lily colonies',
-          text: 'Colonies of the crinoid Seirocrinus hung upside down from floating driftwood logs, their stems up to about 20 m long, among the longest of any animal. Whole rafts sank with their logs into the black mud.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'Ammonites',
-          text: 'Harpoceras, Dactylioceras and Hildoceras, often flattened into the shale, some with their jaws preserved.',
-        },
-        { tier: 'pleb', title: 'Clams', text: 'Flat clams.' },
         { tier: 'pleb', title: 'Belemnites', text: 'Belemnites.' },
       ],
       keywords: ['posidonia', 'holzmaden', 'germany', 'jurassic', 'ichthyosaur', 'toarcian'],
@@ -309,11 +292,6 @@ export const TRIASSIC_JURASSIC: DataSet = {
         { label: 'Famous finds', value: 'Archaeopteryx (from 1861)' },
       ],
       invertebrates: [
-        {
-          tier: 'microceleb',
-          title: 'Horseshoe crabs',
-          text: 'Mesolimulus walchi, a horseshoe crab, is sometimes found at the end of a long, winding trackway, its “death march” across the poisonous lagoon floor.',
-        },
         { tier: 'pleb', title: 'Jellyfish', text: 'Jellyfish.' },
         { tier: 'pleb', title: 'Shrimp and lobsters', text: 'Shrimp and lobsters.' },
         { tier: 'pleb', title: 'Insects', text: 'Dragonflies and other insects.' },

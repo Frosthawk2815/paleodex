@@ -54,11 +54,6 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
         { label: 'Rocks', value: 'Dark grey shale' },
       ],
       invertebrates: [
-        {
-          tier: 'microceleb',
-          title: 'Ammonites',
-          text: 'Pierre Shale ammonites such as Baculites, straight like a walking stick, and Placenticeras keep their rainbow shell layer, mined today as the gemstone ammolite.',
-        },
         { tier: 'pleb', title: 'Clams', text: 'Clams.' },
       ],
       keywords: ['pierre shale', 'south dakota', 'kansas', 'western interior seaway', 'cretaceous', 'archelon', 'elasmosaurus'],

@@ -278,11 +278,6 @@ export const MEDIA_EARLY: DataSet = {
         { label: 'Collected by', value: 'Alfred and Charles Leeds, from the 1860s' },
       ],
       invertebrates: [
-        {
-          tier: 'microceleb',
-          title: 'Ammonites',
-          text: 'Kosmoceras, a small, ribbed ammonite whose males and females were so different they were once thought to be different species, is so common it is used to split the clay into time zones.',
-        },
         { tier: 'pleb', title: 'Belemnites', text: 'Belemnites.' },
         { tier: 'pleb', title: 'Oysters', text: 'Oysters.' },
       ],

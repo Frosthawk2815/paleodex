@@ -30,7 +30,6 @@ export const CENOZOIC: DataSet = {
       ],
       invertebrates: [
         { tier: 'pleb', title: 'Insects', text: 'Insects.' },
-        { tier: 'pleb', title: 'Crayfish', text: 'Crayfish.' },
         { tier: 'pleb', title: 'Snails', text: 'Snails.' },
       ],
       keywords: ['green river', 'fossil butte', 'fossil lake', 'wyoming', 'kemmerer', 'eocene', 'fish'],
@@ -64,11 +63,6 @@ export const CENOZOIC: DataSet = {
           tier: 'microceleb',
           title: 'Jewel beetles',
           text: 'Messel’s jewel beetles and leaf beetles still shine green, blue and bronze after 47 million years. Their colours come from microscopic layers in their shells that reflect light, not from pigments, so they have survived fossilisation.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'Giant ants',
-          text: 'Titanomyrma gigantea was the largest ant ever: queens had a wingspan of about 15 cm, as big as a hummingbird. Giant ants spread across the warm Eocene world, even crossing the Arctic.',
         },
         { tier: 'pleb', title: 'Termites', text: 'Termites.' },
         { tier: 'pleb', title: 'Water bugs', text: 'Water bugs.' },

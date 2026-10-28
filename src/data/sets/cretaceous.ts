@@ -90,7 +90,6 @@ export const CRETACEOUS: DataSet = {
           title: 'Early pollinators',
           text: 'Long-snouted scorpionflies such as Jeholopsyche, and kalligrammatid lacewings, which looked like butterflies with eyespots on their wings, sipped nectar-like fluids from seed plants long before butterflies existed.',
         },
-        { tier: 'pleb', title: 'Mayflies', text: 'Mayfly larvae.' },
         { tier: 'pleb', title: 'Water beetles', text: 'Water beetles.' },
         { tier: 'pleb', title: 'Shrimp', text: 'Freshwater shrimp.' },
       ],
@@ -197,16 +196,6 @@ export const CRETACEOUS: DataSet = {
         { label: 'Famous finds', value: 'Xiphactinus with a whole fish in its stomach (“fish within a fish”)' },
       ],
       invertebrates: [
-        {
-          tier: 'microceleb',
-          title: 'Giant clams',
-          text: 'Inoceramid clams, some such as Platyceramus platinus over 2 m across, lay on the soft chalk floor. Small fish sheltered inside their shells.',
-        },
-        {
-          tier: 'microceleb',
-          title: 'Floating sea lilies',
-          text: 'Uintacrinus, a stemless crinoid, drifted in great colonies and is found in slabs packed with hundreds of them.',
-        },
         { tier: 'pleb', title: 'Oysters', text: 'Oysters.' },
       ],
       keywords: ['niobrara', 'smoky hill', 'kansas', 'chalk', 'western interior seaway', 'cretaceous', 'mosasaur', 'pteranodon'],
