@@ -25,6 +25,12 @@ export type EventPoint = {
   icon?: PointIconKind;
 };
 
+// Invertebrates are described at the formation, not as species, in three tiers:
+//   superstar   a notable step in invertebrate evolution (e.g. giant Carboniferous insects)
+//   microceleb  a short explainer about a well-known group, naming examples
+//   pleb        just a mention that they were there
+export type InvertebrateNote = { tier: 'superstar' | 'microceleb' | 'pleb'; title: string; text: string };
+
 export type HistoryEvent = {
   id: string;
   kind: string;
@@ -34,6 +40,7 @@ export type HistoryEvent = {
   points: EventPoint[];
   summary: string[];
   facts: { label: string; value: string }[];
+  invertebrates?: InvertebrateNote[];
   // Extra words the search should match.
   keywords: string[];
 };
@@ -127,6 +134,23 @@ export const EVENTS: HistoryEvent[] = [
       { label: 'Rocks', value: 'Sandstone, mudstone and thin coal (lignite)' },
       { label: 'Famous finds', value: 'The first T. rex skeleton (1902) and “Sue” (1990)' },
     ],
+    invertebrates: [
+      {
+        tier: 'microceleb',
+        title: 'Freshwater mussels',
+        text: 'Hell Creek’s rivers were lined with beds of freshwater mussels (unionids), relatives of today’s river mussels. Their thick, often ridged shells are common fossils in old channel sands, and many kinds lived side by side, from smooth, rounded shells to heavily sculptured ones such as Plesielliptio and Proparreysia. Like modern mussels they filtered the water and needed clean, flowing rivers.',
+      },
+      {
+        tier: 'microceleb',
+        title: 'Leaf miners and leaf chewers',
+        text: 'The insects themselves are rarely preserved, but fossil leaves from Hell Creek are covered in their work: holes and bitten edges from chewers, galls, and winding tunnels left by leaf-mining larvae. Many of these feeding marks were made by specialists tied to one kind of plant, and many disappear at the asteroid impact, showing how hard the extinction hit insects and plants together.',
+      },
+      {
+        tier: 'pleb',
+        title: 'Snails',
+        text: 'Freshwater and land snails.',
+      },
+    ],
     keywords: [
       'hell creek',
       'formation',
@@ -140,6 +164,142 @@ export const EVENTS: HistoryEvent[] = [
       'cretaceous',
       'maastrichtian',
     ],
+  },
+  {
+    id: 'lance',
+    kind: 'Rock formation',
+    title: 'Lance Formation',
+    dateText: 'About 69 to 66 million years ago (latest Cretaceous, Maastrichtian)',
+    placeText: 'Eastern Wyoming, with outcrops in South Dakota, USA',
+    points: [
+      {
+        body: 'earth',
+        lon: -104.6,
+        lat: 43.0,
+        plate: 101,
+        label: 'Lance (forming)',
+        fromMa: 69,
+        toMa: 66,
+        jumpMa: 66.5,
+        jumpLabel: 'Where it formed, about 67 million years ago',
+        zoom: 4,
+        icon: 'swamp',
+      },
+      {
+        body: 'earth',
+        lon: -104.6,
+        lat: 43.0,
+        plate: 101,
+        label: 'Lance today',
+        fromMa: PRESENT_FROM,
+        toMa: 0,
+        jumpMa: 0,
+        jumpLabel: 'Where it is today',
+        zoom: 4,
+        icon: 'pickaxe',
+      },
+    ],
+    summary: [
+      'The Lance Formation is a set of river sandstones, mudstones and thin coals in eastern Wyoming, named after Lance Creek in Niobrara County. Like Hell Creek, its near neighbour and twin, it was laid down by rivers on a warm, humid coastal lowland in the last few million years of the Cretaceous.',
+      'It is one of the classic dinosaur rock units of North America. In 1889–1892 the collector John Bell Hatcher dug dozens of Triceratops skulls from it, and in 1908 the Sternberg family found the famous Edmontosaurus “mummy” with skin impressions preserved over much of its body. Its rich small fossils include early mammals, lizards, snakes, salamanders and fish.',
+    ],
+    facts: [
+      { label: 'Where today', value: 'Niobrara County, Wyoming, and nearby South Dakota' },
+      { label: 'Named after', value: 'Lance Creek, Wyoming' },
+      { label: 'Rocks', value: 'River sandstone, mudstone and lignite' },
+      { label: 'Famous finds', value: 'Hatcher’s Triceratops skulls; the Edmontosaurus “mummy” (1908)' },
+    ],
+    keywords: ['lance', 'lance creek', 'wyoming', 'formation', 'cretaceous', 'maastrichtian', 'hatcher', 'mummy'],
+  },
+  {
+    id: 'scollard',
+    kind: 'Rock formation',
+    title: 'Scollard Formation',
+    dateText: 'About 67 to 63 million years ago; its lower part is latest Cretaceous, its upper part Paleocene',
+    placeText: 'Red Deer River valley, central Alberta, Canada',
+    points: [
+      {
+        body: 'earth',
+        lon: -112.95,
+        lat: 51.9,
+        plate: 101,
+        label: 'Scollard (forming)',
+        fromMa: 67,
+        toMa: 66,
+        jumpMa: 66.5,
+        jumpLabel: 'Where it formed, about 66.5 million years ago',
+        zoom: 4,
+        icon: 'river',
+      },
+      {
+        body: 'earth',
+        lon: -112.95,
+        lat: 51.9,
+        plate: 101,
+        label: 'Scollard today',
+        fromMa: PRESENT_FROM,
+        toMa: 0,
+        jumpMa: 0,
+        jumpLabel: 'Where it is today',
+        zoom: 4,
+        icon: 'pickaxe',
+      },
+    ],
+    summary: [
+      'The Scollard Formation is a set of river sandstones, mudstones and coal seams exposed along the Red Deer River valley in central Alberta. It spans the end of the Cretaceous: dinosaurs are found in its lower part, and the boundary clay from the asteroid impact lies within it, below coal seams laid down in the Paleocene.',
+      'Its latest-Cretaceous rocks hold the northernmost part of the same world as Hell Creek, with Tyrannosaurus rex, Triceratops and Ankylosaurus living on a cooler, wetter floodplain.',
+    ],
+    facts: [
+      { label: 'Where today', value: 'Red Deer River valley, Alberta' },
+      { label: 'Rocks', value: 'River sandstone, mudstone and coal' },
+      { label: 'Famous for', value: 'The K–Pg boundary and the last dinosaurs of Canada' },
+    ],
+    keywords: ['scollard', 'alberta', 'red deer river', 'canada', 'formation', 'cretaceous', 'paleocene'],
+  },
+  {
+    id: 'frenchman',
+    kind: 'Rock formation',
+    title: 'Frenchman Formation',
+    dateText: 'About 67 to 66 million years ago (latest Cretaceous, Maastrichtian)',
+    placeText: 'Frenchman River valley, southwestern Saskatchewan, Canada',
+    points: [
+      {
+        body: 'earth',
+        lon: -108.8,
+        lat: 49.5,
+        plate: 101,
+        label: 'Frenchman (forming)',
+        fromMa: 67,
+        toMa: 66,
+        jumpMa: 66.5,
+        jumpLabel: 'Where it formed, about 66.5 million years ago',
+        zoom: 4,
+        icon: 'river',
+      },
+      {
+        body: 'earth',
+        lon: -108.8,
+        lat: 49.5,
+        plate: 101,
+        label: 'Frenchman today',
+        fromMa: PRESENT_FROM,
+        toMa: 0,
+        jumpMa: 0,
+        jumpLabel: 'Where it is today',
+        zoom: 4,
+        icon: 'pickaxe',
+      },
+    ],
+    summary: [
+      'The Frenchman Formation is a set of river sandstones and mudstones in southwestern Saskatchewan, around the Frenchman River valley near Eastend. It was laid down by rivers in the last million years or so of the Cretaceous, at the same time as Hell Creek further south.',
+      'It is best known for “Scotty”, a Tyrannosaurus rex skeleton found in 1991 that is thought to be the heaviest T. rex known. Triceratops and other Hell Creek dinosaurs are found here too.',
+    ],
+    facts: [
+      { label: 'Where today', value: 'Frenchman River valley, near Eastend, Saskatchewan' },
+      { label: 'Rocks', value: 'River sandstone and mudstone' },
+      { label: 'Famous finds', value: '“Scotty”, the heaviest known T. rex' },
+    ],
+    keywords: ['frenchman', 'saskatchewan', 'eastend', 'scotty', 'canada', 'formation', 'cretaceous'],
   },
   {
     id: 'ojo-alamo',

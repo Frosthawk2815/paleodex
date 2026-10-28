@@ -98,6 +98,39 @@ export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpen
         </>
       )}
 
+      {event.invertebrates && event.invertebrates.length > 0 && (
+        <>
+          <Text style={info.heading}>Invertebrates</Text>
+          {event.invertebrates
+            .filter((n) => n.tier === 'superstar')
+            .map((n) => (
+              <View key={n.title} style={info.card}>
+                <Text style={info.kicker}>★ Superstar</Text>
+                <Text style={[info.rowTitle, { fontSize: 17, marginTop: 4 }]}>{n.title}</Text>
+                <Text style={info.body}>{n.text}</Text>
+              </View>
+            ))}
+          {event.invertebrates
+            .filter((n) => n.tier === 'microceleb')
+            .map((n) => (
+              <View key={n.title} style={{ gap: 2 }}>
+                <Text style={info.rowTitle}>{n.title}</Text>
+                <Text style={[info.body, { marginTop: 0, fontSize: 15, lineHeight: 22 }]}>{n.text}</Text>
+              </View>
+            ))}
+          {event.invertebrates.some((n) => n.tier === 'pleb') && (
+            <Text style={info.meta}>
+              Also present:{' '}
+              {event.invertebrates
+                .filter((n) => n.tier === 'pleb')
+                .map((n) => n.text.replace(/\.$/, '').toLowerCase())
+                .join(', ')}
+              .
+            </Text>
+          )}
+        </>
+      )}
+
       <View style={styles.facts}>
         {event.facts.map((f) => (
           <View key={f.label} style={styles.factRow}>

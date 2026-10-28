@@ -51,7 +51,7 @@ const ITEMS: Item[] = [
     key: `event:${e.id}`,
     title: e.title,
     subtitle: `Event · ${e.dateText}`,
-    words: [e.title, ...e.keywords].join(' ').toLowerCase(),
+    words: [e.title, ...e.keywords, ...(e.invertebrates ?? []).map((n) => n.title)].join(' ').toLowerCase(),
     result: { kind: 'event' as const, event: e },
   })),
   ...EXTINCTIONS.map((e) => ({
