@@ -232,7 +232,7 @@ const BASE_CLADES: Clade[] = [
     id: 'caenagnathidae',
     name: 'Caenagnathidae',
     common: 'Caenagnathids',
-    parent: 'maniraptora',
+    parent: 'oviraptorosauria',
     family: true,
     description: 'Toothless, beaked, crested oviraptorosaurs of North America and Asia, built like large flightless birds.',
   },

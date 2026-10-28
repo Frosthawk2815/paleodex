@@ -1028,7 +1028,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       id: 'barbaridactylus-grandis',
       name: 'Barbaridactylus grandis',
       common: 'Barbaridactylus',
-      clade: 'pterosauria',
+      clade: 'nyctosauridae',
       status: 'full',
       ageText: 'About 67 million years ago',
       placeText: 'Morocco',

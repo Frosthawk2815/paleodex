@@ -550,7 +550,7 @@ export const CRETACEOUS: DataSet = {
       id: 'oviraptoridae',
       name: 'Oviraptoridae',
       common: 'Oviraptorids',
-      parent: 'maniraptora',
+      parent: 'oviraptorosauria',
       family: true,
       description: 'Toothless, crested, parrot-headed theropods of Asia, known for sitting on their nests like birds.',
     },

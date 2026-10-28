@@ -9,7 +9,8 @@ import { MODERN } from '@/data/sets/modern';
 import { PALEOZOIC } from '@/data/sets/paleozoic';
 import { TRIASSIC_JURASSIC } from '@/data/sets/triassic-jurassic';
 import { TREE_1 } from '@/data/sets/tree-1';
+import { TREE_2 } from '@/data/sets/tree-2';
 import type { DataSet } from '@/data/sets/types';
 
 // Content bundles merged into EVENTS, CLADES and SPECIES, oldest first.
-export const SETS: DataSet[] = [PALEOZOIC, TRIASSIC_JURASSIC, MEDIA_EARLY, CRETACEOUS, MEDIA_EARLY_CRETACEOUS, MEDIA_LATE_CRETACEOUS, CENOZOIC, MEDIA_CENOZOIC, MODERN, ICE_AGE, TREE_1];
+export const SETS: DataSet[] = [PALEOZOIC, TRIASSIC_JURASSIC, MEDIA_EARLY, CRETACEOUS, MEDIA_EARLY_CRETACEOUS, MEDIA_LATE_CRETACEOUS, CENOZOIC, MEDIA_CENOZOIC, MODERN, ICE_AGE, TREE_1, TREE_2];
