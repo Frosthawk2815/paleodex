@@ -1,12 +1,26 @@
 import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 
-export type PointIconKind = 'flag' | 'us-flag' | 'swamp' | 'river' | 'dunes' | 'pickaxe';
+export type PointIconKind =
+  | 'flag'
+  | 'us-flag'
+  | 'skull'
+  | 'swamp'
+  | 'river'
+  | 'dunes'
+  | 'sea'
+  | 'reef'
+  | 'lagoon'
+  | 'lake'
+  | 'forest'
+  | 'ash'
+  | 'tar'
+  | 'pickaxe';
 
 // Where the foot of each flagpole is in the 24×24 box, so it can stand on the spot.
-export const FLAG_FOOT: Partial<Record<PointIconKind, [number, number]>> = { flag: [12, 19], 'us-flag': [7, 22] };
+export const FLAG_FOOT: Partial<Record<PointIconKind, [number, number]>> = { flag: [12, 19], 'us-flag': [7, 22], skull: [7, 22] };
 
 // Badge artwork drawn in a 24×24 box centred on (12, 12).
-function Art({ kind }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag'> }) {
+function Art({ kind }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag' | 'skull'> }) {
   if (kind === 'swamp') {
     // A lush, Everglades-like swamp: still water, reeds and trees.
     return (
@@ -44,6 +58,92 @@ function Art({ kind }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag'> }) {
         <Circle cx={16.5} cy={7} r={2.8} fill="#FFB347" />
         <Path d="M1.5 15 Q7 9.5 12 14 Q16 11 22.5 14.5 L21 18.5 Q12 24 3 18.5 Z" fill="#D9A35A" />
         <Path d="M2.5 18 Q9 13.5 15 17.5 Q18 16 21.5 17 L20 19.5 Q12 24 4 19.5 Z" fill="#C0843A" />
+      </G>
+    );
+  }
+  if (kind === 'sea') {
+    // Open sea: waves over deep blue water, with a fish below.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill="#1E5F8C" />
+        <Path d="M1.5 9 Q4.5 6.5 7.5 9 T13.5 9 T19.5 9 T23 9 L23 2 L1 2 Z" fill="#9FD3F0" />
+        <Path d="M2 12 Q5 10 8 12 T14 12 T20 12" stroke="#7FC4EA" strokeWidth={1} fill="none" />
+        <Path d="M8 17 Q11.5 13.8 15 17 Q11.5 20.2 8 17 Z M15 17 L18 15 L18 19 Z" fill="#F2C14E" />
+        <Circle cx={9.6} cy={16.6} r={0.6} fill="#1E5F8C" />
+      </G>
+    );
+  }
+  if (kind === 'reef') {
+    // A shallow tropical reef: branching coral on a sandy floor.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill="#2A9BB8" />
+        <Path d="M2 18 Q12 15.5 22 18 L20 20 Q12 24 4 20 Z" fill="#E9D8A6" />
+        <Path d="M8 18 L8 12 M8 14 L5.5 11 M8 13 L10.5 9.5 M10.5 9.5 L10 7.5" stroke="#FF8A65" strokeWidth={1.6} fill="none" strokeLinecap="round" />
+        <Path d="M15.5 18 L15.5 11.5 M15.5 13.5 L18 10.5 M15.5 12.5 L13.5 9.5" stroke="#F06292" strokeWidth={1.6} fill="none" strokeLinecap="round" />
+        <Circle cx={12} cy={16.5} r={1.8} fill="#FFD54F" />
+      </G>
+    );
+  }
+  if (kind === 'lagoon') {
+    // A warm, still lagoon behind a low reef, under a hot sky.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill="#F6E7B5" />
+        <Circle cx={7} cy={6.5} r={2.4} fill="#FFB347" />
+        <Path d="M1.2 11 L22.8 11 L22 17 Q12 25 2 17 Z" fill="#40C4C8" />
+        <Path d="M1.5 11 Q6 9.2 10 11 Q15 9.6 22.5 11 Z" fill="#D9C27A" />
+        <Path d="M5 14.5 L9 14.5 M12 16.5 L17 16.5" stroke="#B8F0F0" strokeWidth={0.9} strokeLinecap="round" />
+      </G>
+    );
+  }
+  if (kind === 'lake') {
+    // A lake ringed by wooded hills.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill="#BFE3F2" />
+        <Path d="M1.2 13 L6 6.5 L10 11 L14 5.5 L22.8 13 Z" fill="#4C8C3F" />
+        <Path d="M1.2 13 L22.8 13 L22 17 Q12 25 2 17 Z" fill="#2E7DAF" />
+        <Path d="M5 15.5 L10 15.5 M13 18 L18 18" stroke="#9FD3F0" strokeWidth={0.9} strokeLinecap="round" />
+      </G>
+    );
+  }
+  if (kind === 'forest') {
+    // A Carboniferous-style coal forest: tall scale trees with tufted crowns over swampy ground.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill="#294D2E" />
+        <Path d="M2 18 Q12 16 22 18 L20 20 Q12 24 4 20 Z" fill="#3D5A3A" />
+        <Path d="M7 19 L7 6 M12 19 L12 4 M17 19 L17 7" stroke="#7A6A4A" strokeWidth={1.6} strokeLinecap="round" />
+        <Path d="M7 6 L4.5 4.5 M7 6 L9.5 4.5 M12 4 L9.5 2.8 M12 4 L14.5 2.8 M17 7 L14.6 5.5 M17 7 L19.4 5.5" stroke="#8ED86E" strokeWidth={1.4} strokeLinecap="round" />
+        <Path d="M6.2 9 L7.8 9 M6.2 12 L7.8 12 M11.2 8 L12.8 8 M11.2 11 L12.8 11 M16.2 10 L17.8 10 M16.2 13 L17.8 13" stroke="#5A4E36" strokeWidth={0.6} />
+      </G>
+    );
+  }
+  if (kind === 'ash') {
+    // A volcano sending up an ash cloud.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill="#C9B79C" />
+        <Circle cx={10} cy={6} r={3} fill="#7D7468" />
+        <Circle cx={14} cy={5} r={3.4} fill="#8E857A" />
+        <Circle cx={12} cy={8.5} r={2.6} fill="#6E665C" />
+        <Path d="M3 20 L10 11 L14 11 L21 20 Q12 24 3 20 Z" fill="#5D4A3A" />
+        <Path d="M10 11 L14 11 L13 13 L11 13 Z" fill="#FF7043" />
+      </G>
+    );
+  }
+  if (kind === 'tar') {
+    // A sticky black tar seep with bubbles, and a trapped bone.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill="#C7A76C" />
+        <Path d="M2.5 13 Q12 9 21.5 13 L20.5 18 Q12 24 3.5 18 Z" fill="#1A1A1A" />
+        <Circle cx={8} cy={14.5} r={1.1} fill="none" stroke="#555555" strokeWidth={0.6} />
+        <Circle cx={16} cy={16} r={0.8} fill="none" stroke="#555555" strokeWidth={0.6} />
+        <Path d="M11 13 L15 11.5" stroke="#F2EDE2" strokeWidth={1.2} strokeLinecap="round" />
+        <Circle cx={11} cy={13} r={0.9} fill="#F2EDE2" />
+        <Circle cx={15} cy={11.5} r={0.9} fill="#F2EDE2" />
       </G>
     );
   }
@@ -98,6 +198,26 @@ function UsFlag() {
   );
 }
 
+// A black flag with a white skull: where the last of a species was seen alive.
+function SkullFlag() {
+  return (
+    <G>
+      <Circle cx={7} cy={22} r={1.6} fill="#FFFFFF" />
+      <Line x1={7} y1={22} x2={7} y2={1.5} stroke="#E6E6E6" strokeWidth={1.3} strokeLinecap="round" />
+      <Path d="M7 2.5 L22 2.5 L19.5 7.75 L22 13 L7 13 Z" fill="#141414" stroke="#FFFFFF" strokeWidth={0.6} />
+      {/* Cranium and jaw */}
+      <Circle cx={13.2} cy={6.6} r={3} fill="#F5F5F0" />
+      <Rect x={11.4} y={8} width={3.6} height={2.6} rx={0.6} fill="#F5F5F0" />
+      <Circle cx={12.1} cy={6.7} r={0.85} fill="#141414" />
+      <Circle cx={14.3} cy={6.7} r={0.85} fill="#141414" />
+      <Path d="M13.2 7.8 L12.8 8.7 L13.6 8.7 Z" fill="#141414" />
+      <Line x1={12.5} y1={9.6} x2={12.5} y2={10.6} stroke="#141414" strokeWidth={0.4} />
+      <Line x1={13.2} y1={9.6} x2={13.2} y2={10.6} stroke="#141414" strokeWidth={0.4} />
+      <Line x1={13.9} y1={9.6} x2={13.9} y2={10.6} stroke="#141414" strokeWidth={0.4} />
+    </G>
+  );
+}
+
 type Props = { kind: PointIconKind; x: number; y: number; size: number; color?: string };
 
 // A marker icon to place inside an existing <Svg> (e.g. on the globe), centred on (x, y).
@@ -109,6 +229,8 @@ export function PointIconShape({ kind, x, y, size, color = '#FFD54A' }: Props) {
         <Flag color={color} />
       ) : kind === 'us-flag' ? (
         <UsFlag />
+      ) : kind === 'skull' ? (
+        <SkullFlag />
       ) : (
         <G>
           <Ellipse cx={12} cy={23.5} rx={7} ry={1.6} fill="#000000" opacity={0.35} />

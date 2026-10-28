@@ -1,0 +1,87 @@
+{
+  "_about": "Ranges for modern species (those that lived into the last few hundred thousand years). Times are in years before present. Each phase lists regions: {countries}, {continents}, {country, bbox} to clip part of a country, {box} for open sea, or {continents, latMin} for land north of a latitude. lastSeen marks where the last one was seen alive (shown as a skull flag at the centre of that country until that date).",
+  "homo-sapiens": {
+    "phases": [
+      { "from": 300000, "to": 60000, "label": "Africa", "regions": [{ "continents": ["Africa"] }] },
+      { "from": 60000, "to": 50000, "label": "Out of Africa into Asia and Europe", "regions": [{ "continents": ["Africa", "Asia", "Europe"], "latMax": 60 }] },
+      { "from": 50000, "to": 16000, "label": "Into Australia and New Guinea", "regions": [{ "continents": ["Africa", "Asia", "Europe"], "latMax": 66 }, { "countries": ["Australia", "Papua New Guinea"] }] },
+      { "from": 16000, "to": 750, "label": "Into the Americas", "regions": [{ "continents": ["Africa", "Asia", "Europe", "Oceania", "North America", "South America"], "exclude": ["New Zealand", "Greenland"] }] },
+      { "from": 750, "to": 0, "label": "Every continent but Antarctica", "regions": [{ "world": true }] }
+    ]
+  },
+  "homo-neanderthalensis": {
+    "phases": [
+      {
+        "from": 400000,
+        "to": 40000,
+        "label": "Europe and western Asia",
+        "regions": [
+          {
+            "countries": ["Spain", "Portugal", "France", "Italy", "Germany", "Belgium", "Netherlands", "Switzerland", "Austria", "Czechia", "Slovenia", "Croatia", "Bosnia and Herz.", "Serbia", "Montenegro", "Hungary", "Slovakia", "Romania", "Bulgaria", "Greece", "North Macedonia", "Albania", "Poland", "Ukraine", "Moldova", "Turkey", "Georgia", "Armenia", "Azerbaijan", "Iran", "Iraq", "Syria", "Lebanon", "Israel", "Jordan", "Uzbekistan", "Tajikistan", "Kyrgyzstan", "Turkmenistan"]
+          },
+          { "country": "United Kingdom", "bbox": [-6, 50, 2, 54] },
+          { "country": "Russia", "bbox": [30, 42, 90, 55] }
+        ]
+      }
+    ],
+    "lastSeen": { "country": "Spain", "yearsAgo": 40000, "text": "Iberia, about 40,000 years ago (among the last known sites)" }
+  },
+  "mammuthus-primigenius": {
+    "phases": [
+      { "from": 400000, "to": 10000, "label": "The mammoth steppe of northern Eurasia and North America", "regions": [{ "continents": ["Europe", "Asia", "North America"], "latMin": 45, "exclude": ["Greenland"] }] },
+      { "from": 10000, "to": 4000, "label": "A last population on Wrangel Island", "regions": [{ "country": "Russia", "bbox": [178, 70.6, 180, 71.7] }, { "country": "Russia", "bbox": [-180, 70.6, -177, 71.7] }] }
+    ],
+    "lastSeen": { "country": "Russia", "yearsAgo": 4000, "text": "Wrangel Island, Russia, about 4,000 years ago" }
+  },
+  "thylacinus-cynocephalus": {
+    "phases": [
+      { "from": 2000000, "to": 3200, "label": "Australia and New Guinea", "regions": [{ "countries": ["Australia", "Papua New Guinea"] }, { "country": "Indonesia", "bbox": [131, -9.5, 141.1, -0.5] }] },
+      { "from": 3200, "to": 90, "label": "Tasmania only", "regions": [{ "country": "Australia", "bbox": [143.5, -43.8, 148.6, -39.5] }] }
+    ],
+    "lastSeen": { "country": "Australia", "year": 1936, "text": "Hobart Zoo, Tasmania, Australia: the last known thylacine died on 7 September 1936" }
+  },
+  "raphus-cucullatus": {
+    "phases": [{ "from": 100000, "to": 364, "label": "Mauritius", "regions": [{ "countries": ["Mauritius"] }] }],
+    "lastSeen": { "country": "Mauritius", "year": 1662, "text": "Mauritius: the last widely accepted sighting was in 1662" }
+  },
+  "ectopistes-migratorius": {
+    "phases": [
+      { "from": 100000, "to": 112, "label": "Eastern North America", "regions": [{ "country": "United States of America", "bbox": [-105, 25, -66, 50] }, { "country": "Canada", "bbox": [-105, 42, -52, 55] }] }
+    ],
+    "lastSeen": { "country": "United States of America", "year": 1914, "text": "Cincinnati Zoo, USA: Martha, the last passenger pigeon, died on 1 September 1914" }
+  },
+  "pinguinus-impennis": {
+    "phases": [
+      {
+        "from": 100000,
+        "to": 182,
+        "label": "North Atlantic coasts and islands",
+        "regions": [{ "box": [-60, 45, -50, 53] }, { "box": [-26, 62, -12, 67] }, { "box": [-9, 56, -2, 62.5] }, { "box": [4, 58, 14, 66] }]
+      }
+    ],
+    "lastSeen": { "country": "Iceland", "year": 1844, "text": "Eldey, Iceland: the last breeding pair was killed in June 1844" }
+  },
+  "hydrodamalis-gigas": {
+    "phases": [
+      { "from": 1000000, "to": 10000, "label": "Coasts of the North Pacific", "regions": [{ "box": [130, 33, 180, 58] }, { "box": [-180, 50, -125, 60] }, { "box": [-128, 32, -116, 50] }] },
+      { "from": 10000, "to": 258, "label": "A last population around the Commander Islands", "regions": [{ "box": [165, 54, 169, 56] }] }
+    ],
+    "lastSeen": { "country": "Russia", "year": 1768, "text": "Commander Islands, Russia: the last were killed around 1768" }
+  },
+  "dinornis-robustus": {
+    "phases": [{ "from": 100000, "to": 580, "label": "South Island, New Zealand", "regions": [{ "country": "New Zealand", "bbox": [166, -47.5, 174.6, -40.4] }] }],
+    "lastSeen": { "country": "New Zealand", "year": 1445, "text": "New Zealand: moa were hunted to extinction by about 1445" }
+  },
+  "bos-primigenius": {
+    "phases": [
+      { "from": 650000, "to": 3000, "label": "Europe, North Africa and southern Asia", "regions": [{ "continents": ["Europe", "Asia"], "latMax": 60, "latMin": 8 }, { "countries": ["Morocco", "Algeria", "Tunisia", "Libya", "Egypt"] }] },
+      { "from": 3000, "to": 500, "label": "Central and eastern Europe", "regions": [{ "countries": ["Poland", "Lithuania", "Belarus", "Ukraine", "Germany", "Czechia", "Slovakia", "Hungary", "Romania"] }] },
+      { "from": 500, "to": 399, "label": "A last herd in Poland", "regions": [{ "countries": ["Poland"] }] }
+    ],
+    "lastSeen": { "country": "Poland", "year": 1627, "text": "Jaktorów Forest, Poland: the last aurochs, a cow, died in 1627" }
+  },
+  "equus-quagga-quagga": {
+    "phases": [{ "from": 100000, "to": 143, "label": "South Africa’s Karoo and Free State", "regions": [{ "country": "South Africa", "bbox": [17, -34.5, 30, -26] }] }],
+    "lastSeen": { "country": "Netherlands", "year": 1883, "text": "Artis Zoo, Amsterdam, Netherlands: the last quagga died on 12 August 1883 (the last wild ones were shot in the 1870s)" }
+  }
+}

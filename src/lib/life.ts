@@ -32,6 +32,11 @@ export function speciesInClade(id: string): Species[] {
 
 export const speciesInFormation = (formationId: string) => SPECIES.filter((s) => s.formations.includes(formationId));
 
+// Species tied to an event, e.g. Homo sapiens and the Moon landing.
+export const speciesAtEvent = (eventId: string) => SPECIES.filter((s) => s.events?.includes(eventId));
+
+export const eventById = (id: string) => EVENTS.find((e) => e.id === id);
+
 // The family a species is listed under in a formation (the nearest clade marked as a family).
 export function familyOf(s: Species): Clade | undefined {
   const path = cladePath(s.clade);

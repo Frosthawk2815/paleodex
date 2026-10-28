@@ -23,12 +23,13 @@ import { TimeBar, type TimeBarHandle } from '@/components/time-bar';
 import type { HistoryEvent } from '@/data/events';
 import { extinctionAt } from '@/lib/extinctions';
 import { cladeById, formationById, pastPointIndex, speciesById } from '@/lib/life';
+import { lastSeenJumpMa, phaseJumpMa, rangeOf } from '@/lib/ranges';
 import { contextAt, timeLabel } from '@/lib/time';
 
 // What the information section below the globe is showing.
 type Selection = { kind: 'event'; event: HistoryEvent } | { kind: 'species'; id: string } | { kind: 'clade'; id: string };
 
-type Focus = { kind: 'site' | 'moon' | 'event'; id: string; index?: number; n: number };
+type Focus = { kind: 'site' | 'moon' | 'event' | 'skull' | 'range'; id: string; index?: number; n: number };
 
 export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
@@ -39,6 +40,8 @@ export default function GlobeScreen() {
   const [area, setArea] = useState({ width: 0, height: 0 });
   const [focus, setFocus] = useState<Focus | null>(null);
   const [selected, setSelected] = useState<Selection | null>(null);
+  // A modern species whose range is shaded on the globe.
+  const [rangeId, setRangeId] = useState<string | undefined>(undefined);
   const [searching, setSearching] = useState(false);
   // While the globe is being dragged, the page itself shouldn't scroll.
   const [dragging, setDragging] = useState(false);
@@ -71,7 +74,25 @@ export default function GlobeScreen() {
     else scrollToInfo.current = true;
   };
   const selectEvent = (e: HistoryEvent) => openInfo({ kind: 'event', event: e });
-  const openSpecies = (id: string) => openInfo({ kind: 'species', id });
+  const openSpecies = (id: string) => {
+    if (rangeOf(id)) setRangeId(id);
+    openInfo({ kind: 'species', id });
+  };
+  // Modern species: travel to just before the last sighting, or to one stage of the range.
+  const goToLastSeen = (id: string) => {
+    const lastSeen = rangeOf(id)?.lastSeen;
+    if (!lastSeen) return;
+    setRangeId(id);
+    bar.current?.goToTime(lastSeenJumpMa(lastSeen));
+    lookAt('skull', id);
+  };
+  const goToRange = (id: string, index: number) => {
+    const phase = rangeOf(id)?.phases[index];
+    if (!phase) return;
+    setRangeId(id);
+    bar.current?.goToTime(phaseJumpMa(phase));
+    lookAt('range', id, index);
+  };
   const openClade = (id: string) => openInfo({ kind: 'clade', id });
   const backToGlobe = () => page.current?.scrollTo({ y: 0, animated: true });
   // Jump to a point and scroll back up to see it on the globe.
@@ -98,8 +119,12 @@ export default function GlobeScreen() {
       setSelected({ kind: 'event', event: r.event });
     } else if (r.kind === 'species') {
       // Land in the past at the first formation it's found in, and open its description.
+      // Modern species land at their last sighting, or the start of their range.
       const formation = r.species.formations.map(formationById).find((f) => f !== undefined);
+      const range = rangeOf(r.species.id);
       if (formation) jumpToPoint(formation, pastPointIndex(formation));
+      else if (range?.lastSeen) goToLastSeen(r.species.id);
+      else if (range) goToRange(r.species.id, 0);
       openSpecies(r.species.id);
     } else {
       openClade(r.clade.id);
@@ -166,6 +191,9 @@ export default function GlobeScreen() {
                 focus={focus}
                 onSelectEvent={selectEvent}
                 onDragging={setDragging}
+                rangeId={rangeId}
+                onClearRange={() => setRangeId(undefined)}
+                onSelectSpecies={openSpecies}
               />
             )}
           </View>
@@ -197,6 +225,14 @@ export default function GlobeScreen() {
                 onOpenClade={openClade}
                 onOpenSpecies={openSpecies}
                 onJump={jumpAndShow}
+                onJumpRange={(i) => {
+                  goToRange(selected.id, i);
+                  backToGlobe();
+                }}
+                onJumpLastSeen={() => {
+                  goToLastSeen(selected.id);
+                  backToGlobe();
+                }}
               />
             )}
             {selected.kind === 'clade' && cladeById(selected.id) && (

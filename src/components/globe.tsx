@@ -12,6 +12,8 @@ import { pointPosition, pointVisible, visiblePoints } from '@/lib/events';
 import { EVENTS, type EventPoint, type HistoryEvent } from '@/data/events';
 import { moonView } from '@/lib/moon-surface';
 import { FLAG_FOOT, PointIconShape } from '@/components/point-icon';
+import { phaseCentre, phaseIndexAt, phasePolygons, rangeOf, visibleSkulls } from '@/lib/ranges';
+import { speciesById } from '@/lib/life';
 
 const GRATICULE = geoGraticule10();
 // SVG text defaults to a serif font on the web; match the app's sans-serif.
@@ -112,6 +114,22 @@ function anchoredPoint(anchor: string, timeMa: number): EventPoint | undefined {
   return point && point.body === 'earth' && pointVisible(point, timeMa) ? point : undefined;
 }
 
+// A fixed place a camera anchor refers to: a last sighting ('skull:<species>') or the middle of
+// a range phase ('range:<species>:<phase>').
+function anchorLonLat(anchor: string): [number, number] | undefined {
+  const [kind, id, index] = anchor.split(':');
+  const r = kind === 'skull' || kind === 'range' ? rangeOf(id) : undefined;
+  if (!r) return undefined;
+  if (kind === 'skull') return r.lastSeen ? [r.lastSeen.lon, r.lastSeen.lat] : undefined;
+  const phase = r.phases[Number(index)];
+  return phase ? phaseCentre(phase) : undefined;
+}
+
+const speciesName = (id: string) => {
+  const s = speciesById(id);
+  return s?.common ?? s?.name ?? id;
+};
+
 const fmtKm = (km: number) => Math.round(km).toLocaleString('en-US');
 
 function rockPath(x: number, y: number, size: number): string {
@@ -125,16 +143,22 @@ type Props = {
   // Set each time something asks the globe to look at a place: an extinction's site, or the
   // Moon for an event there.
   // For 'event', `index` is which of the event's points to look at.
-  focus: { kind: 'site' | 'moon' | 'event'; id: string; index?: number; n: number } | null;
+  // 'skull' looks at where a species was last seen; 'range' at one phase (`index`) of its range.
+  focus: { kind: 'site' | 'moon' | 'event' | 'skull' | 'range'; id: string; index?: number; n: number } | null;
   // Called when an event's marker is tapped (with the index of the point tapped).
   onSelectEvent: (e: HistoryEvent, index: number) => void;
   // Called when a drag on the globe starts (true) and ends (false). Must be a stable function.
   onDragging?: (active: boolean) => void;
+  // A species whose range is drawn over the map, and a way to hide it.
+  rangeId?: string;
+  onClearRange?: () => void;
+  // Called when a skull flag (a species' last sighting) is tapped.
+  onSelectSpecies?: (id: string) => void;
 };
 
 const K_PG = EXTINCTIONS.find((e) => e.cause === 'asteroid')!;
 
-export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging }: Props) {
+export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging, rangeId, onClearRange, onSelectSpecies }: Props) {
   const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land', view: 'earth', moonZoom: 1 });
   const [pan] = useState(() => createCameraResponder(setCamera, onDragging));
   const [seenFocus, setSeenFocus] = useState(focus);
@@ -147,6 +171,9 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
       setCamera((c) => ({ ...c, view: 'moon', moonZoom: 1.3 }));
     } else if (focus && point) {
       setCamera({ lon: 0, lat: 0, zoom: point.zoom ?? 4, anchor: `event:${focus.id}:${focus.index ?? 0}`, view: 'earth', moonZoom: 1 });
+    } else if (focus?.kind === 'skull' || focus?.kind === 'range') {
+      const anchor = focus.kind === 'skull' ? `skull:${focus.id}` : `range:${focus.id}:${focus.index ?? 0}`;
+      if (anchorLonLat(anchor)) setCamera({ lon: 0, lat: 0, zoom: focus.kind === 'skull' ? 3 : 1.4, anchor, view: 'earth', moonZoom: 1 });
     } else {
       const site = EXTINCTIONS.find((e) => e.id === focus?.id)?.site;
       if (focus && site) setCamera({ lon: 0, lat: 0, zoom: site.zoom, anchor: focus.id, view: 'earth', moonZoom: 1 });
@@ -196,11 +223,18 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   const anchorSite = current?.site && camera.anchor === current.id ? current.site : undefined;
   // ...or an event point after jumping to it, while that point is showing.
   const anchorPoint = anchoredPoint(camera.anchor, timeMa);
-  const anchorPos = anchorSite ? siteAt(anchorSite, step) : anchorPoint ? pointPosition(anchorPoint, step) : undefined;
+  // ...or a fixed place (a species' last sighting or range).
+  const fixedAnchor = useMemo(() => anchorLonLat(camera.anchor), [camera.anchor]);
+  const anchorPos = anchorSite ? siteAt(anchorSite, step) : anchorPoint ? pointPosition(anchorPoint, step) : fixedAnchor;
+
+  // The selected species' range at this time.
+  const range = rangeId ? rangeOf(rangeId) : undefined;
+  const phaseIndex = range ? phaseIndexAt(range, timeMa) : -1;
+  const phase = range && phaseIndex >= 0 ? range.phases[phaseIndex] : undefined;
   const rotLon = anchorPos ? -anchorPos[0] + camera.lon : -centre[0] + camera.lon;
   const rotLat = anchorPos ? -anchorPos[1] + camera.lat : -centre[1] * 0.6 + camera.lat;
 
-  const { land, shelf, grid, projection } = useMemo(() => {
+  const { land, shelf, grid, rangeD, projection } = useMemo(() => {
     const p = geoOrthographic()
       .scale(earthR)
       .translate([ex, ey])
@@ -216,9 +250,10 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
       land: path({ type: 'MultiPolygon', coordinates: geo.land }) ?? '',
       shelf: path({ type: 'MultiPolygon', coordinates: geo.shelf }) ?? '',
       grid: earthR > 40 ? (path(GRATICULE) ?? '') : '',
+      rangeD: phase ? (path({ type: 'MultiPolygon', coordinates: phasePolygons(phase) }) ?? '') : '',
       projection: p,
     };
-  }, [geo, earthR, ex, ey, rotLon, rotLat, w, h, zoom]);
+  }, [geo, earthR, ex, ey, rotLon, rotLat, w, h, zoom, phase]);
 
   // The asteroid hangs just above the impact site, enlarged so it shows at country zoom.
   let asteroid: { x: number; y: number; size: number } | null = null;
@@ -273,6 +308,15 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
       return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05 ? [{ ...v, xy }] : [];
     },
   );
+  // Skull flags where the last of a species was seen alive, until that date.
+  const skulls =
+    !moonMode && earthR > 40
+      ? visibleSkulls(timeMa, rangeId).flatMap(({ id, lastSeen }) => {
+          const pos: [number, number] = [lastSeen.lon, lastSeen.lat];
+          const xy = projection(pos);
+          return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05 ? [{ id, xy, name: speciesName(id) }] : [];
+        })
+      : [];
   const moonReadout = `Moon · ${fmtKm(moonKm)} km from Earth`;
   // In the Earth–Moon view, tapping the Moon opens the close-up.
   const moonHit = !moonMode && moonOnScreen ? Math.max(44, moonR * 2 + 16) : 0;
@@ -339,6 +383,9 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           {/* Outlines in the fill colour hide hairline gaps between neighbouring plate fragments. */}
           <Path d={shelf} fill="#2F6F9A" stroke="#2F6F9A" strokeWidth={zoom > 2 ? 2 : 0.8} strokeLinejoin="round" />
           <Path d={land} fill="#9DBF7A" stroke="#9DBF7A" strokeWidth={zoom > 2 ? 2.5 : 0.8} strokeLinejoin="round" />
+          {rangeD !== '' && (
+            <Path d={rangeD} fill="#FF7043" fillOpacity={0.45} stroke="#FFCCBC" strokeWidth={1.2} strokeLinejoin="round" />
+          )}
           <Circle cx={ex} cy={ey} r={earthR} fill="url(#shade)" />
 
           {siteLabel && (
@@ -402,6 +449,18 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
             </G>
           ))}
 
+          {skulls.map(({ id, xy, name }) => (
+            <G key={`skull-${id}`}>
+              <PointIconShape kind="skull" x={xy[0] + (12 - 7) * 1.5} y={xy[1] - (22 - 12) * 1.5} size={36} />
+              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 16} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={12} fontWeight="700" textAnchor="middle">
+                {`Last ${name.toLowerCase()}`}
+              </SvgText>
+              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 16} fill="#FFFFFF" fontSize={12} fontWeight="700" textAnchor="middle">
+                {`Last ${name.toLowerCase()}`}
+              </SvgText>
+            </G>
+          ))}
+
           {!moonMode && moonOnScreen && (
             <G>
               <Line x1={ex + earthR + 4} y1={ey} x2={mx - moonR - 4} y2={ey} stroke="#FFFFFF" strokeOpacity={0.35} strokeDasharray="2 4" />
@@ -436,6 +495,27 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           style={[styles.hit, { left: xy[0] - 24, top: xy[1] - 30, width: 48, height: 60 }]}
         />
       ))}
+      {skulls.map(({ id, xy, name }) => (
+        <Pressable
+          key={`skull-${id}-hit`}
+          onPress={() => onSelectSpecies?.(id)}
+          accessibilityRole="button"
+          accessibilityLabel={`Where the last ${name.toLowerCase()} was seen alive: read more`}
+          style={[styles.hit, { left: xy[0] - 12, top: xy[1] - 34, width: 44, height: 56 }]}
+        />
+      ))}
+      {!moonMode && range && rangeId && (
+        <View style={styles.rangeChip}>
+          <View style={styles.rangeSwatch} />
+          <Text style={styles.rangeText} numberOfLines={2}>
+            <Text style={styles.rangeName}>{speciesName(rangeId)}</Text>
+            {phase ? ` · ${phase.label}` : ' · not alive at this time'}
+          </Text>
+          <Pressable onPress={onClearRange} accessibilityRole="button" accessibilityLabel="Hide the range" hitSlop={10}>
+            <Text style={styles.rangeClose}>✕</Text>
+          </Pressable>
+        </View>
+      )}
       {moonMode && (
         <Pressable
           onPress={() => setCamera((c) => ({ ...c, view: 'earth', zoom: 0.001 }))}
@@ -527,6 +607,42 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '600',
+  },
+  rangeChip: {
+    position: 'absolute',
+    left: 12,
+    top: 8,
+    right: 64,
+    maxWidth: 360,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 12,
+    backgroundColor: 'rgba(5,7,13,0.75)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(255,204,188,0.5)',
+  },
+  rangeSwatch: {
+    width: 12,
+    height: 12,
+    borderRadius: 3,
+    backgroundColor: 'rgba(255,112,67,0.8)',
+  },
+  rangeText: {
+    flex: 1,
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 12,
+  },
+  rangeName: {
+    color: '#FFFFFF',
+    fontWeight: '700',
+  },
+  rangeClose: {
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: 14,
+    fontWeight: '700',
   },
   readout: {
     position: 'absolute',

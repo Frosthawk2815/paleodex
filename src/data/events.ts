@@ -1,4 +1,5 @@
 import type { PointIconKind } from '@/components/point-icon';
+import { SETS } from '@/data/sets';
 import { yearToMa } from '@/lib/time';
 
 // Points of interest on the globe or the Moon. Selecting one opens an information section.
@@ -49,7 +50,7 @@ const APOLLO_11_YEAR = 1969 + (201 - 1) / 365; // 20 July 1969
 // "Today" for present-day locations: the Anthropocene, from about 1950.
 const PRESENT_FROM = yearToMa(1950);
 
-export const EVENTS: HistoryEvent[] = [
+const BASE_EVENTS: HistoryEvent[] = [
   {
     id: 'apollo-11',
     kind: 'Event',
@@ -400,3 +401,5 @@ export const EVENTS: HistoryEvent[] = [
     keywords: ['nemegt', 'gobi', 'mongolia', 'deinocheirus', 'therizinosaurus', 'saurolophus', 'formation', 'cretaceous', 'maastrichtian'],
   },
 ];
+
+export const EVENTS: HistoryEvent[] = [...BASE_EVENTS, ...SETS.flatMap((d) => d.events ?? [])];

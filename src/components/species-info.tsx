@@ -1,12 +1,14 @@
 import { Fragment, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { info } from '@/components/info-styles';
 import { PointIcon } from '@/components/point-icon';
 import type { HistoryEvent } from '@/data/events';
 import type { Species } from '@/data/life';
 import { SpeciesRow } from '@/components/clade-info';
-import { cladePath, familyOf, formationById, pastPointIndex, relativesOf } from '@/lib/life';
+import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf } from '@/lib/life';
+import { rangeOf } from '@/lib/ranges';
+import { timeLabel } from '@/lib/time';
 
 type Props = {
   species: Species;
@@ -15,15 +17,20 @@ type Props = {
   onOpenSpecies: (id: string) => void;
   // Jump the timeline and globe to where a formation was laid down.
   onJump: (formation: HistoryEvent, index: number) => void;
+  // For modern species: show one phase of the range on the globe, or the last sighting.
+  onJumpRange: (index: number) => void;
+  onJumpLastSeen: () => void;
 };
 
 // The information section for a species: what it was and the formations it's found in.
-export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJump }: Props) {
+export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJump, onJumpRange, onJumpLastSeen }: Props) {
   const [tab, setTab] = useState<'about' | 'relatives'>('about');
   const path = cladePath(species.clade);
   const family = familyOf(species);
   const relatives = relativesOf(species);
   const formations = species.formations.map(formationById).filter((f): f is HistoryEvent => f !== undefined);
+  const events = (species.events ?? []).map(eventById).filter((e): e is HistoryEvent => e !== undefined);
+  const range = rangeOf(species.id);
 
   return (
     <View style={info.wrap}>
@@ -108,6 +115,72 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
             </>
           )}
 
+          {range?.lastSeen && (
+            <>
+              <Text style={info.heading}>Last seen alive</Text>
+              <Pressable
+                onPress={onJumpLastSeen}
+                accessibilityRole="button"
+                accessibilityLabel={`${range.lastSeen.text}: show on the globe`}
+                style={({ pressed }) => [info.card, pressed && info.pressed]}>
+                <View style={info.cardRow}>
+                  <PointIcon kind="skull" size={30} />
+                  <View style={info.cardText}>
+                    <Text style={info.cardTitle}>{range.lastSeen.text} ›</Text>
+                    <Text style={info.cardNote}>The skull flag stands at the centre of {range.lastSeen.country} until then</Text>
+                  </View>
+                </View>
+              </Pressable>
+            </>
+          )}
+
+          {range && (
+            <>
+              <Text style={info.heading}>Range over time</Text>
+              <Text style={info.note}>Tap a stage to see it shaded on the globe. Ranges are approximate.</Text>
+              {range.phases.map((p, i) => (
+                <Pressable
+                  key={p.label}
+                  onPress={() => onJumpRange(i)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${p.label}: show on the globe`}
+                  style={({ pressed }) => [info.card, pressed && info.pressed]}>
+                  <View style={info.cardRow}>
+                    <View style={styles.swatch} />
+                    <View style={info.cardText}>
+                      <Text style={info.cardTitle}>{p.label} ›</Text>
+                      <Text style={info.cardNote}>
+                        {timeLabel(p.fromMa)} to {p.toMa > 0 ? timeLabel(p.toMa) : 'today'}
+                      </Text>
+                    </View>
+                  </View>
+                </Pressable>
+              ))}
+            </>
+          )}
+
+          {events.length > 0 && (
+            <>
+              <Text style={info.heading}>Events</Text>
+              {events.map((e) => (
+                <Pressable
+                  key={e.id}
+                  onPress={() => onJump(e, 0)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${e.title}: show it`}
+                  style={({ pressed }) => [info.card, pressed && info.pressed]}>
+                  <View style={info.cardRow}>
+                    <PointIcon kind={e.points[0].icon ?? 'flag'} size={28} />
+                    <View style={info.cardText}>
+                      <Text style={info.cardTitle}>{e.title} ›</Text>
+                      <Text style={info.cardNote}>{e.points[0].jumpLabel}</Text>
+                    </View>
+                  </View>
+                </Pressable>
+              ))}
+            </>
+          )}
+
           {species.summary.map((p) => (
             <Text key={p} style={info.body}>
               {p}
@@ -133,3 +206,14 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  swatch: {
+    width: 26,
+    height: 26,
+    borderRadius: 6,
+    backgroundColor: 'rgba(255,112,67,0.6)',
+    borderWidth: 1,
+    borderColor: '#FFCCBC',
+  },
+});

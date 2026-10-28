@@ -1,3 +1,5 @@
+import { SETS } from '@/data/sets';
+
 // Living things in PaleoDex: groups (clades) arranged as a family tree, and the species in them.
 // A species belongs to one group; a group lists everything in it and in the groups below it.
 // Species link to the rock formations they are found in (events with kind 'Rock formation').
@@ -23,6 +25,8 @@ export type Species = {
   placeText: string;
   // Formations in PaleoDex (event ids) the species is found in, in the order to show them.
   formations: string[];
+  // Events (ids in EVENTS) the species is tied to, e.g. Homo sapiens and the Moon landing.
+  events?: string[];
   // Position along the family tree, used to order relatives: a higher number branched off
   // later (closer to the most recent species). Two species are as close as the lower of their
   // numbers, so this treats each family as a ladder of successive branches (approximate).
@@ -32,7 +36,7 @@ export type Species = {
   keywords?: string[];
 };
 
-export const CLADES: Clade[] = [
+const BASE_CLADES: Clade[] = [
   {
     id: 'vertebrata',
     name: 'Vertebrata',
@@ -301,7 +305,7 @@ export const CLADES: Clade[] = [
   },
 ];
 
-export const SPECIES: Species[] = [
+const BASE_SPECIES: Species[] = [
   {
     id: 'tyrannosaurus-rex',
     phylo: 20,
@@ -1166,3 +1170,6 @@ export const SPECIES: Species[] = [
     keywords: ['infernodrakon', 'pterosaur', 'pterodactyl', 'azhdarchid', 'dragon from hell'],
   },
 ];
+
+export const CLADES: Clade[] = [...BASE_CLADES, ...SETS.flatMap((d) => d.clades ?? [])];
+export const SPECIES: Species[] = [...BASE_SPECIES, ...SETS.flatMap((d) => d.species ?? [])];

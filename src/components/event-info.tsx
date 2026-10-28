@@ -6,7 +6,7 @@ import { PointIcon } from '@/components/point-icon';
 import { SpeciesRow } from '@/components/clade-info';
 import { info } from '@/components/info-styles';
 import type { Clade, Species } from '@/data/life';
-import { familyOf, speciesInFormation } from '@/lib/life';
+import { familyOf, speciesAtEvent, speciesInFormation } from '@/lib/life';
 
 type Props = {
   event: HistoryEvent;
@@ -71,6 +71,17 @@ export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpen
           {p}
         </Text>
       ))}
+
+      {speciesAtEvent(event.id).length > 0 && (
+        <>
+          <Text style={info.heading}>Who was there</Text>
+          <View style={info.list}>
+            {speciesAtEvent(event.id).map((s) => (
+              <SpeciesRow key={s.id} species={s} onPress={() => onOpenSpecies(s.id)} />
+            ))}
+          </View>
+        </>
+      )}
 
       {families.length > 0 && (
         <>
