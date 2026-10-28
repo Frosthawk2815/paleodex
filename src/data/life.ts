@@ -1204,7 +1204,9 @@ const BASE_SPECIES: Species[] = [
 ];
 
 export const CLADES: Clade[] = [...BASE_CLADES, ...SETS.flatMap((d) => d.clades ?? [])];
-const UPGRADES: Record<string, Partial<Species>> = Object.assign({}, ...SETS.map((d) => d.upgrades ?? {}));
+// Upgrades from different sets for the same species merge field by field (later sets win per field).
+const UPGRADES: Record<string, Partial<Species>> = {};
+for (const d of SETS) for (const [id, up] of Object.entries(d.upgrades ?? {})) UPGRADES[id] = { ...UPGRADES[id], ...up };
 export const SPECIES: Species[] = [...BASE_SPECIES, ...SETS.flatMap((d) => d.species ?? [])].map((s) =>
   UPGRADES[s.id] ? { ...s, ...UPGRADES[s.id] } : s,
 );

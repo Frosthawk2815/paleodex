@@ -128,7 +128,7 @@ export const PICKS_1: DataSet = {
     }),
   ],
   species: [
-    { id: 'spinosaurus-mirabilis', name: 'Spinosaurus mirabilis', common: 'Spinosaurus mirabilis', clade: 'megalosauroidea', status: 'full', ageText: 'About 100 to 95 million years ago', placeText: 'Niger', formations: ['farak'], phylo: 2.1,
+    { id: 'spinosaurus-mirabilis', name: 'Spinosaurus mirabilis', common: 'Spinosaurus mirabilis', clade: 'spinosaurinae', status: 'full', ageText: 'About 100 to 95 million years ago', placeText: 'Niger', formations: ['farak'], phylo: 2.1,
       summary: ['The second known species of Spinosaurus, named in 2026, the first new species of the genus in more than a century. Its skeleton is very like that of S. aegyptiacus, but its skull carried a much taller, curved, scimitar-shaped bony crest, one of the tallest head crests of any meat-eating dinosaur. Its interlocking front teeth suited gripping slippery fish.', 'All the known specimens are from young animals; the type specimen was roughly 8 m long, and adult size is unknown. Its describers argue it waded in shallow water to hunt, like a giant heron, and nicknamed it the “hell heron”. Whether Spinosaurus waded or swam is still debated. Its name means “wonderful” or “astonishing”.'],
       facts: [{ label: 'Named', value: 'Paul Sereno and colleagues, 2026 (Science)' }, { label: 'Length', value: 'About 8 m (young animal; adult size unknown)' }, { label: 'Collected', value: 'Expeditions in 2000, 2019 and 2022, mostly at Jenguebi' }],
       related: [{ id: 'spinosaurus-aegyptiacus', note: 'The type species, from Egypt and Morocco, with a much lower head crest.' }],
@@ -168,7 +168,12 @@ export const PICKS_1: DataSet = {
   ],
   upgrades: {
     'spinosaurus-aegyptiacus': {
-      related: [{ id: 'spinosaurus-mirabilis', note: 'A second species named in 2026 from inland river deposits in Niger, with a tall, scimitar-shaped head crest.' }],
+      clade: 'spinosaurinae',
+      related: [
+        { id: 'spinosaurus-mirabilis', note: 'A second species named in 2026 from inland river deposits in Niger, with a tall, scimitar-shaped head crest.' },
+        { id: 'sigilmassasaurus-brevicollis', note: 'Kem Kem vertebrae that may belong to Spinosaurus or to a second spinosaurine; studies disagree.' },
+        { id: 'oxalaia-quilombensis', note: 'A Brazilian spinosaurine once proposed to be the same animal; later studies keep it separate.' },
+      ],
     },
   },
   eventNotes: {
