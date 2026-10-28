@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { type Ref, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import {
   type LayoutChangeEvent,
   type NativeScrollEvent,
@@ -43,7 +43,16 @@ function tickLabel(ma: number): string {
   return `${Math.round(ma * 1_000_000)} yr`;
 }
 
+// Lets the screen drive the timeline (e.g. from search).
+export type TimeBarHandle = {
+  zoomTo: (u: Unit) => void;
+  jumpToExtinction: (e: Extinction) => void;
+  // Moves to a time, zooming to the stage that contains it.
+  goToTime: (t: number) => void;
+};
+
 type Props = {
+  ref?: Ref<TimeBarHandle>;
   onChange: (timeMa: number) => void;
   // Called when a marker for an extinction with a site (e.g. Chicxulub) is tapped.
   onSite: (e: Extinction) => void;
@@ -53,7 +62,7 @@ type Props = {
 // marker is the selected time. Tapping an era, period, series or stage zooms the strip to just
 // that unit. The arrows step to the next or previous unit one level down, and the middle
 // button zooms back out to all of time without moving the marker.
-export function TimeBar({ onChange, onSite }: Props) {
+export function TimeBar({ ref, onChange, onSite }: Props) {
   const scroll = useRef<ScrollViewInstance>(null);
   const [viewWidth, setViewWidth] = useState(0);
   const [focus, setFocus] = useState<Unit>(ALL_TIME);
@@ -149,6 +158,12 @@ export function TimeBar({ onChange, onSite }: Props) {
     go(t, inside ? focus : (unitAt(focus.level, t) ?? ALL_TIME));
     if (e.site) onSite(e);
   };
+
+  useImperativeHandle(ref, () => ({
+    zoomTo: zoomInto,
+    jumpToExtinction,
+    goToTime: (t: number) => go(t, unitAt('stage', t) ?? ALL_TIME),
+  }));
 
   const visible = (u: Unit) => u.startMa > focus.endMa && u.endMa < focus.startMa;
 

@@ -1,13 +1,16 @@
 import { geoDistance, geoGraticule10, geoOrthographic, geoPath } from 'd3-geo';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { PanResponder, Platform, Pressable, type HostInstance, StyleSheet, Text, View } from 'react-native';
-import Svg, { Circle, Defs, Ellipse, G, Line, LinearGradient, Path, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
+import Svg, { Circle, Defs, G, Line, LinearGradient, Path, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
 
 import { asteroidVisible } from '@/lib/impact';
 import { EARTH_RADIUS_KM, MOON_DISTANCE_TODAY_KM, MOON_RADIUS_KM, moonDistanceKm } from '@/lib/moon';
 import { geographyAt, landCentre, QUATERNARY_MA } from '@/lib/geography';
 import { EXTINCTIONS, extinctionAt } from '@/lib/extinctions';
 import { siteAt } from '@/lib/plates';
+import type { HistoryEvent } from '@/data/events';
+import { eventsOnMoon } from '@/lib/events';
+import { moonView } from '@/lib/moon-surface';
 
 const GRATICULE = geoGraticule10();
 // SVG text defaults to a serif font on the web; match the app's sans-serif.
@@ -19,12 +22,26 @@ const MIN_MOON_PX = 3;
 
 // lon/lat are spin offsets in degrees; zoom 1 fits the globe to the screen.
 // `anchor` is what the globe faces: the continents, or an extinction's site (by id) after jumping to it.
-type Camera = { lon: number; lat: number; zoom: number; anchor: string };
+// `view` 'moon' shows the Moon close up (zoom 1 fits it to the screen as `moonZoom`).
+type Camera = { lon: number; lat: number; zoom: number; anchor: string; view: 'earth' | 'moon'; moonZoom: number };
+
+const MAX_MOON_ZOOM = 4;
+
+// Zooming the Moon view out past its fit size goes back to the Earth–Moon view.
+function zoomCamera(c: Camera, factor: number): Camera {
+  if (c.view === 'moon') {
+    const moonZoom = c.moonZoom * factor;
+    if (moonZoom < 0.85) return { ...c, view: 'earth', zoom: 0.001 };
+    return { ...c, moonZoom: Math.min(MAX_MOON_ZOOM, moonZoom) };
+  }
+  return { ...c, zoom: clampZoom(c.zoom * factor) };
+}
 
 const clampZoom = (z: number) => Math.min(MAX_ZOOM, Math.max(0.001, z));
 
 // Turns one-finger drags into spin and two-finger pinches into zoom.
-function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => void) {
+// `onActive` reports when a drag starts and ends, so a page around the globe can stop scrolling.
+function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => void, onActive?: (active: boolean) => void) {
   let lastDx = 0;
   let lastDy = 0;
   let lastPinch = 0;
@@ -35,14 +52,17 @@ function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => voi
       lastDx = 0;
       lastDy = 0;
       lastPinch = 0;
+      onActive?.(true);
     },
+    onPanResponderRelease: () => onActive?.(false),
+    onPanResponderTerminate: () => onActive?.(false),
     onPanResponderMove: (evt, g) => {
       const touches = evt.nativeEvent.touches;
       if (touches.length >= 2) {
         const d = Math.hypot(touches[0].pageX - touches[1].pageX, touches[0].pageY - touches[1].pageY);
         if (lastPinch > 0) {
           const factor = d / lastPinch;
-          setCamera((c) => ({ ...c, zoom: clampZoom(c.zoom * factor) }));
+          setCamera((c) => zoomCamera(c, factor));
         }
         lastPinch = d;
         lastDx = g.dx;
@@ -55,6 +75,7 @@ function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => voi
       lastDx = g.dx;
       lastDy = g.dy;
       setCamera((c) => {
+        if (c.view === 'moon') return c; // the Moon always shows its near side
         // Spin slower when zoomed in so the surface follows the finger.
         const k = DRAG_DEGREES_PER_PIXEL / Math.max(c.zoom, 0.3);
         return { ...c, lon: c.lon + dx * k, lat: Math.max(-85, Math.min(85, c.lat - dy * k)) };
@@ -77,17 +98,6 @@ const ROCK = [
   [0.6, -0.7],
 ];
 
-// Near-side maria (dark patches) as [x, y, rx, ry] in Moon radii.
-const MARIA = [
-  [-0.25, -0.35, 0.28, 0.24],
-  [0.12, -0.3, 0.16, 0.15],
-  [0.22, -0.05, 0.2, 0.17],
-  [0.6, -0.2, 0.1, 0.09],
-  [-0.5, 0.02, 0.3, 0.45],
-  [-0.1, 0.38, 0.15, 0.12],
-  [0.45, 0.15, 0.13, 0.15],
-];
-
 const fmtKm = (km: number) => Math.round(km).toLocaleString('en-US');
 
 function rockPath(x: number, y: number, size: number): string {
@@ -98,22 +108,31 @@ type Props = {
   timeMa: number;
   width: number;
   height: number;
-  // Set each time an extinction marker with a site is tapped; the globe then turns to that site.
-  focus: { id: string; n: number } | null;
+  // Set each time something asks the globe to look at a place: an extinction's site, or the
+  // Moon for an event there.
+  focus: { kind: 'site' | 'moon'; id: string; n: number } | null;
+  // Called when an event's marker is tapped.
+  onSelectEvent: (e: HistoryEvent) => void;
+  // Called when a drag on the globe starts (true) and ends (false). Must be a stable function.
+  onDragging?: (active: boolean) => void;
 };
 
 const K_PG = EXTINCTIONS.find((e) => e.cause === 'asteroid')!;
 
-export function Globe({ timeMa, width: w, height: h, focus }: Props) {
-  const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land' });
-  const [pan] = useState(() => createCameraResponder(setCamera));
+export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging }: Props) {
+  const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land', view: 'earth', moonZoom: 1 });
+  const [pan] = useState(() => createCameraResponder(setCamera, onDragging));
   const [seenFocus, setSeenFocus] = useState(focus);
   const container = useRef<HostInstance>(null);
 
   if (seenFocus !== focus) {
     setSeenFocus(focus);
-    const site = EXTINCTIONS.find((e) => e.id === focus?.id)?.site;
-    if (focus && site) setCamera({ lon: 0, lat: 0, zoom: site.zoom, anchor: focus.id });
+    if (focus?.kind === 'moon') {
+      setCamera((c) => ({ ...c, view: 'moon', moonZoom: 1.3 }));
+    } else {
+      const site = EXTINCTIONS.find((e) => e.id === focus?.id)?.site;
+      if (focus && site) setCamera({ lon: 0, lat: 0, zoom: site.zoom, anchor: focus.id, view: 'earth', moonZoom: 1 });
+    }
   }
 
   // Mouse wheel / trackpad zoom on the web.
@@ -122,7 +141,7 @@ export function Globe({ timeMa, width: w, height: h, focus }: Props) {
     const el = container.current as unknown as HTMLElement;
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
-      setCamera((c) => ({ ...c, zoom: clampZoom(c.zoom * Math.exp(-e.deltaY * 0.0015)) }));
+      setCamera((c) => zoomCamera(c, Math.exp(-e.deltaY * 0.0015)));
     };
     el.addEventListener('wheel', onWheel, { passive: false });
     return () => el.removeEventListener('wheel', onWheel);
@@ -212,7 +231,27 @@ export function Globe({ timeMa, width: w, height: h, focus }: Props) {
     if (sp && geoDistance(pos, [-rotLon, -rotLat]) < Math.PI / 2 - 0.05) siteLabel = { x: sp[0], y: sp[1], name: current.site.name };
   }
 
-  const zoomBy = (f: number) => setCamera((c) => ({ ...c, zoom: clampZoom(Math.max(c.zoom, minZoom) * f) }));
+  const zoomBy = (f: number) => setCamera((c) => zoomCamera(c.view === 'moon' ? c : { ...c, zoom: Math.max(c.zoom, minZoom) }, f));
+
+  // Moon close-up: the near side, with markers for events there.
+  const moonMode = camera.view === 'moon';
+  const bigMoonR = (Math.min(w, h) / 2 - 24) * camera.moonZoom;
+  const moonCx = moonMode ? w / 2 : mx;
+  const moonCy = moonMode ? h / 2 : ey;
+  const moonDrawR = moonMode ? bigMoonR : moonR;
+  const moonSurface = useMemo(() => moonView(moonCx, moonCy, moonDrawR), [moonCx, moonCy, moonDrawR]);
+  const moonEvents = eventsOnMoon(timeMa);
+  const markers = moonMode
+    ? moonEvents.flatMap((e) =>
+        e.points
+          .filter((p) => p.body === 'moon')
+          .map((p) => ({ event: e, point: p, xy: moonSurface.project(p.lon, p.lat) }))
+          .filter((m): m is { event: HistoryEvent; point: (typeof e.points)[number]; xy: [number, number] } => m.xy !== null),
+      )
+    : [];
+  const moonReadout = `Moon · ${fmtKm(moonKm)} km from Earth`;
+  // In the Earth–Moon view, tapping the Moon opens the close-up.
+  const moonHit = !moonMode && moonOnScreen ? Math.max(44, moonR * 2 + 16) : 0;
 
   return (
     <View style={{ width: w, height: h }}>
@@ -264,10 +303,12 @@ export function Globe({ timeMa, width: w, height: h, focus }: Props) {
             )}
           </Defs>
 
-          {moonOnScreen && (
+          {!moonMode && moonOnScreen && (
             <Circle cx={ex} cy={ey} r={moonDistPx} stroke="#FFFFFF" strokeOpacity={0.12} strokeDasharray="3 6" fill="none" />
           )}
 
+          {!moonMode && (
+          <G>
           <Circle cx={ex} cy={ey} r={earthR + 6} fill="url(#glow)" />
           <Circle cx={ex} cy={ey} r={earthR} fill="url(#ocean)" />
           {grid !== '' && <Path d={grid} stroke="#FFFFFF" strokeOpacity={0.08} strokeWidth={0.6} fill="none" />}
@@ -300,14 +341,34 @@ export function Globe({ timeMa, width: w, height: h, focus }: Props) {
               <Path d={rockPath(asteroid.x, asteroid.y, asteroid.size)} fill="url(#rock)" stroke="#241C15" strokeWidth={1} />
             </G>
           )}
+          </G>
+          )}
 
-          {moonOnScreen && (
+          {(moonMode || moonOnScreen) && (
             <G>
-              <Circle cx={mx} cy={ey} r={moonR} fill="url(#moon)" />
-              {moonR > 6 &&
-                MARIA.map(([x, y, rx, ry], i) => (
-                  <Ellipse key={i} cx={mx + x * moonR} cy={ey + y * moonR} rx={rx * moonR} ry={ry * moonR} fill="#5E6166" opacity={0.45} />
-                ))}
+              <Circle cx={moonCx} cy={moonCy} r={moonDrawR} fill="url(#moon)" />
+              {moonDrawR > 6 && <Path d={moonSurface.maria} fill="#5E6166" opacity={0.5} />}
+              {moonDrawR > 6 && <Circle cx={moonCx} cy={moonCy} r={moonDrawR} fill="url(#shade)" />}
+            </G>
+          )}
+
+          {markers.map(({ event, point, xy }) => (
+            <G key={`${event.id}-${point.label}`}>
+              <Circle cx={xy[0]} cy={xy[1]} r={13} fill="#FFD54A" opacity={0.25} />
+              <Line x1={xy[0]} y1={xy[1]} x2={xy[0]} y2={xy[1] - 22} stroke="#FFFFFF" strokeWidth={1.5} />
+              <Path d={`M ${xy[0]} ${xy[1] - 22} L ${xy[0] + 12} ${xy[1] - 18} L ${xy[0]} ${xy[1] - 14} Z`} fill="#FFD54A" />
+              <Circle cx={xy[0]} cy={xy[1]} r={3.5} fill="#FFD54A" stroke="#FFFFFF" strokeWidth={1} />
+              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 20} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={13} fontWeight="700" textAnchor="middle">
+                {point.label}
+              </SvgText>
+              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 20} fill="#FFFFFF" fontSize={13} fontWeight="700" textAnchor="middle">
+                {point.label}
+              </SvgText>
+            </G>
+          ))}
+
+          {!moonMode && moonOnScreen && (
+            <G>
               <Line x1={ex + earthR + 4} y1={ey} x2={mx - moonR - 4} y2={ey} stroke="#FFFFFF" strokeOpacity={0.35} strokeDasharray="2 4" />
               <SvgText fontFamily={SVG_FONT} x={(ex + mx) / 2} y={ey - 10} fill="#FFFFFF" fillOpacity={0.8} fontSize={12} textAnchor="middle">
                 {`${fmtKm(moonKm)} km`}
@@ -323,18 +384,53 @@ export function Globe({ timeMa, width: w, height: h, focus }: Props) {
         </Svg>
       </View>
 
+      {moonHit > 0 && (
+        <Pressable
+          onPress={() => setCamera((c) => ({ ...c, view: 'moon', moonZoom: 1 }))}
+          accessibilityRole="button"
+          accessibilityLabel="Look at the Moon close up"
+          style={[styles.hit, { left: mx - moonHit / 2, top: ey - moonHit / 2, width: moonHit, height: moonHit }]}
+        />
+      )}
+      {markers.map(({ event, point, xy }) => (
+        <Pressable
+          key={`${event.id}-${point.label}-hit`}
+          onPress={() => onSelectEvent(event)}
+          accessibilityRole="button"
+          accessibilityLabel={`${event.title}: read more`}
+          style={[styles.hit, { left: xy[0] - 24, top: xy[1] - 30, width: 48, height: 60 }]}
+        />
+      ))}
+      {moonMode && (
+        <Pressable
+          onPress={() => setCamera((c) => ({ ...c, view: 'earth', zoom: 0.001 }))}
+          accessibilityRole="button"
+          accessibilityLabel="Back to the Earth and Moon"
+          style={({ pressed }) => [styles.back, pressed && styles.buttonPressed]}>
+          <Text style={styles.backText}>‹ Earth</Text>
+        </Pressable>
+      )}
+
       <View style={styles.controls}>
         <ZoomButton label="+" a11y="Zoom in" onPress={() => zoomBy(2)} />
         <ZoomButton label="−" a11y="Zoom out" onPress={() => zoomBy(0.5)} />
-        <ZoomButton label="☾" a11y="Zoom out to the Earth and Moon" onPress={() => setCamera((c) => ({ ...c, zoom: minZoom }))} />
+        <ZoomButton label="☾" a11y="Zoom out to the Earth and Moon" onPress={() => setCamera((c) => ({ ...c, view: 'earth', zoom: minZoom }))} />
       </View>
 
-      {readout !== '' && (
+      {moonMode ? (
         <View pointerEvents="none" style={styles.readout}>
-          <Text style={styles.readoutText}>{readout}</Text>
-          {enlarged && <Text style={styles.readoutNote}>Earth and Moon enlarged · distance to scale</Text>}
-          {moonOnScreen && <Text style={styles.readoutNote}>Moon moves away about 3.8 cm a year</Text>}
+          <Text style={styles.readoutText}>{moonReadout}</Text>
+          <Text style={styles.readoutNote}>Near side, as seen from Earth</Text>
+          {markers.length > 0 && <Text style={styles.readoutNote}>Tap a marker to read about it</Text>}
         </View>
+      ) : (
+        readout !== '' && (
+          <View pointerEvents="none" style={styles.readout}>
+            <Text style={styles.readoutText}>{readout}</Text>
+            {enlarged && <Text style={styles.readoutNote}>Earth and Moon enlarged · distance to scale</Text>}
+            {moonOnScreen && <Text style={styles.readoutNote}>Tap the Moon to look closer</Text>}
+          </View>
+        )
       )}
     </View>
   );
@@ -375,6 +471,26 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#FFFFFF',
     fontSize: 20,
+    fontWeight: '600',
+  },
+  hit: {
+    position: 'absolute',
+  },
+  back: {
+    position: 'absolute',
+    left: 12,
+    top: 8,
+    paddingHorizontal: 14,
+    height: 36,
+    borderRadius: 18,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(255,255,255,0.3)',
+  },
+  backText: {
+    color: '#FFFFFF',
+    fontSize: 15,
     fontWeight: '600',
   },
   readout: {

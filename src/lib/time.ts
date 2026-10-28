@@ -28,9 +28,21 @@ export function contextAt(t: number): TimeContext {
 
 const withCommas = (n: number) => n.toLocaleString('en-US');
 
+// The present as a decimal calendar year; the timeline's 0 Ma.
+const NOW = new Date();
+export const NOW_YEAR = NOW.getFullYear() + (NOW.getMonth() + NOW.getDate() / 31) / 12;
+
+// Converts a calendar year (CE) to millions of years ago.
+export const yearToMa = (year: number) => (NOW_YEAR - year) / 1_000_000;
+
 export function timeLabel(t: number): string {
   const years = t * 1_000_000;
-  if (years < 50) return 'Today';
+  if (years < 0.5) return 'Today';
+  // For the last few thousand years a calendar year reads better.
+  if (years < 3000) {
+    const year = Math.floor(NOW_YEAR - years);
+    return year > 0 ? `${year} CE` : `${1 - year} BCE`;
+  }
   if (years < 10_000) return `${withCommas(Math.round(years / 10) * 10)} years ago`;
   if (years < 100_000) return `${withCommas(Math.round(years / 100) * 100)} years ago`;
   if (years < 1_000_000) return `${withCommas(Math.round(years / 1000) * 1000)} years ago`;
