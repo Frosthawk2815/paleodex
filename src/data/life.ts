@@ -1172,4 +1172,7 @@ const BASE_SPECIES: Species[] = [
 ];
 
 export const CLADES: Clade[] = [...BASE_CLADES, ...SETS.flatMap((d) => d.clades ?? [])];
-export const SPECIES: Species[] = [...BASE_SPECIES, ...SETS.flatMap((d) => d.species ?? [])];
+const UPGRADES: Record<string, Partial<Species>> = Object.assign({}, ...SETS.map((d) => d.upgrades ?? {}));
+export const SPECIES: Species[] = [...BASE_SPECIES, ...SETS.flatMap((d) => d.species ?? [])].map((s) =>
+  UPGRADES[s.id] ? { ...s, ...UPGRADES[s.id] } : s,
+);
