@@ -42,6 +42,9 @@ export type HistoryEvent = {
   summary: string[];
   facts: { label: string; value: string }[];
   invertebrates?: InvertebrateNote[];
+  // Very species-rich vertebrate groups (bats, rodents and the like), noted in the same three
+  // tiers as invertebrates rather than given species entries.
+  groupNotes?: InvertebrateNote[];
   // Extra words the search should match.
   keywords: string[];
 };
@@ -402,4 +405,12 @@ const BASE_EVENTS: HistoryEvent[] = [
   },
 ];
 
-export const EVENTS: HistoryEvent[] = [...BASE_EVENTS, ...SETS.flatMap((d) => d.events ?? [])];
+export const EVENTS: HistoryEvent[] = [...BASE_EVENTS, ...SETS.flatMap((d) => d.events ?? [])].map((e) => {
+  const extra = SETS.map((d) => d.eventNotes?.[e.id]).filter((n) => n !== undefined);
+  if (extra.length === 0) return e;
+  return {
+    ...e,
+    invertebrates: [...(e.invertebrates ?? []), ...extra.flatMap((n) => n.invertebrates ?? [])],
+    groupNotes: [...(e.groupNotes ?? []), ...extra.flatMap((n) => n.groupNotes ?? [])],
+  };
+});

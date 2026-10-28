@@ -90,7 +90,7 @@ export const CENOZOIC: DataSet = {
       icon: 'forest',
       summary: [
         'Limestone pools, caves and springs in a lush rainforest that once covered much of Australia, before the continent dried out. Lime-rich water preserved bones in three dimensions, and they are freed from the rock with acid.',
-        'Riversleigh has more than 350 kinds of extinct animal, a record of Australia’s strange mammals: early relatives of the thylacine, marsupial lions, giant platypuses, flesh-eating kangaroos and tree-dwelling crocodiles.',
+        'Riversleigh has more than 350 kinds of extinct animal, a record of Australia’s strange mammals: early relatives of the thylacine, marsupial lions, giant platypuses, tree-climbing diprotodontids, blade-toothed kangaroos and small land-living crocodiles.',
       ],
       facts: [
         { label: 'Age', value: 'About 25 to 12 million years ago (and younger)' },

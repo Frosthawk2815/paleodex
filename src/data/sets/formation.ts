@@ -27,6 +27,7 @@ type FormationSpec = {
   summary: string[];
   facts: { label: string; value: string }[];
   invertebrates?: InvertebrateNote[];
+  groupNotes?: InvertebrateNote[];
   keywords: string[];
 };
 
@@ -77,6 +78,7 @@ export function formation(f: FormationSpec): HistoryEvent {
     summary: f.summary,
     facts: f.facts,
     invertebrates: f.invertebrates,
+    groupNotes: f.groupNotes,
     keywords: [...f.keywords, 'formation', 'fossil'],
   };
 }

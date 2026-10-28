@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import type { HistoryEvent } from '@/data/events';
+import type { HistoryEvent, InvertebrateNote } from '@/data/events';
 import { pointVisible } from '@/lib/events';
 import { PointIcon } from '@/components/point-icon';
 import { SpeciesRow } from '@/components/clade-info';
@@ -109,38 +109,8 @@ export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpen
         </>
       )}
 
-      {event.invertebrates && event.invertebrates.length > 0 && (
-        <>
-          <Text style={info.heading}>Invertebrates</Text>
-          {event.invertebrates
-            .filter((n) => n.tier === 'superstar')
-            .map((n) => (
-              <View key={n.title} style={info.card}>
-                <Text style={info.kicker}>★ Superstar</Text>
-                <Text style={[info.rowTitle, { fontSize: 17, marginTop: 4 }]}>{n.title}</Text>
-                <Text style={info.body}>{n.text}</Text>
-              </View>
-            ))}
-          {event.invertebrates
-            .filter((n) => n.tier === 'microceleb')
-            .map((n) => (
-              <View key={n.title} style={{ gap: 2 }}>
-                <Text style={info.rowTitle}>{n.title}</Text>
-                <Text style={[info.body, { marginTop: 0, fontSize: 15, lineHeight: 22 }]}>{n.text}</Text>
-              </View>
-            ))}
-          {event.invertebrates.some((n) => n.tier === 'pleb') && (
-            <Text style={info.meta}>
-              Also present:{' '}
-              {event.invertebrates
-                .filter((n) => n.tier === 'pleb')
-                .map((n) => n.text.replace(/\.$/, '').toLowerCase())
-                .join(', ')}
-              .
-            </Text>
-          )}
-        </>
-      )}
+      <TierNotes heading="Invertebrates" notes={event.invertebrates} />
+      <TierNotes heading="Bats, rodents and other crowded groups" notes={event.groupNotes} />
 
       <View style={styles.facts}>
         {event.facts.map((f) => (
@@ -151,6 +121,39 @@ export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpen
         ))}
       </View>
     </View>
+  );
+}
+
+// Notes in three tiers: superstars as cards, microcelebs as short explainers, plebs as a list.
+function TierNotes({ heading, notes }: { heading: string; notes?: InvertebrateNote[] }) {
+  if (!notes || notes.length === 0) return null;
+  const plebs = notes.filter((n) => n.tier === 'pleb');
+  return (
+    <>
+      <Text style={info.heading}>{heading}</Text>
+      {notes
+        .filter((n) => n.tier === 'superstar')
+        .map((n) => (
+          <View key={n.title} style={info.card}>
+            <Text style={info.kicker}>★ Superstar</Text>
+            <Text style={[info.rowTitle, { fontSize: 17, marginTop: 4 }]}>{n.title}</Text>
+            <Text style={info.body}>{n.text}</Text>
+          </View>
+        ))}
+      {notes
+        .filter((n) => n.tier === 'microceleb')
+        .map((n) => (
+          <View key={n.title} style={{ gap: 2 }}>
+            <Text style={info.rowTitle}>{n.title}</Text>
+            <Text style={[info.body, { marginTop: 0, fontSize: 15, lineHeight: 22 }]}>{n.text}</Text>
+          </View>
+        ))}
+      {plebs.length > 0 && (
+        <Text style={info.meta}>
+          Also present: {plebs.map((n) => n.text.replace(/\.$/, '').toLowerCase()).join(', ')}.
+        </Text>
+      )}
+    </>
   );
 }
 
