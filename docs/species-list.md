@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-563 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+576 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -206,6 +206,8 @@
 | 129 Ma | *Baryonyx walkeri* | Baryonyx | Baryonychines | Weald Clay (Smokejacks Pit) |
 | 128 Ma | *Iberospinus natarioi* | Iberospinus | Spinosaurines | Papo Seco Formation |
 | 128 Ma | *Siamosaurus suteethorni* | Siamosaurus | Spinosaurids | Sao Khua Formation |
+| 128 Ma | *Phuwiangvenator yaemniyomi* | Phuwiangvenator | Megaraptorans | Sao Khua Formation |
+| 128 Ma | *Vayuraptor nongbualamphuensis* | Vayuraptor | Megaraptorans | Sao Khua Formation |
 | 127 Ma | *Eotyrannus lengi* | Eotyrannus | Tyrannosaurs | Wessex Formation |
 | 127 Ma | *Neovenator salerii* | Neovenator | Allosaurs and relatives | Wessex Formation |
 | 127 Ma | *Hypsilophodon foxii* | Hypsilophodon | Hypsilophodonts | Wessex Formation |
@@ -244,6 +246,7 @@
 | 120 Ma | *Jeholornis prima* | Jeholornis | Birds | Jiufotang Formation |
 | 120 Ma | *Ikrandraco avatar* | Ikrandraco | Pterosaurs | Jiufotang Formation |
 | 120 Ma | *Sapeornis chaoyangensis* | Sapeornis | Birds | Jiufotang Formation |
+| 120 Ma | *Fukuiraptor kitadaniensis* | Fukuiraptor | Megaraptorans | Kitadani Formation |
 | 118 Ma | *Ichthyovenator laosensis* | Ichthyovenator | Spinosaurines | Grès supérieurs Formation |
 | 115 Ma | *Sarcosuchus imperator* | Sarcosuchus | Pholidosaurs | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Ouranosaurus nigeriensis* | Ouranosaurus | Iguanodonts | Elrhaz Formation (Gadoufaoua) |
@@ -294,7 +297,7 @@
 | 97 Ma | *Oxalaia quilombensis* | Oxalaia | Spinosaurines | Alcântara Formation |
 | 97 Ma | *Sigilmassasaurus brevicollis* | Sigilmassasaurus | Spinosaurines | Kem Kem Group |
 | 96.5 Ma | *Moros intrepidus* | Moros | Tyrannosaurs | Cedar Mountain Formation (Mussentuchit Member) |
-| 96.5 Ma | *Siats meekerorum* | Siats | Allosaurs and relatives | Cedar Mountain Formation (Mussentuchit Member) |
+| 96.5 Ma | *Siats meekerorum* | Siats | Megaraptorans | Cedar Mountain Formation (Mussentuchit Member) |
 | 96.5 Ma | *Eolambia caroljonesa* | Eolambia | Iguanodonts | Cedar Mountain Formation (Mussentuchit Member) |
 | 96 Ma | *Spinosaurus mirabilis* | Spinosaurus mirabilis | Spinosaurines | Farak Formation |
 | 95 Ma | *Kaprosuchus saharicus* | Kaprosuchus | Mahajangasuchids | Echkar Formation |
@@ -306,6 +309,8 @@
 | 95 Ma | *Skorpiovenator bustingorryi* | Skorpiovenator | Ceratosaurs | Huincul Formation |
 | 95 Ma | *Laganosuchus thaumastos* | Laganosuchus | Archosaurs | Echkar Formation |
 | 95 Ma | *Ilokelesia aguadagrandensis* | Ilokelesia | Ceratosaurs | Huincul Formation |
+| 95 Ma | *Australovenator wintonensis* | Australovenator | Megaraptorids | Winton Formation |
+| 95 Ma | *Diamantinasaurus matildae* | Diamantinasaurus | Titanosaurs | Winton Formation |
 | 92 Ma | *Gigantoraptor erlianensis* | Gigantoraptor | Caenagnathids | Iren Dabasu Formation |
 | 92 Ma | *Alectrosaurus olseni* | Alectrosaurus | Tyrannosaurs | Iren Dabasu Formation |
 | 92 Ma | *Archaeornithomimus asiaticus* | Archaeornithomimus | Ostrich dinosaurs | Iren Dabasu Formation |
@@ -313,6 +318,8 @@
 | 91 Ma | *Timurlengia euotica* | Timurlengia | Tyrannosaurs | Bissekty Formation |
 | 91 Ma | *Levnesovia transoxiana* | Levnesovia | Iguanodonts | Bissekty Formation |
 | 91 Ma | *Turanoceratops tardabilis* | Turanoceratops | Horned dinosaurs | Bissekty Formation |
+| 90 Ma | *Megaraptor namunhuaiquii* | Megaraptor | Megaraptorids | Portezuelo Formation |
+| 88 Ma | *Murusraptor barrosaensis* | Murusraptor | Megaraptorids | Sierra Barrosa Formation |
 | 85 Ma | *Tylosaurus proriger* | Tylosaurus | Mosasaurs | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Pteranodon longiceps* | Pteranodon | Pteranodontids | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Xiphactinus audax* | Xiphactinus | Ichthyodectids | Niobrara Formation (Smoky Hill Chalk) |
@@ -325,6 +332,9 @@
 | 85 Ma | *Protosphyraena perniciosa* | Protosphyraena | Pachycormids | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Nyctosaurus gracilis* | Nyctosaurus | Nyctosaurids | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Toxochelys latiremis* | Toxochelys | Turtles | Niobrara Formation (Smoky Hill Chalk) |
+| 85 Ma | *Tratayenia rosalesi* | Tratayenia | Megaraptorids | Bajo de la Carpa Formation |
+| 85 Ma | *Diuqin lechiguanae* | Diuqin | Raptors | Bajo de la Carpa Formation |
+| 84 Ma | *Aerosteon riocoloradensis* | Aerosteon | Megaraptorids | Anacleto Formation |
 | 80.3 Ma | *Lythronax argestes* | Lythronax | Tyrannosaurs | Wahweap Formation |
 | 80.3 Ma | *Diabloceratops eatoni* | Diabloceratops | Horned dinosaurs | Wahweap Formation |
 | 80.3 Ma | *Acristavus gagslarsoni* | Acristavus | Duck-billed dinosaurs | Wahweap Formation |
@@ -418,6 +428,7 @@
 | 70 Ma | *Adasaurus mongoliensis* | Adasaurus | Raptors | Nemegt Formation |
 | 70 Ma | *Bonapartenykus ultimus* | Bonapartenykus | Alvarezsaurs | Allen Formation |
 | 70 Ma | *Austroraptor cabazai* | Austroraptor | Raptors | Allen Formation |
+| 70 Ma | *Orkoraptor burkei* | Orkoraptor | Megaraptorids | Pari Aike Formation |
 | 69 Ma | *Qianzhousaurus sinensis* | Qianzhousaurus | Tyrannosaurs | Nanxiong Formation |
 | 69 Ma | *Huanansaurus ganzhouensis* | Huanansaurus | Oviraptorids | Nanxiong Formation |
 | 69 Ma | *Corythoraptor jacobsi* | Corythoraptor | Oviraptorids | Nanxiong Formation |
@@ -426,6 +437,7 @@
 | 69 Ma | *Ugrunaaluk kuukpikensis* | Ugrunaaluk | Duck-billed dinosaurs | Prince Creek Formation |
 | 69 Ma | *Tuarangisaurus keyesi* | Tuarangisaurus | Plesiosaurs and relatives | Maungataniwha Sandstone (Mangahouanga) |
 | 69 Ma | *Taniwhasaurus oweni* | Taniwhasaurus | Mosasaurs | Maungataniwha Sandstone (Mangahouanga) |
+| 69 Ma | *Maip macrothorax* | Maip | Megaraptorids | Chorrillo Formation |
 | 68 Ma | *Hatzegopteryx thambema* | Hatzegopteryx | Azhdarchids | Hațeg Basin |
 | 68 Ma | *Magyarosaurus dacus* | Magyarosaurus | Titanosaurs | Hațeg Basin |
 | 68 Ma | *Telmatosaurus transsylvanicus* | Telmatosaurus | Duck-billed dinosaurs | Hațeg Basin |
@@ -439,6 +451,7 @@
 | 68 Ma | *Mahajangasuchus insignis* | Mahajangasuchus | Mahajangasuchids | Maevarano Formation |
 | 68 Ma | *Rahonavis ostromi* | Rahonavis | Birds | Maevarano Formation |
 | 68 Ma | *Adalatherium hui* | Adalatherium | Mammals | Maevarano Formation |
+| 68 Ma | *Joaquinraptor casali* | Joaquinraptor | Megaraptorids | Lago Colhué Huapi Formation |
 | 67.2 Ma | *Quetzalcoatlus northropi* | Quetzalcoatlus | Azhdarchids | Javelina Formation |
 | 67.2 Ma | *Alamosaurus sanjuanensis* | Alamosaurus | Titanosaurs | Javelina Formation |
 | 67 Ma | *Dryptosaurus aquilunguis* | Dryptosaurus | Tyrannosaurs | New Egypt Formation |
