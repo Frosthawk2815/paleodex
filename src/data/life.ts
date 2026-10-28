@@ -70,7 +70,7 @@ const BASE_CLADES: Clade[] = [
     id: 'batoidea',
     name: 'Batoidea',
     common: 'Rays',
-    parent: 'vertebrata',
+    parent: 'chondrichthyes',
     family: true,
     description: 'Flattened cartilaginous fish related to sharks, including skates, rays and guitarfish.',
   },
@@ -86,7 +86,7 @@ const BASE_CLADES: Clade[] = [
     id: 'mammalia',
     name: 'Mammalia',
     common: 'Mammals',
-    parent: 'vertebrata',
+    parent: 'synapsida',
     description: 'Warm-blooded, furred animals that feed their young on milk. In the Cretaceous most were small, living in the dinosaurs’ shadow.',
   },
   {
