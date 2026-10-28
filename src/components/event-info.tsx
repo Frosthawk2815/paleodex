@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { HistoryEvent } from '@/data/events';
 import { pointVisible } from '@/lib/events';
+import { PointIcon } from '@/components/point-icon';
 
 type Props = {
   event: HistoryEvent;
@@ -37,8 +38,13 @@ export function EventInfo({ event, timeMa, onBack, onJump }: Props) {
                 accessibilityRole="button"
                 accessibilityLabel={`Jump to ${p.jumpLabel}`}
                 style={({ pressed }) => [styles.jump, here && styles.jumpHere, pressed && styles.pressed]}>
-                <Text style={styles.jumpText}>{here ? `● ${p.jumpLabel}` : `${p.jumpLabel} ›`}</Text>
-                {here && <Text style={styles.jumpNote}>Showing on the globe now</Text>}
+                <View style={styles.jumpRow}>
+                  <PointIcon kind={p.icon ?? 'flag'} size={26} />
+                  <View style={styles.jumpLabels}>
+                    <Text style={styles.jumpText}>{here ? p.jumpLabel : `${p.jumpLabel} ›`}</Text>
+                    {here && <Text style={styles.jumpNote}>Showing on the globe now</Text>}
+                  </View>
+                </View>
               </Pressable>
             );
           })}
@@ -104,6 +110,14 @@ const styles = StyleSheet.create({
   jumpHere: {
     backgroundColor: 'rgba(255,255,255,0.06)',
     borderColor: 'rgba(255,255,255,0.2)',
+  },
+  jumpRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  jumpLabels: {
+    flex: 1,
   },
   jumpText: {
     color: '#9CC8FF',

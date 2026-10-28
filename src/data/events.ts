@@ -1,3 +1,4 @@
+import type { PointIconKind } from '@/components/point-icon';
 import { yearToMa } from '@/lib/time';
 
 // Points of interest on the globe or the Moon. Selecting one opens an information section.
@@ -19,6 +20,9 @@ export type EventPoint = {
   jumpLabel: string;
   // How close the globe zooms when jumping here (Earth points).
   zoom?: number;
+  // Marker artwork: the setting at the time (e.g. 'swamp', 'dunes'), a pickaxe for rocks
+  // as they are today, or a flag (the default).
+  icon?: PointIconKind;
 };
 
 export type HistoryEvent = {
@@ -92,6 +96,8 @@ export const EVENTS: HistoryEvent[] = [
         jumpMa: 66.3,
         jumpLabel: 'Where it formed, 66 million years ago',
         zoom: 4,
+        // Swampy, Everglades-like lowland of rivers and forests.
+        icon: 'swamp',
       },
       {
         body: 'earth',
@@ -104,6 +110,7 @@ export const EVENTS: HistoryEvent[] = [
         jumpMa: 0,
         jumpLabel: 'Where it is today',
         zoom: 4,
+        icon: 'pickaxe',
       },
     ],
     summary: [

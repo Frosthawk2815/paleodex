@@ -11,6 +11,7 @@ import { siteAt } from '@/lib/plates';
 import { pointPosition, pointVisible, visiblePoints } from '@/lib/events';
 import { EVENTS, type EventPoint, type HistoryEvent } from '@/data/events';
 import { moonView } from '@/lib/moon-surface';
+import { PointIconShape } from '@/components/point-icon';
 
 const GRATICULE = geoGraticule10();
 // SVG text defaults to a serif font on the web; match the app's sans-serif.
@@ -377,14 +378,19 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
 
           {markers.map(({ event, point, index, xy }) => (
             <G key={`${event.id}-${index}`}>
-              <Circle cx={xy[0]} cy={xy[1]} r={13} fill={markerColor(event)} opacity={0.25} />
-              <Line x1={xy[0]} y1={xy[1]} x2={xy[0]} y2={xy[1] - 22} stroke="#FFFFFF" strokeWidth={1.5} />
-              <Path d={`M ${xy[0]} ${xy[1] - 22} L ${xy[0] + 12} ${xy[1] - 18} L ${xy[0]} ${xy[1] - 14} Z`} fill={markerColor(event)} />
-              <Circle cx={xy[0]} cy={xy[1]} r={3.5} fill={markerColor(event)} stroke="#FFFFFF" strokeWidth={1} />
-              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 20} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={13} fontWeight="700" textAnchor="middle">
+              {(point.icon ?? 'flag') === 'flag' ? (
+                // The flag's foot (at 12, 19 in its box) sits on the spot.
+                <PointIconShape kind="flag" x={xy[0]} y={xy[1] - 8.75} size={30} color={markerColor(event)} />
+              ) : (
+                <G>
+                  <Circle cx={xy[0]} cy={xy[1]} r={2.5} fill="#FFFFFF" />
+                  <PointIconShape kind={point.icon!} x={xy[0]} y={xy[1] - 21} size={36} />
+                </G>
+              )}
+              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 18} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={13} fontWeight="700" textAnchor="middle">
                 {point.label}
               </SvgText>
-              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 20} fill="#FFFFFF" fontSize={13} fontWeight="700" textAnchor="middle">
+              <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 18} fill="#FFFFFF" fontSize={13} fontWeight="700" textAnchor="middle">
                 {point.label}
               </SvgText>
             </G>
