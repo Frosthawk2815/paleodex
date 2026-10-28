@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-407 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+408 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -149,7 +149,7 @@
 | 150 Ma | *Lourinhanosaurus antunesi* | Lourinhanosaurus | Allosaurs and relatives | Lourinhã Formation |
 | 150 Ma | *Miragaia longicollum* | Miragaia | Stegosaurs | Lourinhã Formation |
 | 150 Ma | *Allosaurus europaeus* | Allosaurus europaeus | Allosaurs and relatives | Lourinhã Formation |
-| 148 Ma | *Pliosaurus funkei* | Predator X | Plesiosaurs and relatives | Agardhfjellet Formation (Slottsmøya) |
+| 148 Ma | *Pliosaurus funkei* | Pliosaurus funkei | Plesiosaurs and relatives | Agardhfjellet Formation (Slottsmøya) |
 | 148 Ma | *Palvennia hoybergeti* | Palvennia | Ichthyosaurs | Agardhfjellet Formation (Slottsmøya) |
 
 ## Cretaceous
@@ -181,7 +181,7 @@
 | 120 Ma | *Microraptor zhaoianus* | Microraptor | Raptors | Jiufotang Formation |
 | 120 Ma | *Jeholornis prima* | Jeholornis | Birds | Jiufotang Formation |
 | 120 Ma | *Ikrandraco avatar* | Ikrandraco | Pterosaurs | Jiufotang Formation |
-| 115 Ma | *Sarcosuchus imperator* | SuperCroc | Pholidosaurs | Elrhaz Formation (Gadoufaoua) |
+| 115 Ma | *Sarcosuchus imperator* | Sarcosuchus | Pholidosaurs | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Ouranosaurus nigeriensis* | Ouranosaurus | Iguanodonts | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Suchomimus tenerensis* | Suchomimus | Megalosaurs and spinosaurs | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Nigersaurus taqueti* | Nigersaurus | Rebbachisaurs | Elrhaz Formation (Gadoufaoua) |
@@ -217,7 +217,7 @@
 | 96.5 Ma | *Moros intrepidus* | Moros | Tyrannosaurs | Cedar Mountain Formation (Mussentuchit Member) |
 | 96.5 Ma | *Siats meekerorum* | Siats | Allosaurs and relatives | Cedar Mountain Formation (Mussentuchit Member) |
 | 96.5 Ma | *Eolambia caroljonesa* | Eolambia | Iguanodonts | Cedar Mountain Formation (Mussentuchit Member) |
-| 95 Ma | *Kaprosuchus saharicus* | BoarCroc | Mahajangasuchids | Echkar Formation |
+| 95 Ma | *Kaprosuchus saharicus* | Kaprosuchus | Mahajangasuchids | Echkar Formation |
 | 95 Ma | *Rugops primus* | Rugops | Ceratosaurs | Echkar Formation |
 | 95 Ma | *Carcharodontosaurus iguidensis* | Carcharodontosaurus iguidensis | Allosaurs and relatives | Echkar Formation |
 | 95 Ma | *Argentinosaurus huinculensis* | Argentinosaurus | Titanosaurs | Huincul Formation |
@@ -342,6 +342,7 @@
 | 66.5 Ma | *Coniophis precedens* | Coniophis | Lizards and snakes | Lance Formation; Hell Creek Formation |
 | 66.3 Ma | *Tyrannosaurus rex* | T. rex | Tyrannosaurs | Hell Creek Formation; Lance Formation; Scollard Formation; Frenchman Formation; Ojo Alamo Formation |
 | 66.3 Ma | *Nanotyrannus lancensis* | Nanotyrannus | Tyrannosaurs | Hell Creek Formation; Lance Formation |
+| 66.3 Ma | *Nanotyrannus lethaeus* | Nanotyrannus lethaeus (“Jane”) | Tyrannosaurs | Hell Creek Formation |
 | 66.3 Ma | *Triceratops horridus* | Triceratops | Horned dinosaurs | Hell Creek Formation; Lance Formation; Scollard Formation; Frenchman Formation |
 | 66.3 Ma | *Triceratops prorsus* | Triceratops | Horned dinosaurs | Hell Creek Formation; Lance Formation |
 | 66.3 Ma | *Torosaurus latus* | Torosaurus | Horned dinosaurs | Hell Creek Formation; Lance Formation |
@@ -444,7 +445,7 @@
 | 1 Ma | *Toxodon platensis* | Toxodon | Notoungulates | range map — South America |
 | 1 Ma | *Smilodon populator* | South American sabre-tooth | Cats | range map — South America east of the Andes |
 | 1 Ma | *Hieraaetus moorei* | Haast’s eagle | Eagles and hawks | range map — South Island, New Zealand |
-| 800,000 yr | *Elasmotherium sibiricum* | Siberian unicorn | Rhinos | range map — Steppes of Ukraine, Russia and Kazakhstan |
+| 800,000 yr | *Elasmotherium sibiricum* | Elasmotherium | Rhinos | range map — Steppes of Ukraine, Russia and Kazakhstan |
 | 800,000 yr | *Arctodus simus* | Short-faced bear | Bears | range map — North America |
 | 800,000 yr | *Palaeoloxodon antiquus* | Straight-tusked elephant | Elephants and mammoths | range map — Europe and western Asia |
 | 650,000 yr | *Bos primigenius* | Aurochs | Cattle and antelopes | range map — Europe, North Africa and Asia; last in Poland |
