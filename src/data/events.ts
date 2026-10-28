@@ -59,6 +59,7 @@ export const EVENTS: HistoryEvent[] = [
         toMa: 0,
         jumpMa: yearToMa(APOLLO_11_YEAR + 0.08),
         jumpLabel: 'Tranquility Base, 1969',
+        icon: 'us-flag',
       },
     ],
     summary: [

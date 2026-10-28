@@ -11,7 +11,7 @@ import { siteAt } from '@/lib/plates';
 import { pointPosition, pointVisible, visiblePoints } from '@/lib/events';
 import { EVENTS, type EventPoint, type HistoryEvent } from '@/data/events';
 import { moonView } from '@/lib/moon-surface';
-import { PointIconShape } from '@/components/point-icon';
+import { FLAG_FOOT, PointIconShape } from '@/components/point-icon';
 
 const GRATICULE = geoGraticule10();
 // SVG text defaults to a serif font on the web; match the app's sans-serif.
@@ -378,9 +378,15 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
 
           {markers.map(({ event, point, index, xy }) => (
             <G key={`${event.id}-${index}`}>
-              {(point.icon ?? 'flag') === 'flag' ? (
-                // The flag's foot (at 12, 19 in its box) sits on the spot.
-                <PointIconShape kind="flag" x={xy[0]} y={xy[1] - 8.75} size={30} color={markerColor(event)} />
+              {FLAG_FOOT[point.icon ?? 'flag'] ? (
+                // Flags stand with the foot of the pole on the spot.
+                <PointIconShape
+                  kind={point.icon ?? 'flag'}
+                  x={xy[0] + (12 - FLAG_FOOT[point.icon ?? 'flag']![0]) * 1.5}
+                  y={xy[1] - (FLAG_FOOT[point.icon ?? 'flag']![1] - 12) * 1.5}
+                  size={36}
+                  color={markerColor(event)}
+                />
               ) : (
                 <G>
                   <Circle cx={xy[0]} cy={xy[1]} r={2.5} fill="#FFFFFF" />

@@ -1,9 +1,12 @@
-import Svg, { Circle, Ellipse, G, Line, Path } from 'react-native-svg';
+import Svg, { Circle, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
 
-export type PointIconKind = 'flag' | 'swamp' | 'dunes' | 'pickaxe';
+export type PointIconKind = 'flag' | 'us-flag' | 'swamp' | 'dunes' | 'pickaxe';
+
+// Where the foot of each flagpole is in the 24×24 box, so it can stand on the spot.
+export const FLAG_FOOT: Partial<Record<PointIconKind, [number, number]>> = { flag: [12, 19], 'us-flag': [7, 22] };
 
 // Badge artwork drawn in a 24×24 box centred on (12, 12).
-function Art({ kind }: { kind: Exclude<PointIconKind, 'flag'> }) {
+function Art({ kind }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag'> }) {
   if (kind === 'swamp') {
     // A lush, Everglades-like swamp: still water, reeds and trees.
     return (
@@ -51,6 +54,37 @@ function Flag({ color }: { color: string }) {
   );
 }
 
+// The Stars and Stripes, as planted at Tranquility Base (simplified: 7 stripes, a few stars).
+function UsFlag() {
+  const top = 3;
+  const stripe = 10 / 7;
+  return (
+    <G>
+      <Circle cx={7} cy={22} r={1.6} fill="#FFFFFF" />
+      <Line x1={7} y1={22} x2={7} y2={1.5} stroke="#E6E6E6" strokeWidth={1.3} strokeLinecap="round" />
+      <Rect x={7} y={top} width={15} height={10} fill="#FFFFFF" stroke="#1A1A1A" strokeWidth={0.4} />
+      {[0, 2, 4, 6].map((i) => (
+        <Rect key={i} x={7} y={top + i * stripe} width={15} height={stripe} fill="#B22234" />
+      ))}
+      <Rect x={7} y={top} width={6.5} height={stripe * 4} fill="#3C3B6E" />
+      {[
+        [8.3, 4.1],
+        [10.2, 4.1],
+        [12.1, 4.1],
+        [9.25, 5.3],
+        [11.15, 5.3],
+        [8.3, 6.5],
+        [10.2, 6.5],
+        [12.1, 6.5],
+        [9.25, 7.7],
+        [11.15, 7.7],
+      ].map(([x, y]) => (
+        <Circle key={`${x}-${y}`} cx={x} cy={y} r={0.38} fill="#FFFFFF" />
+      ))}
+    </G>
+  );
+}
+
 type Props = { kind: PointIconKind; x: number; y: number; size: number; color?: string };
 
 // A marker icon to place inside an existing <Svg> (e.g. on the globe), centred on (x, y).
@@ -60,6 +94,8 @@ export function PointIconShape({ kind, x, y, size, color = '#FFD54A' }: Props) {
     <G transform={`translate(${x - 12 * s} ${y - 12 * s}) scale(${s})`}>
       {kind === 'flag' ? (
         <Flag color={color} />
+      ) : kind === 'us-flag' ? (
+        <UsFlag />
       ) : (
         <G>
           <Ellipse cx={12} cy={23.5} rx={7} ry={1.6} fill="#000000" opacity={0.35} />
