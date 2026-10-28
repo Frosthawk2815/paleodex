@@ -101,8 +101,38 @@ export const PICKS_1: DataSet = {
       ],
       keywords: ['chapadmalal', 'mar del plata', 'argentina', 'pliocene', 'llallawavis', 'terror bird'],
     }),
+    formation({
+      // Jenguebi's exact position is unpublished; placed near Iguidi, its other published locality.
+      id: 'farak',
+      title: 'Farak Formation',
+      short: 'Farak',
+      dateText: 'About 100 to 95 million years ago (Late Cretaceous, Cenomanian)',
+      placeText: 'Jenguebi and Iguidi, central Niger (map position approximate)',
+      lon: 8.7,
+      lat: 16.8,
+      plate: 714,
+      fromMa: 100,
+      toMa: 95,
+      jumpMa: 96,
+      icon: 'river',
+      summary: [
+        'River deposits laid down far inland, roughly 500 to 1,000 km from the nearest coast of the time. Most spinosaurid fossils elsewhere come from rocks near the sea, so finding them here shows they also lived along rivers deep inside the continent.',
+        'Paul Sereno’s teams collected here in 2000, 2019 and 2022. The finds include Spinosaurus mirabilis, named in 2026, as well as carcharodontosaurid and sauropod remains that have not yet been named.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 95 million years ago (some studies say about 100 to 97 million)' },
+        { label: 'Where today', value: 'Central Sahara, Niger' },
+        { label: 'Rocks', value: 'River sandstones' },
+      ],
+      keywords: ['farak', 'jenguebi', 'iguidi', 'niger', 'sahara', 'cretaceous', 'spinosaurus mirabilis', 'hell heron'],
+    }),
   ],
   species: [
+    { id: 'spinosaurus-mirabilis', name: 'Spinosaurus mirabilis', common: 'Spinosaurus mirabilis', clade: 'megalosauroidea', status: 'full', ageText: 'About 100 to 95 million years ago', placeText: 'Niger', formations: ['farak'], phylo: 2.1,
+      summary: ['The second known species of Spinosaurus, named in 2026, the first new species of the genus in more than a century. Its skeleton is very like that of S. aegyptiacus, but its skull carried a much taller, curved, scimitar-shaped bony crest, one of the tallest head crests of any meat-eating dinosaur. Its interlocking front teeth suited gripping slippery fish.', 'All the known specimens are from young animals; the type specimen was roughly 8 m long, and adult size is unknown. Its describers argue it waded in shallow water to hunt, like a giant heron, and nicknamed it the “hell heron”. Whether Spinosaurus waded or swam is still debated. Its name means “wonderful” or “astonishing”.'],
+      facts: [{ label: 'Named', value: 'Paul Sereno and colleagues, 2026 (Science)' }, { label: 'Length', value: 'About 8 m (young animal; adult size unknown)' }, { label: 'Collected', value: 'Expeditions in 2000, 2019 and 2022, mostly at Jenguebi' }],
+      related: [{ id: 'spinosaurus-aegyptiacus', note: 'The type species, from Egypt and Morocco, with a much lower head crest.' }],
+      keywords: ['spinosaurus mirabilis', 'hell heron', 'spinosaurus', 'spinosaur', 'crest', 'cretaceous'] },
     { id: 'kelenken-guillermoi', name: 'Kelenken guillermoi', common: 'Kelenken', clade: 'phorusrhacidae', status: 'full', ageText: 'About 15 million years ago', placeText: 'Río Negro, Argentina', formations: ['collon-cura'], phylo: 3,
       summary: ['A giant terror bird with a skull 71.6 cm long, the largest bird skull known, with a tall, hooked beak. It is known from that skull and part of one leg, so estimates of its height and weight are rough: it may have stood about 3 m tall.'],
       facts: [{ label: 'Named', value: 'Sara Bertelli and colleagues, 2007' }, { label: 'Skull', value: '71.6 cm long' }, { label: 'Found by', value: 'Guillermo Aguirre-Zabala, a high-school student' }],
@@ -136,6 +166,11 @@ export const PICKS_1: DataSet = {
       facts: [{ label: 'Named', value: 'Fernando Novas and colleagues, 2009' }, { label: 'Length', value: 'About 5 m' }],
       keywords: ['austroraptor', 'unenlagiine', 'raptor', 'cretaceous'] },
   ],
+  upgrades: {
+    'spinosaurus-aegyptiacus': {
+      related: [{ id: 'spinosaurus-mirabilis', note: 'A second species named in 2026 from inland river deposits in Niger, with a tall, scimitar-shaped head crest.' }],
+    },
+  },
   eventNotes: {
     'burgess-shale': {
       invertebrates: [

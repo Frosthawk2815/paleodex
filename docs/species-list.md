@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-550 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+551 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -268,7 +268,7 @@
 | 98 Ma | *Buitreraptor gonzalezorum* | Buitreraptor | Raptors | Candeleros Formation |
 | 98 Ma | *Ekrixinatosaurus novasi* | Ekrixinatosaurus | Ceratosaurs | Candeleros Formation |
 | 98 Ma | *Najash rionegrina* | Najash | Lizards and snakes | Candeleros Formation |
-| 97 Ma | *Spinosaurus aegyptiacus* | Spinosaurus | Megalosaurs and spinosaurs | Kem Kem Group; Bahariya Formation |
+| 97 Ma | *Spinosaurus aegyptiacus* | Spinosaurus | Megalosaurs and spinosaurs | Kem Kem Group |
 | 97 Ma | *Carcharodontosaurus saharicus* | Carcharodontosaurus | Allosaurs and relatives | Kem Kem Group |
 | 97 Ma | *Deltadromeus agilis* | Deltadromeus | Ceratosaurs | Kem Kem Group |
 | 97 Ma | *Onchopristis numida* | Onchopristis | Rays | Kem Kem Group; Bahariya Formation |
@@ -284,6 +284,7 @@
 | 96.5 Ma | *Moros intrepidus* | Moros | Tyrannosaurs | Cedar Mountain Formation (Mussentuchit Member) |
 | 96.5 Ma | *Siats meekerorum* | Siats | Allosaurs and relatives | Cedar Mountain Formation (Mussentuchit Member) |
 | 96.5 Ma | *Eolambia caroljonesa* | Eolambia | Iguanodonts | Cedar Mountain Formation (Mussentuchit Member) |
+| 96 Ma | *Spinosaurus mirabilis* | Spinosaurus mirabilis | Megalosaurs and spinosaurs | Farak Formation |
 | 95 Ma | *Kaprosuchus saharicus* | Kaprosuchus | Mahajangasuchids | Echkar Formation |
 | 95 Ma | *Rugops primus* | Rugops | Ceratosaurs | Echkar Formation |
 | 95 Ma | *Carcharodontosaurus iguidensis* | Carcharodontosaurus iguidensis | Allosaurs and relatives | Echkar Formation |
