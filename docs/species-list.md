@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-832 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+840 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -15,6 +15,7 @@
 
 | Age | Species | Common name | Family / group | Where |
 |---|---|---|---|---|
+| 460 Ma | *Sacabambaspis janvieri* | Sacabambaspis | Armoured jawless fish | Anzaldo Formation |
 | 455 Ma | *Astraspis desiderata* | Astraspis | Armoured jawless fish | Harding Sandstone |
 | 455 Ma | *Eriptychius americanus* | Eriptychius | Armoured jawless fish | Harding Sandstone |
 | 444 Ma | *Promissum pulchrum* | Promissum | Conodonts | Soom Shale |
@@ -30,6 +31,13 @@
 
 | Age | Species | Common name | Family / group | Where |
 |---|---|---|---|---|
+| 405 Ma | *Drepanaspis gemuendenensis* | Drepanaspis | Armoured jawless fish | Hunsrück Slate |
+| 405 Ma | *Gemuendina stuertzi* | Gemuendina | Placoderms | Hunsrück Slate |
+| 390 Ma | *Dipterus valenciennesi* | Dipterus | Lungfish | Achanarras Fish Bed |
+| 390 Ma | *Coccosteus cuspidatus* | Coccosteus | Placoderms | Achanarras Fish Bed |
+| 390 Ma | *Pterichthyodes milleri* | Pterichthyodes | Placoderms | Achanarras Fish Bed |
+| 390 Ma | *Osteolepis macrolepidotus* | Osteolepis | Fishapods and the first tetrapods | Achanarras Fish Bed |
+| 390 Ma | *Cheirolepis trailli* | Cheirolepis | Ray-finned fish | Achanarras Fish Bed |
 | 380 Ma | *Materpiscis attenboroughi* | Materpiscis | Placoderms | Gogo Formation |
 | 380 Ma | *Mcnamaraspis kaprios* | Mcnamaraspis | Placoderms | Gogo Formation |
 | 380 Ma | *Gogonasus andrewsae* | Gogonasus | Fishapods and the first tetrapods | Gogo Formation |
