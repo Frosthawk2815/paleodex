@@ -56,7 +56,7 @@ export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpen
                 accessibilityLabel={`Jump to ${p.jumpLabel}`}
                 style={({ pressed }) => [styles.jump, here && styles.jumpHere, pressed && styles.pressed]}>
                 <View style={styles.jumpRow}>
-                  <PointIcon kind={p.icon ?? 'flag'} size={26} bg={badgeBg(event)} />
+                  <PointIcon kind={p.icon ?? 'flag'} size={26} bg={badgeBg(event, p)} />
                   <View style={styles.jumpLabels}>
                     <Text style={styles.jumpText}>{here ? p.jumpLabel : `${p.jumpLabel} ›`}</Text>
                     {here && <Text style={styles.jumpNote}>Showing on the globe now</Text>}

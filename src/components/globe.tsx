@@ -482,7 +482,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
               ) : (
                 <G>
                   <Circle cx={xy[0]} cy={xy[1]} r={2.5} fill="#FFFFFF" />
-                  <PointIconShape kind={point.icon!} x={xy[0]} y={xy[1] - 21} size={36} bg={badgeBg(event)} />
+                  <PointIconShape kind={point.icon!} x={xy[0]} y={xy[1] - 21} size={36} bg={badgeBg(event, point)} />
                 </G>
               )}
               {g.members.length > 1 && (

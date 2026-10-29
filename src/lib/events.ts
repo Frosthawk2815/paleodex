@@ -22,10 +22,11 @@ export function pointPosition(p: EventPoint, timeMa: number): [number, number] {
   return p.plate !== undefined ? siteAt({ lon: p.lon, lat: p.lat, plate: p.plate }, timeMa) : [p.lon, p.lat];
 }
 
-// A rock formation's badges are tinted with the ICS colour of the period it was laid down in
-// (taken at its "where it formed" time); other events keep their own artwork colours.
-export function badgeBg(event: HistoryEvent): string | undefined {
-  if (event.kind !== 'Rock formation') return undefined;
+// A rock formation's present-day marker (the pickaxe) is tinted with the ICS colour of the period
+// its rocks were laid down in (taken at its "where it formed" time). Its past "forming" marker and
+// other events keep their own artwork colours.
+export function badgeBg(event: HistoryEvent, point: EventPoint): string | undefined {
+  if (event.kind !== 'Rock formation' || point.toMa !== 0) return undefined;
   const t = event.points[0]?.jumpMa ?? event.points[0]?.fromMa;
   if (t === undefined) return undefined;
   return PERIODS.find((p) => t <= p.startMa && (p.endMa === 0 ? t >= 0 : t > p.endMa))?.color;

@@ -107,7 +107,7 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
                     accessibilityLabel={`${f.title}: jump to where it formed`}
                     style={({ pressed }) => [info.card, pressed && info.pressed]}>
                     <View style={info.cardRow}>
-                      <PointIcon kind={point.icon ?? 'flag'} size={28} bg={badgeBg(f)} />
+                      <PointIcon kind={point.icon ?? 'flag'} size={28} bg={badgeBg(f, point)} />
                       <View style={info.cardText}>
                         <Text style={info.cardTitle}>{f.title} ›</Text>
                         <Text style={info.cardNote}>{point.jumpLabel}</Text>
@@ -174,7 +174,7 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
                   accessibilityLabel={`${e.title}: show it`}
                   style={({ pressed }) => [info.card, pressed && info.pressed]}>
                   <View style={info.cardRow}>
-                    <PointIcon kind={e.points[0].icon ?? 'flag'} size={28} bg={badgeBg(e)} />
+                    <PointIcon kind={e.points[0].icon ?? 'flag'} size={28} bg={badgeBg(e, e.points[0])} />
                     <View style={info.cardText}>
                       <Text style={info.cardTitle}>{e.title} ›</Text>
                       <Text style={info.cardNote}>{e.points[0].jumpLabel}</Text>
