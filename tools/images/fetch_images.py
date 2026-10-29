@@ -53,7 +53,7 @@ def api(params):
     url = API + '?' + urllib.parse.urlencode(params)
     if url in CACHE:
         return CACHE[url]
-    for attempt in range(10):
+    for attempt in range(40):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
             with urllib.request.urlopen(req, timeout=60) as r:
