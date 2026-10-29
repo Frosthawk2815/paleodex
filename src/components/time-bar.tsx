@@ -69,6 +69,8 @@ export function TimeBar({ ref, onChange, onSite }: Props) {
   const time = useRef(0);
   // The scroll offset we last moved to ourselves; scroll events there keep the exact time.
   const ownOffset = useRef<number | null>(null);
+  // Until when our own animated scroll is running; its in-between scroll events are ignored.
+  const animatingUntil = useRef(0);
   // Where to put the marker once the strip has re-laid out for a new zoom.
   const pending = useRef<number | null>(0);
 
@@ -79,6 +81,7 @@ export function TimeBar({ ref, onChange, onSite }: Props) {
   const scrollToTime = useCallback(
     (t: number, animated: boolean) => {
       ownOffset.current = x(t);
+      if (animated) animatingUntil.current = Date.now() + 1000;
       scroll.current?.scrollTo({ x: x(t), animated });
     },
     [x],
@@ -105,6 +108,8 @@ export function TimeBar({ ref, onChange, onSite }: Props) {
       const offset = e.nativeEvent.contentOffset.x;
       // At coarse zoom a pixel can be ~170,000 years; don't let rounding move a time we set exactly.
       if (ownOffset.current !== null && Math.abs(offset - ownOffset.current) < 1.5) return;
+      // Ignore the in-between positions of our own animated scroll.
+      if (ownOffset.current !== null && Date.now() < animatingUntil.current) return;
       ownOffset.current = null;
       const t = Math.min(focus.startMa, Math.max(focus.endMa, focus.startMa - offset / pxPerMy));
       time.current = t;
@@ -118,6 +123,8 @@ export function TimeBar({ ref, onChange, onSite }: Props) {
     if (nextFocus === focus) {
       time.current = t;
       scrollToTime(t, true);
+      // Report the new time now: a short scroll may not send a scroll event we act on.
+      onChange(t);
     } else {
       pending.current = t;
       setFocus(nextFocus);

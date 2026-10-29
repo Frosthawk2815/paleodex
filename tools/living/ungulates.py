@@ -585,3 +585,31 @@ HISTORIC_CHANGED = {
     'ammotragus-lervia': {'without': [1, 2]},
 }
 HISTORIC = {**{sid: 'same' for sid in ['tapirus-terrestris', 'lama-guanicoe', 'vicugna-vicugna', 'sus-scrofa', 'phacochoerus-africanus', 'potamochoerus-porcus', 'hylochoerus-meinertzhageni', 'babyrousa-celebensis', 'pecari-tajacu', 'tayassu-pecari', 'catagonus-wagneri', 'choeropsis-liberiensis', 'tragulus-kanchil', 'moschiola-indica', 'hyemoschus-aquaticus', 'antilocapra-americana', 'okapia-johnstoni', 'moschus-moschiferus', 'cervus-elaphus', 'dama-dama', 'axis-axis', 'rusa-unicolor', 'elaphodus-cephalophus', 'capreolus-capreolus', 'odocoileus-virginianus', 'mazama-americana', 'hippocamelus-bisulcus', 'ozotoceros-bezoarticus', 'pudu-puda', 'syncerus-caffer', 'pseudoryx-nghetinhensis', 'tragelaphus-strepsiceros', 'taurotragus-oryx', 'tetracerus-quadricornis', 'cephalophus-silvicultor', 'philantomba-monticola', 'sylvicapra-grimmia', 'hippotragus-niger', 'oryx-gazella', 'connochaetes-taurinus', 'alcelaphus-buselaphus', 'damaliscus-lunatus', 'beatragus-hunteri', 'kobus-ellipsiprymnus', 'redunca-arundinum', 'pelea-capreolus', 'aepyceros-melampus', 'gazella-dorcas', 'eudorcas-thomsonii', 'nanger-granti', 'antidorcas-marsupialis', 'litocranius-walleri', 'ammodorcas-clarkei', 'procapra-gutturosa', 'pantholops-hodgsonii', 'madoqua-kirkii', 'ourebia-ourebi', 'raphicerus-campestris', 'oreotragus-oreotragus', 'dorcatragus-megalotis', 'neotragus-pygmaeus', 'nesotragus-moschatus', 'capra-ibex', 'ovis-canadensis', 'rupicapra-rupicapra', 'oreamnos-americanus', 'pseudois-nayaur', 'budorcas-taxicolor', 'capricornis-sumatraensis', 'naemorhedus-goral']}, **HISTORIC_CHANGED}
+
+
+# Middle stages for big changes in the last 150 years (calendar years).
+STAGES = {
+    # About 1,000 American bison were left by 1889. European bison held out in Białowieża Forest
+    # and the Caucasus until 1919–1927, then survived only in zoos until reintroductions.
+    'bison-bison': [
+        {'years': (1890, 1950), 'label': 'Bison at their lowest',
+         'regions': [part('United States of America', -111.2, 44.1, -109.8, 45.1), part('Canada', -115, 57.5, -111, 60.5), part('Poland', 23.5, 52.5, 24.2, 53), part('Belarus', 23.7, 52.4, 24.5, 53), part('Russia', 39, 43.5, 42, 44.5)]},
+    ],
+    # Southern white rhinos were down to perhaps 20–50 in Hluhluwe–iMfolozi around 1895.
+    'ceratotherium-simum': [
+        {'years': (1895, 1960), 'label': 'Down to one reserve in KwaZulu-Natal',
+         'regions': [part('South Africa', 31.6, -28.6, 32.4, -27.9)]},
+    ],
+    # Extinct in the wild around 1900; the Duke of Bedford's herd at Woburn Abbey saved it.
+    'elaphurus-davidianus': [
+        {'years': (1900, 1985), 'label': 'Extinct in the wild; the last herd lived at Woburn Abbey, England',
+         'regions': [part('United Kingdom', -1.4, 51.6, 0.1, 52.4)]},
+    ],
+    # Javan rhinos lived on in Indochina; the last one in Vietnam was killed in 2010.
+    'rhinoceros-unicornis': [
+        {'years': (1876, 1950), 'label': 'Javan rhinos still across Indochina',
+         'add': [C('Vietnam', 'Laos', 'Cambodia'), part('Myanmar', 97, 10, 99, 17), part('Thailand', 98, 10, 103, 16)]},
+        {'years': (1950, 2010), 'label': 'The last Javan rhinos in Vietnam',
+         'add': [part('Vietnam', 106.8, 11, 108, 12.2)]},
+    ],
+}

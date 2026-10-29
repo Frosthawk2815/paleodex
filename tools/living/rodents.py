@@ -91,3 +91,13 @@ HISTORIC_CHANGED = {
     'sciurus-carolinensis': {'without': [2, 3, 4, 5]},
 }
 HISTORIC = {**{sid: 'same' for sid in ['hydrochoerus-hydrochaeris', 'rattus-rattus']}, **HISTORIC_CHANGED}
+
+
+# Middle stages for big changes in the last 150 years (calendar years).
+STAGES = {
+    # By about 1900 only some 1,200 Eurasian beavers survived, in about eight places.
+    'castor-fiber': [
+        {'years': (1876, 1950), 'label': 'Eurasian beavers at their lowest',
+         'regions': [part('Germany', 11, 51.5, 12.5, 52.5), part('France', 4.3, 43.4, 4.9, 44.5), part('Norway', 7, 58.3, 9.5, 59.6), part('Belarus', 27, 51.5, 29.5, 53), part('Russia', 39, 51, 40.5, 52), part('Russia', 63, 59, 66, 61), part('Mongolia', 90.5, 46, 91.5, 46.8), part('China', 89.5, 46, 90.5, 47)]},
+    ],
+}

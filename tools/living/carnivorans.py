@@ -795,3 +795,42 @@ HISTORIC = {
     'neogale-vison': {'without': [1]},
     **{sid: 'same' for sid in SAME_AS_TODAY},
 }
+
+
+# Middle stages for big changes in the last 150 years (calendar years).
+STAGES = {
+    'panthera-tigris': [
+        {'years': (1876, 1940), 'label': 'Caspian, Javan, Bali and South China tigers still alive',
+         'add': [part('Iran', 44, 35, 62, 39), part('Turkey', 38, 36.5, 44.8, 41.5), part('Iraq', 42, 34, 46, 37.5), C('Turkmenistan', 'Uzbekistan', 'Tajikistan', 'Afghanistan'), part('Kazakhstan', 60, 42, 82, 47), part('Indonesia', 105, -9, 115.8, -5.8), part('China', 100, 20, 122, 33), C('North Korea', 'South Korea', 'Bangladesh', 'Laos', 'Cambodia', 'Vietnam'), part('Pakistan', 67, 24, 72, 30)]},
+        {'years': (1940, 1975), 'label': 'The last Caspian and Javan tigers',
+         'add': [part('Turkey', 42, 37, 44, 38), part('Iran', 52, 36, 57, 38), part('Turkmenistan', 54, 37, 58, 39), part('Tajikistan', 68, 37, 69.5, 38), part('Indonesia', 113.5, -8.8, 114.6, -8), part('China', 106, 22, 118, 30), C('Laos', 'Cambodia', 'Vietnam')]},
+    ],
+    'panthera-leo': [
+        {'years': (1876, 1945), 'label': 'Barbary lions in the Atlas and lions in Iran and Iraq',
+         'add': [part('Morocco', -8, 30, -2, 35), part('Algeria', -1, 33, 8, 37), part('Iran', 48, 28, 54, 33), part('Iraq', 44, 30, 48, 33), C('Senegal', 'Mali', 'Burkina Faso', 'Niger', 'Nigeria', 'Ghana', 'Ethiopia', 'Somalia', 'Sudan')]},
+    ],
+    'acinonyx-jubatus': [
+        {'years': (1876, 1950), 'label': 'Cheetahs still in India, Arabia, Central Asia and North Africa',
+         'add': [part('India', 70, 15, 85, 28), C('Saudi Arabia', 'Jordan', 'Iraq', 'Syria', 'Oman', 'Yemen', 'Turkmenistan', 'Uzbekistan', 'Afghanistan', 'Pakistan', 'Morocco', 'Algeria', 'Tunisia', 'Libya', 'Egypt', 'Sudan', 'Mali', 'Mauritania', 'Somalia', 'Mozambique', 'Uganda', 'Malawi'), part('Iran', 50, 26, 62, 38)]},
+    ],
+    'panthera-onca': [
+        {'years': (1876, 1965), 'label': 'Jaguars still bred in the southwestern United States',
+         'add': [part('United States of America', -114, 29, -97, 35), C('Uruguay', 'El Salvador'), part('Argentina', -68, -38, -53, -22)]},
+    ],
+    # Wolves at their lowest: gone from almost all of the lower 48 United States and western
+    # and central Europe. They have since returned to much of both.
+    # Fur hunters left about 1,000–2,000 sea otters in a dozen scattered colonies by 1911.
+    'enhydra-lutris': [
+        {'years': (1911, 1950), 'label': 'Sea otters at their lowest, after the fur trade',
+         'regions': [sea(-180, 50.5, -165, 55), sea(170, 51, 180, 55.5), sea(149, 43, 160, 53), sea(-148, 59.5, -145, 61), sea(-122.2, 35.4, -121.2, 36.6)]},
+    ],
+    # Hunted down to perhaps 20–100 animals on Guadalupe Island, Mexico, by the 1890s.
+    'mirounga-angustirostris': [
+        {'years': (1890, 1930), 'label': 'Elephant seals down to one island colony',
+         'regions': [sea(-118.8, 28.6, -117.9, 29.4)]},
+    ],
+    'canis-lupus': [
+        {'years': (1940, 1990), 'label': 'Wolves at their lowest',
+         'regions': [C('Canada', 'Mongolia', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Afghanistan', 'Iran', 'Turkey', 'Georgia', 'Armenia', 'Azerbaijan', 'Belarus', 'Ukraine', 'Romania', 'Bulgaria', 'Serbia', 'Bosnia and Herz.', 'Greece', 'Greenland'), C('Russia', latMax=75), part('United States of America', -170, 51, -130, 72), part('United States of America', -97, 46, -89, 49), part('Poland', 21, 49, 24.2, 54.5), part('Slovakia', 18.5, 48.5, 22.6, 49.6), part('Finland', 27, 60, 31.6, 70), part('Italy', 13, 38, 17, 44), part('Spain', -9, 40, -3, 43.8), part('Portugal', -9, 40, -6, 42.2), part('China', 75, 30, 135, 53), part('India', 70, 20, 80, 35), part('Mexico', -110, 26, -103, 32)]},
+    ],
+}

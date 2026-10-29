@@ -399,3 +399,25 @@ HISTORIC_CHANGED = {
     'anas-platyrhynchos': {'without': [1, 2]},
 }
 HISTORIC = {**{sid: 'same' for sid in ['haliaeetus-leucocephalus', 'pandion-haliaetus', 'vultur-gryphus', 'sagittarius-serpentarius', 'falco-peregrinus', 'bubo-scandiacus', 'tyto-alba', 'ara-macao', 'cacatua-galerita', 'mellisuga-helenae', 'apus-apus', 'corvus-corax', 'paradisaea-apoda', 'menura-novaehollandiae', 'hirundo-rustica', 'turdus-migratorius', 'erithacus-rubecula', 'serinus-canaria', 'geospiza-fortis', 'mimus-polyglottos', 'cardinalis-cardinalis', 'ptilonorhynchus-violaceus', 'phoenicopterus-roseus', 'diomedea-exulans', 'ardenna-grisea', 'pelecanus-onocrotalus', 'balaeniceps-rex', 'ardea-cinerea', 'ciconia-ciconia', 'threskiornis-aethiopicus', 'gallus-gallus', 'leipoa-ocellata', 'dendrocopos-major', 'ramphastos-toco', 'buceros-bicornis', 'alcedo-atthis', 'sterna-paradisaea', 'fratercula-arctica', 'sula-nebouxii', 'fregata-magnificens', 'phalacrocorax-carbo', 'cuculus-canorus', 'tinamus-major', 'gavia-immer', 'podiceps-cristatus', 'upupa-epops', 'limosa-lapponica']}, **HISTORIC_CHANGED}
+
+
+# Middle stages for big changes in the last 150 years (calendar years).
+STAGES = {
+    # DDT thinned eggshells; about 400 pairs were left in the lower 48 states in 1963.
+    'haliaeetus-leucocephalus': [
+        {'years': (1950, 1995), 'label': 'Low point from DDT poisoning',
+         'regions': [part('Canada', -141, 48, -55, 70), part('United States of America', -170, 51, -130, 72), part('United States of America', -83, 25, -80, 30), part('United States of America', -125, 42, -120, 49), part('United States of America', -95, 44, -84, 49), part('United States of America', -77.5, 37, -75.5, 39.5)]},
+    ],
+    # Stoats, cats and rats pushed kākāpō back to Fiordland and Stewart Island.
+    'strigops-habroptilus': [
+        {'years': (1876, 1950), 'label': 'Kākāpō retreating to the wild southwest',
+         'regions': [part('New Zealand', 166, -46.5, 172.5, -40.5), part('New Zealand', 167.4, -47.3, 168.3, -46.6)]},
+        {'years': (1950, 1990), 'label': 'The last wild kākāpō in Fiordland and on Stewart Island',
+         'regions': [part('New Zealand', 166.5, -46, 168, -44.5), part('New Zealand', 167.4, -47.3, 168.3, -46.6)]},
+    ],
+    # Released in New York in 1890–91, starlings reached the Pacific coast by the 1950s.
+    'sturnus-vulgaris': [
+        {'years': (1890, 1950), 'label': 'Spreading across North America after release in New York',
+         'without': [1, 2, 3, 4], 'add': [part('United States of America', -95, 28, -67, 47), part('Canada', -84, 42, -64, 48)]},
+    ],
+}

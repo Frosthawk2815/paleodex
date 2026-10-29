@@ -129,3 +129,13 @@ HISTORIC_CHANGED = {
     'rhinella-marina': {'without': [8, 9]},
 }
 HISTORIC = {**{sid: 'same' for sid in ['agalychnis-callidryas', 'phyllobates-terribilis', 'lithobates-catesbeianus', 'rana-temporaria', 'atelopus-zeteki', 'conraua-goliath', 'xenopus-laevis', 'paedophryne-amauensis', 'ambystoma-mexicanum', 'andrias-davidianus', 'salamandra-salamandra', 'triturus-cristatus', 'proteus-anguinus', 'siphonops-annulatus']}, **HISTORIC_CHANGED}
+
+
+# Middle stages for big changes in the last 150 years (calendar years).
+STAGES = {
+    # Released in Queensland's sugar-cane fields in 1935, then spread west and south.
+    'rhinella-marina': [
+        {'years': (1935, 1980), 'label': 'Spreading through Queensland after its release',
+         'without': [8, 9], 'add': [part('Australia', 142, -28, 154, -15)]},
+    ],
+}

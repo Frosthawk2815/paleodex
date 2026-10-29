@@ -9,6 +9,7 @@ Usage (from the project root):
     python3 -I tools/living/build.py primates
 """
 
+import datetime
 import importlib.util
 import json
 import sys
@@ -36,6 +37,10 @@ def ts(v, indent=0):
     return json.dumps(v)
 
 
+# Calendar years in 'stages' are turned into years before this year.
+YEAR = datetime.date.today().year
+
+
 def main():
     name = sys.argv[1]
     spec = importlib.util.spec_from_file_location(name, f'{HERE}/{name}.py')
@@ -61,22 +66,40 @@ def main():
         # Earlier phases come before today's range: either written out in the entry
         # ('pastRanges'), or from the module's HISTORIC table, where 'same' means the historic
         # range (about 1,000 to 150 years ago) was much as it is today.
-        past = g.get('pastRanges', [])
-        hist = getattr(mod, 'HISTORIC', {}).get(g['id'])
-        if hist == 'same':
-            past = [{'from': 1000, 'to': 150, 'label': 'Historic range (much as today)', 'sameAs': 1}]
-        elif isinstance(hist, dict):
+        def regions_from(h):
             # {'add': [...]}: today's range plus places it has since been lost from.
-            # {'without': [i, ...]}: today's range minus regions where it was introduced.
-            # {'regions': [...]}: written out in full. 'label', 'from' and 'to' override the defaults.
-            regions = hist.get('regions') or [r for i, r in enumerate(g['range']) if i not in hist.get('without', [])] + hist.get('add', [])
-            past = [{'from': hist.get('from', 1000), 'to': hist.get('to', 150), 'label': hist.get('label', 'Historic range'), 'regions': regions}]
+            # {'without': [i, ...]}: today's range minus regions (e.g. where it was introduced).
+            # {'regions': [...]}: written out in full.
+            if h.get('regions'):
+                return h['regions']
+            return [r for i, r in enumerate(g['range']) if i not in h.get('without', [])] + h.get('add', [])
+
+        past = [dict(p) for p in g.get('pastRanges', [])]
+        hist = getattr(mod, 'HISTORIC', {}).get(g['id'])
+        stages = list(g.get('stages', [])) + list(getattr(mod, 'STAGES', {}).get(g['id'], []))
+        if hist == 'same' or (isinstance(hist, dict) and hist.get('same')):
+            past = [{'from': 1000, 'to': 150, 'label': 'Historic range (much as today)', 'sameAs': 'today'}]
+        elif isinstance(hist, dict):
+            # 'label', 'from' and 'to' override the defaults.
+            past = [{'from': hist.get('from', 1000), 'to': hist.get('to', 150), 'label': hist.get('label', 'Historic range'), 'regions': regions_from(hist)}]
         elif hist is not None:
             past = [{'from': 1000, 'to': 150, 'label': 'Historic range', 'regions': hist}]
         elif not past:
             missing.append(g['id'])
-        today = {'from': 150 if past else g.get('rangeFrom', 10000), 'to': 0, 'label': 'Where it lives today', 'regions': g['range']}
-        ranges[g['id']] = {'phases': [*past, today]}
+        if isinstance(hist, dict):
+            stages += hist.get('stages', [])
+        # Middle stages between the historic range and today, for big changes in the last
+        # 150 years: {'years': (start, end), 'label': ..., plus 'add'/'without'/'regions'}.
+        middle = [{'from': YEAR - st['years'][0], 'to': YEAR - st['years'][1], 'label': st['label'], 'regions': regions_from(st)} for st in stages]
+        if middle and past:
+            past[-1]['to'] = middle[0]['from']
+        today_from = middle[-1]['to'] if middle else (past[-1]['to'] if past else g.get('rangeFrom', 10000))
+        today = {'from': today_from, 'to': 0, 'label': 'Where it lives today', 'regions': g['range']}
+        phases = [*past, *middle, today]
+        for ph in phases:
+            if ph.get('sameAs') == 'today':
+                ph['sameAs'] = len(phases) - 1
+        ranges[g['id']] = {'phases': phases}
 
     const = 'LIVING_' + name.upper().replace('-', '_')
     out = [

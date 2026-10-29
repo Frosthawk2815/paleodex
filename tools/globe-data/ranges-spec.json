@@ -4289,6 +4289,280 @@
       },
       {
         "from": 150,
+        "to": 86,
+        "label": "Caspian, Javan, Bali and South China tigers still alive",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              72,
+              8,
+              97,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Bangladesh"
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              94,
+              10,
+              99,
+              27
+            ]
+          },
+          {
+            "countries": [
+              "Thailand",
+              "Malaysia"
+            ],
+            "lonMax": 104.5
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              127,
+              42,
+              141,
+              50
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              126,
+              42,
+              132,
+              46
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              44,
+              35,
+              62,
+              39
+            ]
+          },
+          {
+            "country": "Turkey",
+            "bbox": [
+              38,
+              36.5,
+              44.8,
+              41.5
+            ]
+          },
+          {
+            "country": "Iraq",
+            "bbox": [
+              42,
+              34,
+              46,
+              37.5
+            ]
+          },
+          {
+            "countries": [
+              "Turkmenistan",
+              "Uzbekistan",
+              "Tajikistan",
+              "Afghanistan"
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              60,
+              42,
+              82,
+              47
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              115.8,
+              -5.8
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              100,
+              20,
+              122,
+              33
+            ]
+          },
+          {
+            "countries": [
+              "North Korea",
+              "South Korea",
+              "Bangladesh",
+              "Laos",
+              "Cambodia",
+              "Vietnam"
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              67,
+              24,
+              72,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "from": 86,
+        "to": 51,
+        "label": "The last Caspian and Javan tigers",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              72,
+              8,
+              97,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Bangladesh"
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              94,
+              10,
+              99,
+              27
+            ]
+          },
+          {
+            "countries": [
+              "Thailand",
+              "Malaysia"
+            ],
+            "lonMax": 104.5
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              127,
+              42,
+              141,
+              50
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              126,
+              42,
+              132,
+              46
+            ]
+          },
+          {
+            "country": "Turkey",
+            "bbox": [
+              42,
+              37,
+              44,
+              38
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              52,
+              36,
+              57,
+              38
+            ]
+          },
+          {
+            "country": "Turkmenistan",
+            "bbox": [
+              54,
+              37,
+              58,
+              39
+            ]
+          },
+          {
+            "country": "Tajikistan",
+            "bbox": [
+              68,
+              37,
+              69.5,
+              38
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              113.5,
+              -8.8,
+              114.6,
+              -8
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              106,
+              22,
+              118,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Laos",
+              "Cambodia",
+              "Vietnam"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 51,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -4469,6 +4743,100 @@
       },
       {
         "from": 150,
+        "to": 76,
+        "label": "Cheetahs still in India, Arabia, Central Asia and North Africa",
+        "regions": [
+          {
+            "countries": [
+              "Kenya",
+              "Tanzania",
+              "Namibia",
+              "Botswana",
+              "Zimbabwe",
+              "Zambia",
+              "South Africa",
+              "Angola",
+              "Ethiopia",
+              "S. Sudan",
+              "Chad",
+              "Niger"
+            ]
+          },
+          {
+            "country": "Algeria",
+            "bbox": [
+              3,
+              21,
+              10,
+              26
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              55,
+              32,
+              60,
+              37
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              77,
+              25.2,
+              78,
+              26
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              70,
+              15,
+              85,
+              28
+            ]
+          },
+          {
+            "countries": [
+              "Saudi Arabia",
+              "Jordan",
+              "Iraq",
+              "Syria",
+              "Oman",
+              "Yemen",
+              "Turkmenistan",
+              "Uzbekistan",
+              "Afghanistan",
+              "Pakistan",
+              "Morocco",
+              "Algeria",
+              "Tunisia",
+              "Libya",
+              "Egypt",
+              "Sudan",
+              "Mali",
+              "Mauritania",
+              "Somalia",
+              "Mozambique",
+              "Uganda",
+              "Malawi"
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              50,
+              26,
+              62,
+              38
+            ]
+          }
+        ]
+      },
+      {
+        "from": 76,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -7319,7 +7687,7 @@
     "phases": [
       {
         "from": 1000,
-        "to": 150,
+        "to": 86,
         "label": "Historic range",
         "regions": [
           {
@@ -7439,7 +7807,142 @@
         ]
       },
       {
-        "from": 150,
+        "from": 86,
+        "to": 36,
+        "label": "Wolves at their lowest",
+        "regions": [
+          {
+            "countries": [
+              "Canada",
+              "Mongolia",
+              "Kazakhstan",
+              "Kyrgyzstan",
+              "Tajikistan",
+              "Afghanistan",
+              "Iran",
+              "Turkey",
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Belarus",
+              "Ukraine",
+              "Romania",
+              "Bulgaria",
+              "Serbia",
+              "Bosnia and Herz.",
+              "Greece",
+              "Greenland"
+            ]
+          },
+          {
+            "countries": [
+              "Russia"
+            ],
+            "latMax": 75
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -170,
+              51,
+              -130,
+              72
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -97,
+              46,
+              -89,
+              49
+            ]
+          },
+          {
+            "country": "Poland",
+            "bbox": [
+              21,
+              49,
+              24.2,
+              54.5
+            ]
+          },
+          {
+            "country": "Slovakia",
+            "bbox": [
+              18.5,
+              48.5,
+              22.6,
+              49.6
+            ]
+          },
+          {
+            "country": "Finland",
+            "bbox": [
+              27,
+              60,
+              31.6,
+              70
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              13,
+              38,
+              17,
+              44
+            ]
+          },
+          {
+            "country": "Spain",
+            "bbox": [
+              -9,
+              40,
+              -3,
+              43.8
+            ]
+          },
+          {
+            "country": "Portugal",
+            "bbox": [
+              -9,
+              40,
+              -6,
+              42.2
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              30,
+              135,
+              53
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              70,
+              20,
+              80,
+              35
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -110,
+              26,
+              -103,
+              32
+            ]
+          }
+        ]
+      },
+      {
+        "from": 36,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -10985,12 +11488,59 @@
     "phases": [
       {
         "from": 1000,
-        "to": 150,
+        "to": 115,
         "label": "Historic range (much as today)",
-        "sameAs": 1
+        "sameAs": 2
       },
       {
-        "from": 150,
+        "from": 115,
+        "to": 76,
+        "label": "Sea otters at their lowest, after the fur trade",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              50.5,
+              -165,
+              55
+            ]
+          },
+          {
+            "sea": [
+              170,
+              51,
+              180,
+              55.5
+            ]
+          },
+          {
+            "sea": [
+              149,
+              43,
+              160,
+              53
+            ]
+          },
+          {
+            "sea": [
+              -148,
+              59.5,
+              -145,
+              61
+            ]
+          },
+          {
+            "sea": [
+              -122.2,
+              35.4,
+              -121.2,
+              36.6
+            ]
+          }
+        ]
+      },
+      {
+        "from": 76,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -12025,12 +12575,27 @@
     "phases": [
       {
         "from": 1000,
-        "to": 150,
+        "to": 136,
         "label": "Historic range (much as today)",
-        "sameAs": 1
+        "sameAs": 2
       },
       {
-        "from": 150,
+        "from": 136,
+        "to": 96,
+        "label": "Elephant seals down to one island colony",
+        "regions": [
+          {
+            "sea": [
+              -118.8,
+              28.6,
+              -117.9,
+              29.4
+            ]
+          }
+        ]
+      },
+      {
+        "from": 96,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -12298,7 +12863,7 @@
     "phases": [
       {
         "from": 1000,
-        "to": 150,
+        "to": 131,
         "label": "Historic range",
         "regions": [
           {
@@ -12349,7 +12914,23 @@
         ]
       },
       {
-        "from": 150,
+        "from": 131,
+        "to": 66,
+        "label": "Down to one reserve in KwaZulu-Natal",
+        "regions": [
+          {
+            "country": "South Africa",
+            "bbox": [
+              31.6,
+              -28.6,
+              32.4,
+              -27.9
+            ]
+          }
+        ]
+      },
+      {
+        "from": 66,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -12550,6 +13131,108 @@
       },
       {
         "from": 150,
+        "to": 76,
+        "label": "Javan rhinos still across Indochina",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              88,
+              25,
+              96,
+              28
+            ]
+          },
+          {
+            "country": "Nepal",
+            "bbox": [
+              81,
+              26.5,
+              85.5,
+              28
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -7,
+              106,
+              -6.5
+            ]
+          },
+          {
+            "countries": [
+              "Vietnam",
+              "Laos",
+              "Cambodia"
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              97,
+              10,
+              99,
+              17
+            ]
+          },
+          {
+            "country": "Thailand",
+            "bbox": [
+              98,
+              10,
+              103,
+              16
+            ]
+          }
+        ]
+      },
+      {
+        "from": 76,
+        "to": 16,
+        "label": "The last Javan rhinos in Vietnam",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              88,
+              25,
+              96,
+              28
+            ]
+          },
+          {
+            "country": "Nepal",
+            "bbox": [
+              81,
+              26.5,
+              85.5,
+              28
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -7,
+              106,
+              -6.5
+            ]
+          },
+          {
+            "country": "Vietnam",
+            "bbox": [
+              106.8,
+              11,
+              108,
+              12.2
+            ]
+          }
+        ]
+      },
+      {
+        "from": 16,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -14253,7 +14936,7 @@
     "phases": [
       {
         "from": 1000,
-        "to": 150,
+        "to": 126,
         "label": "Historic range",
         "regions": [
           {
@@ -14277,7 +14960,23 @@
         ]
       },
       {
-        "from": 150,
+        "from": 126,
+        "to": 41,
+        "label": "Extinct in the wild; the last herd lived at Woburn Abbey, England",
+        "regions": [
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -1.4,
+              51.6,
+              0.1,
+              52.4
+            ]
+          }
+        ]
+      },
+      {
+        "from": 41,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -15441,7 +16140,7 @@
     "phases": [
       {
         "from": 1000,
-        "to": 150,
+        "to": 136,
         "label": "Historic range",
         "regions": [
           {
@@ -15520,7 +16219,59 @@
         ]
       },
       {
-        "from": 150,
+        "from": 136,
+        "to": 76,
+        "label": "Bison at their lowest",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -111.2,
+              44.1,
+              -109.8,
+              45.1
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -115,
+              57.5,
+              -111,
+              60.5
+            ]
+          },
+          {
+            "country": "Poland",
+            "bbox": [
+              23.5,
+              52.5,
+              24.2,
+              53
+            ]
+          },
+          {
+            "country": "Belarus",
+            "bbox": [
+              23.7,
+              52.4,
+              24.5,
+              53
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              39,
+              43.5,
+              42,
+              44.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 76,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -19687,6 +20438,85 @@
       },
       {
         "from": 150,
+        "to": 76,
+        "label": "Eurasian beavers at their lowest",
+        "regions": [
+          {
+            "country": "Germany",
+            "bbox": [
+              11,
+              51.5,
+              12.5,
+              52.5
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              4.3,
+              43.4,
+              4.9,
+              44.5
+            ]
+          },
+          {
+            "country": "Norway",
+            "bbox": [
+              7,
+              58.3,
+              9.5,
+              59.6
+            ]
+          },
+          {
+            "country": "Belarus",
+            "bbox": [
+              27,
+              51.5,
+              29.5,
+              53
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              39,
+              51,
+              40.5,
+              52
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              63,
+              59,
+              66,
+              61
+            ]
+          },
+          {
+            "country": "Mongolia",
+            "bbox": [
+              90.5,
+              46,
+              91.5,
+              46.8
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              89.5,
+              46,
+              90.5,
+              47
+            ]
+          }
+        ]
+      },
+      {
+        "from": 76,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -19840,7 +20670,7 @@
         ]
       },
       {
-        "from": 150,
+        "from": 300,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21213,12 +22043,73 @@
     "phases": [
       {
         "from": 1000,
-        "to": 150,
+        "to": 76,
         "label": "Historic range (much as today)",
-        "sameAs": 1
+        "sameAs": 2
       },
       {
-        "from": 150,
+        "from": 76,
+        "to": 31,
+        "label": "Low point from DDT poisoning",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              48,
+              -55,
+              70
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -170,
+              51,
+              -130,
+              72
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -83,
+              25,
+              -80,
+              30
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -125,
+              42,
+              -120,
+              49
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -95,
+              44,
+              -84,
+              49
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -77.5,
+              37,
+              -75.5,
+              39.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 31,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21651,6 +22542,56 @@
       },
       {
         "from": 150,
+        "to": 76,
+        "label": "Kākāpō retreating to the wild southwest",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              166,
+              -46.5,
+              172.5,
+              -40.5
+            ]
+          },
+          {
+            "country": "New Zealand",
+            "bbox": [
+              167.4,
+              -47.3,
+              168.3,
+              -46.6
+            ]
+          }
+        ]
+      },
+      {
+        "from": 76,
+        "to": 36,
+        "label": "The last wild kākāpō in Fiordland and on Stewart Island",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              166.5,
+              -46,
+              168,
+              -44.5
+            ]
+          },
+          {
+            "country": "New Zealand",
+            "bbox": [
+              167.4,
+              -47.3,
+              168.3,
+              -46.6
+            ]
+          }
+        ]
+      },
+      {
+        "from": 36,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22351,7 +23292,7 @@
     "phases": [
       {
         "from": 1000,
-        "to": 150,
+        "to": 136,
         "label": "Historic range",
         "regions": [
           {
@@ -22402,7 +23343,77 @@
         ]
       },
       {
-        "from": 150,
+        "from": 136,
+        "to": 76,
+        "label": "Spreading across North America after release in New York",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Russia",
+              "Kazakhstan",
+              "Turkey",
+              "Iran"
+            ],
+            "latMax": 66
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -95,
+              28,
+              -67,
+              47
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -84,
+              42,
+              -64,
+              48
+            ]
+          }
+        ]
+      },
+      {
+        "from": 76,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27859,7 +28870,7 @@
     "phases": [
       {
         "from": 1000,
-        "to": 150,
+        "to": 91,
         "label": "Historic range",
         "regions": [
           {
@@ -27909,7 +28920,67 @@
         ]
       },
       {
-        "from": 150,
+        "from": 91,
+        "to": 46,
+        "label": "Spreading through Queensland after its release",
+        "regions": [
+          {
+            "countries": [
+              "Colombia"
+            ]
+          },
+          {
+            "countries": [
+              "Venezuela"
+            ]
+          },
+          {
+            "countries": [
+              "Guyana"
+            ]
+          },
+          {
+            "countries": [
+              "Suriname"
+            ]
+          },
+          {
+            "countries": [
+              "Ecuador"
+            ]
+          },
+          {
+            "countries": [
+              "Peru"
+            ]
+          },
+          {
+            "countries": [
+              "Bolivia"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -20,
+              -35,
+              5
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              142,
+              -28,
+              154,
+              -15
+            ]
+          }
+        ]
+      },
+      {
+        "from": 46,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -30055,6 +31126,187 @@
       },
       {
         "from": 150,
+        "to": 81,
+        "label": "Barbary lions in the Atlas and lions in Iran and Iraq",
+        "regions": [
+          {
+            "countries": [
+              "Kenya",
+              "Tanzania",
+              "Uganda",
+              "Zambia",
+              "Zimbabwe",
+              "Botswana",
+              "Mozambique",
+              "Malawi",
+              "S. Sudan",
+              "Central African Rep.",
+              "Angola",
+              "Rwanda",
+              "eSwatini"
+            ]
+          },
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              34,
+              4,
+              42,
+              10
+            ]
+          },
+          {
+            "country": "Chad",
+            "bbox": [
+              15,
+              8,
+              23,
+              12
+            ]
+          },
+          {
+            "country": "Cameroon",
+            "bbox": [
+              12.5,
+              7,
+              15.5,
+              10.5
+            ]
+          },
+          {
+            "country": "Nigeria",
+            "bbox": [
+              3.5,
+              9.5,
+              12,
+              11
+            ]
+          },
+          {
+            "country": "Benin",
+            "bbox": [
+              0.5,
+              10.5,
+              3.5,
+              12.5
+            ]
+          },
+          {
+            "country": "Burkina Faso",
+            "bbox": [
+              0,
+              11,
+              2.5,
+              12.5
+            ]
+          },
+          {
+            "country": "Niger",
+            "bbox": [
+              1.5,
+              11.5,
+              3,
+              12.7
+            ]
+          },
+          {
+            "country": "Senegal",
+            "bbox": [
+              -13.5,
+              12.3,
+              -12,
+              13.6
+            ]
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              27,
+              -12,
+              31,
+              4
+            ]
+          },
+          {
+            "country": "Namibia",
+            "bbox": [
+              13,
+              -21,
+              25,
+              -17
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              20,
+              -28,
+              32,
+              -22
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              69.8,
+              20.6,
+              71.8,
+              22
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -8,
+              30,
+              -2,
+              35
+            ]
+          },
+          {
+            "country": "Algeria",
+            "bbox": [
+              -1,
+              33,
+              8,
+              37
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              48,
+              28,
+              54,
+              33
+            ]
+          },
+          {
+            "country": "Iraq",
+            "bbox": [
+              44,
+              30,
+              48,
+              33
+            ]
+          },
+          {
+            "countries": [
+              "Senegal",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Nigeria",
+              "Ghana",
+              "Ethiopia",
+              "Somalia",
+              "Sudan"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 81,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -30556,6 +31808,103 @@
       },
       {
         "from": 150,
+        "to": 61,
+        "label": "Jaguars still bred in the southwestern United States",
+        "regions": [
+          {
+            "country": "Mexico",
+            "bbox": [
+              -106,
+              14.5,
+              -86.5,
+              24
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -111.5,
+              31.3,
+              -109.5,
+              32
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama"
+            ]
+          },
+          {
+            "countries": [
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Bolivia"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -24,
+              -35,
+              5
+            ]
+          },
+          {
+            "country": "Paraguay",
+            "bbox": [
+              -62.5,
+              -25,
+              -57,
+              -19.3
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -27,
+              -53.5,
+              -22
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -114,
+              29,
+              -97,
+              35
+            ]
+          },
+          {
+            "countries": [
+              "Uruguay",
+              "El Salvador"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -68,
+              -38,
+              -53,
+              -22
+            ]
+          }
+        ]
+      },
+      {
+        "from": 61,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
