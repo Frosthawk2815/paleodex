@@ -4,6 +4,7 @@ import type { HistoryEvent, InvertebrateNote } from '@/data/events';
 import { badgeBg, pointVisible } from '@/lib/events';
 import { PointIcon } from '@/components/point-icon';
 import { SpeciesRow } from '@/components/clade-info';
+import { InfoNav } from '@/components/info-nav';
 import { info } from '@/components/info-styles';
 import type { Clade, Species } from '@/data/life';
 import { familyOf, speciesAtEvent, speciesById, speciesInFormation } from '@/lib/life';
@@ -14,6 +15,8 @@ type Props = {
   event: HistoryEvent;
   timeMa: number;
   onBack: () => void;
+  onPrevious?: () => void;
+  previousLabel?: string;
   // Jump the timeline and globe to one of the event's points.
   onJump: (index: number) => void;
   onOpenSpecies: (id: string) => void;
@@ -21,7 +24,7 @@ type Props = {
 };
 
 // The information section shown below the globe for a selected event.
-export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpenClade }: Props) {
+export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, onJump, onOpenSpecies, onOpenClade }: Props) {
   // Species found here, grouped by family (e.g. tyrannosaurs).
   const families: { family: Clade | undefined; members: Species[] }[] = [];
   for (const s of speciesInFormation(event.id)) {
@@ -33,9 +36,7 @@ export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpen
 
   return (
     <View style={styles.wrap}>
-      <Pressable onPress={onBack} accessibilityRole="button" style={({ pressed }) => [styles.back, pressed && styles.pressed]}>
-        <Text style={styles.backText}>↑ Back to the globe</Text>
-      </Pressable>
+      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} />
 
       <Text style={styles.kicker}>{event.kind}</Text>
       <Text style={styles.title} accessibilityRole="header">

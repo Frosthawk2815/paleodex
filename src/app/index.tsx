@@ -1,7 +1,8 @@
 import { Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useDeferredValue, useRef, useState } from 'react';
+import { useDeferredValue, useEffect, useEffectEvent, useRef, useState } from 'react';
 import {
+  BackHandler,
   type LayoutChangeEvent,
   Pressable,
   ScrollView,
@@ -29,6 +30,16 @@ import { contextAt, timeLabel } from '@/lib/time';
 // What the information section below the globe is showing.
 type Selection = { kind: 'event'; event: HistoryEvent } | { kind: 'species'; id: string } | { kind: 'clade'; id: string };
 
+const sameSelection = (a: Selection, b: Selection) =>
+  a.kind === b.kind && (a.kind === 'event' ? a.event.id === (b as typeof a).event.id : a.id === (b as typeof a).id);
+
+// A short name for a page, shown on the "previous page" button.
+function selectionLabel(s: Selection): string {
+  if (s.kind === 'event') return s.event.title;
+  const item = s.kind === 'species' ? speciesById(s.id) : cladeById(s.id);
+  return item?.common || item?.name || 'Previous';
+}
+
 type Focus = { kind: 'site' | 'moon' | 'event' | 'skull' | 'range'; id: string; index?: number; n: number };
 
 export default function GlobeScreen() {
@@ -40,6 +51,8 @@ export default function GlobeScreen() {
   const [area, setArea] = useState({ width: 0, height: 0 });
   const [focus, setFocus] = useState<Focus | null>(null);
   const [selected, setSelected] = useState<Selection | null>(null);
+  // Pages shown before the current one, most recent last, for the "previous page" button.
+  const [history, setHistory] = useState<Selection[]>([]);
   // A modern species whose range is shaded on the globe.
   const [rangeId, setRangeId] = useState<string | undefined>(undefined);
   const [searching, setSearching] = useState(false);
@@ -67,17 +80,16 @@ export default function GlobeScreen() {
     setArea({ width: Math.floor(width), height: Math.floor(height) });
   };
 
-  // Show something in the information section and scroll down to it.
-  const openInfo = (next: Selection) => {
+  // Show something in the information section (remembering the page it replaces) and, unless
+  // told otherwise, scroll down to it.
+  const showInfo = (next: Selection, scroll = true) => {
+    if (selected && !sameSelection(selected, next)) setHistory((h) => [...h, selected].slice(-50));
     setSelected(next);
+    if (!scroll) return;
     if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: true });
     else scrollToInfo.current = true;
   };
-  const selectEvent = (e: HistoryEvent) => openInfo({ kind: 'event', event: e });
-  const openSpecies = (id: string) => {
-    if (rangeOf(id)) setRangeId(id);
-    openInfo({ kind: 'species', id });
-  };
+  const selectEvent = (e: HistoryEvent) => showInfo({ kind: 'event', event: e });
   // Modern species: travel to just before the last sighting, or to one stage of the range.
   const goToLastSeen = (id: string) => {
     const lastSeen = rangeOf(id)?.lastSeen;
@@ -93,7 +105,54 @@ export default function GlobeScreen() {
     bar.current?.goToTime(phaseJumpMa(phase));
     lookAt('range', id, index);
   };
-  const openClade = (id: string) => openInfo({ kind: 'clade', id });
+  // Move the timeline and globe to a species: the formation it's found in (the one being looked
+  // at if it's one of them, otherwise the first listed), or for modern species their last
+  // sighting or the start of their range.
+  const travelToSpecies = (id: string, preferFormation?: string) => {
+    const species = speciesById(id);
+    if (!species) return;
+    const formations = species.formations.map(formationById).filter((f): f is HistoryEvent => f !== undefined);
+    const formation = formations.find((f) => f.id === preferFormation) ?? formations[0];
+    const range = rangeOf(id);
+    if (formation) jumpToPoint(formation, pastPointIndex(formation));
+    else if (range?.lastSeen) goToLastSeen(id);
+    else if (range) goToRange(id, 0);
+    if (range) setRangeId(id);
+  };
+  // Open a species page; the globe travels to it on its own.
+  const openSpecies = (id: string, scroll = true) => {
+    travelToSpecies(id, selected?.kind === 'event' ? selected.event.id : undefined);
+    showInfo({ kind: 'species', id }, scroll);
+  };
+  // A species tapped on the globe is already in view, so the globe stays put.
+  const openSpeciesHere = (id: string) => {
+    if (rangeOf(id)) setRangeId(id);
+    showInfo({ kind: 'species', id });
+  };
+  const openClade = (id: string) => showInfo({ kind: 'clade', id });
+
+  // Go back to the page shown before this one, moving the globe back with it.
+  const previous = history[history.length - 1];
+  const goPrevious = () => {
+    if (!previous) return;
+    setHistory((h) => h.slice(0, -1));
+    setSelected(previous);
+    if (previous.kind === 'species') travelToSpecies(previous.id);
+    else if (previous.kind === 'event') jumpToPoint(previous.event, 0);
+    if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: true });
+  };
+  // Android's back button goes to the previous page while there is one.
+  const onHardwareBack = useEffectEvent(goPrevious);
+  const hasPrevious = previous !== undefined;
+  useEffect(() => {
+    if (!hasPrevious) return;
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      onHardwareBack();
+      return true;
+    });
+    return () => sub.remove();
+  }, [hasPrevious]);
+  const nav = { onPrevious: previous ? goPrevious : undefined, previousLabel: previous ? selectionLabel(previous) : undefined };
   const backToGlobe = () => page.current?.scrollTo({ y: 0, animated: true });
   // Jump to a point and scroll back up to see it on the globe.
   const jumpAndShow = (e: HistoryEvent, index: number) => {
@@ -116,16 +175,12 @@ export default function GlobeScreen() {
     else if (r.kind === 'event') {
       // Land at the event's first point (for formations, where they formed) with its marker showing.
       jumpToPoint(r.event, 0);
-      setSelected({ kind: 'event', event: r.event });
+      showInfo({ kind: 'event', event: r.event }, false);
     } else if (r.kind === 'species') {
       // Land in the past at the first formation it's found in, and open its description.
       // Modern species land at their last sighting, or the start of their range.
-      const formation = r.species.formations.map(formationById).find((f) => f !== undefined);
-      const range = rangeOf(r.species.id);
-      if (formation) jumpToPoint(formation, pastPointIndex(formation));
-      else if (range?.lastSeen) goToLastSeen(r.species.id);
-      else if (range) goToRange(r.species.id, 0);
-      openSpecies(r.species.id);
+      travelToSpecies(r.species.id);
+      showInfo({ kind: 'species', id: r.species.id });
     } else {
       openClade(r.clade.id);
     }
@@ -193,7 +248,7 @@ export default function GlobeScreen() {
                 onDragging={setDragging}
                 rangeId={rangeId}
                 onClearRange={() => setRangeId(undefined)}
-                onSelectSpecies={openSpecies}
+                onSelectSpecies={openSpeciesHere}
               />
             )}
           </View>
@@ -215,6 +270,7 @@ export default function GlobeScreen() {
                 event={selected.event}
                 timeMa={timeMa}
                 onBack={backToGlobe}
+                {...nav}
                 onJump={(i) => jumpAndShow(selected.event, i)}
                 onOpenSpecies={openSpecies}
                 onOpenClade={openClade}
@@ -225,6 +281,7 @@ export default function GlobeScreen() {
                 key={selected.id}
                 species={speciesById(selected.id)!}
                 onBack={backToGlobe}
+                {...nav}
                 onOpenClade={openClade}
                 onOpenSpecies={openSpecies}
                 onJump={jumpAndShow}
@@ -239,7 +296,7 @@ export default function GlobeScreen() {
               />
             )}
             {selected.kind === 'clade' && cladeById(selected.id) && (
-              <CladeInfo clade={cladeById(selected.id)!} onBack={backToGlobe} onOpenClade={openClade} onOpenSpecies={openSpecies} />
+              <CladeInfo clade={cladeById(selected.id)!} onBack={backToGlobe} {...nav} onOpenClade={openClade} onOpenSpecies={openSpecies} />
             )}
           </View>
         )}

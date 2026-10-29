@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { CladeCrumbs } from '@/components/clade-crumbs';
+import { InfoNav } from '@/components/info-nav';
 import { info } from '@/components/info-styles';
 import { type Clade, CLADES, type Species } from '@/data/life';
 import { childClades, cladeById, cladePath, speciesInClade } from '@/lib/life';
@@ -9,12 +10,14 @@ import { childClades, cladeById, cladePath, speciesInClade } from '@/lib/life';
 type Props = {
   clade: Clade;
   onBack: () => void;
+  onPrevious?: () => void;
+  previousLabel?: string;
   onOpenClade: (id: string) => void;
   onOpenSpecies: (id: string) => void;
 };
 
 // The information section for a group: where it sits in the tree and every species in it.
-export function CladeInfo({ clade, onBack, onOpenClade, onOpenSpecies }: Props) {
+export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies }: Props) {
   const path = cladePath(clade.id);
   const children = childClades(clade.id);
   const species = speciesInClade(clade.id);
@@ -26,9 +29,7 @@ export function CladeInfo({ clade, onBack, onOpenClade, onOpenSpecies }: Props) 
 
   return (
     <View style={info.wrap}>
-      <Pressable onPress={onBack} accessibilityRole="button" style={({ pressed }) => [info.back, pressed && info.pressed]}>
-        <Text style={info.backText}>↑ Back to the globe</Text>
-      </Pressable>
+      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} />
 
       <Text style={info.kicker}>Group</Text>
       <Text style={info.title} accessibilityRole="header">
