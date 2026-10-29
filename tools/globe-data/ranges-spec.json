@@ -22596,5 +22596,25 @@
         ]
       }
     ]
+  },
+  "homo-floresiensis": {
+    "phases": [
+      {
+        "from": 700000,
+        "to": 50000,
+        "label": "The island of Flores",
+        "regions": [
+          {
+            "country": "Indonesia",
+            "bbox": [
+              119.7,
+              -9.0,
+              123.1,
+              -8.0
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

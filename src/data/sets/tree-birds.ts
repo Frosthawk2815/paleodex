@@ -54,7 +54,7 @@ export const TREE_BIRDS: DataSet = {
       common: 'Halszkaraptorines',
       parent: 'dromaeosauridae',
       description:
-        'Small, long-necked, duck-like raptor relatives from the Late Cretaceous of Mongolia: Halszkaraptor, Mahakala, Hulsanpes and Natovenator. They are usually treated as early-branching dromaeosaurs, but a 2025 study placed them among the avialans, closer to birds. Whether they swam is debated.',
+        'Small raptor relatives from the Late Cretaceous of Mongolia, several of them long-necked and duck-like: Halszkaraptor, Mahakala, Hulsanpes and Natovenator. They are usually treated as early-branching dromaeosaurs, but a 2025 study placed them among the avialans, closer to birds. Whether they swam is debated.',
     },
   ],
   species: [
@@ -78,6 +78,45 @@ export const TREE_BIRDS: DataSet = {
         { label: 'Known from', value: 'One skeleton of a roughly one-year-old' },
       ],
       keywords: ['halszkaraptor', 'halszkaraptorine', 'duck raptor', 'swimming dinosaur', 'raptor', 'dromaeosaur', 'mongolia', 'gobi', 'cretaceous'],
+    },
+    {
+      id: 'natovenator-polydontus',
+      name: 'Natovenator polydontus',
+      common: 'Natovenator',
+      clade: 'halszkaraptorinae',
+      status: 'full',
+      ageText: 'About 72 to 71 million years ago',
+      placeText: 'Ömnögovi, Gobi Desert, Mongolia',
+      formations: ['barun-goyot'],
+      summary: [
+        'A small, long-necked halszkaraptorine, about the size of a small duck, known from a nearly complete skeleton with its skull. Its name means “many-toothed swimming hunter”.',
+        'Its ribs angle sharply backwards, giving it a flattened, streamlined body like that of diving birds such as cormorants and penguins. Its describers in 2022 took this as the best evidence yet that halszkaraptorines swam, though it is an inference from body shape, and how well it swam is unknown.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Sungjin Lee and colleagues, 2022' },
+        { label: 'Size', value: 'About the size of a small duck' },
+      ],
+      keywords: ['natovenator', 'halszkaraptorine', 'swimming dinosaur', 'raptor', 'dromaeosaur', 'mongolia', 'gobi', 'cretaceous'],
+    },
+    {
+      id: 'mahakala-omnogovae',
+      name: 'Mahakala omnogovae',
+      common: 'Mahakala',
+      clade: 'halszkaraptorinae',
+      status: 'full',
+      ageText: 'About 75 to 71 million years ago',
+      placeText: 'Ömnögovi, Gobi Desert, Mongolia',
+      formations: ['djadochta'],
+      summary: [
+        'A tiny raptor relative about 50–70 cm long and under 1 kg, close to adult size, with the enlarged second-toe claw of a dromaeosaur. When it was named in 2007 it was found to be one of the earliest-branching dromaeosaurs, despite living late in the Cretaceous.',
+        'Its small size, shared with the earliest troodontids and birds, suggested that the ancestors of birds had already become small before they could fly, rather than shrinking as they took to the air. It was later grouped with Halszkaraptor among the halszkaraptorines. It is named after Mahākāla, a protector deity of Tibetan Buddhism.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Alan Turner and colleagues, 2007' },
+        { label: 'Length', value: 'About 50–70 cm' },
+        { label: 'Weight', value: 'About 0.4–0.7 kg' },
+      ],
+      keywords: ['mahakala', 'halszkaraptorine', 'raptor', 'dromaeosaur', 'mongolia', 'gobi', 'cretaceous'],
     },
   ],
   upgrades: {

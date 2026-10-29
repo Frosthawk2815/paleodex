@@ -128,6 +128,28 @@ export const MODERN: DataSet = {
       keywords: ['neanderthal', 'neandertal', 'caveman', 'homo', 'human'],
     },
     {
+      id: 'homo-floresiensis',
+      phylo: 1.5,
+      name: 'Homo floresiensis',
+      common: 'Flores “hobbit”',
+      clade: 'hominidae',
+      status: 'full',
+      ageText: 'About 700,000 to 50,000 years ago',
+      placeText: 'Liang Bua cave and the Soa Basin, Flores, Indonesia',
+      formations: [],
+      summary: [
+        'A tiny human found in 2003 in Liang Bua cave on the island of Flores and nicknamed the “hobbit”. The best skeleton, a woman known as LB1, stood about 1.06 m tall and had a brain of about 420 cm³, about the size of a chimpanzee’s, yet her species made stone tools. It had long, flat feet, short legs and a wrist built like an ape’s.',
+        'At first its bones were thought to be as young as 12,000 years, but redating in 2016 showed they are about 100,000 to 60,000 years old, with its stone tools from about 190,000 to 50,000 years ago. It disappeared around the time modern humans reached the region, though whether they were the cause is not known. Even older, 700,000-year-old fossils from the Soa Basin, described in 2016 and 2024, come from people just as small.',
+        'Most researchers think it descended from Homo erectus that reached Flores and shrank over many generations, as large animals often do on islands (island dwarfism); others argue for an older, smaller-bodied ancestor. Early claims that LB1 was a modern human with a disorder such as microcephaly have been largely rejected. It shared Flores with dwarf elephant relatives (Stegodon), Komodo dragons, giant rats and a giant marabou stork.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Peter Brown and colleagues, 2004' },
+        { label: 'Height', value: 'About 1.06 m (LB1)' },
+        { label: 'Brain', value: 'About 420 cm³, roughly a third of ours' },
+      ],
+      keywords: ['homo floresiensis', 'floresiensis', 'hobbit', 'flores', 'liang bua', 'homo', 'human', 'island dwarfism'],
+    },
+    {
       id: 'mammuthus-primigenius',
       name: 'Mammuthus primigenius',
       common: 'Woolly mammoth',
