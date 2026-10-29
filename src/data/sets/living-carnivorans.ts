@@ -142,7 +142,7 @@ export const LIVING_CARNIVORANS: DataSet = {
       placeText: 'South and Southeast Asia, the Russian Far East and northeast China',
       formations: [],
       summary: [
-        'The largest living cat, with males up to about 300 kg in the Russian Far East and India. Panthera, the roaring big cats, also includes the lion, leopard, jaguar and snow leopard. Fewer than 5,000 tigers live in the wild, mostly in India.',
+        'The largest living cat, with males up to about 300 kg in the Russian Far East and India. Tigers once ranged from eastern Turkey and the Caspian Sea to Bali and the Russian Far East; they have lost over 90% of that range, and the Caspian, Javan and Bali tigers are extinct. About 5,500 live in the wild (2023 estimate), around two-thirds of them in India, where numbers have risen since 2006. Panthera, the roaring big cats, also includes the lion, leopard, jaguar and snow leopard.',
       ],
       facts: [
         {
@@ -158,7 +158,86 @@ export const LIVING_CARNIVORANS: DataSet = {
           value: 'Endangered',
         },
       ],
-      keywords: ['tiger', 'panthera', 'big cat', 'leopard', 'jaguar', 'snow leopard'],
+      keywords: ['tiger', 'panthera', 'big cat', 'bengal tiger', 'siberian tiger', 'amur tiger', 'sumatran tiger'],
+    },
+    {
+      id: 'panthera-pardus',
+      name: 'Panthera pardus',
+      common: 'Leopard',
+      clade: 'felidae',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Sub-Saharan Africa and scattered parts of Asia, from Arabia to the Russian Far East',
+      formations: [],
+      summary: [
+        'The most widespread wild cat, at home in rainforest, savanna, desert, mountains and even the edges of cities such as Mumbai and Nairobi. It is a stealthy, mostly nocturnal hunter that takes anything from beetles to antelope larger than itself, and often hauls kills up into trees away from lions and hyenas. Black leopards (“black panthers”) are leopards with a gene for dark fur; their rosettes still show in the right light.',
+        'Leopards have lost about two-thirds or more of their historic range, vanishing from most of North Africa, the Middle East and much of China. Some forms are close to extinction: about 120 Amur leopards survive on the Russia–China border, and the Arabian leopard is down to perhaps 100–200 animals.',
+      ],
+      facts: [
+        {
+          label: 'Weight',
+          value: 'Males about 30–90 kg',
+        },
+        {
+          label: 'IUCN status',
+          value: 'Vulnerable',
+        },
+      ],
+      keywords: ['leopard', 'panthera pardus', 'black panther', 'amur leopard', 'arabian leopard', 'big cat'],
+    },
+    {
+      id: 'panthera-onca',
+      name: 'Panthera onca',
+      common: 'Jaguar',
+      clade: 'felidae',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Mexico to northern Argentina, with occasional visitors to Arizona',
+      formations: [],
+      summary: [
+        'The largest cat in the Americas and the third largest in the world, with the most powerful bite for its size of any big cat. Unlike other big cats it often kills by biting through the skull, and it can crack turtle shells. It is a strong swimmer that hunts caimans, capybaras and fish as well as deer and peccaries. Black jaguars, like black leopards, are a dark colour form.',
+        'Jaguars once lived from the southwestern United States to central Argentina and Uruguay; they have lost about half of that range, and are gone from Uruguay and El Salvador. A few males still wander into Arizona from Mexico. The Amazon holds most of the remaining population.',
+      ],
+      facts: [
+        {
+          label: 'Weight',
+          value: 'Males about 55–100 kg, larger in the Pantanal',
+        },
+        {
+          label: 'IUCN status',
+          value: 'Near Threatened',
+        },
+      ],
+      keywords: ['jaguar', 'panthera onca', 'black panther', 'big cat', 'amazon', 'pantanal'],
+    },
+    {
+      id: 'panthera-uncia',
+      name: 'Panthera uncia',
+      common: 'Snow leopard',
+      clade: 'felidae',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Mountains of Central and South Asia, from the Himalayas to Mongolia and Siberia',
+      formations: [],
+      summary: [
+        'A smoky-grey cat of high, cold mountains, usually between about 3,000 and 5,500 m, with thick fur, broad furry feet that act as snowshoes, and a very long, thick tail it uses for balance and wraps around itself for warmth. It hunts wild sheep and goats such as blue sheep and ibex on steep cliffs. Unlike other Panthera cats it cannot roar.',
+        'Its range today is close to its historic range, but it is thinly spread: about 4,000–6,500 remain, threatened by poaching, killing in revenge for livestock losses, and the loss of its wild prey. Its mountain habitat may shrink as the climate warms.',
+      ],
+      facts: [
+        {
+          label: 'Weight',
+          value: 'About 25–55 kg',
+        },
+        {
+          label: 'Wild population',
+          value: 'About 4,000–6,500',
+        },
+        {
+          label: 'IUCN status',
+          value: 'Vulnerable',
+        },
+      ],
+      keywords: ['snow leopard', 'panthera uncia', 'ounce', 'big cat', 'himalaya', 'mountains'],
     },
     {
       id: 'panthera-leo',
@@ -224,10 +303,10 @@ export const LIVING_CARNIVORANS: DataSet = {
       clade: 'felidae',
       status: 'full',
       ageText: 'Living today',
-      placeText: 'Eastern and southern Africa, with a tiny population in Iran',
+      placeText: 'Eastern and southern Africa and the Sahara, with a tiny population in Iran; reintroduced to India',
       formations: [],
       summary: [
-        'The fastest land animal, reaching about 100–110 km/h in short sprints. Its claws only partly retract, gripping like running spikes. Cheetahs have very low genetic diversity, a sign of a population crash in the past. Only about 7,000 remain.',
+        'The fastest land animal, reaching about 100–110 km/h in short sprints. Its claws only partly retract, gripping like running spikes. Cheetahs have very low genetic diversity, a sign of a population crash in the past. They once lived across most of Africa and from Arabia to India, where they were kept by royalty for hunting; only about 7,000 remain, and the Asiatic cheetah survives only in Iran, with a few dozen or fewer. India’s cheetahs died out by the 1950s, and since 2022 cheetahs from Namibia and South Africa have been released in Kuno National Park.',
       ],
       facts: [
         {
@@ -243,7 +322,7 @@ export const LIVING_CARNIVORANS: DataSet = {
           value: 'Vulnerable',
         },
       ],
-      keywords: ['cheetah', 'acinonyx', 'fastest land animal', 'africa'],
+      keywords: ['cheetah', 'acinonyx', 'fastest land animal', 'asiatic cheetah', 'kuno', 'africa'],
     },
     {
       id: 'puma-concolor',

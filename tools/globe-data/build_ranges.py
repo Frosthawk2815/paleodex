@@ -106,6 +106,11 @@ def main():
             continue
         phases = []
         for ph in s['phases']:
+            # A phase with the same outline as another (e.g. a historic range much as today)
+            # points to it instead of storing a copy.
+            if 'sameAs' in ph:
+                phases.append({'fromMa': ph['from'] / 1e6, 'toMa': ph['to'] / 1e6, 'label': ph['label'], 'sameAs': ph['sameAs']})
+                continue
             g = unary_union([region_geometry(r, countries) for r in ph['regions']])
             polys = []
             # Wide ranges drop islets that would be invisible at the zoom they are seen at; small

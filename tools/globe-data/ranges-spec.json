@@ -3622,7 +3622,129 @@
   "panthera-tigris": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Nepal",
+              "Bhutan",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Singapore",
+              "North Korea",
+              "South Korea",
+              "Afghanistan",
+              "Turkmenistan",
+              "Uzbekistan",
+              "Tajikistan",
+              "Kyrgyzstan",
+              "Azerbaijan",
+              "Armenia",
+              "Georgia"
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              66,
+              24,
+              72,
+              32
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              44,
+              35,
+              62,
+              39
+            ]
+          },
+          {
+            "country": "Turkey",
+            "bbox": [
+              38,
+              36.5,
+              44.8,
+              41.5
+            ]
+          },
+          {
+            "country": "Iraq",
+            "bbox": [
+              42,
+              34,
+              46,
+              37.5
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              50,
+              40,
+              85,
+              48
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              18,
+              135,
+              50
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              125,
+              42,
+              141,
+              52
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              114.4,
+              -8.9,
+              115.8,
+              -8
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -3734,7 +3856,69 @@
   "acinonyx-jubatus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "continents": [
+              "Africa"
+            ],
+            "exclude": [
+              "Madagascar",
+              "Gabon",
+              "Congo",
+              "Eq. Guinea",
+              "Liberia",
+              "Sierra Leone",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Dem. Rep. Congo"
+            ]
+          },
+          {
+            "countries": [
+              "Israel",
+              "Palestine",
+              "Jordan",
+              "Lebanon",
+              "Syria",
+              "Iraq",
+              "Kuwait",
+              "Saudi Arabia",
+              "Yemen",
+              "Oman",
+              "United Arab Emirates",
+              "Qatar",
+              "Iran",
+              "Afghanistan",
+              "Turkmenistan",
+              "Uzbekistan",
+              "Pakistan"
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              50,
+              40,
+              70,
+              46
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              68,
+              15,
+              88,
+              31
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -3755,12 +3939,30 @@
             ]
           },
           {
+            "country": "Algeria",
+            "bbox": [
+              3,
+              21,
+              10,
+              26
+            ]
+          },
+          {
             "country": "Iran",
             "bbox": [
               55,
               32,
               60,
               37
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              77,
+              25.2,
+              78,
+              26
             ]
           }
         ]
@@ -22667,9 +22869,9 @@
   "panthera-leo": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
         "to": 150,
-        "label": "Before modern times",
+        "label": "Historic range",
         "regions": [
           {
             "continents": [
@@ -22848,6 +23050,569 @@
               20.6,
               71.8,
               22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "panthera-pardus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "continents": [
+              "Africa"
+            ],
+            "exclude": [
+              "Madagascar"
+            ]
+          },
+          {
+            "countries": [
+              "Israel",
+              "Palestine",
+              "Jordan",
+              "Lebanon",
+              "Syria",
+              "Iraq",
+              "Saudi Arabia",
+              "Yemen",
+              "Oman",
+              "United Arab Emirates",
+              "Turkey",
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Iran",
+              "Afghanistan",
+              "Turkmenistan",
+              "Uzbekistan",
+              "Tajikistan",
+              "Pakistan",
+              "India",
+              "Nepal",
+              "Bhutan",
+              "Bangladesh",
+              "Sri Lanka",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "North Korea",
+              "South Korea"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              18,
+              135,
+              48
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              125,
+              42,
+              136,
+              50
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Kenya",
+              "Tanzania",
+              "Uganda",
+              "Rwanda",
+              "Burundi",
+              "Zambia",
+              "Zimbabwe",
+              "Botswana",
+              "Mozambique",
+              "Malawi",
+              "Angola",
+              "Namibia",
+              "South Africa",
+              "eSwatini",
+              "Lesotho",
+              "Ethiopia",
+              "Somalia",
+              "Somaliland",
+              "S. Sudan",
+              "Central African Rep.",
+              "Dem. Rep. Congo",
+              "Congo",
+              "Gabon",
+              "Cameroon",
+              "Eq. Guinea"
+            ]
+          },
+          {
+            "country": "Chad",
+            "bbox": [
+              15,
+              8,
+              23,
+              13
+            ]
+          },
+          {
+            "country": "Nigeria",
+            "bbox": [
+              3,
+              7,
+              14,
+              12
+            ]
+          },
+          {
+            "country": "Benin",
+            "bbox": [
+              0.5,
+              9,
+              3.5,
+              12.5
+            ]
+          },
+          {
+            "country": "Burkina Faso",
+            "bbox": [
+              0,
+              10.5,
+              2.5,
+              12.5
+            ]
+          },
+          {
+            "country": "Senegal",
+            "bbox": [
+              -13.5,
+              12.3,
+              -11.5,
+              14
+            ]
+          },
+          {
+            "country": "Guinea",
+            "bbox": [
+              -11,
+              7.5,
+              -8,
+              10
+            ]
+          },
+          {
+            "country": "Côte d'Ivoire",
+            "bbox": [
+              -8,
+              5,
+              -6,
+              8
+            ]
+          },
+          {
+            "country": "Liberia",
+            "bbox": [
+              -11,
+              5,
+              -8,
+              8
+            ]
+          },
+          {
+            "country": "Oman",
+            "bbox": [
+              53,
+              16.5,
+              55.5,
+              18
+            ]
+          },
+          {
+            "country": "Yemen",
+            "bbox": [
+              51,
+              15.5,
+              53,
+              17
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              46,
+              27,
+              62,
+              38
+            ]
+          },
+          {
+            "countries": [
+              "Afghanistan",
+              "Nepal",
+              "Bhutan",
+              "Sri Lanka"
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              70,
+              30,
+              75,
+              36
+            ]
+          },
+          {
+            "countries": [
+              "India"
+            ],
+            "exclude": []
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              94,
+              15,
+              99,
+              27
+            ]
+          },
+          {
+            "country": "Thailand",
+            "bbox": [
+              98,
+              10,
+              102,
+              20
+            ]
+          },
+          {
+            "country": "Cambodia",
+            "bbox": [
+              106,
+              12,
+              107.6,
+              14.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              100,
+              2,
+              104,
+              6.5
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              22,
+              112,
+              40
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              130,
+              42,
+              132,
+              44
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              128,
+              42,
+              132,
+              44.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "panthera-onca": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -120,
+              29,
+              -94,
+              37
+            ]
+          },
+          {
+            "countries": [
+              "Mexico"
+            ],
+            "latMax": 30
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Bolivia",
+              "Brazil",
+              "Paraguay",
+              "Uruguay"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -70,
+              -41,
+              -53,
+              -22
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Mexico",
+            "bbox": [
+              -106,
+              14.5,
+              -86.5,
+              24
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -111.5,
+              31.3,
+              -109.5,
+              32
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama"
+            ]
+          },
+          {
+            "countries": [
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Bolivia"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -24,
+              -35,
+              5
+            ]
+          },
+          {
+            "country": "Paraguay",
+            "bbox": [
+              -62.5,
+              -25,
+              -57,
+              -19.3
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -27,
+              -53.5,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "panthera-uncia": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Afghanistan",
+            "bbox": [
+              69,
+              34,
+              74.9,
+              38.5
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              71,
+              34,
+              77.8,
+              37.1
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              73.5,
+              30,
+              80,
+              36
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              88,
+              27,
+              96,
+              29.5
+            ]
+          },
+          {
+            "countries": [
+              "Nepal"
+            ],
+            "latMin": 28.6
+          },
+          {
+            "countries": [
+              "Bhutan"
+            ],
+            "latMin": 27.6
+          },
+          {
+            "countries": [
+              "Tajikistan"
+            ],
+            "lonMin": 69
+          },
+          {
+            "countries": [
+              "Kyrgyzstan"
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              75,
+              42,
+              87,
+              50
+            ]
+          },
+          {
+            "country": "Uzbekistan",
+            "bbox": [
+              69,
+              38,
+              71,
+              42
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              73,
+              27,
+              105,
+              45
+            ]
+          },
+          {
+            "country": "Mongolia",
+            "bbox": [
+              87,
+              43,
+              104,
+              51
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              84,
+              49,
+              100,
+              53
             ]
           }
         ]

@@ -14,11 +14,17 @@ export type LastSeen = { country: string; lon: number; lat: number; ma: number; 
 export type Range = { phases: RangePhase[]; lastSeen?: LastSeen };
 
 type RawLastSeen = Omit<LastSeen, 'year'> & { year?: number | null };
-const RAW = rangeData as unknown as Record<string, { phases: RangePhase[]; lastSeen?: RawLastSeen }>;
+// A phase may borrow another phase's outline (by index) instead of storing a copy.
+type RawPhase = Omit<RangePhase, 'polygons'> & { polygons?: string[][]; sameAs?: number };
+const RAW = rangeData as unknown as Record<string, { phases: RawPhase[]; lastSeen?: RawLastSeen }>;
+
+const resolvePhases = (phases: RawPhase[]): RangePhase[] =>
+  phases.map(({ sameAs, polygons, ...p }) => ({ ...p, polygons: polygons ?? phases[sameAs ?? 0].polygons ?? [] }));
 
 // Calendar years are converted here so they line up exactly with the timeline's "today".
 export const RANGES: Record<string, Range> = Object.fromEntries(
-  Object.entries(RAW).map(([id, r]) => {
+  Object.entries(RAW).map(([id, raw]) => {
+    const r = { ...raw, phases: resolvePhases(raw.phases) };
     if (!r.lastSeen) return [id, { phases: r.phases }];
     const { year, ...rest } = r.lastSeen;
     const lastSeen: LastSeen = year != null ? { ...rest, year, ma: yearToMa(year) } : rest;

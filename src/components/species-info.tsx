@@ -40,6 +40,9 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
     .filter((e): e is HistoryEvent => e !== undefined)
     .filter((e, i, all) => all.findIndex((o) => o.id === e.id) === i);
   const range = rangeOf(species.id);
+  // Living species list where they live today first, then their earlier ranges, newest first.
+  const phaseOrder = range ? range.phases.map((p, i) => ({ p, i })) : [];
+  if (phaseOrder.some(({ p }) => p.toMa === 0)) phaseOrder.reverse();
 
   return (
     <View style={info.wrap}>
@@ -138,9 +141,12 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
           {range && (
             <>
-              <Text style={info.heading}>Range over time</Text>
-              <Text style={info.note}>Tap a stage to see it shaded on the globe. Ranges are approximate.</Text>
-              {range.phases.map((p, i) => (
+              <Text style={info.heading}>{phaseOrder.length > 1 ? 'Range over time' : 'Range'}</Text>
+              <Text style={info.note}>
+                {phaseOrder.length > 1 ? 'Tap a stage to see it shaded on the globe. ' : 'Tap to see it shaded on the globe. '}
+                Ranges are approximate.
+              </Text>
+              {phaseOrder.map(({ p, i }) => (
                 <Pressable
                   key={p.label}
                   onPress={() => onJumpRange(i)}

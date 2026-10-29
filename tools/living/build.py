@@ -42,7 +42,7 @@ def main():
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
 
-    species, ranges = [], {}
+    species, ranges, missing = [], {}, []
     for g in mod.GENERA:
         entry = {
             'id': g['id'],
@@ -58,9 +58,19 @@ def main():
             'keywords': g['keywords'],
         }
         species.append(entry)
-        # Optional earlier phases (e.g. a historic range) come before today's range.
-        today = {'from': g.get('rangeFrom', 10000), 'to': 0, 'label': 'Where it lives today', 'regions': g['range']}
-        ranges[g['id']] = {'phases': [*g.get('pastRanges', []), today]}
+        # Earlier phases come before today's range: either written out in the entry
+        # ('pastRanges'), or from the module's HISTORIC table, where 'same' means the historic
+        # range (about 1,000 to 150 years ago) was much as it is today.
+        past = g.get('pastRanges', [])
+        hist = getattr(mod, 'HISTORIC', {}).get(g['id'])
+        if hist == 'same':
+            past = [{'from': 1000, 'to': 150, 'label': 'Historic range (much as today)', 'sameAs': 1}]
+        elif hist is not None:
+            past = [{'from': 1000, 'to': 150, 'label': 'Historic range', 'regions': hist}]
+        elif not past:
+            missing.append(g['id'])
+        today = {'from': 150 if past else g.get('rangeFrom', 10000), 'to': 0, 'label': 'Where it lives today', 'regions': g['range']}
+        ranges[g['id']] = {'phases': [*past, today]}
 
     const = 'LIVING_' + name.upper().replace('-', '_')
     out = [
@@ -78,6 +88,8 @@ def main():
     allr = json.load(open(path))
     allr.update(ranges)
     json.dump(allr, open(path, 'w'), indent=2, ensure_ascii=False)
+    if missing:
+        print(f'No historic range yet for {len(missing)}: ' + ', '.join(missing))
     print(f'{len(species)} genera, {len(mod.CLADES)} new groups -> src/data/sets/living-{name}.ts; ranges added')
 
 

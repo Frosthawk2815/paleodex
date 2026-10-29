@@ -116,7 +116,11 @@ export default function GlobeScreen() {
     const range = rangeOf(id);
     if (formation) jumpToPoint(formation, pastPointIndex(formation));
     else if (range?.lastSeen) goToLastSeen(id);
-    else if (range) goToRange(id, 0);
+    else if (range) {
+      // Living species open on where they live today.
+      const today = range.phases.findIndex((p) => p.toMa === 0);
+      goToRange(id, today >= 0 ? today : 0);
+    }
     if (range) setRangeId(id);
   };
   // Open a species page; the globe travels to it on its own.
