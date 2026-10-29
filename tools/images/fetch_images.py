@@ -8,6 +8,7 @@ Usage (from the project root):
     python3 -I tools/images/fetch_images.py tools/images/species.json src/data/images.json
 
 Existing entries in the output are kept unless --refresh is given, so it can be re-run to fill gaps.
+After editing overrides.json, run with --overrides-only to apply just those.
 """
 
 import html
@@ -23,7 +24,7 @@ API = 'https://en.wikipedia.org/w/api.php'
 USER_AGENT = 'PaleoDex/1.0 (educational app; https://github.com/Frosthawk2815/paleodex)'
 THUMB_WIDTH = 800
 BATCH = 50
-PAUSE = 3  # seconds between requests, to stay well inside Wikimedia's rate limits
+PAUSE = 20  # seconds between requests: Wikimedia throttles anonymous API use hard
 
 FREE_LICENSE = re.compile(r'^(cc0|cc[ -]by|public domain|pd\b|no restrictions)', re.I)
 SKELETAL = re.compile(r'skeletal', re.I)
@@ -39,16 +40,30 @@ FOSSIL = re.compile(
 )
 
 
+# Answers are cached on disk so a slow, throttled run can be resumed.
+CACHE_PATH = __file__.rsplit('/', 1)[0] + '/.api-cache.json'
+try:
+    CACHE = json.load(open(CACHE_PATH))
+except (FileNotFoundError, ValueError):
+    CACHE = {}
+
+
 def api(params):
     params = {**params, 'format': 'json', 'formatversion': '2', 'maxlag': '5'}
     url = API + '?' + urllib.parse.urlencode(params)
+    if url in CACHE:
+        return CACHE[url]
     for attempt in range(10):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
             with urllib.request.urlopen(req, timeout=60) as r:
-                return json.load(r)
+                data = json.load(r)
+            CACHE[url] = data
+            json.dump(CACHE, open(CACHE_PATH, 'w'))
+            time.sleep(PAUSE)
+            return data
         except urllib.error.HTTPError as e:  # rate limited: wait as long as asked, or back off
-            wait = int(e.headers.get('Retry-After') or 0) or min(120, 5 * 2 ** attempt)
+            wait = int(e.headers.get('Retry-After') or 0) or min(300, 60 * (attempt + 1))
             print(f'  {e.code}: waiting {wait}s', file=sys.stderr)
             time.sleep(wait)
         except Exception as e:  # network hiccup
@@ -83,7 +98,6 @@ def lead_images(titles):
                 out[t] = (r, p.get('pageimage'))
             else:
                 out[t] = (None, None)
-        time.sleep(PAUSE)
     return out
 
 
@@ -115,7 +129,6 @@ def file_info(files):
                 'licenseUrl': (m.get('LicenseUrl') or {}).get('value'),
                 'text': ' '.join([name, get('ObjectName'), get('ImageDescription')]),
             }
-        time.sleep(PAUSE)
     return out
 
 
@@ -129,6 +142,34 @@ def kind_of(text):
     return None
 
 
+def apply_overrides(images):
+    """Pin a chosen file to a species, or remove its picture (file: null), per overrides.json.
+
+    Used to swap out outdated restorations (e.g. scaly dromaeosaurs) for current ones or fossils."""
+    path = __file__.rsplit('/', 1)[0] + '/overrides.json'
+    try:
+        overrides = json.load(open(path))
+    except FileNotFoundError:
+        return
+    files = sorted({o['file'].replace(' ', '_') for o in overrides.values() if o.get('file')})
+    info = file_info(files) if files else {}
+    for sid, o in overrides.items():
+        if not o.get('file'):
+            images.pop(sid, None)
+            continue
+        f = o['file'].replace(' ', '_')
+        d = info.get(f)
+        if not d or not FREE_LICENSE.search(d['license'] or ''):
+            print(f'  override for {sid} not usable: {f} ({d and d["license"]})')
+            continue
+        entry = {k: d[k] for k in ('thumb', 'width', 'height', 'artist', 'license', 'licenseUrl', 'source')}
+        entry.update({'file': f, 'article': d['source'], 'scope': o.get('scope', 'species')})
+        k = o.get('kind', kind_of(d['text']))
+        if k:
+            entry['kind'] = k
+        images[sid] = entry
+
+
 def main():
     src, dst = sys.argv[1], sys.argv[2]
     refresh = '--refresh' in sys.argv
@@ -137,6 +178,11 @@ def main():
         images = {} if refresh else json.load(open(dst))
     except FileNotFoundError:
         images = {}
+    if '--overrides-only' in sys.argv:
+        apply_overrides(images)
+        json.dump(dict(sorted(images.items())), open(dst, 'w'), indent=1, ensure_ascii=False)
+        print(f'overrides applied; {len(images)} species have a picture')
+        return
     todo = [s for s in species if s['id'] not in images]
     print(f'{len(species)} species, {len(todo)} to look up')
 
@@ -177,6 +223,7 @@ def main():
             entry['kind'] = k
         images[sid] = entry
 
+    apply_overrides(images)
     json.dump(dict(sorted(images.items())), open(dst, 'w'), indent=1, ensure_ascii=False)
     missing = [s['id'] for s in species if s['id'] not in images]
     print(f'{len(images)} species have a picture; {len(missing)} without; {len(skipped)} skipped for licence')
