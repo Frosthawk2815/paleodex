@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "paleodex",
+    "name": "PaleoDex",
     "slug": "paleodex",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,9 +8,11 @@
     "scheme": "paleodex",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.frosthawk.paleodex"
     },
     "android": {
+      "package": "com.frosthawk.paleodex",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
