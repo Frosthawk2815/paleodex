@@ -541,3 +541,47 @@ GENERA = [
       ['goral', 'naemorhedus', 'himalaya'],
       [part('India', 74, 28, 89, 35), C('Nepal', 'Bhutan'), part('Pakistan', 71, 33, 75, 36)]),
 ]
+
+
+# Historic ranges (about 1,000 to 150 years ago). Species not listed in HISTORIC_CHANGED had a
+# range much as today.
+HISTORIC_CHANGED = {
+    'equus-quagga': {'add': [part('South Africa', 16, -35, 33, -22), C('eSwatini', 'Lesotho')]},
+    # Hunted to perhaps 20–50 animals in KwaZulu-Natal by about 1900; once across southern Africa.
+    'ceratotherium-simum': {'add': [C('South Africa', 'Botswana', 'Zimbabwe', 'Namibia', 'Mozambique', 'Zambia'), part('Angola', 12, -18, 24, -12)]},
+    # Once across most of Africa south of the Sahara outside the rainforests.
+    'diceros-bicornis': {'add': [C('Angola', 'Mozambique', 'Uganda', 'Ethiopia', 'Somalia', 'Somaliland', 'Sudan', 'S. Sudan', 'Chad', 'Central African Rep.', 'Cameroon', 'Nigeria', 'Niger', 'Burundi', 'Lesotho', 'South Africa'), part('Dem. Rep. Congo', 25, -13, 31, 5)]},
+    # Greater one-horned rhinos once lived along the Indus, Ganges and Brahmaputra; Javan rhinos
+    # from Bengal through Southeast Asia to Sumatra and Java.
+    'rhinoceros-unicornis': {'add': [part('Pakistan', 67, 24, 74, 33), part('India', 72, 22, 96, 31), C('Bangladesh', 'Myanmar', 'Thailand', 'Laos', 'Cambodia', 'Vietnam', 'Malaysia'), part('Indonesia', 95, -9, 114.6, 6)]},
+    'dicerorhinus-sumatrensis': {'add': [part('India', 89, 22, 97, 28), C('Bangladesh', 'Myanmar', 'Thailand', 'Laos', 'Cambodia', 'Vietnam', 'Malaysia', 'Brunei'), part('Indonesia', 108.5, -4.3, 119.3, 4.5)]},
+    'camelus-dromedarius': {'without': [2]},
+    'hippopotamus-amphibius': {'add': [part('Egypt', 29, 22, 33, 31.6), C('Somalia', 'Namibia', 'Lesotho')]},
+    'giraffa-camelopardalis': {'add': [C('Senegal', 'Gambia', 'Mali', 'Burkina Faso', 'Nigeria', 'Sudan', 'Eritrea', 'Malawi', 'South Africa', 'eSwatini'), part('Mauritania', -12, 15, -6, 17)]},
+    # Extinct in the wild by about 1900, saved by a herd kept at Woburn Abbey in England.
+    'elaphurus-davidianus': {'add': [part('China', 105, 20, 123, 41)]},
+    'panolia-eldii': {'add': [C('Myanmar', 'Thailand', 'Laos', 'Cambodia', 'Vietnam')]},
+    'rucervus-duvaucelii': {'add': [part('Pakistan', 67, 24, 74, 31), part('India', 70, 20, 96, 30), C('Bangladesh'), part('Nepal', 80, 26.3, 88, 28)]},
+    'alces-alces': {'add': [C('Germany', 'Czechia', 'Slovakia', 'Ukraine', 'Poland', 'Kazakhstan')]},
+    'rangifer-tarandus': {'add': [part('United States of America', -125, 42, -67, 49), part('Canada', -130, 44, -52, 50)]},
+    'blastocerus-dichotomus': {'add': [C('Uruguay'), part('Argentina', -64, -36, -56, -22), part('Brazil', -58, -32, -40, -10)]},
+    'bos-gaurus': {'add': [C('Sri Lanka')]},
+    # American bison: tens of millions across the plains until the slaughter of the 1870s–80s.
+    # European bison (the wisent): extinct in the wild in 1927, now reintroduced.
+    'bison-bison': {'add': [part('United States of America', -120, 26, -75, 49), part('Canada', -125, 49, -95, 62), part('Mexico', -110, 26, -100, 32), C('Poland', 'Lithuania', 'Belarus', 'Ukraine', 'Romania', 'Hungary'), part('Russia', 37, 41, 48, 45)]},
+    'bubalus-arnee': {'add': [part('India', 72, 15, 96, 30), C('Nepal', 'Bangladesh', 'Myanmar', 'Thailand', 'Laos', 'Cambodia', 'Vietnam')]},
+    # Hunted out of nearly all of the Sahara; a few hundred survive in the wild.
+    'addax-nasomaculatus': {'add': [C('Mauritania', 'W. Sahara', 'Mali', 'Algeria', 'Libya', 'Egypt', 'Sudan', 'Niger', 'Chad', latMin=15, latMax=31)]},
+    'saiga-tatarica': {'add': [C('Kazakhstan', 'Ukraine', 'Mongolia', 'Turkmenistan', 'Uzbekistan'), part('Russia', 36, 44, 60, 55), part('China', 80, 42, 95, 48), part('Poland', 18, 49, 24, 52)]},
+    # Muskoxen in Norway and Russia today come from reintroductions.
+    'ovibos-moschatus': {'without': [3, 4]},
+    'antilope-cervicapra': {'add': [part('Pakistan', 67, 24, 74, 32), C('Bangladesh')]},
+    'porcula-salvania': {'add': [part('India', 78, 26, 93, 30.5), part('Nepal', 80, 26.3, 88, 28), C('Bhutan')]},
+    # Introduced elsewhere: the historic range is the native range only.
+    'muntiacus-reevesi': {'without': [2]},
+    'hydropotes-inermis': {'without': [2]},
+    'boselaphus-tragocamelus': {'without': [3]},
+    'hemitragus-jemlahicus': {'without': [3]},
+    'ammotragus-lervia': {'without': [1, 2]},
+}
+HISTORIC = {**{sid: 'same' for sid in ['tapirus-terrestris', 'lama-guanicoe', 'vicugna-vicugna', 'sus-scrofa', 'phacochoerus-africanus', 'potamochoerus-porcus', 'hylochoerus-meinertzhageni', 'babyrousa-celebensis', 'pecari-tajacu', 'tayassu-pecari', 'catagonus-wagneri', 'choeropsis-liberiensis', 'tragulus-kanchil', 'moschiola-indica', 'hyemoschus-aquaticus', 'antilocapra-americana', 'okapia-johnstoni', 'moschus-moschiferus', 'cervus-elaphus', 'dama-dama', 'axis-axis', 'rusa-unicolor', 'elaphodus-cephalophus', 'capreolus-capreolus', 'odocoileus-virginianus', 'mazama-americana', 'hippocamelus-bisulcus', 'ozotoceros-bezoarticus', 'pudu-puda', 'syncerus-caffer', 'pseudoryx-nghetinhensis', 'tragelaphus-strepsiceros', 'taurotragus-oryx', 'tetracerus-quadricornis', 'cephalophus-silvicultor', 'philantomba-monticola', 'sylvicapra-grimmia', 'hippotragus-niger', 'oryx-gazella', 'connochaetes-taurinus', 'alcelaphus-buselaphus', 'damaliscus-lunatus', 'beatragus-hunteri', 'kobus-ellipsiprymnus', 'redunca-arundinum', 'pelea-capreolus', 'aepyceros-melampus', 'gazella-dorcas', 'eudorcas-thomsonii', 'nanger-granti', 'antidorcas-marsupialis', 'litocranius-walleri', 'ammodorcas-clarkei', 'procapra-gutturosa', 'pantholops-hodgsonii', 'madoqua-kirkii', 'ourebia-ourebi', 'raphicerus-campestris', 'oreotragus-oreotragus', 'dorcatragus-megalotis', 'neotragus-pygmaeus', 'nesotragus-moschatus', 'capra-ibex', 'ovis-canadensis', 'rupicapra-rupicapra', 'oreamnos-americanus', 'pseudois-nayaur', 'budorcas-taxicolor', 'capricornis-sumatraensis', 'naemorhedus-goral']}, **HISTORIC_CHANGED}

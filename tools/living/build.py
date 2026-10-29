@@ -68,8 +68,9 @@ def main():
         elif isinstance(hist, dict):
             # {'add': [...]}: today's range plus places it has since been lost from.
             # {'without': [i, ...]}: today's range minus regions where it was introduced.
-            regions = [r for i, r in enumerate(g['range']) if i not in hist.get('without', [])] + hist.get('add', [])
-            past = [{'from': 1000, 'to': 150, 'label': 'Historic range', 'regions': regions}]
+            # {'regions': [...]}: written out in full. 'label', 'from' and 'to' override the defaults.
+            regions = hist.get('regions') or [r for i, r in enumerate(g['range']) if i not in hist.get('without', [])] + hist.get('add', [])
+            past = [{'from': hist.get('from', 1000), 'to': hist.get('to', 150), 'label': hist.get('label', 'Historic range'), 'regions': regions}]
         elif hist is not None:
             past = [{'from': 1000, 'to': 150, 'label': 'Historic range', 'regions': hist}]
         elif not past:

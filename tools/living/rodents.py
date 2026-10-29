@@ -75,3 +75,19 @@ GENERA = [
       ['grey squirrel', 'gray squirrel', 'eastern grey squirrel', 'sciurus', 'squirrel', 'invasive'],
       [part('United States of America', -100, 25, -67, 48), part('Canada', -97, 42, -64, 49), part('United Kingdom', -5.5, 50, 2, 56), part('Ireland', -8.5, 52.5, -6, 54.5), part('Italy', 7, 44, 10, 46), part('South Africa', 18, -34.5, 19.5, -33.5)]),
 ]
+
+
+# Historic ranges (about 1,000 to 150 years ago). Species not listed in HISTORIC_CHANGED had a
+# range much as today.
+HISTORIC_CHANGED = {
+    # Introduced to Tierra del Fuego and Finland in the 1900s.
+    'castor-canadensis': {'without': [3, 4, 5]},
+    # Hunted out of Britain by the 1500s and from most of Europe by 1900.
+    'castor-fiber': {'add': [C('United Kingdom', 'Portugal', 'Italy', 'Greece', 'Albania', 'North Macedonia', 'Montenegro', 'Turkey', 'Kazakhstan'), part('Russia', 28, 45, 140, 68)]},
+    # Native to northern China and Mongolia; it reached Europe in the 1700s and then the world.
+    'rattus-norvegicus': {'label': 'Native range', 'from': 1000, 'to': 300, 'regions': [part('China', 100, 30, 135, 50), C('Mongolia'), part('Russia', 100, 42, 140, 55)]},
+    'sciurus-vulgaris': {'add': [C('United Kingdom', 'Ireland')]},
+    # Introduced to Britain, Ireland, Italy and South Africa from the 1870s.
+    'sciurus-carolinensis': {'without': [2, 3, 4, 5]},
+}
+HISTORIC = {**{sid: 'same' for sid in ['hydrochoerus-hydrochaeris', 'rattus-rattus']}, **HISTORIC_CHANGED}

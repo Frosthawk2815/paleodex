@@ -268,3 +268,13 @@ GENERA = [
       ['frasers dolphin', 'lagenodelphis', 'borneo'],
       TROPICAL_OCEANS),
 ]
+
+
+# Historic ranges (about 1,000 to 150 years ago). Species not listed in HISTORIC_CHANGED had a
+# range much as today.
+HISTORIC_CHANGED = {
+    # Grey whales lived in the North Atlantic until about the 1700s.
+    'eschrichtius-robustus': {'add': [sea(-80, 30, 20, 70)]},
+    'lipotes-vexillifer': {'add': [{'country': 'China', 'bbox': [104, 28, 122, 32.5]}]},
+}
+HISTORIC = {**{sid: 'same' for sid in ['balaena-mysticetus', 'eubalaena-australis', 'caperea-marginata', 'balaenoptera-musculus', 'megaptera-novaeangliae', 'physeter-macrocephalus', 'kogia-breviceps', 'ziphius-cavirostris', 'mesoplodon-densirostris', 'berardius-bairdii', 'hyperoodon-ampullatus', 'tasmacetus-shepherdi', 'indopacetus-pacificus', 'platanista-gangetica', 'inia-geoffrensis', 'pontoporia-blainvillei', 'monodon-monoceros', 'delphinapterus-leucas', 'phocoena-phocoena', 'neophocaena-phocaenoides', 'phocoenoides-dalli', 'orcinus-orca', 'tursiops-truncatus', 'delphinus-delphis', 'stenella-longirostris', 'sousa-chinensis', 'sotalia-fluviatilis', 'steno-bredanensis', 'lagenorhynchus-albirostris', 'leucopleurus-acutus', 'sagmatias-obliquidens', 'cephalorhynchus-hectori', 'lissodelphis-borealis', 'grampus-griseus', 'globicephala-melas', 'pseudorca-crassidens', 'feresa-attenuata', 'peponocephala-electra', 'orcaella-brevirostris', 'lagenodelphis-hosei']}, **HISTORIC_CHANGED}
