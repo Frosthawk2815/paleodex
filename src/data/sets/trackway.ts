@@ -4,7 +4,7 @@ import { PRESENT_FROM } from '@/data/sets/formation';
 type TrackwaySpec = {
   id: string;
   title: string;
-  // Short name for the globe labels, e.g. "Laetoli" → "Laetoli (tracks laid)" / "Laetoli tracks".
+  // Short name for the globe labels, e.g. "Laetoli" (used for both its past and present markers).
   short: string;
   // When scientists think the prints were made.
   dateText: string;
@@ -49,7 +49,7 @@ export function trackway(t: TrackwaySpec): HistoryEvent {
         lon: t.lon,
         lat: t.lat,
         plate: t.plate,
-        label: `${t.short} (tracks laid)`,
+        label: t.short,
         fromMa: t.fromMa,
         toMa: t.toMa,
         jumpMa,
@@ -62,7 +62,7 @@ export function trackway(t: TrackwaySpec): HistoryEvent {
         lon: t.lon,
         lat: t.lat,
         plate: t.plate,
-        label: `${t.short} tracks`,
+        label: t.short,
         fromMa: PRESENT_FROM,
         toMa: 0,
         jumpMa: 0,

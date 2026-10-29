@@ -8,7 +8,7 @@ export const PRESENT_FROM = yearToMa(1950);
 type FormationSpec = {
   id: string;
   title: string;
-  // Short name for the globe labels, e.g. "Morrison" → "Morrison (forming)" / "Morrison today".
+  // Short name for the globe labels, e.g. "Morrison" (used for both its past and present markers).
   short: string;
   dateText: string;
   placeText: string;
@@ -53,7 +53,7 @@ export function formation(f: FormationSpec): HistoryEvent {
         lon: f.lon,
         lat: f.lat,
         plate: f.plate,
-        label: `${f.short} (forming)`,
+        label: f.short,
         fromMa: f.fromMa,
         toMa: f.toMa,
         jumpMa,
@@ -66,7 +66,7 @@ export function formation(f: FormationSpec): HistoryEvent {
         lon: f.lon,
         lat: f.lat,
         plate: f.plate,
-        label: `${f.short} today`,
+        label: f.short,
         fromMa: PRESENT_FROM,
         toMa: 0,
         jumpMa: 0,

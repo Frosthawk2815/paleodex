@@ -50,7 +50,7 @@ export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpen
             const here = pointVisible(p, timeMa);
             return (
               <Pressable
-                key={p.label}
+                key={i}
                 onPress={() => onJump(i)}
                 accessibilityRole="button"
                 accessibilityLabel={`Jump to ${p.jumpLabel}`}
