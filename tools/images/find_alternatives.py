@@ -1,7 +1,8 @@
 """Find a different picture for species whose current candidate the owner rejected.
 
 For each rejected species it lists the pictures in its Wikipedia article (and the genus article),
-keeps freely licensed ones that are not maps, diagrams or logos, skips files already rejected,
+keeps freely licensed ones named after the genus (not maps, diagrams, logos or other animals),
+skips files already rejected,
 and offers the best remaining one (a life restoration, then a skeletal, then a fossil photo).
 The new picture replaces the candidate, so the review screen asks about it.
 
@@ -49,13 +50,15 @@ def main():
     candidates = json.load(open(f'{HERE}/candidates.json'))
     decisions = json.load(open(f'{HERE}/decisions.json'))
     species = {s['id']: s for s in json.load(open(f'{HERE}/species.json'))}
-    rejected = [sid for sid, d in decisions.items() if d.get('vote') == 'no' and sid in candidates and d.get('file') == candidates[sid]['file']]
+    # Rejected and not yet replaced (a replacement found to be unsuitable is removed, so a species
+    # with no candidate but a 'no' answer is looked at again).
+    rejected = [sid for sid, d in decisions.items() if d.get('vote') == 'no' and (sid not in candidates or d.get('file') == candidates[sid]['file'])]
     print(f'{len(rejected)} rejected pictures to replace')
     if not rejected:
         return
 
     def titles_for(sid):
-        t = [urllib.parse.unquote(candidates[sid]['article'].rsplit('/wiki/', 1)[-1]).replace('_', ' ')]
+        t = [urllib.parse.unquote(candidates[sid]['article'].rsplit('/wiki/', 1)[-1]).replace('_', ' ')] if sid in candidates else []
         name = species.get(sid, {}).get('name')
         if name:
             t += [name, name.split(' ')[0]]
@@ -64,6 +67,7 @@ def main():
     images = article_images(sorted({t for sid in rejected for t in titles_for(sid)}))
     info = fetch.file_info(sorted({f for fs in images.values() for f in fs}))
 
+    genus_of = lambda sid: species.get(sid, {}).get('name', '').split(' ')[0] or '?'
     found, none = 0, []
     for sid in rejected:
         tried = set(decisions[sid].get('rejectedFiles', [])) | {decisions[sid]['file']}
@@ -72,6 +76,10 @@ def main():
             for f in images.get(t, []):
                 d = info.get(f)
                 if f in tried or not d or not d['thumb'] or not fetch.FREE_LICENSE.search(d['license'] or ''):
+                    continue
+                # Articles also show other animals (galleries, size charts, relatives), so only
+                # accept files named after this genus.
+                if genus_of(sid).lower() not in f.lower():
                     continue
                 options.append((PREFERENCE[fetch.kind_of(d['text'])], f, t, d))
         if not options:

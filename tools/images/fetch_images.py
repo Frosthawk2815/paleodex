@@ -186,7 +186,13 @@ def main():
         json.dump(dict(sorted(images.items())), open(dst, 'w'), indent=1, ensure_ascii=False)
         print(f'overrides applied; {len(images)} species have a picture')
         return
-    todo = [s for s in species if s['id'] not in images]
+    # Species whose picture the owner rejected are left to find_alternatives.py (the lead image
+    # would only offer the same picture again).
+    try:
+        decisions = json.load(open(__file__.rsplit('/', 1)[0] + '/decisions.json'))
+    except FileNotFoundError:
+        decisions = {}
+    todo = [s for s in species if s['id'] not in images and decisions.get(s['id'], {}).get('vote') != 'no']
     print(f'{len(species)} species, {len(todo)} to look up')
 
     # 1. Lead image of the species article, then of the genus article.
