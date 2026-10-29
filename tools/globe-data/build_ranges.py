@@ -19,7 +19,7 @@ from shapely.geometry import Polygon, box, shape
 from shapely.geometry.polygon import orient
 from shapely.ops import unary_union
 
-SIMPLIFY_DEG = 0.15
+SIMPLIFY_DEG = 0.2
 SEA_SIMPLIFY_DEG = 0.6
 SEA_MIN_HOLE = 4.0  # square degrees
 MIN_AREA = 0.02  # square degrees; keeps small islands such as Mauritius
@@ -107,8 +107,11 @@ def main():
         for ph in s['phases']:
             g = unary_union([region_geometry(r, countries) for r in ph['regions']])
             polys = []
+            # Wide ranges drop islets that would be invisible at the zoom they are seen at; small
+            # ranges keep small islands (such as Mauritius for the dodo).
+            min_area = max(MIN_AREA, g.area * 0.0004)
             for poly in polygons_of(g):
-                if poly.area < MIN_AREA:
+                if poly.area < min_area:
                     continue
                 # Small islands get a finer tolerance so they keep their shape.
                 poly = poly.simplify(min(SIMPLIFY_DEG, math.sqrt(poly.area) * 0.05), preserve_topology=True)

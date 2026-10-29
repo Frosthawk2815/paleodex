@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-1332 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+1387 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -1394,3 +1394,58 @@
 | 10,000 yr | *Apteryx rowi* | Rowi | Kiwis | range map — Ōkārito forest, South Island, New Zealand |
 | 10,000 yr | *Apteryx haastii* | Great spotted kiwi | Kiwis | range map — Mountains of northwest South Island, New Zealand |
 | 10,000 yr | *Apteryx owenii* | Little spotted kiwi | Kiwis | range map — Predator-free islands and sanctuaries in New Zealand |
+| 10,000 yr | *Haliaeetus leucocephalus* | Bald eagle | Eagles and hawks | range map — North America |
+| 10,000 yr | *Pandion haliaetus* | Osprey | Osprey | range map — Every continent except Antarctica |
+| 10,000 yr | *Vultur gryphus* | Andean condor | New World vultures | range map — The Andes and Pacific coast of South America |
+| 10,000 yr | *Sagittarius serpentarius* | Secretarybird | Secretarybird | range map — Savannas of sub-Saharan Africa |
+| 10,000 yr | *Falco peregrinus* | Peregrine falcon | Falcons and caracaras | range map — Every continent except Antarctica |
+| 10,000 yr | *Bubo scandiacus* | Snowy owl | Typical owls | range map — Arctic tundra; winters south into Canada, the US and northern Eurasia |
+| 10,000 yr | *Tyto alba* | Barn owl | Barn owls | range map — Almost worldwide |
+| 10,000 yr | *Ara macao* | Scarlet macaw | New World and African parrots | range map — Southern Mexico to the Amazon |
+| 10,000 yr | *Cacatua galerita* | Sulphur-crested cockatoo | Cockatoos | range map — Eastern and northern Australia and New Guinea |
+| 10,000 yr | *Strigops habroptilus* | Kākāpō | New Zealand parrots | range map — Predator-free islands of New Zealand |
+| 10,000 yr | *Mellisuga helenae* | Bee hummingbird | Hummingbirds | range map — Cuba |
+| 10,000 yr | *Apus apus* | Common swift | Swifts | range map — Breeds across Europe and Asia; winters in Africa |
+| 10,000 yr | *Corvus corax* | Common raven | Crows and jays | range map — Northern Hemisphere |
+| 10,000 yr | *Paradisaea apoda* | Greater bird-of-paradise | Birds-of-paradise | range map — Southwestern New Guinea and the Aru Islands |
+| 10,000 yr | *Menura novaehollandiae* | Superb lyrebird | Lyrebirds | range map — Forests of southeastern Australia |
+| 10,000 yr | *Hirundo rustica* | Barn swallow | Swallows and martins | range map — Breeds across the Northern Hemisphere; winters south |
+| 10,000 yr | *Turdus migratorius* | American robin | Thrushes | range map — North America |
+| 10,000 yr | *Erithacus rubecula* | European robin | Old World flycatchers | range map — Europe, western Asia and North Africa |
+| 10,000 yr | *Serinus canaria* | Atlantic canary | Finches | range map — Canary Islands, Madeira and the Azores |
+| 10,000 yr | *Geospiza fortis* | Medium ground finch | Tanagers | range map — Galápagos Islands |
+| 10,000 yr | *Passer domesticus* | House sparrow | Old World sparrows | range map — Worldwide near people |
+| 10,000 yr | *Sturnus vulgaris* | Common starling | Starlings and mynas | range map — Europe and western Asia; introduced to North America, Australia and elsewhere |
+| 10,000 yr | *Mimus polyglottos* | Northern mockingbird | Mockingbirds and thrashers | range map — United States, Mexico and the Caribbean |
+| 10,000 yr | *Cardinalis cardinalis* | Northern cardinal | Cardinals | range map — Eastern North America to Mexico and Belize |
+| 10,000 yr | *Ptilonorhynchus violaceus* | Satin bowerbird | Bowerbirds | range map — Eastern Australia |
+| 10,000 yr | *Phoenicopterus roseus* | Greater flamingo | Flamingos | range map — Africa, southern Europe, the Middle East and South Asia |
+| 10,000 yr | *Diomedea exulans* | Wandering albatross | Albatrosses | range map — Southern Ocean |
+| 10,000 yr | *Ardenna grisea* | Sooty shearwater | Petrels and shearwaters | range map — Breeds in New Zealand, Chile and the Falklands; migrates across the oceans |
+| 10,000 yr | *Pelecanus onocrotalus* | Great white pelican | Pelicans | range map — Africa, southeastern Europe and Asia |
+| 10,000 yr | *Balaeniceps rex* | Shoebill | Shoebill | range map — Swamps of East and Central Africa |
+| 10,000 yr | *Ardea cinerea* | Grey heron | Herons, egrets and bitterns | range map — Europe, Asia and Africa |
+| 10,000 yr | *Ciconia ciconia* | White stork | Storks | range map — Breeds in Europe and western Asia; winters in Africa |
+| 10,000 yr | *Threskiornis aethiopicus* | African sacred ibis | Ibises and spoonbills | range map — Sub-Saharan Africa and Iraq; introduced to Europe |
+| 10,000 yr | *Grus japonensis* | Red-crowned crane | Cranes | range map — Hokkaido, Japan, and northeast Asia |
+| 10,000 yr | *Porphyrio hochstetteri* | Takahē | Rails | range map — Fiordland and predator-free islands, New Zealand |
+| 10,000 yr | *Anas platyrhynchos* | Mallard | Ducks, geese and swans | range map — Northern Hemisphere; introduced widely |
+| 10,000 yr | *Gallus gallus* | Red junglefowl | Pheasants, fowl and turkeys | range map — Forests of South and Southeast Asia |
+| 10,000 yr | *Leipoa ocellata* | Malleefowl | Megapodes | range map — Dry mallee scrub of southern Australia |
+| 10,000 yr | *Dendrocopos major* | Great spotted woodpecker | Woodpeckers | range map — Europe, North Africa and northern Asia |
+| 10,000 yr | *Ramphastos toco* | Toco toucan | Toucans | range map — Central and eastern South America |
+| 10,000 yr | *Buceros bicornis* | Great hornbill | Hornbills | range map — India, the Himalayan foothills and Southeast Asia |
+| 10,000 yr | *Alcedo atthis* | Common kingfisher | Kingfishers | range map — Europe, Asia and North Africa |
+| 10,000 yr | *Sterna paradisaea* | Arctic tern | Gulls and terns | range map — Breeds in the Arctic; spends the southern summer in the Antarctic |
+| 10,000 yr | *Fratercula arctica* | Atlantic puffin | Auks | range map — North Atlantic coasts and islands |
+| 10,000 yr | *Sula nebouxii* | Blue-footed booby | Gannets and boobies | range map — Pacific coast from Mexico to Peru, and the Galápagos |
+| 10,000 yr | *Fregata magnificens* | Magnificent frigatebird | Frigatebirds | range map — Tropical Atlantic and eastern Pacific coasts |
+| 10,000 yr | *Phalacrocorax carbo* | Great cormorant | Cormorants | range map — Coasts and lakes of Europe, Asia, Africa, Australia and eastern North America |
+| 10,000 yr | *Columba livia* | Rock dove | Pigeons and doves | range map — Wild in Europe, North Africa and Asia; feral pigeons worldwide |
+| 10,000 yr | *Cuculus canorus* | Common cuckoo | Cuckoos | range map — Breeds across Europe and Asia; winters in Africa and South Asia |
+| 10,000 yr | *Otis tarda* | Great bustard | Bustards | range map — Grasslands from Spain to Mongolia and China |
+| 10,000 yr | *Tinamus major* | Great tinamou | Tinamous | range map — Rainforests of southern Mexico to the Amazon |
+| 10,000 yr | *Gavia immer* | Common loon | Loons (divers) | range map — Northern North America, Greenland and Iceland |
+| 10,000 yr | *Podiceps cristatus* | Great crested grebe | Grebes | range map — Europe, Asia, Africa and Australasia |
+| 10,000 yr | *Upupa epops* | Eurasian hoopoe | Hoopoes | range map — Europe, Asia and North Africa |
+| 10,000 yr | *Limosa lapponica* | Bar-tailed godwit | Sandpipers | range map — Breeds in the Arctic; winters as far as New Zealand and Australia |
