@@ -22616,5 +22616,32 @@
         ]
       }
     ]
+  },
+  "homo-longi": {
+    "phases": [
+      {
+        "from": 220000,
+        "to": 50000,
+        "label": "Fossil and DNA sites across Asia (approximate)",
+        "regions": [
+          {
+            "country": "Russia",
+            "bbox": [
+              81,
+              49,
+              88,
+              54
+            ]
+          },
+          {
+            "countries": [
+              "China",
+              "Taiwan",
+              "Laos"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

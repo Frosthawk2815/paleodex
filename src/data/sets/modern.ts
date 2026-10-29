@@ -150,6 +150,28 @@ export const MODERN: DataSet = {
       keywords: ['homo floresiensis', 'floresiensis', 'hobbit', 'flores', 'liang bua', 'homo', 'human', 'island dwarfism'],
     },
     {
+      id: 'homo-longi',
+      phylo: 1.9,
+      name: 'Homo longi',
+      common: 'Denisovan',
+      clade: 'hominidae',
+      status: 'full',
+      ageText: 'About 220,000 to 50,000 years ago, perhaps later',
+      placeText: 'Asia, from Siberia and the Tibetan Plateau to China and Taiwan',
+      formations: [],
+      summary: [
+        'An extinct group of humans first discovered from DNA alone. In 2010 the genome from a tiny finger bone found in Denisova Cave, in Siberia’s Altai Mountains, revealed a kind of human no one knew existed, the closest relatives of the Neanderthals. For years they were known only from a few teeth and bone scraps.',
+        'Proteins later identified a jaw from a cave on the Tibetan Plateau (2019), at least 160,000 years old, and a jaw dredged from the sea off Taiwan (2025). In 2025, proteins and DNA from the Harbin “Dragon Man” skull, at least 146,000 years old, showed it was Denisovan, giving the first look at a face: a big brain, a heavy brow and very large teeth. Because that skull had been named Homo longi in 2021, many researchers now use that name for Denisovans, though others prefer not to give them a species name. In 2026, teeth, bones and over 1,300 stone tools from Bianfu Cave in Yunnan, about 167,000 to 134,000 years old, and proteins from fossils at Xujiayao in northern China added more.',
+        'They interbred with Neanderthals: “Denny”, a girl from Denisova Cave, had a Neanderthal mother and a Denisovan father. They also interbred with modern humans. People of New Guinea, Aboriginal Australians and the Ayta of the Philippines carry several per cent Denisovan DNA, so Denisovans probably lived in Southeast Asia too, and a gene variant that helps Tibetans live at high altitude came from them.',
+      ],
+      facts: [
+        { label: 'First found', value: 'Denisova Cave, Russia; identified from DNA in 2010' },
+        { label: 'Named Homo longi', value: 'Ji Qiang and colleagues, 2021, from the Harbin skull' },
+        { label: 'Legacy', value: 'Several per cent of the DNA of some Oceanian and Southeast Asian peoples' },
+      ],
+      keywords: ['denisovan', 'denisovans', 'homo denisova', 'denisova', 'homo longi', 'dragon man', 'harbin', 'xiahe', 'homo', 'human'],
+    },
+    {
       id: 'mammuthus-primigenius',
       name: 'Mammuthus primigenius',
       common: 'Woolly mammoth',
