@@ -58,7 +58,9 @@ def main():
             'keywords': g['keywords'],
         }
         species.append(entry)
-        ranges[g['id']] = {'phases': [{'from': g.get('rangeFrom', 10000), 'to': 0, 'label': 'Where it lives today', 'regions': g['range']}]}
+        # Optional earlier phases (e.g. a historic range) come before today's range.
+        today = {'from': g.get('rangeFrom', 10000), 'to': 0, 'label': 'Where it lives today', 'regions': g['range']}
+        ranges[g['id']] = {'phases': [*g.get('pastRanges', []), today]}
 
     const = 'LIVING_' + name.upper().replace('-', '_')
     out = [

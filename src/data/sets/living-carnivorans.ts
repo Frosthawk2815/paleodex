@@ -158,7 +158,36 @@ export const LIVING_CARNIVORANS: DataSet = {
           value: 'Endangered',
         },
       ],
-      keywords: ['tiger', 'panthera', 'big cat', 'lion', 'leopard', 'jaguar', 'snow leopard'],
+      keywords: ['tiger', 'panthera', 'big cat', 'leopard', 'jaguar', 'snow leopard'],
+    },
+    {
+      id: 'panthera-leo',
+      name: 'Panthera leo',
+      common: 'Lion',
+      clade: 'felidae',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Sub-Saharan Africa, and Gir forest in Gujarat, India',
+      formations: [],
+      summary: [
+        'The only cat that lives in groups: a pride of related females and their cubs, with one or a few males that defend it from other males. Females do most of the hunting, often working together to bring down zebra, wildebeest and buffalo, but males hunt too, especially big prey such as buffalo. Only males grow manes; darker, fuller manes signal a healthier male. Its roar can be heard about 8 km away.',
+        'Lions once lived across Africa, the Middle East and India, and in southeastern Europe in ancient times. They have lost over 90% of that range, and their numbers fell by about 40% in just two decades after 1993, to habitat loss, conflict with livestock herders and loss of prey; about 20,000–25,000 survive in the wild. The last Asiatic lions live in and around Gir forest in Gujarat, India, where careful protection has raised their number from perhaps a few dozen in the early 1900s to almost 900 in 2025. The extinct cave lion of Ice Age Eurasia and the American lion were close relatives.',
+      ],
+      facts: [
+        {
+          label: 'Weight',
+          value: 'Males about 150–250 kg; females about 110–180 kg',
+        },
+        {
+          label: 'Wild population',
+          value: 'About 20,000–25,000',
+        },
+        {
+          label: 'IUCN status',
+          value: 'Vulnerable',
+        },
+      ],
+      keywords: ['lion', 'african lion', 'asiatic lion', 'panthera leo', 'big cat', 'pride', 'gir'],
     },
     {
       id: 'neofelis-nebulosa',

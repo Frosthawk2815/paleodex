@@ -22663,5 +22663,195 @@
         ]
       }
     ]
+  },
+  "panthera-leo": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 150,
+        "label": "Before modern times",
+        "regions": [
+          {
+            "continents": [
+              "Africa"
+            ],
+            "exclude": [
+              "Madagascar",
+              "Gabon",
+              "Congo",
+              "Eq. Guinea",
+              "Liberia"
+            ]
+          },
+          {
+            "countries": [
+              "Egypt",
+              "Israel",
+              "Palestine",
+              "Jordan",
+              "Lebanon",
+              "Syria",
+              "Iraq",
+              "Kuwait",
+              "Iran",
+              "Turkey",
+              "Saudi Arabia",
+              "Pakistan",
+              "Afghanistan"
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              68,
+              15,
+              88,
+              30
+            ]
+          },
+          {
+            "country": "Greece",
+            "bbox": [
+              20,
+              37,
+              26,
+              41.8
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Kenya",
+              "Tanzania",
+              "Uganda",
+              "Zambia",
+              "Zimbabwe",
+              "Botswana",
+              "Mozambique",
+              "Malawi",
+              "S. Sudan",
+              "Central African Rep.",
+              "Angola",
+              "Rwanda",
+              "eSwatini"
+            ]
+          },
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              34,
+              4,
+              42,
+              10
+            ]
+          },
+          {
+            "country": "Chad",
+            "bbox": [
+              15,
+              8,
+              23,
+              12
+            ]
+          },
+          {
+            "country": "Cameroon",
+            "bbox": [
+              12.5,
+              7,
+              15.5,
+              10.5
+            ]
+          },
+          {
+            "country": "Nigeria",
+            "bbox": [
+              3.5,
+              9.5,
+              12,
+              11
+            ]
+          },
+          {
+            "country": "Benin",
+            "bbox": [
+              0.5,
+              10.5,
+              3.5,
+              12.5
+            ]
+          },
+          {
+            "country": "Burkina Faso",
+            "bbox": [
+              0,
+              11,
+              2.5,
+              12.5
+            ]
+          },
+          {
+            "country": "Niger",
+            "bbox": [
+              1.5,
+              11.5,
+              3,
+              12.7
+            ]
+          },
+          {
+            "country": "Senegal",
+            "bbox": [
+              -13.5,
+              12.3,
+              -12,
+              13.6
+            ]
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              27,
+              -12,
+              31,
+              4
+            ]
+          },
+          {
+            "country": "Namibia",
+            "bbox": [
+              13,
+              -21,
+              25,
+              -17
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              20,
+              -28,
+              32,
+              -22
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              69.8,
+              20.6,
+              71.8,
+              22
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
