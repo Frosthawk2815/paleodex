@@ -756,8 +756,42 @@ GENERA = [
 ]
 
 
+SAME_AS_TODAY = ['neofelis-nebulosa', 'herpailurus-yagouaroundi', 'leptailurus-serval', 'caracal-caracal', 'leopardus-pardalis', 'otocolobus-manul', 'prionailurus-bengalensis', 'pardofelis-marmorata', 'catopuma-temminckii', 'prionodon-linsang', 'nandinia-binotata', 'viverra-zibetha', 'civettictis-civetta', 'viverricula-indica', 'genetta-genetta', 'poiana-richardsonii', 'paradoxurus-hermaphroditus', 'paguma-larvata', 'arctictis-binturong', 'arctogalidia-trivirgata', 'macrogalidia-musschenbroekii', 'hemigalus-derbyanus', 'chrotogale-owstoni', 'cynogale-bennettii', 'diplogale-hosei', 'cryptoprocta-ferox', 'fossa-fossana', 'eupleres-goudotii', 'galidia-elegans', 'galidictis-fasciata', 'mungotictis-decemlineata', 'salanoia-concolor', 'herpestes-ichneumon', 'urva-edwardsii', 'suricata-suricatta', 'mungos-mungo', 'helogale-parvula', 'atilax-paludinosus', 'ichneumia-albicauda', 'cynictis-penicillata', 'paracynictis-selousi', 'rhynchogale-melleri', 'bdeogale-crassicauda', 'liberiictis-kuhni', 'crossarchus-obscurus', 'dologale-dybowskii', 'crocuta-crocuta', 'hyaena-hyaena', 'parahyaena-brunnea', 'proteles-cristata', 'lupulella-mesomelas', 'speothos-venaticus', 'cerdocyon-thous', 'lycalopex-culpaeus', 'atelocynus-microtis', 'otocyon-megalotis', 'urocyon-cinereoargenteus', 'tremarctos-ornatus', 'melursus-ursinus', 'helarctos-malayanus', 'ailurus-fulgens', 'mephitis-mephitis', 'spilogale-putorius', 'conepatus-chinga', 'mydaus-javanensis', 'nasua-nasua', 'nasuella-olivacea', 'bassariscus-astutus', 'potos-flavus', 'bassaricyon-neblina', 'pekania-pennanti', 'eira-barbara', 'galictis-vittata', 'lyncodon-patagonicus', 'ictonyx-striatus', 'poecilogale-albinucha', 'vormela-peregusna', 'meles-meles', 'arctonyx-collaris', 'melogale-moschata', 'mellivora-capensis', 'taxidea-taxus', 'lutra-lutra', 'enhydra-lutris', 'aonyx-cinereus', 'hydrictis-maculicollis', 'lutrogale-perspicillata', 'arctocephalus-pusillus', 'callorhinus-ursinus', 'zalophus-californianus', 'eumetopias-jubatus', 'otaria-flavescens', 'neophoca-cinerea', 'phocarctos-hookeri', 'odobenus-rosmarus', 'phoca-vitulina', 'pusa-hispida', 'halichoerus-grypus', 'pagophilus-groenlandicus', 'histriophoca-fasciata', 'cystophora-cristata', 'erignathus-barbatus', 'neomonachus-schauinslandi', 'mirounga-angustirostris', 'lobodon-carcinophaga', 'hydrurga-leptonyx', 'leptonychotes-weddellii', 'ommatophoca-rossii']
+
 # Historic ranges (about 1,000 to 150 years ago) for species not written out above. 'same' means
 # much as today.
 HISTORIC = {
     'panthera-uncia': 'same',
+    # Lost from the eastern United States and Canada except Florida.
+    'puma-concolor': {'add': [C('United States of America', latMax=49.5, lonMin=-125), part('Canada', -130, 42, -60, 55)]},
+    # Hunted out of most of western and central Europe; now returning through reintroductions.
+    'lynx-lynx': {'add': [C(*EUROPE_MAIN, exclude=['Portugal', 'Denmark'])]},
+    # Lost from England, Wales and much of central Europe.
+    'felis-silvestris': {'add': [C('United Kingdom', 'Belgium', 'Netherlands', 'Luxembourg', 'Switzerland', 'Austria', 'Czechia', 'Slovenia', 'Albania', 'North Macedonia', 'Montenegro', 'Moldova')]},
+    # Wiped out across most of the United States, Mexico, western Europe, Britain, Ireland and Japan.
+    'canis-lupus': {'add': [C('United States of America', latMin=24), C('Mexico', 'United Kingdom', 'Ireland', 'Belgium', 'Netherlands', 'Luxembourg', 'Switzerland', 'Austria', 'Denmark', 'Czechia', 'Hungary', 'Slovenia', 'Montenegro', 'Albania', 'North Macedonia', 'Moldova', 'Uzbekistan', 'Turkmenistan', 'Iraq', 'Syria', 'Saudi Arabia', 'Pakistan', 'Japan', 'North Korea', 'South Korea')]},
+    # Once across Central Asia, Mongolia, Korea and the Russian Far East.
+    'cuon-alpinus': {'add': [part('China', 75, 20, 135, 50), C('Mongolia', 'North Korea', 'South Korea', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Bangladesh', 'Pakistan'), part('Russia', 80, 42, 140, 55)]},
+    # Once across nearly all of Africa south of the Sahara outside the rainforest.
+    'lycaon-pictus': {'add': [C('Senegal', 'Gambia', 'Guinea', 'Mali', 'Burkina Faso', 'Niger', 'Nigeria', 'Ghana', 'Togo', 'Benin', 'Chad', 'Cameroon', 'Central African Rep.', 'Sudan', 'S. Sudan', 'Ethiopia', 'Somalia', 'Somaliland', 'Uganda', 'Rwanda', 'Burundi', 'Angola', 'Malawi', 'South Africa', 'eSwatini', 'Dem. Rep. Congo'), part('Algeria', 3, 19, 10, 26)]},
+    'chrysocyon-brachyurus': {'add': [C('Uruguay'), part('Argentina', -64, -38, -55, -22)]},
+    # Lost from most of the western United States, Mexico, western and central Europe, North
+    # Africa (the Atlas bear) and the Middle East.
+    'ursus-arctos': {'add': [part('United States of America', -125, 30, -95, 49), part('Mexico', -112, 26, -100, 32), C('France', 'Switzerland', 'Austria', 'Germany', 'Poland', 'Czechia', 'Ukraine', 'Belarus', 'Latvia', 'Lithuania', 'Syria', 'Lebanon', 'Israel', 'Iraq', 'Afghanistan', 'Pakistan'), part('Spain', -9, 40, 3, 43.5), part('Italy', 7, 40, 16, 47), part('Morocco', -9, 30, -1, 36), part('Algeria', -2, 33, 9, 37), part('Tunisia', 8, 34, 11, 37.5)]},
+    # Once across much more of central and southern China.
+    'ailuropoda-melanoleuca': {'add': [part('China', 100, 22, 117, 37)]},
+    # Lost from Scandinavia's south, much of the Rockies and the Great Lakes states.
+    'gulo-gulo': {'add': [part('United States of America', -125, 37, -85, 49), part('Canada', -100, 45, -60, 55), part('Norway', 5, 58, 12, 63), part('Sweden', 12, 56, 20, 62), C('Estonia', 'Latvia', 'Lithuania', 'Belarus', 'Poland')]},
+    'lontra-canadensis': {'add': [C('United States of America', latMax=49.5, lonMin=-125)]},
+    'pteronura-brasiliensis': {'add': [C('Uruguay', 'Ecuador'), part('Argentina', -62, -34, -53, -22), part('Brazil', -58, -32, -38, -15)]},
+    # Once across the whole Mediterranean, the Black Sea and the Atlantic coast of Morocco.
+    'monachus-monachus': {'add': [sea(-6, 30, 42, 47), sea(-18, 20, -5, 36)]},
+    'martes-martes': {'add': [C('Portugal')]},
+    # Introduced elsewhere: the historic range is the native range only.
+    'procyon-lotor': {'without': [3]},
+    'nyctereutes-procyonoides': [part('China', 100, 20, 135, 50), C('North Korea', 'South Korea', 'Japan', 'Vietnam'), part('Russia', 125, 42, 140, 52)],
+    'vulpes-vulpes': {'without': [4]},
+    'mustela-erminea': {'without': [5]},
+    'neogale-vison': {'without': [1]},
+    **{sid: 'same' for sid in SAME_AS_TODAY},
 }

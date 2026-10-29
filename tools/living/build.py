@@ -65,6 +65,11 @@ def main():
         hist = getattr(mod, 'HISTORIC', {}).get(g['id'])
         if hist == 'same':
             past = [{'from': 1000, 'to': 150, 'label': 'Historic range (much as today)', 'sameAs': 1}]
+        elif isinstance(hist, dict):
+            # {'add': [...]}: today's range plus places it has since been lost from.
+            # {'without': [i, ...]}: today's range minus regions where it was introduced.
+            regions = [r for i, r in enumerate(g['range']) if i not in hist.get('without', [])] + hist.get('add', [])
+            past = [{'from': 1000, 'to': 150, 'label': 'Historic range', 'regions': regions}]
         elif hist is not None:
             past = [{'from': 1000, 'to': 150, 'label': 'Historic range', 'regions': hist}]
         elif not past:
