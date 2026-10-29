@@ -51,6 +51,8 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
         {species.name}
       </Text>
       {!!species.common && <Text style={info.subtitle}>{species.common}</Text>}
+      {!!species.aka?.length && <Text style={info.meta}>Also called {species.aka.join(', ')}</Text>}
+      {!!species.akaNote && <Text style={info.note}>{species.akaNote}</Text>}
 
       <CladeCrumbs path={path} onOpenClade={onOpenClade} />
 

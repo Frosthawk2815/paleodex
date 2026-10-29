@@ -35,7 +35,8 @@ export function CladeInfo({ clade, onBack, onOpenClade, onOpenSpecies }: Props) 
         {clade.common}
       </Text>
       <Text style={[info.subtitle, info.italic]}>{clade.name}</Text>
-      {!!clade.akaNote && <Text style={info.meta}>{clade.akaNote}</Text>}
+      {!!clade.aka?.length && <Text style={info.meta}>Also called {clade.aka.join(', ')}</Text>}
+      {!!clade.akaNote && <Text style={info.note}>{clade.akaNote}</Text>}
 
       {path.length > 1 && <CladeCrumbs path={path.slice(0, -1)} onOpenClade={onOpenClade} />}
 

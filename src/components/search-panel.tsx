@@ -15,8 +15,9 @@ export type SearchResult =
   | { kind: 'species'; species: Species }
   | { kind: 'clade'; clade: Clade };
 
-// `aka`: other everyday names that rank like the title (e.g. "raptors" for Dromaeosaurs).
-type Item = { key: string; title: string; subtitle: string; words: string; aka?: string[]; result: SearchResult };
+// `names`: what the thing is called (scientific, common and other everyday names, e.g. "raptors"
+// for Dromaeosaurs, "Tasmanian tiger" for the thylacine); these rank above other mentions.
+type Item = { key: string; title: string; subtitle: string; words: string; names?: string[]; result: SearchResult };
 
 const LEVEL_NAMES = { all: '', era: 'Era', period: 'Period', series: 'Series', stage: 'Stage' };
 
@@ -37,8 +38,9 @@ const ITEMS: Item[] = [
   ...SPECIES.map((s) => ({
     key: `species:${s.id}`,
     title: s.name,
-    subtitle: `Species${s.common ? ` · ${s.common}` : ''} · ${s.ageText.replace(/ \(.*\)$/, '')}`,
-    words: [s.name, s.common ?? '', ...(s.keywords ?? [])].join(' ').toLowerCase(),
+    subtitle: `Species${s.common ? ` · ${s.common}` : ''}${s.aka?.length ? ` · also ${s.aka.slice(0, 2).join(', ')}` : ''} · ${s.ageText.replace(/ \(.*\)$/, '')}`,
+    words: [s.name, s.common ?? '', ...(s.aka ?? []), ...(s.keywords ?? [])].join(' ').toLowerCase(),
+    names: [s.name, s.common ?? '', ...(s.aka ?? []), ...(s.akaSearch ?? [])].filter(Boolean),
     result: { kind: 'species' as const, species: s },
   })),
   ...CLADES.map((c) => ({
@@ -46,7 +48,7 @@ const ITEMS: Item[] = [
     title: c.common,
     subtitle: `Group · ${c.name}${c.aka?.length ? ` · also called ${c.aka[0]}` : ''} · ${speciesInClade(c.id).length} species`,
     words: [c.common, c.name, ...(c.aka ?? [])].join(' ').toLowerCase(),
-    aka: c.aka,
+    names: [c.common, c.name, ...(c.aka ?? []), ...(c.akaSearch ?? [])],
     result: { kind: 'clade' as const, clade: c },
   })),
   ...EVENTS.map((e) => ({
@@ -74,15 +76,30 @@ const ITEMS: Item[] = [
   ),
 ];
 
+// Punctuation-insensitive form, so "t rex", "t-rex" and "T. rex" all match.
+const norm = (t: string) => t.toLowerCase().replace(/[.\-’'_]/g, ' ').replace(/\s+/g, ' ').trim();
+
+// Normalised names and words for each item, worked out once.
+const PREPARED = ITEMS.map((item, index) => ({ item, index, names: (item.names ?? [item.title]).map(norm), words: norm(item.words) }));
+
 function search(query: string): Item[] {
-  const q = query.trim().toLowerCase();
+  const q = norm(query);
   if (!q) return ITEMS.filter((i) => i.result.kind === 'event' || i.result.kind === 'extinction' || i.result.kind === 'clade');
-  // Names that start with the query come first, including other everyday names ("raptor" → Dromaeosaurs).
-  const starts = ITEMS.filter(
-    (i) => i.title.toLowerCase().startsWith(q) || !!i.aka?.some((a) => a.toLowerCase().startsWith(q)),
-  );
-  const contains = ITEMS.filter((i) => !starts.includes(i) && i.words.includes(q));
-  return [...starts, ...contains].slice(0, 30);
+  // Best first: a name that is exactly the query, a name that starts with it, a word that
+  // starts with it, then any mention. Within a tier, the original order (species first) holds.
+  const wordStart = new RegExp(`(^|\\s)${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`);
+  const rank = ({ names, words }: (typeof PREPARED)[number]) => {
+    if (names.some((n) => n === q)) return 0;
+    if (names.some((n) => n.startsWith(q))) return 1;
+    if (wordStart.test(words)) return 2;
+    if (words.includes(q)) return 3;
+    return -1;
+  };
+  return PREPARED.map((p) => ({ item: p.item, index: p.index, r: rank(p) }))
+    .filter((x) => x.r >= 0)
+    .sort((a, b) => a.r - b.r || a.index - b.index)
+    .slice(0, 30)
+    .map((x) => x.item);
 }
 
 type Props = {

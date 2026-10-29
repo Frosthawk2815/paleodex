@@ -1,3 +1,4 @@
+import { type Aka, CLADE_AKA, SPECIES_AKA } from '@/data/aka';
 import { SETS } from '@/data/sets';
 
 // Living things in PaleoDex: groups (clades) arranged as a family tree, and the species in them.
@@ -8,8 +9,10 @@ export type Clade = {
   id: string;
   name: string; // scientific name
   common: string; // everyday name, e.g. "tyrannosaurs"
-  // Other everyday names people search for, e.g. "raptors" for dromaeosaurs.
+  // Other everyday names people search for, e.g. "raptors" for dromaeosaurs (filled from aka.ts);
+  // `akaSearch` adds spellings only search uses.
   aka?: string[];
+  akaSearch?: string[];
   // A short note on the other names, shown on the group's page.
   akaNote?: string;
   parent?: string;
@@ -22,6 +25,10 @@ export type Species = {
   id: string;
   name: string; // binomial, e.g. "Tyrannosaurus rex"
   common?: string;
+  // Other names people search for, and a note on them (filled from aka.ts).
+  aka?: string[];
+  akaSearch?: string[];
+  akaNote?: string;
   clade: string;
   // 'full' entries have a complete write-up; 'brief' ones are short until filled out.
   status: 'full' | 'brief';
@@ -229,8 +236,6 @@ const BASE_CLADES: Clade[] = [
     id: 'dromaeosauridae',
     name: 'Dromaeosauridae',
     common: 'Dromaeosaurs',
-    aka: ['raptors', 'raptor'],
-    akaNote: 'Popularly called “raptors”, a name made famous by Jurassic Park. Birds of prey are also called raptors; the two are not the same group.',
     parent: 'paraves',
     family: true,
     description: 'Feathered, sickle-clawed hunters such as Velociraptor and Deinonychus.',
@@ -1211,10 +1216,13 @@ const BASE_SPECIES: Species[] = [
   },
 ];
 
-export const CLADES: Clade[] = [...BASE_CLADES, ...SETS.flatMap((d) => d.clades ?? [])];
+// Other everyday names (aka.ts) are merged in so search and pages can use them.
+const withAka = <T extends { id: string }>(x: T, map: Record<string, Aka>): T =>
+  map[x.id] ? { ...x, aka: map[x.id].names, akaSearch: map[x.id].search, akaNote: map[x.id].note } : x;
+export const CLADES: Clade[] = [...BASE_CLADES, ...SETS.flatMap((d) => d.clades ?? [])].map((c) => withAka(c, CLADE_AKA));
 // Upgrades from different sets for the same species merge field by field (later sets win per field).
 const UPGRADES: Record<string, Partial<Species>> = {};
 for (const d of SETS) for (const [id, up] of Object.entries(d.upgrades ?? {})) UPGRADES[id] = { ...UPGRADES[id], ...up };
 export const SPECIES: Species[] = [...BASE_SPECIES, ...SETS.flatMap((d) => d.species ?? [])].map((s) =>
-  UPGRADES[s.id] ? { ...s, ...UPGRADES[s.id] } : s,
+  withAka(UPGRADES[s.id] ? { ...s, ...UPGRADES[s.id] } : s, SPECIES_AKA),
 );
