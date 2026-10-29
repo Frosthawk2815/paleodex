@@ -8,7 +8,7 @@ import { EARTH_RADIUS_KM, MOON_DISTANCE_TODAY_KM, MOON_RADIUS_KM, moonDistanceKm
 import { geographyAt, landCentre, QUATERNARY_MA } from '@/lib/geography';
 import { EXTINCTIONS, extinctionAt } from '@/lib/extinctions';
 import { siteAt } from '@/lib/plates';
-import { pointPosition, pointVisible, visiblePoints } from '@/lib/events';
+import { badgeBg, pointPosition, pointVisible, visiblePoints } from '@/lib/events';
 import { EVENTS, type EventPoint, type HistoryEvent } from '@/data/events';
 import { moonView } from '@/lib/moon-surface';
 import { FLAG_FOOT, PointIconShape } from '@/components/point-icon';
@@ -153,7 +153,7 @@ type Props = {
   // A species whose range is drawn over the map, and a way to hide it.
   rangeId?: string;
   onClearRange?: () => void;
-  // Called when a skull flag (a species' last sighting) is tapped.
+  // Called when a skull marker (a species' last sighting) is tapped.
   onSelectSpecies?: (id: string) => void;
 };
 
@@ -312,7 +312,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
       return xy && onScreen && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05 ? [{ ...v, xy }] : [];
     },
   );
-  // Skull flags where the last of a species was seen alive, until that date.
+  // Skull markers where the last of a species was seen alive, until that date.
   const skulls =
     !moonMode && earthR > 40
       ? visibleSkulls(timeMa, rangeId).flatMap(({ id, lastSeen }) => {
@@ -482,7 +482,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
               ) : (
                 <G>
                   <Circle cx={xy[0]} cy={xy[1]} r={2.5} fill="#FFFFFF" />
-                  <PointIconShape kind={point.icon!} x={xy[0]} y={xy[1] - 21} size={36} />
+                  <PointIconShape kind={point.icon!} x={xy[0]} y={xy[1] - 21} size={36} bg={badgeBg(event)} />
                 </G>
               )}
               {g.members.length > 1 && (
@@ -510,7 +510,8 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
 
           {skulls.map(({ id, xy, name }) => (
             <G key={`skull-${id}`}>
-              <PointIconShape kind="skull" x={xy[0] + (12 - 7) * 1.5} y={xy[1] - (22 - 12) * 1.5} size={36} />
+              <Circle cx={xy[0]} cy={xy[1]} r={2.5} fill="#FFFFFF" />
+              <PointIconShape kind="skull" x={xy[0]} y={xy[1] - 21} size={36} />
               <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 16} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={12} fontWeight="700" textAnchor="middle">
                 {`Last ${name.toLowerCase()}`}
               </SvgText>
@@ -588,7 +589,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           onPress={() => onSelectSpecies?.(id)}
           accessibilityRole="button"
           accessibilityLabel={`Where the last ${name.toLowerCase()} was seen alive: read more`}
-          style={[styles.hit, { left: xy[0] - 12, top: xy[1] - 34, width: 44, height: 56 }]}
+          style={[styles.hit, { left: xy[0] - 22, top: xy[1] - 40, width: 44, height: 56 }]}
         />
       ))}
       {!moonMode && range && rangeId && (

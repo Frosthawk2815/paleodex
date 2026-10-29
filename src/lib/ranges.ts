@@ -9,7 +9,7 @@ import { decodeLonLatRing, type Polygon } from '@/lib/geography';
 import { yearToMa } from '@/lib/time';
 
 export type RangePhase = { fromMa: number; toMa: number; label: string; polygons: string[][] };
-// Where the last one was seen alive. The skull flag stands at the centre of `country`.
+// Where the last one was seen alive. The skull marker sits at the centre of `country`.
 export type LastSeen = { country: string; lon: number; lat: number; ma: number; year?: number; text: string };
 export type Range = { phases: RangePhase[]; lastSeen?: LastSeen };
 
@@ -54,10 +54,10 @@ export const phaseCentre = (p: RangePhase): [number, number] =>
 // The time to jump to for a phase: the middle of it (on a log scale for long phases).
 export const phaseJumpMa = (p: RangePhase) => (p.toMa > 0 ? Math.sqrt(p.fromMa * p.toMa) : p.fromMa / 2);
 
-// The time to jump to for a last sighting: just before it, while the skull flag still stands.
+// The time to jump to for a last sighting: just before it, while the skull marker still shows.
 export const lastSeenJumpMa = (l: LastSeen) => (l.year !== undefined ? yearToMa(l.year - 2) : l.ma * 1.05);
 
-// Skull flags show for a while before the last sighting (from twice as long ago, so the window
+// Skull markers show for a while before the last sighting (from twice as long ago, so the window
 // scales with the timeline), then disappear at that date. They always show for a selected species
 // during its last phase.
 export function visibleSkulls(timeMa: number, selectedId?: string): { id: string; lastSeen: LastSeen }[] {

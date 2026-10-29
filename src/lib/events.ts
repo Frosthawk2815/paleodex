@@ -1,5 +1,6 @@
 import { type EventPoint, EVENTS, type HistoryEvent } from '@/data/events';
 import { siteAt } from '@/lib/plates';
+import { PERIODS } from '@/data/periods';
 
 // A point shows until its end time, but not at it: e.g. a formation that ends at the impact
 // (66.0 Ma) is gone at the boundary, matching how the timeline puts 66.0 Ma in the Paleogene.
@@ -19,4 +20,13 @@ export function visiblePoints(body: EventPoint['body'], timeMa: number): Visible
 // Where an Earth point was at `timeMa` (lon, lat), moving with its plate.
 export function pointPosition(p: EventPoint, timeMa: number): [number, number] {
   return p.plate !== undefined ? siteAt({ lon: p.lon, lat: p.lat, plate: p.plate }, timeMa) : [p.lon, p.lat];
+}
+
+// A rock formation's badges are tinted with the ICS colour of the period it was laid down in
+// (taken at its "where it formed" time); other events keep their own artwork colours.
+export function badgeBg(event: HistoryEvent): string | undefined {
+  if (event.kind !== 'Rock formation') return undefined;
+  const t = event.points[0]?.jumpMa ?? event.points[0]?.fromMa;
+  if (t === undefined) return undefined;
+  return PERIODS.find((p) => t <= p.startMa && (p.endMa === 0 ? t >= 0 : t > p.endMa))?.color;
 }

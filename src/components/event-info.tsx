@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { HistoryEvent, InvertebrateNote } from '@/data/events';
-import { pointVisible } from '@/lib/events';
+import { badgeBg, pointVisible } from '@/lib/events';
 import { PointIcon } from '@/components/point-icon';
 import { SpeciesRow } from '@/components/clade-info';
 import { info } from '@/components/info-styles';
@@ -56,7 +56,7 @@ export function EventInfo({ event, timeMa, onBack, onJump, onOpenSpecies, onOpen
                 accessibilityLabel={`Jump to ${p.jumpLabel}`}
                 style={({ pressed }) => [styles.jump, here && styles.jumpHere, pressed && styles.pressed]}>
                 <View style={styles.jumpRow}>
-                  <PointIcon kind={p.icon ?? 'flag'} size={26} />
+                  <PointIcon kind={p.icon ?? 'flag'} size={26} bg={badgeBg(event)} />
                   <View style={styles.jumpLabels}>
                     <Text style={styles.jumpText}>{here ? p.jumpLabel : `${p.jumpLabel} ›`}</Text>
                     {here && <Text style={styles.jumpNote}>Showing on the globe now</Text>}

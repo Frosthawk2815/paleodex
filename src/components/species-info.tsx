@@ -7,6 +7,7 @@ import type { HistoryEvent } from '@/data/events';
 import type { Species } from '@/data/life';
 import { SpeciesRow } from '@/components/clade-info';
 import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf, speciesById, trackwaysOf } from '@/lib/life';
+import { badgeBg } from '@/lib/events';
 import { rangeOf } from '@/lib/ranges';
 import { timeLabel } from '@/lib/time';
 
@@ -106,7 +107,7 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
                     accessibilityLabel={`${f.title}: jump to where it formed`}
                     style={({ pressed }) => [info.card, pressed && info.pressed]}>
                     <View style={info.cardRow}>
-                      <PointIcon kind={point.icon ?? 'flag'} size={28} />
+                      <PointIcon kind={point.icon ?? 'flag'} size={28} bg={badgeBg(f)} />
                       <View style={info.cardText}>
                         <Text style={info.cardTitle}>{f.title} ›</Text>
                         <Text style={info.cardNote}>{point.jumpLabel}</Text>
@@ -130,7 +131,7 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
                   <PointIcon kind="skull" size={30} />
                   <View style={info.cardText}>
                     <Text style={info.cardTitle}>{range.lastSeen.text} ›</Text>
-                    <Text style={info.cardNote}>The skull flag stands at the centre of {range.lastSeen.country} until then</Text>
+                    <Text style={info.cardNote}>The skull marker sits at the centre of {range.lastSeen.country} until then</Text>
                   </View>
                 </View>
               </Pressable>
@@ -173,7 +174,7 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
                   accessibilityLabel={`${e.title}: show it`}
                   style={({ pressed }) => [info.card, pressed && info.pressed]}>
                   <View style={info.cardRow}>
-                    <PointIcon kind={e.points[0].icon ?? 'flag'} size={28} />
+                    <PointIcon kind={e.points[0].icon ?? 'flag'} size={28} bg={badgeBg(e)} />
                     <View style={info.cardText}>
                       <Text style={info.cardTitle}>{e.title} ›</Text>
                       <Text style={info.cardNote}>{e.points[0].jumpLabel}</Text>

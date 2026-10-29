@@ -1,5 +1,5 @@
 // Ice Age megafauna that lived alongside people. Like other modern species they aren't tagged to
-// formations; their ranges are drawn on the globe, with a skull flag where the last was seen.
+// formations; their ranges are drawn on the globe, with a skull marker where the last was seen.
 // Ranges: tools/globe-data/ranges-spec.json.
 
 import type { DataSet } from '@/data/sets/types';
