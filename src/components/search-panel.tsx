@@ -80,20 +80,69 @@ const ITEMS: Item[] = [
 const norm = (t: string) => t.toLowerCase().replace(/[.\-’'_]/g, ' ').replace(/\s+/g, ' ').trim();
 
 // Normalised names and words for each item, worked out once.
-const PREPARED = ITEMS.map((item, index) => ({ item, index, names: (item.names ?? [item.title]).map(norm), words: norm(item.words) }));
+const PREPARED = ITEMS.map((item, index) => {
+  const names = (item.names ?? [item.title]).map(norm);
+  return { item, index, names, nameWords: [...new Set(names.flatMap((n) => n.split(' ')))], words: norm(item.words) };
+});
+
+// Edit distance (insertions, deletions, substitutions and swapped neighbours), stopping early
+// once it is clearly over `max`.
+function distance(a: string, b: string, max: number): number {
+  if (Math.abs(a.length - b.length) > max) return max + 1;
+  let prev2: number[] = [];
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    let best = i;
+    for (let j = 1; j <= b.length; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      let v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + cost);
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) v = Math.min(v, prev2[j - 2] + 1);
+      cur.push(v);
+      best = Math.min(best, v);
+    }
+    if (best > max) return max + 1;
+    prev2 = prev;
+    prev = cur;
+  }
+  return prev[b.length];
+}
+
+// How far a typed word is from being the start of a name word ("simitar" → "scimitar" is 1,
+// "tooth" → "toothed" is 0), or Infinity if too far. Short words must be exact; long ones may be
+// two letters out. The compared start is never shorter than what was typed.
+function closeness(typed: string, word: string): number {
+  if (word.startsWith(typed)) return 0;
+  if (typed.length < 4) return Infinity;
+  const max = typed.length >= 8 ? 2 : 1;
+  let best = Infinity;
+  for (let len = typed.length; len <= typed.length + max && len <= word.length; len++) {
+    best = Math.min(best, distance(typed, word.slice(0, len), max));
+  }
+  return best <= max ? best : Infinity;
+}
 
 function search(query: string): Item[] {
   const q = norm(query);
   if (!q) return ITEMS.filter((i) => i.result.kind === 'event' || i.result.kind === 'extinction' || i.result.kind === 'clade');
+  const typed = q.split(' ');
   // Best first: a name that is exactly the query, a name that starts with it, a word that
-  // starts with it, then any mention. Within a tier, the original order (species first) holds.
+  // starts with it, any mention, every typed word starting a name word (in any order), then
+  // names that are close but misspelt. Within a tier, the original order (species first) holds.
   const wordStart = new RegExp(`(^|\\s)${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`);
-  const rank = ({ names, words }: (typeof PREPARED)[number]) => {
+  // Misspelt matches score 5 plus how many letters were out in total, so the closest come first.
+  const rank = ({ names, nameWords, words }: (typeof PREPARED)[number]) => {
     if (names.some((n) => n === q)) return 0;
     if (names.some((n) => n.startsWith(q))) return 1;
     if (wordStart.test(words)) return 2;
     if (words.includes(q)) return 3;
-    return -1;
+    if (typed.every((t) => nameWords.some((w) => w.startsWith(t)))) return 4;
+    let off = 0;
+    for (const t of typed) {
+      off += Math.min(...nameWords.map((w) => closeness(t, w)));
+      if (off === Infinity) return -1;
+    }
+    return 5 + off;
   };
   return PREPARED.map((p) => ({ item: p.item, index: p.index, r: rank(p) }))
     .filter((x) => x.r >= 0)
