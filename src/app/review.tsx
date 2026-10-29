@@ -15,10 +15,12 @@ import { speciesById } from '@/lib/life';
 // (an old restoration that no longer matches the science). Answers are saved on the phone and
 // sent back as text, then copied into tools/images/decisions.json.
 
-type Candidate = Omit<SpeciesImage, 'file' | 'article'>;
+type Candidate = Omit<SpeciesImage, 'article'>;
 type Vote = 'yes' | 'no' | 'outdated';
 
-const STORAGE_KEY = 'paleodex.pictureReview.v1';
+// Answers are kept per picture file, so a new picture for a species is asked about afresh.
+// (v1 answers were imported before this version and are not reused.)
+const STORAGE_KEY = 'paleodex.pictureReview.v2';
 const CANDIDATES = CANDIDATE_DATA as Record<string, Candidate>;
 
 const open = (url?: string | null) => {
@@ -31,12 +33,17 @@ const VOTES: { vote: Vote; label: string; colour: string }[] = [
   { vote: 'no', label: '✗ No', colour: '#B3261E' },
 ];
 
-// The answers as text to send back: one line per answer type, listing species ids.
-function resultsText(votes: Record<string, Vote>): string {
+// Answers are saved under the species and the picture's file.
+const keyOf = (id: string) => `${id}|${CANDIDATES[id].file}`;
+
+// The answers for the pictures now on offer, as text to send back: one line per answer type,
+// listing species ids.
+function resultsText(ids: string[], votes: Record<string, Vote>): string {
+  const answeredIds = ids.filter((id) => votes[keyOf(id)]);
   const lines = (['yes', 'no', 'outdated'] as const).map(
-    (v) => `${v}: ${Object.keys(votes).filter((id) => votes[id] === v).sort().join(', ')}`,
+    (v) => `${v}: ${answeredIds.filter((id) => votes[keyOf(id)] === v).sort().join(', ')}`,
   );
-  return [`PaleoDex picture review (${Object.keys(votes).length} answered)`, ...lines].join('\n');
+  return [`PaleoDex picture review (${answeredIds.length} answered)`, ...lines].join('\n');
 }
 
 export default function ReviewScreen() {
@@ -61,32 +68,41 @@ export default function ReviewScreen() {
       .catch((): Record<string, Vote> => ({}))
       .then((saved) => {
         setVotes(saved);
-        const first = ids.findIndex((id) => !saved[id]);
+        const first = ids.findIndex((id) => !saved[keyOf(id)]);
         setIndex(first >= 0 ? first : 0);
       });
   }, [ids]);
 
   if (!votes) return <View style={[styles.fill, { backgroundColor: palette.background }]} />;
+  if (ids.length === 0) {
+    return (
+      <View style={[styles.fill, styles.content, { backgroundColor: palette.background }]}>
+        <Stack.Screen options={{ title: 'Review pictures' }} />
+        <Text style={[styles.name, { color: palette.text }]}>Nothing to review right now</Text>
+        <Text style={[styles.credit, { color: palette.muted }]}>New pictures will appear here when they are found.</Text>
+      </View>
+    );
+  }
 
   const id = ids[index];
   const img = CANDIDATES[id];
   const species = speciesById(id)!;
-  const answered = Object.keys(votes).length;
-  const count = (v: Vote) => Object.values(votes).filter((x) => x === v).length;
+  const answered = ids.filter((other) => votes[keyOf(other)]).length;
+  const count = (v: Vote) => ids.filter((other) => votes[keyOf(other)] === v).length;
   const caption = imageCaption(img, species.name.split(' ')[0]);
   const ratio = Math.min(2, Math.max(0.75, img.width / img.height));
 
   const answer = (vote: Vote) => {
-    const next = { ...votes, [id]: vote };
+    const next = { ...votes, [keyOf(id)]: vote };
     setVotes(next);
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(next)).catch(() => {});
     // Move on to the next picture not yet answered (or simply the next one).
-    const after = ids.findIndex((other, i) => i > index && !next[other]);
+    const after = ids.findIndex((other, i) => i > index && !next[keyOf(other)]);
     setIndex(after >= 0 ? after : Math.min(index + 1, ids.length - 1));
   };
 
   const send = () => {
-    Share.share({ message: resultsText(votes) }).catch(() => setShowText(true));
+    Share.share({ message: resultsText(ids, votes) }).catch(() => setShowText(true));
   };
 
   return (
@@ -120,7 +136,7 @@ export default function ReviewScreen() {
           Source
         </Text>
       </Text>
-      {votes[id] && <Text style={[styles.current, { color: palette.text }]}>Your answer: {votes[id]}</Text>}
+      {votes[keyOf(id)] && <Text style={[styles.current, { color: palette.text }]}>Your answer: {votes[keyOf(id)]}</Text>}
 
       <View style={styles.votes}>
         {VOTES.map((v) => (
@@ -164,7 +180,7 @@ export default function ReviewScreen() {
       </Pressable>
       {showText && (
         <Text selectable style={[styles.results, { color: palette.text, borderColor: palette.border }]}>
-          {resultsText(votes)}
+          {resultsText(ids, votes)}
         </Text>
       )}
     </ScrollView>

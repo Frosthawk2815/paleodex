@@ -200,8 +200,9 @@ def main():
         genus = s['name'].split(' ')[0]
         article, image = by_title.get(s['name'], (None, None))
         scope = 'species'
-        # A binomial that redirects to a page other than its own (usually the genus) shows the genus.
-        if article and article != s['name']:
+        # A binomial that redirects to its genus article shows the genus (it may be a relative).
+        # Redirects to a common-name article (Panthera leo -> Lion) are still the species.
+        if article and article == genus:
             scope = 'genus'
         if not image:
             article, image = by_title.get(genus, (None, None))
