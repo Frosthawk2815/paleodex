@@ -16,12 +16,14 @@ import re
 import sys
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 
 API = 'https://en.wikipedia.org/w/api.php'
 USER_AGENT = 'PaleoDex/1.0 (educational app; https://github.com/Frosthawk2815/paleodex)'
 THUMB_WIDTH = 800
 BATCH = 50
+PAUSE = 3  # seconds between requests, to stay well inside Wikimedia's rate limits
 
 FREE_LICENSE = re.compile(r'^(cc0|cc[ -]by|public domain|pd\b|no restrictions)', re.I)
 SKELETAL = re.compile(r'skeletal', re.I)
@@ -38,17 +40,20 @@ FOSSIL = re.compile(
 
 
 def api(params):
-    params = {**params, 'format': 'json', 'formatversion': '2'}
+    params = {**params, 'format': 'json', 'formatversion': '2', 'maxlag': '5'}
     url = API + '?' + urllib.parse.urlencode(params)
-    for attempt in range(5):
+    for attempt in range(10):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
             with urllib.request.urlopen(req, timeout=60) as r:
                 return json.load(r)
-        except Exception as e:  # network hiccup or rate limit: back off and retry
-            wait = 2 ** attempt
-            print(f'  retry in {wait}s ({e})', file=sys.stderr)
+        except urllib.error.HTTPError as e:  # rate limited: wait as long as asked, or back off
+            wait = int(e.headers.get('Retry-After') or 0) or min(120, 5 * 2 ** attempt)
+            print(f'  {e.code}: waiting {wait}s', file=sys.stderr)
             time.sleep(wait)
+        except Exception as e:  # network hiccup
+            print(f'  retry in 5s ({e})', file=sys.stderr)
+            time.sleep(5)
     raise RuntimeError('API kept failing: ' + url)
 
 
@@ -78,7 +83,7 @@ def lead_images(titles):
                 out[t] = (r, p.get('pageimage'))
             else:
                 out[t] = (None, None)
-        time.sleep(0.5)
+        time.sleep(PAUSE)
     return out
 
 
@@ -110,7 +115,7 @@ def file_info(files):
                 'licenseUrl': (m.get('LicenseUrl') or {}).get('value'),
                 'text': ' '.join([name, get('ObjectName'), get('ImageDescription')]),
             }
-        time.sleep(0.5)
+        time.sleep(PAUSE)
     return out
 
 
