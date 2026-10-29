@@ -8,6 +8,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="index" options={{ title: 'PaleoDex', headerShown: false }} />
         <Stack.Screen name="period/[id]" options={{ title: '' }} />
+        <Stack.Screen name="credits" options={{ title: 'Credits' }} />
       </Stack>
     </ThemeProvider>
   );

@@ -203,6 +203,9 @@ export default function GlobeScreen() {
           <Text style={styles.credit}>
             Land and sea: Scotese & Wright (2018) PALEOMAP · Sea level: Spratt & Lisiecki (2016), Bintanja & van de Wal (2008)
           </Text>
+          <Link href="/credits" style={styles.creditLink}>
+            Image and data credits ›
+          </Link>
         </View>
 
         {selected && (
@@ -347,6 +350,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 4,
     paddingHorizontal: 16,
+  },
+  creditLink: {
+    color: '#9CC8FF',
+    fontSize: 12,
+    textAlign: 'center',
+    marginTop: 6,
+    paddingVertical: 4,
   },
   credit: {
     color: 'rgba(255,255,255,0.35)',

@@ -6,6 +6,7 @@ import { PointIcon } from '@/components/point-icon';
 import type { HistoryEvent } from '@/data/events';
 import type { Species } from '@/data/life';
 import { SpeciesRow } from '@/components/clade-info';
+import { SpeciesImage } from '@/components/species-image';
 import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf, speciesById, trackwaysOf } from '@/lib/life';
 import { badgeBg } from '@/lib/events';
 import { rangeOf } from '@/lib/ranges';
@@ -41,6 +42,8 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
       <Pressable onPress={onBack} accessibilityRole="button" style={({ pressed }) => [info.back, pressed && info.pressed]}>
         <Text style={info.backText}>↑ Back to the globe</Text>
       </Pressable>
+
+      <SpeciesImage speciesId={species.id} name={species.name} />
 
       <Text style={info.kicker}>{species.status === 'full' ? 'Species' : 'Species · short entry'}</Text>
       <Text style={[info.title, info.italic]} accessibilityRole="header">
