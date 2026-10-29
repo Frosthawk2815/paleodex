@@ -382,7 +382,7 @@
 
 | Age | Species | Common name | Family / group | Where |
 |---|---|---|---|---|
-| 132 Ma | *Utahraptor ostrommaysi* | Utahraptor | Raptors | Cedar Mountain Formation (Yellow Cat Member) |
+| 132 Ma | *Utahraptor ostrommaysi* | Utahraptor | Dromaeosaurs | Cedar Mountain Formation (Yellow Cat Member) |
 | 132 Ma | *Falcarius utahensis* | Falcarius | Therizinosaurs | Cedar Mountain Formation (Yellow Cat Member) |
 | 132 Ma | *Gastonia burgei* | Gastonia | Armoured dinosaurs | Cedar Mountain Formation (Yellow Cat Member) |
 | 132 Ma | *Cedarosaurus weiskopfae* | Cedarosaurus | Brachiosaurs and relatives | Cedar Mountain Formation (Yellow Cat Member) |
@@ -426,7 +426,7 @@
 | 124.6 Ma | *Repenomamus robustus* | Repenomamus | Gobiconodonts | Yixian Formation |
 | 124.6 Ma | *Psittacosaurus lujiatunensis* | Psittacosaurus | Parrot-beaked dinosaurs | Yixian Formation |
 | 124.6 Ma | *Beipiaosaurus inexpectus* | Beipiaosaurus | Therizinosaurs | Yixian Formation |
-| 124.6 Ma | *Sinornithosaurus millenii* | Sinornithosaurus | Raptors | Yixian Formation |
+| 124.6 Ma | *Sinornithosaurus millenii* | Sinornithosaurus | Dromaeosaurs | Yixian Formation |
 | 124.6 Ma | *Caudipteryx zoui* | Caudipteryx | Oviraptorosaurs | Yixian Formation |
 | 124.6 Ma | *Incisivosaurus gauthieri* | Incisivosaurus | Oviraptorosaurs | Yixian Formation |
 | 124.6 Ma | *Protarchaeopteryx robusta* | Protarchaeopteryx | Oviraptorosaurs | Yixian Formation |
@@ -449,7 +449,7 @@
 | 124.6 Ma | *Lycoptera davidi* | Lycoptera | Bonytongues | Yixian Formation |
 | 124.6 Ma | *Oregramma illecebrosa* | Oregramma | Insects and relatives | Yixian Formation |
 | 121 Ma | *Riojavenatrix lacustris* | Riojavenatrix | Baryonychines | Enciso Group |
-| 120 Ma | *Microraptor zhaoianus* | Microraptor | Raptors | Jiufotang Formation |
+| 120 Ma | *Microraptor zhaoianus* | Microraptor | Dromaeosaurs | Jiufotang Formation |
 | 120 Ma | *Jeholornis prima* | Jeholornis | Avialans | Jiufotang Formation |
 | 120 Ma | *Ikrandraco avatar* | Ikrandraco | Pterosaurs | Jiufotang Formation |
 | 120 Ma | *Sapeornis chaoyangensis* | Sapeornis | Avialans | Jiufotang Formation |
@@ -473,7 +473,7 @@
 | 115 Ma | *Lurdusaurus arenatus* | Lurdusaurus | Iguanodonts | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Eocarcharia dinops* | Eocarcharia | Allosaurs and relatives | Elrhaz Formation (Gadoufaoua) |
 | 115 Ma | *Araripesuchus wegeneri* | Araripesuchus | Notosuchians | Elrhaz Formation (Gadoufaoua) |
-| 112 Ma | *Deinonychus antirrhopus* | Deinonychus | Raptors | Cloverly Formation; Antlers Formation |
+| 112 Ma | *Deinonychus antirrhopus* | Deinonychus | Dromaeosaurs | Cloverly Formation; Antlers Formation |
 | 112 Ma | *Tenontosaurus tilletti* | Tenontosaurus | Iguanodonts | Cloverly Formation; Antlers Formation |
 | 112 Ma | *Sauropelta edwardsorum* | Sauropelta | Armoured dinosaurs | Cloverly Formation |
 | 112 Ma | *Acrocanthosaurus atokensis* | Acrocanthosaurus | Allosaurs and relatives | Antlers Formation |
@@ -510,7 +510,7 @@
 | 98 Ma | *Giganotosaurus carolinii* | Giganotosaurus | Allosaurs and relatives | Candeleros Formation |
 | 98 Ma | *Andesaurus delgadoi* | Andesaurus | Titanosaurs | Candeleros Formation |
 | 98 Ma | *Limaysaurus tessonei* | Limaysaurus | Rebbachisaurs | Candeleros Formation |
-| 98 Ma | *Buitreraptor gonzalezorum* | Buitreraptor | Raptors | Candeleros Formation |
+| 98 Ma | *Buitreraptor gonzalezorum* | Buitreraptor | Dromaeosaurs | Candeleros Formation |
 | 98 Ma | *Ekrixinatosaurus novasi* | Ekrixinatosaurus | Abelisaurids | Candeleros Formation |
 | 98 Ma | *Najash rionegrina* | Najash | Lizards and snakes | Candeleros Formation |
 | 97 Ma | *Spinosaurus aegyptiacus* | Spinosaurus | Spinosaurines | Kem Kem Group; Bahariya Formation |
@@ -561,8 +561,8 @@
 | 91 Ma | *Turanoceratops tardabilis* | Turanoceratops | Horned dinosaurs | Bissekty Formation |
 | 90 Ma | *Megaraptor namunhuaiquii* | Megaraptor | Megaraptorids | Portezuelo Formation |
 | 90 Ma | *Futalognkosaurus dukei* | Futalognkosaurus | Titanosaurs | Portezuelo Formation |
-| 90 Ma | *Unenlagia comahuensis* | Unenlagia | Raptors | Portezuelo Formation |
-| 90 Ma | *Neuquenraptor argentinus* | Neuquenraptor | Raptors | Portezuelo Formation |
+| 90 Ma | *Unenlagia comahuensis* | Unenlagia | Dromaeosaurs | Portezuelo Formation |
+| 90 Ma | *Neuquenraptor argentinus* | Neuquenraptor | Dromaeosaurs | Portezuelo Formation |
 | 90 Ma | *Patagonykus puertai* | Patagonykus | Alvarezsaurs | Portezuelo Formation |
 | 88 Ma | *Murusraptor barrosaensis* | Murusraptor | Megaraptorids | Sierra Barrosa Formation |
 | 88 Ma | *Mendozasaurus neguyelap* | Mendozasaurus | Titanosaurs | Sierra Barrosa Formation |
@@ -579,7 +579,7 @@
 | 85 Ma | *Nyctosaurus gracilis* | Nyctosaurus | Nyctosaurids | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Toxochelys latiremis* | Toxochelys | Turtles | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Tratayenia rosalesi* | Tratayenia | Megaraptorids | Bajo de la Carpa Formation |
-| 85 Ma | *Diuqin lechiguanae* | Diuqin | Raptors | Bajo de la Carpa Formation |
+| 85 Ma | *Diuqin lechiguanae* | Diuqin | Dromaeosaurs | Bajo de la Carpa Formation |
 | 85 Ma | *Alvarezsaurus calvoi* | Alvarezsaurus | Alvarezsaurs | Bajo de la Carpa Formation |
 | 85 Ma | *Patagopteryx deferrariisi* | Patagopteryx | Ornithuromorphs | Bajo de la Carpa Formation |
 | 85 Ma | *Neuquenornis volans* | Neuquenornis | Opposite birds | Bajo de la Carpa Formation |
@@ -620,7 +620,7 @@
 | 76 Ma | *Maiasaura peeblesorum* | Maiasaura | Duck-billed dinosaurs | Two Medicine Formation |
 | 76 Ma | *Einiosaurus procurvicornis* | Einiosaurus | Horned dinosaurs | Two Medicine Formation |
 | 76 Ma | *Daspletosaurus horneri* | Daspletosaurus horneri | Tyrannosaurs | Two Medicine Formation |
-| 76 Ma | *Bambiraptor feinbergi* | Bambiraptor | Raptors | Two Medicine Formation |
+| 76 Ma | *Bambiraptor feinbergi* | Bambiraptor | Dromaeosaurs | Two Medicine Formation |
 | 76 Ma | *Hypacrosaurus stebingeri* | Hypacrosaurus stebingeri | Duck-billed dinosaurs | Two Medicine Formation |
 | 76 Ma | *Achelousaurus horneri* | Achelousaurus | Horned dinosaurs | Two Medicine Formation |
 | 76 Ma | *Prenoceratops pieganensis* | Prenoceratops | Leptoceratopsids | Two Medicine Formation |
@@ -637,7 +637,7 @@
 | 75.5 Ma | *Styracosaurus albertensis* | Styracosaurus | Horned dinosaurs | Dinosaur Park Formation |
 | 75.5 Ma | *Chasmosaurus belli* | Chasmosaurus | Horned dinosaurs | Dinosaur Park Formation |
 | 75.5 Ma | *Euoplocephalus tutus* | Euoplocephalus | Armoured dinosaurs | Dinosaur Park Formation |
-| 75.5 Ma | *Dromaeosaurus albertensis* | Dromaeosaurus | Raptors | Dinosaur Park Formation |
+| 75.5 Ma | *Dromaeosaurus albertensis* | Dromaeosaurus | Dromaeosaurs | Dinosaur Park Formation |
 | 75.5 Ma | *Utahceratops gettyi* | Utahceratops | Horned dinosaurs | Kaiparowits Formation |
 | 75.5 Ma | *Kosmoceratops richardsoni* | Kosmoceratops | Horned dinosaurs | Kaiparowits Formation |
 | 75.5 Ma | *Gryposaurus monumentensis* | Gryposaurus | Duck-billed dinosaurs | Kaiparowits Formation |
@@ -647,8 +647,8 @@
 | 75.5 Ma | *Stenonychosaurus inequalis* | Stenonychosaurus | Troodontids | Dinosaur Park Formation |
 | 75.5 Ma | *Nasutoceratops titusi* | Nasutoceratops | Horned dinosaurs | Kaiparowits Formation |
 | 75.5 Ma | *Citipes elegans* | Citipes | Caenagnathids | Dinosaur Park Formation |
-| 75.5 Ma | *Saurornitholestes langstoni* | Saurornitholestes | Raptors | Dinosaur Park Formation |
-| 75.5 Ma | *Hesperonychus elizabethae* | Hesperonychus | Raptors | Dinosaur Park Formation |
+| 75.5 Ma | *Saurornitholestes langstoni* | Saurornitholestes | Dromaeosaurs | Dinosaur Park Formation |
+| 75.5 Ma | *Hesperonychus elizabethae* | Hesperonychus | Dromaeosaurs | Dinosaur Park Formation |
 | 75.5 Ma | *Chirostenotes pergracilis* | Chirostenotes | Caenagnathids | Dinosaur Park Formation |
 | 75.5 Ma | *Caenagnathus collinsi* | Caenagnathus | Caenagnathids | Dinosaur Park Formation |
 | 75.5 Ma | *Struthiomimus altus* | Struthiomimus | Ostrich dinosaurs | Dinosaur Park Formation |
@@ -664,7 +664,7 @@
 | 75 Ma | *Orkoraptor burkei* | Orkoraptor | Megaraptorids | Cerro Fortaleza Formation |
 | 75 Ma | *Puertasaurus reuili* | Puertasaurus | Titanosaurs | Cerro Fortaleza Formation |
 | 75 Ma | *Talenkauen santacrucensis* | Talenkauen | Elasmarians | Cerro Fortaleza Formation |
-| 73 Ma | *Velociraptor mongoliensis* | Velociraptor | Raptors | Djadochta Formation |
+| 73 Ma | *Velociraptor mongoliensis* | Velociraptor | Dromaeosaurs | Djadochta Formation |
 | 73 Ma | *Protoceratops andrewsi* | Protoceratops | Protoceratopsids | Djadochta Formation |
 | 73 Ma | *Oviraptor philoceratops* | Oviraptor | Oviraptorids | Djadochta Formation |
 | 73 Ma | *Pinacosaurus grangeri* | Pinacosaurus | Armoured dinosaurs | Djadochta Formation |
@@ -685,7 +685,7 @@
 | 71.5 Ma | *Bagaceratops rozhdestvenskyi* | Bagaceratops | Protoceratopsids | Barun Goyot Formation |
 | 71.5 Ma | *Saichania chulsanensis* | Saichania | Armoured dinosaurs | Barun Goyot Formation |
 | 71.5 Ma | *Conchoraptor gracilis* | Conchoraptor | Oviraptorids | Barun Goyot Formation |
-| 71 Ma | *Pyroraptor olympius* | Pyroraptor | Raptors | Argiles et Grès à Reptiles Formation |
+| 71 Ma | *Pyroraptor olympius* | Pyroraptor | Dromaeosaurs | Argiles et Grès à Reptiles Formation |
 | 71 Ma | *Rhabdodon priscus* | Rhabdodon | Iguanodonts | Argiles et Grès à Reptiles Formation |
 | 71 Ma | *Atsinganosaurus velauciensis* | Atsinganosaurus | Titanosaurs | Argiles et Grès à Reptiles Formation |
 | 70.5 Ma | *Albertosaurus sarcophagus* | Albertosaurus | Tyrannosaurs | Horseshoe Canyon Formation |
@@ -694,7 +694,7 @@
 | 70.5 Ma | *Anchiceratops ornatus* | Anchiceratops | Horned dinosaurs | Horseshoe Canyon Formation |
 | 70.5 Ma | *Pachyrhinosaurus canadensis* | Pachyrhinosaurus | Horned dinosaurs | Horseshoe Canyon Formation |
 | 70.5 Ma | *Ornithomimus edmontonicus* | Ornithomimus | Ostrich dinosaurs | Horseshoe Canyon Formation |
-| 70.5 Ma | *Atrociraptor marshalli* | Atrociraptor | Raptors | Horseshoe Canyon Formation |
+| 70.5 Ma | *Atrociraptor marshalli* | Atrociraptor | Dromaeosaurs | Horseshoe Canyon Formation |
 | 70.5 Ma | *Arrhinoceratops brachyops* | Arrhinoceratops | Horned dinosaurs | Horseshoe Canyon Formation |
 | 70.5 Ma | *Eotriceratops xerinsularis* | Eotriceratops | Horned dinosaurs | Horseshoe Canyon Formation |
 | 70.5 Ma | *Albertavenator curriei* | Albertavenator | Troodontids | Horseshoe Canyon Formation |
@@ -714,9 +714,9 @@
 | 70 Ma | *Tarchia tumanovae* | Tarchia | Armoured dinosaurs | Nemegt Formation |
 | 70 Ma | *Nemegtosaurus mongoliensis* | Nemegtosaurus | Titanosaurs | Nemegt Formation |
 | 70 Ma | *Nemegtomaia barsboldi* | Nemegtomaia | Oviraptorids | Nemegt Formation |
-| 70 Ma | *Adasaurus mongoliensis* | Adasaurus | Raptors | Nemegt Formation |
+| 70 Ma | *Adasaurus mongoliensis* | Adasaurus | Dromaeosaurs | Nemegt Formation |
 | 70 Ma | *Bonapartenykus ultimus* | Bonapartenykus | Alvarezsaurs | Allen Formation |
-| 70 Ma | *Austroraptor cabazai* | Austroraptor | Raptors | Allen Formation |
+| 70 Ma | *Austroraptor cabazai* | Austroraptor | Dromaeosaurs | Allen Formation |
 | 70 Ma | *Rocasaurus muniozi* | Rocasaurus | Titanosaurs | Allen Formation |
 | 70 Ma | *Bonatitan reigi* | Bonatitan | Titanosaurs | Allen Formation |
 | 70 Ma | *Panamericansaurus schroederi* | Panamericansaurus | Titanosaurs | Allen Formation |
@@ -741,7 +741,7 @@
 | 68 Ma | *Magyarosaurus dacus* | Magyarosaurus | Titanosaurs | Hațeg Basin |
 | 68 Ma | *Telmatosaurus transsylvanicus* | Telmatosaurus | Duck-billed dinosaurs | Hațeg Basin |
 | 68 Ma | *Zalmoxes robustus* | Zalmoxes | Iguanodonts | Hațeg Basin |
-| 68 Ma | *Balaur bondoc* | Balaur | Raptors | Hațeg Basin |
+| 68 Ma | *Balaur bondoc* | Balaur | Dromaeosaurs | Hațeg Basin |
 | 68 Ma | *Majungasaurus crenatissimus* | Majungasaurus | Abelisaurids | Maevarano Formation |
 | 68 Ma | *Rapetosaurus krausei* | Rapetosaurus | Titanosaurs | Maevarano Formation |
 | 68 Ma | *Masiakasaurus knopfleri* | Masiakasaurus | Ceratosaurs | Maevarano Formation |
@@ -794,8 +794,8 @@
 | 66.3 Ma | *Pachycephalosaurus wyomingensis* | Pachycephalosaurus | Dome-headed dinosaurs | Hell Creek Formation; Lance Formation |
 | 66.3 Ma | *Sphaerotholus buchholtzae* | Sphaerotholus | Dome-headed dinosaurs | Hell Creek Formation |
 | 66.3 Ma | *Ankylosaurus magniventris* | Ankylosaurus | Armoured dinosaurs | Hell Creek Formation; Lance Formation; Scollard Formation |
-| 66.3 Ma | *Acheroraptor temertyorum* | Acheroraptor | Raptors | Hell Creek Formation |
-| 66.3 Ma | *Dakotaraptor steini* | Dakotaraptor | Raptors | Hell Creek Formation |
+| 66.3 Ma | *Acheroraptor temertyorum* | Acheroraptor | Dromaeosaurs | Hell Creek Formation |
+| 66.3 Ma | *Dakotaraptor steini* | Dakotaraptor | Dromaeosaurs | Hell Creek Formation |
 | 66.3 Ma | *Anzu wyliei* | Anzu | Caenagnathids | Hell Creek Formation |
 | 66.3 Ma | *Avisaurus archibaldi* | Avisaurus | Opposite birds | Hell Creek Formation |
 | 66.3 Ma | *Didelphodon vorax* | Didelphodon | Marsupials and relatives | Hell Creek Formation; Lance Formation |

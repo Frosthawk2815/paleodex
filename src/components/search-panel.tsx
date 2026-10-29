@@ -15,7 +15,8 @@ export type SearchResult =
   | { kind: 'species'; species: Species }
   | { kind: 'clade'; clade: Clade };
 
-type Item = { key: string; title: string; subtitle: string; words: string; result: SearchResult };
+// `aka`: other everyday names that rank like the title (e.g. "raptors" for Dromaeosaurs).
+type Item = { key: string; title: string; subtitle: string; words: string; aka?: string[]; result: SearchResult };
 
 const LEVEL_NAMES = { all: '', era: 'Era', period: 'Period', series: 'Series', stage: 'Stage' };
 
@@ -43,8 +44,9 @@ const ITEMS: Item[] = [
   ...CLADES.map((c) => ({
     key: `clade:${c.id}`,
     title: c.common,
-    subtitle: `Group · ${c.name} · ${speciesInClade(c.id).length} species`,
-    words: [c.common, c.name].join(' ').toLowerCase(),
+    subtitle: `Group · ${c.name}${c.aka?.length ? ` · also called ${c.aka[0]}` : ''} · ${speciesInClade(c.id).length} species`,
+    words: [c.common, c.name, ...(c.aka ?? [])].join(' ').toLowerCase(),
+    aka: c.aka,
     result: { kind: 'clade' as const, clade: c },
   })),
   ...EVENTS.map((e) => ({
@@ -75,7 +77,10 @@ const ITEMS: Item[] = [
 function search(query: string): Item[] {
   const q = query.trim().toLowerCase();
   if (!q) return ITEMS.filter((i) => i.result.kind === 'event' || i.result.kind === 'extinction' || i.result.kind === 'clade');
-  const starts = ITEMS.filter((i) => i.title.toLowerCase().startsWith(q));
+  // Names that start with the query come first, including other everyday names ("raptor" → Dromaeosaurs).
+  const starts = ITEMS.filter(
+    (i) => i.title.toLowerCase().startsWith(q) || !!i.aka?.some((a) => a.toLowerCase().startsWith(q)),
+  );
   const contains = ITEMS.filter((i) => !starts.includes(i) && i.words.includes(q));
   return [...starts, ...contains].slice(0, 30);
 }

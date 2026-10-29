@@ -20,7 +20,7 @@ export const TREE_BIRDS: DataSet = {
       common: 'Paravians',
       parent: 'pennaraptora',
       description:
-        'Raptors (dromaeosaurs), troodontids and avialans, many with an enlarged second toe claw. Anchiornithids and Rahonavis sit near the base; whether they are early birds, troodontids or raptor relatives is debated.',
+        'Dromaeosaurs (popularly “raptors”), troodontids and avialans, many with an enlarged second toe claw. Anchiornithids and Rahonavis sit near the base; whether they are early birds, troodontids or dromaeosaur relatives is debated.',
     },
     {
       id: 'avialae',
@@ -29,7 +29,7 @@ export const TREE_BIRDS: DataSet = {
       parent: 'paraves',
       family: true,
       description:
-        'Birds in the broad sense: Archaeopteryx, modern birds and every dinosaur closer to modern birds than to raptors or troodontids, including toothed and long-tailed early birds.',
+        'Birds in the broad sense: Archaeopteryx, modern birds and every dinosaur closer to modern birds than to dromaeosaurs or troodontids, including toothed and long-tailed early birds.',
     },
     {
       id: 'ornithuromorpha',

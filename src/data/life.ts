@@ -8,6 +8,10 @@ export type Clade = {
   id: string;
   name: string; // scientific name
   common: string; // everyday name, e.g. "tyrannosaurs"
+  // Other everyday names people search for, e.g. "raptors" for dromaeosaurs.
+  aka?: string[];
+  // A short note on the other names, shown on the group's page.
+  akaNote?: string;
   parent?: string;
   // Families are the groups species are listed under in a formation's "life found here".
   family?: boolean;
@@ -224,7 +228,9 @@ const BASE_CLADES: Clade[] = [
   {
     id: 'dromaeosauridae',
     name: 'Dromaeosauridae',
-    common: 'Raptors',
+    common: 'Dromaeosaurs',
+    aka: ['raptors', 'raptor'],
+    akaNote: 'Popularly called “raptors”, a name made famous by Jurassic Park. Birds of prey are also called raptors; the two are not the same group.',
     parent: 'paraves',
     family: true,
     description: 'Feathered, sickle-clawed hunters such as Velociraptor and Deinonychus.',
