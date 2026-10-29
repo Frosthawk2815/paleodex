@@ -120,3 +120,12 @@ GENERA = [
       ['ringed caecilian', 'caecilian', 'siphonops'],
       [C(*SOUTH_AMERICA_TROPICS), part('Argentina', -58, -28, -53, -25)]),
 ]
+
+
+# Historic ranges (about 1,000 to 150 years ago). Species not listed in HISTORIC_CHANGED had a
+# range much as today.
+HISTORIC_CHANGED = {
+    # Released in Queensland in 1935; the historic range is its native range.
+    'rhinella-marina': {'without': [8, 9]},
+}
+HISTORIC = {**{sid: 'same' for sid in ['agalychnis-callidryas', 'phyllobates-terribilis', 'lithobates-catesbeianus', 'rana-temporaria', 'atelopus-zeteki', 'conraua-goliath', 'xenopus-laevis', 'paedophryne-amauensis', 'ambystoma-mexicanum', 'andrias-davidianus', 'salamandra-salamandra', 'triturus-cristatus', 'proteus-anguinus', 'siphonops-annulatus']}, **HISTORIC_CHANGED}

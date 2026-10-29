@@ -20126,7 +20126,13 @@
   "aptenodytes-forsteri": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20145,7 +20151,13 @@
   "aptenodytes-patagonicus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20180,7 +20192,13 @@
   "pygoscelis-adeliae": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20199,7 +20217,13 @@
   "pygoscelis-antarcticus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20218,7 +20242,13 @@
   "pygoscelis-papua": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20253,7 +20283,13 @@
   "eudyptes-chrysocome": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20288,7 +20324,13 @@
   "eudyptes-moseleyi": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20315,7 +20357,13 @@
   "eudyptes-pachyrhynchus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20335,7 +20383,13 @@
   "eudyptes-robustus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20354,7 +20408,13 @@
   "eudyptes-sclateri": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20373,7 +20433,13 @@
   "eudyptes-chrysolophus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20400,7 +20466,13 @@
   "eudyptes-schlegeli": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20419,7 +20491,13 @@
   "megadyptes-antipodes": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20447,7 +20525,13 @@
   "eudyptula-minor": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20474,7 +20558,13 @@
   "spheniscus-demersus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20493,7 +20583,13 @@
   "spheniscus-humboldti": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20512,7 +20608,13 @@
   "spheniscus-magellanicus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20531,7 +20633,13 @@
   "spheniscus-mendiculus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20550,7 +20658,62 @@
   "struthio-camelus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Kenya",
+              "Tanzania",
+              "Namibia",
+              "Botswana",
+              "Zimbabwe",
+              "Zambia",
+              "Angola",
+              "Chad",
+              "Niger",
+              "Cameroon",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Mali",
+              "Mauritania"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              16,
+              -34,
+              30,
+              -22
+            ]
+          },
+          {
+            "countries": [
+              "Morocco",
+              "Algeria",
+              "Tunisia",
+              "Libya",
+              "Egypt",
+              "W. Sahara",
+              "Saudi Arabia",
+              "Jordan",
+              "Syria",
+              "Iraq",
+              "Kuwait",
+              "Yemen",
+              "Oman",
+              "United Arab Emirates",
+              "Israel",
+              "South Africa"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20589,7 +20752,13 @@
   "struthio-molybdophanes": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20624,7 +20793,13 @@
   "rhea-americana": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20668,7 +20843,13 @@
   "rhea-pennata": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20733,7 +20914,29 @@
   "dromaius-novaehollandiae": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Australia"
+            ],
+            "latMin": -39
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.7,
+              148.5,
+              -39.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20750,7 +20953,13 @@
   "casuarius-casuarius": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20788,7 +20997,13 @@
   "casuarius-unappendiculatus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20817,7 +21032,13 @@
   "casuarius-bennetti": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20846,7 +21067,13 @@
   "apteryx-mantelli": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20866,7 +21093,13 @@
   "apteryx-australis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20886,7 +21119,13 @@
   "apteryx-rowi": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20906,7 +21145,13 @@
   "apteryx-haastii": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20926,7 +21171,28 @@
   "apteryx-owenii": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              174.6,
+              -41.4,
+              175.4,
+              -40.6
+            ]
+          },
+          {
+            "countries": [
+              "New Zealand"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20946,7 +21212,13 @@
   "haliaeetus-leucocephalus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20973,7 +21245,13 @@
   "pandion-haliaetus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -20989,7 +21267,13 @@
   "vultur-gryphus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21059,7 +21343,13 @@
   "sagittarius-serpentarius": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21124,7 +21414,13 @@
   "falco-peregrinus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21140,7 +21436,13 @@
   "bubo-scandiacus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21196,7 +21498,13 @@
   "tyto-alba": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21212,7 +21520,13 @@
   "ara-macao": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21266,7 +21580,13 @@
   "cacatua-galerita": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21300,7 +21620,37 @@
   "strigops-habroptilus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              167.5,
+              -47,
+              168.3,
+              -46.5
+            ]
+          },
+          {
+            "country": "New Zealand",
+            "bbox": [
+              175,
+              -36.3,
+              175.3,
+              -36
+            ]
+          },
+          {
+            "countries": [
+              "New Zealand"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21329,7 +21679,13 @@
   "mellisuga-helenae": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21345,7 +21701,13 @@
   "apus-apus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21430,7 +21792,13 @@
   "corvus-corax": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21512,7 +21880,13 @@
   "paradisaea-apoda": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21541,7 +21915,13 @@
   "menura-novaehollandiae": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21561,7 +21941,13 @@
   "hirundo-rustica": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21685,7 +22071,13 @@
   "turdus-migratorius": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21712,7 +22104,13 @@
   "erithacus-rubecula": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21778,7 +22176,13 @@
   "serinus-canaria": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21813,7 +22217,13 @@
   "geospiza-fortis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21832,7 +22242,99 @@
   "passer-domesticus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Native range",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              40,
+              140,
+              62
+            ]
+          },
+          {
+            "countries": [
+              "Turkey",
+              "Iran",
+              "Iraq",
+              "Syria",
+              "Israel",
+              "Jordan",
+              "Saudi Arabia",
+              "Afghanistan",
+              "Pakistan",
+              "India",
+              "Nepal",
+              "Bangladesh",
+              "Myanmar",
+              "Sri Lanka",
+              "Kazakhstan",
+              "Uzbekistan",
+              "Turkmenistan",
+              "Mongolia",
+              "Morocco",
+              "Algeria",
+              "Tunisia",
+              "Libya",
+              "Egypt"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              30,
+              125,
+              50
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21848,7 +22350,59 @@
   "sturnus-vulgaris": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Russia",
+              "Kazakhstan",
+              "Turkey",
+              "Iran"
+            ],
+            "latMax": 66
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21934,7 +22488,13 @@
   "mimus-polyglottos": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -21965,7 +22525,13 @@
   "cardinalis-cardinalis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22008,7 +22574,13 @@
   "ptilonorhynchus-violaceus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22037,7 +22609,13 @@
   "phoenicopterus-roseus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22102,7 +22680,13 @@
   "diomedea-exulans": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22121,7 +22705,13 @@
   "ardenna-grisea": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22156,7 +22746,13 @@
   "pelecanus-onocrotalus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22207,7 +22803,13 @@
   "balaeniceps-rex": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22269,7 +22871,13 @@
   "ardea-cinerea": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22377,7 +22985,13 @@
   "ciconia-ciconia": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22431,7 +23045,13 @@
   "threskiornis-aethiopicus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22500,7 +23120,56 @@
   "grus-japonensis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Japan",
+            "bbox": [
+              141,
+              42,
+              146,
+              44.5
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              120,
+              30,
+              135,
+              50
+            ]
+          },
+          {
+            "countries": [
+              "North Korea",
+              "South Korea"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              128,
+              44,
+              136,
+              50
+            ]
+          },
+          {
+            "country": "Japan",
+            "bbox": [
+              130,
+              33,
+              146,
+              45
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22544,7 +23213,32 @@
   "porphyrio-hochstetteri": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              167,
+              -46,
+              168.5,
+              -44.8
+            ]
+          },
+          {
+            "country": "New Zealand",
+            "bbox": [
+              166,
+              -47,
+              174.5,
+              -40.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22564,7 +23258,66 @@
   "anas-platyrhynchos": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Canada",
+              "United States of America",
+              "Mexico",
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Russia",
+              "Kazakhstan",
+              "Mongolia",
+              "China",
+              "Japan",
+              "Turkey",
+              "Iran",
+              "Iceland"
+            ],
+            "latMax": 72
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22641,7 +23394,13 @@
   "gallus-gallus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22692,7 +23451,13 @@
   "leipoa-ocellata": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22712,7 +23477,13 @@
   "dendrocopos-major": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22784,7 +23555,13 @@
   "ramphastos-toco": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22821,7 +23598,13 @@
   "buceros-bicornis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22872,7 +23655,13 @@
   "alcedo-atthis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -22958,7 +23747,13 @@
   "sterna-paradisaea": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23036,7 +23831,13 @@
   "fratercula-arctica": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23106,7 +23907,13 @@
   "sula-nebouxii": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23133,7 +23940,13 @@
   "fregata-magnificens": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23168,7 +23981,13 @@
   "phalacrocorax-carbo": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23262,7 +24081,64 @@
   "columba-livia": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Native range (wild rock doves)",
+        "regions": [
+          {
+            "countries": [
+              "United Kingdom",
+              "Ireland",
+              "France",
+              "Portugal",
+              "Spain",
+              "Italy",
+              "Greece",
+              "Croatia",
+              "Albania",
+              "Turkey",
+              "Cyprus",
+              "Iran",
+              "Iraq",
+              "Syria",
+              "Israel",
+              "Jordan",
+              "Saudi Arabia",
+              "Yemen",
+              "Oman",
+              "Afghanistan",
+              "Pakistan",
+              "India",
+              "Nepal",
+              "Sri Lanka",
+              "Turkmenistan",
+              "Uzbekistan",
+              "Kazakhstan",
+              "Morocco",
+              "Algeria",
+              "Tunisia",
+              "Libya",
+              "Egypt",
+              "Mauritania",
+              "Mali",
+              "Niger",
+              "Chad",
+              "Sudan"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              30,
+              105,
+              45
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23278,7 +24154,13 @@
   "cuculus-canorus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23348,7 +24230,97 @@
   "otis-tarda": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Spain",
+            "bbox": [
+              -7,
+              37,
+              0,
+              43
+            ]
+          },
+          {
+            "country": "Portugal",
+            "bbox": [
+              -8.5,
+              37,
+              -6.5,
+              40
+            ]
+          },
+          {
+            "countries": [
+              "Hungary",
+              "Austria"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              38,
+              45,
+              90,
+              55
+            ]
+          },
+          {
+            "countries": [
+              "Kazakhstan",
+              "Mongolia",
+              "Turkey"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              85,
+              40,
+              125,
+              50
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -2,
+              51,
+              -1.5,
+              51.4
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -3,
+              50.5,
+              1.8,
+              54
+            ]
+          },
+          {
+            "countries": [
+              "France",
+              "Germany",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Romania",
+              "Bulgaria",
+              "Serbia",
+              "Ukraine",
+              "Moldova",
+              "Greece",
+              "Morocco"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23417,7 +24389,13 @@
   "tinamus-major": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23472,7 +24450,13 @@
   "gavia-immer": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23524,7 +24508,13 @@
   "podiceps-cristatus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23608,7 +24598,13 @@
   "upupa-epops": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23703,7 +24699,13 @@
   "limosa-lapponica": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23770,7 +24772,13 @@
   "alligator-mississippiensis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23790,7 +24798,32 @@
   "alligator-sinensis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              117,
+              29.5,
+              121.5,
+              32
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              105,
+              23,
+              122,
+              35
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23810,7 +24843,13 @@
   "caiman-crocodilus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23906,7 +24945,13 @@
   "caiman-latirostris": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23950,7 +24995,13 @@
   "caiman-yacare": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -23993,7 +25044,13 @@
   "melanosuchus-niger": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24064,7 +25121,13 @@
   "paleosuchus-palpebrosus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24140,7 +25203,13 @@
   "paleosuchus-trigonatus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24211,7 +25280,78 @@
   "crocodylus-niloticus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Egypt"
+            ],
+            "latMax": 24.5
+          },
+          {
+            "countries": [
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Somalia",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Rwanda",
+              "Burundi",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "Angola",
+              "Madagascar",
+              "eSwatini"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              26,
+              -29,
+              33,
+              -22
+            ]
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              25,
+              -13,
+              31,
+              5
+            ]
+          },
+          {
+            "country": "Egypt",
+            "bbox": [
+              29,
+              24,
+              33,
+              31.6
+            ]
+          },
+          {
+            "country": "Israel",
+            "bbox": [
+              34.8,
+              32.2,
+              35.3,
+              32.7
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24268,7 +25408,13 @@
   "crocodylus-suchus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24324,7 +25470,13 @@
   "crocodylus-porosus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24384,7 +25536,13 @@
   "crocodylus-acutus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24464,7 +25622,13 @@
   "crocodylus-intermedius": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24493,7 +25657,13 @@
   "crocodylus-johnstoni": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24513,7 +25683,13 @@
   "crocodylus-mindorensis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24529,7 +25705,13 @@
   "crocodylus-moreletii": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24563,7 +25745,13 @@
   "crocodylus-novaeguineae": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24592,7 +25780,13 @@
   "crocodylus-halli": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24621,7 +25815,13 @@
   "crocodylus-palustris": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24658,7 +25858,13 @@
   "crocodylus-rhombifer": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24678,7 +25884,69 @@
   "crocodylus-siamensis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Cambodia",
+            "bbox": [
+              102.5,
+              10.5,
+              106,
+              13
+            ]
+          },
+          {
+            "country": "Laos",
+            "bbox": [
+              104,
+              14,
+              106.5,
+              17
+            ]
+          },
+          {
+            "country": "Thailand",
+            "bbox": [
+              99,
+              11,
+              102,
+              15
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              114,
+              -3,
+              117.5,
+              1
+            ]
+          },
+          {
+            "countries": [
+              "Thailand",
+              "Cambodia",
+              "Laos",
+              "Vietnam",
+              "Malaysia",
+              "Brunei"
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24725,7 +25993,13 @@
   "mecistops-cataphractus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24752,7 +26026,13 @@
   "mecistops-leptorhynchus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24781,7 +26061,13 @@
   "osteolaemus-tetraspis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24824,7 +26110,65 @@
   "gavialis-gangeticus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              76,
+              24,
+              89,
+              30
+            ]
+          },
+          {
+            "country": "Nepal",
+            "bbox": [
+              80,
+              26.5,
+              85,
+              29
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              67,
+              24,
+              74,
+              33
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              72,
+              19,
+              96,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Bangladesh",
+              "Bhutan"
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              92,
+              19,
+              95,
+              23
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24853,7 +26197,68 @@
   "tomistoma-schlegelii": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              100,
+              1,
+              104.5,
+              7
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              115,
+              5
+            ]
+          },
+          {
+            "country": "Thailand",
+            "bbox": [
+              98,
+              5.5,
+              102,
+              9
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24900,7 +26305,13 @@
   "chelonoidis-niger": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24920,7 +26331,13 @@
   "aldabrachelys-gigantea": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24939,7 +26356,13 @@
   "dermochelys-coriacea": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24958,7 +26381,13 @@
   "chelonia-mydas": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24977,7 +26406,13 @@
   "caretta-caretta": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -24996,7 +26431,13 @@
   "eretmochelys-imbricata": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25015,7 +26456,13 @@
   "macrochelys-temminckii": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25035,7 +26482,13 @@
   "chelydra-serpentina": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25064,7 +26517,13 @@
   "trachemys-scripta": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25093,7 +26552,13 @@
   "terrapene-carolina": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25122,7 +26587,13 @@
   "chelus-fimbriata": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25193,7 +26664,13 @@
   "sphenodon-punctatus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25231,7 +26708,32 @@
   "varanus-komodoensis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Indonesia",
+            "bbox": [
+              119.3,
+              -9,
+              121,
+              -8.2
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              119.3,
+              -9,
+              123,
+              -8
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25251,7 +26753,13 @@
   "iguana-iguana": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25301,7 +26809,13 @@
   "amblyrhynchus-cristatus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25321,7 +26835,13 @@
   "heloderma-suspectum": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25350,7 +26870,13 @@
   "furcifer-pardalis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25370,7 +26896,13 @@
   "gekko-gecko": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25420,7 +26952,13 @@
   "chlamydosaurus-kingii": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25458,7 +26996,13 @@
   "basiliscus-plumifrons": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25485,7 +27029,13 @@
   "phrynosoma-cornutum": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25514,7 +27064,13 @@
   "tiliqua-scincoides": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25543,7 +27099,13 @@
   "malayopython-reticulatus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25586,7 +27148,13 @@
   "eunectes-murinus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25680,7 +27248,13 @@
   "boa-constrictor": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25738,7 +27312,13 @@
   "ophiophagus-hannah": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25787,7 +27367,13 @@
   "dendroaspis-polylepis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25852,7 +27438,13 @@
   "oxyuranus-microlepidotus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25872,7 +27464,13 @@
   "hydrophis-platurus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25915,7 +27513,13 @@
   "crotalus-atrox": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -25944,7 +27548,13 @@
   "bitis-gabonica": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26019,7 +27629,13 @@
   "thamnophis-sirtalis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26057,7 +27673,13 @@
   "agalychnis-callidryas": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26097,7 +27719,13 @@
   "phyllobates-terribilis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26117,7 +27745,13 @@
   "lithobates-catesbeianus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26155,7 +27789,13 @@
   "rana-temporaria": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26218,7 +27858,58 @@
   "rhinella-marina": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Colombia"
+            ]
+          },
+          {
+            "countries": [
+              "Venezuela"
+            ]
+          },
+          {
+            "countries": [
+              "Guyana"
+            ]
+          },
+          {
+            "countries": [
+              "Suriname"
+            ]
+          },
+          {
+            "countries": [
+              "Ecuador"
+            ]
+          },
+          {
+            "countries": [
+              "Peru"
+            ]
+          },
+          {
+            "countries": [
+              "Bolivia"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -20,
+              -35,
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26291,7 +27982,13 @@
   "atelopus-zeteki": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26311,7 +28008,13 @@
   "conraua-goliath": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26340,7 +28043,13 @@
   "xenopus-laevis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26371,7 +28080,13 @@
   "paedophryne-amauensis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26391,7 +28106,13 @@
   "ambystoma-mexicanum": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26411,7 +28132,13 @@
   "andrias-davidianus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26431,7 +28158,13 @@
   "salamandra-salamandra": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26473,7 +28206,13 @@
   "triturus-cristatus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26536,7 +28275,13 @@
   "proteus-anguinus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26574,7 +28319,13 @@
   "siphonops-annulatus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26607,7 +28358,13 @@
   "carcharodon-carcharias": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26626,7 +28383,13 @@
   "rhincodon-typus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26645,7 +28408,13 @@
   "cetorhinus-maximus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26672,7 +28441,13 @@
   "galeocerdo-cuvier": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26691,7 +28466,13 @@
   "carcharhinus-leucas": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26710,7 +28491,13 @@
   "sphyrna-mokarran": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26729,7 +28516,13 @@
   "somniosus-microcephalus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26748,7 +28541,13 @@
   "mobula-birostris": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26767,7 +28566,22 @@
   "petromyzon-marinus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "sea": [
+              -80,
+              25,
+              30,
+              72
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26804,7 +28618,13 @@
   "latimeria-chalumnae": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26823,7 +28643,13 @@
   "neoceratodus-forsteri": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26843,7 +28669,38 @@
   "huso-huso": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "sea": [
+              46,
+              36,
+              55,
+              47.5
+            ]
+          },
+          {
+            "sea": [
+              27,
+              40,
+              42,
+              47.5
+            ]
+          },
+          {
+            "sea": [
+              12,
+              40,
+              20,
+              46
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26870,7 +28727,13 @@
   "atractosteus-spatula": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26899,7 +28762,13 @@
   "amia-calva": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26928,7 +28797,13 @@
   "arapaima-gigas": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -26999,7 +28874,13 @@
   "clupea-harengus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27018,7 +28899,98 @@
   "salmo-salar": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "sea": [
+              -75,
+              40,
+              40,
+              80
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -80,
+              43,
+              -55,
+              60
+            ]
+          },
+          {
+            "countries": [
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Iceland"
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              -5,
+              43,
+              2,
+              50
+            ]
+          },
+          {
+            "country": "Sweden",
+            "bbox": [
+              11,
+              55,
+              24,
+              68
+            ]
+          },
+          {
+            "country": "Finland",
+            "bbox": [
+              21,
+              60,
+              30,
+              70
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              60,
+              45,
+              70
+            ]
+          },
+          {
+            "countries": [
+              "Germany",
+              "Netherlands",
+              "Belgium",
+              "Spain",
+              "Portugal",
+              "Poland",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Denmark"
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -74,
+              40,
+              -66,
+              47.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27090,7 +29062,37 @@
   "cyprinus-carpio": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Romania",
+              "Bulgaria",
+              "Serbia",
+              "Hungary",
+              "Moldova",
+              "Ukraine",
+              "Kazakhstan",
+              "Uzbekistan",
+              "Turkmenistan",
+              "Azerbaijan"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              38,
+              42,
+              55,
+              52
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27133,7 +29135,13 @@
   "carassius-auratus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27153,7 +29161,13 @@
   "gadus-morhua": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27172,7 +29186,13 @@
   "thunnus-thynnus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27207,7 +29227,13 @@
   "xiphias-gladius": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27226,7 +29252,13 @@
   "pygocentrus-nattereri": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27311,7 +29343,13 @@
   "amphiprion-ocellaris": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27330,7 +29368,13 @@
   "takifugu-rubripes": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27349,7 +29393,13 @@
   "hippocampus-hippocampus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27376,7 +29426,13 @@
   "mola-mola": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27395,7 +29451,13 @@
   "regalecus-glesne": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27414,7 +29476,13 @@
   "anguilla-anguilla": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27484,7 +29552,13 @@
   "electrophorus-electricus": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27555,7 +29629,13 @@
   "melanocetus-johnsonii": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27574,7 +29654,13 @@
   "esox-lucius": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27675,7 +29761,51 @@
   "silurus-glanis": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Germany",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Austria",
+              "Hungary",
+              "Romania",
+              "Bulgaria",
+              "Serbia",
+              "Croatia",
+              "Ukraine",
+              "Moldova",
+              "Belarus",
+              "Lithuania",
+              "Latvia"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              42,
+              60,
+              58
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              46,
+              41,
+              70,
+              50
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [
@@ -27750,7 +29880,13 @@
   "betta-splendens": {
     "phases": [
       {
-        "from": 10000,
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
         "to": 0,
         "label": "Where it lives today",
         "regions": [

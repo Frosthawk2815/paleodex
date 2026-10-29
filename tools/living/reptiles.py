@@ -220,3 +220,11 @@ GENERA = [
       ['garter snake', 'common garter snake', 'garden snake', 'thamnophis'],
       [part('Canada', -130, 42, -60, 62), part('United States of America', -125, 25, -67, 49), part('Mexico', -108, 25, -104, 31)]),
 ]
+
+
+# Historic ranges (about 1,000 to 150 years ago). Species not listed in HISTORIC_CHANGED had a
+# range much as today.
+HISTORIC_CHANGED = {
+    'varanus-komodoensis': {'add': [part('Indonesia', 119.3, -9, 123, -8)]},
+}
+HISTORIC = {**{sid: 'same' for sid in ['chelonoidis-niger', 'aldabrachelys-gigantea', 'dermochelys-coriacea', 'chelonia-mydas', 'caretta-caretta', 'eretmochelys-imbricata', 'macrochelys-temminckii', 'chelydra-serpentina', 'trachemys-scripta', 'terrapene-carolina', 'chelus-fimbriata', 'sphenodon-punctatus', 'iguana-iguana', 'amblyrhynchus-cristatus', 'heloderma-suspectum', 'furcifer-pardalis', 'gekko-gecko', 'chlamydosaurus-kingii', 'basiliscus-plumifrons', 'phrynosoma-cornutum', 'tiliqua-scincoides', 'malayopython-reticulatus', 'eunectes-murinus', 'boa-constrictor', 'ophiophagus-hannah', 'dendroaspis-polylepis', 'oxyuranus-microlepidotus', 'hydrophis-platurus', 'crotalus-atrox', 'bitis-gabonica', 'thamnophis-sirtalis']}, **HISTORIC_CHANGED}

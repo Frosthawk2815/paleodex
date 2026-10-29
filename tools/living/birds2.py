@@ -380,3 +380,22 @@ GENERA = [
       ['bar-tailed godwit', 'godwit', 'limosa', 'migration', 'longest flight'],
       [part('United States of America', -168, 58, -141, 72), part('Russia', 30, 64, 180, 76), part('Norway', 20, 68, 31, 71), C('New Zealand'), part('Australia', 113, -44, 154, -11), part('United Kingdom', -6, 50, 2, 56), C('Netherlands', 'Mauritania')]),
 ]
+
+
+# Historic ranges (about 1,000 to 150 years ago). Species not listed in HISTORIC_CHANGED had a
+# range much as today.
+HISTORIC_CHANGED = {
+    'strigops-habroptilus': {'add': [C('New Zealand')]},
+    'porphyrio-hochstetteri': {'add': [part('New Zealand', 166, -47, 174.5, -40.5)]},
+    'grus-japonensis': {'add': [part('Japan', 130, 33, 146, 45)]},
+    # Gone from Britain by 1832 (reintroduced in 2004) and from much of central Europe.
+    'otis-tarda': {'add': [part('United Kingdom', -3, 50.5, 1.8, 54), C('France', 'Germany', 'Poland', 'Czechia', 'Slovakia', 'Romania', 'Bulgaria', 'Serbia', 'Ukraine', 'Moldova', 'Greece', 'Morocco')]},
+    # Native range: it was carried around the world from the 1850s.
+    'passer-domesticus': {'label': 'Native range', 'regions': [C(*EUROPE), part('Russia', 28, 40, 140, 62), C('Turkey', 'Iran', 'Iraq', 'Syria', 'Israel', 'Jordan', 'Saudi Arabia', 'Afghanistan', 'Pakistan', 'India', 'Nepal', 'Bangladesh', 'Myanmar', 'Sri Lanka', 'Kazakhstan', 'Uzbekistan', 'Turkmenistan', 'Mongolia', 'Morocco', 'Algeria', 'Tunisia', 'Libya', 'Egypt'), part('China', 75, 30, 125, 50)]},
+    # Wild rock doves live on sea cliffs and in mountains; feral pigeons spread worldwide with people.
+    'columba-livia': {'label': 'Native range (wild rock doves)', 'regions': [C('United Kingdom', 'Ireland', 'France', 'Portugal', 'Spain', 'Italy', 'Greece', 'Croatia', 'Albania', 'Turkey', 'Cyprus', 'Iran', 'Iraq', 'Syria', 'Israel', 'Jordan', 'Saudi Arabia', 'Yemen', 'Oman', 'Afghanistan', 'Pakistan', 'India', 'Nepal', 'Sri Lanka', 'Turkmenistan', 'Uzbekistan', 'Kazakhstan', 'Morocco', 'Algeria', 'Tunisia', 'Libya', 'Egypt', 'Mauritania', 'Mali', 'Niger', 'Chad', 'Sudan'), part('China', 75, 30, 105, 45)]},
+    # Introduced to North America from 1890, and to Australia, New Zealand and South Africa.
+    'sturnus-vulgaris': {'without': [1, 2, 3, 4]},
+    'anas-platyrhynchos': {'without': [1, 2]},
+}
+HISTORIC = {**{sid: 'same' for sid in ['haliaeetus-leucocephalus', 'pandion-haliaetus', 'vultur-gryphus', 'sagittarius-serpentarius', 'falco-peregrinus', 'bubo-scandiacus', 'tyto-alba', 'ara-macao', 'cacatua-galerita', 'mellisuga-helenae', 'apus-apus', 'corvus-corax', 'paradisaea-apoda', 'menura-novaehollandiae', 'hirundo-rustica', 'turdus-migratorius', 'erithacus-rubecula', 'serinus-canaria', 'geospiza-fortis', 'mimus-polyglottos', 'cardinalis-cardinalis', 'ptilonorhynchus-violaceus', 'phoenicopterus-roseus', 'diomedea-exulans', 'ardenna-grisea', 'pelecanus-onocrotalus', 'balaeniceps-rex', 'ardea-cinerea', 'ciconia-ciconia', 'threskiornis-aethiopicus', 'gallus-gallus', 'leipoa-ocellata', 'dendrocopos-major', 'ramphastos-toco', 'buceros-bicornis', 'alcedo-atthis', 'sterna-paradisaea', 'fratercula-arctica', 'sula-nebouxii', 'fregata-magnificens', 'phalacrocorax-carbo', 'cuculus-canorus', 'tinamus-major', 'gavia-immer', 'podiceps-cristatus', 'upupa-epops', 'limosa-lapponica']}, **HISTORIC_CHANGED}

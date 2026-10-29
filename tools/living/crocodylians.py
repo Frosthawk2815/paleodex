@@ -172,3 +172,18 @@ GENERA = [
       ['false gharial', 'tomistoma', 'malayan gharial', 'borneo', 'sumatra'],
       [part('Indonesia', 95, -6, 106.2, 6), part('Indonesia', 108.5, -4.3, 119.3, 4.5), part('Malaysia', 100, 1, 104.5, 7), part('Malaysia', 109.5, 0.8, 115, 5)]),
 ]
+
+
+# Historic ranges (about 1,000 to 150 years ago). Species not listed in HISTORIC_CHANGED had a
+# range much as today.
+HISTORIC_CHANGED = {
+    # Once along the lower Nile to the delta (gone by the late 1800s) and in what is now Israel.
+    'crocodylus-niloticus': {'add': [part('Egypt', 29, 24, 33, 31.6), part('Israel', 34.8, 32.2, 35.3, 32.7)]},
+    # Once in the Indus, Ganges, Brahmaputra and Mahanadi rivers and into Myanmar.
+    'gavialis-gangeticus': {'add': [part('Pakistan', 67, 24, 74, 33), part('India', 72, 19, 96, 30), C('Bangladesh', 'Bhutan'), part('Myanmar', 92, 19, 95, 23)]},
+    # Once through much of the lower and middle Yangtze and nearby rivers.
+    'alligator-sinensis': {'add': [part('China', 105, 23, 122, 35)]},
+    'crocodylus-siamensis': {'add': [C('Thailand', 'Cambodia', 'Laos', 'Vietnam', 'Malaysia', 'Brunei'), part('Indonesia', 105, -9, 114.6, -5.8)]},
+    'tomistoma-schlegelii': {'add': [part('Thailand', 98, 5.5, 102, 9), part('Indonesia', 105, -9, 114.6, -5.8)]},
+}
+HISTORIC = {**{sid: 'same' for sid in ['alligator-mississippiensis', 'caiman-crocodilus', 'caiman-latirostris', 'caiman-yacare', 'melanosuchus-niger', 'paleosuchus-palpebrosus', 'paleosuchus-trigonatus', 'crocodylus-suchus', 'crocodylus-porosus', 'crocodylus-acutus', 'crocodylus-intermedius', 'crocodylus-johnstoni', 'crocodylus-mindorensis', 'crocodylus-moreletii', 'crocodylus-novaeguineae', 'crocodylus-halli', 'crocodylus-palustris', 'crocodylus-rhombifer', 'mecistops-cataphractus', 'mecistops-leptorhynchus', 'osteolaemus-tetraspis']}, **HISTORIC_CHANGED}

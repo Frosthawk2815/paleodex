@@ -233,3 +233,19 @@ GENERA = [
       ['siamese fighting fish', 'betta', 'fighting fish', 'betta splendens', 'thailand'],
       [part('Thailand', 99, 12, 105, 17), part('Cambodia', 102, 10.5, 107, 14), part('Laos', 101, 14, 106, 18), part('Vietnam', 104.5, 8.5, 107, 11)]),
 ]
+
+
+# Historic ranges (about 1,000 to 150 years ago). Species not listed in HISTORIC_CHANGED had a
+# range much as today.
+HISTORIC_CHANGED = {
+    # Belugas also swam up the Adriatic into Italy's Po River until the 1900s.
+    'huso-huso': {'add': [sea(12, 40, 20, 46)]},
+    # Atlantic salmon once ran up the Rhine and many rivers of western Europe and New England.
+    'salmo-salar': {'add': [C('Germany', 'Netherlands', 'Belgium', 'Spain', 'Portugal', 'Poland', 'Lithuania', 'Latvia', 'Estonia', 'Denmark'), part('United States of America', -74, 40, -66, 47.5)]},
+    'cyprinus-carpio': {'without': [2]},
+    # It reached the Great Lakes through shipping canals in the 1900s.
+    'petromyzon-marinus': {'without': [1, 2]},
+    # Introduced to Spain, Italy and France from the 1970s.
+    'silurus-glanis': {'without': [3, 4, 5]},
+}
+HISTORIC = {**{sid: 'same' for sid in ['carcharodon-carcharias', 'rhincodon-typus', 'cetorhinus-maximus', 'galeocerdo-cuvier', 'carcharhinus-leucas', 'sphyrna-mokarran', 'somniosus-microcephalus', 'mobula-birostris', 'latimeria-chalumnae', 'neoceratodus-forsteri', 'atractosteus-spatula', 'amia-calva', 'arapaima-gigas', 'clupea-harengus', 'carassius-auratus', 'gadus-morhua', 'thunnus-thynnus', 'xiphias-gladius', 'pygocentrus-nattereri', 'amphiprion-ocellaris', 'takifugu-rubripes', 'hippocampus-hippocampus', 'mola-mola', 'regalecus-glesne', 'anguilla-anguilla', 'electrophorus-electricus', 'melanocetus-johnsonii', 'esox-lucius', 'betta-splendens']}, **HISTORIC_CHANGED}

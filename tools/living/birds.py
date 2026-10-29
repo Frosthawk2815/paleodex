@@ -194,3 +194,16 @@ GENERA = [
       ['little spotted kiwi', 'kiwi', 'apteryx', 'kapiti island', 'new zealand'],
       [part('New Zealand', 174.6, -41.4, 175.4, -40.6)]),
 ]
+
+
+# Historic ranges (about 1,000 to 150 years ago). Species not listed in HISTORIC_CHANGED had a
+# range much as today.
+HISTORIC_CHANGED = {
+    # The Arabian ostrich died out in the 1960s; ostriches also lived across North Africa.
+    'struthio-camelus': {'add': [C('Morocco', 'Algeria', 'Tunisia', 'Libya', 'Egypt', 'W. Sahara', 'Saudi Arabia', 'Jordan', 'Syria', 'Iraq', 'Kuwait', 'Yemen', 'Oman', 'United Arab Emirates', 'Israel', 'South Africa')]},
+    # Emus of Tasmania and King Island died out in the 1800s.
+    'dromaius-novaehollandiae': {'add': [part('Australia', 143.5, -43.7, 148.5, -39.5)]},
+    # Little spotted kiwi once lived across both main islands.
+    'apteryx-owenii': {'add': [C('New Zealand')]},
+}
+HISTORIC = {**{sid: 'same' for sid in ['aptenodytes-forsteri', 'aptenodytes-patagonicus', 'pygoscelis-adeliae', 'pygoscelis-antarcticus', 'pygoscelis-papua', 'eudyptes-chrysocome', 'eudyptes-moseleyi', 'eudyptes-pachyrhynchus', 'eudyptes-robustus', 'eudyptes-sclateri', 'eudyptes-chrysolophus', 'eudyptes-schlegeli', 'megadyptes-antipodes', 'eudyptula-minor', 'spheniscus-demersus', 'spheniscus-humboldti', 'spheniscus-magellanicus', 'spheniscus-mendiculus', 'struthio-molybdophanes', 'rhea-americana', 'rhea-pennata', 'casuarius-casuarius', 'casuarius-unappendiculatus', 'casuarius-bennetti', 'apteryx-mantelli', 'apteryx-australis', 'apteryx-rowi', 'apteryx-haastii']}, **HISTORIC_CHANGED}

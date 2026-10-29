@@ -159,6 +159,10 @@ type Props = {
 
 const K_PG = EXTINCTIONS.find((e) => e.cause === 'asteroid')!;
 
+// A common name mid-sentence: lower-case first letter, except names named after people
+// (Steller’s sea cow).
+const inSentence = (name: string) => (/^[A-Z][a-z]*['’]s\b/.test(name) ? name : name.charAt(0).toLowerCase() + name.slice(1));
+
 export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging, rangeId, onClearRange, onSelectSpecies }: Props) {
   const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land', view: 'earth', moonZoom: 1 });
   const [pan] = useState(() => createCameraResponder(setCamera, onDragging));
@@ -513,10 +517,10 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
               <Circle cx={xy[0]} cy={xy[1]} r={2.5} fill="#FFFFFF" />
               <PointIconShape kind="skull" x={xy[0]} y={xy[1] - 21} size={36} />
               <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 16} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={12} fontWeight="700" textAnchor="middle">
-                {`Last ${name.toLowerCase()}`}
+                {`Last ${inSentence(name)}`}
               </SvgText>
               <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 16} fill="#FFFFFF" fontSize={12} fontWeight="700" textAnchor="middle">
-                {`Last ${name.toLowerCase()}`}
+                {`Last ${inSentence(name)}`}
               </SvgText>
             </G>
           ))}
@@ -588,7 +592,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           key={`skull-${id}-hit`}
           onPress={() => onSelectSpecies?.(id)}
           accessibilityRole="button"
-          accessibilityLabel={`Where the last ${name.toLowerCase()} was seen alive: read more`}
+          accessibilityLabel={`Where the last ${inSentence(name)} was seen alive: read more`}
           style={[styles.hit, { left: xy[0] - 22, top: xy[1] - 40, width: 44, height: 56 }]}
         />
       ))}
