@@ -592,7 +592,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           style={[styles.hit, { left: xy[0] - 22, top: xy[1] - 40, width: 44, height: 56 }]}
         />
       ))}
-      {!moonMode && range && rangeId && (
+      {!moonMode && !!range && !!rangeId && (
         <View style={styles.rangeChip}>
           <View style={styles.rangeSwatch} />
           <Text style={styles.rangeText} numberOfLines={2}>

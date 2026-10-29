@@ -55,7 +55,7 @@ export function SeriesTimeline({ period }: { period: Period }) {
       <View style={styles.list}>
         {series.map((s, i) => (
           <View key={s.name}>
-            {s.group && s.group !== series[i - 1]?.group && (
+            {!!s.group && s.group !== series[i - 1]?.group && (
               <Text style={[styles.group, { color: palette.muted }]}>{s.group} sub-period</Text>
             )}
             <SeriesRow series={s} expanded={open.has(s.name)} onToggle={() => toggle(s.name)} palette={palette} />

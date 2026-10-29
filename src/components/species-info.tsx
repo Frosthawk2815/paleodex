@@ -46,7 +46,7 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
       <Text style={[info.title, info.italic]} accessibilityRole="header">
         {species.name}
       </Text>
-      {species.common && <Text style={info.subtitle}>{species.common}</Text>}
+      {!!species.common && <Text style={info.subtitle}>{species.common}</Text>}
 
       <View style={info.crumbs}>
         {path.map((c, i) => (
