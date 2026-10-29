@@ -20,6 +20,7 @@ from shapely.geometry.polygon import orient
 from shapely.ops import unary_union
 
 SIMPLIFY_DEG = 0.2
+MAX_SIMPLIFY_DEG = 0.5
 SEA_SIMPLIFY_DEG = 0.6
 SEA_MIN_HOLE = 4.0  # square degrees
 MIN_AREA = 0.02  # square degrees; keeps small islands such as Mauritius
@@ -110,11 +111,13 @@ def main():
             # Wide ranges drop islets that would be invisible at the zoom they are seen at; small
             # ranges keep small islands (such as Mauritius for the dodo).
             min_area = max(MIN_AREA, g.area * 0.0004)
+            # Wide ranges are seen zoomed out, so they can be drawn more coarsely.
+            tol = min(MAX_SIMPLIFY_DEG, max(SIMPLIFY_DEG, math.sqrt(g.area) * 0.004))
             for poly in polygons_of(g):
                 if poly.area < min_area:
                     continue
                 # Small islands get a finer tolerance so they keep their shape.
-                poly = poly.simplify(min(SIMPLIFY_DEG, math.sqrt(poly.area) * 0.05), preserve_topology=True)
+                poly = poly.simplify(min(tol, math.sqrt(poly.area) * 0.05), preserve_topology=True)
                 if poly.is_empty or poly.geom_type != 'Polygon':
                     continue
                 poly = orient(poly, sign=-1.0)  # exterior clockwise for d3-geo
