@@ -13504,5 +13504,1028 @@
         ]
       }
     ]
+  },
+  "balaena-mysticetus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              60,
+              180,
+              82
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eubalaena-australis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -60,
+              180,
+              -20
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caperea-marginata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -55,
+              180,
+              -30
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eschrichtius-robustus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              20,
+              -110,
+              72
+            ]
+          },
+          {
+            "sea": [
+              125,
+              30,
+              160,
+              60
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "balaenoptera-musculus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -70,
+              180,
+              75
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "megaptera-novaeangliae": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -70,
+              180,
+              75
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "physeter-macrocephalus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -60,
+              180,
+              65
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "kogia-breviceps": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -45,
+              180,
+              45
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ziphius-cavirostris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -55,
+              180,
+              60
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mesoplodon-densirostris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -40,
+              180,
+              40
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "berardius-bairdii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              120,
+              20,
+              180,
+              65
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              20,
+              -105,
+              65
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hyperoodon-ampullatus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -70,
+              40,
+              20,
+              80
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "tasmacetus-shepherdi": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -55,
+              180,
+              -33
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "indopacetus-pacificus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              30,
+              -30,
+              180,
+              30
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              -30,
+              -110,
+              30
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "platanista-gangetica": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              78,
+              22,
+              96,
+              30
+            ]
+          },
+          {
+            "country": "Bangladesh",
+            "bbox": [
+              88,
+              21,
+              93,
+              26.5
+            ]
+          },
+          {
+            "country": "Nepal",
+            "bbox": [
+              80,
+              26.5,
+              88,
+              28
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              67,
+              25,
+              73,
+              32
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "inia-geoffrensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -10,
+              -50,
+              2
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -76,
+              -10,
+              -70,
+              -2
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -74,
+              -4,
+              -67,
+              7
+            ]
+          },
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -70,
+              2,
+              -61,
+              9
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -69,
+              -16,
+              -61,
+              -10
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -77,
+              -3,
+              -75,
+              0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pontoporia-blainvillei": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -56,
+              -42,
+              -40,
+              -18
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lipotes-vexillifer": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              111,
+              29,
+              122,
+              32.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "monodon-monoceros": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -100,
+              60,
+              0,
+              82
+            ]
+          },
+          {
+            "sea": [
+              30,
+              75,
+              100,
+              82
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "delphinapterus-leucas": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              55,
+              180,
+              82
+            ]
+          },
+          {
+            "sea": [
+              -71,
+              47,
+              -64,
+              50
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "phocoena-phocoena": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -80,
+              35,
+              35,
+              72
+            ]
+          },
+          {
+            "sea": [
+              27,
+              40,
+              42,
+              47
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              30,
+              -115,
+              65
+            ]
+          },
+          {
+            "sea": [
+              130,
+              32,
+              180,
+              65
+            ]
+          },
+          {
+            "sea": [
+              -115,
+              29.5,
+              -113.5,
+              31.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "neophocaena-phocaenoides": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              45,
+              -5,
+              125,
+              30
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "phocoenoides-dalli": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              130,
+              30,
+              180,
+              62
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              30,
+              -117,
+              62
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "orcinus-orca": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -70,
+              180,
+              75
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "tursiops-truncatus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -45,
+              180,
+              50
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "delphinus-delphis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -45,
+              180,
+              55
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "stenella-longirostris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -35,
+              180,
+              35
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "sousa-chinensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              70,
+              -25,
+              125,
+              26
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "sotalia-fluviatilis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -5,
+              -50,
+              0
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -75,
+              -5,
+              -70,
+              -3
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -71,
+              -4.3,
+              -69.5,
+              -2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "steno-bredanensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -35,
+              180,
+              35
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lagenorhynchus-albirostris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -60,
+              45,
+              30,
+              75
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "leucopleurus-acutus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -75,
+              38,
+              15,
+              70
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "sagmatias-obliquidens": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              130,
+              30,
+              180,
+              60
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              30,
+              -115,
+              60
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cephalorhynchus-hectori": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              166,
+              -47.5,
+              179,
+              -34
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lissodelphis-borealis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              140,
+              30,
+              180,
+              55
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              30,
+              -118,
+              55
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "grampus-griseus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -55,
+              180,
+              60
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "globicephala-melas": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -80,
+              30,
+              30,
+              75
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              -65,
+              180,
+              -20
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pseudorca-crassidens": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -45,
+              180,
+              45
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "feresa-attenuata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -35,
+              180,
+              35
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "peponocephala-electra": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -35,
+              180,
+              35
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "orcaella-brevirostris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              80,
+              -5,
+              125,
+              23
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              94.5,
+              16,
+              97,
+              24
+            ]
+          },
+          {
+            "country": "Cambodia",
+            "bbox": [
+              105,
+              11.5,
+              106.5,
+              14
+            ]
+          },
+          {
+            "country": "Laos",
+            "bbox": [
+              105.5,
+              13.8,
+              106.2,
+              14.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lagenodelphis-hosei": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -35,
+              180,
+              35
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

@@ -325,10 +325,9 @@ export const MEDIA_CENOZOIC: DataSet = {
     {
       id: 'cetacea',
       name: 'Cetacea',
-      common: 'Whales',
+      common: 'Whales, dolphins and porpoises',
       parent: 'artiodactyla',
-      family: true,
-      description: 'Whales, dolphins and porpoises, which evolved from four-legged hoofed mammals on land.',
+      description: 'Whales, dolphins and porpoises, which evolved from four-legged hoofed mammals on land about 50 million years ago. Early forms such as Pakicetus and Basilosaurus sit outside the two living groups: baleen whales and toothed whales.',
     },
     {
       id: 'entelodontidae',

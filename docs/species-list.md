@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-1252 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+1294 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -854,8 +854,8 @@
 | 52 Ma | *Priscacara serrata* | Priscacara | Perch-like fish | Green River Formation (Fossil Butte) |
 | 52 Ma | *Saniwa ensidens* | Saniwa | Monitor lizards | Green River Formation (Fossil Butte) |
 | 52 Ma | *Procambarus primaevus* | Green River crayfish | Crustaceans | Green River Formation (Fossil Butte) |
-| 48 Ma | *Pakicetus inachus* | Pakicetus | Whales | Kuldana Formation |
-| 48 Ma | *Ambulocetus natans* | Ambulocetus | Whales | Kuldana Formation |
+| 48 Ma | *Pakicetus inachus* | Pakicetus | Placental relatives | Kuldana Formation |
+| 48 Ma | *Ambulocetus natans* | Ambulocetus | Placental relatives | Kuldana Formation |
 | 47.5 Ma | *Darwinius masillae* | Darwinius (“Ida”) | Adapiforms | Messel Pit |
 | 47.5 Ma | *Eurohippus messelensis* | Eurohippus | Horses and zebras | Messel Pit |
 | 47.5 Ma | *Palaeochiropteryx tupaiodon* | Palaeochiropteryx | Bats | Messel Pit |
@@ -871,8 +871,8 @@
 | 47.5 Ma | *Titanomyrma gigantea* | Titanomyrma | Bees, ants and wasps | Messel Pit |
 | 42 Ma | *Andrewsarchus mongoliensis* | Andrewsarchus | Placental relatives | Irdin Manha Formation |
 | 42 Ma | *Gobiatherium mirificum* | Gobiatherium | Uintatheres | Irdin Manha Formation |
-| 39 Ma | *Basilosaurus isis* | Basilosaurus | Whales | Wadi Al-Hitan (Valley of the Whales) |
-| 39 Ma | *Dorudon atrox* | Dorudon | Whales | Wadi Al-Hitan (Valley of the Whales) |
+| 39 Ma | *Basilosaurus isis* | Basilosaurus | Placental relatives | Wadi Al-Hitan (Valley of the Whales) |
+| 39 Ma | *Dorudon atrox* | Dorudon | Placental relatives | Wadi Al-Hitan (Valley of the Whales) |
 | 39 Ma | *Protosiren smithae* | Protosiren | Sea cows | Wadi Al-Hitan (Valley of the Whales) |
 | 32 Ma | *Megacerops coloradensis* | Megacerops | Brontotheres | White River Group (Big Badlands) |
 | 32 Ma | *Archaeotherium mortoni* | Archaeotherium | Entelodonts | White River Group (Big Badlands) |
@@ -935,14 +935,14 @@
 | 10 Ma | *Chalicotherium goldfussi* | Chalicotherium | Chalicotheres | Eppelsheim Formation (Dinotheriensande) |
 | 10 Ma | *Machairodus aphanistus* | Machairodus | Cats | Eppelsheim Formation (Dinotheriensande) |
 | 9 Ma | *Otodus megalodon* | Megalodon | Mackerel sharks | Pisco Formation |
-| 9 Ma | *Livyatan melvillei* | Livyatan | Whales | Pisco Formation |
+| 9 Ma | *Livyatan melvillei* | Livyatan | Placental relatives | Pisco Formation |
 | 9 Ma | *Thalassocnus natans* | Aquatic sloth | Sloths and anteaters | Pisco Formation |
 | 9 Ma | *Acrophoca longirostris* | Acrophoca | True seals | Pisco Formation |
 | 9 Ma | *Spheniscus urbinai* | Urbina’s penguin | Penguins | Pisco Formation |
-| 9 Ma | *Odobenocetops peruvianus* | Odobenocetops | Whales | Pisco Formation |
+| 9 Ma | *Odobenocetops peruvianus* | Odobenocetops | Placental relatives | Pisco Formation |
 | 9 Ma | *Cosmopolitodus hastalis* | Broad-toothed mako | Mackerel sharks | Pisco Formation |
-| 9 Ma | *Piscobalaena nana* | Piscobalaena | Whales | Pisco Formation |
-| 9 Ma | *Messapicetus gregarius* | Messapicetus | Whales | Pisco Formation |
+| 9 Ma | *Piscobalaena nana* | Piscobalaena | Placental relatives | Pisco Formation |
+| 9 Ma | *Messapicetus gregarius* | Messapicetus | Beaked whales | Pisco Formation |
 | 9 Ma | *Hadrokirus martini* | Hadrokirus | True seals | Pisco Formation |
 | 8 Ma | *Stupendemys geographicus* | Stupendemys | Side-necked turtles | Urumaco Formation |
 | 8 Ma | *Purussaurus mirandai* | Purussaurus mirandai | Crocodylians | Urumaco Formation |
@@ -1314,3 +1314,45 @@
 | 10,000 yr | *Budorcas taxicolor* | Takin | Cattle and antelopes | range map — Eastern Himalayas and mountains of western China |
 | 10,000 yr | *Capricornis sumatraensis* | Sumatran serow | Cattle and antelopes | range map — Mountains of Sumatra and the Malay Peninsula |
 | 10,000 yr | *Naemorhedus goral* | Himalayan goral | Cattle and antelopes | range map — Himalayan foothills of India, Nepal, Bhutan and Pakistan |
+| 10,000 yr | *Balaena mysticetus* | Bowhead whale | Right whales and bowhead | range map — Arctic seas |
+| 10,000 yr | *Eubalaena australis* | Southern right whale | Right whales and bowhead | range map — Southern Hemisphere oceans |
+| 10,000 yr | *Caperea marginata* | Pygmy right whale | Pygmy right whale | range map — Temperate Southern Hemisphere oceans |
+| 10,000 yr | *Eschrichtius robustus* | Grey whale | Grey whale | range map — North Pacific |
+| 10,000 yr | *Balaenoptera musculus* | Blue whale | Rorquals | range map — All oceans |
+| 10,000 yr | *Megaptera novaeangliae* | Humpback whale | Rorquals | range map — All oceans |
+| 10,000 yr | *Physeter macrocephalus* | Sperm whale | Sperm whale | range map — Deep waters of all oceans |
+| 10,000 yr | *Kogia breviceps* | Pygmy sperm whale | Pygmy and dwarf sperm whales | range map — Warm and temperate oceans |
+| 10,000 yr | *Ziphius cavirostris* | Cuvier’s beaked whale | Beaked whales | range map — Deep waters of all oceans except the polar seas |
+| 10,000 yr | *Mesoplodon densirostris* | Blainville’s beaked whale | Beaked whales | range map — Tropical and warm-temperate oceans |
+| 10,000 yr | *Berardius bairdii* | Baird’s beaked whale | Beaked whales | range map — North Pacific |
+| 10,000 yr | *Hyperoodon ampullatus* | Northern bottlenose whale | Beaked whales | range map — Deep waters of the North Atlantic |
+| 10,000 yr | *Tasmacetus shepherdi* | Shepherd’s beaked whale | Beaked whales | range map — Cool waters of the Southern Hemisphere |
+| 10,000 yr | *Indopacetus pacificus* | Tropical bottlenose whale | Beaked whales | range map — Tropical Indian and Pacific oceans |
+| 10,000 yr | *Platanista gangetica* | Ganges river dolphin | South Asian river dolphins | range map — Ganges and Brahmaputra river systems |
+| 10,000 yr | *Inia geoffrensis* | Amazon river dolphin | Amazon river dolphins | range map — Amazon and Orinoco river basins |
+| 10,000 yr | *Pontoporia blainvillei* | Franciscana | Franciscana | range map — Coastal waters of Brazil, Uruguay and Argentina |
+| 10,000 yr | *Lipotes vexillifer* | Baiji | Baiji | range map — Yangtze River, China (probably extinct) |
+| 10,000 yr | *Monodon monoceros* | Narwhal | Narwhal and beluga | range map — Arctic waters of Canada, Greenland and Russia |
+| 10,000 yr | *Delphinapterus leucas* | Beluga | Narwhal and beluga | range map — Arctic and subarctic seas |
+| 10,000 yr | *Phocoena phocoena* | Harbour porpoise | Porpoises | range map — Coastal waters of the North Atlantic, North Pacific and Black Sea |
+| 10,000 yr | *Neophocaena phocaenoides* | Indo-Pacific finless porpoise | Porpoises | range map — Coasts of the Indian Ocean and western Pacific |
+| 10,000 yr | *Phocoenoides dalli* | Dall’s porpoise | Porpoises | range map — North Pacific |
+| 10,000 yr | *Orcinus orca* | Orca | Oceanic dolphins | range map — All oceans, especially cold waters |
+| 10,000 yr | *Tursiops truncatus* | Common bottlenose dolphin | Oceanic dolphins | range map — Warm and temperate oceans worldwide |
+| 10,000 yr | *Delphinus delphis* | Common dolphin | Oceanic dolphins | range map — Warm and temperate oceans worldwide |
+| 10,000 yr | *Stenella longirostris* | Spinner dolphin | Oceanic dolphins | range map — Tropical oceans worldwide |
+| 10,000 yr | *Sousa chinensis* | Indo-Pacific humpback dolphin | Oceanic dolphins | range map — Coastal waters from India to China and northern Australia |
+| 10,000 yr | *Sotalia fluviatilis* | Tucuxi | Oceanic dolphins | range map — Amazon River system |
+| 10,000 yr | *Steno bredanensis* | Rough-toothed dolphin | Oceanic dolphins | range map — Deep tropical and warm oceans |
+| 10,000 yr | *Lagenorhynchus albirostris* | White-beaked dolphin | Oceanic dolphins | range map — Cold waters of the North Atlantic |
+| 10,000 yr | *Leucopleurus acutus* | Atlantic white-sided dolphin | Oceanic dolphins | range map — Cool waters of the North Atlantic |
+| 10,000 yr | *Sagmatias obliquidens* | Pacific white-sided dolphin | Oceanic dolphins | range map — Cool waters of the North Pacific |
+| 10,000 yr | *Cephalorhynchus hectori* | Hector’s dolphin | Oceanic dolphins | range map — Coastal waters of New Zealand |
+| 10,000 yr | *Lissodelphis borealis* | Northern right whale dolphin | Oceanic dolphins | range map — Cool waters of the North Pacific |
+| 10,000 yr | *Grampus griseus* | Risso’s dolphin | Oceanic dolphins | range map — Deep tropical and temperate oceans |
+| 10,000 yr | *Globicephala melas* | Long-finned pilot whale | Oceanic dolphins | range map — Cold and temperate oceans |
+| 10,000 yr | *Pseudorca crassidens* | False killer whale | Oceanic dolphins | range map — Deep tropical and warm oceans |
+| 10,000 yr | *Feresa attenuata* | Pygmy killer whale | Oceanic dolphins | range map — Deep tropical oceans |
+| 10,000 yr | *Peponocephala electra* | Melon-headed whale | Oceanic dolphins | range map — Deep tropical oceans |
+| 10,000 yr | *Orcaella brevirostris* | Irrawaddy dolphin | Oceanic dolphins | range map — Coasts and rivers of South and Southeast Asia |
+| 10,000 yr | *Lagenodelphis hosei* | Fraser’s dolphin | Oceanic dolphins | range map — Deep tropical oceans |

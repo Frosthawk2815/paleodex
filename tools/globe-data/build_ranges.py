@@ -15,11 +15,13 @@ import struct
 import sys
 from datetime import date
 
-from shapely.geometry import box, shape
+from shapely.geometry import Polygon, box, shape
 from shapely.geometry.polygon import orient
 from shapely.ops import unary_union
 
 SIMPLIFY_DEG = 0.15
+SEA_SIMPLIFY_DEG = 0.6
+SEA_MIN_HOLE = 4.0  # square degrees
 MIN_AREA = 0.02  # square degrees; keeps small islands such as Mauritius
 
 
@@ -59,7 +61,10 @@ def region_geometry(r, countries):
         return box(*r['box'])
     # Open water only: the box with all land cut out.
     if 'sea' in r:
-        return box(*r['sea']).difference(land(countries))
+        # Ocean ranges are broad, so their coastlines are simplified much more than land ranges.
+        g = box(*r['sea']).difference(land(countries)).simplify(SEA_SIMPLIFY_DEG).buffer(0)
+        # Keep only big islands as holes; small ones would add thousands of points for nothing.
+        return unary_union([Polygon(p.exterior, [h for h in p.interiors if Polygon(h).area > SEA_MIN_HOLE]) for p in polygons_of(g)])
     if r.get('world'):
         geoms = [g for name, (cont, g) in countries.items() if cont != 'Antarctica']
     elif 'country' in r:
