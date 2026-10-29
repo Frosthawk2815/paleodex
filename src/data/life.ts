@@ -171,8 +171,7 @@ const BASE_CLADES: Clade[] = [
     name: 'Crocodylia',
     common: 'Crocodylians',
     parent: 'archosauria',
-    family: true,
-    description: 'Crocodiles, alligators and their relatives: armoured, water-living ambush predators.',
+    description: 'Crocodiles, alligators, caimans and gharials and their extinct relatives: armoured, water-living ambush predators. The 26 or so living species (counts vary with recent splits) belong to three families, and their closest living relatives are birds.',
   },
   {
     id: 'dinosauria',
