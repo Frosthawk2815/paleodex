@@ -1,6 +1,2514 @@
 {
+ "aardonyx-celestae": {
+  "vote": "yes"
+ },
+ "abelisaurus-comahuensis": {
+  "vote": "yes"
+ },
+ "acanthostega-gunnari": {
+  "vote": "yes"
+ },
+ "achelousaurus-horneri": {
+  "vote": "yes"
+ },
+ "acheroraptor-temertyorum": {
+  "vote": "yes"
+ },
+ "acristavus-gagslarsoni": {
+  "vote": "yes"
+ },
+ "acrocanthosaurus-atokensis": {
+  "vote": "yes"
+ },
+ "acrophoca-longirostris": {
+  "vote": "yes"
+ },
+ "acutiramus-macrophthalmus": {
+  "vote": "yes"
+ },
+ "adalatherium-hui": {
+  "vote": "no"
+ },
+ "adasaurus-mongoliensis": {
+  "vote": "yes"
+ },
+ "aeger-tipularius": {
+  "vote": "yes"
+ },
+ "aegirocassis-benmoulai": {
+  "vote": "no"
+ },
+ "aegirosaurus-leptospondylus": {
+  "vote": "yes"
+ },
+ "aegyptopithecus-zeuxis": {
+  "vote": "yes"
+ },
+ "aegyptosaurus-baharijensis": {
+  "vote": "no"
+ },
+ "aenocyon-dirus": {
+  "vote": "yes"
+ },
+ "aeolosaurus-colhuehuapensis": {
+  "vote": "yes"
+ },
+ "aerosteon-riocoloradensis": {
+  "vote": "no"
+ },
+ "aetosauroides-scagliai": {
+  "vote": "yes"
+ },
+ "agujaceratops-mariscalensis": {
+  "vote": "yes"
+ },
+ "akainacephalus-johnsoni": {
+  "vote": "yes"
+ },
+ "alamosaurus-sanjuanensis": {
+  "vote": "no"
+ },
+ "alanqa-saharica": {
+  "vote": "yes"
+ },
+ "albertavenator-curriei": {
+  "vote": "no"
+ },
+ "albertosaurus-sarcophagus": {
+  "vote": "yes"
+ },
+ "alectrosaurus-olseni": {
+  "vote": "yes"
+ },
+ "alioramus-altai": {
+  "vote": "yes"
+ },
+ "alioramus-remotus": {
+  "vote": "yes"
+ },
+ "allaeochelys-crassesculpta": {
+  "vote": "yes"
+ },
+ "allenypterus-montanus": {
+  "vote": "yes"
+ },
+ "allopleuron-hoffmanni": {
+  "vote": "yes"
+ },
+ "allosaurus-anax": {
+  "vote": "yes"
+ },
+ "allosaurus-europaeus": {
+  "vote": "yes"
+ },
+ "allosaurus-fragilis": {
+  "vote": "yes"
+ },
+ "allosaurus-jimmadseni": {
+  "vote": "yes"
+ },
+ "alphadon-marshi": {
+  "vote": "no"
+ },
+ "alvarezsaurus-calvoi": {
+  "vote": "yes"
+ },
+ "amargasaurus-cazaui": {
+  "vote": "yes"
+ },
+ "ambulocetus-natans": {
+  "vote": "yes"
+ },
+ "amphibamus-grandiceps": {
+  "vote": "yes"
+ },
+ "amplectobelua-symbrachiata": {
+  "vote": "yes"
+ },
+ "anaschisma-browni": {
+  "vote": "yes"
+ },
+ "anchiceratops-ornatus": {
+  "vote": "yes"
+ },
+ "anchiornis-huxleyi": {
+  "vote": "yes"
+ },
+ "andalgalornis-steulleti": {
+  "vote": "yes"
+ },
+ "andesaurus-delgadoi": {
+  "vote": "yes"
+ },
+ "andrewsarchus-mongoliensis": {
+  "vote": "yes"
+ },
+ "andrias-scheuchzeri": {
+  "vote": "yes"
+ },
+ "angaturama-limai": {
+  "vote": "yes"
+ },
+ "anhanguera-blittersdorffi": {
+  "vote": "yes"
+ },
+ "ankylosaurus-magniventris": {
+  "vote": "yes"
+ },
+ "anomalocaris-canadensis": {
+  "vote": "yes"
+ },
+ "anserimimus-planinychus": {
+  "vote": "no",
+  "note": "Outdated restoration; find a newer picture."
+ },
+ "anteosaurus-magnificus": {
+  "vote": "yes"
+ },
+ "antetonitrus-ingenipes": {
+  "vote": "yes"
+ },
+ "anurognathus-ammoni": {
+  "vote": "yes"
+ },
+ "anzu-wyliei": {
+  "vote": "yes"
+ },
+ "aorun-zhaoi": {
+  "vote": "yes"
+ },
+ "apatosaurus-ajax": {
+  "vote": "yes"
+ },
+ "apidium-phiomense": {
+  "vote": "yes"
+ },
+ "appalachiosaurus-montgomeriensis": {
+  "vote": "yes"
+ },
+ "aquilonifer-spinosus": {
+  "vote": "no"
+ },
+ "aquilops-americanus": {
+  "vote": "yes"
+ },
+ "arambourgiania-philadelphiae": {
+  "vote": "no"
+ },
+ "araripesuchus-wegeneri": {
+  "vote": "yes"
+ },
+ "archaeopteryx-lithographica": {
+  "vote": "yes"
+ },
+ "archaeornithomimus-asiaticus": {
+  "vote": "yes"
+ },
+ "archaeotherium-mortoni": {
+  "vote": "yes"
+ },
+ "archelon-ischyros": {
+  "vote": "yes"
+ },
+ "arctodus-simus": {
+  "vote": "yes"
+ },
+ "argentavis-magnificens": {
+  "vote": "yes"
+ },
+ "argentinosaurus-huinculensis": {
+  "vote": "yes"
+ },
+ "arnioceras-semicostatum": {
+  "vote": "yes"
+ },
+ "arrhinoceratops-brachyops": {
+  "vote": "yes"
+ },
+ "arsinoitherium-zitteli": {
+  "vote": "yes"
+ },
+ "arthropleura-armata": {
+  "vote": "yes"
+ },
+ "askeptosaurus-italicus": {
+  "vote": "yes"
+ },
+ "aspidorhynchus-acutirostris": {
+  "vote": "yes"
+ },
+ "asteriornis-maastrichtensis": {
+  "vote": "yes"
+ },
+ "astraspis-desiderata": {
+  "vote": "no"
+ },
+ "atlanticopristis-equatorialis": {
+  "vote": "yes"
+ },
+ "atractosteus-strausi": {
+  "vote": "yes"
+ },
+ "atrociraptor-marshalli": {
+  "vote": "yes"
+ },
+ "atsinganosaurus-velauciensis": {
+  "vote": "no"
+ },
+ "attenborosaurus-conybeari": {
+  "vote": "yes"
+ },
+ "aucasaurus-garridoi": {
+  "vote": "yes"
+ },
+ "australopithecus-afarensis": {
+  "vote": "yes"
+ },
+ "australovenator-wintonensis": {
+  "vote": "yes"
+ },
+ "austroraptor-cabazai": {
+  "vote": "no"
+ },
+ "avisaurus-archibaldi": {
+  "vote": "no"
+ },
+ "axelrodichthys-araripensis": {
+  "vote": "yes"
+ },
+ "bactrosaurus-johnsoni": {
+  "vote": "yes"
+ },
+ "baculites-compressus": {
+  "vote": "yes"
+ },
+ "bagaceratops-rozhdestvenskyi": {
+  "vote": "yes"
+ },
+ "bahariasaurus-ingens": {
+  "vote": "no"
+ },
+ "balanerpeton-woodi": {
+  "vote": "yes"
+ },
+ "balaur-bondoc": {
+  "vote": "yes"
+ },
+ "bambiraptor-feinbergi": {
+  "vote": "yes"
+ },
+ "bandringa-rayi": {
+  "vote": "yes"
+ },
+ "baptornis-advenus": {
+  "vote": "no"
+ },
+ "barbaridactylus-grandis": {
+  "vote": "no"
+ },
+ "barosaurus-lentus": {
+  "vote": "yes"
+ },
+ "baryonyx-walkeri": {
+  "vote": "yes"
+ },
+ "basilemys-sinuosa": {
+  "vote": "yes"
+ },
+ "basilosaurus-isis": {
+  "vote": "yes"
+ },
+ "beelzebufo-ampinga": {
+  "vote": "yes"
+ },
+ "beipiaosaurus-inexpectus": {
+  "vote": "no"
+ },
+ "belemnotheutis-antiquus": {
+  "vote": "yes"
+ },
+ "bernissartia-fagesii": {
+  "vote": "yes"
+ },
+ "besanosaurus-leptorhynchus": {
+  "vote": "no"
+ },
+ "birgeria-stensioei": {
+  "vote": "yes"
+ },
+ "bison-antiquus": {
+  "vote": "yes"
+ },
+ "bonapartenykus-ultimus": {
+  "vote": "yes"
+ },
+ "bonapartesaurus-rionegrensis": {
+  "vote": "yes"
+ },
+ "bonatitan-reigi": {
+  "vote": "yes"
+ },
+ "borealosuchus-sternbergii": {
+  "vote": "yes"
+ },
+ "borealosuchus-wilsoni": {
+  "vote": "yes"
+ },
+ "borhyaena-tuberata": {
+  "vote": "yes"
+ },
+ "borophagus-diversidens": {
+  "vote": "no"
+ },
+ "bos-primigenius": {
+  "vote": "yes"
+ },
+ "bothriolepis-canadensis": {
+  "vote": "yes"
+ },
+ "brachiosaurus-altithorax": {
+  "vote": "no"
+ },
+ "brachychampsa-montana": {
+  "vote": "yes"
+ },
+ "brachylophosaurus-canadensis": {
+  "vote": "yes"
+ },
+ "bradysaurus-baini": {
+  "vote": "yes"
+ },
+ "brighstoneus-simmondsi": {
+  "vote": "yes"
+ },
+ "brontosaurus-excelsus": {
+  "vote": "yes"
+ },
+ "buenellus-higginsi": {
+  "vote": "no"
+ },
+ "buitreraptor-gonzalezorum": {
+  "vote": "yes"
+ },
+ "byronosaurus-jaffei": {
+  "vote": "yes"
+ },
+ "cacops-aspidephorus": {
+  "vote": "yes"
+ },
+ "caenagnathus-collinsi": {
+  "vote": "yes"
+ },
+ "calamopleurus-cylindricus": {
+  "vote": "yes"
+ },
+ "camarasaurus-supremus": {
+  "vote": "yes"
+ },
+ "camarillasaurus-cirugedae": {
+  "vote": "yes"
+ },
+ "camelops-hesternus": {
+  "vote": "yes"
+ },
+ "camptosaurus-dispar": {
+  "vote": "yes"
+ },
+ "campylognathoides-liasicus": {
+  "vote": "yes"
+ },
+ "cantius-trigonodus": {
+  "vote": "yes"
+ },
+ "captorhinus-aguti": {
+  "vote": "yes"
+ },
+ "carbonemys-cofrinii": {
+  "vote": "yes"
+ },
+ "carcharodontosaurus-iguidensis": {
+  "vote": "yes"
+ },
+ "carcharodontosaurus-saharicus": {
+  "vote": "yes"
+ },
+ "carnotaurus-sastrei": {
+  "vote": "yes"
+ },
+ "castoroides-ohioensis": {
+  "vote": "yes"
+ },
+ "cathartesaura-anaerobica": {
+  "vote": "no"
+ },
+ "caudipteryx-zoui": {
+  "vote": "yes"
+ },
+ "cedarosaurus-weiskopfae": {
+  "vote": "yes"
+ },
+ "centrosaurus-apertus": {
+  "vote": "yes"
+ },
+ "ceratosaurus-nasicornis": {
+  "vote": "yes"
+ },
+ "ceratosuchops-inferodios": {
+  "vote": "yes"
+ },
+ "ceresiosaurus-calcagnii": {
+  "vote": "yes"
+ },
+ "cerrejonisuchus-improcerus": {
+  "vote": "yes"
+ },
+ "cetiosaurus-oxoniensis": {
+  "vote": "yes"
+ },
+ "chalicotherium-goldfussi": {
+  "vote": "no"
+ },
+ "champsosaurus": {
+  "vote": "yes"
+ },
+ "chanaresuchus-bonapartei": {
+  "vote": "yes"
+ },
+ "changchengornis-hengdaoziensis": {
+  "vote": "yes"
+ },
+ "chapalmalania-altaefrontis": {
+  "vote": "yes"
+ },
+ "chasmosaurus-belli": {
+  "vote": "yes"
+ },
+ "cheirolepis-trailli": {
+  "vote": "yes"
+ },
+ "chirodipterus-australis": {
+  "vote": "yes"
+ },
+ "chirostenotes-pergracilis": {
+  "vote": "yes"
+ },
+ "cimolestes-incisus": {
+  "vote": "no"
+ },
+ "cimolichthys-nepaholica": {
+  "vote": "yes"
+ },
+ "cistecephalus-microrhinus": {
+  "vote": "yes"
+ },
+ "citipati-osmolskae": {
+  "vote": "yes"
+ },
+ "citipes-elegans": {
+  "vote": "no"
+ },
+ "cladoselache-fyleri": {
+  "vote": "yes"
+ },
+ "coccosteus-cuspidatus": {
+  "vote": "yes"
+ },
+ "coelacanthus-granulatus": {
+  "vote": "yes"
+ },
+ "coelodonta-antiquitatis": {
+  "vote": "yes"
+ },
+ "coelophysis-bauri": {
+  "vote": "yes"
+ },
+ "coelurosauravus-jaekeli": {
+  "vote": "yes"
+ },
+ "comahuesuchus-brachybuccalis": {
+  "vote": "no"
+ },
+ "compagopiscis-croucheri": {
+  "vote": "yes"
+ },
+ "compsognathus-longipes": {
+  "vote": "yes"
+ },
+ "concavenator-corcovatus": {
+  "vote": "yes"
+ },
+ "conchoraptor-gracilis": {
+  "vote": "yes"
+ },
+ "confuciusornis-sanctus": {
+  "vote": "yes"
+ },
+ "coniophis-precedens": {
+  "vote": "no"
+ },
+ "cormohipparion-occidentale": {
+  "vote": "yes"
+ },
+ "coryphodon-radians": {
+  "vote": "yes"
+ },
+ "corythoraptor-jacobsi": {
+  "vote": "yes"
+ },
+ "corythosaurus-casuarius": {
+  "vote": "yes"
+ },
+ "cosmopolitodus-hastalis": {
+  "vote": "yes"
+ },
+ "cretoxyrhina-mantelli": {
+  "vote": "yes"
+ },
+ "crossopholis-magnicaudatus": {
+  "vote": "yes"
+ },
+ "cryolophosaurus-ellioti": {
+  "vote": "yes"
+ },
+ "cryopterygius-kristiansenae": {
+  "vote": "yes"
+ },
+ "cryptoclidus-eurymerus": {
+  "vote": "yes"
+ },
+ "ctenochasma-elegans": {
+  "vote": "yes"
+ },
+ "cyamodus-hildegardis": {
+  "vote": "yes"
+ },
+ "cyclurus-kehreri": {
+  "vote": "yes"
+ },
+ "cycnorhamphus-suevicus": {
+  "vote": "yes"
+ },
+ "cymbospondylus-buchseri": {
+  "vote": "yes"
+ },
+ "cynognathus-crateronotus": {
+  "vote": "yes"
+ },
+ "dacentrurus-armatus": {
+  "vote": "yes"
+ },
+ "dactylioceras-commune": {
+  "vote": "yes"
+ },
+ "daeodon-shoshonensis": {
+  "vote": "yes"
+ },
+ "dakotaraptor-steini": {
+  "vote": "yes"
+ },
+ "daphoenodon-superbus": {
+  "vote": "yes"
+ },
+ "darwinius-masillae": {
+  "vote": "yes"
+ },
+ "darwinopterus-modularis": {
+  "vote": "yes"
+ },
+ "daspletosaurus-horneri": {
+  "vote": "yes"
+ },
+ "daspletosaurus-torosus": {
+  "vote": "yes"
+ },
+ "deinocheirus-mirificus": {
+  "vote": "yes"
+ },
+ "deinonychus-antirrhopus": {
+  "vote": "yes"
+ },
+ "deinosuchus-riograndensis": {
+  "vote": "yes"
+ },
+ "deinotherium-giganteum": {
+  "vote": "yes"
+ },
+ "deltadromeus-agilis": {
+  "vote": "yes"
+ },
+ "dendrerpeton-acadianum": {
+  "vote": "no"
+ },
+ "dendrorhynchoides-curvidentatus": {
+  "vote": "yes"
+ },
+ "denversaurus-schlessmani": {
+  "vote": "yes"
+ },
+ "desmatosuchus-spurensis": {
+  "vote": "yes"
+ },
+ "diabloceratops-eatoni": {
+  "vote": "yes"
+ },
+ "diadectes-sideropelicus": {
+  "vote": "yes"
+ },
+ "diademodon-tetragonus": {
+  "vote": "yes"
+ },
+ "diamantinasaurus-matildae": {
+  "vote": "yes"
+ },
+ "dicraeosaurus-hansemanni": {
+  "vote": "yes"
+ },
+ "didelphodon-vorax": {
+  "vote": "yes"
+ },
+ "diictodon-feliceps": {
+  "vote": "yes"
+ },
+ "dilong-paradoxus": {
+  "vote": "yes"
+ },
+ "dilophosaurus-wetherilli": {
+  "vote": "yes"
+ },
+ "dimetrodon-limbatus": {
+  "vote": "yes"
+ },
+ "dimorphodon-macronyx": {
+  "vote": "yes"
+ },
+ "dinheirosaurus-lourinhanensis": {
+  "vote": "no"
+ },
+ "dinictis-felina": {
+  "vote": "yes"
+ },
+ "dinilysia-patagonica": {
+  "vote": "no"
+ },
+ "dinornis-robustus": {
+  "vote": "yes"
+ },
+ "diplocaulus-magnicornis": {
+  "vote": "yes"
+ },
+ "diplocynodon-darwini": {
+  "vote": "yes"
+ },
+ "diplodocus-carnegii": {
+  "vote": "yes"
+ },
+ "diplomoceras-maximum": {
+  "vote": "yes"
+ },
+ "diplomystus-dentatus": {
+  "vote": "yes"
+ },
+ "diprotodon-optatum": {
+  "vote": "yes"
+ },
+ "dipterus-valenciennesi": {
+  "vote": "yes"
+ },
+ "diuqin-lechiguanae": {
+  "vote": "no"
+ },
+ "docodon-victor": {
+  "vote": "yes"
+ },
+ "doedicurus-clavicaudatus": {
+  "vote": "yes"
+ },
+ "dolichorhynchops-osborni": {
+  "vote": "yes"
+ },
+ "dorudon-atrox": {
+  "vote": "yes"
+ },
+ "dorygnathus-banthensis": {
+  "vote": "yes"
+ },
+ "draconyx-loureiroi": {
+  "vote": "yes"
+ },
+ "dracorex-hogwartsia": {
+  "vote": "yes"
+ },
+ "dracovenator-regenti": {
+  "vote": "yes"
+ },
+ "dreadnoughtus-schrani": {
+  "vote": "yes"
+ },
+ "drepanaspis-gemuendenensis": {
+  "vote": "yes"
+ },
+ "dromaeosaurus-albertensis": {
+  "vote": "yes"
+ },
+ "dromomeron-romeri": {
+  "vote": "yes"
+ },
+ "dryosaurus-altus": {
+  "vote": "yes"
+ },
+ "dryptosaurus-aquilunguis": {
+  "vote": "yes"
+ },
+ "dunkleosteus-terrelli": {
+  "vote": "yes"
+ },
+ "dvinosaurus-primus": {
+  "vote": "yes"
+ },
+ "dysalotosaurus-lettowvorbecki": {
+  "vote": "yes"
+ },
+ "echinochimaera-meltoni": {
+  "vote": "yes"
+ },
+ "ectenosaurus-clidastoides": {
+  "vote": "yes"
+ },
+ "ectopistes-migratorius": {
+  "vote": "yes"
+ },
+ "edaphosaurus-pogonias": {
+  "vote": "yes"
+ },
+ "edmontonia-rugosidens": {
+  "vote": "yes"
+ },
+ "edmontosaurus-annectens": {
+  "vote": "yes"
+ },
+ "edmontosaurus-regalis": {
+  "vote": "yes"
+ },
+ "effigia-okeeffeae": {
+  "vote": "no"
+ },
+ "einiosaurus-procurvicornis": {
+  "vote": "yes"
+ },
+ "ekaltadeta-ima": {
+  "vote": "yes"
+ },
+ "ekrixinatosaurus-novasi": {
+  "vote": "yes"
+ },
+ "elaphrosaurus-bambergi": {
+  "vote": "yes"
+ },
+ "elasmosaurus-platyurus": {
+  "vote": "yes"
+ },
+ "elasmotherium-sibiricum": {
+  "vote": "yes"
+ },
+ "elpistostege-watsoni": {
+  "vote": "no"
+ },
+ "elrathia-kingii": {
+  "vote": "yes"
+ },
+ "enchodus-petrosus": {
+  "vote": "yes"
+ },
+ "enchoteuthis-melanae": {
+  "vote": "yes"
+ },
+ "entelognathus-primordialis": {
+  "vote": "yes"
+ },
+ "eoalulavis-hoyasi": {
+  "vote": "yes"
+ },
+ "eocaecilia-micropodia": {
+  "vote": "yes"
+ },
+ "eocarcharia-dinops": {
+  "vote": "no"
+ },
+ "eoconstrictor-fischeri": {
+  "vote": "yes"
+ },
+ "eodromaeus-murphi": {
+  "vote": "yes"
+ },
+ "eohippus-angustidens": {
+  "vote": "yes"
+ },
+ "eolambia-caroljonesa": {
+  "vote": "yes"
+ },
+ "eomaia-scansoria": {
+  "vote": "yes"
+ },
+ "eoraptor-lunensis": {
+  "vote": "yes"
+ },
+ "eoredlichia-intermedia": {
+  "vote": "yes"
+ },
+ "eosinopteryx-brevipenna": {
+  "vote": "yes"
+ },
+ "eotriceratops-xerinsularis": {
+  "vote": "yes"
+ },
+ "eotyrannus-lengi": {
+  "vote": "yes"
+ },
+ "equus-occidentalis": {
+  "vote": "yes"
+ },
+ "equus-quagga-quagga": {
+  "vote": "yes"
+ },
+ "erliansaurus-bellamanus": {
+  "vote": "yes"
+ },
+ "eryops-megacephalus": {
+  "vote": "yes"
+ },
+ "erythrosuchus-africanus": {
+  "vote": "yes"
+ },
+ "essexella-asherae": {
+  "vote": "yes"
+ },
+ "estesia-mongoliensis": {
+  "vote": "yes"
+ },
+ "euchambersia-mirabilis": {
+  "vote": "yes"
+ },
+ "eucritta-melanolimnetes": {
+  "vote": "yes"
+ },
+ "eunotosaurus-africanus": {
+  "vote": "yes"
+ },
+ "euoplocephalus-tutus": {
+  "vote": "yes"
+ },
+ "euparkeria-capensis": {
+  "vote": "no"
+ },
+ "euproops-danae": {
+  "vote": "yes"
+ },
+ "eurhinosaurus-longirostris": {
+  "vote": "yes"
+ },
+ "eurohippus-messelensis": {
+  "vote": "yes"
+ },
+ "europasaurus-holgeri": {
+  "vote": "yes"
+ },
+ "eurotamandua-joresi": {
+  "vote": "yes"
+ },
+ "eurypterus-remipes": {
+  "vote": "yes"
+ },
+ "eusthenopteron-foordi": {
+  "vote": "yes"
+ },
+ "eustreptospondylus-oxoniensis": {
+  "vote": "yes"
+ },
+ "exaeretodon-argentinus": {
+  "vote": "yes"
+ },
+ "falcarius-utahensis": {
+  "vote": "yes"
+ },
+ "falcatus-falcatus": {
+  "vote": "yes"
+ },
+ "fruitadens-haagarorum": {
+  "vote": "yes"
+ },
+ "fukuipteryx-prima": {
+  "vote": "yes"
+ },
+ "fukuiraptor-kitadaniensis": {
+  "vote": "yes"
+ },
+ "fukuisaurus-tetoriensis": {
+  "vote": "yes"
+ },
+ "fukuititan-nipponensis": {
+  "vote": "yes"
+ },
+ "fukuivenator-paradoxus": {
+  "vote": "yes"
+ },
+ "futalognkosaurus-dukei": {
+  "vote": "yes"
+ },
+ "fuxianhuia-protensa": {
+  "vote": "yes"
+ },
+ "gallimimus-bullatus": {
+  "vote": "yes"
+ },
+ "gargoyleosaurus-parkpinorum": {
+  "vote": "yes"
+ },
+ "garumbatitan-morellensis": {
+  "vote": "yes"
+ },
+ "gasosaurus-constructus": {
+  "vote": "yes"
+ },
+ "gasparinisaura-cincosaltensis": {
+  "vote": "yes"
+ },
+ "gastonia-burgei": {
+  "vote": "yes"
+ },
+ "gastornis-giganteus": {
+  "vote": "yes"
+ },
+ "gemuendina-stuertzi": {
+  "vote": "yes"
+ },
+ "germanodactylus-cristatus": {
+  "vote": "yes"
+ },
+ "giganotosaurus-carolinii": {
+  "vote": "yes"
+ },
+ "gigantopithecus-blacki": {
+  "vote": "yes"
+ },
+ "gigantoraptor-erlianensis": {
+  "vote": "yes"
+ },
+ "gillicus-arcuatus": {
+  "vote": "yes"
+ },
+ "giraffatitan-brancai": {
+  "vote": "yes"
+ },
+ "glacialisaurus-hammeri": {
+  "vote": "yes"
+ },
+ "globidens-dakotensis": {
+  "vote": "yes"
+ },
+ "glyptotherium-arizonae": {
+  "vote": "yes"
+ },
+ "glyptotherium-texanum": {
+  "vote": "yes"
+ },
+ "gnathorhiza-serrata": {
+  "vote": "yes"
+ },
+ "gnathosaurus-subulatus": {
+  "vote": "yes"
+ },
+ "gobiatherium-mirificum": {
+  "vote": "yes"
+ },
+ "gobiconodon-ostromi": {
+  "vote": "yes"
+ },
+ "gogonasus-andrewsae": {
+  "vote": "yes"
+ },
+ "gorgonops-torvus": {
+  "vote": "yes"
+ },
+ "gorgosaurus-libratus": {
+  "vote": "yes"
+ },
+ "groenlandaspis-pennsylvanica": {
+  "vote": "yes"
+ },
+ "gryphaea-arcuata": {
+  "vote": "yes"
+ },
+ "gryposaurus-monumentensis": {
+  "vote": "yes"
+ },
+ "gryposuchus-croizati": {
+  "vote": "yes"
+ },
+ "guanlong-wucaii": {
+  "vote": "yes"
+ },
+ "hagryphus-giganteus": {
+  "vote": "yes"
+ },
+ "halisaurus-arambourgi": {
+  "vote": "yes"
+ },
+ "halkieria-evangelista": {
+  "vote": "yes"
+ },
+ "hallucigenia-fortis": {
+  "vote": "yes"
+ },
+ "hallucigenia-sparsa": {
+  "vote": "yes"
+ },
+ "haplocanthosaurus-priscus": {
+  "vote": "yes"
+ },
+ "haplocheirus-sollers": {
+  "vote": "yes"
+ },
+ "harpoceras-falciferum": {
+  "vote": "yes"
+ },
+ "hatzegopteryx-thambema": {
+  "vote": "no"
+ },
+ "hauffiosaurus-zanoni": {
+  "vote": "yes"
+ },
+ "helicoprion-davisii": {
+  "vote": "yes"
+ },
+ "heliobatis-radians": {
+  "vote": "yes"
+ },
+ "herrerasaurus-ischigualastensis": {
+  "vote": "yes"
+ },
+ "hesperocyon-gregarius": {
+  "vote": "yes"
+ },
+ "hesperonychus-elizabethae": {
+  "vote": "yes"
+ },
+ "hesperornis-regalis": {
+  "vote": "yes"
+ },
+ "hesperosaurus-mjosi": {
+  "vote": "yes"
+ },
+ "heterodontosaurus-tucki": {
+  "vote": "yes"
+ },
+ "hieraaetus-moorei": {
+  "vote": "yes"
+ },
+ "hippotherium-primigenium": {
+  "vote": "yes"
+ },
+ "holmesina-floridanus": {
+  "vote": "yes"
+ },
+ "homalocephale-calathocercos": {
+  "vote": "yes"
+ },
+ "homalodotherium-cunninghami": {
+  "vote": "yes"
+ },
+ "homo-neanderthalensis": {
+  "vote": "no"
+ },
  "homo-sapiens": {
-  "vote": "yes",
-  "note": "Owner chose the Vitruvian Man."
+  "vote": "yes"
+ },
+ "homoeosaurus-maximiliani": {
+  "vote": "yes"
+ },
+ "homotherium-latidens": {
+  "vote": "yes"
+ },
+ "homunculus-patagonicus": {
+  "vote": "yes"
+ },
+ "hoplophoneus-primaevus": {
+  "vote": "yes"
+ },
+ "howesia-browni": {
+  "vote": "no"
+ },
+ "huadanosaurus-sinensis": {
+  "vote": "yes"
+ },
+ "huanansaurus-ganzhouensis": {
+  "vote": "yes"
+ },
+ "huaxiagnathus-orientalis": {
+  "vote": "yes"
+ },
+ "huayangosaurus-taibaii": {
+  "vote": "yes"
+ },
+ "hyaenodon-horridus": {
+  "vote": "yes"
+ },
+ "hybodus-hauffianus": {
+  "vote": "yes"
+ },
+ "hydrodamalis-gigas": {
+  "vote": "yes"
+ },
+ "hylonomus-lyelli": {
+  "vote": "no"
+ },
+ "hyneria-lindae": {
+  "vote": "yes"
+ },
+ "hynerpeton-bassetti": {
+  "vote": "no"
+ },
+ "hypacrosaurus-altispinus": {
+  "vote": "yes"
+ },
+ "hypacrosaurus-stebingeri": {
+  "vote": "yes"
+ },
+ "hyperodapedon-sanjuanensis": {
+  "vote": "yes"
+ },
+ "hyphalosaurus-lingyuanensis": {
+  "vote": "yes"
+ },
+ "hypsilophodon-foxii": {
+  "vote": "yes"
+ },
+ "iberomesornis-romerali": {
+  "vote": "yes"
+ },
+ "iberospinus-natarioi": {
+  "vote": "yes"
+ },
+ "icaronycteris-index": {
+  "vote": "yes"
+ },
+ "ichthyodectes-ctenodon": {
+  "vote": "yes"
+ },
+ "ichthyornis-dispar": {
+  "vote": "yes"
+ },
+ "ichthyosaurus-communis": {
+  "vote": "yes"
+ },
+ "ichthyostega-stensioi": {
+  "vote": "yes"
+ },
+ "ichthyovenator-laosensis": {
+  "vote": "yes"
+ },
+ "iguanodon-bernissartensis": {
+  "vote": "yes"
+ },
+ "iguanodon-galvensis": {
+  "vote": "yes"
+ },
+ "ikrandraco-avatar": {
+  "vote": "yes"
+ },
+ "incisivosaurus-gauthieri": {
+  "vote": "yes"
+ },
+ "incisoscutum-ritchiei": {
+  "vote": "no"
+ },
+ "infernodrakon-hastacollis": {
+  "vote": "yes"
+ },
+ "inostrancevia-alexandri": {
+  "vote": "yes"
+ },
+ "invictibellatrix-amberina": {
+  "vote": "no"
+ },
+ "irritator-challengeri": {
+  "vote": "yes"
+ },
+ "ischigualastia-jenseni": {
+  "vote": "yes"
+ },
+ "isisaurus-colberti": {
+  "vote": "yes"
+ },
+ "isisfordia-duncani": {
+  "vote": "yes"
+ },
+ "istiodactylus-latidens": {
+  "vote": "yes"
+ },
+ "jeholornis-prima": {
+  "vote": "yes"
+ },
+ "jeholosaurus-shangyuanensis": {
+  "vote": "yes"
+ },
+ "jianchangosaurus-yixianensis": {
+  "vote": "yes"
+ },
+ "jiangjunosaurus-junggarensis": {
+  "vote": "yes"
+ },
+ "jinzhousaurus-yangi": {
+  "vote": "yes"
+ },
+ "joaquinraptor-casali": {
+  "vote": "yes"
+ },
+ "kaikaifilu-hervei": {
+  "vote": "no"
+ },
+ "kannemeyeria-simocephalus": {
+  "vote": "yes"
+ },
+ "kaprosuchus-saharicus": {
+  "vote": "yes"
+ },
+ "kawanectes-lafquenianum": {
+  "vote": "yes"
+ },
+ "kayentasuchus-walkeri": {
+  "vote": "yes"
+ },
+ "kayentatherium-wellesi": {
+  "vote": "yes"
+ },
+ "kelenken-guillermoi": {
+  "vote": "yes"
+ },
+ "kentrosaurus-aethiopicus": {
+  "vote": "yes"
+ },
+ "kerygmachela-kierkegaardi": {
+  "vote": "yes"
+ },
+ "khaan-mckennai": {
+  "vote": "yes"
+ },
+ "kinnareemimus-khonkaenensis": {
+  "vote": "yes"
+ },
+ "knightia-eocaena": {
+  "vote": "yes"
+ },
+ "kopidodon-macrognathus": {
+  "vote": "yes"
+ },
+ "koshisaurus-katsuyama": {
+  "vote": "yes"
+ },
+ "kosmoceras-jason": {
+  "vote": "no"
+ },
+ "kosmoceratops-richardsoni": {
+  "vote": "no"
+ },
+ "kotlassia-prima": {
+  "vote": "yes"
+ },
+ "kronosaurus-queenslandicus": {
+  "vote": "yes"
+ },
+ "kryptobaatar-dashzevegi": {
+  "vote": "yes"
+ },
+ "kryptops-palaios": {
+  "vote": "yes"
+ },
+ "kunpengopterus-sinensis": {
+  "vote": "yes"
+ },
+ "laccognathus-embryi": {
+  "vote": "yes"
+ },
+ "laganosuchus-thaumastos": {
+  "vote": "yes"
+ },
+ "lagerpeton-chanarensis": {
+  "vote": "yes"
+ },
+ "lagosuchus-talampayensis": {
+  "vote": "yes"
+ },
+ "lambeosaurus-lambei": {
+  "vote": "yes"
+ },
+ "leedsichthys-problematicus": {
+  "vote": "no"
+ },
+ "leidyosuchus-canadensis": {
+  "vote": "yes"
+ },
+ "lepidotes-elvensis": {
+  "vote": "yes"
+ },
+ "lepisosteus-occidentalis": {
+  "vote": "yes"
+ },
+ "leptauchenia-decora": {
+  "vote": "yes"
+ },
+ "leptictidium-nasutum": {
+  "vote": "yes"
+ },
+ "leptoceratops-gracilis": {
+  "vote": "yes"
+ },
+ "leptolepides-sprattiformis": {
+  "vote": "yes"
+ },
+ "leptonectes-tenuirostris": {
+  "vote": "yes"
+ },
+ "lesothosaurus-diagnosticus": {
+  "vote": "yes"
+ },
+ "liaoceratops-yanzigouensis": {
+  "vote": "yes"
+ },
+ "limaysaurus-tessonei": {
+  "vote": "yes"
+ },
+ "limusaurus-inextricabilis": {
+  "vote": "yes"
+ },
+ "linguamyrmex-vladi": {
+  "vote": "yes"
+ },
+ "livyatan-melvillei": {
+  "vote": "yes"
+ },
+ "longipteryx-chaoyangensis": {
+  "vote": "yes"
+ },
+ "loricatosaurus-priscus": {
+  "vote": "no"
+ },
+ "lourinhanosaurus-antunesi": {
+  "vote": "yes"
+ },
+ "luolishania-longicruris": {
+  "vote": "yes"
+ },
+ "lurdusaurus-arenatus": {
+  "vote": "yes"
+ },
+ "lusotitan-atalaiensis": {
+  "vote": "no"
+ },
+ "lycaenops-ornatus": {
+  "vote": "yes"
+ },
+ "lycoptera-davidi": {
+  "vote": "yes"
+ },
+ "lysorophus-tricarinatus": {
+  "vote": "yes"
+ },
+ "lystrosaurus-murrayi": {
+  "vote": "yes"
+ },
+ "lythronax-argestes": {
+  "vote": "yes"
+ },
+ "machaeroprosopus-pristinus": {
+  "vote": "yes"
+ },
+ "machairodus-aphanistus": {
+  "vote": "yes"
+ },
+ "macrauchenia-patachonica": {
+  "vote": "yes"
+ },
+ "macrospondylus-bollensis": {
+  "vote": "yes"
+ },
+ "magyarosaurus-dacus": {
+  "vote": "no"
+ },
+ "mahajangasuchus-insignis": {
+  "vote": "yes"
+ },
+ "maiasaura-peeblesorum": {
+  "vote": "yes"
+ },
+ "maip-macrothorax": {
+  "vote": "no"
+ },
+ "majungasaurus-crenatissimus": {
+  "vote": "yes"
+ },
+ "mamenchisaurus-sinocanadorum": {
+  "vote": "yes"
+ },
+ "mammut-americanum": {
+  "vote": "yes"
+ },
+ "mammuthus-columbi": {
+  "vote": "yes"
+ },
+ "mammuthus-primigenius": {
+  "vote": "yes"
+ },
+ "mantellisaurus-atherfieldensis": {
+  "vote": "yes"
+ },
+ "mapusaurus-roseae": {
+  "vote": "yes"
+ },
+ "marrella-splendens": {
+  "vote": "yes"
+ },
+ "marshosaurus-bicentesimus": {
+  "vote": "yes"
+ },
+ "masiakasaurus-knopfleri": {
+  "vote": "yes"
+ },
+ "massospondylus-carinatus": {
+  "vote": "yes"
+ },
+ "materpiscis-attenboroughi": {
+  "vote": "yes"
+ },
+ "mawsonia-lavocati": {
+  "vote": "yes"
+ },
+ "megacerops-coloradensis": {
+  "vote": "yes"
+ },
+ "megaloceros-giganteus": {
+  "vote": "yes"
+ },
+ "megalonyx-leptostomus": {
+  "vote": "yes"
+ },
+ "megalosaurus-bucklandii": {
+  "vote": "yes"
+ },
+ "meganeura-monyi": {
+  "vote": "yes"
+ },
+ "megaraptor-namunhuaiquii": {
+  "vote": "yes"
+ },
+ "megatherium-americanum": {
+  "vote": "yes"
+ },
+ "megazostrodon-rudnerae": {
+  "vote": "no"
+ },
+ "mei-long": {
+  "vote": "yes"
+ },
+ "mekosuchus-whitehunterensis": {
+  "vote": "no"
+ },
+ "meniscoessus-robustus": {
+  "vote": "yes"
+ },
+ "menoceras-arikarense": {
+  "vote": "yes"
+ },
+ "meraxes-gigas": {
+  "vote": "yes"
+ },
+ "merycoidodon-culbertsoni": {
+  "vote": "yes"
+ },
+ "mesodma-formosa": {
+  "vote": "yes"
+ },
+ "mesohippus-bairdi": {
+  "vote": "yes"
+ },
+ "mesolimulus-walchi": {
+  "vote": "yes"
+ },
+ "mesosaurus-tenuidens": {
+  "vote": "yes"
+ },
+ "mesosuchus-browni": {
+  "vote": "no"
+ },
+ "messapicetus-gregarius": {
+  "vote": "no"
+ },
+ "messelornis-cristata": {
+  "vote": "yes"
+ },
+ "metriorhynchus-superciliosus": {
+  "vote": "yes"
+ },
+ "microdictyon-sinicum": {
+  "vote": "yes"
+ },
+ "microraptor-zhaoianus": {
+  "vote": "yes"
+ },
+ "microvenator-celer": {
+  "vote": "yes"
+ },
+ "miguashaia-bureaui": {
+  "vote": "yes"
+ },
+ "mimipiscis-toombsi": {
+  "vote": "yes"
+ },
+ "mioplosus-labracoides": {
+  "vote": "yes"
+ },
+ "miragaia-longicollum": {
+  "vote": "yes"
+ },
+ "mirischia-asymmetrica": {
+  "vote": "yes"
+ },
+ "mixosaurus-cornalianus": {
+  "vote": "yes"
+ },
+ "monolophosaurus-jiangi": {
+  "vote": "yes"
+ },
+ "mononykus-olecranus": {
+  "vote": "yes"
+ },
+ "morelladon-beltrani": {
+  "vote": "no"
+ },
+ "moropus-elatus": {
+  "vote": "yes"
+ },
+ "moros-intrepidus": {
+  "vote": "no"
+ },
+ "mosasaurus-hoffmannii": {
+  "vote": "yes"
+ },
+ "moschops-capensis": {
+  "vote": "yes"
+ },
+ "moschorhinus-kitchingi": {
+  "vote": "yes"
+ },
+ "moythomasia-durgaringa": {
+  "vote": "yes"
+ },
+ "muraenosaurus-leedsii": {
+  "vote": "no"
+ },
+ "murusraptor-barrosaensis": {
+  "vote": "yes"
+ },
+ "myledaphus-bipartitus": {
+  "vote": "yes"
+ },
+ "myllokunmingia-fengjiaoa": {
+  "vote": "yes"
+ },
+ "najash-rionegrina": {
+  "vote": "no"
+ },
+ "nanaimoteuthis-haggarti": {
+  "vote": "no"
+ },
+ "nanotyrannus-lancensis": {
+  "vote": "yes"
+ },
+ "nanotyrannus-lethaeus": {
+  "vote": "yes"
+ },
+ "nanuqsaurus-hoglundi": {
+  "vote": "yes"
+ },
+ "nasutoceratops-titusi": {
+  "vote": "yes"
+ },
+ "neimongosaurus-yangi": {
+  "vote": "no"
+ },
+ "nemegtomaia-barsboldi": {
+  "vote": "yes"
+ },
+ "nemegtosaurus-mongoliensis": {
+  "vote": "yes"
+ },
+ "neoceratodus-africanus": {
+  "vote": "yes"
+ },
+ "neovenator-salerii": {
+  "vote": "yes"
+ },
+ "nesodon-imbricatus": {
+  "vote": "yes"
+ },
+ "neuquenraptor-argentinus": {
+  "vote": "yes"
+ },
+ "neusticosaurus-pusillus": {
+  "vote": "no"
+ },
+ "nigersaurus-taqueti": {
+  "vote": "yes"
+ },
+ "nimbacinus-dicksoni": {
+  "vote": "yes"
+ },
+ "nimbadon-lavarackorum": {
+  "vote": "yes"
+ },
+ "notogoneus-osculus": {
+  "vote": "yes"
+ },
+ "notosuchus-terrestris": {
+  "vote": "yes"
+ },
+ "nullotitan-glaciaris": {
+  "vote": "yes"
+ },
+ "nurhachius-ignaciobritoi": {
+  "vote": "yes"
+ },
+ "nyctosaurus-gracilis": {
+  "vote": "yes"
+ },
+ "obamadon-gracilis": {
+  "vote": "no"
+ },
+ "obdurodon-dicksoni": {
+  "vote": "yes"
+ },
+ "ocepechelon-bouyai": {
+  "vote": "yes"
+ },
+ "odobenocetops-peruvianus": {
+  "vote": "yes"
+ },
+ "offacolus-kingi": {
+  "vote": "yes"
+ },
+ "ogygopsis-klotzi": {
+  "vote": "yes"
+ },
+ "olenoides-serratus": {
+  "vote": "yes"
+ },
+ "omeisaurus-tianfuensis": {
+  "vote": "yes"
+ },
+ "onchopristis-numida": {
+  "vote": "yes"
+ },
+ "onychodus-jandemarrai": {
+  "vote": "yes"
+ },
+ "onychonycteris-finneyi": {
+  "vote": "yes"
+ },
+ "onychopterella-augusti": {
+  "vote": "yes"
+ },
+ "opabinia-regalis": {
+  "vote": "yes"
+ },
+ "ophiacodon-retroversus": {
+  "vote": "yes"
+ },
+ "ophthalmosaurus-icenicus": {
+  "vote": "yes"
+ },
+ "opisthocoelicaudia-skarzynskii": {
+  "vote": "yes"
+ },
+ "orkoraptor-burkei": {
+  "vote": "yes"
+ },
+ "ornitholestes-hermanni": {
+  "vote": "yes"
+ },
+ "ornithomimus-edmontonicus": {
+  "vote": "yes"
+ },
+ "orodromeus-makelai": {
+  "vote": "yes"
+ },
+ "osteolepis-macrolepidotus": {
+  "vote": "yes"
+ },
+ "otodus-megalodon": {
+  "vote": "yes"
+ },
+ "ottoia-prolifica": {
+  "vote": "yes"
+ },
+ "ouranosaurus-nigeriensis": {
+  "vote": "yes"
+ },
+ "oviraptor-philoceratops": {
+  "vote": "yes"
+ },
+ "oxalaia-quilombensis": {
+  "vote": "yes"
+ },
+ "pachycephalosaurus-wyomingensis": {
+  "vote": "yes"
+ },
+ "pachyrhinosaurus-canadensis": {
+  "vote": "yes"
+ },
+ "pachyrhinosaurus-perotorum": {
+  "vote": "yes"
+ },
+ "pachyrhizodus-caninus": {
+  "vote": "yes"
+ },
+ "pakicetus-inachus": {
+  "vote": "yes"
+ },
+ "palaeocastor-fossor": {
+  "vote": "yes"
+ },
+ "palaeochiropteryx-tupaiodon": {
+  "vote": "yes"
+ },
+ "palaeolagus-haydeni": {
+  "vote": "yes"
+ },
+ "palaeoloxodon-antiquus": {
+  "vote": "yes"
+ },
+ "palaeomastodon-beadnelli": {
+  "vote": "yes"
+ },
+ "palaeoniscum-freieslebeni": {
+  "vote": "yes"
+ },
+ "palatobaena-cohen": {
+  "vote": "yes"
+ },
+ "pambdelurion-whittingtoni": {
+  "vote": "no"
+ },
+ "panphagia-protos": {
+  "vote": "yes"
+ },
+ "panthera-atrox": {
+  "vote": "yes"
+ },
+ "panthera-spelaea": {
+  "vote": "yes"
+ },
+ "paraceratherium-bugtiense": {
+  "vote": "yes"
+ },
+ "paralititan-stromeri": {
+  "vote": "no"
+ },
+ "paramylodon-harlani": {
+  "vote": "yes"
+ },
+ "paraplacodus-broilii": {
+  "vote": "yes"
+ },
+ "parasaurolophus-walkeri": {
+  "vote": "yes"
+ },
+ "pareiasaurus-serridens": {
+  "vote": "yes"
+ },
+ "parksosaurus-warreni": {
+  "vote": "yes"
+ },
+ "patagopteryx-deferrariisi": {
+  "vote": "yes"
+ },
+ "patagornis-marshi": {
+  "vote": "yes"
+ },
+ "patagotitan-mayorum": {
+  "vote": "yes"
+ },
+ "pectinodon-bakkeri": {
+  "vote": "no"
+ },
+ "pelagosaurus-typus": {
+  "vote": "yes"
+ },
+ "pelecanimimus-polyodon": {
+  "vote": "no"
+ },
+ "phareodus-encaustus": {
+  "vote": "yes"
+ },
+ "phorusrhacos-longissimus": {
+  "vote": "yes"
+ },
+ "phuwiangosaurus-sirindhornae": {
+  "vote": "yes"
+ },
+ "pinguinus-impennis": {
+  "vote": "yes"
+ },
+ "pisanosaurus-mertii": {
+  "vote": "no"
+ },
+ "piscobalaena-nana": {
+  "vote": "yes"
+ },
+ "placenticeras-meeki": {
+  "vote": "yes"
+ },
+ "placerias-hesternus": {
+  "vote": "yes"
+ },
+ "plateosaurus-trossingensis": {
+  "vote": "yes"
+ },
+ "platyceramus-platinus": {
+  "vote": "yes"
+ },
+ "plesiosaurus-dolichodeirus": {
+  "vote": "yes"
+ },
+ "pleurosaurus-goldfussi": {
+  "vote": "yes"
+ },
+ "pliosaurus-funkei": {
+  "vote": "yes"
+ },
+ "pluridens-serpentis": {
+  "vote": "yes"
+ },
+ "poebrotherium-wilsoni": {
+  "vote": "yes"
+ },
+ "polacanthus-foxii": {
+  "vote": "no"
+ },
+ "polycotylus-latippinus": {
+  "vote": "yes"
+ },
+ "postosuchus-kirkpatricki": {
+  "vote": "yes"
+ },
+ "prenocephale-prenes": {
+  "vote": "yes"
+ },
+ "presbyornis-pervetus": {
+  "vote": "no"
+ },
+ "priscacara-serrata": {
+  "vote": "yes"
+ },
+ "probainognathus-jenseni": {
+  "vote": "yes"
+ },
+ "procambarus-primaevus": {
+  "vote": "yes"
+ },
+ "proceratosaurus-bradleyi": {
+  "vote": "yes"
+ },
+ "procoptodon-goliah": {
+  "vote": "yes"
+ },
+ "proganochelys-quenstedtii": {
+  "vote": "yes"
+ },
+ "prognathodon-saturator": {
+  "vote": "yes"
+ },
+ "promicroceras-planicosta": {
+  "vote": "yes"
+ },
+ "promissum-pulchrum": {
+  "vote": "yes"
+ },
+ "propalaehoplophorus-australis": {
+  "vote": "yes"
+ },
+ "prosaurolophus-maximus": {
+  "vote": "yes"
+ },
+ "protarchaeopteryx-robusta": {
+  "vote": "yes"
+ },
+ "protathlitis-cinctorrensis": {
+  "vote": "no"
+ },
+ "proterochampsa-barrionuevoi": {
+  "vote": "no"
+ },
+ "prothylacynus-patagonicus": {
+  "vote": "yes"
+ },
+ "protoceratops-andrewsi": {
+  "vote": "yes"
+ },
+ "protorosaurus-speneri": {
+  "vote": "yes"
+ },
+ "protosiren-smithae": {
+  "vote": "yes"
+ },
+ "protosphyraena-perniciosa": {
+  "vote": "yes"
+ },
+ "protostega-gigas": {
+  "vote": "yes"
+ },
+ "protypotherium-australe": {
+  "vote": "yes"
+ },
+ "pseudhipparion-gratum": {
+  "vote": "yes"
+ },
+ "psilopterus-bachmanni": {
+  "vote": "yes"
+ },
+ "psittacosaurus-lujiatunensis": {
+  "vote": "yes"
+ },
+ "pteranodon-longiceps": {
+  "vote": "yes"
+ },
+ "pterichthyodes-milleri": {
+  "vote": "yes"
+ },
+ "pterodactylus-antiquus": {
+  "vote": "yes"
+ },
+ "ptychodus-mortoni": {
+  "vote": "yes"
+ },
+ "puertasaurus-reuili": {
+  "vote": "yes"
+ },
+ "pulmonoscorpius-kirktonensis": {
+  "vote": "yes"
+ },
+ "purussaurus-mirandai": {
+  "vote": "no"
+ },
+ "pyroraptor-olympius": {
+  "vote": "yes"
+ },
+ "qianzhousaurus-sinensis": {
+  "vote": "yes"
+ },
+ "quetzalcoatlus-northropi": {
+  "vote": "yes"
+ },
+ "quinkana-meboldi": {
+  "vote": "yes"
+ },
+ "rahonavis-ostromi": {
+  "vote": "yes"
+ },
+ "rajasaurus-narmadensis": {
+  "vote": "yes"
+ },
+ "rapetosaurus-krausei": {
+  "vote": "yes"
+ },
+ "raphus-cucullatus": {
+  "vote": "yes"
+ },
+ "rebbachisaurus-garasbae": {
+  "vote": "no"
+ },
+ "redlichia-rex": {
+  "vote": "yes"
+ },
+ "repenomamus-robustus": {
+  "vote": "no"
+ },
+ "revueltosaurus-callenderi": {
+  "vote": "yes"
+ },
+ "rhabdoderma-exiguum": {
+  "vote": "no"
+ },
+ "rhabdodon-priscus": {
+  "vote": "yes"
+ },
+ "rhacolepis-buccalis": {
+  "vote": "yes"
+ },
+ "rhamphorhynchus-muensteri": {
+  "vote": "yes"
+ },
+ "rhyniognatha-hirsti": {
+  "vote": "no"
+ },
+ "riojavenatrix-lacustris": {
+  "vote": "yes"
+ },
+ "rocasaurus-muniozi": {
+  "vote": "no"
+ },
+ "rubidgea-atrox": {
+  "vote": "no"
+ },
+ "rugops-primus": {
+  "vote": "yes"
+ },
+ "sacabambaspis-janvieri": {
+  "vote": "yes"
+ },
+ "saccocoma-tenella": {
+  "vote": "yes"
+ },
+ "saichania-chulsanensis": {
+  "vote": "yes"
+ },
+ "sanajeh-indicus": {
+  "vote": "no"
+ },
+ "saniwa-ensidens": {
+  "vote": "yes"
+ },
+ "sanjuansaurus-gordilloi": {
+  "vote": "no"
+ },
+ "santanaraptor-placidus": {
+  "vote": "yes"
+ },
+ "sapeornis-chaoyangensis": {
+  "vote": "yes"
+ },
+ "sarahsaurus-aurifontanalis": {
+  "vote": "no"
+ },
+ "sarcosuchus-imperator": {
+  "vote": "yes"
+ },
+ "saurichthys-curionii": {
+  "vote": "yes"
+ },
+ "saurolophus-angustirostris": {
+  "vote": "yes"
+ },
+ "sauropelta-edwardsorum": {
+  "vote": "yes"
+ },
+ "sauroposeidon-proteles": {
+  "vote": "yes"
+ },
+ "saurornithoides-mongoliensis": {
+  "vote": "yes"
+ },
+ "saurornitholestes-langstoni": {
+  "vote": "yes"
+ },
+ "saurosuchus-galilei": {
+  "vote": "yes"
+ },
+ "savannasaurus-elliottorum": {
+  "vote": "yes"
+ },
+ "scapherpeton-tectum": {
+  "vote": "no"
+ },
+ "scaphognathus-crassirostris": {
+  "vote": "yes"
+ },
+ "scaumenacia-curta": {
+  "vote": "yes"
+ },
+ "scelidosaurus-harrisonii": {
+  "vote": "yes"
+ },
+ "schinderhannes-bartelsi": {
+  "vote": "no"
+ },
+ "scolosaurus-cutleri": {
+  "vote": "yes"
+ },
+ "scutellosaurus-lawleri": {
+  "vote": "yes"
+ },
+ "scutosaurus-karpinskii": {
+  "vote": "yes"
+ },
+ "secernosaurus-koerneri": {
+  "vote": "yes"
+ },
+ "seeleyosaurus-guilelmiimperatoris": {
+  "vote": "yes"
+ },
+ "seirocrinus-subangularis": {
+  "vote": "yes"
+ },
+ "serpianosaurus-mirigiolensis": {
+  "vote": "yes"
+ },
+ "seymouria-baylorensis": {
+  "vote": "yes"
+ },
+ "shantungosaurus-giganteus": {
+  "vote": "yes"
+ },
+ "shunosaurus-lii": {
+  "vote": "yes"
+ },
+ "shuvuuia-deserti": {
+  "vote": "yes"
+ },
+ "siamosaurus-suteethorni": {
+  "vote": "no"
+ },
+ "siamotyrannus-isanensis": {
+  "vote": "no"
+ },
+ "siats-meekerorum": {
+  "vote": "yes"
+ },
+ "sierraceratops-turneri": {
+  "vote": "yes"
+ },
+ "sifrhippus-sandrae": {
+  "vote": "yes"
+ },
+ "sigilmassasaurus-brevicollis": {
+  "vote": "no"
+ },
+ "simosuchus-clarki": {
+  "vote": "yes"
+ },
+ "sinocalliopteryx-gigas": {
+  "vote": "yes"
+ },
+ "sinoceratops-zhuchengensis": {
+  "vote": "yes"
+ },
+ "sinodelphys-szalayi": {
+  "vote": "yes"
+ },
+ "sinopterus-dongi": {
+  "vote": "yes"
+ },
+ "sinornithosaurus-millenii": {
+  "vote": "yes"
+ },
+ "sinosauropteryx-lingyuanensis": {
+  "vote": "yes"
+ },
+ "sinosauropteryx-prima": {
+  "vote": "yes"
+ },
+ "sinovenator-changii": {
+  "vote": "yes"
+ },
+ "sinraptor-dongi": {
+  "vote": "yes"
+ },
+ "skorpiovenator-bustingorryi": {
+  "vote": "yes"
+ },
+ "smilodon-fatalis": {
+  "vote": "yes"
+ },
+ "smilodon-populator": {
+  "vote": "yes"
+ },
+ "smilosuchus-gregorii": {
+  "vote": "yes"
+ },
+ "sphaerotholus-buchholtzae": {
+  "vote": "no"
+ },
+ "spinosaurus-aegyptiacus": {
+  "vote": "yes"
+ },
+ "struthiomimus-altus": {
+  "vote": "yes"
+ },
+ "stupendemys-geographicus": {
+  "vote": "yes"
+ },
+ "stygimoloch-spinifer": {
+  "vote": "yes"
+ },
+ "styracosaurus-albertensis": {
+  "vote": "yes"
+ },
+ "styxosaurus-snowii": {
+  "vote": "yes"
+ },
+ "subhyracodon-occidentalis": {
+  "vote": "yes"
+ },
+ "suchomimus-tenerensis": {
+  "vote": "yes"
+ },
+ "supersaurus-vivianae": {
+  "vote": "no"
+ },
+ "talenkauen-santacrucensis": {
+  "vote": "yes"
+ },
+ "talos-sampsoni": {
+  "vote": "no"
+ },
+ "tameryraptor-markgrafi": {
+  "vote": "no"
+ },
+ "tangvayosaurus-hoffeti": {
+  "vote": "no"
+ },
+ "taniwhasaurus-oweni": {
+  "vote": "yes"
+ },
+ "tanystropheus-hydroides": {
+  "vote": "yes"
+ },
+ "tanystropheus-longobardicus": {
+  "vote": "yes"
+ },
+ "tapejara-wellnhoferi": {
+  "vote": "yes"
+ },
+ "tarbosaurus-bataar": {
+  "vote": "yes"
+ },
+ "tarchia-tumanovae": {
+  "vote": "yes"
+ },
+ "teleoceras-major": {
+  "vote": "yes"
+ },
+ "telmatosaurus-transsylvanicus": {
+  "vote": "yes"
+ },
+ "temnodontosaurus-platyodon": {
+  "vote": "yes"
+ },
+ "tenontosaurus-tilletti": {
+  "vote": "yes"
+ },
+ "teratophoneus-curriei": {
+  "vote": "yes"
+ },
+ "teratornis-merriami": {
+  "vote": "yes"
+ },
+ "thalassocnus-natans": {
+  "vote": "yes"
+ },
+ "thalassodromeus-sethi": {
+  "vote": "yes"
+ },
+ "thalassotitan-atrox": {
+  "vote": "yes"
+ },
+ "tharrhias-araripis": {
+  "vote": "yes"
+ },
+ "therizinosaurus-cheloniformis": {
+  "vote": "yes"
+ },
+ "thoatherium-minusculum": {
+  "vote": "yes"
+ },
+ "thrinaxodon-liorhinus": {
+  "vote": "yes"
+ },
+ "thylacinus-cynocephalus": {
+  "vote": "yes"
+ },
+ "thylacoleo-carnifex": {
+  "vote": "yes"
+ },
+ "thylacosmilus-atrox": {
+  "vote": "yes"
+ },
+ "tianyulong-confuciusi": {
+  "vote": "yes"
+ },
+ "ticinosuchus-ferox": {
+  "vote": "yes"
+ },
+ "tiktaalik-roseae": {
+  "vote": "yes"
+ },
+ "timorebestia-koprii": {
+  "vote": "yes"
+ },
+ "timurlengia-euotica": {
+  "vote": "no"
+ },
+ "titanis-walleri": {
+  "vote": "yes"
+ },
+ "titanoboa-cerrejonensis": {
+  "vote": "no"
+ },
+ "titanomyrma-gigantea": {
+  "vote": "yes"
+ },
+ "titanosaurus-indicus": {
+  "vote": "no"
+ },
+ "tornieria-africana": {
+  "vote": "no"
+ },
+ "torosaurus-latus": {
+  "vote": "yes"
+ },
+ "torvosaurus-gurneyi": {
+  "vote": "yes"
+ },
+ "torvosaurus-tanneri": {
+  "vote": "yes"
+ },
+ "toxochelys-latiremis": {
+  "vote": "yes"
+ },
+ "toxodon-platensis": {
+  "vote": "yes"
+ },
+ "tratayenia-rosalesi": {
+  "vote": "yes"
+ },
+ "triarthrus-eatoni": {
+  "vote": "yes"
+ },
+ "triceratops-horridus": {
+  "vote": "yes"
+ },
+ "triceratops-prorsus": {
+  "vote": "yes"
+ },
+ "trimerorhachis-insignis": {
+  "vote": "yes"
+ },
+ "tropeognathus-mesembrinus": {
+  "vote": "yes"
+ },
+ "tullimonstrum-gregarium": {
+  "vote": "yes"
+ },
+ "tupuxuara-longicristatus": {
+  "vote": "yes"
+ },
+ "turanoceratops-tardabilis": {
+  "vote": "yes"
+ },
+ "typothorax-coccinarum": {
+  "vote": "yes"
+ },
+ "tyrannosaurus-mcraeensis": {
+  "vote": "yes"
+ },
+ "tyrannosaurus-rex": {
+  "vote": "yes"
+ },
+ "tyrannotitan-chubutensis": {
+  "vote": "yes"
+ },
+ "ugrunaaluk-kuukpikensis": {
+  "vote": "yes"
+ },
+ "uluciala-rotundata": {
+  "vote": "no"
+ },
+ "ursus-spelaeus": {
+  "vote": "yes"
+ },
+ "utahceratops-gettyi": {
+  "vote": "yes"
+ },
+ "utahraptor-ostrommaysi": {
+  "vote": "yes"
+ },
+ "vagaceratops-irvinensis": {
+  "vote": "yes"
+ },
+ "vallibonavenatrix-cani": {
+  "vote": "yes"
+ },
+ "varanops-brevirostris": {
+  "vote": "yes"
+ },
+ "varanus-priscus": {
+  "vote": "yes"
+ },
+ "vauxia-gracilenta": {
+  "vote": "yes"
+ },
+ "vegavis-iaai": {
+  "vote": "yes"
+ },
+ "velociraptor-mongoliensis": {
+  "vote": "yes"
+ },
+ "velocisaurus-unicus": {
+  "vote": "yes"
+ },
+ "venaticosuchus-rusconii": {
+  "vote": "no"
+ },
+ "viavenator-exxoni": {
+  "vote": "yes"
+ },
+ "vinctifer-comptoni": {
+  "vote": "yes"
+ },
+ "weigeltisaurus-jaekeli": {
+  "vote": "yes"
+ },
+ "westlothiana-lizziae": {
+  "vote": "no"
+ },
+ "wintonotitan-wattsi": {
+  "vote": "yes"
+ },
+ "wiwaxia-corrugata": {
+  "vote": "yes"
+ },
+ "wukongopterus-lii": {
+  "vote": "yes"
+ },
+ "xiaotingia-zhengi": {
+  "vote": "yes"
+ },
+ "xiphactinus-audax": {
+  "vote": "yes"
+ },
+ "yabeinosaurus-tenuis": {
+  "vote": "yes"
+ },
+ "yanornis-martini": {
+  "vote": "yes"
+ },
+ "yinlong-downsi": {
+  "vote": "yes"
+ },
+ "yutyrannus-huali": {
+  "vote": "yes"
+ },
+ "zalmoxes-robustus": {
+  "vote": "no"
+ },
+ "zarafasaura-oceanis": {
+  "vote": "yes"
+ },
+ "zephyrosaurus-schaffi": {
+  "vote": "yes"
+ },
+ "zhuchengtyrannus-magnus": {
+  "vote": "yes"
+ },
+ "zuolong-salleei": {
+  "vote": "yes"
  }
 }
