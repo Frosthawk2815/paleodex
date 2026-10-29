@@ -5,7 +5,7 @@ import type { DataSet } from '@/data/sets/types';
 
 export const TREE_2: DataSet = {
   clades: [
-    { id: 'oviraptorosauria', name: 'Oviraptorosauria', common: 'Oviraptorosaurs', parent: 'maniraptora', family: true, description: 'Feathered, mostly beaked theropods with short skulls, from turkey-sized to the giant Gigantoraptor.' },
+    { id: 'oviraptorosauria', name: 'Oviraptorosauria', common: 'Oviraptorosaurs', parent: 'pennaraptora', family: true, description: 'Feathered, mostly beaked theropods with short skulls, from turkey-sized to the giant Gigantoraptor.' },
     { id: 'nyctosauridae', name: 'Nyctosauridae', common: 'Nyctosaurids', parent: 'pterosauria', family: true, description: 'Toothless ocean-going pterosaurs that had lost the three small clawed fingers, keeping only the long finger that held the wing.' },
     { id: 'anurognathidae', name: 'Anurognathidae', common: 'Anurognathids', parent: 'pterosauria', family: true, description: 'Small, frog-faced pterosaurs with wide mouths and big eyes, probably catching insects in flight.' },
     { id: 'ctenochasmatidae', name: 'Ctenochasmatidae', common: 'Comb-jawed pterosaurs', parent: 'pterosauria', family: true, description: 'Pterosaurs with long jaws full of fine, comb-like teeth for filtering food from water.' },

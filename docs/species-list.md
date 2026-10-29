@@ -450,18 +450,18 @@
 | 124.6 Ma | *Oregramma illecebrosa* | Oregramma | Insects and relatives | Yixian Formation |
 | 121 Ma | *Riojavenatrix lacustris* | Riojavenatrix | Baryonychines | Enciso Group |
 | 120 Ma | *Microraptor zhaoianus* | Microraptor | Raptors | Jiufotang Formation |
-| 120 Ma | *Jeholornis prima* | Jeholornis | Birds | Jiufotang Formation |
+| 120 Ma | *Jeholornis prima* | Jeholornis | Avialans | Jiufotang Formation |
 | 120 Ma | *Ikrandraco avatar* | Ikrandraco | Pterosaurs | Jiufotang Formation |
-| 120 Ma | *Sapeornis chaoyangensis* | Sapeornis | Birds | Jiufotang Formation |
+| 120 Ma | *Sapeornis chaoyangensis* | Sapeornis | Avialans | Jiufotang Formation |
 | 120 Ma | *Fukuiraptor kitadaniensis* | Fukuiraptor | Megaraptorans | Kitadani Formation |
 | 120 Ma | *Fukuisaurus tetoriensis* | Fukuisaurus | Iguanodonts | Kitadani Formation |
 | 120 Ma | *Koshisaurus katsuyama* | Koshisaurus | Iguanodonts | Kitadani Formation |
 | 120 Ma | *Fukuititan nipponensis* | Fukuititan | Sauropods and relatives | Kitadani Formation |
 | 120 Ma | *Fukuivenator paradoxus* | Fukuivenator | Coelurosaurs | Kitadani Formation |
-| 120 Ma | *Fukuipteryx prima* | Fukuipteryx | Birds | Kitadani Formation |
+| 120 Ma | *Fukuipteryx prima* | Fukuipteryx | Avialans | Kitadani Formation |
 | 120 Ma | *Sinopterus dongi* | Sinopterus | Tapejarids | Jiufotang Formation |
 | 120 Ma | *Longipteryx chaoyangensis* | Longipteryx | Opposite birds | Jiufotang Formation |
-| 120 Ma | *Yanornis martini* | Yanornis | Birds | Jiufotang Formation |
+| 120 Ma | *Yanornis martini* | Yanornis | Ornithuromorphs | Jiufotang Formation |
 | 120 Ma | *Nurhachius ignaciobritoi* | Nurhachius | Istiodactylids | Jiufotang Formation |
 | 118 Ma | *Ichthyovenator laosensis* | Ichthyovenator | Spinosaurines | Grès supérieurs Formation |
 | 118 Ma | *Tangvayosaurus hoffeti* | Tangvayosaurus | Sauropods and relatives | Grès supérieurs Formation |
@@ -571,7 +571,7 @@
 | 85 Ma | *Xiphactinus audax* | Xiphactinus | Ichthyodectids | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Hesperornis regalis* | Hesperornis | Toothed diving birds | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Cretoxyrhina mantelli* | Cretoxyrhina | Mackerel sharks | Niobrara Formation (Smoky Hill Chalk) |
-| 85 Ma | *Ichthyornis dispar* | Ichthyornis | Birds | Niobrara Formation (Smoky Hill Chalk) |
+| 85 Ma | *Ichthyornis dispar* | Ichthyornis | Ornithuromorphs | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Styxosaurus snowii* | Styxosaurus | Plesiosaurs and relatives | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Platecarpus tympaniticus* | Platecarpus | Mosasaurs | Niobrara Formation (Smoky Hill Chalk) |
 | 85 Ma | *Gillicus arcuatus* | Gillicus | Ichthyodectids | Niobrara Formation (Smoky Hill Chalk) |
@@ -581,7 +581,7 @@
 | 85 Ma | *Tratayenia rosalesi* | Tratayenia | Megaraptorids | Bajo de la Carpa Formation |
 | 85 Ma | *Diuqin lechiguanae* | Diuqin | Raptors | Bajo de la Carpa Formation |
 | 85 Ma | *Alvarezsaurus calvoi* | Alvarezsaurus | Alvarezsaurs | Bajo de la Carpa Formation |
-| 85 Ma | *Patagopteryx deferrariisi* | Patagopteryx | Birds | Bajo de la Carpa Formation |
+| 85 Ma | *Patagopteryx deferrariisi* | Patagopteryx | Ornithuromorphs | Bajo de la Carpa Formation |
 | 85 Ma | *Neuquenornis volans* | Neuquenornis | Opposite birds | Bajo de la Carpa Formation |
 | 85 Ma | *Notosuchus terrestris* | Notosuchus | Notosuchians | Bajo de la Carpa Formation |
 | 85 Ma | *Dinilysia patagonica* | Dinilysia | Lizards and snakes | Bajo de la Carpa Formation |
@@ -676,7 +676,7 @@
 | 73 Ma | *Zalambdalestes lechei* | Zalambdalestes | Placental relatives | Djadochta Formation |
 | 73 Ma | *Estesia mongoliensis* | Estesia | Lizards and snakes | Djadochta Formation |
 | 73 Ma | *Khaan mckennai* | Khaan | Oviraptorids | Djadochta Formation |
-| 73 Ma | *Apsaravis ukhaana* | Apsaravis | Birds | Djadochta Formation |
+| 73 Ma | *Apsaravis ukhaana* | Apsaravis | Ornithuromorphs | Djadochta Formation |
 | 72.5 Ma | *Tyrannosaurus mcraeensis* | Tyrannosaurus mcraeensis | Tyrannosaurs | Hall Lake Formation |
 | 72.5 Ma | *Sierraceratops turneri* | Sierraceratops | Horned dinosaurs | Hall Lake Formation |
 | 72 Ma | *Sinoceratops zhuchengensis* | Sinoceratops | Horned dinosaurs | Wangshi Group (Zhucheng) |
@@ -748,7 +748,7 @@
 | 68 Ma | *Beelzebufo ampinga* | Devil frog | Frogs | Maevarano Formation |
 | 68 Ma | *Simosuchus clarki* | Simosuchus | Notosuchians | Maevarano Formation |
 | 68 Ma | *Mahajangasuchus insignis* | Mahajangasuchus | Mahajangasuchids | Maevarano Formation |
-| 68 Ma | *Rahonavis ostromi* | Rahonavis | Birds | Maevarano Formation |
+| 68 Ma | *Rahonavis ostromi* | Rahonavis | Paravians | Maevarano Formation |
 | 68 Ma | *Adalatherium hui* | Adalatherium | Mammals | Maevarano Formation |
 | 68 Ma | *Joaquinraptor casali* | Joaquinraptor | Megaraptorids | Lago Colhué Huapi Formation |
 | 68 Ma | *Secernosaurus koerneri* | Secernosaurus | Duck-billed dinosaurs | Lago Colhué Huapi Formation |

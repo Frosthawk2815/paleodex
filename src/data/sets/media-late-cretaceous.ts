@@ -409,7 +409,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       id: 'troodontidae',
       name: 'Troodontidae',
       common: 'Troodontids',
-      parent: 'maniraptora',
+      parent: 'paraves',
       family: true,
       description: 'Small, large-brained, big-eyed feathered dinosaurs, close relatives of birds.',
     },

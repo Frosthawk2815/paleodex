@@ -219,13 +219,13 @@ const BASE_CLADES: Clade[] = [
     name: 'Maniraptora',
     common: 'Maniraptorans',
     parent: 'coelurosauria',
-    description: 'Feathered, bird-like theropods with long arms and hands: oviraptorosaurs, raptors, troodontids and birds.',
+    description: 'Feathered, bird-like theropods with long arms and hands: alvarezsaurs, therizinosaurs, oviraptorosaurs, raptors, troodontids and birds.',
   },
   {
     id: 'dromaeosauridae',
     name: 'Dromaeosauridae',
     common: 'Raptors',
-    parent: 'maniraptora',
+    parent: 'paraves',
     family: true,
     description: 'Feathered, sickle-clawed hunters such as Velociraptor and Deinonychus.',
   },
@@ -241,9 +241,10 @@ const BASE_CLADES: Clade[] = [
     id: 'aves',
     name: 'Aves',
     common: 'Birds',
-    parent: 'maniraptora',
+    parent: 'ornithuromorpha',
     family: true,
-    description: 'Feathered, flying dinosaurs. Only one branch of Cretaceous birds survived the asteroid.',
+    description:
+      'Modern birds in the strict sense (the crown group): the last common ancestor of all living birds and every descendant. A few lineages, such as early waterfowl and gamebird relatives, appear before the asteroid; they were the only birds to survive it.',
   },
   {
     id: 'ornithischia',

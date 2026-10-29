@@ -56,7 +56,7 @@ export const FAMILIES_6: DataSet = {
     }),
   ],
   clades: [
-    { id: 'enantiornithes', name: 'Enantiornithes', common: 'Opposite birds', parent: 'aves', family: true, description: 'The most varied birds of the Cretaceous, most with teeth and clawed wings, which died out with the dinosaurs.' },
+    { id: 'enantiornithes', name: 'Enantiornithes', common: 'Opposite birds', parent: 'avialae', family: true, description: 'The most varied birds of the Cretaceous, most with teeth and clawed wings, which died out with the dinosaurs.' },
     { id: 'ophiacodontidae', name: 'Ophiacodontidae', common: 'Ophiacodontids', parent: 'synapsida', family: true, description: 'Early synapsids with long, deep skulls, among the first large land predators.' },
     { id: 'varanopidae', name: 'Varanopidae', common: 'Varanopids', parent: 'synapsida', family: true, description: 'Lightly built, monitor-lizard-like early synapsid predators.' },
     { id: 'brontotheriidae', name: 'Brontotheriidae', common: 'Brontotheres', parent: 'eutheria', family: true, description: 'Rhino-like relatives of horses, some as big as elephants, with forked horns on their noses.' },

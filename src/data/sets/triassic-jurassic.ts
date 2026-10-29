@@ -447,7 +447,7 @@ export const TRIASSIC_JURASSIC: DataSet = {
       id: 'archaeopterygidae',
       name: 'Archaeopterygidae',
       common: 'Archaeopteryx and kin',
-      parent: 'maniraptora',
+      parent: 'avialae',
       family: true,
       description: 'Feathered, winged dinosaurs from the Late Jurassic of Germany, close to the origin of birds.',
     },
