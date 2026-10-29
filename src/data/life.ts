@@ -140,16 +140,14 @@ const BASE_CLADES: Clade[] = [
     name: 'Testudines',
     common: 'Turtles',
     parent: 'reptilia',
-    family: true,
-    description: 'Reptiles with a bony shell. Hell Creek’s rivers held many kinds, from small baenids to giant softshells.',
+    description: 'Turtles, tortoises and terrapins: reptiles whose shell grows from ribs and backbone fused to bony plates. About 360 species live today. Hell Creek’s rivers held many kinds, from small baenids to giant softshells.',
   },
   {
     id: 'squamata',
     name: 'Squamata',
     common: 'Lizards and snakes',
     parent: 'reptilia',
-    family: true,
-    description: 'Scaled reptiles that shed their skin, including lizards and snakes.',
+    description: 'Lizards and snakes: scaled reptiles that shed their skin. With over 11,000 living species it is the largest group of reptiles. Snakes evolved from lizards, so “lizards” on their own are not a natural group.',
   },
   {
     id: 'choristodera',

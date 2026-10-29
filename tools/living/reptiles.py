@@ -1,0 +1,222 @@
+# Living reptiles other than crocodylians. There are over 12,000 species, so this follows the
+# well-known-names rule: famous turtles, the tuatara, lizards and snakes, one family at a time
+# with relatives mentioned. Ranges are country-level outlines with boxes, so they are approximate.
+
+
+def C(*names, **clip):
+    return {'countries': list(names), **clip}
+
+
+def part(country, lon0, lat0, lon1, lat1):
+    return {'country': country, 'bbox': [lon0, lat0, lon1, lat1]}
+
+
+def sea(lon0, lat0, lon1, lat1):
+    return {'sea': [lon0, lat0, lon1, lat1]}
+
+
+CENTRAL_AMERICA = ['Guatemala', 'Belize', 'El Salvador', 'Honduras', 'Nicaragua', 'Costa Rica', 'Panama']
+SOUTH_AMERICA_TROPICS = ['Colombia', 'Venezuela', 'Guyana', 'Suriname', 'Ecuador', 'Peru', 'Brazil', 'Bolivia', 'Paraguay']
+AMAZON = [part('Brazil', -74, -14, -48, 5), part('Peru', -77, -14, -69, -2), part('Colombia', -78, -4, -67, 8), part('Ecuador', -78, -3, -75, 1), part('Venezuela', -73, 1, -60, 11), part('Bolivia', -69.5, -18, -60, -10), C('Guyana', 'Suriname')]
+GALAPAGOS = [part('Ecuador', -92, -1.5, -89, 0.7)]
+
+
+def F(id, name, common, parent, desc):
+    return {'id': id, 'name': name, 'common': common, 'parent': parent, 'family': True, 'description': desc}
+
+
+CLADES = [
+    F('testudinidae', 'Testudinidae', 'Tortoises', 'testudines', 'Land turtles with domed shells and stumpy, elephant-like hind legs, about 50 species, including the giant tortoises of the Galápagos and Aldabra and the familiar Mediterranean tortoises kept as pets.'),
+    F('cheloniidae', 'Cheloniidae', 'Hard-shelled sea turtles', 'testudines', 'Six sea turtles with flipper limbs and hard, scaly shells: green, loggerhead, hawksbill, flatback, olive ridley and Kemp’s ridley. Females return to beaches to lay eggs, often near where they hatched.'),
+    F('dermochelyidae', 'Dermochelyidae', 'Leatherback turtles', 'testudines', 'A family with one living species, the leatherback, whose shell is a mosaic of small bones under leathery skin.'),
+    F('chelydridae', 'Chelydridae', 'Snapping turtles', 'testudines', 'Big-headed American freshwater turtles with powerful jaws, small shells and long tails.'),
+    F('emydidae', 'Emydidae', 'Pond turtles and box turtles', 'testudines', 'About 50 species of mostly American freshwater and land turtles, including sliders, painted turtles, box turtles and the European pond turtle.'),
+    F('iguanidae', 'Iguanidae', 'Iguanas', 'squamata', 'Large, mostly plant-eating lizards of the Americas, Caribbean, Galápagos and Fiji, including green, marine, land and rock iguanas.'),
+    F('helodermatidae', 'Helodermatidae', 'Beaded lizards', 'squamata', 'The Gila monster and the beaded lizards of Mexico and Guatemala: heavy, venomous lizards covered in bead-like bony scales.'),
+    F('chamaeleonidae', 'Chamaeleonidae', 'Chameleons', 'squamata', 'Over 200 species of slow-moving tree lizards with grasping feet, independently swivelling eyes and a tongue that shoots out faster than the eye can follow. Nearly half live in Madagascar.'),
+    F('gekkonidae', 'Gekkonidae', 'Geckos', 'squamata', 'About 1,500 species of mostly night-active lizards, many of which climb walls and glass with millions of microscopic hairs on their toes. Most cannot blink and lick their eyes clean instead.'),
+    F('agamidae', 'Agamidae', 'Dragon lizards', 'squamata', 'About 500 species of Old World lizards including bearded dragons, frilled lizards, thorny devils, water dragons and gliding flying dragons.'),
+    F('corytophanidae', 'Corytophanidae', 'Casquehead lizards', 'squamata', 'Basilisks and their relatives, slender tree lizards of Central and South America with crests on the head.'),
+    F('phrynosomatidae', 'Phrynosomatidae', 'Spiny lizards and horned lizards', 'squamata', 'North American lizards including horned lizards, spiny lizards, fence lizards and side-blotched lizards.'),
+    F('scincidae', 'Scincidae', 'Skinks', 'squamata', 'The largest lizard family, with about 1,700 species, mostly smooth, shiny-scaled ground lizards. Many have tiny legs or none, and many give birth to live young.'),
+    {'id': 'serpentes', 'name': 'Serpentes', 'common': 'Snakes', 'parent': 'squamata', 'description': 'Legless squamates that swallow prey whole using loosely connected jaws. Snakes evolved from lizards over 100 million years ago; about 4,000 species live today, on every continent except Antarctica.'},
+    F('pythonidae', 'Pythonidae', 'Pythons', 'serpentes', 'About 40 egg-laying constrictors of Africa, Asia and Australia. Females coil around their eggs and some warm them by shivering.'),
+    F('boidae', 'Boidae', 'Boas', 'serpentes', 'Constricting snakes, mostly of the Americas, that give birth to live young; they include the anacondas and the boa constrictor.'),
+    F('elapidae', 'Elapidae', 'Cobras and relatives', 'serpentes', 'About 400 venomous snakes with short, fixed front fangs: cobras, mambas, kraits, coral snakes, taipans and the sea snakes. Most Australian snakes belong here.'),
+    F('viperidae', 'Viperidae', 'Vipers', 'serpentes', 'About 400 venomous snakes with long, hinged fangs that fold back when the mouth closes, including rattlesnakes, adders and pit vipers. Pit vipers sense the body heat of prey with pits between the eye and nostril.'),
+    F('colubridae', 'Colubridae', 'Colubrids', 'serpentes', 'The largest snake family in the traditional sense, with about 2,000 species including rat snakes, kingsnakes, garter snakes and grass snakes; some scientists now split garter and water snakes into their own family, Natricidae. Most are harmless to people.'),
+]
+
+UPGRADES = {}
+
+
+def S(id, name, common, clade, place, summary, facts, keywords, rng):
+    return {'id': id, 'name': name, 'common': common, 'clade': clade, 'place': place, 'summary': [summary], 'facts': facts, 'keywords': keywords, 'range': rng}
+
+
+GENERA = [
+    # ── Turtles ──
+    S('chelonoidis-niger', 'Chelonoidis niger', 'Galápagos giant tortoise', 'testudinidae', 'Galápagos Islands, Ecuador',
+      'The largest living tortoise, with males over 200 kg and lifespans past 100 years. Each island has its own form, now usually counted as about 13 living species: domed shells on wet islands, and raised “saddleback” shells on dry islands that let tortoises stretch up to reach cactus. Lonesome George, the last Pinta Island tortoise, died in 2012; a female Fernandina tortoise, a species thought extinct for over a century, was found in 2019. Whalers and settlers killed perhaps 100,000–200,000 for food.',
+      [('Weight', 'Males up to about 250 kg'), ('Lifespan', 'Over 100 years')],
+      ['galapagos tortoise', 'galapagos giant tortoise', 'giant tortoise', 'lonesome george', 'chelonoidis', 'tortoise', 'darwin'],
+      GALAPAGOS),
+    S('aldabrachelys-gigantea', 'Aldabrachelys gigantea', 'Aldabra giant tortoise', 'testudinidae', 'Aldabra Atoll, Seychelles',
+      'One of the two surviving kinds of giant tortoise, with about 100,000 living on remote Aldabra Atoll, more than all Galápagos tortoises together. They have been released on islands off Mauritius to replace extinct Mascarene tortoises as grazers and seed-spreaders. Jonathan, a Seychelles giant tortoise (often counted as part of this species) on Saint Helena, is thought to have hatched around 1832, making him the oldest known land animal.',
+      [('Weight', 'Males up to about 250 kg'), ('IUCN status', 'Vulnerable')],
+      ['aldabra giant tortoise', 'aldabra tortoise', 'giant tortoise', 'jonathan', 'aldabrachelys', 'tortoise', 'seychelles'],
+      [sea(45.9, -9.8, 46.8, -9.1)]),
+    S('dermochelys-coriacea', 'Dermochelys coriacea', 'Leatherback turtle', 'dermochelyidae', 'Oceans worldwide, nesting on tropical beaches',
+      'The largest living turtle, up to about 2 m long and 500–700 kg; a male stranded in Wales in 1988 weighed 916 kg. It lives on jellyfish, dives deeper than 1,000 m, and keeps its body warmer than the water, letting it feed as far north as Norway and Canada. Many die after swallowing plastic bags that look like jellyfish.',
+      [('Weight', 'About 250–700 kg'), ('IUCN status', 'Vulnerable')],
+      ['leatherback', 'leatherback turtle', 'dermochelys', 'sea turtle', 'largest turtle'],
+      [sea(-180, -47, 180, 65)]),
+    S('chelonia-mydas', 'Chelonia mydas', 'Green turtle', 'cheloniidae', 'Tropical and subtropical seas worldwide',
+      'A large sea turtle named for the green colour of its fat, not its shell. Adults are mostly plant-eaters that graze seagrass meadows and seaweed, keeping them healthy like lawnmowers. On some beaches, warming sand now produces almost all female hatchlings, because nest temperature decides sex.',
+      [('Weight', 'About 100–200 kg'), ('IUCN status', 'Endangered')],
+      ['green turtle', 'green sea turtle', 'chelonia', 'sea turtle'],
+      [sea(-180, -40, 180, 40)]),
+    S('caretta-caretta', 'Caretta caretta', 'Loggerhead turtle', 'cheloniidae', 'Temperate and tropical seas worldwide, including the Mediterranean',
+      'A sea turtle with a huge head and crushing jaws for crabs, conchs and other shellfish. Hatchlings from Florida drift for years around the North Atlantic, and those born in Japan cross the whole Pacific to feed off Mexico. Its largest nesting beaches are in Florida and Oman.',
+      [('Weight', 'About 80–200 kg'), ('IUCN status', 'Vulnerable')],
+      ['loggerhead', 'loggerhead turtle', 'caretta', 'sea turtle'],
+      [sea(-180, -40, 180, 46)]),
+    S('eretmochelys-imbricata', 'Eretmochelys imbricata', 'Hawksbill turtle', 'cheloniidae', 'Coral reefs of tropical seas worldwide',
+      'A reef turtle with a narrow, hawk-like beak for picking sponges out of crevices. Its overlapping shell plates were the “tortoiseshell” of combs and jewellery; millions were killed for it before international trade was banned in 1977, and illegal trade continues.',
+      [('Weight', 'About 45–70 kg'), ('IUCN status', 'Critically Endangered')],
+      ['hawksbill', 'hawksbill turtle', 'eretmochelys', 'sea turtle', 'tortoiseshell'],
+      [sea(-180, -30, 180, 30)]),
+    S('macrochelys-temminckii', 'Macrochelys temminckii', 'Alligator snapping turtle', 'chelydridae', 'Rivers draining into the Gulf of Mexico, USA',
+      'The heaviest freshwater turtle in North America, with males up to about 80 kg. It lies still with its mouth open, wiggling a pink, worm-shaped flap on its tongue to lure fish inside. Turtles from the Suwannee River were split off as a separate species in 2014.',
+      [('Weight', 'Males up to about 80 kg'), ('IUCN status', 'Vulnerable')],
+      ['alligator snapping turtle', 'alligator snapper', 'macrochelys', 'snapping turtle'],
+      [part('United States of America', -97.5, 29, -84.5, 38)]),
+    S('chelydra-serpentina', 'Chelydra serpentina', 'Common snapping turtle', 'chelydridae', 'Southern Canada to the Gulf of Mexico',
+      'A pond and river turtle with a long neck and a sharp, fast bite. Its shell is too small to hide in, so on land it defends itself by snapping. It can survive winter under ice for months. Snapping turtles of Central and South America are now treated as separate species.',
+      [('Weight', 'About 4–16 kg'), ('IUCN status', 'Least Concern')],
+      ['common snapping turtle', 'snapping turtle', 'snapper', 'chelydra'],
+      [part('United States of America', -105, 25, -67, 49), part('Canada', -105, 42, -60, 50)]),
+    S('trachemys-scripta', 'Trachemys scripta', 'Red-eared slider', 'emydidae', 'Mississippi valley and Gulf coast, USA; introduced worldwide',
+      'A pond turtle named for the red stripe behind each eye and its habit of sliding off logs into the water. The red-eared slider (the subspecies T. s. elegans) became the most traded pet turtle; released pets now live wild on every continent except Antarctica, and it is listed among the world’s 100 worst invasive species.',
+      [('Shell length', 'About 15–30 cm'), ('IUCN status', 'Least Concern')],
+      ['red-eared slider', 'red eared slider', 'pond slider', 'slider', 'terrapin', 'trachemys', 'invasive'],
+      [part('United States of America', -100, 26, -85, 41), part('Mexico', -100, 24, -97, 29)]),
+    S('terrapene-carolina', 'Terrapene carolina', 'Common box turtle', 'emydidae', 'Eastern United States and Mexico',
+      'A land turtle whose lower shell has a hinge, so it can shut itself completely inside like a box. It can live more than 50 years, with reports of over 100, often within a home range of a few hectares. Collection for the pet trade and road deaths have caused declines.',
+      [('Shell length', 'About 11–20 cm'), ('IUCN status', 'Vulnerable')],
+      ['box turtle', 'eastern box turtle', 'common box turtle', 'terrapene'],
+      [part('United States of America', -97, 25, -69, 44), part('Mexico', -99, 18, -87, 25)]),
+    S('chelus-fimbriata', 'Chelus fimbriata', 'Matamata', 'pleurodira', 'Amazon basin and the Guianas',
+      'A side-necked turtle with a flat, triangular head, fringed skin flaps and a rough shell that make it look like a pile of dead leaves. It catches fish by suddenly opening its mouth and throat to suck them in. Turtles from the Orinoco and Rio Negro were described as a second species in 2020.',
+      [('Shell length', 'Up to about 45 cm'), ('Neck', 'Folds sideways under the shell')],
+      ['matamata', 'chelus', 'side-necked turtle', 'amazon'],
+      AMAZON),
+    # ── Tuatara ──
+    S('sphenodon-punctatus', 'Sphenodon punctatus', 'Tuatara', 'rhynchocephalia', 'Offshore islands and fenced sanctuaries of New Zealand',
+      'The only surviving rhynchocephalian, the last of a group that was widespread in the age of dinosaurs. It looks like a lizard but is not one. It stays active in cool weather that would halt most reptiles, grows slowly and can live over 100 years: Henry, at a New Zealand museum, fathered his first young at about 111. Rats wiped it out on the mainland; it survives on about 30 islands, and since 2005 lives again in the fenced Zealandia sanctuary in Wellington.',
+      [('Length', 'Up to about 60 cm'), ('Lifespan', 'Over 100 years')],
+      ['tuatara', 'sphenodon', 'living fossil', 'new zealand'],
+      [part('New Zealand', 174.6, -41.4, 175.4, -40.6), part('New Zealand', 173.6, -41.3, 174.4, -40.7), part('New Zealand', 174.2, -36.4, 175.2, -35.2)]),
+    # ── Lizards ──
+    S('varanus-komodoensis', 'Varanus komodoensis', 'Komodo dragon', 'varanidae', 'Komodo, Rinca, Flores and nearby islands, Indonesia',
+      'The largest living lizard, up to about 3 m and 70 kg, which ambushes deer, pigs and water buffalo. It kills with serrated, iron-coated teeth and a venom from glands in its lower jaw that causes bleeding and shock; the old idea that deadly bacteria in its saliva do the killing has been disproved. Females in zoos have laid fertile eggs without a male. About 3,000 survive in the wild.',
+      [('Length', 'Up to about 3 m'), ('IUCN status', 'Endangered')],
+      ['komodo dragon', 'komodo', 'varanus', 'monitor lizard', 'largest lizard', 'indonesia'],
+      [part('Indonesia', 119.3, -9, 121, -8.2)]),
+    S('iguana-iguana', 'Iguana iguana', 'Green iguana', 'iguanidae', 'Mexico to Paraguay; introduced to Florida and the Caribbean',
+      'A large, leaf-eating tree lizard, up to about 1.7 m with its tail, that often basks over water and drops into rivers to escape. Like many lizards it has a light-sensing “third eye” on top of its head. Released pets have become an invasive pest in Florida and Puerto Rico.',
+      [('Length', 'Up to about 1.7 m'), ('IUCN status', 'Least Concern')],
+      ['green iguana', 'iguana', 'american iguana'],
+      [part('Mexico', -106, 14.5, -87, 24), C(*CENTRAL_AMERICA), C(*SOUTH_AMERICA_TROPICS, latMin=-25), C('Trinidad and Tobago')]),
+    S('amblyrhynchus-cristatus', 'Amblyrhynchus cristatus', 'Marine iguana', 'iguanidae', 'Galápagos Islands, Ecuador',
+      'The only lizard that feeds in the sea, diving for seaweed and sneezing out excess salt from glands near its nose. During El Niño famines adults actually shrink, reabsorbing bone, and grow back when food returns. Darwin called it a “hideous-looking creature”.',
+      [('Length', 'About 0.6–1.4 m'), ('IUCN status', 'Vulnerable')],
+      ['marine iguana', 'amblyrhynchus', 'iguana', 'galapagos'],
+      GALAPAGOS),
+    S('heloderma-suspectum', 'Heloderma suspectum', 'Gila monster', 'helodermatidae', 'Deserts of the southwestern United States and northwestern Mexico',
+      'A slow, chunky, pink-and-black venomous lizard that spends most of its life underground and stores fat in its tail. It delivers venom by chewing; bites are very painful but rarely if ever fatal to people. A hormone found in its saliva, exendin-4, became the diabetes drug exenatide in 2005 and helped open the way for today’s GLP-1 drugs.',
+      [('Length', 'About 35–55 cm'), ('IUCN status', 'Near Threatened')],
+      ['gila monster', 'heloderma', 'venomous lizard', 'beaded lizard', 'arizona'],
+      [part('United States of America', -117, 31.3, -108, 37.5), part('Mexico', -112, 23, -105, 31.5)]),
+    S('furcifer-pardalis', 'Furcifer pardalis', 'Panther chameleon', 'chamaeleonidae', 'Northern and eastern Madagascar',
+      'A large chameleon whose males are vividly coloured in reds, blues, greens or oranges depending on where they come from. A 2015 study of this species showed how chameleons change colour: they adjust a lattice of tiny crystals in their skin that reflects light. A 2021 genetic study suggested it may be several species.',
+      [('Length', 'Up to about 50 cm'), ('IUCN status', 'Least Concern')],
+      ['panther chameleon', 'chameleon', 'furcifer', 'madagascar'],
+      [part('Madagascar', 47, -19, 50.5, -12)]),
+    S('gekko-gecko', 'Gekko gecko', 'Tokay gecko', 'gekkonidae', 'South and Southeast Asia',
+      'A big, blue-grey gecko with orange spots, named for its loud “to-kay” call. Like many geckos it climbs smooth walls and glass using millions of microscopic hairs on its toes that cling by van der Waals forces, the inspiration for gecko-inspired adhesives. Other well-known geckos include house geckos and the leopard gecko kept as a pet (which belongs to a separate family).',
+      [('Length', 'Up to about 35 cm'), ('IUCN status', 'Least Concern')],
+      ['tokay gecko', 'tokay', 'gecko', 'gekko'],
+      [part('India', 88, 21, 97, 29), C('Bangladesh', 'Myanmar', 'Thailand', 'Laos', 'Cambodia', 'Vietnam', 'Malaysia', 'Philippines'), part('Indonesia', 95, -9, 125, 6), part('China', 97, 20, 118, 26)]),
+    S('chlamydosaurus-kingii', 'Chlamydosaurus kingii', 'Frilled lizard', 'agamidae', 'Northern Australia and southern New Guinea',
+      'A tree lizard that, when threatened, opens a huge frill of skin around its neck, gapes and hisses, then runs away upright on its hind legs. The frill and venom-spitting of the Dilophosaurus in Jurassic Park were invented for the film, partly inspired by this lizard; there is no evidence Dilophosaurus had either. Its relatives include the bearded dragon.',
+      [('Length', 'Up to about 90 cm'), ('IUCN status', 'Least Concern')],
+      ['frilled lizard', 'frill-necked lizard', 'frilled dragon', 'chlamydosaurus', 'australia'],
+      [part('Australia', 120, -22, 146, -11), part('Papua New Guinea', 141, -9.5, 147, -7), part('Indonesia', 138, -9, 141, -6)]),
+    S('basiliscus-plumifrons', 'Basiliscus plumifrons', 'Green basilisk', 'corytophanidae', 'Rainforests of Honduras to Panama',
+      'A bright green lizard with crests on its head, back and tail, called the “Jesus Christ lizard” because it can sprint across water on its hind legs, slapping the surface with fringed toes. Young ones run farthest; heavy adults soon sink and swim. It is named after the basilisk of legend.',
+      [('Length', 'Up to about 90 cm'), ('IUCN status', 'Least Concern')],
+      ['green basilisk', 'basilisk', 'jesus christ lizard', 'plumed basilisk', 'basiliscus'],
+      [C('Honduras', 'Nicaragua', 'Costa Rica'), part('Panama', -83, 7, -79, 10)]),
+    S('phrynosoma-cornutum', 'Phrynosoma cornutum', 'Texas horned lizard', 'phrynosomatidae', 'South-central United States and northern Mexico',
+      'A flat, spiny lizard, often called a “horned toad”, that eats mostly harvester ants. Cornered by a coyote or dog, it can squirt a stream of foul-tasting blood from its eyes. It has disappeared from much of its range as harvester ants were replaced by invasive fire ants and pesticides. It is the state reptile of Texas.',
+      [('Length', 'About 7–11 cm'), ('IUCN status', 'Least Concern')],
+      ['texas horned lizard', 'horned lizard', 'horned toad', 'horny toad', 'phrynosoma', 'texas'],
+      [part('United States of America', -112, 26, -93, 40), part('Mexico', -110, 22, -97, 32)]),
+    S('tiliqua-scincoides', 'Tiliqua scincoides', 'Common blue-tongued skink', 'scincidae', 'Eastern and northern Australia',
+      'A stout, short-legged skink that scares off predators by gaping and flashing a broad, bright blue tongue, which also reflects ultraviolet light. It gives birth to live young and is common in suburban gardens, where it eats snails.',
+      [('Length', 'Up to about 60 cm'), ('IUCN status', 'Least Concern')],
+      ['blue-tongued skink', 'blue tongue lizard', 'bluey', 'skink', 'tiliqua', 'australia'],
+      [part('Australia', 138, -39, 154, -10), part('Australia', 120, -18, 138, -11)]),
+    # ── Snakes ──
+    S('malayopython-reticulatus', 'Malayopython reticulatus', 'Reticulated python', 'pythonidae', 'Southeast Asia',
+      'The longest snake in the world, with reliable measurements close to 7 m; claims of 10 m or more have never been verified. It is one of very few snakes known to have killed and swallowed adult people, in a handful of documented cases in Indonesia. Its relative the Burmese python has become a major invasive predator in the Florida Everglades.',
+      [('Length', 'Usually 3–6 m; record close to 7 m'), ('IUCN status', 'Least Concern')],
+      ['reticulated python', 'python', 'malayopython', 'longest snake', 'burmese python'],
+      [C('Bangladesh', 'Myanmar', 'Thailand', 'Laos', 'Cambodia', 'Vietnam', 'Malaysia', 'Brunei', 'Philippines', 'Timor-Leste'), part('Indonesia', 95, -11, 130, 6), part('India', 92, 6, 94, 14)]),
+    S('eunectes-murinus', 'Eunectes murinus', 'Green anaconda', 'boidae', 'Amazon and Orinoco basins',
+      'The heaviest snake alive, with females reaching about 100 kg and over 5 m, far larger than males. It hunts from the water, seizing capybaras, caimans and deer and killing by constriction, which stops blood flow rather than suffocating prey. In 2024 anacondas from the northern part of its range were described as a separate species, the northern green anaconda (Eunectes akayima), a split some scientists dispute; the map shows both.',
+      [('Weight', 'Females up to about 100 kg'), ('IUCN status', 'Least Concern')],
+      ['green anaconda', 'anaconda', 'eunectes', 'heaviest snake', 'amazon'],
+      [*AMAZON, C('Trinidad and Tobago'), part('Bolivia', -66, -18, -58, -12), part('Paraguay', -62, -24, -57, -19)]),
+    S('boa-constrictor', 'Boa constrictor', 'Boa constrictor', 'boidae', 'Mexico to Argentina',
+      'One of the few animals whose scientific name is the same as its common name. It is usually 2–3 m long and gives birth to live young, unlike pythons, which lay eggs. Experiments on boas in 2015 showed that constriction kills by stopping the prey’s heart and blood flow within seconds to minutes.',
+      [('Length', 'Usually 2–3 m'), ('IUCN status', 'Least Concern')],
+      ['boa constrictor', 'boa', 'red-tailed boa', 'constrictor'],
+      [part('Mexico', -110, 14.5, -87, 28), C(*CENTRAL_AMERICA), C(*SOUTH_AMERICA_TROPICS), part('Argentina', -66, -35, -57, -22), C('Trinidad and Tobago')]),
+    S('ophiophagus-hannah', 'Ophiophagus hannah', 'King cobra', 'elapidae', 'Northern India to southern China and Indochina',
+      'The longest venomous snake, up to about 5.5 m, which feeds mainly on other snakes (its genus name means “snake-eater”). It is the only snake known to build a nest, piling leaves over its eggs and guarding them. It is not a “true cobra” of the genus Naja. In 2024 king cobras were split into four species; this name now covers the northern king cobra.',
+      [('Length', 'Up to about 5.5 m'), ('IUCN status', 'Vulnerable')],
+      ['king cobra', 'cobra', 'ophiophagus', 'longest venomous snake', 'hamadryad'],
+      [part('India', 76, 18, 97, 30), C('Nepal', 'Bhutan', 'Bangladesh', 'Myanmar', 'Laos', 'Cambodia', 'Vietnam'), part('Thailand', 97, 10, 106, 21), part('China', 97, 18, 120, 28)]),
+    S('dendroaspis-polylepis', 'Dendroaspis polylepis', 'Black mamba', 'elapidae', 'Savannas of eastern and southern Africa',
+      'Africa’s longest venomous snake, usually 2–3 m, named for the inky-black inside of its mouth; its body is grey or olive-brown, not black. Its fast-acting venom was almost always fatal before antivenom. It is among the fastest snakes, but stories of it chasing people at horse speed are myths; it flees when it can.',
+      [('Length', 'Usually 2–3 m'), ('IUCN status', 'Least Concern')],
+      ['black mamba', 'mamba', 'dendroaspis', 'africa'],
+      [C('Ethiopia', 'Somalia', 'Kenya', 'Uganda', 'Tanzania', 'Rwanda', 'Burundi', 'Zambia', 'Malawi', 'Mozambique', 'Zimbabwe', 'Botswana', 'eSwatini', 'S. Sudan'), part('Dem. Rep. Congo', 25, -13, 31, 2), part('Angola', 12, -18, 24, -8), part('Namibia', 13, -21, 25, -17), part('South Africa', 26, -29, 33, -22)]),
+    S('oxyuranus-microlepidotus', 'Oxyuranus microlepidotus', 'Inland taipan', 'elapidae', 'Channel Country of inland eastern Australia',
+      'In laboratory tests on mice it has the most toxic venom of any land snake. Yet it lives in remote floodplains, is shy and rarely bites, and no human deaths from it have been recorded. It darkens in winter to absorb more heat, and feeds on native rats.',
+      [('Length', 'Usually about 1.8 m'), ('IUCN status', 'Least Concern')],
+      ['inland taipan', 'fierce snake', 'taipan', 'oxyuranus', 'most venomous snake', 'australia'],
+      [part('Australia', 137, -29, 143, -23)]),
+    S('hydrophis-platurus', 'Hydrophis platurus', 'Yellow-bellied sea snake', 'elapidae', 'Warm Indian and Pacific Oceans',
+      'A venomous sea snake that spends its whole life in the open ocean, drifting in floating debris lines to ambush fish, with a paddle-shaped tail for swimming. It has the widest range of any snake. It cannot drink seawater and survives on rain that briefly sits on the sea surface.',
+      [('Length', 'Up to about 90 cm'), ('IUCN status', 'Least Concern')],
+      ['yellow-bellied sea snake', 'sea snake', 'pelagic sea snake', 'hydrophis', 'pelamis'],
+      [sea(32, -35, 180, 32), sea(-180, -35, -78, 8), sea(-180, 8, -100, 33), sea(-100, 8, -84, 15)]),
+    S('crotalus-atrox', 'Crotalus atrox', 'Western diamondback rattlesnake', 'viperidae', 'Southwestern United States and northern Mexico',
+      'A heavy rattlesnake, up to about 2 m, that warns off large animals with a rattle of loose, interlocking keratin rings. It adds a segment every time it sheds, several times a year, and old segments break off, so counting them does not give its age. Pits on its face sense the body heat of prey. It causes many of the serious snakebites in the United States and northern Mexico.',
+      [('Length', 'Usually 1–1.5 m'), ('IUCN status', 'Least Concern')],
+      ['western diamondback', 'western diamondback rattlesnake', 'rattlesnake', 'rattler', 'crotalus'],
+      [part('United States of America', -117, 26, -93, 37.5), part('Mexico', -117, 18, -97, 32)]),
+    S('bitis-gabonica', 'Bitis gabonica', 'Gaboon viper', 'viperidae', 'Rainforests of central and eastern Africa',
+      'The heaviest viper, up to about 8 kg, with the longest fangs of any snake, up to about 5 cm. Its geometric pattern makes it almost invisible among dead leaves, where it lies still for days waiting for prey. It is calm and rarely bites people. The West African form is now treated as a separate species, the West African Gaboon viper.',
+      [('Fangs', 'Up to about 5 cm, the longest of any snake'), ('IUCN status', 'Vulnerable')],
+      ['gaboon viper', 'gabon viper', 'bitis', 'viper', 'longest fangs'],
+      [C('Gabon', 'Congo', 'Eq. Guinea', 'Cameroon', 'Central African Rep.', latMax=6), part('Dem. Rep. Congo', 12, -8, 30, 4), part('Uganda', 29.5, -1.5, 34, 2), part('Tanzania', 29, -11, 40, -3), part('Zambia', 22, -14, 30, -8), part('Mozambique', 32, -27, 40, -15), part('South Africa', 31.5, -28.5, 33, -26.8)]),
+    S('thamnophis-sirtalis', 'Thamnophis sirtalis', 'Common garter snake', 'colubridae', 'Most of North America',
+      'The most widespread reptile in North America, reaching farther north than any other snake on the continent. At Narcisse in Manitoba, tens of thousands emerge from winter dens each spring and form writhing mating balls. Some populations have evolved resistance to the deadly toxin of the newts they eat. Its mild venom is harmless to people.',
+      [('Length', 'Usually 50–100 cm'), ('IUCN status', 'Least Concern')],
+      ['garter snake', 'common garter snake', 'garden snake', 'thamnophis'],
+      [part('Canada', -130, 42, -60, 62), part('United States of America', -125, 25, -67, 49), part('Mexico', -108, 25, -104, 31)]),
+]
