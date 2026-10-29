@@ -94,7 +94,6 @@ const BASE_CLADES: Clade[] = [
     name: 'Caudata',
     common: 'Salamanders',
     parent: 'vertebrata',
-    family: true,
     description: 'Amphibians with long tails and four short legs, living in and around fresh water.',
   },
   {

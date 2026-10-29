@@ -402,7 +402,6 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       name: 'Anura',
       common: 'Frogs',
       parent: 'vertebrata',
-      family: true,
       description: 'Frogs and toads, amphibians with long back legs for jumping and no tail as adults.',
     },
     {
