@@ -74,7 +74,7 @@ export const MODERN: DataSet = {
       id: 'dinornithiformes',
       name: 'Dinornithiformes',
       common: 'Moa',
-      parent: 'aves',
+      parent: 'palaeognathae',
       family: true,
       description: 'Giant flightless birds of New Zealand with no wings at all. All nine species were gone by about 1445.',
     },

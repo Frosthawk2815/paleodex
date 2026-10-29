@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-1301 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+1332 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -1363,3 +1363,34 @@
 | 10,000 yr | *Rattus norvegicus* | Brown rat | Old World mice and rats | range map — Worldwide; originally northern China and Mongolia |
 | 10,000 yr | *Sciurus vulgaris* | Red squirrel | Squirrels | range map — Forests of Europe and northern Asia |
 | 10,000 yr | *Sciurus carolinensis* | Grey squirrel | Squirrels | range map — Eastern North America; introduced to Britain, Ireland, Italy and South Africa |
+| 10,000 yr | *Aptenodytes forsteri* | Emperor penguin | Penguins | range map — Sea ice around Antarctica |
+| 10,000 yr | *Aptenodytes patagonicus* | King penguin | Penguins | range map — Subantarctic islands |
+| 10,000 yr | *Pygoscelis adeliae* | Adélie penguin | Penguins | range map — Coasts and pack ice all around Antarctica |
+| 10,000 yr | *Pygoscelis antarcticus* | Chinstrap penguin | Penguins | range map — Antarctic Peninsula and nearby islands |
+| 10,000 yr | *Pygoscelis papua* | Gentoo penguin | Penguins | range map — Antarctic Peninsula and subantarctic islands |
+| 10,000 yr | *Eudyptes chrysocome* | Southern rockhopper penguin | Penguins | range map — Islands of southern South America and the southern Indian Ocean |
+| 10,000 yr | *Eudyptes moseleyi* | Northern rockhopper penguin | Penguins | range map — Tristan da Cunha, Gough, Amsterdam and St Paul islands |
+| 10,000 yr | *Eudyptes pachyrhynchus* | Fiordland penguin | Penguins | range map — Southwest coast of New Zealand’s South Island |
+| 10,000 yr | *Eudyptes robustus* | Snares penguin | Penguins | range map — The Snares Islands, south of New Zealand |
+| 10,000 yr | *Eudyptes sclateri* | Erect-crested penguin | Penguins | range map — Bounty and Antipodes islands, New Zealand |
+| 10,000 yr | *Eudyptes chrysolophus* | Macaroni penguin | Penguins | range map — Subantarctic islands of the South Atlantic and Indian Ocean |
+| 10,000 yr | *Eudyptes schlegeli* | Royal penguin | Penguins | range map — Macquarie Island, Australia |
+| 10,000 yr | *Megadyptes antipodes* | Yellow-eyed penguin | Penguins | range map — Southeast New Zealand and its subantarctic islands |
+| 10,000 yr | *Eudyptula minor* | Little penguin | Penguins | range map — Coasts of southern Australia and New Zealand |
+| 10,000 yr | *Spheniscus demersus* | African penguin | Penguins | range map — Coasts of South Africa and Namibia |
+| 10,000 yr | *Spheniscus humboldti* | Humboldt penguin | Penguins | range map — Coasts of Peru and Chile |
+| 10,000 yr | *Spheniscus magellanicus* | Magellanic penguin | Penguins | range map — Coasts of southern South America and the Falklands |
+| 10,000 yr | *Spheniscus mendiculus* | Galápagos penguin | Penguins | range map — Galápagos Islands, Ecuador |
+| 10,000 yr | *Struthio camelus* | Common ostrich | Ostriches | range map — Savannas and deserts of Africa |
+| 10,000 yr | *Struthio molybdophanes* | Somali ostrich | Ostriches | range map — Horn of Africa |
+| 10,000 yr | *Rhea americana* | Greater rhea | Rheas | range map — Grasslands of eastern South America |
+| 10,000 yr | *Rhea pennata* | Lesser rhea | Rheas | range map — Patagonia and the high Andes |
+| 10,000 yr | *Dromaius novaehollandiae* | Emu | Emu and cassowaries | range map — Most of mainland Australia |
+| 10,000 yr | *Casuarius casuarius* | Southern cassowary | Emu and cassowaries | range map — Rainforests of New Guinea and northeast Queensland |
+| 10,000 yr | *Casuarius unappendiculatus* | Northern cassowary | Emu and cassowaries | range map — Lowland forests of northern New Guinea |
+| 10,000 yr | *Casuarius bennetti* | Dwarf cassowary | Emu and cassowaries | range map — Mountain forests of New Guinea |
+| 10,000 yr | *Apteryx mantelli* | North Island brown kiwi | Kiwis | range map — North Island, New Zealand |
+| 10,000 yr | *Apteryx australis* | Southern brown kiwi | Kiwis | range map — South Island and Stewart Island, New Zealand |
+| 10,000 yr | *Apteryx rowi* | Rowi | Kiwis | range map — Ōkārito forest, South Island, New Zealand |
+| 10,000 yr | *Apteryx haastii* | Great spotted kiwi | Kiwis | range map — Mountains of northwest South Island, New Zealand |
+| 10,000 yr | *Apteryx owenii* | Little spotted kiwi | Kiwis | range map — Predator-free islands and sanctuaries in New Zealand |

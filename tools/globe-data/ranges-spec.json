@@ -14925,5 +14925,825 @@
         ]
       }
     ]
+  },
+  "aptenodytes-forsteri": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -78,
+              180,
+              -62
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "aptenodytes-patagonicus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -75,
+              -60,
+              -25,
+              -48
+            ]
+          },
+          {
+            "sea": [
+              30,
+              -56,
+              80,
+              -44
+            ]
+          },
+          {
+            "sea": [
+              155,
+              -56,
+              180,
+              -46
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pygoscelis-adeliae": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -78,
+              180,
+              -60
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pygoscelis-antarcticus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -75,
+              -68,
+              -25,
+              -53
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pygoscelis-papua": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -75,
+              -68,
+              -25,
+              -50
+            ]
+          },
+          {
+            "sea": [
+              30,
+              -56,
+              80,
+              -44
+            ]
+          },
+          {
+            "sea": [
+              155,
+              -56,
+              160,
+              -52
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eudyptes-chrysocome": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -75,
+              -56,
+              -55,
+              -50
+            ]
+          },
+          {
+            "sea": [
+              65,
+              -55,
+              80,
+              -45
+            ]
+          },
+          {
+            "sea": [
+              165,
+              -54,
+              180,
+              -47
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eudyptes-moseleyi": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -13,
+              -41.5,
+              -9,
+              -36.5
+            ]
+          },
+          {
+            "sea": [
+              76,
+              -39.5,
+              79,
+              -37
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eudyptes-pachyrhynchus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              166,
+              -47.5,
+              170,
+              -43
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eudyptes-robustus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              165.5,
+              -49,
+              167.5,
+              -47.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eudyptes-sclateri": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              178,
+              -50,
+              180,
+              -47.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eudyptes-chrysolophus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -75,
+              -62,
+              -25,
+              -50
+            ]
+          },
+          {
+            "sea": [
+              30,
+              -56,
+              80,
+              -44
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eudyptes-schlegeli": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              157.5,
+              -55.5,
+              160,
+              -53.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "megadyptes-antipodes": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              168,
+              -47.5,
+              171.5,
+              -45
+            ]
+          },
+          {
+            "sea": [
+              165,
+              -51,
+              167,
+              -50
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eudyptula-minor": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              114,
+              -44,
+              154,
+              -31
+            ]
+          },
+          {
+            "sea": [
+              166,
+              -48,
+              179,
+              -34
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "spheniscus-demersus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              13,
+              -35.5,
+              27,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "spheniscus-humboldti": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -80,
+              -42,
+              -70,
+              -5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "spheniscus-magellanicus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -75,
+              -56,
+              -55,
+              -38
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "spheniscus-mendiculus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -92,
+              -1.5,
+              -90,
+              0.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "struthio-camelus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Kenya",
+              "Tanzania",
+              "Namibia",
+              "Botswana",
+              "Zimbabwe",
+              "Zambia",
+              "Angola",
+              "Chad",
+              "Niger",
+              "Cameroon",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Mali",
+              "Mauritania"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              16,
+              -34,
+              30,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "struthio-molybdophanes": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Somalia",
+              "Somaliland"
+            ]
+          },
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              39,
+              3,
+              47,
+              9
+            ]
+          },
+          {
+            "country": "Kenya",
+            "bbox": [
+              37,
+              -2,
+              42,
+              4.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rhea-americana": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Uruguay",
+              "Paraguay"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -60,
+              -34,
+              -42,
+              -5
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -40,
+              -56,
+              -22
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -66,
+              -22,
+              -58,
+              -14
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rhea-pennata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Argentina",
+            "bbox": [
+              -73,
+              -53,
+              -63,
+              -36
+            ]
+          },
+          {
+            "country": "Chile",
+            "bbox": [
+              -74,
+              -54,
+              -67,
+              -44
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -68.5,
+              -27,
+              -65,
+              -22
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -69.5,
+              -22.5,
+              -66,
+              -16
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -71,
+              -18,
+              -69,
+              -14
+            ]
+          },
+          {
+            "country": "Chile",
+            "bbox": [
+              -70,
+              -24,
+              -67,
+              -17
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dromaius-novaehollandiae": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Australia"
+            ],
+            "latMin": -39
+          }
+        ]
+      }
+    ]
+  },
+  "casuarius-casuarius": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              142,
+              -19.5,
+              146.5,
+              -10.5
+            ]
+          },
+          {
+            "country": "Papua New Guinea",
+            "bbox": [
+              141,
+              -9.5,
+              150,
+              -6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              132,
+              -9,
+              141,
+              -6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "casuarius-unappendiculatus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Papua New Guinea",
+            "bbox": [
+              141,
+              -6,
+              147,
+              -2.5
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              133,
+              -4,
+              141,
+              -0.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "casuarius-bennetti": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Papua New Guinea",
+            "bbox": [
+              141,
+              -8,
+              151,
+              -4
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              134,
+              -5,
+              141,
+              -2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "apteryx-mantelli": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              172.5,
+              -41.7,
+              178.6,
+              -34.3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "apteryx-australis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              166,
+              -47.5,
+              169.5,
+              -44
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "apteryx-rowi": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              170,
+              -43.4,
+              170.4,
+              -43.1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "apteryx-haastii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              171,
+              -43.5,
+              173,
+              -40.8
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "apteryx-owenii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              174.6,
+              -41.4,
+              175.4,
+              -40.6
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
