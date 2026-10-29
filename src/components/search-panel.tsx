@@ -5,6 +5,7 @@ import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { EVENTS, type HistoryEvent } from '@/data/events';
 import { type Extinction, EXTINCTIONS } from '@/lib/extinctions';
 import { type Unit, UNITS_BY_LEVEL } from '@/lib/time';
+import { SHARED_SHORTHANDS } from '@/data/aka';
 import { type Clade, CLADES, SPECIES, type Species } from '@/data/life';
 import { speciesInClade } from '@/lib/life';
 
@@ -125,6 +126,16 @@ function closeness(typed: string, word: string): number {
 function search(query: string): Item[] {
   const q = norm(query);
   if (!q) return ITEMS.filter((i) => i.result.kind === 'event' || i.result.kind === 'extinction' || i.result.kind === 'clade');
+  // A shorthand several animals share lists them first, in a set order ("deino").
+  const shared = SHARED_SHORTHANDS[q];
+  if (shared) {
+    const top = shared.map((id) => ITEMS.find((i) => i.key === `species:${id}`)).filter((i): i is Item => !!i);
+    return [...top, ...searchAll(q).filter((i) => !top.includes(i))].slice(0, 30);
+  }
+  return searchAll(q);
+}
+
+function searchAll(q: string): Item[] {
   // A plural query also matches the singular ("sea scorpions" finds entries that say "sea scorpion").
   const singular = q
     .split(' ')

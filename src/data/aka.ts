@@ -214,3 +214,8 @@ for (const [id, short] of Object.entries(GAME_SHORTHANDS)) {
   const a = SPECIES_AKA[id];
   SPECIES_AKA[id] = { names: a?.names ?? [], search: [...(a?.search ?? []), ...short], note: a?.note };
 }
+
+// Shorthands shared by several animals, with the order they should appear in.
+export const SHARED_SHORTHANDS: Record<string, string[]> = {
+  deino: ['deinonychus-antirrhopus', 'deinosuchus-riograndensis', 'deinocheirus-mirificus'],
+};
