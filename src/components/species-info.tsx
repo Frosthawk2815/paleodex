@@ -21,15 +21,15 @@ type Props = {
   previousLabel?: string;
   onOpenClade: (id: string) => void;
   onOpenSpecies: (id: string) => void;
-  // Jump the timeline and globe to where a formation was laid down.
-  onJump: (formation: HistoryEvent, index: number) => void;
+  // Open a formation's or event's page, moving the timeline and globe to one of its points.
+  onOpenEvent: (event: HistoryEvent, index: number) => void;
   // For modern species: show one phase of the range on the globe, or the last sighting.
   onJumpRange: (index: number) => void;
   onJumpLastSeen: () => void;
 };
 
 // The information section for a species: what it was and the formations it's found in.
-export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onJump, onJumpRange, onJumpLastSeen }: Props) {
+export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onOpenEvent, onJumpRange, onJumpLastSeen }: Props) {
   const [tab, setTab] = useState<'about' | 'relatives'>('about');
   const path = cladePath(species.clade);
   const family = familyOf(species);
@@ -100,9 +100,9 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
                 return (
                   <Pressable
                     key={f.id}
-                    onPress={() => onJump(f, index)}
+                    onPress={() => onOpenEvent(f, index)}
                     accessibilityRole="button"
-                    accessibilityLabel={`${f.title}: jump to where it formed`}
+                    accessibilityLabel={`${f.title}: read more`}
                     style={({ pressed }) => [info.card, pressed && info.pressed]}>
                     <View style={info.cardRow}>
                       <PointIcon kind={point.icon ?? 'flag'} size={28} bg={badgeBg(f, point)} />
@@ -167,9 +167,9 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
               {events.map((e) => (
                 <Pressable
                   key={e.id}
-                  onPress={() => onJump(e, 0)}
+                  onPress={() => onOpenEvent(e, 0)}
                   accessibilityRole="button"
-                  accessibilityLabel={`${e.title}: show it`}
+                  accessibilityLabel={`${e.title}: read more`}
                   style={({ pressed }) => [info.card, pressed && info.pressed]}>
                   <View style={info.cardRow}>
                     <PointIcon kind={e.points[0].icon ?? 'flag'} size={28} bg={badgeBg(e, e.points[0])} />

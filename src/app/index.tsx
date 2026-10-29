@@ -284,7 +284,10 @@ export default function GlobeScreen() {
                 {...nav}
                 onOpenClade={openClade}
                 onOpenSpecies={openSpecies}
-                onJump={jumpAndShow}
+                onOpenEvent={(e, i) => {
+                  jumpToPoint(e, i);
+                  showInfo({ kind: 'event', event: e });
+                }}
                 onJumpRange={(i) => {
                   goToRange(selected.id, i);
                   backToGlobe();
