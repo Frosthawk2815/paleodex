@@ -1,1 +1,6 @@
-{"homo-sapiens": {"vote": "yes", "note": "Owner chose the Vitruvian Man."}}
+{
+ "homo-sapiens": {
+  "vote": "yes",
+  "note": "Owner chose the Vitruvian Man."
+ }
+}

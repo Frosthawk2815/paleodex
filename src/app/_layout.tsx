@@ -9,6 +9,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ title: 'PaleoDex', headerShown: false }} />
         <Stack.Screen name="period/[id]" options={{ title: '' }} />
         <Stack.Screen name="credits" options={{ title: 'Credits' }} />
+        <Stack.Screen name="review" options={{ title: 'Review pictures' }} />
       </Stack>
     </ThemeProvider>
   );

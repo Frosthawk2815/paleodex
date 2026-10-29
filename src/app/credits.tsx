@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router';
+import { Link, Stack } from 'expo-router';
 import { openBrowserAsync } from 'expo-web-browser';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -29,6 +29,9 @@ export default function CreditsScreen() {
         (2008). Geological time scale and colours: ICS International Chronostratigraphic Chart.
       </Text>
       <Text style={[styles.heading, { color: palette.text }]}>Species pictures ({rows.length})</Text>
+      <Link href="/review" style={[styles.link, styles.review]}>
+        Review candidate pictures ›
+      </Link>
       <Text style={[styles.body, { color: palette.muted }]}>
         Freely licensed images from Wikimedia Commons and Wikipedia. Each is credited to its artist or photographer under the licence
         shown. Tap a licence or source to open it. Artists’ restorations are interpretations and may not match the latest science.
@@ -82,4 +85,5 @@ const styles = StyleSheet.create({
   italic: { fontStyle: 'italic' },
   meta: { fontSize: 13, lineHeight: 18, marginTop: 2 },
   link: { color: '#3D8BFD' },
+  review: { fontSize: 15, fontWeight: '600', paddingVertical: 6, marginBottom: 4 },
 });

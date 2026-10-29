@@ -26,7 +26,7 @@ export const imageOf = (speciesId: string): SpeciesImage | undefined => IMAGES[s
 export const allImages = (): [string, SpeciesImage][] => Object.entries(IMAGES);
 
 // A short note on what the picture is, flagging artists' restorations as interpretation.
-export function imageCaption(img: SpeciesImage, genus: string): string | undefined {
+export function imageCaption(img: Pick<SpeciesImage, 'kind' | 'scope'>, genus: string): string | undefined {
   const what =
     img.kind === 'restoration'
       ? 'Life restoration: an artist’s interpretation'
