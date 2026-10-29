@@ -1,5 +1,5 @@
 {
-  "_about": "Ranges for modern species (those that lived into the last few hundred thousand years). Times are in years before present. Each phase lists regions: {countries}, {continents}, {country, bbox} to clip part of a country, {box} for open sea (or land then above sea level), and latMin/latMax/lonMin/lonMax to clip any region. lastSeen marks where the last one was seen alive (shown as a skull flag at the centre of that country until that date).",
+  "_about": "Ranges for modern species (those that lived into the last few hundred thousand years). Times are in years before present. Each phase lists regions: {countries}, {continents}, {country, bbox} to clip part of a country, {box} for open sea (or land then above sea level), {sea} for water only (a box with today's land cut out), and latMin/latMax/lonMin/lonMax to clip any region. lastSeen marks where the last one was seen alive (shown as a skull flag at the centre of that country until that date).",
   "homo-sapiens": {
     "phases": [
       {
@@ -3613,6 +3613,5763 @@
               -7,
               31.5,
               -4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "panthera-tigris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              72,
+              8,
+              97,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Bangladesh"
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              94,
+              10,
+              99,
+              27
+            ]
+          },
+          {
+            "countries": [
+              "Thailand",
+              "Malaysia"
+            ],
+            "lonMax": 104.5
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              127,
+              42,
+              141,
+              50
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              126,
+              42,
+              132,
+              46
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "neofelis-nebulosa": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              88,
+              22,
+              97,
+              29
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              21,
+              120,
+              30
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "acinonyx-jubatus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Kenya",
+              "Tanzania",
+              "Namibia",
+              "Botswana",
+              "Zimbabwe",
+              "Zambia",
+              "South Africa",
+              "Angola",
+              "Ethiopia",
+              "S. Sudan",
+              "Chad",
+              "Niger"
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              55,
+              32,
+              60,
+              37
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "puma-concolor": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -140,
+              49,
+              -110,
+              60
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -125,
+              25,
+              -100,
+              49
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -82.5,
+              25,
+              -80,
+              27.5
+            ]
+          },
+          {
+            "countries": [
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay",
+              "Argentina",
+              "Chile",
+              "Uruguay"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "herpailurus-yagouaroundi": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -32,
+              -53,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lynx-lynx": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Norway",
+              "Sweden",
+              "Finland",
+              "Estonia",
+              "Latvia",
+              "Lithuania",
+              "Belarus",
+              "Poland",
+              "Slovakia",
+              "Romania",
+              "Mongolia",
+              "Kazakhstan"
+            ]
+          },
+          {
+            "countries": [
+              "Russia"
+            ],
+            "latMax": 70
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              35,
+              135,
+              53
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "leptailurus-serval": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Nigeria",
+              "Chad",
+              "Cameroon",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Somalia",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "Angola",
+              "Dem. Rep. Congo",
+              "Rwanda",
+              "Burundi"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caracal-caracal": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Nigeria",
+              "Chad",
+              "Cameroon",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Somalia",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "Angola",
+              "Morocco",
+              "Algeria",
+              "Egypt",
+              "Saudi Arabia",
+              "Yemen",
+              "Oman",
+              "Jordan",
+              "Israel",
+              "Iran",
+              "Turkmenistan",
+              "Afghanistan",
+              "Pakistan"
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              68,
+              20,
+              80,
+              30
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "leopardus-pardalis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -99,
+              25.8,
+              -97,
+              27.5
+            ]
+          },
+          {
+            "countries": [
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay"
+            ],
+            "latMax": 24
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -30,
+              -53,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "felis-silvestris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Germany",
+              "Italy",
+              "Poland",
+              "Slovakia",
+              "Hungary",
+              "Romania",
+              "Bulgaria",
+              "Serbia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Greece",
+              "Turkey",
+              "Georgia",
+              "Ukraine"
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -7,
+              56,
+              -2,
+              59
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "otocolobus-manul": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Mongolia",
+              "Kazakhstan",
+              "Kyrgyzstan",
+              "Tajikistan"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              28,
+              122,
+              50
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              85,
+              48,
+              120,
+              54
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "prionailurus-bengalensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Nepal",
+              "Bhutan",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "South Korea",
+              "North Korea",
+              "Taiwan"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              18,
+              130,
+              45
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              130,
+              42,
+              136,
+              48
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pardofelis-marmorata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              88,
+              22,
+              97,
+              29
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia"
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "catopuma-temminckii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              88,
+              22,
+              97,
+              29
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              21,
+              120,
+              30
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "prionodon-linsang": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Malaysia"
+            ],
+            "lonMax": 104.5
+          },
+          {
+            "countries": [
+              "Thailand"
+            ],
+            "latMax": 10
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "nandinia-binotata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Sierra Leone",
+              "Liberia",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Nigeria",
+              "Cameroon",
+              "Eq. Guinea",
+              "Gabon",
+              "Congo",
+              "Central African Rep.",
+              "Dem. Rep. Congo",
+              "Uganda",
+              "Guinea",
+              "Togo",
+              "Benin",
+              "Kenya",
+              "Tanzania",
+              "Angola",
+              "Zambia",
+              "Mozambique"
+            ],
+            "latMin": -17
+          }
+        ]
+      }
+    ]
+  },
+  "viverra-zibetha": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              88,
+              22,
+              97,
+              29
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              18,
+              122,
+              32
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "civettictis-civetta": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Guinea",
+              "Guinea-Bissau",
+              "Sierra Leone",
+              "Liberia",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Togo",
+              "Benin",
+              "Nigeria",
+              "Cameroon",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Chad",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Rwanda",
+              "Burundi",
+              "Dem. Rep. Congo",
+              "Congo",
+              "Gabon",
+              "Eq. Guinea",
+              "Angola",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "eSwatini",
+              "Lesotho"
+            ],
+            "exclude": [
+              "Lesotho"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "viverricula-indica": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Nepal",
+              "Bhutan",
+              "Bangladesh",
+              "Sri Lanka",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Taiwan"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              97,
+              18,
+              122,
+              32
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "genetta-genetta": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Morocco",
+              "Algeria",
+              "Tunisia",
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Nigeria",
+              "Chad",
+              "Cameroon",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Somalia",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "Angola"
+            ]
+          },
+          {
+            "country": "Saudi Arabia",
+            "bbox": [
+              41,
+              13,
+              46,
+              22
+            ]
+          },
+          {
+            "countries": [
+              "Yemen",
+              "Oman"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "poiana-richardsonii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Cameroon",
+              "Eq. Guinea",
+              "Gabon",
+              "Congo",
+              "Central African Rep."
+            ],
+            "latMax": 6
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              17,
+              -4,
+              30,
+              4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "paradoxurus-hermaphroditus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Nepal",
+              "Bhutan",
+              "Bangladesh",
+              "Sri Lanka",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Philippines"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              97,
+              18,
+              112,
+              26
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "paguma-larvata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              76,
+              22,
+              97,
+              33
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Taiwan"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              18,
+              122,
+              38
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "arctictis-binturong": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              88,
+              22,
+              97,
+              28
+            ]
+          },
+          {
+            "countries": [
+              "Bhutan",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Philippines"
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "arctogalidia-trivirgata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia"
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "macrogalidia-musschenbroekii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Indonesia",
+            "bbox": [
+              118.5,
+              -6,
+              125.5,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hemigalus-derbyanus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Malaysia"
+            ],
+            "lonMax": 104.5
+          },
+          {
+            "countries": [
+              "Thailand"
+            ],
+            "latMax": 10
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              97,
+              9.5,
+              99.5,
+              14
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "chrotogale-owstoni": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Vietnam",
+            "bbox": [
+              103,
+              17,
+              108,
+              23
+            ]
+          },
+          {
+            "country": "Laos",
+            "bbox": [
+              101,
+              17,
+              106,
+              22.5
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              103,
+              22,
+              106.5,
+              24
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cynogale-bennettii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Malaysia"
+            ],
+            "lonMax": 104.5
+          },
+          {
+            "countries": [
+              "Thailand"
+            ],
+            "latMax": 8
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "diplogale-hosei": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Malaysia",
+            "bbox": [
+              112,
+              1,
+              119,
+              7.2
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cryptoprocta-ferox": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Madagascar"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "fossa-fossana": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Madagascar",
+            "bbox": [
+              47,
+              -25,
+              50.5,
+              -12
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eupleres-goudotii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Madagascar",
+            "bbox": [
+              47,
+              -25,
+              50.5,
+              -12
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "galidia-elegans": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Madagascar",
+            "bbox": [
+              46.5,
+              -25,
+              50.5,
+              -12
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "galidictis-fasciata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Madagascar",
+            "bbox": [
+              47,
+              -25,
+              50.5,
+              -13
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mungotictis-decemlineata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Madagascar",
+            "bbox": [
+              43.5,
+              -23,
+              45.5,
+              -19
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "salanoia-concolor": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Madagascar",
+            "bbox": [
+              48,
+              -19,
+              50.5,
+              -13
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "herpestes-ichneumon": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Nigeria",
+              "Chad",
+              "Cameroon",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Somalia",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "Angola",
+              "Egypt",
+              "Morocco",
+              "Algeria",
+              "Tunisia",
+              "Israel",
+              "Palestine",
+              "Lebanon",
+              "Syria",
+              "Turkey"
+            ]
+          },
+          {
+            "country": "Spain",
+            "bbox": [
+              -9,
+              36,
+              -2,
+              40
+            ]
+          },
+          {
+            "country": "Portugal",
+            "bbox": [
+              -9.5,
+              37,
+              -6.5,
+              40
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "urva-edwardsii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Nepal",
+              "Pakistan",
+              "Sri Lanka",
+              "Bangladesh",
+              "Afghanistan"
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              48,
+              25,
+              63,
+              38
+            ]
+          },
+          {
+            "country": "Saudi Arabia",
+            "bbox": [
+              45,
+              22,
+              55,
+              29
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "suricata-suricatta": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Botswana",
+              "Namibia"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              16,
+              -34,
+              29,
+              -24
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              11.5,
+              -18,
+              16,
+              -14
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mungos-mungo": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Nigeria",
+              "Chad",
+              "Cameroon",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Somalia",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "Angola",
+              "Rwanda",
+              "Burundi"
+            ],
+            "exclude": [
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Niger",
+              "Somalia"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "helogale-parvula": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Kenya",
+              "Tanzania",
+              "Uganda",
+              "Ethiopia",
+              "Somalia",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "Angola",
+              "eSwatini"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              26,
+              -27,
+              32,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "atilax-paludinosus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Guinea",
+              "Guinea-Bissau",
+              "Sierra Leone",
+              "Liberia",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Togo",
+              "Benin",
+              "Nigeria",
+              "Cameroon",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Chad",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Rwanda",
+              "Burundi",
+              "Dem. Rep. Congo",
+              "Congo",
+              "Gabon",
+              "Eq. Guinea",
+              "Angola",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "eSwatini",
+              "Lesotho"
+            ],
+            "exclude": [
+              "Niger",
+              "Chad",
+              "Sudan",
+              "Somalia",
+              "Somaliland",
+              "Eritrea",
+              "Mali"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ichneumia-albicauda": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Nigeria",
+              "Chad",
+              "Cameroon",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Somalia",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "Angola",
+              "Yemen",
+              "Oman"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cynictis-penicillata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "South Africa",
+              "Botswana",
+              "Namibia",
+              "Lesotho"
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              11.5,
+              -18,
+              16,
+              -15
+            ]
+          },
+          {
+            "country": "Zimbabwe",
+            "bbox": [
+              27,
+              -22,
+              30,
+              -19
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "paracynictis-selousi": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Zimbabwe",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Botswana"
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              14,
+              -18,
+              24,
+              -11
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              28,
+              -26,
+              32,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rhynchogale-melleri": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe"
+            ]
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              25,
+              -13,
+              30,
+              -6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bdeogale-crassicauda": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Kenya",
+              "Tanzania",
+              "Malawi",
+              "Mozambique",
+              "Zambia",
+              "Zimbabwe"
+            ],
+            "latMax": 0
+          }
+        ]
+      }
+    ]
+  },
+  "liberiictis-kuhni": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Liberia"
+            ]
+          },
+          {
+            "country": "Côte d'Ivoire",
+            "bbox": [
+              -8.6,
+              5,
+              -6.5,
+              8
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "crossarchus-obscurus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Sierra Leone",
+              "Liberia",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Guinea"
+            ],
+            "latMax": 9
+          }
+        ]
+      }
+    ]
+  },
+  "dologale-dybowskii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Central African Rep.",
+            "bbox": [
+              18,
+              4,
+              27,
+              8
+            ]
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              24,
+              2,
+              31,
+              5
+            ]
+          },
+          {
+            "country": "S. Sudan",
+            "bbox": [
+              26,
+              3.5,
+              32,
+              6
+            ]
+          },
+          {
+            "country": "Uganda",
+            "bbox": [
+              29.5,
+              0,
+              32,
+              3.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "crocuta-crocuta": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Nigeria",
+              "Chad",
+              "Cameroon",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Somalia",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "Angola",
+              "Dem. Rep. Congo",
+              "Rwanda",
+              "Burundi",
+              "Guinea",
+              "Ghana",
+              "Togo",
+              "Benin"
+            ],
+            "exclude": [
+              "South Africa"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              22,
+              -29,
+              33,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hyaena-hyaena": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Morocco",
+              "Algeria",
+              "Tunisia",
+              "Libya",
+              "Egypt",
+              "Niger",
+              "Chad",
+              "Sudan",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Tanzania",
+              "Israel",
+              "Jordan",
+              "Syria",
+              "Iraq",
+              "Iran",
+              "Saudi Arabia",
+              "Yemen",
+              "Oman",
+              "Turkey",
+              "Turkmenistan",
+              "Afghanistan",
+              "Pakistan",
+              "India",
+              "Nepal"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "parahyaena-brunnea": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Namibia",
+              "Botswana"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              16,
+              -32,
+              30,
+              -22
+            ]
+          },
+          {
+            "country": "Zimbabwe",
+            "bbox": [
+              26,
+              -22,
+              30,
+              -18
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              11.5,
+              -18,
+              16,
+              -15
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "proteles-cristata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Ethiopia",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Tanzania",
+              "Eritrea",
+              "Sudan"
+            ]
+          },
+          {
+            "countries": [
+              "South Africa",
+              "Namibia",
+              "Botswana",
+              "Zimbabwe",
+              "Lesotho"
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              11.5,
+              -18,
+              22,
+              -14
+            ]
+          },
+          {
+            "country": "Zambia",
+            "bbox": [
+              22,
+              -18,
+              28,
+              -14
+            ]
+          },
+          {
+            "country": "Mozambique",
+            "bbox": [
+              31,
+              -26,
+              35,
+              -21
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "canis-lupus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Canada",
+              "Mongolia",
+              "Kazakhstan",
+              "Kyrgyzstan",
+              "Tajikistan",
+              "Afghanistan",
+              "Iran",
+              "Turkey",
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "Poland",
+              "Estonia",
+              "Latvia",
+              "Lithuania",
+              "Belarus",
+              "Ukraine",
+              "Romania",
+              "Slovakia",
+              "Bulgaria",
+              "Serbia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Greece",
+              "Italy",
+              "Spain",
+              "Portugal",
+              "Germany",
+              "France",
+              "Greenland"
+            ]
+          },
+          {
+            "countries": [
+              "Russia"
+            ],
+            "latMax": 75
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -170,
+              51,
+              -130,
+              72
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -117,
+              40,
+              -86,
+              49
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              30,
+              135,
+              53
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              70,
+              20,
+              80,
+              35
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lupulella-mesomelas": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Ethiopia",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Tanzania",
+              "Eritrea",
+              "Djibouti"
+            ]
+          },
+          {
+            "countries": [
+              "South Africa",
+              "Namibia",
+              "Botswana",
+              "Zimbabwe",
+              "Lesotho",
+              "eSwatini"
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              11.5,
+              -18,
+              20,
+              -14
+            ]
+          },
+          {
+            "country": "Mozambique",
+            "bbox": [
+              31,
+              -26,
+              35,
+              -20
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cuon-alpinus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              72,
+              8,
+              97,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam"
+            ]
+          },
+          {
+            "countries": [
+              "Malaysia"
+            ],
+            "lonMax": 104.5
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              20,
+              105,
+              35
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lycaon-pictus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Botswana",
+              "Zimbabwe",
+              "Zambia",
+              "Tanzania",
+              "Kenya",
+              "Mozambique",
+              "Namibia"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              26,
+              -26,
+              33,
+              -22
+            ]
+          },
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              34,
+              5,
+              40,
+              10
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "chrysocyon-brachyurus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Brazil",
+            "bbox": [
+              -60,
+              -32,
+              -42,
+              -5
+            ]
+          },
+          {
+            "countries": [
+              "Paraguay"
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -66,
+              -20,
+              -58,
+              -12
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -62,
+              -32,
+              -55,
+              -22
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -70,
+              -14,
+              -68.5,
+              -12
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "speothos-venaticus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -60,
+              -28,
+              -53,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cerdocyon-thous": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Paraguay",
+              "Uruguay"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -60,
+              -34,
+              -34,
+              5
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -66,
+              -22,
+              -58,
+              -14
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -35,
+              -53,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lycalopex-culpaeus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Chile"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -73,
+              -55,
+              -64,
+              -22
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -80,
+              -18,
+              -68,
+              -4
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -69.5,
+              -22,
+              -65,
+              -15
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -4,
+              -77,
+              1
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -78,
+              0,
+              -74,
+              6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "atelocynus-microtis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -12,
+              -50,
+              2
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -76,
+              -13,
+              -69,
+              -2
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -69.5,
+              -14,
+              -63,
+              -10
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -76,
+              -4,
+              -69,
+              2
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -78,
+              -3,
+              -75,
+              0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "nyctereutes-procyonoides": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              100,
+              20,
+              135,
+              50
+            ]
+          },
+          {
+            "countries": [
+              "North Korea",
+              "South Korea",
+              "Japan",
+              "Vietnam",
+              "Finland",
+              "Estonia",
+              "Latvia",
+              "Lithuania",
+              "Belarus",
+              "Poland",
+              "Ukraine"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              30,
+              45,
+              60,
+              65
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              125,
+              42,
+              140,
+              52
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "otocyon-megalotis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Ethiopia",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Tanzania",
+              "Eritrea"
+            ]
+          },
+          {
+            "countries": [
+              "South Africa",
+              "Namibia",
+              "Botswana",
+              "Zimbabwe"
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              11.5,
+              -18,
+              20,
+              -14
+            ]
+          },
+          {
+            "country": "Zambia",
+            "bbox": [
+              22,
+              -18,
+              26,
+              -15
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulpes-vulpes": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Canada",
+              "United States of America"
+            ],
+            "latMax": 72
+          },
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Russia",
+              "Kazakhstan",
+              "Mongolia",
+              "Japan",
+              "Turkey",
+              "Iran",
+              "Afghanistan",
+              "Pakistan",
+              "Morocco",
+              "Algeria",
+              "Tunisia",
+              "Egypt"
+            ],
+            "latMax": 72
+          },
+          {
+            "country": "China",
+            "bbox": [
+              73,
+              25,
+              135,
+              53
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              70,
+              26,
+              80,
+              35
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              113,
+              -39,
+              154,
+              -20
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "urocyon-cinereoargenteus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -125,
+              25,
+              -67,
+              47
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -95,
+              42,
+              -75,
+              50
+            ]
+          },
+          {
+            "countries": [
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama"
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -78,
+              4,
+              -71,
+              12
+            ]
+          },
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -73,
+              7,
+              -62,
+              12
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ursus-arctos": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -170,
+              54,
+              -130,
+              71
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -117,
+              42,
+              -104,
+              49
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              49,
+              -100,
+              70
+            ]
+          },
+          {
+            "countries": [
+              "Russia"
+            ],
+            "latMax": 72
+          },
+          {
+            "countries": [
+              "Finland",
+              "Sweden",
+              "Norway",
+              "Estonia",
+              "Romania",
+              "Slovakia",
+              "Bulgaria",
+              "Serbia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Slovenia",
+              "Greece",
+              "Albania",
+              "North Macedonia",
+              "Montenegro",
+              "Georgia",
+              "Armenia",
+              "Turkey",
+              "Iran",
+              "Kazakhstan",
+              "Kyrgyzstan",
+              "Tajikistan",
+              "Mongolia"
+            ]
+          },
+          {
+            "country": "Spain",
+            "bbox": [
+              -7,
+              42.5,
+              -4,
+              43.5
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              13,
+              41.5,
+              14.5,
+              42.5
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              28,
+              135,
+              50
+            ]
+          },
+          {
+            "country": "Japan",
+            "bbox": [
+              139.5,
+              41.3,
+              146,
+              45.6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ailuropoda-melanoleuca": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              102,
+              28,
+              108.5,
+              34.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "tremarctos-ornatus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -73,
+              7,
+              -69,
+              10
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -78,
+              0,
+              -72,
+              8
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -5,
+              -77,
+              1
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -80,
+              -17,
+              -68.5,
+              -3
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -69.5,
+              -20,
+              -63,
+              -13
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "melursus-ursinus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Sri Lanka",
+              "Nepal",
+              "Bhutan"
+            ],
+            "latMax": 29
+          }
+        ]
+      }
+    ]
+  },
+  "helarctos-malayanus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              89,
+              22,
+              97,
+              28
+            ]
+          },
+          {
+            "countries": [
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia"
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ailurus-fulgens": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Nepal",
+            "bbox": [
+              82,
+              26.5,
+              88.2,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Bhutan"
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              88,
+              26.5,
+              97,
+              29.5
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              97,
+              25,
+              98.7,
+              28.5
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              97,
+              23,
+              104,
+              33
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mephitis-mephitis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -125,
+              42,
+              -60,
+              58
+            ]
+          },
+          {
+            "countries": [
+              "United States of America"
+            ],
+            "latMax": 49.5
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -117,
+              23,
+              -98,
+              32.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "spilogale-putorius": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -105,
+              25,
+              -76,
+              44
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "conepatus-chinga": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Uruguay",
+              "Paraguay",
+              "Chile"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -70,
+              -45,
+              -53,
+              -22
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -69.5,
+              -22,
+              -60,
+              -16
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -76,
+              -18,
+              -68.5,
+              -12
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -58,
+              -34,
+              -48,
+              -25
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mydaus-javanensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "procyon-lotor": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -125,
+              42,
+              -60,
+              55
+            ]
+          },
+          {
+            "countries": [
+              "United States of America"
+            ],
+            "latMax": 49.5
+          },
+          {
+            "countries": [
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama"
+            ]
+          },
+          {
+            "countries": [
+              "Germany"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "nasua-nasua": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Bolivia",
+              "Paraguay",
+              "Uruguay"
+            ]
+          },
+          {
+            "countries": [
+              "Brazil"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -32,
+              -53,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "nasuella-olivacea": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Colombia",
+            "bbox": [
+              -78,
+              0,
+              -72,
+              8
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -5,
+              -77,
+              1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bassariscus-astutus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -124,
+              28,
+              -94,
+              43
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -117,
+              15,
+              -95,
+              32.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "potos-flavus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Mexico",
+            "bbox": [
+              -98,
+              14.5,
+              -87,
+              21.5
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama"
+            ]
+          },
+          {
+            "countries": [
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Bolivia"
+            ],
+            "latMin": -17
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -20,
+              -35,
+              5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bassaricyon-neblina": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Colombia",
+            "bbox": [
+              -78,
+              0.5,
+              -74,
+              7
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -2,
+              -77,
+              1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mustela-erminea": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland"
+            ],
+            "latMin": 40
+          },
+          {
+            "countries": [
+              "Russia",
+              "Mongolia",
+              "Kazakhstan"
+            ],
+            "latMax": 74
+          },
+          {
+            "country": "China",
+            "bbox": [
+              73,
+              38,
+              135,
+              53
+            ]
+          },
+          {
+            "country": "Japan",
+            "bbox": [
+              136,
+              36,
+              146,
+              45.6
+            ]
+          },
+          {
+            "country": "New Zealand",
+            "bbox": [
+              166,
+              -47,
+              179,
+              -34
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              42,
+              -55,
+              72
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "neogale-vison": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Canada",
+              "United States of America"
+            ],
+            "latMax": 70
+          },
+          {
+            "countries": [
+              "United Kingdom",
+              "Ireland",
+              "Iceland",
+              "Spain",
+              "France",
+              "Germany",
+              "Poland",
+              "Denmark",
+              "Sweden",
+              "Norway",
+              "Finland"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "martes-martes": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland"
+            ],
+            "exclude": [
+              "Portugal"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              30,
+              45,
+              85,
+              66
+            ]
+          },
+          {
+            "countries": [
+              "Georgia",
+              "Turkey"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pekania-pennanti": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -128,
+              44,
+              -60,
+              60
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -95,
+              42,
+              -67,
+              47.5
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -124,
+              38,
+              -116,
+              49
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "gulo-gulo": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              49,
+              -60,
+              72
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -170,
+              55,
+              -140,
+              71
+            ]
+          },
+          {
+            "country": "Norway",
+            "bbox": [
+              7,
+              59,
+              31,
+              71
+            ]
+          },
+          {
+            "country": "Sweden",
+            "bbox": [
+              12,
+              61,
+              24,
+              69
+            ]
+          },
+          {
+            "country": "Finland",
+            "bbox": [
+              24,
+              62,
+              31,
+              70
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              30,
+              55,
+              180,
+              73
+            ]
+          },
+          {
+            "country": "Mongolia",
+            "bbox": [
+              88,
+              46,
+              120,
+              52
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              85,
+              45,
+              130,
+              53
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eira-barbara": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Mexico",
+            "bbox": [
+              -98,
+              14.5,
+              -87,
+              21
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -28,
+              -53,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "galictis-vittata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Mexico",
+            "bbox": [
+              -98,
+              14.5,
+              -87,
+              20
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay"
+            ],
+            "exclude": [
+              "Paraguay"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lyncodon-patagonicus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Argentina",
+            "bbox": [
+              -72,
+              -52,
+              -58,
+              -30
+            ]
+          },
+          {
+            "country": "Chile",
+            "bbox": [
+              -73,
+              -54,
+              -68,
+              -44
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ictonyx-striatus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Nigeria",
+              "Chad",
+              "Cameroon",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Somalia",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "Angola",
+              "Lesotho",
+              "eSwatini"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "poecilogale-albinucha": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Tanzania",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Angola",
+              "South Africa",
+              "Botswana",
+              "Lesotho",
+              "eSwatini"
+            ]
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              20,
+              -13,
+              30,
+              -4
+            ]
+          },
+          {
+            "country": "Kenya",
+            "bbox": [
+              34,
+              -2,
+              38,
+              1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vormela-peregusna": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Serbia",
+              "Romania",
+              "Bulgaria",
+              "Greece",
+              "North Macedonia",
+              "Ukraine",
+              "Turkey",
+              "Georgia",
+              "Azerbaijan",
+              "Armenia",
+              "Syria",
+              "Israel",
+              "Iraq",
+              "Iran",
+              "Kazakhstan",
+              "Uzbekistan",
+              "Turkmenistan",
+              "Afghanistan",
+              "Mongolia"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              35,
+              115,
+              46
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              38,
+              43,
+              85,
+              54
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "meles-meles": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland"
+            ],
+            "latMax": 65
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              45,
+              50,
+              62
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "arctonyx-collaris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              89,
+              22,
+              97,
+              29
+            ]
+          },
+          {
+            "countries": [
+              "Bhutan",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              20,
+              120,
+              35
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "melogale-moschata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              18,
+              122,
+              33
+            ]
+          },
+          {
+            "countries": [
+              "Taiwan",
+              "Laos",
+              "Vietnam"
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              96,
+              20,
+              99,
+              27
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              90,
+              25,
+              97,
+              28
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mellivora-capensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Guinea",
+              "Guinea-Bissau",
+              "Sierra Leone",
+              "Liberia",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Togo",
+              "Benin",
+              "Nigeria",
+              "Cameroon",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Chad",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Rwanda",
+              "Burundi",
+              "Dem. Rep. Congo",
+              "Congo",
+              "Gabon",
+              "Eq. Guinea",
+              "Angola",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "eSwatini",
+              "Lesotho",
+              "Morocco",
+              "Algeria",
+              "Egypt",
+              "Saudi Arabia",
+              "Yemen",
+              "Oman",
+              "Jordan",
+              "Israel",
+              "Iraq",
+              "Iran",
+              "Turkmenistan",
+              "Afghanistan",
+              "Pakistan",
+              "India",
+              "Nepal"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "taxidea-taxus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -125,
+              49,
+              -88,
+              56
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -124,
+              30,
+              -82,
+              49
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -117,
+              18,
+              -98,
+              32.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lutra-lutra": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Russia",
+              "Turkey",
+              "Iran",
+              "Morocco",
+              "Algeria",
+              "Tunisia",
+              "Japan",
+              "Mongolia",
+              "Kazakhstan"
+            ],
+            "latMax": 70
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              20,
+              135,
+              50
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              70,
+              8,
+              97,
+              35
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia"
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lontra-canadensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Canada"
+            ],
+            "latMax": 70
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -170,
+              54,
+              -130,
+              71
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -125,
+              25,
+              -67,
+              49
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "enhydra-lutris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              50,
+              -130,
+              62
+            ]
+          },
+          {
+            "sea": [
+              -125,
+              34,
+              -122,
+              39
+            ]
+          },
+          {
+            "sea": [
+              141,
+              42,
+              180,
+              60
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pteronura-brasiliensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Guyana",
+              "Suriname"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -22,
+              -50,
+              5
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -76,
+              -13,
+              -69,
+              -2
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -69.5,
+              -18,
+              -58,
+              -10
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -76,
+              -4,
+              -67,
+              6
+            ]
+          },
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -70,
+              2,
+              -61,
+              9
+            ]
+          },
+          {
+            "countries": [
+              "Paraguay"
+            ],
+            "latMin": -23
+          }
+        ]
+      }
+    ]
+  },
+  "aonyx-cinereus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              75,
+              8,
+              97,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Bangladesh",
+              "Bhutan",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Philippines"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              20,
+              120,
+              28
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hydrictis-maculicollis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Uganda",
+              "Kenya",
+              "Tanzania",
+              "Rwanda",
+              "Burundi",
+              "Zambia",
+              "Malawi",
+              "Dem. Rep. Congo",
+              "Congo",
+              "Cameroon",
+              "Nigeria",
+              "Gabon",
+              "Angola",
+              "Zimbabwe",
+              "Mozambique"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              26,
+              -34,
+              33,
+              -24
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lutrogale-perspicillata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Pakistan",
+              "Nepal",
+              "Bangladesh",
+              "Bhutan",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Singapore"
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -6,
+              106.2,
+              6
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              108.5,
+              -4.3,
+              119.3,
+              4.5
+            ]
+          },
+          {
+            "country": "Malaysia",
+            "bbox": [
+              109.5,
+              0.8,
+              119.5,
+              7.5
+            ]
+          },
+          {
+            "countries": [
+              "Brunei"
+            ]
+          },
+          {
+            "country": "Iraq",
+            "bbox": [
+              45,
+              29.5,
+              48.5,
+              33
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "arctocephalus-pusillus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              11,
+              -35,
+              28,
+              -17
+            ]
+          },
+          {
+            "sea": [
+              140,
+              -44,
+              152,
+              -37
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "callorhinus-ursinus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              32,
+              -120,
+              62
+            ]
+          },
+          {
+            "sea": [
+              140,
+              35,
+              180,
+              60
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "zalophus-californianus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -130,
+              22,
+              -110,
+              50
+            ]
+          },
+          {
+            "sea": [
+              -114.5,
+              22,
+              -107,
+              32
+            ]
+          },
+          {
+            "sea": [
+              -92.5,
+              -1.6,
+              -89,
+              1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "eumetopias-jubatus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              50,
+              -125,
+              62
+            ]
+          },
+          {
+            "sea": [
+              -128,
+              34,
+              -122,
+              50
+            ]
+          },
+          {
+            "sea": [
+              140,
+              42,
+              180,
+              62
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "otaria-flavescens": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -82,
+              -56,
+              -70,
+              -4
+            ]
+          },
+          {
+            "sea": [
+              -70,
+              -56,
+              -48,
+              -28
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "neophoca-cinerea": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              113,
+              -36,
+              140,
+              -28
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "phocarctos-hookeri": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              165,
+              -53,
+              172,
+              -45
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "odobenus-rosmarus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              60,
+              -150,
+              75
+            ]
+          },
+          {
+            "sea": [
+              160,
+              60,
+              180,
+              75
+            ]
+          },
+          {
+            "sea": [
+              -95,
+              60,
+              -60,
+              80
+            ]
+          },
+          {
+            "sea": [
+              -25,
+              70,
+              70,
+              82
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "phoca-vitulina": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -10,
+              50,
+              30,
+              72
+            ]
+          },
+          {
+            "sea": [
+              -80,
+              35,
+              -50,
+              65
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              32,
+              -115,
+              62
+            ]
+          },
+          {
+            "sea": [
+              130,
+              35,
+              180,
+              62
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pusa-hispida": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              60,
+              180,
+              84
+            ]
+          },
+          {
+            "sea": [
+              103.5,
+              51.5,
+              110,
+              55.8
+            ]
+          },
+          {
+            "sea": [
+              46.5,
+              36.5,
+              54,
+              47
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "halichoerus-grypus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -12,
+              48,
+              12,
+              66
+            ]
+          },
+          {
+            "sea": [
+              10,
+              53,
+              30,
+              66
+            ]
+          },
+          {
+            "sea": [
+              -71,
+              41,
+              -55,
+              52
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pagophilus-groenlandicus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -70,
+              45,
+              -40,
+              75
+            ]
+          },
+          {
+            "sea": [
+              -40,
+              60,
+              60,
+              80
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "histriophoca-fasciata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              52,
+              -160,
+              66
+            ]
+          },
+          {
+            "sea": [
+              140,
+              45,
+              180,
+              66
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cystophora-cristata": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -70,
+              45,
+              -20,
+              75
+            ]
+          },
+          {
+            "sea": [
+              -20,
+              62,
+              15,
+              80
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "erignathus-barbatus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              60,
+              180,
+              84
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "monachus-monachus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              19,
+              34,
+              30,
+              41
+            ]
+          },
+          {
+            "sea": [
+              -18,
+              20,
+              -15,
+              33
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "neomonachus-schauinslandi": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -179,
+              18,
+              -154,
+              29
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mirounga-angustirostris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -160,
+              28,
+              -115,
+              58
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lobodon-carcinophaga": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -75,
+              180,
+              -58
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hydrurga-leptonyx": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -75,
+              180,
+              -50
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "leptonychotes-weddellii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -78,
+              180,
+              -63
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ommatophoca-rossii": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -75,
+              180,
+              -60
             ]
           }
         ]

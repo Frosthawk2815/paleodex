@@ -366,7 +366,7 @@ export const MEDIA_CENOZOIC: DataSet = {
       id: 'pinnipedia',
       name: 'Pinnipedia',
       common: 'Seals',
-      parent: 'eutheria',
+      parent: 'caniformia',
       family: true,
       description: 'Seals, sea lions and walruses.',
     },

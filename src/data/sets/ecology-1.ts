@@ -9,7 +9,7 @@ export const ECOLOGY_1: DataSet = {
     { id: 'notosuchia', name: 'Notosuchia', common: 'Notosuchians', parent: 'archosauria', family: true, description: 'Land-living crocodile relatives of the southern continents, some with mammal-like teeth for chewing.' },
     { id: 'elasmaria', name: 'Elasmaria', common: 'Elasmarians', parent: 'ornithischia', family: true, description: 'Small, fast two-legged plant-eaters of the southern continents. Their exact place among the ornithopods is debated.' },
     { id: 'pampatheriidae', name: 'Pampatheriidae', common: 'Pampatheres', parent: 'eutheria', family: true, description: 'Large armadillo relatives with flexible armour bands, close to the glyptodonts.' },
-    { id: 'procyonidae', name: 'Procyonidae', common: 'Raccoon family', parent: 'mammalia', family: true, description: 'Raccoons, coatis and their relatives, which reached South America before the Panama land bridge was complete.' },
+    { id: 'procyonidae', name: 'Procyonidae', common: 'Raccoon family', parent: 'caniformia', family: true, description: 'Raccoons, coatis and their relatives, which reached South America before the Panama land bridge was complete.' },
   ],
   species: [
     // Two Medicine

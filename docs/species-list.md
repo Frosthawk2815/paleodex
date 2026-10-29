@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-1026 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+1155 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -937,13 +937,13 @@
 | 9 Ma | *Otodus megalodon* | Megalodon | Mackerel sharks | Pisco Formation |
 | 9 Ma | *Livyatan melvillei* | Livyatan | Whales | Pisco Formation |
 | 9 Ma | *Thalassocnus natans* | Aquatic sloth | Sloths and anteaters | Pisco Formation |
-| 9 Ma | *Acrophoca longirostris* | Acrophoca | Seals | Pisco Formation |
+| 9 Ma | *Acrophoca longirostris* | Acrophoca | True seals | Pisco Formation |
 | 9 Ma | *Spheniscus urbinai* | Urbina’s penguin | Penguins | Pisco Formation |
 | 9 Ma | *Odobenocetops peruvianus* | Odobenocetops | Whales | Pisco Formation |
 | 9 Ma | *Cosmopolitodus hastalis* | Broad-toothed mako | Mackerel sharks | Pisco Formation |
 | 9 Ma | *Piscobalaena nana* | Piscobalaena | Whales | Pisco Formation |
 | 9 Ma | *Messapicetus gregarius* | Messapicetus | Whales | Pisco Formation |
-| 9 Ma | *Hadrokirus martini* | Hadrokirus | Seals | Pisco Formation |
+| 9 Ma | *Hadrokirus martini* | Hadrokirus | True seals | Pisco Formation |
 | 8 Ma | *Stupendemys geographicus* | Stupendemys | Side-necked turtles | Urumaco Formation |
 | 8 Ma | *Purussaurus mirandai* | Purussaurus mirandai | Crocodylians | Urumaco Formation |
 | 8 Ma | *Gryposuchus croizati* | Gryposuchus | Crocodylians | Urumaco Formation |
@@ -1088,3 +1088,132 @@
 | 10,000 yr | *Pongo pygmaeus* | Bornean orangutan | Great apes and humans | range map — Borneo |
 | 10,000 yr | *Gorilla gorilla* | Western gorilla | Great apes and humans | range map — Central African rainforests |
 | 10,000 yr | *Pan troglodytes* | Chimpanzee | Great apes and humans | range map — West and Central Africa |
+| 10,000 yr | *Panthera tigris* | Tiger | Cats | range map — South and Southeast Asia, the Russian Far East and northeast China |
+| 10,000 yr | *Neofelis nebulosa* | Clouded leopard | Cats | range map — Himalayan foothills to southern China and mainland Southeast Asia |
+| 10,000 yr | *Acinonyx jubatus* | Cheetah | Cats | range map — Eastern and southern Africa, with a tiny population in Iran |
+| 10,000 yr | *Puma concolor* | Cougar | Cats | range map — From western Canada to southern South America |
+| 10,000 yr | *Herpailurus yagouaroundi* | Jaguarundi | Cats | range map — Southern Texas to northern Argentina |
+| 10,000 yr | *Lynx lynx* | Eurasian lynx | Cats | range map — Forests from western Europe to the Russian Far East |
+| 10,000 yr | *Leptailurus serval* | Serval | Cats | range map — Savannas and wetlands of sub-Saharan Africa |
+| 10,000 yr | *Caracal caracal* | Caracal | Cats | range map — Africa, the Middle East and Central and South Asia |
+| 10,000 yr | *Leopardus pardalis* | Ocelot | Cats | range map — Southern Texas to northern Argentina |
+| 10,000 yr | *Felis silvestris* | European wildcat | Cats | range map — Europe, the Caucasus and Anatolia |
+| 10,000 yr | *Otocolobus manul* | Pallas’s cat | Cats | range map — Steppes and mountains of Central Asia |
+| 10,000 yr | *Prionailurus bengalensis* | Leopard cat | Cats | range map — South, Southeast and East Asia |
+| 10,000 yr | *Pardofelis marmorata* | Marbled cat | Cats | range map — Himalayan foothills to Borneo and Sumatra |
+| 10,000 yr | *Catopuma temminckii* | Asian golden cat | Cats | range map — Himalayas to Sumatra |
+| 10,000 yr | *Prionodon linsang* | Banded linsang | Asiatic linsangs | range map — Malay Peninsula, Sumatra, Java and Borneo |
+| 10,000 yr | *Nandinia binotata* | African palm civet | African palm civet | range map — Rainforests of Central and West Africa |
+| 10,000 yr | *Viverra zibetha* | Large Indian civet | Civets and genets | range map — Northeast India to southern China and Southeast Asia |
+| 10,000 yr | *Civettictis civetta* | African civet | Civets and genets | range map — Sub-Saharan Africa |
+| 10,000 yr | *Viverricula indica* | Small Indian civet | Civets and genets | range map — South Asia to southern China and Indonesia |
+| 10,000 yr | *Genetta genetta* | Common genet | Civets and genets | range map — Africa, Arabia and southwestern Europe |
+| 10,000 yr | *Poiana richardsonii* | Central African oyan | Civets and genets | range map — Central African rainforests |
+| 10,000 yr | *Paradoxurus hermaphroditus* | Asian palm civet | Civets and genets | range map — South and Southeast Asia |
+| 10,000 yr | *Paguma larvata* | Masked palm civet | Civets and genets | range map — Himalayas to China, Southeast Asia and Taiwan |
+| 10,000 yr | *Arctictis binturong* | Binturong | Civets and genets | range map — South and Southeast Asia |
+| 10,000 yr | *Arctogalidia trivirgata* | Small-toothed palm civet | Civets and genets | range map — Southeast Asia |
+| 10,000 yr | *Macrogalidia musschenbroekii* | Sulawesi palm civet | Civets and genets | range map — Sulawesi, Indonesia |
+| 10,000 yr | *Hemigalus derbyanus* | Banded palm civet | Civets and genets | range map — Malay Peninsula, Sumatra and Borneo |
+| 10,000 yr | *Chrotogale owstoni* | Owston’s palm civet | Civets and genets | range map — Northern Vietnam, Laos and southern China |
+| 10,000 yr | *Cynogale bennettii* | Otter civet | Civets and genets | range map — Malay Peninsula, Sumatra and Borneo |
+| 10,000 yr | *Diplogale hosei* | Hose’s palm civet | Civets and genets | range map — Mountain forests of northern Borneo |
+| 10,000 yr | *Cryptoprocta ferox* | Fossa | Malagasy carnivorans | range map — Forests of Madagascar |
+| 10,000 yr | *Fossa fossana* | Malagasy civet | Malagasy carnivorans | range map — Eastern and northern Madagascar |
+| 10,000 yr | *Eupleres goudotii* | Falanouc | Malagasy carnivorans | range map — Eastern Madagascar |
+| 10,000 yr | *Galidia elegans* | Ring-tailed vontsira | Malagasy carnivorans | range map — Eastern and northern Madagascar |
+| 10,000 yr | *Galidictis fasciata* | Broad-striped vontsira | Malagasy carnivorans | range map — Eastern Madagascar |
+| 10,000 yr | *Mungotictis decemlineata* | Narrow-striped boky | Malagasy carnivorans | range map — Dry forests of western Madagascar |
+| 10,000 yr | *Salanoia concolor* | Brown-tailed vontsira | Malagasy carnivorans | range map — Northeastern Madagascar |
+| 10,000 yr | *Herpestes ichneumon* | Egyptian mongoose | Mongooses | range map — Africa, the Middle East and southern Iberia |
+| 10,000 yr | *Urva edwardsii* | Indian grey mongoose | Mongooses | range map — South Asia, Iran and Arabia |
+| 10,000 yr | *Suricata suricatta* | Meerkat | Mongooses | range map — Dry savannas of southern Africa |
+| 10,000 yr | *Mungos mungo* | Banded mongoose | Mongooses | range map — Savannas of sub-Saharan Africa |
+| 10,000 yr | *Helogale parvula* | Common dwarf mongoose | Mongooses | range map — Eastern and southern Africa |
+| 10,000 yr | *Atilax paludinosus* | Marsh mongoose | Mongooses | range map — Wetlands of sub-Saharan Africa |
+| 10,000 yr | *Ichneumia albicauda* | White-tailed mongoose | Mongooses | range map — Sub-Saharan Africa and southern Arabia |
+| 10,000 yr | *Cynictis penicillata* | Yellow mongoose | Mongooses | range map — Southern Africa |
+| 10,000 yr | *Paracynictis selousi* | Selous’ mongoose | Mongooses | range map — Southern Africa |
+| 10,000 yr | *Rhynchogale melleri* | Meller’s mongoose | Mongooses | range map — Southeastern Africa |
+| 10,000 yr | *Bdeogale crassicauda* | Bushy-tailed mongoose | Mongooses | range map — East Africa |
+| 10,000 yr | *Liberiictis kuhni* | Liberian mongoose | Mongooses | range map — Liberia and Côte d’Ivoire |
+| 10,000 yr | *Crossarchus obscurus* | Common kusimanse | Mongooses | range map — West African rainforests |
+| 10,000 yr | *Dologale dybowskii* | Pousargues’s mongoose | Mongooses | range map — Central Africa |
+| 10,000 yr | *Crocuta crocuta* | Spotted hyena | Hyenas and aardwolf | range map — Sub-Saharan Africa |
+| 10,000 yr | *Hyaena hyaena* | Striped hyena | Hyenas and aardwolf | range map — North and East Africa, the Middle East, Central Asia and India |
+| 10,000 yr | *Parahyaena brunnea* | Brown hyena | Hyenas and aardwolf | range map — Deserts and dry savannas of southern Africa |
+| 10,000 yr | *Proteles cristata* | Aardwolf | Hyenas and aardwolf | range map — Eastern and southern Africa |
+| 10,000 yr | *Canis lupus* | Grey wolf | Dogs | range map — North America, Europe and Asia |
+| 10,000 yr | *Lupulella mesomelas* | Black-backed jackal | Dogs | range map — Eastern and southern Africa |
+| 10,000 yr | *Cuon alpinus* | Dhole | Dogs | range map — South, Southeast and Central Asia |
+| 10,000 yr | *Lycaon pictus* | African wild dog | Dogs | range map — Savannas of eastern and southern Africa |
+| 10,000 yr | *Chrysocyon brachyurus* | Maned wolf | Dogs | range map — Grasslands of central South America |
+| 10,000 yr | *Speothos venaticus* | Bush dog | Dogs | range map — Central and South American forests and savannas |
+| 10,000 yr | *Cerdocyon thous* | Crab-eating fox | Dogs | range map — Northern and central South America |
+| 10,000 yr | *Lycalopex culpaeus* | Culpeo | Dogs | range map — The Andes and Patagonia |
+| 10,000 yr | *Atelocynus microtis* | Short-eared dog | Dogs | range map — Amazon basin |
+| 10,000 yr | *Nyctereutes procyonoides* | Common raccoon dog | Dogs | range map — East Asia; introduced to Europe |
+| 10,000 yr | *Otocyon megalotis* | Bat-eared fox | Dogs | range map — Eastern and southern Africa |
+| 10,000 yr | *Vulpes vulpes* | Red fox | Dogs | range map — Northern Hemisphere and North Africa; introduced to Australia |
+| 10,000 yr | *Urocyon cinereoargenteus* | Grey fox | Dogs | range map — Southern Canada to northern South America |
+| 10,000 yr | *Ursus arctos* | Brown bear | Bears | range map — Northern North America, Europe and Asia |
+| 10,000 yr | *Ailuropoda melanoleuca* | Giant panda | Bears | range map — Mountain bamboo forests of central China |
+| 10,000 yr | *Tremarctos ornatus* | Spectacled bear | Bears | range map — The Andes, from Venezuela to Bolivia |
+| 10,000 yr | *Melursus ursinus* | Sloth bear | Bears | range map — India, Sri Lanka and Nepal |
+| 10,000 yr | *Helarctos malayanus* | Sun bear | Bears | range map — Southeast Asian rainforests |
+| 10,000 yr | *Ailurus fulgens* | Red panda | Red panda | range map — Eastern Himalayas and southwestern China |
+| 10,000 yr | *Mephitis mephitis* | Striped skunk | Skunks and stink badgers | range map — Southern Canada to northern Mexico |
+| 10,000 yr | *Spilogale putorius* | Eastern spotted skunk | Skunks and stink badgers | range map — Eastern and central United States |
+| 10,000 yr | *Conepatus chinga* | Molina’s hog-nosed skunk | Skunks and stink badgers | range map — Southern South America |
+| 10,000 yr | *Mydaus javanensis* | Sunda stink badger | Skunks and stink badgers | range map — Java, Sumatra and Borneo |
+| 10,000 yr | *Procyon lotor* | Common raccoon | Raccoon family | range map — North and Central America; introduced to Europe and Japan |
+| 10,000 yr | *Nasua nasua* | South American coati | Raccoon family | range map — Tropical South America |
+| 10,000 yr | *Nasuella olivacea* | Western mountain coati | Raccoon family | range map — Andes of Colombia and Ecuador |
+| 10,000 yr | *Bassariscus astutus* | Ringtail | Raccoon family | range map — Southwestern United States and Mexico |
+| 10,000 yr | *Potos flavus* | Kinkajou | Raccoon family | range map — Southern Mexico to the Amazon |
+| 10,000 yr | *Bassaricyon neblina* | Olinguito | Raccoon family | range map — Cloud forests of Colombia and Ecuador |
+| 10,000 yr | *Mustela erminea* | Stoat | Weasels, badgers and otters | range map — Northern Europe and Asia; introduced to New Zealand |
+| 10,000 yr | *Neogale vison* | American mink | Weasels, badgers and otters | range map — North America; escaped farm mink across Europe |
+| 10,000 yr | *Martes martes* | European pine marten | Weasels, badgers and otters | range map — Forests of Europe and western Asia |
+| 10,000 yr | *Pekania pennanti* | Fisher | Weasels, badgers and otters | range map — Forests of Canada and the northern United States |
+| 10,000 yr | *Gulo gulo* | Wolverine | Weasels, badgers and otters | range map — Arctic and subarctic North America and Eurasia |
+| 10,000 yr | *Eira barbara* | Tayra | Weasels, badgers and otters | range map — Southern Mexico to northern Argentina |
+| 10,000 yr | *Galictis vittata* | Greater grison | Weasels, badgers and otters | range map — Southern Mexico to Bolivia and Brazil |
+| 10,000 yr | *Lyncodon patagonicus* | Patagonian weasel | Weasels, badgers and otters | range map — Patagonia and the Argentine Pampas |
+| 10,000 yr | *Ictonyx striatus* | Striped polecat | Weasels, badgers and otters | range map — Sub-Saharan Africa |
+| 10,000 yr | *Poecilogale albinucha* | African striped weasel | Weasels, badgers and otters | range map — Central and southern Africa |
+| 10,000 yr | *Vormela peregusna* | Marbled polecat | Weasels, badgers and otters | range map — Southeastern Europe to western China |
+| 10,000 yr | *Meles meles* | European badger | Weasels, badgers and otters | range map — Europe |
+| 10,000 yr | *Arctonyx collaris* | Greater hog badger | Weasels, badgers and otters | range map — Northeast India to China and mainland Southeast Asia |
+| 10,000 yr | *Melogale moschata* | Chinese ferret-badger | Weasels, badgers and otters | range map — Southern China, Taiwan and northern Southeast Asia |
+| 10,000 yr | *Mellivora capensis* | Honey badger | Weasels, badgers and otters | range map — Africa, the Middle East and South Asia |
+| 10,000 yr | *Taxidea taxus* | American badger | Weasels, badgers and otters | range map — Western and central North America |
+| 10,000 yr | *Lutra lutra* | Eurasian otter | Weasels, badgers and otters | range map — Europe, Asia and North Africa |
+| 10,000 yr | *Lontra canadensis* | North American river otter | Weasels, badgers and otters | range map — Canada and the United States |
+| 10,000 yr | *Enhydra lutris* | Sea otter | Weasels, badgers and otters | range map — North Pacific coasts from Japan to California |
+| 10,000 yr | *Pteronura brasiliensis* | Giant otter | Weasels, badgers and otters | range map — Rivers of the Amazon, Orinoco and Pantanal |
+| 10,000 yr | *Aonyx cinereus* | Asian small-clawed otter | Weasels, badgers and otters | range map — South and Southeast Asia |
+| 10,000 yr | *Hydrictis maculicollis* | Spotted-necked otter | Weasels, badgers and otters | range map — Lakes and rivers of sub-Saharan Africa |
+| 10,000 yr | *Lutrogale perspicillata* | Smooth-coated otter | Weasels, badgers and otters | range map — South and Southeast Asia, with a relict population in Iraq |
+| 10,000 yr | *Arctocephalus pusillus* | Brown fur seal | Sea lions and fur seals | range map — Coasts of southern Africa and southeastern Australia |
+| 10,000 yr | *Callorhinus ursinus* | Northern fur seal | Sea lions and fur seals | range map — North Pacific; breeds mainly on the Pribilof Islands |
+| 10,000 yr | *Zalophus californianus* | California sea lion | Sea lions and fur seals | range map — Pacific coast from British Columbia to Mexico |
+| 10,000 yr | *Eumetopias jubatus* | Steller sea lion | Sea lions and fur seals | range map — North Pacific coasts from Japan to California |
+| 10,000 yr | *Otaria flavescens* | South American sea lion | Sea lions and fur seals | range map — Coasts of South America from Peru to Brazil |
+| 10,000 yr | *Neophoca cinerea* | Australian sea lion | Sea lions and fur seals | range map — Southern and western coasts of Australia |
+| 10,000 yr | *Phocarctos hookeri* | New Zealand sea lion | Sea lions and fur seals | range map — New Zealand’s subantarctic islands and South Island |
+| 10,000 yr | *Odobenus rosmarus* | Walrus | Walrus | range map — Arctic seas around the North Pole |
+| 10,000 yr | *Phoca vitulina* | Harbour seal | True seals | range map — Northern Atlantic and Pacific coasts |
+| 10,000 yr | *Pusa hispida* | Ringed seal | True seals | range map — Arctic seas |
+| 10,000 yr | *Halichoerus grypus* | Grey seal | True seals | range map — North Atlantic coasts |
+| 10,000 yr | *Pagophilus groenlandicus* | Harp seal | True seals | range map — North Atlantic and Arctic |
+| 10,000 yr | *Histriophoca fasciata* | Ribbon seal | True seals | range map — Bering and Okhotsk seas |
+| 10,000 yr | *Cystophora cristata* | Hooded seal | True seals | range map — North Atlantic and Arctic |
+| 10,000 yr | *Erignathus barbatus* | Bearded seal | True seals | range map — Arctic seas |
+| 10,000 yr | *Monachus monachus* | Mediterranean monk seal | True seals | range map — Eastern Mediterranean and the Atlantic coast of northwest Africa |
+| 10,000 yr | *Neomonachus schauinslandi* | Hawaiian monk seal | True seals | range map — Hawaiian Islands |
+| 10,000 yr | *Mirounga angustirostris* | Northern elephant seal | True seals | range map — Eastern North Pacific |
+| 10,000 yr | *Lobodon carcinophaga* | Crabeater seal | True seals | range map — Antarctic pack ice |
+| 10,000 yr | *Hydrurga leptonyx* | Leopard seal | True seals | range map — Antarctic and subantarctic waters |
+| 10,000 yr | *Leptonychotes weddellii* | Weddell seal | True seals | range map — Antarctic coasts |
+| 10,000 yr | *Ommatophoca rossii* | Ross seal | True seals | range map — Dense Antarctic pack ice |

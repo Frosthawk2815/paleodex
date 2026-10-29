@@ -5,7 +5,7 @@ import type { DataSet } from '@/data/sets/types';
 export const TREE_3: DataSet = {
   clades: [
     { id: 'therocephalia', name: 'Therocephalia', common: 'Therocephalians', parent: 'synapsida', family: true, description: 'Permian and Triassic mammal relatives, close cousins of the cynodonts; some survived the end-Permian extinction.' },
-    { id: 'amphicyonidae', name: 'Amphicyonidae', common: 'Bear-dogs', parent: 'mammalia', family: true, description: 'Extinct meat-eaters with features of both bears and dogs. Despite the name, they were a separate branch of carnivorans, not a link between the two.' },
+    { id: 'amphicyonidae', name: 'Amphicyonidae', common: 'Bear-dogs', parent: 'caniformia', family: true, description: 'Extinct meat-eaters with features of both bears and dogs. Despite the name, they were a separate branch of carnivorans, not a link between the two.' },
     { id: 'astrapotheria', name: 'Astrapotheria', common: 'Astrapotheres', parent: 'eutheria', family: true, description: 'Large South American hoofed mammals with tusks, probably with a short trunk or mobile lip.' },
     { id: 'dyrosauridae', name: 'Dyrosauridae', common: 'Dyrosaurs', parent: 'archosauria', family: true, description: 'Long-snouted crocodile relatives that survived the end-Cretaceous extinction and spread through coasts and rivers.' },
   ],

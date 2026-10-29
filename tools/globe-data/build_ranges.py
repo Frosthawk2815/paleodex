@@ -44,9 +44,22 @@ def densify(coords, step=1.0):
     return out
 
 
+_land = None
+
+
+def land(countries):
+    global _land
+    if _land is None:
+        _land = unary_union([g for _, g in countries.values()]).buffer(0)
+    return _land
+
+
 def region_geometry(r, countries):
     if 'box' in r:
         return box(*r['box'])
+    # Open water only: the box with all land cut out.
+    if 'sea' in r:
+        return box(*r['sea']).difference(land(countries))
     if r.get('world'):
         geoms = [g for name, (cont, g) in countries.items() if cont != 'Antarctica']
     elif 'country' in r:
