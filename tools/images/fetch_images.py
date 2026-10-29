@@ -5,7 +5,7 @@ genus), takes the article's lead image if it is freely licensed, and reads the f
 details from Wikimedia Commons. Only Creative Commons and public-domain images are kept.
 
 Usage (from the project root):
-    python3 -I tools/images/fetch_images.py tools/images/species.json src/data/images.json
+    python3 -I tools/images/fetch_images.py tools/images/species.json tools/images/candidates.json
 
 Existing entries in the output are kept unless --refresh is given, so it can be re-run to fill gaps.
 After editing overrides.json, run with --overrides-only to apply just those.
@@ -26,7 +26,7 @@ THUMB_WIDTH = 800
 BATCH = 50
 PAUSE = 20  # seconds between requests: Wikimedia throttles anonymous API use hard
 
-FREE_LICENSE = re.compile(r'^(cc0|cc[ -]by|public domain|pd\b|no restrictions)', re.I)
+FREE_LICENSE = re.compile(r'^(cc0|cc[ -]by|public domain|pd\b|no restrictions|attribution|copyrighted free use|gfdl)', re.I)
 SKELETAL = re.compile(r'skeletal', re.I)
 RESTORATION = re.compile(
     r'restoration|reconstruction|reconstructed|life ?size model|paleoart|palaeoart|illustration|drawing|painting|'
@@ -120,7 +120,7 @@ def file_info(files):
             m = ii.get('extmetadata', {})
             get = lambda k: strip_html((m.get(k) or {}).get('value', ''))
             out[name.replace(' ', '_')] = {
-                'thumb': ii.get('thumburl') or ii.get('url'),
+                'thumb': (ii.get('thumburl') or ii.get('url') or '').split('?')[0],
                 'width': ii.get('thumbwidth') or ii.get('width'),
                 'height': ii.get('thumbheight') or ii.get('height'),
                 'source': ii.get('descriptionurl'),
@@ -164,6 +164,8 @@ def apply_overrides(images):
             continue
         entry = {k: d[k] for k in ('thumb', 'width', 'height', 'artist', 'license', 'licenseUrl', 'source')}
         entry.update({'file': f, 'article': d['source'], 'scope': o.get('scope', 'species')})
+        if o.get('artist'):
+            entry['artist'] = o['artist']
         k = o.get('kind', kind_of(d['text']))
         if k:
             entry['kind'] = k
