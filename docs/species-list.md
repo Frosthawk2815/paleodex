@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-939 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+947 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -299,6 +299,7 @@
 | 163 Ma | *Eustreptospondylus oxoniensis* | Eustreptospondylus | Megalosaurs and spinosaurs | Oxford Clay Formation |
 | 163 Ma | *Kosmoceras jason* | Kosmoceras | Ammonites | Oxford Clay Formation |
 | 163 Ma | *Belemnotheutis antiquus* | Belemnotheutis | Cephalopods | Oxford Clay Formation |
+| 163 Ma | *Metriacanthosaurus parkeri* | Metriacanthosaurus | Allosaurs and relatives | Oxford Clay Formation |
 | 160 Ma | *Guanlong wucaii* | Guanlong | Tyrannosaurs | Shishugou Formation |
 | 160 Ma | *Limusaurus inextricabilis* | Limusaurus | Ceratosaurs | Shishugou Formation |
 | 160 Ma | *Mamenchisaurus sinocanadorum* | Mamenchisaurus | Mamenchisaurs | Shishugou Formation |
@@ -556,6 +557,7 @@
 | 92 Ma | *Erliansaurus bellamanus* | Erliansaurus | Therizinosaurs | Iren Dabasu Formation |
 | 92 Ma | *Neimongosaurus yangi* | Neimongosaurus | Therizinosaurs | Iren Dabasu Formation |
 | 92 Ma | *Sphecomyrma freyi* | Sphecomyrma | Bees, ants and wasps | Raritan amber (New Jersey) |
+| 92 Ma | *Achillobator giganticus* | Achillobator | Dromaeosaurs | Bayan Shireh Formation |
 | 91 Ma | *Timurlengia euotica* | Timurlengia | Tyrannosaurs | Bissekty Formation |
 | 91 Ma | *Levnesovia transoxiana* | Levnesovia | Iguanodonts | Bissekty Formation |
 | 91 Ma | *Turanoceratops tardabilis* | Turanoceratops | Horned dinosaurs | Bissekty Formation |
@@ -615,6 +617,8 @@
 | 77 Ma | *Appalachiosaurus montgomeriensis* | Appalachiosaurus | Tyrannosaurs | Demopolis Chalk |
 | 77 Ma | *Brachylophosaurus canadensis* | Brachylophosaurus | Duck-billed dinosaurs | Oldman Formation |
 | 77 Ma | *Clidastes propython* | Clidastes | Mosasaurs | Demopolis Chalk |
+| 77 Ma | *Albertaceratops nesmoi* | Albertaceratops | Horned dinosaurs | Oldman Formation |
+| 77 Ma | *Avaceratops lammersi* | Avaceratops | Horned dinosaurs | Judith River Formation |
 | 76 Ma | *Archelon ischyros* | Archelon | Giant sea turtles | Pierre Shale |
 | 76 Ma | *Elasmosaurus platyurus* | Elasmosaurus | Plesiosaurs and relatives | Pierre Shale |
 | 76 Ma | *Maiasaura peeblesorum* | Maiasaura | Duck-billed dinosaurs | Two Medicine Formation |
@@ -699,6 +703,7 @@
 | 70.5 Ma | *Eotriceratops xerinsularis* | Eotriceratops | Horned dinosaurs | Horseshoe Canyon Formation |
 | 70.5 Ma | *Albertavenator curriei* | Albertavenator | Troodontids | Horseshoe Canyon Formation |
 | 70.5 Ma | *Parksosaurus warreni* | Parksosaurus | Thescelosaurids | Horseshoe Canyon Formation |
+| 70.5 Ma | *Anodontosaurus lambei* | Anodontosaurus | Armoured dinosaurs | Horseshoe Canyon Formation |
 | 70 Ma | *Tarbosaurus bataar* | Tarbosaurus | Tyrannosaurs | Nemegt Formation |
 | 70 Ma | *Alioramus remotus* | Alioramus | Tyrannosaurs | Nemegt Formation |
 | 70 Ma | *Alioramus altai* | Alioramus altai | Tyrannosaurs | Nemegt Formation |
@@ -726,6 +731,9 @@
 | 70 Ma | *Homalocephale calathocercos* | Homalocephale | Dome-headed dinosaurs | Nemegt Formation |
 | 70 Ma | *Rinchenia mongoliensis* | Rinchenia | Oviraptorids | Nemegt Formation |
 | 70 Ma | *Anserimimus planinychus* | Anserimimus | Ostrich dinosaurs | Nemegt Formation |
+| 70 Ma | *Pycnonemosaurus nevesi* | Pycnonemosaurus | Abelisaurids | Cachoeira do Bom Jardim Formation |
+| 70 Ma | *Barsboldia sicinskii* | Barsboldia | Duck-billed dinosaurs | Nemegt Formation |
+| 69.5 Ma | *Kaiwhekea katiki* | Kaiwhekea | Plesiosaurs and relatives | Katiki Formation |
 | 69 Ma | *Qianzhousaurus sinensis* | Qianzhousaurus | Tyrannosaurs | Nanxiong Formation |
 | 69 Ma | *Huanansaurus ganzhouensis* | Huanansaurus | Oviraptorids | Nanxiong Formation |
 | 69 Ma | *Corythoraptor jacobsi* | Corythoraptor | Oviraptorids | Nanxiong Formation |
