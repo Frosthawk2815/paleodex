@@ -22643,5 +22643,25 @@
         ]
       }
     ]
+  },
+  "enhydriodon-omoensis": {
+    "phases": [
+      {
+        "from": 3440000,
+        "to": 2530000,
+        "label": "The Lower Omo Valley, Ethiopia",
+        "regions": [
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              35.3,
+              4.4,
+              36.7,
+              6.2
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

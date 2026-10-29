@@ -7,6 +7,29 @@ import type { DataSet } from '@/data/sets/types';
 export const MEDIA_CENOZOIC: DataSet = {
   events: [
     formation({
+      id: 'naredi',
+      title: 'Naredi Formation',
+      short: 'Naredi',
+      dateText: 'About 47 million years ago (Eocene, Lutetian)',
+      placeText: 'Panandhro lignite mine, Kutch, Gujarat, India',
+      lon: 68.77,
+      lat: 23.67,
+      plate: 501,
+      fromMa: 48,
+      toMa: 46,
+      jumpMa: 47,
+      icon: 'swamp',
+      summary: [
+        'Coastal swamp and lagoon deposits from a time when India was an island continent just meeting Asia, and the world was far warmer than today. Its lignite (brown coal) is mined at Panandhro, where workers turned up the backbone of Vasuki, one of the largest snakes ever.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 47 million years ago' },
+        { label: 'Where today', value: 'Panandhro lignite mine, Kutch, Gujarat, India' },
+        { label: 'Rocks', value: 'Clay, shale and lignite' },
+      ],
+      keywords: ['naredi', 'panandhro', 'kutch', 'kachchh', 'gujarat', 'india', 'eocene', 'vasuki'],
+    }),
+    formation({
       id: 'cerrejon',
       title: 'Cerrejón Formation',
       short: 'Cerrejón',
@@ -21,7 +44,7 @@ export const MEDIA_CENOZOIC: DataSet = {
       icon: 'swamp',
       summary: [
         'The oldest known rainforest in South America, a hot, wet coastal swamp forest a few million years after the dinosaurs died out. Its peat became the coal of the vast Cerrejón open-pit mine, where the fossils are found.',
-        'In a world hotter than today, cold-blooded animals grew huge: Titanoboa, the largest snake ever, lived here with giant turtles and crocodile relatives.',
+        'In a world hotter than today, cold-blooded animals grew huge: Titanoboa, one of the two largest snakes known, lived here with giant turtles and crocodile relatives.',
       ],
       facts: [
         { label: 'Age', value: 'About 59 million years ago' },
@@ -299,6 +322,14 @@ export const MEDIA_CENOZOIC: DataSet = {
   ],
   clades: [
     {
+      id: 'madtsoiidae',
+      name: 'Madtsoiidae',
+      common: 'Madtsoiid snakes',
+      parent: 'serpentes',
+      family: true,
+      description: 'An extinct family of probably constricting snakes, mostly from the southern continents, from the Late Cretaceous to about 50,000 years ago in Australia. It included giants such as Vasuki of India and Gigantophis of Egypt; Sanajeh of India ate dinosaur hatchlings.',
+    },
+    {
       id: 'gastornithidae',
       name: 'Gastornithidae',
       common: 'Gastornithids',
@@ -383,13 +414,13 @@ export const MEDIA_CENOZOIC: DataSet = {
       id: 'titanoboa-cerrejonensis',
       name: 'Titanoboa cerrejonensis',
       common: 'Titanoboa',
-      clade: 'squamata',
+      clade: 'boidae',
       status: 'full',
       ageText: 'About 60 to 58 million years ago',
       placeText: 'Colombia',
       formations: ['cerrejon'],
       summary: [
-        'The largest snake ever, about 13 m long and over a tonne, a relative of boas and anacondas. Its size shows the tropics were much hotter than today, since cold-blooded animals can only grow that big in great heat. It probably ate fish and crocodile relatives in the swamps.',
+        'One of the two largest snakes known, about 13 m long and over a tonne, a member of the boa family and a relative of anacondas. Vasuki of India, named in 2024, may have been as long or longer, but both sizes are estimated from backbones alone. Its size shows the tropics were much hotter than today, since cold-blooded animals can only grow that big in great heat. It probably ate fish and crocodile relatives in the swamps.',
       ],
       facts: [
         { label: 'Named', value: 'Jason Head and colleagues, 2009' },
@@ -899,6 +930,47 @@ export const MEDIA_CENOZOIC: DataSet = {
         { label: 'On screen', value: 'ARK: Survival Evolved' },
       ],
       keywords: ['gigantopithecus', 'giant ape', 'pleistocene'],
+    },
+    {
+      id: 'vasuki-indicus',
+      name: 'Vasuki indicus',
+      common: 'Vasuki',
+      clade: 'madtsoiidae',
+      status: 'full',
+      ageText: 'About 47 million years ago (Eocene)',
+      placeText: 'Kutch, Gujarat, India',
+      formations: ['naredi'],
+      summary: [
+        'A giant madtsoiid snake known from 27 vertebrae, some found still joined, in a lignite mine in western India. From the size of its vertebrae its describers estimated a length of about 11 to 15 m, a match for Titanoboa, though with no skull or tail bones the figure is uncertain. Its broad, cylindrical body suggests a slow ambush hunter, like today’s anacondas.',
+        'It lived in coastal swamps in a much warmer world than today, which allowed cold-blooded animals to grow huge. Its closest relatives were Madtsoia of Late Cretaceous India and Gigantophis of Eocene Egypt, which suggests its lineage began in India and spread to Africa after India joined Asia. It is named after Vasuki, the serpent king coiled around the neck of the Hindu god Shiva.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Debajit Datta and Sunil Bajpai, 2024' },
+        { label: 'Length', value: 'Estimated about 11–15 m' },
+        { label: 'Known from', value: '27 vertebrae' },
+      ],
+      keywords: ['vasuki', 'vasuki indicus', 'giant snake', 'madtsoiid', 'snake', 'india', 'gujarat', 'eocene'],
+    },
+    {
+      id: 'enhydriodon-omoensis',
+      name: 'Enhydriodon omoensis',
+      common: 'Giant Omo otter',
+      clade: 'mustelidae',
+      status: 'full',
+      ageText: 'About 3.4 to 2.5 million years ago (Pliocene)',
+      placeText: 'Lower Omo Valley, Ethiopia',
+      formations: [],
+      summary: [
+        'The largest otter known, estimated from its teeth and thighbone at around 200 kg, about the size of a lion. It is known only from teeth and parts of the skeleton, so its size and shape in life are uncertain. Its broad, blunt cheek teeth were built for crushing rather than slicing, like those of the modern sea otter.',
+        'A 2022 study of its tooth enamel found chemical signatures like those of the big cats and hyenas it lived with, not of water-living animals such as hippos. This suggests it spent much of its time on land and hunted or scavenged land animals, unlike any living otter, though it may still have taken fish, shellfish and other water prey.',
+        'It shared the Omo Valley with early humans and their relatives. Its genus, whose name means “otter tooth”, lived in Africa and South Asia from about 7 million to 2 million years ago; another giant, Enhydriodon dikikae, lived in the Hadar region of Ethiopia in Lucy’s time.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Camille Grohé, Kevin Uno and Jean-Renaud Boisserie, 2022' },
+        { label: 'Weight', value: 'Estimated about 200 kg' },
+        { label: 'Found in', value: 'Shungura and Usno Formations, Ethiopia' },
+      ],
+      keywords: ['enhydriodon', 'aehydrodon', 'giant otter', 'lion-sized otter', 'otter', 'mustelid', 'ethiopia', 'omo', 'pliocene'],
     },
   ],
 };

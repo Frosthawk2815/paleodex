@@ -1007,7 +1007,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       id: 'sanajeh-indicus',
       name: 'Sanajeh indicus',
       common: 'Sanajeh',
-      clade: 'squamata',
+      clade: 'madtsoiidae',
       status: 'full',
       ageText: 'About 67 million years ago',
       placeText: 'Gujarat, India',
