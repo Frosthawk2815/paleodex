@@ -32098,5 +32098,92 @@
         ]
       }
     ]
+  },
+  "paranthropus-boisei": {
+    "phases": [
+      {
+        "from": 2300000,
+        "to": 1300000,
+        "label": "Fossil sites in East Africa",
+        "regions": [
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              35.5,
+              4.5,
+              38.5,
+              11
+            ]
+          },
+          {
+            "country": "Kenya",
+            "bbox": [
+              34,
+              -2,
+              37,
+              5
+            ]
+          },
+          {
+            "country": "Tanzania",
+            "bbox": [
+              34.5,
+              -3.6,
+              36.5,
+              -2.3
+            ]
+          },
+          {
+            "country": "Malawi",
+            "bbox": [
+              33.5,
+              -10.5,
+              34.5,
+              -9.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "paranthropus-robustus": {
+    "phases": [
+      {
+        "from": 2000000,
+        "to": 1000000,
+        "label": "The Cradle of Humankind caves",
+        "regions": [
+          {
+            "country": "South Africa",
+            "bbox": [
+              27.4,
+              -26.3,
+              28.1,
+              -25.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "homo-naledi": {
+    "phases": [
+      {
+        "from": 335000,
+        "to": 236000,
+        "label": "Rising Star Cave, Cradle of Humankind",
+        "regions": [
+          {
+            "country": "South Africa",
+            "bbox": [
+              27.5,
+              -26.15,
+              27.9,
+              -25.85
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

@@ -379,12 +379,14 @@ export const TRACKWAYS_2: DataSet = {
       lon: 36.2, lat: 4.3, plate: 709, fromMa: 1.53, toMa: 1.51, jumpMa: 1.52,
       summary: [
         'Hominin footprints in two layers of lake-side sediment, described in 2009. They show an essentially modern foot, with an arch, a big toe in line and a modern stride, and later finds at the site show groups walking together.',
+        'A 2024 study found a second kind of footprint on the same surface, with a more ape-like, splayed big toe, probably made by Paranthropus boisei. The two species crossed the same lakeshore within hours or days of each other, the first direct evidence of two hominin species sharing ground.',
       ],
       facts: [
         { label: 'Laid', value: 'About 1.52 million years ago' },
-        { label: 'Trackmaker', value: 'Probably Homo erectus (also called Homo ergaster), from their size and age' },
+        { label: 'Trackmakers', value: 'Probably Homo erectus (also called Homo ergaster) and Paranthropus boisei' },
       ],
-      keywords: ['ileret', 'koobi fora', 'turkana', 'kenya', 'pleistocene', 'homo erectus'],
+      trackmakers: [{ id: 'paranthropus-boisei', certainty: 'likely', note: 'A second footprint type, described in 2024, probably made by Paranthropus boisei alongside Homo erectus.' }],
+      keywords: ['ileret', 'koobi fora', 'turkana', 'kenya', 'pleistocene', 'homo erectus', 'paranthropus'],
     }),
     trackway({
       id: 'matalascanas', title: 'Matalascañas footprints', short: 'Matalascañas', human: true,
