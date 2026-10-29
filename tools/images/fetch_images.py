@@ -120,7 +120,8 @@ def file_info(files):
             m = ii.get('extmetadata', {})
             get = lambda k: strip_html((m.get(k) or {}).get('value', ''))
             out[name.replace(' ', '_')] = {
-                'thumb': (ii.get('thumburl') or ii.get('url') or '').split('?')[0],
+                # Plain upload.wikimedia.org links, without tracking parameters.
+                'thumb': (ii.get('thumburl') or ii.get('url') or '').split('?')[0].replace('//thumb.wikimedia.org/', '//upload.wikimedia.org/'),
                 'width': ii.get('thumbwidth') or ii.get('width'),
                 'height': ii.get('thumbheight') or ii.get('height'),
                 'source': ii.get('descriptionurl'),
