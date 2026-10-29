@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-1294 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+1301 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -1356,3 +1356,10 @@
 | 10,000 yr | *Peponocephala electra* | Melon-headed whale | Oceanic dolphins | range map — Deep tropical oceans |
 | 10,000 yr | *Orcaella brevirostris* | Irrawaddy dolphin | Oceanic dolphins | range map — Coasts and rivers of South and Southeast Asia |
 | 10,000 yr | *Lagenodelphis hosei* | Fraser’s dolphin | Oceanic dolphins | range map — Deep tropical oceans |
+| 10,000 yr | *Hydrochoerus hydrochaeris* | Capybara | Cavies and capybaras | range map — South America east of the Andes |
+| 10,000 yr | *Castor canadensis* | North American beaver | Beavers | range map — Canada, the United States and northern Mexico; introduced to Tierra del Fuego and Finland |
+| 10,000 yr | *Castor fiber* | Eurasian beaver | Beavers | range map — Europe and northern Asia |
+| 10,000 yr | *Rattus rattus* | Black rat | Old World mice and rats | range map — Worldwide, especially warm regions; originally South Asia |
+| 10,000 yr | *Rattus norvegicus* | Brown rat | Old World mice and rats | range map — Worldwide; originally northern China and Mongolia |
+| 10,000 yr | *Sciurus vulgaris* | Red squirrel | Squirrels | range map — Forests of Europe and northern Asia |
+| 10,000 yr | *Sciurus carolinensis* | Grey squirrel | Squirrels | range map — Eastern North America; introduced to Britain, Ireland, Italy and South Africa |

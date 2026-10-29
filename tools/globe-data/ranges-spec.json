@@ -14527,5 +14527,403 @@
         ]
       }
     ]
+  },
+  "hydrochoerus-hydrochaeris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Brazil",
+              "Bolivia",
+              "Paraguay",
+              "Uruguay",
+              "Panama"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -38,
+              -53,
+              -22
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -76,
+              -13,
+              -69,
+              -2
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -78,
+              -3,
+              -75,
+              0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "castor-canadensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Canada"
+            ],
+            "latMax": 68
+          },
+          {
+            "countries": [
+              "United States of America"
+            ],
+            "latMax": 70
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -110,
+              26,
+              -97,
+              32.7
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -69,
+              -55.1,
+              -64,
+              -52.5
+            ]
+          },
+          {
+            "country": "Chile",
+            "bbox": [
+              -71,
+              -56,
+              -66,
+              -52.5
+            ]
+          },
+          {
+            "country": "Finland",
+            "bbox": [
+              23,
+              60,
+              30,
+              64
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "castor-fiber": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway"
+            ],
+            "exclude": [
+              "Portugal",
+              "Greece",
+              "Albania",
+              "North Macedonia",
+              "Montenegro",
+              "Italy"
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -6,
+              50.5,
+              0,
+              57.5
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              45,
+              120,
+              65
+            ]
+          },
+          {
+            "country": "Mongolia",
+            "bbox": [
+              88,
+              46,
+              92,
+              49
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              86,
+              46,
+              90,
+              48.5
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              60,
+              48,
+              85,
+              55
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rattus-rattus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -45,
+            "latMax": 45
+          }
+        ]
+      }
+    ]
+  },
+  "rattus-norvegicus": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -55,
+            "latMax": 70
+          }
+        ]
+      }
+    ]
+  },
+  "sciurus-vulgaris": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "Ireland",
+              "Russia",
+              "Kazakhstan",
+              "Mongolia",
+              "Georgia",
+              "Turkey"
+            ],
+            "latMax": 70
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -8,
+              54.5,
+              -1.5,
+              59
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              40,
+              135,
+              53
+            ]
+          },
+          {
+            "country": "Japan",
+            "bbox": [
+              139.5,
+              41.3,
+              146,
+              45.6
+            ]
+          },
+          {
+            "countries": [
+              "North Korea",
+              "South Korea"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "sciurus-carolinensis": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -100,
+              25,
+              -67,
+              48
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -97,
+              42,
+              -64,
+              49
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -5.5,
+              50,
+              2,
+              56
+            ]
+          },
+          {
+            "country": "Ireland",
+            "bbox": [
+              -8.5,
+              52.5,
+              -6,
+              54.5
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              7,
+              44,
+              10,
+              46
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              18,
+              -34.5,
+              19.5,
+              -33.5
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

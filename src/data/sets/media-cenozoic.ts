@@ -349,7 +349,7 @@ export const MEDIA_CENOZOIC: DataSet = {
       id: 'castoridae',
       name: 'Castoridae',
       common: 'Beavers',
-      parent: 'eutheria',
+      parent: 'rodentia',
       family: true,
       description: 'Beavers, including burrowing early kinds and the Ice Age giant beaver.',
     },
