@@ -572,7 +572,8 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
       formations: ['la-amarga'],
       phylo: 2,
       summary: [
-        'A short-necked sauropod about 10 m long with two parallel rows of tall spines along its neck, up to 60 cm long. They may have held up skin sails, been covered in horn as defensive spikes, or rattled for display.',
+        'A short-necked sauropod about 10 m long with two parallel rows of tall, backward-pointing spines along its neck, the longest about 60 cm.',
+        'The spines were once shown bare, as rattling display structures, or sheathed in horn as defensive spikes. A 2022 study of their bone structure and surface found no sign of a horn sheath. Instead the spines were most likely covered in skin and tied together by ligaments, forming a double “sail” along the neck. What the sail was for is not known; display is the most common suggestion.',
       ],
       facts: [
         { label: 'Named', value: 'Leonardo Salgado and José Bonaparte, 1991' },

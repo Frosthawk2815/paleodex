@@ -472,7 +472,7 @@ export const MEDIA_EARLY: DataSet = {
       common: 'Dicraeosaurs',
       parent: 'sauropodomorpha',
       family: true,
-      description: 'Short-necked sauropods with tall spines on their necks and backs.',
+      description: 'Short-necked sauropods with tall, often forked spines on their necks and backs. The spines were most likely covered in skin, forming ridges or sails, rather than bare or sheathed in horn.',
     },
     {
       id: 'dilophosauridae',
@@ -1199,7 +1199,10 @@ export const MEDIA_EARLY: DataSet = {
       placeText: 'Tanzania',
       formations: ['tendaguru'],
       phylo: 1,
-      summary: ['A short-necked sauropod about 12–13 m long with tall, forked spines along its neck and back, probably feeding on low plants.'],
+      summary: [
+        'A short-necked sauropod about 12–13 m long with tall, forked spines along its neck and back, probably feeding on low plants.',
+        'A 2022 study of its relative Amargasaurus found that dicraeosaur spines were most likely covered in skin rather than bare or sheathed in horn, so in life the spines probably formed a ridge or low sail.',
+      ],
       facts: [
         { label: 'Named', value: 'Werner Janensch, 1914' },
         { label: 'Length', value: 'About 12–13 m' },
