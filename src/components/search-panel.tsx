@@ -125,6 +125,25 @@ function closeness(typed: string, word: string): number {
 function search(query: string): Item[] {
   const q = norm(query);
   if (!q) return ITEMS.filter((i) => i.result.kind === 'event' || i.result.kind === 'extinction' || i.result.kind === 'clade');
+  // A plural query also matches the singular ("sea scorpions" finds entries that say "sea scorpion").
+  const singular = q
+    .split(' ')
+    .map((w) => (w.length > 3 && w.endsWith('s') && !w.endsWith('ss') ? w.slice(0, -1) : w))
+    .join(' ');
+  // The singular form ranks just below the same match on what was typed.
+  return merge(searchFor(q), singular === q ? [] : searchFor(singular).map((x) => ({ ...x, r: x.r + 0.5 })));
+}
+
+// Results for both forms, best tier first, without repeats.
+function merge(a: Ranked[], b: Ranked[]): Item[] {
+  const best = new Map<number, Ranked>();
+  for (const x of [...a, ...b]) if (!best.has(x.index) || best.get(x.index)!.r > x.r) best.set(x.index, x);
+  return [...best.values()].sort((x, y) => x.r - y.r || x.index - y.index).slice(0, 30).map((x) => x.item);
+}
+
+type Ranked = { item: Item; index: number; r: number };
+
+function searchFor(q: string): Ranked[] {
   const typed = q.split(' ');
   // Best first: a name that is exactly the query, a name that starts with it, a word that
   // starts with it, any mention, every typed word starting a name word (in any order), then
@@ -144,11 +163,7 @@ function search(query: string): Item[] {
     }
     return 5 + off;
   };
-  return PREPARED.map((p) => ({ item: p.item, index: p.index, r: rank(p) }))
-    .filter((x) => x.r >= 0)
-    .sort((a, b) => a.r - b.r || a.index - b.index)
-    .slice(0, 30)
-    .map((x) => x.item);
+  return PREPARED.map((p) => ({ item: p.item, index: p.index, r: rank(p) })).filter((x) => x.r >= 0);
 }
 
 type Props = {
