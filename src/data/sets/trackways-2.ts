@@ -385,7 +385,7 @@ export const TRACKWAYS_2: DataSet = {
         { label: 'Laid', value: 'About 1.52 million years ago' },
         { label: 'Trackmakers', value: 'Probably Homo erectus (also called Homo ergaster) and Paranthropus boisei' },
       ],
-      trackmakers: [{ id: 'paranthropus-boisei', certainty: 'likely', note: 'A second footprint type, described in 2024, probably made by Paranthropus boisei alongside Homo erectus.' }],
+      trackmakers: [{ id: 'homo-erectus', certainty: 'likely', note: 'The modern-looking footprints, from their size, shape and age.' }, { id: 'paranthropus-boisei', certainty: 'likely', note: 'A second footprint type, described in 2024, probably made by Paranthropus boisei alongside Homo erectus.' }],
       keywords: ['ileret', 'koobi fora', 'turkana', 'kenya', 'pleistocene', 'homo erectus', 'paranthropus'],
     }),
     trackway({

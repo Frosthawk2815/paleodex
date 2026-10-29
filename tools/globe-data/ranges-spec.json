@@ -32185,5 +32185,131 @@
         ]
       }
     ]
+  },
+  "homo-erectus": {
+    "phases": [
+      {
+        "from": 2000000,
+        "to": 1000000,
+        "label": "Africa, then out into Asia",
+        "regions": [
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              35.5,
+              4.5,
+              42,
+              12
+            ]
+          },
+          {
+            "country": "Kenya",
+            "bbox": [
+              34,
+              -2,
+              38,
+              5
+            ]
+          },
+          {
+            "country": "Tanzania",
+            "bbox": [
+              34.5,
+              -4,
+              37,
+              -2
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              27.4,
+              -26.3,
+              28.1,
+              -25.7
+            ]
+          },
+          {
+            "country": "Georgia",
+            "bbox": [
+              43.8,
+              41.2,
+              44.8,
+              41.7
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              105,
+              25,
+              120,
+              41
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          }
+        ]
+      },
+      {
+        "from": 1000000,
+        "to": 110000,
+        "label": "Fossil sites in Africa and Asia",
+        "regions": [
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              35.5,
+              4.5,
+              42,
+              12
+            ]
+          },
+          {
+            "country": "Kenya",
+            "bbox": [
+              34,
+              -2,
+              38,
+              5
+            ]
+          },
+          {
+            "country": "Tanzania",
+            "bbox": [
+              34.5,
+              -4,
+              37,
+              -2
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              105,
+              25,
+              120,
+              41
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              105,
+              -9,
+              114.6,
+              -5.8
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
