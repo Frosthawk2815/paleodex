@@ -16,20 +16,18 @@ export type PointIconKind =
   | 'ash'
   | 'tar'
   | 'pickaxe'
-  | 'track-flag'
-  | 'human-track-flag';
+  | 'track'
+  | 'human-track';
 
 // Where the foot of each flagpole is in the 24×24 box, so it can stand on the spot.
 export const FLAG_FOOT: Partial<Record<PointIconKind, [number, number]>> = {
   flag: [12, 19],
   'us-flag': [7, 22],
   skull: [7, 22],
-  'track-flag': [7, 22],
-  'human-track-flag': [7, 22],
 };
 
 // Badge artwork drawn in a 24×24 box centred on (12, 12).
-function Art({ kind }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag' | 'skull' | 'track-flag' | 'human-track-flag'> }) {
+function Art({ kind }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag' | 'skull' | 'track' | 'human-track'> }) {
   if (kind === 'swamp') {
     // A lush, Everglades-like swamp: still water, reeds and trees.
     return (
@@ -227,28 +225,28 @@ function SkullFlag() {
   );
 }
 
-// A sand-coloured flag with a footprint: a known fossil trackway. Three-toed for dinosaurs and other
+// A ring with a footprint inside: a known fossil trackway. Three-toed for dinosaurs and other
 // animals, a human foot for hominin tracks.
-function TrackFlag({ human }: { human: boolean }) {
+function TrackRing({ human }: { human: boolean }) {
   return (
     <G>
-      <Circle cx={7} cy={22} r={1.6} fill="#FFFFFF" />
-      <Line x1={7} y1={22} x2={7} y2={1.5} stroke="#E6E6E6" strokeWidth={1.3} strokeLinecap="round" />
-      <Path d="M7 2.5 L22 2.5 L19.5 7.75 L22 13 L7 13 Z" fill="#E9D7A8" stroke="#FFFFFF" strokeWidth={0.6} />
+      <Ellipse cx={12} cy={23.5} rx={7} ry={1.6} fill="#000000" opacity={0.35} />
+      <Circle cx={12} cy={12} r={11.3} fill="#FFFFFF" />
+      <Circle cx={12} cy={12} r={9.2} fill="#E9D7A8" stroke="#8A5A2E" strokeWidth={2.6} />
       {human ? (
         <G fill="#6B4A2B">
-          <Ellipse cx={13.2} cy={9.3} rx={1.9} ry={3} />
-          <Circle cx={12.1} cy={5.2} r={0.75} />
-          <Circle cx={13.5} cy={4.9} r={0.6} />
-          <Circle cx={14.6} cy={5.3} r={0.5} />
-          <Circle cx={15.3} cy={6.0} r={0.45} />
+          <Ellipse cx={12} cy={14} rx={2.7} ry={4.3} />
+          <Circle cx={10.4} cy={8.1} r={1.1} />
+          <Circle cx={12.3} cy={7.6} r={0.85} />
+          <Circle cx={13.8} cy={8.1} r={0.72} />
+          <Circle cx={14.8} cy={9.1} r={0.62} />
         </G>
       ) : (
         <G stroke="#6B4A2B" strokeLinecap="round" fill="none">
-          <Path d="M13.6 10.6 L10.6 5.2" strokeWidth={1.4} />
-          <Path d="M13.6 10.6 L13.6 4" strokeWidth={1.5} />
-          <Path d="M13.6 10.6 L16.6 5.2" strokeWidth={1.4} />
-          <Ellipse cx={13.6} cy={10.9} rx={1.7} ry={1.2} fill="#6B4A2B" stroke="none" />
+          <Path d="M12 15.2 L7.6 7.6" strokeWidth={2} />
+          <Path d="M12 15.2 L12 5.9" strokeWidth={2.1} />
+          <Path d="M12 15.2 L16.4 7.6" strokeWidth={2} />
+          <Ellipse cx={12} cy={15.6} rx={2.5} ry={1.8} fill="#6B4A2B" stroke="none" />
         </G>
       )}
     </G>
@@ -270,8 +268,8 @@ export function PointIconShape({ kind, x, y, size, color = '#FFD54A' }: Props) {
         <UsFlag />
       ) : kind === 'skull' ? (
         <SkullFlag />
-      ) : kind === 'track-flag' || kind === 'human-track-flag' ? (
-        <TrackFlag human={kind === 'human-track-flag'} />
+      ) : kind === 'track' || kind === 'human-track' ? (
+        <TrackRing human={kind === 'human-track'} />
       ) : (
         <G>
           <Defs>

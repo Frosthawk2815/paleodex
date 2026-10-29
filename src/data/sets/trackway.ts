@@ -17,7 +17,7 @@ type TrackwaySpec = {
   fromMa: number;
   toMa: number;
   jumpMa?: number;
-  // Hominin tracks get a human footprint on the flag; all others a three-toed print.
+  // Hominin tracks get a human footprint in the ring; all others a three-toed print.
   human?: boolean;
   trackmakers?: Trackmaker[];
   zoom?: number;
@@ -31,12 +31,12 @@ function whenText(t: number): string {
   return `${t >= 10 ? Math.round(t) : Number(t.toFixed(2))} million years ago`;
 }
 
-// A fossil trackway: a footprint flag where the prints can be seen today, and another where and
+// A fossil trackway: a footprint ring where the prints can be seen today, and another where and
 // when they were laid, riding on its plate.
 export function trackway(t: TrackwaySpec): HistoryEvent {
   const jumpMa = t.jumpMa ?? (t.fromMa + t.toMa) / 2;
   const zoom = t.zoom ?? 4;
-  const icon = t.human ? 'human-track-flag' : 'track-flag';
+  const icon = t.human ? 'human-track' : 'track';
   return {
     id: t.id,
     kind: 'Trackway',
