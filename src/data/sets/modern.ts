@@ -10,7 +10,7 @@ export const MODERN: DataSet = {
       id: 'hominidae',
       name: 'Hominidae',
       common: 'Great apes and humans',
-      parent: 'primates',
+      parent: 'catarrhini',
       family: true,
       description: 'Orangutans, gorillas, chimpanzees and bonobos, and humans with our extinct relatives.',
     },

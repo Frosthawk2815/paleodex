@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-947 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+1026 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -1009,3 +1009,82 @@
 | 20,000 yr | *Equus occidentalis* | Western horse | Horses and zebras | La Brea Tar Pits |
 | 20,000 yr | *Bison antiquus* | Ancient bison | Cattle and antelopes | La Brea Tar Pits |
 | 20,000 yr | *Teratornis merriami* | Merriam’s teratorn | Teratorns | La Brea Tar Pits |
+| 10,000 yr | *Lemur catta* | Ring-tailed lemur | True lemurs | range map — Southern and southwestern Madagascar |
+| 10,000 yr | *Eulemur fulvus* | Common brown lemur | True lemurs | range map — Madagascar |
+| 10,000 yr | *Hapalemur griseus* | Eastern lesser bamboo lemur | True lemurs | range map — Eastern Madagascar |
+| 10,000 yr | *Prolemur simus* | Greater bamboo lemur | True lemurs | range map — Southeastern Madagascar |
+| 10,000 yr | *Varecia variegata* | Black-and-white ruffed lemur | True lemurs | range map — Eastern Madagascar |
+| 10,000 yr | *Microcebus murinus* | Grey mouse lemur | Mouse and dwarf lemurs | range map — Western and southern Madagascar |
+| 10,000 yr | *Mirza coquereli* | Coquerel’s giant mouse lemur | Mouse and dwarf lemurs | range map — Western Madagascar |
+| 10,000 yr | *Cheirogaleus medius* | Fat-tailed dwarf lemur | Mouse and dwarf lemurs | range map — Western and southern Madagascar |
+| 10,000 yr | *Allocebus trichotis* | Hairy-eared dwarf lemur | Mouse and dwarf lemurs | range map — Northeastern Madagascar |
+| 10,000 yr | *Phaner furcifer* | Masoala fork-marked lemur | Mouse and dwarf lemurs | range map — Northeastern Madagascar |
+| 10,000 yr | *Lepilemur mustelinus* | Weasel sportive lemur | Sportive lemurs | range map — Eastern Madagascar |
+| 10,000 yr | *Indri indri* | Indri | Indris, sifakas and woolly lemurs | range map — Northeastern Madagascar |
+| 10,000 yr | *Propithecus verreauxi* | Verreaux’s sifaka | Indris, sifakas and woolly lemurs | range map — Southern and southwestern Madagascar |
+| 10,000 yr | *Avahi laniger* | Eastern woolly lemur | Indris, sifakas and woolly lemurs | range map — Eastern Madagascar |
+| 10,000 yr | *Daubentonia madagascariensis* | Aye-aye | Aye-ayes | range map — Madagascar |
+| 10,000 yr | *Loris tardigradus* | Red slender loris | Lorises and pottos | range map — Sri Lanka |
+| 10,000 yr | *Nycticebus coucang* | Sunda slow loris | Lorises and pottos | range map — Malay Peninsula and Sumatra |
+| 10,000 yr | *Perodicticus potto* | Potto | Lorises and pottos | range map — West and Central African forests |
+| 10,000 yr | *Arctocebus calabarensis* | Calabar angwantibo | Lorises and pottos | range map — Nigeria and Cameroon |
+| 10,000 yr | *Galago senegalensis* | Northern lesser galago | Galagos (bushbabies) | range map — Savannas from Senegal to East Africa |
+| 10,000 yr | *Otolemur crassicaudatus* | Brown greater galago | Galagos (bushbabies) | range map — Eastern and southern Africa |
+| 10,000 yr | *Galagoides demidovii* | Demidoff’s dwarf galago | Galagos (bushbabies) | range map — West and Central African forests |
+| 10,000 yr | *Paragalago zanzibaricus* | Zanzibar galago | Galagos (bushbabies) | range map — Coastal Tanzania and Zanzibar |
+| 10,000 yr | *Sciurocheirus alleni* | Bioko Allen’s squirrel galago | Galagos (bushbabies) | range map — Bioko Island, Equatorial Guinea |
+| 10,000 yr | *Euoticus elegantulus* | Southern needle-clawed galago | Galagos (bushbabies) | range map — Central African forests |
+| 10,000 yr | *Tarsius tarsier* | Spectral tarsier | Tarsiers | range map — Sulawesi, Indonesia |
+| 10,000 yr | *Cephalopachus bancanus* | Horsfield’s tarsier | Tarsiers | range map — Borneo and southern Sumatra |
+| 10,000 yr | *Carlito syrichta* | Philippine tarsier | Tarsiers | range map — Southern Philippines |
+| 10,000 yr | *Callithrix jacchus* | Common marmoset | Marmosets and tamarins | range map — Northeastern Brazil |
+| 10,000 yr | *Mico argentatus* | Silvery marmoset | Marmosets and tamarins | range map — Eastern Amazon, Brazil |
+| 10,000 yr | *Cebuella pygmaea* | Pygmy marmoset | Marmosets and tamarins | range map — Western Amazon |
+| 10,000 yr | *Saguinus oedipus* | Cotton-top tamarin | Marmosets and tamarins | range map — Northwestern Colombia |
+| 10,000 yr | *Leontocebus fuscicollis* | Lesson’s saddle-back tamarin | Marmosets and tamarins | range map — Western Amazon |
+| 10,000 yr | *Leontopithecus rosalia* | Golden lion tamarin | Marmosets and tamarins | range map — Atlantic Forest of Rio de Janeiro state, Brazil |
+| 10,000 yr | *Callimico goeldii* | Goeldi’s monkey | Marmosets and tamarins | range map — Upper Amazon basin |
+| 10,000 yr | *Cebus capucinus* | Colombian white-faced capuchin | Capuchins and squirrel monkeys | range map — Panama, Colombia and Ecuador |
+| 10,000 yr | *Sapajus apella* | Tufted capuchin | Capuchins and squirrel monkeys | range map — Amazon basin and the Guianas |
+| 10,000 yr | *Saimiri sciureus* | Common squirrel monkey | Capuchins and squirrel monkeys | range map — Amazon basin and the Guianas |
+| 10,000 yr | *Aotus trivirgatus* | Three-striped night monkey | Night monkeys | range map — Northern Amazon basin |
+| 10,000 yr | *Pithecia pithecia* | White-faced saki | Titis, sakis and uakaris | range map — The Guianas, Venezuela and northern Brazil |
+| 10,000 yr | *Chiropotes satanas* | Black bearded saki | Titis, sakis and uakaris | range map — Eastern Amazon, Brazil |
+| 10,000 yr | *Cacajao calvus* | Bald uakari | Titis, sakis and uakaris | range map — Flooded forests of the western Amazon |
+| 10,000 yr | *Plecturocebus moloch* | Red-bellied titi | Titis, sakis and uakaris | range map — Southern Amazon, Brazil |
+| 10,000 yr | *Callicebus personatus* | Atlantic titi | Titis, sakis and uakaris | range map — Atlantic Forest, eastern Brazil |
+| 10,000 yr | *Cheracebus torquatus* | Collared titi | Titis, sakis and uakaris | range map — Northwestern Amazon |
+| 10,000 yr | *Alouatta palliata* | Mantled howler | Howler, spider and woolly monkeys | range map — Southern Mexico to Ecuador |
+| 10,000 yr | *Ateles geoffroyi* | Geoffroy’s spider monkey | Howler, spider and woolly monkeys | range map — Southern Mexico to Colombia |
+| 10,000 yr | *Brachyteles arachnoides* | Southern muriqui | Howler, spider and woolly monkeys | range map — Atlantic Forest of southeastern Brazil |
+| 10,000 yr | *Lagothrix lagothricha* | Common woolly monkey | Howler, spider and woolly monkeys | range map — Western Amazon |
+| 10,000 yr | *Macaca fuscata* | Japanese macaque | Old World monkeys | range map — Japan |
+| 10,000 yr | *Papio anubis* | Olive baboon | Old World monkeys | range map — Savannas and woodlands from Mali to Ethiopia and Tanzania |
+| 10,000 yr | *Theropithecus gelada* | Gelada | Old World monkeys | range map — Ethiopian Highlands |
+| 10,000 yr | *Mandrillus sphinx* | Mandrill | Old World monkeys | range map — Rainforests of Cameroon, Gabon, Equatorial Guinea and Congo |
+| 10,000 yr | *Cercocebus torquatus* | Red-capped mangabey | Old World monkeys | range map — Coastal forests from Nigeria to Gabon |
+| 10,000 yr | *Lophocebus albigena* | Grey-cheeked mangabey | Old World monkeys | range map — Central African rainforests |
+| 10,000 yr | *Rungwecebus kipunji* | Kipunji | Old World monkeys | range map — Southern highlands of Tanzania |
+| 10,000 yr | *Cercopithecus mitis* | Blue monkey | Old World monkeys | range map — Central and East Africa |
+| 10,000 yr | *Chlorocebus pygerythrus* | Vervet monkey | Old World monkeys | range map — Eastern and southern Africa |
+| 10,000 yr | *Erythrocebus patas* | Patas monkey | Old World monkeys | range map — Savannas from Senegal to East Africa |
+| 10,000 yr | *Allochrocebus lhoesti* | L’Hoest’s monkey | Old World monkeys | range map — Montane forests around the Albertine Rift |
+| 10,000 yr | *Miopithecus talapoin* | Angolan talapoin | Old World monkeys | range map — Angola and western Democratic Republic of the Congo |
+| 10,000 yr | *Allenopithecus nigroviridis* | Allen’s swamp monkey | Old World monkeys | range map — Swamp forests of the Congo Basin |
+| 10,000 yr | *Colobus guereza* | Mantled guereza | Old World monkeys | range map — Central and East Africa |
+| 10,000 yr | *Piliocolobus kirkii* | Zanzibar red colobus | Old World monkeys | range map — Zanzibar (Unguja), Tanzania |
+| 10,000 yr | *Procolobus verus* | Olive colobus | Old World monkeys | range map — West African forests |
+| 10,000 yr | *Semnopithecus entellus* | Northern plains grey langur | Old World monkeys | range map — India and Bangladesh |
+| 10,000 yr | *Trachypithecus obscurus* | Dusky leaf monkey | Old World monkeys | range map — Malay Peninsula, southern Thailand and Myanmar |
+| 10,000 yr | *Presbytis rubicunda* | Maroon langur | Old World monkeys | range map — Borneo |
+| 10,000 yr | *Pygathrix nemaeus* | Red-shanked douc | Old World monkeys | range map — Vietnam, Laos and Cambodia |
+| 10,000 yr | *Rhinopithecus roxellana* | Golden snub-nosed monkey | Old World monkeys | range map — Mountains of central China |
+| 10,000 yr | *Nasalis larvatus* | Proboscis monkey | Old World monkeys | range map — Mangroves and river forests of Borneo |
+| 10,000 yr | *Simias concolor* | Pig-tailed langur | Old World monkeys | range map — Mentawai Islands, Indonesia |
+| 10,000 yr | *Hylobates lar* | Lar gibbon | Gibbons | range map — Thailand, Malay Peninsula, Myanmar, Laos and northern Sumatra |
+| 10,000 yr | *Hoolock hoolock* | Western hoolock gibbon | Gibbons | range map — Northeast India, Bangladesh and Myanmar |
+| 10,000 yr | *Nomascus hainanus* | Hainan gibbon | Gibbons | range map — Hainan Island, China |
+| 10,000 yr | *Symphalangus syndactylus* | Siamang | Gibbons | range map — Sumatra and the Malay Peninsula |
+| 10,000 yr | *Pongo pygmaeus* | Bornean orangutan | Great apes and humans | range map — Borneo |
+| 10,000 yr | *Gorilla gorilla* | Western gorilla | Great apes and humans | range map — Central African rainforests |
+| 10,000 yr | *Pan troglodytes* | Chimpanzee | Great apes and humans | range map — West and Central Africa |

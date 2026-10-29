@@ -51,8 +51,9 @@ export function phasePolygons(p: RangePhase): Polygon[] {
 export const phaseCentre = (p: RangePhase): [number, number] =>
   geoCentroid({ type: 'MultiPolygon', coordinates: phasePolygons(p) });
 
-// The time to jump to for a phase: the middle of it (on a log scale for long phases).
-export const phaseJumpMa = (p: RangePhase) => (p.toMa > 0 ? Math.sqrt(p.fromMa * p.toMa) : p.fromMa / 2);
+// The time to jump to for a phase: the middle of it (on a log scale for long phases), or today
+// for a range that runs up to the present.
+export const phaseJumpMa = (p: RangePhase) => (p.toMa > 0 ? Math.sqrt(p.fromMa * p.toMa) : 0);
 
 // The time to jump to for a last sighting: just before it, while the skull marker still shows.
 export const lastSeenJumpMa = (l: LastSeen) => (l.year !== undefined ? yearToMa(l.year - 2) : l.ma * 1.05);
