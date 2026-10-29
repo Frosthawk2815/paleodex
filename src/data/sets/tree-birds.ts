@@ -40,8 +40,21 @@ export const TREE_BIRDS: DataSet = {
       description:
         'Avialans with modern-style bodies, such as a short tail ending in a ploughshare bone and a deep breastbone: Ichthyornis, the toothed diving hesperornithines and the crown birds.',
     },
+    {
+      id: 'unenlagiinae',
+      name: 'Unenlagiinae',
+      common: 'Unenlagiines',
+      parent: 'dromaeosauridae',
+      description:
+        'Long-snouted, lightly built raptor relatives from the Cretaceous of South America, from the 1.5 m Buitreraptor to the 5 m Austroraptor. Many had small, simple teeth, perhaps for catching fish and other small prey. They are usually placed within the dromaeosaurs, but some studies put them just outside, closer to birds, as a family of their own (Unenlagiidae). Rahonavis of Madagascar is sometimes counted among them.',
+    },
   ],
   upgrades: {
+    'austroraptor-cabazai': { clade: 'unenlagiinae' },
+    'unenlagia-comahuensis': { clade: 'unenlagiinae' },
+    'neuquenraptor-argentinus': { clade: 'unenlagiinae' },
+    'buitreraptor-gonzalezorum': { clade: 'unenlagiinae' },
+    'diuqin-lechiguanae': { clade: 'unenlagiinae' },
     'jeholornis-prima': { clade: 'avialae' },
     'sapeornis-chaoyangensis': { clade: 'avialae' },
     'fukuipteryx-prima': { clade: 'avialae' },
