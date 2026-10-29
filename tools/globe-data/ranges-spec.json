@@ -32311,5 +32311,88 @@
         ]
       }
     ]
+  },
+  "ursus-maritimus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              60,
+              180,
+              88
+            ]
+          },
+          {
+            "sea": [
+              -95,
+              51,
+              -76,
+              64
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -125,
+              66,
+              -60,
+              83
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -95,
+              51,
+              -78,
+              64
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -170,
+              66,
+              -140,
+              72
+            ]
+          },
+          {
+            "countries": [
+              "Greenland"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              66,
+              180,
+              82
+            ]
+          },
+          {
+            "country": "Norway",
+            "bbox": [
+              10,
+              76,
+              34,
+              81
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

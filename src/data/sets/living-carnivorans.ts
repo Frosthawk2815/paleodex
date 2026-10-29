@@ -2066,7 +2066,7 @@ export const LIVING_CARNIVORANS: DataSet = {
       placeText: 'Northern North America, Europe and Asia',
       formations: [],
       summary: [
-        'One of the largest land carnivorans, including the grizzly and the Kodiak bear. Ursus also includes the polar bear, which evolved from brown bears within the last few hundred thousand years and can still interbreed with them, and the American and Asian black bears.',
+        'One of the largest land carnivorans, including the grizzly and the Kodiak bear. Ursus also includes the polar bear, which evolved from brown bears and can still interbreed with them, and the American and Asian black bears.',
       ],
       facts: [
         {
@@ -2082,7 +2082,36 @@ export const LIVING_CARNIVORANS: DataSet = {
           value: 'Least Concern',
         },
       ],
-      keywords: ['brown bear', 'grizzly', 'kodiak bear', 'ursus', 'polar bear', 'black bear'],
+      keywords: ['brown bear', 'grizzly', 'kodiak bear', 'ursus', 'black bear'],
+    },
+    {
+      id: 'ursus-maritimus',
+      name: 'Ursus maritimus',
+      common: 'Polar bear',
+      clade: 'ursidae',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Arctic sea ice and coasts of Canada, Alaska, Greenland, Norway and Russia',
+      formations: [],
+      summary: [
+        'The largest land carnivore alongside the Kodiak brown bear, with big males weighing about 350–700 kg. It is so tied to the sea that it is legally classed as a marine mammal: it hunts mainly ringed and bearded seals from the sea ice, waiting at breathing holes or stalking seals hauled out on the ice, and can swim for days. One female swam 687 km in nine days. Its fur is not white but made of colourless hairs over black skin; the old idea that the hollow hairs pipe sunlight to the skin like optical fibres has been disproved.',
+        'It evolved from brown bears, probably within the last few hundred thousand years (estimates vary), and the two still sometimes interbreed, producing “pizzly” or “grolar” bears. Pregnant females dig snow dens where cubs are born in midwinter, tiny and blind. About 20,000–30,000 live in 19 subpopulations. As the climate warms, sea ice forms later and melts earlier, forcing bears ashore to fast for longer: the Western Hudson Bay population fell from about 1,200 in the 1980s to about 620 in 2021. A small population in southeast Greenland, described in 2022, survives by hunting from floating glacier ice.',
+      ],
+      facts: [
+        {
+          label: 'Weight',
+          value: 'Males about 350–700 kg; females about 150–300 kg',
+        },
+        {
+          label: 'Wild population',
+          value: 'About 20,000–30,000',
+        },
+        {
+          label: 'IUCN status',
+          value: 'Vulnerable',
+        },
+      ],
+      keywords: ['polar bear', 'ursus maritimus', 'ice bear', 'nanuk', 'arctic', 'sea ice', 'pizzly', 'grolar'],
     },
     {
       id: 'ailuropoda-melanoleuca',
