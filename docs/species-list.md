@@ -1,6 +1,6 @@
 # PaleoDex species by age
 
-1155 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
+1252 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 
 
 ## Cambrian
@@ -1217,3 +1217,100 @@
 | 10,000 yr | *Hydrurga leptonyx* | Leopard seal | True seals | range map — Antarctic and subantarctic waters |
 | 10,000 yr | *Leptonychotes weddellii* | Weddell seal | True seals | range map — Antarctic coasts |
 | 10,000 yr | *Ommatophoca rossii* | Ross seal | True seals | range map — Dense Antarctic pack ice |
+| 10,000 yr | *Equus quagga* | Plains zebra | Horses and zebras | range map — Eastern and southern Africa |
+| 10,000 yr | *Tapirus terrestris* | South American tapir | Tapirs | range map — Lowland forests of South America |
+| 10,000 yr | *Ceratotherium simum* | White rhinoceros | Rhinos | range map — Southern Africa (southern subspecies) |
+| 10,000 yr | *Diceros bicornis* | Black rhinoceros | Rhinos | range map — Eastern and southern Africa |
+| 10,000 yr | *Rhinoceros unicornis* | Indian rhinoceros | Rhinos | range map — Grasslands of northeast India and Nepal |
+| 10,000 yr | *Dicerorhinus sumatrensis* | Sumatran rhinoceros | Rhinos | range map — Sumatra and Indonesian Borneo |
+| 10,000 yr | *Camelus dromedarius* | Dromedary | Camels | range map — North Africa, the Middle East and India (domestic); feral in Australia |
+| 10,000 yr | *Lama guanicoe* | Guanaco | Camels | range map — The Andes and Patagonia |
+| 10,000 yr | *Vicugna vicugna* | Vicuña | Camels | range map — High Andes of Peru, Bolivia, Chile and Argentina |
+| 10,000 yr | *Sus scrofa* | Wild boar | Pigs | range map — Europe, Asia and North Africa; introduced widely |
+| 10,000 yr | *Phacochoerus africanus* | Common warthog | Pigs | range map — Savannas of sub-Saharan Africa |
+| 10,000 yr | *Potamochoerus porcus* | Red river hog | Pigs | range map — Central and West African rainforests |
+| 10,000 yr | *Hylochoerus meinertzhageni* | Giant forest hog | Pigs | range map — Forests of Central, East and West Africa |
+| 10,000 yr | *Babyrousa celebensis* | North Sulawesi babirusa | Pigs | range map — Sulawesi, Indonesia |
+| 10,000 yr | *Porcula salvania* | Pygmy hog | Pigs | range map — Grasslands of Assam, India |
+| 10,000 yr | *Pecari tajacu* | Collared peccary | Peccaries | range map — Southwestern United States to northern Argentina |
+| 10,000 yr | *Tayassu pecari* | White-lipped peccary | Peccaries | range map — Southern Mexico to northern Argentina |
+| 10,000 yr | *Catagonus wagneri* | Chacoan peccary | Peccaries | range map — The Gran Chaco of Paraguay, Bolivia and Argentina |
+| 10,000 yr | *Hippopotamus amphibius* | Hippopotamus | Hippos | range map — Rivers and lakes of sub-Saharan Africa |
+| 10,000 yr | *Choeropsis liberiensis* | Pygmy hippopotamus | Hippos | range map — Rainforests of Liberia and neighbouring countries |
+| 10,000 yr | *Tragulus kanchil* | Lesser mouse-deer | Chevrotains (mouse-deer) | range map — Southeast Asia |
+| 10,000 yr | *Moschiola indica* | Indian spotted chevrotain | Chevrotains (mouse-deer) | range map — Forests of peninsular India |
+| 10,000 yr | *Hyemoschus aquaticus* | Water chevrotain | Chevrotains (mouse-deer) | range map — Rainforest streams of Central and West Africa |
+| 10,000 yr | *Antilocapra americana* | Pronghorn | Pronghorn | range map — Western North American grasslands |
+| 10,000 yr | *Giraffa camelopardalis* | Northern giraffe | Giraffes and okapi | range map — Savannas of Africa |
+| 10,000 yr | *Okapia johnstoni* | Okapi | Giraffes and okapi | range map — Rainforests of the Democratic Republic of the Congo |
+| 10,000 yr | *Moschus moschiferus* | Siberian musk deer | Musk deer | range map — Siberia, Mongolia and northeast Asia |
+| 10,000 yr | *Cervus elaphus* | Red deer | Deer | range map — Europe, North Africa and western Asia |
+| 10,000 yr | *Dama dama* | European fallow deer | Deer | range map — Originally Anatolia; introduced across Europe and beyond |
+| 10,000 yr | *Axis axis* | Chital | Deer | range map — India, Nepal, Bhutan, Bangladesh and Sri Lanka |
+| 10,000 yr | *Rusa unicolor* | Sambar | Deer | range map — South and Southeast Asia |
+| 10,000 yr | *Rucervus duvaucelii* | Barasingha | Deer | range map — Grasslands and swamps of India and Nepal |
+| 10,000 yr | *Elaphurus davidianus* | Père David’s deer | Deer | range map — Reintroduced to wetlands of eastern China |
+| 10,000 yr | *Panolia eldii* | Eld’s deer | Deer | range map — Scattered sites in India, Myanmar and Southeast Asia |
+| 10,000 yr | *Muntiacus reevesi* | Reeves’s muntjac | Deer | range map — Southeast China and Taiwan; introduced to Britain |
+| 10,000 yr | *Elaphodus cephalophus* | Tufted deer | Deer | range map — Mountain forests of southern China and Myanmar |
+| 10,000 yr | *Hydropotes inermis* | Water deer | Deer | range map — Korea and eastern China; introduced to England |
+| 10,000 yr | *Capreolus capreolus* | European roe deer | Deer | range map — Europe and western Asia |
+| 10,000 yr | *Alces alces* | Moose | Deer | range map — Northern forests of North America, Europe and Asia |
+| 10,000 yr | *Rangifer tarandus* | Reindeer | Deer | range map — Arctic and subarctic North America, Europe and Asia |
+| 10,000 yr | *Odocoileus virginianus* | White-tailed deer | Deer | range map — Southern Canada to northern South America |
+| 10,000 yr | *Mazama americana* | Red brocket | Deer | range map — Rainforests of Central and South America |
+| 10,000 yr | *Hippocamelus bisulcus* | South Andean deer | Deer | range map — Southern Andes of Chile and Argentina |
+| 10,000 yr | *Blastocerus dichotomus* | Marsh deer | Deer | range map — Wetlands of central South America |
+| 10,000 yr | *Ozotoceros bezoarticus* | Pampas deer | Deer | range map — Grasslands of South America |
+| 10,000 yr | *Pudu puda* | Southern pudú | Deer | range map — Temperate rainforests of southern Chile and Argentina |
+| 10,000 yr | *Bos gaurus* | Gaur | Cattle and antelopes | range map — South and Southeast Asian forests |
+| 10,000 yr | *Bison bison* | American bison | Cattle and antelopes | range map — Parks and reserves of North America |
+| 10,000 yr | *Bubalus arnee* | Wild water buffalo | Cattle and antelopes | range map — India, Nepal, Bhutan and Thailand |
+| 10,000 yr | *Syncerus caffer* | African buffalo | Cattle and antelopes | range map — Sub-Saharan Africa |
+| 10,000 yr | *Pseudoryx nghetinhensis* | Saola | Cattle and antelopes | range map — Annamite Mountains of Laos and Vietnam |
+| 10,000 yr | *Tragelaphus strepsiceros* | Greater kudu | Cattle and antelopes | range map — Eastern and southern Africa |
+| 10,000 yr | *Taurotragus oryx* | Common eland | Cattle and antelopes | range map — Eastern and southern Africa |
+| 10,000 yr | *Boselaphus tragocamelus* | Nilgai | Cattle and antelopes | range map — India, Nepal and Pakistan; introduced to Texas |
+| 10,000 yr | *Tetracerus quadricornis* | Four-horned antelope | Cattle and antelopes | range map — India and Nepal |
+| 10,000 yr | *Cephalophus silvicultor* | Yellow-backed duiker | Cattle and antelopes | range map — Central and West African rainforests |
+| 10,000 yr | *Philantomba monticola* | Blue duiker | Cattle and antelopes | range map — Forests of Central, East and southern Africa |
+| 10,000 yr | *Sylvicapra grimmia* | Common duiker | Cattle and antelopes | range map — Savannas of sub-Saharan Africa |
+| 10,000 yr | *Hippotragus niger* | Sable antelope | Cattle and antelopes | range map — Woodlands of eastern and southern Africa |
+| 10,000 yr | *Oryx gazella* | Gemsbok | Cattle and antelopes | range map — Deserts of southern Africa |
+| 10,000 yr | *Addax nasomaculatus* | Addax | Cattle and antelopes | range map — Sahara Desert |
+| 10,000 yr | *Connochaetes taurinus* | Blue wildebeest | Cattle and antelopes | range map — Eastern and southern Africa |
+| 10,000 yr | *Alcelaphus buselaphus* | Hartebeest | Cattle and antelopes | range map — Savannas of Africa |
+| 10,000 yr | *Damaliscus lunatus* | Topi | Cattle and antelopes | range map — Savannas of Africa |
+| 10,000 yr | *Beatragus hunteri* | Hirola | Cattle and antelopes | range map — Kenya–Somalia border |
+| 10,000 yr | *Kobus ellipsiprymnus* | Waterbuck | Cattle and antelopes | range map — Savannas near water in sub-Saharan Africa |
+| 10,000 yr | *Redunca arundinum* | Southern reedbuck | Cattle and antelopes | range map — Southern and south-central Africa |
+| 10,000 yr | *Pelea capreolus* | Grey rhebok | Cattle and antelopes | range map — Highlands of South Africa and Lesotho |
+| 10,000 yr | *Aepyceros melampus* | Impala | Cattle and antelopes | range map — Savannas of eastern and southern Africa |
+| 10,000 yr | *Antilope cervicapra* | Blackbuck | Cattle and antelopes | range map — Grasslands of India and Nepal |
+| 10,000 yr | *Gazella dorcas* | Dorcas gazelle | Cattle and antelopes | range map — North Africa and the Middle East |
+| 10,000 yr | *Eudorcas thomsonii* | Thomson’s gazelle | Cattle and antelopes | range map — Savannas of Kenya and Tanzania |
+| 10,000 yr | *Nanger granti* | Grant’s gazelle | Cattle and antelopes | range map — East Africa |
+| 10,000 yr | *Antidorcas marsupialis* | Springbok | Cattle and antelopes | range map — Dry plains of southern Africa |
+| 10,000 yr | *Litocranius walleri* | Gerenuk | Cattle and antelopes | range map — Dry bush of the Horn of Africa and East Africa |
+| 10,000 yr | *Ammodorcas clarkei* | Dibatag | Cattle and antelopes | range map — Ogaden region of Ethiopia and Somalia |
+| 10,000 yr | *Procapra gutturosa* | Mongolian gazelle | Cattle and antelopes | range map — Steppes of Mongolia and northern China |
+| 10,000 yr | *Saiga tatarica* | Saiga | Cattle and antelopes | range map — Steppes of Kazakhstan, southern Russia and western Mongolia |
+| 10,000 yr | *Pantholops hodgsonii* | Tibetan antelope | Cattle and antelopes | range map — The Tibetan Plateau |
+| 10,000 yr | *Madoqua kirkii* | Kirk’s dik-dik | Cattle and antelopes | range map — Dry bush of East and southwest Africa |
+| 10,000 yr | *Ourebia ourebi* | Oribi | Cattle and antelopes | range map — Grasslands of sub-Saharan Africa |
+| 10,000 yr | *Raphicerus campestris* | Steenbok | Cattle and antelopes | range map — Eastern and southern Africa |
+| 10,000 yr | *Oreotragus oreotragus* | Klipspringer | Cattle and antelopes | range map — Rocky hills of eastern and southern Africa |
+| 10,000 yr | *Dorcatragus megalotis* | Beira | Cattle and antelopes | range map — Arid hills of Somalia and Djibouti |
+| 10,000 yr | *Neotragus pygmaeus* | Royal antelope | Cattle and antelopes | range map — West African rainforests |
+| 10,000 yr | *Nesotragus moschatus* | Suni | Cattle and antelopes | range map — Coastal forests of East and southeastern Africa |
+| 10,000 yr | *Capra ibex* | Alpine ibex | Cattle and antelopes | range map — The Alps |
+| 10,000 yr | *Ovis canadensis* | Bighorn sheep | Cattle and antelopes | range map — Rocky Mountains and deserts of western North America |
+| 10,000 yr | *Ovibos moschatus* | Muskox | Cattle and antelopes | range map — Arctic Canada and Greenland; reintroduced elsewhere |
+| 10,000 yr | *Rupicapra rupicapra* | Chamois | Cattle and antelopes | range map — Mountains of Europe and Turkey |
+| 10,000 yr | *Oreamnos americanus* | Mountain goat | Cattle and antelopes | range map — Rocky Mountains and coast ranges of northwestern North America |
+| 10,000 yr | *Hemitragus jemlahicus* | Himalayan tahr | Cattle and antelopes | range map — The Himalayas; introduced to New Zealand |
+| 10,000 yr | *Ammotragus lervia* | Barbary sheep | Cattle and antelopes | range map — Mountains of North Africa; introduced to Spain and the US |
+| 10,000 yr | *Pseudois nayaur* | Bharal | Cattle and antelopes | range map — The Himalayas and Tibetan Plateau |
+| 10,000 yr | *Budorcas taxicolor* | Takin | Cattle and antelopes | range map — Eastern Himalayas and mountains of western China |
+| 10,000 yr | *Capricornis sumatraensis* | Sumatran serow | Cattle and antelopes | range map — Mountains of Sumatra and the Malay Peninsula |
+| 10,000 yr | *Naemorhedus goral* | Himalayan goral | Cattle and antelopes | range map — Himalayan foothills of India, Nepal, Bhutan and Pakistan |

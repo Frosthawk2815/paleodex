@@ -242,7 +242,7 @@ export const CENOZOIC: DataSet = {
       id: 'rhinocerotidae',
       name: 'Rhinocerotidae',
       common: 'Rhinos',
-      parent: 'eutheria',
+      parent: 'perissodactyla',
       family: true,
       description: 'Rhinoceroses, once far more varied and widespread, including in North America.',
     },

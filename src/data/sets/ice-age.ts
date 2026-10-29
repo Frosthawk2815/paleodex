@@ -7,7 +7,7 @@ import type { DataSet } from '@/data/sets/types';
 export const ICE_AGE: DataSet = {
   clades: [
     { id: 'ursidae', name: 'Ursidae', common: 'Bears', parent: 'caniformia', family: true, description: 'Bears, living and extinct, including the Ice Age cave bear and short-faced bear.' },
-    { id: 'cervidae', name: 'Cervidae', common: 'Deer', parent: 'eutheria', family: true, description: 'Deer, whose males grow and shed antlers every year.' },
+    { id: 'cervidae', name: 'Cervidae', common: 'Deer', parent: 'artiodactyla', family: true, description: 'Deer, whose males grow and shed antlers every year.' },
     { id: 'glyptodontidae', name: 'Glyptodontidae', common: 'Glyptodonts', parent: 'eutheria', family: true, description: 'Giant armadillo relatives covered in a domed shell of bone, some with clubbed tails.' },
     { id: 'litopterna', name: 'Litopterna', common: 'Litopterns', parent: 'eutheria', family: true, description: 'South American hoofed mammals, some looking like horses or camels; distant relatives of horses and rhinos.' },
     { id: 'notoungulata', name: 'Notoungulata', common: 'Notoungulates', parent: 'eutheria', family: true, description: 'A large group of South American hoofed mammals, from rabbit-sized to rhino-sized.' },

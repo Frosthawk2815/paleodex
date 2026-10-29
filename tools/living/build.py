@@ -19,6 +19,8 @@ HERE = __file__.rsplit('/', 1)[0]
 def ts(v, indent=0):
     """A JSON value written as TypeScript (keys unquoted where safe, single quotes)."""
     pad = ' ' * indent
+    if isinstance(v, (dict, list)) and not v:
+        return '{}' if isinstance(v, dict) else '[]'
     if isinstance(v, dict):
         items = []
         for k, x in v.items():
