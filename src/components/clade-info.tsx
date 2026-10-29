@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { CladeCrumbs } from '@/components/clade-crumbs';
 import { info } from '@/components/info-styles';
 import { type Clade, CLADES, type Species } from '@/data/life';
 import { childClades, cladeById, cladePath, speciesInClade } from '@/lib/life';
@@ -35,18 +36,7 @@ export function CladeInfo({ clade, onBack, onOpenClade, onOpenSpecies }: Props) 
       </Text>
       <Text style={[info.subtitle, info.italic]}>{clade.name}</Text>
 
-      {path.length > 1 && (
-        <View style={info.crumbs}>
-          {path.slice(0, -1).map((c, i) => (
-            <Fragment key={c.id}>
-              {i > 0 && <Text style={info.crumbSep}> › </Text>}
-              <Text onPress={() => onOpenClade(c.id)} style={info.crumb} accessibilityRole="button">
-                {c.common}
-              </Text>
-            </Fragment>
-          ))}
-        </View>
-      )}
+      {path.length > 1 && <CladeCrumbs path={path.slice(0, -1)} onOpenClade={onOpenClade} />}
 
       <Text style={info.body}>{clade.description}</Text>
 

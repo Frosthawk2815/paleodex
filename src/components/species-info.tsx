@@ -6,6 +6,7 @@ import { PointIcon } from '@/components/point-icon';
 import type { HistoryEvent } from '@/data/events';
 import type { Species } from '@/data/life';
 import { SpeciesRow } from '@/components/clade-info';
+import { CladeCrumbs } from '@/components/clade-crumbs';
 import { SpeciesImage } from '@/components/species-image';
 import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf, speciesById, trackwaysOf } from '@/lib/life';
 import { badgeBg } from '@/lib/events';
@@ -51,16 +52,7 @@ export function SpeciesInfo({ species, onBack, onOpenClade, onOpenSpecies, onJum
       </Text>
       {!!species.common && <Text style={info.subtitle}>{species.common}</Text>}
 
-      <View style={info.crumbs}>
-        {path.map((c, i) => (
-          <Fragment key={c.id}>
-            {i > 0 && <Text style={info.crumbSep}> › </Text>}
-            <Text onPress={() => onOpenClade(c.id)} style={info.crumb} accessibilityRole="button">
-              {c.common}
-            </Text>
-          </Fragment>
-        ))}
-      </View>
+      <CladeCrumbs path={path} onOpenClade={onOpenClade} />
 
       <Text style={info.meta}>{species.ageText}</Text>
       <Text style={info.meta}>{species.placeText}</Text>
