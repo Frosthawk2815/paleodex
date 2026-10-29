@@ -270,7 +270,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       icon: 'river',
       summary: [
         'River and lake sediments laid down on India as it drifted north across the Indian Ocean, between the first eruptions of the Deccan Traps, one of the biggest volcanic outpourings in Earth’s history.',
-        'Titanosaurs nested here by the thousand, and the horned abelisaur Rajasaurus hunted them. One nest holds an egg-eating snake, Sanajeh, coiled around a titanosaur egg and a hatchling.',
+        'Titanosaurs nested here by the thousand, and the horned abelisaur Rajasaurus probably hunted them. One nest holds an egg-eating snake, Sanajeh, coiled around a titanosaur egg and a hatchling.',
       ],
       facts: [
         { label: 'Age', value: 'About 67 million years ago' },
@@ -957,14 +957,19 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       clade: 'ceratosauria',
       status: 'full',
       ageText: 'About 67 million years ago',
-      placeText: 'Gujarat and Madhya Pradesh, India',
+      placeText: 'Rahioli, near Balasinor, Gujarat; also near Jabalpur, Madhya Pradesh, India',
       formations: ['lameta'],
-      summary: ['An abelisaur about 7–9 m long with a single short horn on top of its head, the top predator of Late Cretaceous India. Its name means “princely lizard from the Narmada”.'],
+      summary: [
+        'A large abelisaur with a low, rounded horn on its forehead, formed from the nasal and frontal bones and probably used for display or head-butting. Like other abelisaurs it had a short, deep skull and tiny arms, and was probably an ambush predator; titanosaurs nested in its habitat by the thousand. Its name means “king lizard of the Narmada”.',
+        'Its bones were dug up in 1982–84 by Suresh Srivastava of the Geological Survey of India at Rahioli, a quarry rich in dinosaur eggs, and named in 2003. It is the first Indian theropod known from both skull and body bones. It was a close relative of Majungasaurus of Madagascar, showing that India and Madagascar shared animals after they separated. The fragmentary Lametasaurus and Indosaurus, named earlier, may be the same animal, but their remains are too poor (and Lametasaurus is lost) to tell.',
+      ],
       facts: [
         { label: 'Named', value: 'Jeffrey Wilson and colleagues, 2003' },
-        { label: 'Length', value: 'About 7–9 m' },
+        { label: 'Length', value: 'About 6.6 m (2016 estimate); older estimates up to 11 m' },
+        { label: 'Relatives', value: 'Majungasaurus of Madagascar' },
       ],
-      keywords: ['rajasaurus', 'abelisaur', 'india', 'cretaceous'],
+      related: [{ id: 'majungasaurus-crenatissimus', note: 'Its close relative in Madagascar, with a similar skull and a single horn-like bump.' }],
+      keywords: ['rajasaurus', 'abelisaur', 'abelisaurid', 'majungasaurine', 'india', 'gujarat', 'cretaceous'],
     },
     {
       id: 'isisaurus-colberti',
