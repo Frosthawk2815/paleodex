@@ -690,16 +690,17 @@ export const MEDIA_EARLY: DataSet = {
       keywords: ['bradysaurus', 'pareiasaur', 'permian'],
     },
     {
-      id: 'coelurosauravus-jaekeli',
-      name: 'Coelurosauravus jaekeli',
+      id: 'coelurosauravus-elivensis',
+      name: 'Coelurosauravus elivensis',
       common: 'Coelurosauravus',
       clade: 'weigeltisauridae',
       status: 'full',
-      ageText: 'About 258 million years ago',
-      placeText: 'Germany and Madagascar',
-      formations: ['kupferschiefer'],
+      ageText: 'About 258 to 252 million years ago (latest Permian)',
+      placeText: 'Morondava Basin, south-western Madagascar',
+      formations: ['sakamena'],
       summary: [
-        'The oldest known gliding vertebrate, about 40 cm long, with wings of skin stretched over long, rod-like bones growing out from its body, and a spiky frill on the back of its head. It glided between trees to escape predators.',
+        'One of the oldest known gliding vertebrates, about 40 cm long, with wings of skin stretched over long, rod-like bones growing out from its body, and a frill of spikes on the back of its head. It probably glided between trees.',
+        'The German gliders once called Coelurosauravus jaekeli are now placed in their own genus, Weigeltisaurus; Coelurosauravus itself is known from Madagascar.',
       ],
       facts: [
         { label: 'Named', value: 'Jean Piveteau, 1926' },
@@ -707,7 +708,7 @@ export const MEDIA_EARLY: DataSet = {
         { label: 'Diet', value: 'Insects' },
         { label: 'On screen', value: 'Primeval (2007)' },
       ],
-      keywords: ['coelurosauravus', 'gliding reptile', 'primeval', 'permian'],
+      keywords: ['coelurosauravus', 'gliding reptile', 'weigeltisaurid', 'primeval', 'madagascar', 'permian'],
     },
     {
       id: 'protorosaurus-speneri',
