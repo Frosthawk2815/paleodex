@@ -82,9 +82,17 @@ export default function GlobeScreen() {
 
   // Show something in the information section (remembering the page it replaces) and, unless
   // told otherwise, scroll down to it.
+  // A range shown on the globe belongs to the species page it was opened from: opening another
+  // species shows that one's range (or none), and opening a formation or event clears it.
+  // Group pages leave it as it is.
+  const syncRange = (next: Selection) => {
+    if (next.kind === 'species') setRangeId(rangeOf(next.id) ? next.id : undefined);
+    else if (next.kind === 'event') setRangeId(undefined);
+  };
   const showInfo = (next: Selection, scroll = true) => {
     if (selected && !sameSelection(selected, next)) setHistory((h) => [...h, selected].slice(-50));
     setSelected(next);
+    syncRange(next);
     if (!scroll) return;
     if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: true });
     else scrollToInfo.current = true;
@@ -141,6 +149,7 @@ export default function GlobeScreen() {
     if (!previous) return;
     setHistory((h) => h.slice(0, -1));
     setSelected(previous);
+    syncRange(previous);
     if (previous.kind === 'species') travelToSpecies(previous.id);
     else if (previous.kind === 'event') jumpToPoint(previous.event, 0);
     if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: true });
