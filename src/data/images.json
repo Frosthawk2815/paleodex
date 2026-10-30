@@ -2315,6 +2315,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "borealopelta-markmitchelli": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Borealopelta_Royal_Tyrrell_4.jpg/960px-Borealopelta_Royal_Tyrrell_4.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Etemenanki3",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Borealopelta_Royal_Tyrrell_4.jpg",
+  "file": "Borealopelta_Royal_Tyrrell_4.jpg",
+  "article": "https://en.wikipedia.org/wiki/Borealopelta",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "borealosuchus-sternbergii": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Borealosuchus_skeleton_cast.jpg/960px-Borealosuchus_skeleton_cast.jpg",
   "width": 800,
@@ -13278,6 +13291,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "presbyornis-pervetus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/5/58/Presbyornis_Enhancement.jpg",
+  "width": 800,
+  "height": 965,
+  "artist": "Smokeybjb",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Presbyornis_Enhancement.jpg",
+  "file": "Presbyornis_Enhancement.jpg",
+  "article": "https://en.wikipedia.org/wiki/Presbyornis",
+  "scope": "genus",
+  "kind": "restoration"
+ },
  "presbytis-rubicunda": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Red_leaf_monkey_%28Presbytis_rubicunda%29.jpg/960px-Red_leaf_monkey_%28Presbytis_rubicunda%29.jpg",
   "width": 800,
@@ -13606,6 +13632,18 @@
   "article": "https://en.wikipedia.org/wiki/Proterosuchus",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "proteus-anguinus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Proteus_-_Laurenti.jpg",
+  "width": 800,
+  "height": 239,
+  "artist": "Joseph Nicolaus Laurenti",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Proteus_-_Laurenti.jpg",
+  "file": "Proteus_-_Laurenti.jpg",
+  "article": "https://en.wikipedia.org/wiki/Olm",
+  "scope": "species"
  },
  "prothylacynus-patagonicus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Prothylacinus.jpg/960px-Prothylacinus.jpg",
@@ -14634,6 +14672,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "sanjuansaurus-gordilloi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/33/Sanjuansaurus_NT.jpg",
+  "width": 800,
+  "height": 405,
+  "artist": "Nobu Tamura",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sanjuansaurus_NT.jpg",
+  "file": "Sanjuansaurus_NT.jpg",
+  "article": "https://en.wikipedia.org/wiki/Sanjuansaurus_gordilloi",
+  "scope": "species",
+  "kind": "restoration"
+ },
  "santanaraptor-placidus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Esqueleto_de_Santanaraptor_MN_01.jpg/960px-Esqueleto_de_Santanaraptor_MN_01.jpg",
   "width": 800,
@@ -15479,6 +15530,19 @@
   "article": "https://en.wikipedia.org/wiki/Spinosaurus",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "spinosaurus-mirabilis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Spinosaurus_mirabilis_%2871000%29.png/960px-Spinosaurus_mirabilis_%2871000%29.png",
+  "width": 800,
+  "height": 375,
+  "artist": "Francescom08",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Spinosaurus_mirabilis_(71000).png",
+  "file": "Spinosaurus_mirabilis_(71000).png",
+  "article": "https://en.wikipedia.org/wiki/Spinosaurus_mirabilis",
+  "scope": "species",
+  "kind": "restoration"
  },
  "squalicorax-falcatus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Squalicorax_pristodontus_Agassiz%2C_1843_1.jpg/960px-Squalicorax_pristodontus_Agassiz%2C_1843_1.jpg",

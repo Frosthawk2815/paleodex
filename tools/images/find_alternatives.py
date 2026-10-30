@@ -50,9 +50,9 @@ def main():
     candidates = json.load(open(f'{HERE}/candidates.json'))
     decisions = json.load(open(f'{HERE}/decisions.json'))
     species = {s['id']: s for s in json.load(open(f'{HERE}/species.json'))}
-    # Rejected and not yet replaced (a replacement found to be unsuitable is removed, so a species
+    # Rejected and not yet replaced, unless the owner asked to leave it without a picture (a replacement found to be unsuitable is removed, so a species
     # with no candidate but a 'no' answer is looked at again).
-    rejected = [sid for sid, d in decisions.items() if d.get('vote') == 'no' and (sid not in candidates or d.get('file') == candidates[sid]['file'])]
+    rejected = [sid for sid, d in decisions.items() if d.get('vote') == 'no' and not d.get('leaveBlank') and (sid not in candidates or d.get('file') == candidates[sid]['file'])]
     print(f'{len(rejected)} rejected pictures to replace')
     if not rejected:
         return

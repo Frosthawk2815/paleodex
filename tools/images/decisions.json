@@ -771,6 +771,10 @@
   "vote": "yes",
   "file": "MACN_Bonatitan_&_Austroraptor.jpg"
  },
+ "borealopelta-markmitchelli": {
+  "vote": "yes",
+  "file": "Borealopelta_Royal_Tyrrell_4.jpg"
+ },
  "borealosuchus-sternbergii": {
   "vote": "yes",
   "file": "Borealosuchus_skeleton_cast.jpg"
@@ -4409,12 +4413,8 @@
   "file": "The_Childrens_Museum_of_Indianapolis_-_Prenoceratops_pieganensis_-1.jpg"
  },
  "presbyornis-pervetus": {
-  "vote": "no",
-  "file": "Presbyornis_AMNH.jpg",
-  "rejectedFiles": [
-   "Chelychelynechen_quassus.jpg",
-   "Presbyornis_AMNH.jpg"
-  ]
+  "vote": "yes",
+  "file": "Presbyornis_Enhancement.jpg"
  },
  "presbytis-rubicunda": {
   "vote": "yes",
@@ -4521,11 +4521,8 @@
   "file": "Proterosuchus_fergusi_43.jpg"
  },
  "proteus-anguinus": {
-  "vote": "no",
-  "file": "Proteus_anguinus_distribution.png",
-  "rejectedFiles": [
-   "Proteus_anguinus_distribution.png"
-  ]
+  "vote": "yes",
+  "file": "Proteus_-_Laurenti.jpg"
  },
  "prothylacynus-patagonicus": {
   "vote": "yes",
@@ -4876,12 +4873,8 @@
   "file": "Saniwa_FMNH.jpg"
  },
  "sanjuansaurus-gordilloi": {
-  "vote": "no",
-  "file": "Preserved_bones_of_Sanjuansaurus.jpg",
-  "rejectedFiles": [
-   "Diodorus_restoration.jpg",
-   "Preserved_bones_of_Sanjuansaurus.jpg"
-  ]
+  "vote": "yes",
+  "file": "Sanjuansaurus_NT.jpg"
  },
  "santanaraptor-placidus": {
   "vote": "yes",
@@ -5029,11 +5022,9 @@
  },
  "siamosaurus-suteethorni": {
   "vote": "no",
-  "file": "Siamosaurus_tooth_by_PaleoGeek.png",
-  "rejectedFiles": [
-   "Allosaurus_Revised.jpg",
-   "Siamosaurus_tooth_by_PaleoGeek.png"
-  ]
+  "file": "Siamosaurus_suteethorni_model.jpg",
+  "leaveBlank": true,
+  "note": "Owner asked to leave it without a picture."
  },
  "siamotyrannus-isanensis": {
   "vote": "no",
@@ -5199,8 +5190,8 @@
   "file": "FSAC-KK-11888.jpg"
  },
  "spinosaurus-mirabilis": {
-  "vote": "no",
-  "file": "Digital_flesh_model_of_Spinosaurus.jpg"
+  "vote": "yes",
+  "file": "Spinosaurus_mirabilis_(71000).png"
  },
  "squalicorax-falcatus": {
   "vote": "yes",
