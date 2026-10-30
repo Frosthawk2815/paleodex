@@ -15852,16 +15852,16 @@
   "kind": "fossil"
  },
  "spinosaurus-mirabilis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Digital_flesh_model_of_Spinosaurus.jpg/960px-Digital_flesh_model_of_Spinosaurus.jpg",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Spinosaurus_mirabilis_%2871000%29.png/960px-Spinosaurus_mirabilis_%2871000%29.png",
   "width": 800,
-  "height": 702,
-  "artist": "Paul C Sereno, Nathan Myhrvold, Donald M Henderson, Frank E Fish, Daniel Vidal, Stephanie L Baumgart, Tyler M Keillor, Kiersten K Formoso, Lauren L Conroy",
-  "license": "CC BY 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Digital_flesh_model_of_Spinosaurus.jpg",
-  "file": "Digital_flesh_model_of_Spinosaurus.jpg",
-  "article": "https://en.wikipedia.org/wiki/Spinosaurus",
-  "scope": "genus",
+  "height": 375,
+  "artist": "Francescom08",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Spinosaurus_mirabilis_(71000).png",
+  "file": "Spinosaurus_mirabilis_(71000).png",
+  "article": "https://en.wikipedia.org/wiki/Spinosaurus_mirabilis",
+  "scope": "species",
   "kind": "restoration"
  },
  "squalicorax-falcatus": {
