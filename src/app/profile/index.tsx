@@ -88,7 +88,7 @@ function ProgressBar({ visited }: { visited: string[] }) {
       style={{ alignSelf: 'stretch', gap: 6, marginTop: 4 }}
       accessible
       accessibilityRole="progressbar"
-      accessibilityLabel={`Level ${level.level}, ${level.title}. ${level.points} points, ${toGo} to the next level.`}
+      accessibilityLabel={`Level ${level.level}, ${level.title}. ${level.points} points${level.to !== null ? `, ${toGo} to the next level` : ', the top level'}.`}
       accessibilityValue={{ min: level.from, max: level.to ?? level.points, now: level.points }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', gap: 8 }}>
         <Text style={st.rowTitle}>
@@ -100,9 +100,11 @@ function ProgressBar({ visited }: { visited: string[] }) {
         <View style={{ width: `${Math.round(fraction * 100)}%`, height: '100%', borderRadius: 6, backgroundColor: palette.link }} />
       </View>
       <Text style={st.rowSub}>
-        {level.points === 0
-          ? 'Open species, groups and places to earn points. Every new page you discover adds to your bar.'
-          : `${toGo.toLocaleString()} points to level ${level.level + 1}. Discover new pages to fill the bar.`}
+        {level.to === null
+          ? 'You’ve reached the top level. Keep exploring: your points still count.'
+          : level.points === 0
+            ? 'Open species, groups and places to earn points. Every new page you discover adds to your bar.'
+            : `${toGo.toLocaleString()} points to level ${level.level + 1}. Discover new pages to fill the bar.`}
       </Text>
     </View>
   );

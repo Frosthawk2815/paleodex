@@ -22,36 +22,23 @@ export function pointsFor(key: string): number {
 
 export const tallyOf = (visited: string[]) => visited.reduce((sum, k) => sum + pointsFor(k), 0);
 
-// The points needed to reach each level, and its title.
+// The points needed to reach each level, and its title. The whole app is worth about 34,000
+// points, so Naturalist means seeing a good part of it.
 const LEVELS: { at: number; title: string }[] = [
-  { at: 0, title: 'Fossil Finder' },
-  { at: 50, title: 'Rock Hound' },
-  { at: 150, title: 'Field Assistant' },
-  { at: 300, title: 'Bone Digger' },
-  { at: 500, title: 'Excavator' },
-  { at: 800, title: 'Fossil Preparator' },
-  { at: 1200, title: 'Field Leader' },
-  { at: 1700, title: 'Curator' },
-  { at: 2300, title: 'Palaeontologist' },
-  { at: 3000, title: 'Senior Palaeontologist' },
-  { at: 4000, title: 'Professor' },
-  { at: 5500, title: 'Museum Director' },
-  { at: 7500, title: 'Deep Time Explorer' },
-  { at: 10000, title: 'Living Legend' },
+  { at: 0, title: 'Egg' },
+  { at: 100, title: 'Cinephile' },
+  { at: 500, title: 'Paleo Enjoyer' },
+  { at: 2000, title: 'Deep Digger' },
+  { at: 6000, title: 'Savant' },
+  { at: 15000, title: 'Naturalist' },
 ];
 
+// to is null at the top level.
 export type Level = { level: number; title: string; points: number; from: number; to: number | null };
 
-// Where a tally sits: its level, and the points at the start of this level and the next.
+// Where a tally sits: its level (from 0), and the points at the start of this level and the next.
 export function levelOf(points: number): Level {
   let i = 0;
   while (i + 1 < LEVELS.length && points >= LEVELS[i + 1]!.at) i++;
-  // Past the last title, every further 3,000 points is another level.
-  const last = LEVELS.length - 1;
-  if (i === last) {
-    const extra = Math.floor((points - LEVELS[last]!.at) / 3000);
-    const from = LEVELS[last]!.at + extra * 3000;
-    return { level: last + 1 + extra, title: LEVELS[last]!.title, points, from, to: from + 3000 };
-  }
-  return { level: i + 1, title: LEVELS[i]!.title, points, from: LEVELS[i]!.at, to: LEVELS[i + 1]!.at };
+  return { level: i, title: LEVELS[i]!.title, points, from: LEVELS[i]!.at, to: LEVELS[i + 1]?.at ?? null };
 }
