@@ -94,12 +94,15 @@ def main():
         if middle and past:
             past[-1]['to'] = middle[0]['from']
         today_from = middle[-1]['to'] if middle else (past[-1]['to'] if past else g.get('rangeFrom', 10000))
-        today = {'from': today_from, 'to': 0, 'label': 'Where it lives today', 'regions': g['range']}
+        # Recently extinct species ('lastSeen') end with their last known range instead of today's.
+        today = {'from': today_from, 'to': 0, 'label': g.get('lastLabel', 'Last known range') if g.get('lastSeen') else 'Where it lives today', 'regions': g['range']}
         phases = [*past, *middle, today]
         for ph in phases:
             if ph.get('sameAs') == 'today':
                 ph['sameAs'] = len(phases) - 1
         ranges[g['id']] = {'phases': phases}
+        if g.get('lastSeen'):
+            ranges[g['id']]['lastSeen'] = g['lastSeen']
 
     const = 'LIVING_' + name.upper().replace('-', '_')
     out = [

@@ -36598,5 +36598,1525 @@
         ]
       }
     ]
+  },
+  "didelphis-virginiana": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -105,
+              25,
+              -67,
+              45
+            ]
+          },
+          {
+            "countries": [
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "Honduras",
+              "El Salvador",
+              "Nicaragua",
+              "Costa Rica"
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -100,
+              25,
+              -70,
+              41
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -105,
+              25,
+              -67,
+              45
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -84,
+              42,
+              -75,
+              45.5
+            ]
+          },
+          {
+            "countries": [
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "Honduras",
+              "El Salvador",
+              "Nicaragua",
+              "Costa Rica"
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -124.5,
+              32.5,
+              -117,
+              49
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -123.5,
+              48.5,
+              -122,
+              49.3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "chironectes-minimus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Mexico",
+            "bbox": [
+              -98,
+              14.5,
+              -88,
+              20
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -75,
+              -30,
+              -35,
+              5
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -80,
+              -15,
+              -68,
+              -2
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -69,
+              -20,
+              -60,
+              -10
+            ]
+          },
+          {
+            "country": "Paraguay",
+            "bbox": [
+              -58,
+              -27,
+              -54,
+              -22
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -56,
+              -28,
+              -53.5,
+              -25.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "monodelphis-domestica": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Brazil",
+            "bbox": [
+              -58,
+              -22,
+              -35,
+              -3
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -63,
+              -21,
+              -58,
+              -15
+            ]
+          },
+          {
+            "country": "Paraguay",
+            "bbox": [
+              -62,
+              -25,
+              -56,
+              -19
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -64,
+              -27,
+              -58,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caenolestes-fuliginosus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Colombia",
+            "bbox": [
+              -77.5,
+              0,
+              -72,
+              7.5
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -79.5,
+              -4.5,
+              -77,
+              1
+            ]
+          },
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -72.5,
+              7.5,
+              -70.5,
+              9
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dromiciops-gliroides": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Chile",
+            "bbox": [
+              -74.5,
+              -44,
+              -71,
+              -35.5
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -72,
+              -43.5,
+              -71,
+              -39
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "sarcophilus-harrisii": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              151,
+              -32.5,
+              151.8,
+              -31.8
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dasyurus-viverrinus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              138,
+              -39,
+              152,
+              -31
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              150.6,
+              -35.25,
+              150.8,
+              -35.05
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              149.1,
+              -35.2,
+              149.25,
+              -35.1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "antechinus-stuartii": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              146,
+              -38,
+              153.6,
+              -25
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "planigale-ingrami": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              122,
+              -22,
+              146,
+              -12
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "myrmecobius-fasciatus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              114,
+              -35,
+              140,
+              -25
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              140,
+              -35,
+              147,
+              -30
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              116,
+              -35,
+              118,
+              -32
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              140.3,
+              -34.2,
+              140.6,
+              -33.9
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              142.8,
+              -33.4,
+              143.3,
+              -33.0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "macrotis-lagotis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              114,
+              -35,
+              147,
+              -18
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              121,
+              -27,
+              133,
+              -18
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              133,
+              -24,
+              138,
+              -19
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              140,
+              -26,
+              142.5,
+              -23
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "macrotis-leucura": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              125,
+              -30,
+              140,
+              -20
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Last known range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              130,
+              -28,
+              139,
+              -22
+            ]
+          }
+        ]
+      }
+    ],
+    "lastSeen": {
+      "country": "Australia",
+      "year": 1931,
+      "text": "Simpson Desert, Australia: the last specimen was collected in 1931"
+    }
+  },
+  "perameles-gunnii": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              141,
+              -38.5,
+              145,
+              -36.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              145.1,
+              -38.55,
+              145.45,
+              -38.3
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              144.4,
+              -37.95,
+              144.6,
+              -37.8
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "chaeropus-ecaudatus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              114,
+              -35,
+              147,
+              -24
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Last known range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              115,
+              -35,
+              145,
+              -25
+            ]
+          }
+        ]
+      }
+    ],
+    "lastSeen": {
+      "country": "Australia",
+      "year": 1950,
+      "text": "Central Australia: last reported by Aboriginal people in the 1950s"
+    }
+  },
+  "notoryctes-typhlops": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              122,
+              -30,
+              138,
+              -20
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "phascolarctos-cinereus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              141,
+              -28,
+              153.6,
+              -15
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              141,
+              -39,
+              153.6,
+              -28
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              139.5,
+              -38.1,
+              141,
+              -35
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              136.5,
+              -36.1,
+              138.1,
+              -35.6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vombatus-ursinus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              141,
+              -39,
+              152.5,
+              -30
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lasiorhinus-krefftii": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              144.5,
+              -36,
+              146,
+              -35
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              146,
+              -28.5,
+              148.5,
+              -26.5
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              146.3,
+              -22.8,
+              147,
+              -22
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              146.5,
+              -22.55,
+              146.8,
+              -22.25
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              148.0,
+              -27.2,
+              148.25,
+              -27.0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "osphranter-rufus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              114,
+              -34,
+              148,
+              -18
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "macropus-giganteus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              141,
+              -39,
+              153.6,
+              -16
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "notamacropus-rufogriseus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              140,
+              -39,
+              153.6,
+              -27
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              140,
+              -39,
+              153.6,
+              -27
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          },
+          {
+            "country": "New Zealand",
+            "bbox": [
+              170.5,
+              -45.5,
+              171.5,
+              -44.2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "notamacropus-greyi": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              139.5,
+              -38.2,
+              142,
+              -35.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Last known range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              140,
+              -38.2,
+              141.5,
+              -36
+            ]
+          }
+        ]
+      }
+    ],
+    "lastSeen": {
+      "country": "Australia",
+      "year": 1939,
+      "text": "South-eastern South Australia: the last known toolache wallaby died in captivity in 1939"
+    }
+  },
+  "setonix-brachyurus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              115.4,
+              -32.05,
+              115.6,
+              -31.95
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              114.9,
+              -35.2,
+              118.8,
+              -31
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              118.55,
+              -34.95,
+              118.7,
+              -34.88
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              115.4,
+              -32.05,
+              115.6,
+              -31.95
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              115.5,
+              -35.2,
+              118.5,
+              -32
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              118.55,
+              -34.95,
+              118.7,
+              -34.88
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dendrolagus-lumholtzi": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              145,
+              -18.5,
+              146,
+              -16.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bettongia-penicillata": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              114,
+              -35,
+              150,
+              -25
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              116.2,
+              -34.6,
+              117.5,
+              -32.6
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              140.3,
+              -34.2,
+              140.6,
+              -33.9
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caloprymnus-campestris": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              137,
+              -29,
+              141.5,
+              -24.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Last known range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              137.5,
+              -28.5,
+              141,
+              -25.5
+            ]
+          }
+        ]
+      }
+    ],
+    "lastSeen": {
+      "country": "Australia",
+      "year": 1935,
+      "text": "North-eastern South Australia: last seen in 1935"
+    }
+  },
+  "hypsiprymnodon-moschatus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              145,
+              -19,
+              146.5,
+              -15.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "trichosurus-vulpecula": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              114,
+              -38,
+              153.6,
+              -11
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              114,
+              -38,
+              153.6,
+              -11
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              143.5,
+              -43.8,
+              148.6,
+              -39.5
+            ]
+          },
+          {
+            "countries": [
+              "New Zealand"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "petaurus-breviceps": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              148,
+              -38,
+              153.6,
+              -28
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "gymnobelideus-leadbeateri": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              145.3,
+              -38.0,
+              146.5,
+              -37.3
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              145,
+              -38.3,
+              146.7,
+              -37.2
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              145.3,
+              -38.0,
+              146.5,
+              -37.3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "petauroides-volans": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              145,
+              -38.5,
+              153,
+              -27
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "acrobates-pygmaeus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              140,
+              -38.5,
+              153.6,
+              -16
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "tarsipes-rostratus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              114.5,
+              -35.2,
+              123.5,
+              -28
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "burramys-parvus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              146.5,
+              -37.1,
+              148.6,
+              -35.8
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

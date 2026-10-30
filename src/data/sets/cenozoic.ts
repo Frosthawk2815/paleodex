@@ -234,7 +234,7 @@ export const CENOZOIC: DataSet = {
       id: 'thylacoleonidae',
       name: 'Thylacoleonidae',
       common: 'Marsupial lions',
-      parent: 'metatheria',
+      parent: 'diprotodontia',
       family: true,
       description: 'Australian meat-eating marsupials related to wombats and koalas, with blade-like cheek teeth.',
     },

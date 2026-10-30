@@ -48,7 +48,7 @@ export const MODERN: DataSet = {
       id: 'thylacinidae',
       name: 'Thylacinidae',
       common: 'Thylacines',
-      parent: 'metatheria',
+      parent: 'dasyuromorphia',
       family: true,
       description: 'Wolf-like meat-eating marsupials of Australia and New Guinea; the last species died out in 1936.',
     },
