@@ -42,7 +42,7 @@ function makeStyles(p: Palette, s: number) {
     title: { color: p.text, fontSize: Math.round(22 * s), fontWeight: '700' },
     text: { color: p.text, fontSize: Math.round(16 * s) },
     muted: { color: p.muted, fontSize: Math.round(14 * s) },
-    link: { color: '#2F7DE1', fontSize: Math.round(16 * s), fontWeight: '600' },
+    link: { color: p.link, fontSize: Math.round(16 * s), fontWeight: '600' },
     card: { backgroundColor: p.card, borderRadius: 12, borderWidth: StyleSheet.hairlineWidth, borderColor: p.border, overflow: 'hidden' },
     row: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 14, paddingVertical: 12, minHeight: 52 },
     divider: { height: StyleSheet.hairlineWidth, backgroundColor: p.border, marginLeft: 14 },

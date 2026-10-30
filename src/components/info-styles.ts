@@ -1,10 +1,12 @@
 import { useMemo } from 'react';
 import { StyleSheet, type TextStyle } from 'react-native';
 
+import { type Palette, usePalette } from '@/hooks/use-palette';
 import { useTextScale } from '@/lib/profile';
 
-// Styles shared by the information sections below the globe.
-export const info = StyleSheet.create({
+// Styles shared by the information sections below the globe, in the user's theme colours.
+const makeInfo = (p: Palette) =>
+  StyleSheet.create({
   wrap: {
     width: '100%',
     maxWidth: 720,
@@ -19,26 +21,26 @@ export const info = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 18,
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: p.linkBg,
     marginBottom: 12,
   },
   pressed: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: p.pressed,
   },
   backText: {
-    color: '#9CC8FF',
+    color: p.link,
     fontSize: 14,
     fontWeight: '600',
   },
   kicker: {
-    color: '#FFD54A',
+    color: p.accent,
     fontSize: 12,
     fontWeight: '700',
     letterSpacing: 1,
     textTransform: 'uppercase',
   },
   title: {
-    color: '#FFFFFF',
+    color: p.text,
     fontSize: 26,
     fontWeight: '800',
   },
@@ -46,28 +48,28 @@ export const info = StyleSheet.create({
     fontStyle: 'italic',
   },
   subtitle: {
-    color: 'rgba(255,255,255,0.8)',
+    color: p.text,
     fontSize: 17,
     fontWeight: '600',
   },
   meta: {
-    color: 'rgba(255,255,255,0.65)',
+    color: p.muted,
     fontSize: 15,
   },
   heading: {
-    color: '#FFFFFF',
+    color: p.text,
     fontSize: 18,
     fontWeight: '700',
     marginTop: 14,
   },
   body: {
-    color: 'rgba(255,255,255,0.9)',
+    color: p.text,
     fontSize: 16,
     lineHeight: 24,
     marginTop: 6,
   },
   note: {
-    color: 'rgba(255,255,255,0.55)',
+    color: p.muted,
     fontSize: 14,
     fontStyle: 'italic',
   },
@@ -77,11 +79,11 @@ export const info = StyleSheet.create({
     alignItems: 'center',
   },
   crumb: {
-    color: '#9CC8FF',
+    color: p.link,
     fontSize: 14,
   },
   crumbSep: {
-    color: 'rgba(255,255,255,0.35)',
+    color: p.muted,
     fontSize: 14,
   },
   tabs: {
@@ -89,7 +91,7 @@ export const info = StyleSheet.create({
     marginTop: 10,
     padding: 3,
     borderRadius: 12,
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: p.track,
   },
   tab: {
     flex: 1,
@@ -98,15 +100,15 @@ export const info = StyleSheet.create({
     borderRadius: 9,
   },
   tabOn: {
-    backgroundColor: 'rgba(255,255,255,0.18)',
+    backgroundColor: p.card,
   },
   tabText: {
-    color: 'rgba(255,255,255,0.6)',
+    color: p.muted,
     fontSize: 15,
     fontWeight: '600',
   },
   tabTextOn: {
-    color: '#FFFFFF',
+    color: p.text,
   },
   chips: {
     flexDirection: 'row',
@@ -117,12 +119,12 @@ export const info = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 14,
-    backgroundColor: 'rgba(201,182,255,0.15)',
+    backgroundColor: p.chipBg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(201,182,255,0.5)',
+    borderColor: p.chipBorder,
   },
   chipText: {
-    color: '#D9CCFF',
+    color: p.chip,
     fontSize: 14,
     fontWeight: '600',
   },
@@ -130,9 +132,18 @@ export const info = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 10,
     borderRadius: 12,
-    backgroundColor: 'rgba(156,200,255,0.12)',
+    backgroundColor: p.linkBg,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(156,200,255,0.4)',
+    borderColor: p.linkBorder,
+  },
+  // A card for the place already showing on the globe.
+  cardHere: {
+    backgroundColor: p.card,
+    borderColor: p.border,
+  },
+  jumps: {
+    gap: 8,
+    marginTop: 8,
   },
   cardRow: {
     flexDirection: 'row',
@@ -143,91 +154,88 @@ export const info = StyleSheet.create({
     flex: 1,
   },
   cardTitle: {
-    color: '#9CC8FF',
+    color: p.link,
     fontSize: 15,
     fontWeight: '600',
   },
   cardNote: {
-    color: 'rgba(255,255,255,0.55)',
+    color: p.muted,
     fontSize: 12,
     marginTop: 2,
   },
   list: {
     borderRadius: 12,
-    backgroundColor: 'rgba(255,255,255,0.06)',
+    backgroundColor: p.card,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.15)',
+    borderColor: p.border,
     overflow: 'hidden',
   },
   row: {
     paddingHorizontal: 14,
     paddingVertical: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(255,255,255,0.1)',
+    borderBottomColor: p.border,
   },
   rowTitle: {
-    color: '#FFFFFF',
+    color: p.text,
     fontSize: 15,
     fontWeight: '600',
   },
   rowNote: {
-    color: 'rgba(255,255,255,0.55)',
+    color: p.muted,
     fontSize: 13,
     marginTop: 2,
   },
   badge: {
-    color: '#FF9EC7',
+    color: p.badge,
     fontSize: 11,
     fontWeight: '700',
   },
   facts: {
     marginTop: 12,
     borderRadius: 12,
-    backgroundColor: 'rgba(255,255,255,0.06)',
+    backgroundColor: p.card,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.15)',
+    borderColor: p.border,
     paddingHorizontal: 14,
   },
   factRow: {
     flexDirection: 'row',
     paddingVertical: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'rgba(255,255,255,0.1)',
+    borderBottomColor: p.border,
     gap: 12,
   },
   factLabel: {
     width: 120,
-    color: 'rgba(255,255,255,0.55)',
+    color: p.muted,
     fontSize: 14,
   },
   factValue: {
     flex: 1,
-    color: '#FFFFFF',
+    color: p.text,
     fontSize: 14,
     fontWeight: '600',
   },
 });
 
-type InfoStyles = typeof info;
-const scaled = new Map<number, InfoStyles>();
+type InfoStyles = ReturnType<typeof makeInfo>;
 
-// The shared styles with text enlarged to the user's text size setting.
+// The shared styles in the user's theme, with text enlarged to their text size setting.
 export function useInfoStyles(): InfoStyles {
   const scale = useTextScale();
+  const palette = usePalette();
   return useMemo(() => {
-    if (scale === 1) return info;
-    const hit = scaled.get(scale);
-    if (hit) return hit;
+    const base = makeInfo(palette);
+    if (scale === 1) return base;
     const out = {} as Record<string, TextStyle>;
-    for (const [key, style] of Object.entries(info) as [string, TextStyle][]) {
+    for (const [key, style] of Object.entries(base) as [string, TextStyle][]) {
       out[key] = {
         ...style,
         ...(style.fontSize ? { fontSize: Math.round(style.fontSize * scale) } : {}),
         ...(style.lineHeight ? { lineHeight: Math.round(style.lineHeight * scale) } : {}),
       };
     }
-    const result = StyleSheet.create(out) as unknown as InfoStyles;
-    scaled.set(scale, result);
-    return result;
-  }, [scale]);
+    return StyleSheet.create(out) as unknown as InfoStyles;
+  }, [scale, palette]);
 }

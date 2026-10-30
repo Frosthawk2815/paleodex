@@ -3,6 +3,7 @@ import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-na
 
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { EVENTS, type HistoryEvent } from '@/data/events';
+import { type Palette, usePalette } from '@/hooks/use-palette';
 import { type Extinction, EXTINCTIONS } from '@/lib/extinctions';
 import { type Unit, UNITS_BY_LEVEL } from '@/lib/time';
 import { SHARED_SHORTHANDS } from '@/data/aka';
@@ -197,6 +198,8 @@ type Props = {
 
 // Search for events, mass extinctions and units of geological time.
 export function SearchPanel({ onSelect, onClose }: Props) {
+  const palette = usePalette();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
   const [query, setQuery] = useState('');
   const results = useMemo(() => search(query), [query]);
 
@@ -207,7 +210,7 @@ export function SearchPanel({ onSelect, onClose }: Props) {
           value={query}
           onChangeText={setQuery}
           placeholder="Search events, extinctions, periods…"
-          placeholderTextColor="rgba(255,255,255,0.45)"
+          placeholderTextColor={palette.muted}
           autoFocus
           autoCorrect={false}
           returnKeyType="search"
@@ -241,9 +244,9 @@ export function SearchPanel({ onSelect, onClose }: Props) {
                         item.result.kind === 'unit'
                           ? item.result.unit.color
                           : item.result.kind === 'species'
-                            ? '#FF9EC7'
+                            ? palette.badge
                             : item.result.kind === 'clade'
-                              ? '#C9B6FF'
+                              ? palette.chip
                               : CAUSE_COLORS.sun,
                       borderRadius: item.result.kind === 'species' || item.result.kind === 'clade' ? 7 : 4,
                     },
@@ -266,7 +269,8 @@ export function SearchPanel({ onSelect, onClose }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (p: Palette) =>
+  StyleSheet.create({
   panel: {
     flex: 1,
   },
@@ -282,15 +286,15 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     paddingHorizontal: 12,
-    color: '#FFFFFF',
+    color: p.text,
     fontSize: 16,
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: p.card,
   },
   close: {
     paddingVertical: 8,
   },
   closeText: {
-    color: '#9CC8FF',
+    color: p.link,
     fontSize: 16,
     fontWeight: '600',
   },
@@ -302,7 +306,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   rowPressed: {
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: p.pressed,
   },
   icon: {
     width: 22,
@@ -317,16 +321,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    color: '#FFFFFF',
+    color: p.text,
     fontSize: 16,
     fontWeight: '600',
   },
   subtitle: {
-    color: 'rgba(255,255,255,0.55)',
+    color: p.muted,
     fontSize: 13,
   },
   empty: {
-    color: 'rgba(255,255,255,0.6)',
+    color: p.muted,
     fontSize: 15,
     padding: 16,
   },

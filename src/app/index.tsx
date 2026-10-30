@@ -20,6 +20,7 @@ import { SpeciesInfo } from '@/components/species-info';
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { Globe } from '@/components/globe';
 import { AvatarImage } from '@/components/profile-ui';
+import { usePalette } from '@/hooks/use-palette';
 import { type SearchResult, SearchPanel } from '@/components/search-panel';
 import { TimeBar, type TimeBarHandle } from '@/components/time-bar';
 import { EVENTS, type HistoryEvent } from '@/data/events';
@@ -48,6 +49,7 @@ type Focus = { kind: 'site' | 'moon' | 'event' | 'skull' | 'range'; id: string; 
 
 export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
+  const palette = usePalette();
   const { profile, addRecent, request, setRequest, reduceMotion } = useProfile();
   const birthMa = birthMaOf(profile);
   // Height of the visible page; the globe section fills it. Measured, because the window size
@@ -318,7 +320,7 @@ export default function GlobeScreen() {
         </View>
 
         {selected && (
-          <View onLayout={onInfoLayout}>
+          <View onLayout={onInfoLayout} style={[styles.infoSheet, { backgroundColor: palette.background }]}>
             {selected.kind === 'event' && (
               <EventInfo
                 event={selected.event}
@@ -360,7 +362,7 @@ export default function GlobeScreen() {
       </ScrollView>
 
       {searching && (
-        <View style={[styles.searchLayer, { paddingTop: insets.top }]}>
+        <View style={[styles.searchLayer, { paddingTop: insets.top, backgroundColor: palette.background }]}>
           <SearchPanel onSelect={onSearchSelect} onClose={() => setSearching(false)} />
         </View>
       )}
@@ -407,6 +409,11 @@ const styles = StyleSheet.create({
   profileButton: {
     top: 48,
     overflow: 'hidden',
+  },
+  // The species, group or formation page below the globe, in the user's theme colours.
+  infoSheet: {
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   searchLayer: {
     position: 'absolute',

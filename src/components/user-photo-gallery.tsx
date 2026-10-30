@@ -32,10 +32,10 @@ export function AddPhotoButton({ speciesId, name }: { speciesId: string; name: s
         accessibilityState={{ disabled: busy, busy }}
         hitSlop={6}
         style={({ pressed }) => [styles.addRow, pressed && styles.pressed, busy && styles.disabled]}>
-        <View style={styles.plus}>
-          <Text style={styles.plusText}>+</Text>
+        <View style={[styles.plus, info.card]}>
+          <Text style={[styles.plusText, { color: info.cardTitle.color }]}>+</Text>
         </View>
-        <Text style={[styles.addText, { fontSize: Math.round(14 * scale) }]}>{busy ? 'Adding…' : 'Use your own picture'}</Text>
+        <Text style={[styles.addText, { color: info.cardTitle.color, fontSize: Math.round(14 * scale) }]}>{busy ? 'Adding…' : 'Use your own picture'}</Text>
       </Pressable>
       {!!message && <Text style={info.note}>{message}</Text>}
     </View>
@@ -121,14 +121,13 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(156,200,255,0.15)',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(156,200,255,0.5)',
   },
-  plusText: { color: '#9CC8FF', fontSize: 24, lineHeight: 26, fontWeight: '600' },
-  addText: { color: '#9CC8FF', fontWeight: '600' },
+  plusText: { fontSize: 24, lineHeight: 26, fontWeight: '600' },
+  addText: { fontWeight: '600' },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   tile: { width: '31.5%', aspectRatio: 1, borderRadius: 10, overflow: 'hidden' },
   thumb: { width: '100%', height: '100%' },

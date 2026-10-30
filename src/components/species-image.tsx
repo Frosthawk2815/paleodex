@@ -1,6 +1,9 @@
 import { Image } from 'expo-image';
 import { openBrowserAsync } from 'expo-web-browser';
+import { useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
+import { type Palette, usePalette } from '@/hooks/use-palette';
 
 import { imageCaption, imageOf } from '@/lib/images';
 import { useMainUserPhoto } from '@/lib/user-photos';
@@ -13,6 +16,8 @@ const open = (url?: string | null) => {
 // A species' picture with its credit: who made it, its licence, and where it was found.
 export function SpeciesImage({ speciesId, name }: { speciesId: string; name: string }) {
   const mine = useMainUserPhoto(speciesId);
+  const palette = usePalette();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
   const img = imageOf(speciesId);
   // A photo the user chose to show here replaces the stock picture.
   if (mine) {
@@ -63,11 +68,12 @@ export function SpeciesImage({ speciesId, name }: { speciesId: string; name: str
   );
 }
 
-const styles = StyleSheet.create({
-  wrap: { marginBottom: 14 },
-  image: { width: '100%', borderRadius: 12, backgroundColor: '#141A26' },
-  caption: { color: 'rgba(255,255,255,0.75)', fontSize: 13, fontStyle: 'italic', marginTop: 6 },
-  credit: { color: 'rgba(255,255,255,0.55)', fontSize: 12, lineHeight: 17, marginTop: 4 },
-  creditStrong: { color: 'rgba(255,255,255,0.75)' },
-  link: { color: '#9CC8FF' },
-});
+const makeStyles = (p: Palette) =>
+  StyleSheet.create({
+    wrap: { marginBottom: 14 },
+    image: { width: '100%', borderRadius: 12, backgroundColor: p.track },
+    caption: { color: p.text, fontSize: 13, fontStyle: 'italic', marginTop: 6 },
+    credit: { color: p.muted, fontSize: 12, lineHeight: 17, marginTop: 4 },
+    creditStrong: { color: p.text },
+    link: { color: p.link },
+  });

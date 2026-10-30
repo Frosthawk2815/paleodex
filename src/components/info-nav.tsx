@@ -49,7 +49,7 @@ function StarButton({ page }: { page: PageRef }) {
       accessibilityState={{ selected: on }}
       hitSlop={6}
       style={({ pressed }) => [info.back, styles.button, pressed && info.pressed]}>
-      <Text style={[info.backText, on && styles.starOn]}>{on ? '★ Saved' : '☆ Save'}</Text>
+      <Text style={[info.backText, on && { color: info.kicker.color }]}>{on ? '★ Saved' : '☆ Save'}</Text>
     </Pressable>
   );
 }
@@ -64,8 +64,5 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: 'auto',
     flexShrink: 1,
-  },
-  starOn: {
-    color: '#FFD54F',
   },
 });

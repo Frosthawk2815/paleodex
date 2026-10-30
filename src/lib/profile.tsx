@@ -5,15 +5,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, type ReactNode, use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo } from 'react-native';
 
+import { type CustomTheme, DEFAULT_CUSTOM } from '@/lib/theme';
 import { yearToMa } from '@/lib/time';
 
 // A page in the information section: a species, a group, or an event (formation, trackway...).
 export type PageRef = { kind: 'species' | 'clade' | 'event'; id: string };
 // A picture of one of their favourite species, or a photo they chose from their device.
 export type Avatar = { kind: 'species'; id: string } | { kind: 'upload'; uri: string } | null;
-export type Theme = 'system' | 'light' | 'dark';
+export type Theme = 'system' | 'light' | 'dark' | 'custom';
 export type TextSize = 'normal' | 'large' | 'larger';
-export type Settings = { theme: Theme; textSize: TextSize; highContrast: boolean; reduceMotion: boolean };
+export type Settings = { theme: Theme; textSize: TextSize; highContrast: boolean; reduceMotion: boolean; custom: CustomTheme };
 export type Profile = {
   name: string;
   // 'YYYY-MM-DD', or null if they haven't set one.
@@ -37,7 +38,7 @@ const DEFAULT: Profile = {
   avatar: null,
   favourites: [],
   recent: [],
-  settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false },
+  settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM },
 };
 
 const samePage = (a: PageRef, b: PageRef) => a.kind === b.kind && a.id === b.id;

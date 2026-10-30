@@ -41,7 +41,7 @@ export function CladeCrumbs({ path, onOpenClade }: { path: Clade[]; onOpenClade:
             <>
               <Text
                 onPress={() => setOpenKey(key)}
-                style={styles.more}
+                style={[styles.more, info.title, styles.small]}
                 accessibilityRole="button"
                 accessibilityLabel={`Show ${hidden} more groups in the family tree`}>
                 ⋯ {hidden} more
@@ -55,7 +55,7 @@ export function CladeCrumbs({ path, onOpenClade }: { path: Clade[]; onOpenClade:
         </Fragment>
       ))}
       {collapsible && open && (
-        <Text onPress={() => setOpenKey(null)} style={styles.less} accessibilityRole="button" accessibilityLabel="Collapse the family tree">
+        <Text onPress={() => setOpenKey(null)} style={[styles.less, info.title, styles.small]} accessibilityRole="button" accessibilityLabel="Collapse the family tree">
           {'  ▲'}
         </Text>
       )}
@@ -64,6 +64,7 @@ export function CladeCrumbs({ path, onOpenClade }: { path: Clade[]; onOpenClade:
 }
 
 const styles = StyleSheet.create({
-  more: { color: '#FFFFFF', fontSize: 14, fontWeight: '700', paddingVertical: 4 },
-  less: { color: '#FFFFFF', fontSize: 14, fontWeight: '700', paddingVertical: 4, paddingHorizontal: 4 },
+  more: { paddingVertical: 4 },
+  less: { paddingVertical: 4, paddingHorizontal: 4 },
+  small: { fontSize: 14, fontWeight: '700' },
 });
