@@ -22,6 +22,7 @@ export default function ProfileScreen() {
     { label: 'Favourites', detail: `${profile.favourites.length} saved`, href: '/profile/favourites' },
     { label: 'Recently viewed', detail: profile.recent.length === 1 ? 'Your last page' : `Your last ${profile.recent.length} pages`, href: '/profile/recent' },
     { label: 'Titles', detail: `${profile.titles.length} of ${TITLES.length} earned${titleById(profile.title) ? ` · showing ${titleById(profile.title)!.name}` : ''}`, href: '/profile/titles' },
+    { label: 'Places', detail: profile.places.length ? `${profile.places.length} visited · check in at museums, zoos and fossil sites` : 'Check in at museums, zoos and fossil sites', href: '/profile/places' },
     { label: 'Your Images', detail: allPhotos.length === 1 ? '1 photo' : `${allPhotos.length} photos`, href: '/profile/images' },
     { label: 'Settings', detail: 'Theme, text size and accessibility', href: '/profile/settings' },
     { label: 'Edit profile', detail: 'Name, birth date and picture', href: '/profile/edit' },

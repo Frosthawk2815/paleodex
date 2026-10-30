@@ -5,6 +5,7 @@ import { EVENTS } from '@/data/events';
 import { PERIODS } from '@/data/periods';
 import { isModernSpecies } from '@/lib/era';
 import { pastPointIndex, speciesById, speciesInClade, speciesInFormation } from '@/lib/life';
+import { placeById } from '@/lib/places';
 import { LEVELS, levelOf } from '@/lib/points';
 
 export type TitleContext = {
@@ -13,6 +14,8 @@ export type TitleContext = {
   // How many different species the user has added their own photos of.
   photoSpecies: number;
   points: number;
+  // Museums, zoos and fossil sites checked in at in person.
+  places: Set<string>;
 };
 
 export type Title = {
@@ -23,6 +26,8 @@ export type Title = {
   earned: (c: TitleContext) => boolean;
   // Set for the titles that come with reaching a level.
   level?: number;
+  // Titles earned by visiting real places.
+  inPerson?: boolean;
 };
 
 const count = (c: TitleContext, kind: string) => [...c.visited].filter((k) => k.startsWith(`${kind}:`)).length;
@@ -134,8 +139,9 @@ export const TITLES: Title[] = [
   {
     id: 'living-legend',
     name: 'Living Legend',
-    hint: 'Earn every other title.',
-    earned: (c) => TITLES.every((t) => t.id === 'living-legend' || t.earned(c)),
+    hint: 'Earn every other title (apart from those for visiting places).',
+    // Titles for visiting real places are left out, so it can be earned from anywhere.
+    earned: (c) => TITLES.every((t) => t.id === 'living-legend' || t.inPerson || t.earned(c)),
   },
   {
     id: 'animal-i-have-become',
@@ -150,6 +156,32 @@ export const TITLES: Title[] = [
     earned: (c) => JURASSIC_PARK.every((ids) => ids.some((id) => seen(c, 'species', id))),
   },
 ];
+
+const visitedOf = (c: TitleContext, kind: string) => [...c.places].filter((id) => id.startsWith(`${kind}-`));
+
+// Titles for checking in at real places.
+TITLES.push(
+  { id: 'boots-on-the-ground', name: 'Boots on the Ground', hint: 'Check in at a fossil site from PaleoDex, in person.', inPerson: true, earned: (c) => visitedOf(c, 'site').length >= 1 },
+  { id: 'prospector', name: 'Prospector', hint: 'Check in at 3 different fossil sites.', inPerson: true, earned: (c) => visitedOf(c, 'site').length >= 3 },
+  { id: 'museum-goer', name: 'Museum Goer', hint: 'Check in at a natural history museum.', inPerson: true, earned: (c) => visitedOf(c, 'museum').length >= 1 },
+  { id: 'gallery-regular', name: 'Gallery Regular', hint: 'Check in at 5 natural history museums.', inPerson: true, earned: (c) => visitedOf(c, 'museum').length >= 5 },
+  { id: 'zoo-explorer', name: 'Zoo Explorer', hint: 'Check in at an accredited zoo.', inPerson: true, earned: (c) => visitedOf(c, 'zoo').length >= 1 },
+  { id: 'conservation-champion', name: 'Conservation Champion', hint: 'Check in at 5 accredited zoos.', inPerson: true, earned: (c) => visitedOf(c, 'zoo').length >= 5 },
+  {
+    id: 'globetrotter',
+    name: 'Globetrotter',
+    hint: 'Check in at museums or zoos in 3 different countries.',
+    inPerson: true,
+    earned: (c) => new Set([...c.places].map((id) => placeById(id)?.country).filter(Boolean)).size >= 3,
+  },
+  {
+    id: 'night-at-the-museum',
+    name: 'Night at the Museum',
+    hint: 'A secret. Visit the museum whose exhibits came to life in a 2006 film.',
+    inPerson: true,
+    earned: (c) => c.places.has('museum-american-museum-of-natural-history'),
+  },
+);
 
 export const titleById = (id: string | null | undefined) => TITLES.find((t) => t.id === id);
 

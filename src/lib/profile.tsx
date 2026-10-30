@@ -28,6 +28,8 @@ export type Profile = {
   // Titles earned (ids from titles.ts), and the one shown under their name.
   titles: string[];
   title: string | null;
+  // Museums, zoos and fossil sites the user has checked in at (ids from places.ts).
+  places: string[];
   settings: Settings;
 };
 // Something another screen (e.g. the profile) asks the main screen to show when it returns to it.
@@ -46,6 +48,7 @@ const DEFAULT: Profile = {
   visited: [],
   titles: [],
   title: null,
+  places: [],
   settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed' },
 };
 

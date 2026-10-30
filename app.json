@@ -39,9 +39,18 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "PaleoDex uses your photos only if you choose one as your profile picture.",
+          "photosPermission": "PaleoDex uses your photos only when you choose one for a species page or as your profile picture.",
           "cameraPermission": false,
           "microphonePermission": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "PaleoDex uses your location only when you tap Check in, to see whether you are at a museum, zoo or fossil site.",
+          "locationAlwaysAndWhenInUsePermission": false,
+          "locationAlwaysPermission": false,
+          "motionUsagePermission": false
         }
       ]
     ],

@@ -14,7 +14,7 @@ export function AchievementWatcher() {
   const toast = useToast();
   const lastLevel = useRef<number | null>(null);
   const photoSpecies = new Set(allPhotos.map((p) => p.speciesId)).size;
-  const { visited, favourites, titles } = profile;
+  const { visited, favourites, titles, places } = profile;
 
   useEffect(() => {
     if (!loaded) return;
@@ -26,12 +26,12 @@ export function AchievementWatcher() {
     }
     lastLevel.current = level.level;
 
-    const fresh = earnedTitles({ visited: new Set(visited), favourites: favourites.length, photoSpecies, points }).filter((t) => !titles.includes(t.id));
+    const fresh = earnedTitles({ visited: new Set(visited), favourites: favourites.length, photoSpecies, points, places: new Set(places) }).filter((t) => !titles.includes(t.id));
     if (fresh.length === 0) return;
     update({ titles: [...titles, ...fresh.map((t) => t.id)] });
     // Level titles are announced with the level itself.
     for (const t of fresh) if (t.level === undefined) toast({ icon: '🏆', title: 'Title earned', detail: t.name });
-  }, [loaded, visited, favourites.length, photoSpecies, titles, update, toast]);
+  }, [loaded, visited, favourites.length, photoSpecies, titles, places, update, toast]);
 
   return null;
 }
