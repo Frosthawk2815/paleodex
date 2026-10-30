@@ -38134,5 +38134,2760 @@
         ]
       }
     ]
+  },
+  "aquila-chrysaetos": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -125,
+              30,
+              -100,
+              49
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -170,
+              55,
+              -140,
+              70
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              49,
+              -60,
+              70
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -117,
+              20,
+              -100,
+              32.7
+            ]
+          },
+          {
+            "countries": [
+              "Norway",
+              "Sweden",
+              "Finland",
+              "Spain",
+              "Portugal",
+              "Turkey",
+              "Iran",
+              "Kazakhstan",
+              "Kyrgyzstan",
+              "Tajikistan",
+              "Uzbekistan",
+              "Turkmenistan",
+              "Afghanistan",
+              "Mongolia"
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -7.5,
+              55.5,
+              -2,
+              58.7
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              -1.5,
+              42.3,
+              7.7,
+              46
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              7,
+              37,
+              16.5,
+              47
+            ]
+          },
+          {
+            "country": "Switzerland",
+            "bbox": [
+              6,
+              45.8,
+              10.5,
+              47
+            ]
+          },
+          {
+            "country": "Austria",
+            "bbox": [
+              9.5,
+              46.4,
+              15,
+              47.7
+            ]
+          },
+          {
+            "countries": [
+              "Greece",
+              "Albania",
+              "North Macedonia",
+              "Bulgaria"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              30,
+              45,
+              180,
+              72
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              28,
+              125,
+              50
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -9,
+              29,
+              -2,
+              35
+            ]
+          },
+          {
+            "country": "Algeria",
+            "bbox": [
+              -2,
+              33,
+              8,
+              36.5
+            ]
+          },
+          {
+            "country": "Saudi Arabia",
+            "bbox": [
+              36,
+              18,
+              45,
+              30
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "aquila-audax": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Australia"
+            ]
+          },
+          {
+            "country": "Papua New Guinea",
+            "bbox": [
+              141,
+              -10,
+              148,
+              -7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "harpia-harpyja": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Mexico",
+            "bbox": [
+              -95,
+              14.5,
+              -87,
+              19
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay"
+            ],
+            "exclude": [
+              "El Salvador"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -56,
+              -27.5,
+              -53.6,
+              -25.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pithecophaga-jefferyi": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Philippines",
+            "bbox": [
+              121,
+              14.5,
+              122.5,
+              18.5
+            ]
+          },
+          {
+            "country": "Philippines",
+            "bbox": [
+              124.5,
+              10,
+              126,
+              12.6
+            ]
+          },
+          {
+            "country": "Philippines",
+            "bbox": [
+              122,
+              5.5,
+              126.6,
+              10
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "haliaeetus-pelagicus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Russia",
+            "bbox": [
+              135,
+              50,
+              165,
+              63
+            ]
+          },
+          {
+            "country": "Japan",
+            "bbox": [
+              141,
+              41.3,
+              146,
+              45.6
+            ]
+          },
+          {
+            "country": "South Korea",
+            "bbox": [
+              126,
+              34,
+              130,
+              38.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "stephanoaetus-coronatus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Cameroon",
+              "Gabon",
+              "Congo",
+              "Eq. Guinea",
+              "Central African Rep.",
+              "Dem. Rep. Congo",
+              "Uganda",
+              "Rwanda",
+              "Burundi",
+              "Kenya",
+              "Tanzania",
+              "Malawi",
+              "Zambia"
+            ]
+          },
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              34,
+              5,
+              40,
+              10
+            ]
+          },
+          {
+            "country": "Mozambique",
+            "bbox": [
+              31,
+              -26,
+              41,
+              -11
+            ]
+          },
+          {
+            "country": "Zimbabwe",
+            "bbox": [
+              31,
+              -22,
+              33.2,
+              -16
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              28,
+              -34,
+              33,
+              -23
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              12,
+              -12,
+              22,
+              -5
+            ]
+          },
+          {
+            "country": "Côte d'Ivoire",
+            "bbox": [
+              -8.5,
+              4.5,
+              -2.5,
+              8
+            ]
+          },
+          {
+            "country": "Ghana",
+            "bbox": [
+              -3,
+              4.5,
+              1,
+              8
+            ]
+          },
+          {
+            "country": "Liberia",
+            "bbox": [
+              -11.5,
+              4.3,
+              -7.4,
+              8.5
+            ]
+          },
+          {
+            "country": "Sierra Leone",
+            "bbox": [
+              -13.3,
+              6.9,
+              -10.3,
+              10
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "polemaetus-bellicosus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Guinea",
+              "Guinea-Bissau",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Togo",
+              "Benin",
+              "Nigeria",
+              "Cameroon",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Chad",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Rwanda",
+              "Burundi",
+              "Dem. Rep. Congo",
+              "Angola",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "eSwatini",
+              "Lesotho"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "terathopius-ecaudatus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Guinea",
+              "Guinea-Bissau",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Togo",
+              "Benin",
+              "Nigeria",
+              "Cameroon",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Chad",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Rwanda",
+              "Burundi",
+              "Dem. Rep. Congo",
+              "Angola",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "eSwatini",
+              "Lesotho"
+            ],
+            "exclude": [
+              "Lesotho",
+              "Somaliland"
+            ]
+          },
+          {
+            "country": "Saudi Arabia",
+            "bbox": [
+              41,
+              16,
+              44,
+              20
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "circaetus-gallicus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Spain",
+              "Portugal",
+              "Italy",
+              "Greece",
+              "Albania",
+              "North Macedonia",
+              "Bulgaria",
+              "Serbia",
+              "Croatia",
+              "Turkey",
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Iran"
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              -2,
+              42.3,
+              7.7,
+              48
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              35,
+              45,
+              60,
+              55
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              50,
+              40,
+              85,
+              50
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -9,
+              30,
+              -2,
+              35.5
+            ]
+          },
+          {
+            "country": "Algeria",
+            "bbox": [
+              -2,
+              33,
+              8,
+              36.5
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              70,
+              15,
+              88,
+              30
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "buteo-jamaicensis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              42,
+              -55,
+              64
+            ]
+          },
+          {
+            "countries": [
+              "United States of America",
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama"
+            ],
+            "latMax": 70
+          },
+          {
+            "countries": [
+              "Cuba",
+              "Jamaica",
+              "Haiti",
+              "Dominican Rep.",
+              "Puerto Rico"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "astur-gentilis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Turkey",
+              "Georgia"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              45,
+              180,
+              70
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              80,
+              25,
+              135,
+              53
+            ]
+          },
+          {
+            "countries": [
+              "Mongolia",
+              "North Korea",
+              "South Korea"
+            ]
+          },
+          {
+            "country": "Japan",
+            "bbox": [
+              130,
+              31,
+              146,
+              45.6
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -9,
+              31,
+              -2,
+              35.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "accipiter-nisus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Turkey",
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Iran",
+              "Kazakhstan",
+              "Kyrgyzstan",
+              "Tajikistan",
+              "Uzbekistan",
+              "Turkmenistan",
+              "Afghanistan",
+              "Mongolia"
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              45,
+              165,
+              68
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              22,
+              135,
+              53
+            ]
+          },
+          {
+            "countries": [
+              "North Korea",
+              "South Korea",
+              "Japan"
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -9,
+              30,
+              -1,
+              36
+            ]
+          },
+          {
+            "country": "Algeria",
+            "bbox": [
+              -2,
+              33,
+              8,
+              36.5
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              70,
+              8,
+              90,
+              34
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "milvus-milvus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Spain",
+              "Portugal",
+              "France",
+              "Germany",
+              "Switzerland",
+              "Belgium",
+              "Luxembourg",
+              "Denmark",
+              "Czechia",
+              "Poland",
+              "Austria"
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -5.5,
+              50,
+              1.8,
+              57.7
+            ]
+          },
+          {
+            "country": "Sweden",
+            "bbox": [
+              12.5,
+              55,
+              15,
+              57
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              9,
+              37,
+              17,
+              43
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -9,
+              31,
+              -2,
+              35.5
+            ]
+          },
+          {
+            "countries": [
+              "United Kingdom",
+              "Ireland",
+              "Netherlands"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Spain",
+              "Portugal",
+              "France",
+              "Germany",
+              "Switzerland",
+              "Belgium",
+              "Luxembourg",
+              "Denmark",
+              "Czechia",
+              "Poland",
+              "Austria"
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -5.5,
+              50,
+              1.8,
+              57.7
+            ]
+          },
+          {
+            "country": "Sweden",
+            "bbox": [
+              12.5,
+              55,
+              15,
+              57
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              9,
+              37,
+              17,
+              43
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -9,
+              31,
+              -2,
+              35.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rostrhamus-sociabilis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -82.5,
+              25,
+              -80,
+              28.5
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -98,
+              15,
+              -87,
+              22.5
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay",
+              "Uruguay",
+              "Cuba"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -37,
+              -57,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "elanoides-forficatus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -95,
+              25,
+              -77,
+              34
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -98,
+              15,
+              -87,
+              22
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -60,
+              -28,
+              -53.6,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "elanus-caeruleus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Guinea",
+              "Guinea-Bissau",
+              "Sierra Leone",
+              "Liberia",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Togo",
+              "Benin",
+              "Nigeria",
+              "Cameroon",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Chad",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Rwanda",
+              "Burundi",
+              "Dem. Rep. Congo",
+              "Congo",
+              "Gabon",
+              "Eq. Guinea",
+              "Angola",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "eSwatini",
+              "Lesotho"
+            ],
+            "exclude": [
+              "Gabon",
+              "Congo",
+              "Eq. Guinea"
+            ]
+          },
+          {
+            "country": "Egypt",
+            "bbox": [
+              29,
+              24,
+              33,
+              31.5
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -10,
+              29,
+              -1,
+              36
+            ]
+          },
+          {
+            "countries": [
+              "India",
+              "Sri Lanka",
+              "Nepal",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Philippines"
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              67,
+              24,
+              75,
+              33
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              21,
+              120,
+              27
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -9,
+              120,
+              6
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Guinea",
+              "Guinea-Bissau",
+              "Sierra Leone",
+              "Liberia",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Togo",
+              "Benin",
+              "Nigeria",
+              "Cameroon",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Chad",
+              "Central African Rep.",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Somaliland",
+              "Kenya",
+              "Uganda",
+              "Tanzania",
+              "Rwanda",
+              "Burundi",
+              "Dem. Rep. Congo",
+              "Congo",
+              "Gabon",
+              "Eq. Guinea",
+              "Angola",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Zimbabwe",
+              "Botswana",
+              "Namibia",
+              "South Africa",
+              "eSwatini",
+              "Lesotho"
+            ],
+            "exclude": [
+              "Gabon",
+              "Congo",
+              "Eq. Guinea"
+            ]
+          },
+          {
+            "country": "Egypt",
+            "bbox": [
+              29,
+              24,
+              33,
+              31.5
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -10,
+              29,
+              -1,
+              36
+            ]
+          },
+          {
+            "countries": [
+              "Portugal"
+            ]
+          },
+          {
+            "country": "Spain",
+            "bbox": [
+              -7.5,
+              36,
+              0,
+              42
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              -1.8,
+              42.5,
+              1.5,
+              44.8
+            ]
+          },
+          {
+            "countries": [
+              "India",
+              "Sri Lanka",
+              "Nepal",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Philippines"
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              67,
+              24,
+              75,
+              33
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              21,
+              120,
+              27
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -9,
+              120,
+              6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "circus-aeruginosus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Turkey",
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Iran"
+            ],
+            "exclude": [
+              "Norway",
+              "Ireland"
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -3.5,
+              50.5,
+              1.8,
+              55
+            ]
+          },
+          {
+            "country": "Sweden",
+            "bbox": [
+              11,
+              55,
+              20,
+              61
+            ]
+          },
+          {
+            "country": "Finland",
+            "bbox": [
+              21,
+              60,
+              30,
+              64
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              45,
+              95,
+              60
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              50,
+              40,
+              85,
+              55
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -9,
+              30,
+              -1,
+              36
+            ]
+          },
+          {
+            "country": "Algeria",
+            "bbox": [
+              -2,
+              33,
+              8,
+              36.5
+            ]
+          },
+          {
+            "countries": [
+              "Ireland"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Turkey",
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Iran"
+            ],
+            "exclude": [
+              "Norway",
+              "Ireland"
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -3.5,
+              50.5,
+              1.8,
+              55
+            ]
+          },
+          {
+            "country": "Sweden",
+            "bbox": [
+              11,
+              55,
+              20,
+              61
+            ]
+          },
+          {
+            "country": "Finland",
+            "bbox": [
+              21,
+              60,
+              30,
+              64
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              45,
+              95,
+              60
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              50,
+              40,
+              85,
+              55
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -9,
+              30,
+              -1,
+              36
+            ]
+          },
+          {
+            "country": "Algeria",
+            "bbox": [
+              -2,
+              33,
+              8,
+              36.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "gypaetus-barbatus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Spain",
+            "bbox": [
+              -2,
+              42,
+              3.5,
+              43.2
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              -1.5,
+              42.3,
+              3,
+              43.2
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              5.5,
+              44,
+              7.7,
+              46.3
+            ]
+          },
+          {
+            "country": "Switzerland",
+            "bbox": [
+              6.8,
+              45.8,
+              10.5,
+              46.9
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              6.5,
+              45.8,
+              12.5,
+              46.9
+            ]
+          },
+          {
+            "country": "Austria",
+            "bbox": [
+              10,
+              46.7,
+              13.5,
+              47.4
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              8.5,
+              41.5,
+              9.6,
+              43
+            ]
+          },
+          {
+            "country": "Greece",
+            "bbox": [
+              23.5,
+              34.9,
+              26.3,
+              35.6
+            ]
+          },
+          {
+            "countries": [
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Kazakhstan",
+              "Kyrgyzstan",
+              "Tajikistan",
+              "Uzbekistan",
+              "Turkmenistan",
+              "Afghanistan",
+              "Mongolia",
+              "Nepal",
+              "Bhutan"
+            ],
+            "exclude": [
+              "Turkmenistan",
+              "Uzbekistan"
+            ]
+          },
+          {
+            "country": "Turkey",
+            "bbox": [
+              30,
+              37,
+              44.5,
+              41
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              45,
+              30,
+              60,
+              38
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              70,
+              30,
+              77,
+              37
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              74,
+              28,
+              80,
+              36
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              73,
+              27,
+              105,
+              40
+            ]
+          },
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              36,
+              6,
+              41,
+              15
+            ]
+          },
+          {
+            "country": "Kenya",
+            "bbox": [
+              35,
+              -1,
+              38,
+              1.5
+            ]
+          },
+          {
+            "country": "Tanzania",
+            "bbox": [
+              35,
+              -4,
+              38,
+              -2.5
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              27,
+              -31.5,
+              30,
+              -28
+            ]
+          },
+          {
+            "countries": [
+              "Lesotho"
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -8.5,
+              30.5,
+              -4,
+              33
+            ]
+          },
+          {
+            "country": "Saudi Arabia",
+            "bbox": [
+              41,
+              16,
+              44,
+              21
+            ]
+          },
+          {
+            "country": "Yemen",
+            "bbox": [
+              43,
+              13,
+              46,
+              16
+            ]
+          },
+          {
+            "country": "Austria",
+            "bbox": [
+              9.5,
+              46.4,
+              16,
+              47.8
+            ]
+          },
+          {
+            "country": "Germany",
+            "bbox": [
+              10,
+              47.3,
+              13,
+              47.8
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              8,
+              37,
+              17,
+              45
+            ]
+          },
+          {
+            "country": "Romania",
+            "bbox": [
+              22,
+              45,
+              26.5,
+              47.5
+            ]
+          },
+          {
+            "countries": [
+              "Bulgaria",
+              "Serbia",
+              "Bosnia and Herz.",
+              "Albania",
+              "North Macedonia",
+              "Greece"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Spain",
+            "bbox": [
+              -2,
+              42,
+              3.5,
+              43.2
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              -1.5,
+              42.3,
+              3,
+              43.2
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              5.5,
+              44,
+              7.7,
+              46.3
+            ]
+          },
+          {
+            "country": "Switzerland",
+            "bbox": [
+              6.8,
+              45.8,
+              10.5,
+              46.9
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              6.5,
+              45.8,
+              12.5,
+              46.9
+            ]
+          },
+          {
+            "country": "Austria",
+            "bbox": [
+              10,
+              46.7,
+              13.5,
+              47.4
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              8.5,
+              41.5,
+              9.6,
+              43
+            ]
+          },
+          {
+            "country": "Greece",
+            "bbox": [
+              23.5,
+              34.9,
+              26.3,
+              35.6
+            ]
+          },
+          {
+            "countries": [
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Kazakhstan",
+              "Kyrgyzstan",
+              "Tajikistan",
+              "Uzbekistan",
+              "Turkmenistan",
+              "Afghanistan",
+              "Mongolia",
+              "Nepal",
+              "Bhutan"
+            ],
+            "exclude": [
+              "Turkmenistan",
+              "Uzbekistan"
+            ]
+          },
+          {
+            "country": "Turkey",
+            "bbox": [
+              30,
+              37,
+              44.5,
+              41
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              45,
+              30,
+              60,
+              38
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              70,
+              30,
+              77,
+              37
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              74,
+              28,
+              80,
+              36
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              73,
+              27,
+              105,
+              40
+            ]
+          },
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              36,
+              6,
+              41,
+              15
+            ]
+          },
+          {
+            "country": "Kenya",
+            "bbox": [
+              35,
+              -1,
+              38,
+              1.5
+            ]
+          },
+          {
+            "country": "Tanzania",
+            "bbox": [
+              35,
+              -4,
+              38,
+              -2.5
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              27,
+              -31.5,
+              30,
+              -28
+            ]
+          },
+          {
+            "countries": [
+              "Lesotho"
+            ]
+          },
+          {
+            "country": "Morocco",
+            "bbox": [
+              -8.5,
+              30.5,
+              -4,
+              33
+            ]
+          },
+          {
+            "country": "Saudi Arabia",
+            "bbox": [
+              41,
+              16,
+              44,
+              21
+            ]
+          },
+          {
+            "country": "Yemen",
+            "bbox": [
+              43,
+              13,
+              46,
+              16
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "neophron-percnopterus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Spain",
+              "Portugal",
+              "Turkey",
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Iran",
+              "Afghanistan",
+              "Pakistan",
+              "India",
+              "Nepal",
+              "Oman",
+              "Yemen",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Somaliland",
+              "Djibouti",
+              "Kenya",
+              "Tanzania",
+              "Sudan",
+              "Chad",
+              "Niger",
+              "Mali",
+              "Mauritania",
+              "Morocco",
+              "Algeria"
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              -1.5,
+              42.3,
+              6,
+              45
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              12,
+              37,
+              18,
+              42
+            ]
+          },
+          {
+            "countries": [
+              "Greece",
+              "Bulgaria",
+              "North Macedonia",
+              "Albania"
+            ]
+          },
+          {
+            "country": "Saudi Arabia",
+            "bbox": [
+              36,
+              16,
+              50,
+              30
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              50,
+              40,
+              75,
+              48
+            ]
+          },
+          {
+            "country": "Uzbekistan",
+            "bbox": [
+              56,
+              37,
+              73,
+              45
+            ]
+          },
+          {
+            "country": "Turkmenistan",
+            "bbox": [
+              52,
+              35,
+              66,
+              42
+            ]
+          },
+          {
+            "country": "Egypt",
+            "bbox": [
+              25,
+              22,
+              35,
+              31
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "gyps-rueppelli": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Senegal",
+              "Gambia",
+              "Mali",
+              "Burkina Faso",
+              "Niger",
+              "Chad",
+              "Sudan",
+              "S. Sudan",
+              "Ethiopia",
+              "Eritrea",
+              "Kenya",
+              "Tanzania",
+              "Uganda"
+            ],
+            "latMax": 17
+          },
+          {
+            "country": "Nigeria",
+            "bbox": [
+              3,
+              10,
+              14.5,
+              14
+            ]
+          },
+          {
+            "country": "Cameroon",
+            "bbox": [
+              12,
+              8,
+              16,
+              13
+            ]
+          },
+          {
+            "country": "Guinea",
+            "bbox": [
+              -14,
+              10,
+              -8,
+              12.6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "gyps-bengalensis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Nepal",
+              "Bangladesh",
+              "Myanmar",
+              "Cambodia",
+              "Laos"
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              67,
+              24,
+              75,
+              34
+            ]
+          },
+          {
+            "country": "Bhutan",
+            "bbox": [
+              89,
+              26.7,
+              92,
+              27.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "aegypius-monachus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Spain",
+            "bbox": [
+              -7.5,
+              37,
+              0,
+              42.5
+            ]
+          },
+          {
+            "country": "Portugal",
+            "bbox": [
+              -8,
+              38,
+              -6.2,
+              41.5
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              3,
+              43.5,
+              6.5,
+              44.5
+            ]
+          },
+          {
+            "country": "Greece",
+            "bbox": [
+              25.5,
+              40.7,
+              26.5,
+              41.5
+            ]
+          },
+          {
+            "countries": [
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Mongolia",
+              "Kyrgyzstan",
+              "Tajikistan"
+            ]
+          },
+          {
+            "country": "Turkey",
+            "bbox": [
+              30,
+              37,
+              44.5,
+              41.5
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              45,
+              30,
+              62,
+              38
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              60,
+              42,
+              87,
+              50
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              85,
+              48,
+              110,
+              53
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              32,
+              120,
+              46
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              -1.5,
+              42.3,
+              7.7,
+              46
+            ]
+          },
+          {
+            "country": "Italy",
+            "bbox": [
+              8,
+              37,
+              17,
+              45
+            ]
+          },
+          {
+            "countries": [
+              "Bulgaria",
+              "Serbia",
+              "North Macedonia",
+              "Albania",
+              "Greece",
+              "Romania",
+              "Ukraine"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Spain",
+            "bbox": [
+              -7.5,
+              37,
+              0,
+              42.5
+            ]
+          },
+          {
+            "country": "Portugal",
+            "bbox": [
+              -8,
+              38,
+              -6.2,
+              41.5
+            ]
+          },
+          {
+            "country": "France",
+            "bbox": [
+              3,
+              43.5,
+              6.5,
+              44.5
+            ]
+          },
+          {
+            "country": "Greece",
+            "bbox": [
+              25.5,
+              40.7,
+              26.5,
+              41.5
+            ]
+          },
+          {
+            "countries": [
+              "Georgia",
+              "Armenia",
+              "Azerbaijan",
+              "Mongolia",
+              "Kyrgyzstan",
+              "Tajikistan"
+            ]
+          },
+          {
+            "country": "Turkey",
+            "bbox": [
+              30,
+              37,
+              44.5,
+              41.5
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              45,
+              30,
+              62,
+              38
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              60,
+              42,
+              87,
+              50
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              85,
+              48,
+              110,
+              53
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              32,
+              120,
+              46
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pernis-apivorus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herz.",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania",
+              "Moldova",
+              "Ukraine",
+              "Belarus",
+              "Lithuania",
+              "Latvia",
+              "Estonia",
+              "Finland",
+              "Sweden",
+              "Norway",
+              "United Kingdom",
+              "Ireland",
+              "Turkey",
+              "Georgia"
+            ],
+            "exclude": [
+              "Ireland",
+              "Portugal"
+            ]
+          },
+          {
+            "country": "United Kingdom",
+            "bbox": [
+              -3.5,
+              50.5,
+              1.8,
+              57.5
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              28,
+              45,
+              90,
+              62
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              50,
+              45,
+              85,
+              54
+            ]
+          },
+          {
+            "countries": [
+              "Cameroon",
+              "Gabon",
+              "Congo",
+              "Dem. Rep. Congo",
+              "Central African Rep.",
+              "Ghana",
+              "Côte d'Ivoire",
+              "Liberia",
+              "Sierra Leone",
+              "Guinea",
+              "Nigeria",
+              "Uganda",
+              "Angola",
+              "Zambia"
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
