@@ -10,9 +10,50 @@ export type Place = { id: string; kind: PlaceKind; name: string; country?: strin
 
 const MUSEUMS_AND_ZOOS = placeData as Place[];
 
-// Every rock formation's present-day location is a fossil site. A formation with several
+// Fossil sites that don't count for check-ins, so no one is tempted to go somewhere dangerous:
+// war zones and places under "do not travel" government advisories, the polar regions, and deep
+// desert or wilderness that takes a proper expedition to reach.
+export const UNSAFE_SITES: Record<string, string> = {
+  // Conflict, terrorism or "do not travel" advisories
+  elrhaz: 'Niger: do-not-travel advisories, deep Sahara',
+  echkar: 'Niger: do-not-travel advisories, deep Sahara',
+  farak: 'Niger: do-not-travel advisories, deep Sahara (Spinosaurus mirabilis)',
+  'kem-kem': 'Point lies in Algeria on the closed, militarised border with Morocco',
+  kachin: 'Myanmar: civil war in Kachin State',
+  sannine: 'Lebanon: do-not-travel advisories',
+  hadar: 'Afar region, Ethiopia: conflict and extreme heat',
+  bahariya: 'Egypt’s Western Desert: do-not-travel advisories',
+  kuldana: 'Khyber Pakhtunkhwa, Pakistan: do-not-travel advisories',
+  bugti: 'Balochistan, Pakistan: do-not-travel advisories',
+  urumaco: 'Venezuela: do-not-travel advisories',
+  sokolki: 'Russia: do-not-travel advisories',
+  tsagayan: 'Russia: do-not-travel advisories',
+  donguz: 'Russia: do-not-travel advisories',
+  tendaguru: 'Remote bush near the Mozambique border, an area of insurgent attacks',
+  'gres-superieurs': 'Rural Savannakhet, Laos: unexploded bombs off the roads',
+  // Polar regions
+  hanson: 'Antarctica',
+  'lopez-de-bertodano': 'Antarctica',
+  'sirius-passet': 'Far north Greenland, reached only by expedition',
+  'britta-dal': 'Remote East Greenland',
+  fram: 'Ellesmere Island, high Arctic',
+  agardhfjellet: 'Svalbard: polar bears outside the settlements',
+  'prince-creek': 'Alaska’s North Slope, no roads',
+  // Deep desert and wilderness expeditions
+  nemegt: 'Remote Gobi, expedition only',
+  'barun-goyot': 'Remote Gobi, expedition only',
+  'bayan-shireh': 'Remote Gobi, expedition only',
+  shishugou: 'Junggar Basin desert, Xinjiang',
+  xiagou: 'Remote Gobi in Gansu',
+  bissekty: 'Kyzylkum Desert, expedition only',
+  sakamena: 'Remote south-western Madagascar with few roads',
+  manda: 'Remote Ruhuhu Basin, Tanzania, with no roads',
+  'cerro-fortaleza': 'Remote Patagonian steppe, expedition only',
+};
+
+// Every other rock formation's present-day location is a fossil site. A formation with several
 // localities gives several points with one id.
-const SITES: Place[] = EVENTS.filter((e) => e.kind === 'Rock formation').flatMap((e) => {
+const SITES: Place[] = EVENTS.filter((e) => e.kind === 'Rock formation' && !UNSAFE_SITES[e.id]).flatMap((e) => {
   const seen = new Set<string>();
   return e.points
     .filter((p) => p.body === 'earth')

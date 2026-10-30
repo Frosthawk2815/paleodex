@@ -59,6 +59,14 @@ export default function PlacesScreen() {
         Visiting a natural history museum, an accredited zoo or one of the fossil sites in PaleoDex? Check in while you’re there to earn titles.
       </Text>
       <Text style={st.muted}>Your location is read only when you tap Check in, and never leaves your device. Only the places you visit are saved.</Text>
+      <View style={[st.card, { padding: 14, gap: 4 }]}>
+        <Text style={st.rowTitle}>⚠️ Stay safe</Text>
+        <Text style={st.rowSub}>
+          You don’t need to reach the rocks themselves: you’re checked in anywhere within 25 km of a fossil site, so the nearest town or visitor centre is
+          enough. Only visit places open to the public, never enter quarries, mines or private land without permission, and check the tides at coastal sites.
+          Sites in dangerous or very remote places don’t count, so no one is tempted to go there.
+        </Text>
+      </View>
 
       <Pressable
         onPress={checkIn}
