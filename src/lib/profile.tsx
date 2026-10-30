@@ -23,6 +23,8 @@ export type Profile = {
   favourites: PageRef[];
   // Most recent first.
   recent: PageRef[];
+  // Every page ever opened ("species:id"), for exploration points.
+  visited: string[];
   settings: Settings;
 };
 // Something another screen (e.g. the profile) asks the main screen to show when it returns to it.
@@ -38,6 +40,7 @@ const DEFAULT: Profile = {
   avatar: null,
   favourites: [],
   recent: [],
+  visited: [],
   settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed' },
 };
 
@@ -49,6 +52,7 @@ type ProfileContext = {
   updateSettings: (changes: Partial<Settings>) => void;
   isFavourite: (page: PageRef) => boolean;
   toggleFavourite: (page: PageRef) => void;
+  // Records a page as opened: in the recent pages, and the first time, in the visited pages.
   addRecent: (page: PageRef) => void;
   clearRecent: () => void;
   // Reduce motion is on if the user turned it on here or in their device's settings.
@@ -72,7 +76,9 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       .then((raw) => {
         if (!raw) return;
         const saved = JSON.parse(raw) as Partial<Profile>;
-        setProfile({ ...DEFAULT, ...saved, settings: { ...DEFAULT.settings, ...saved.settings } });
+        // Profiles from before points existed start with credit for their recent pages.
+        const visited = saved.visited ?? (saved.recent ?? []).map((r) => `${r.kind}:${r.id}`);
+        setProfile({ ...DEFAULT, ...saved, visited, settings: { ...DEFAULT.settings, ...saved.settings } });
       })
       .catch(() => {})
       .finally(() => {
@@ -111,8 +117,11 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
   const addRecent = useCallback(
     (page: PageRef) =>
       setProfile((p) => {
-        if (p.recent[0] && samePage(p.recent[0], page)) return p;
-        return { ...p, recent: [page, ...p.recent.filter((r) => !samePage(r, page))].slice(0, RECENT_LIMIT) };
+        const key = `${page.kind}:${page.id}`;
+        // The first visit to a page earns its points.
+        const visited = p.visited.includes(key) ? p.visited : [...p.visited, key];
+        if (p.recent[0] && samePage(p.recent[0], page)) return visited === p.visited ? p : { ...p, visited };
+        return { ...p, visited, recent: [page, ...p.recent.filter((r) => !samePage(r, page))].slice(0, RECENT_LIMIT) };
       }),
     [],
   );
