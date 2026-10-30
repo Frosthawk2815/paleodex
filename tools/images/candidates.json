@@ -1073,6 +1073,18 @@
   "article": "https://en.wikipedia.org/wiki/Marine_iguana",
   "scope": "species"
  },
+ "amblysomus-hottentotus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Amblysomus_hottentotus_%28Palmiet_Nature_Reserve%2C_South_Africa_East_Coast%29_2.jpg/960px-Amblysomus_hottentotus_%28Palmiet_Nature_Reserve%2C_South_Africa_East_Coast%29_2.jpg",
+  "width": 800,
+  "height": 521,
+  "artist": "suncana",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Amblysomus_hottentotus_(Palmiet_Nature_Reserve,_South_Africa_East_Coast)_2.jpg",
+  "file": "Amblysomus_hottentotus_(Palmiet_Nature_Reserve,_South_Africa_East_Coast)_2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Hottentot_golden_mole",
+  "scope": "species"
+ },
  "ambopteryx-longibrachium": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Ambopteryx_longibrachium_holotype_%28cropped%29.jpg/960px-Ambopteryx_longibrachium_holotype_%28cropped%29.jpg",
   "width": 800,
@@ -5500,6 +5512,18 @@
   "article": "https://en.wikipedia.org/wiki/Owston%27s_palm_civet",
   "scope": "species"
  },
+ "chrysochloris-asiatica": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Chrysochloris_asiatica_270437025.jpg/960px-Chrysochloris_asiatica_270437025.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "kevin koen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chrysochloris_asiatica_270437025.jpg",
+  "file": "Chrysochloris_asiatica_270437025.jpg",
+  "article": "https://en.wikipedia.org/wiki/Cape_golden_mole",
+  "scope": "species"
+ },
  "chrysocyon-brachyurus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Lobo_Guar%C3%A1_andando.jpg/960px-Lobo_Guar%C3%A1_andando.jpg",
   "width": 800,
@@ -5511,6 +5535,19 @@
   "file": "Lobo_Guará_andando.jpg",
   "article": "https://en.wikipedia.org/wiki/Maned_wolf",
   "scope": "species"
+ },
+ "chrysospalax-trevelyani": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Em_-_Chrysospalax_trevelyani_-_2.jpg/960px-Em_-_Chrysospalax_trevelyani_-_2.jpg",
+  "width": 800,
+  "height": 1200,
+  "artist": "Emőke Dénes",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Em_-_Chrysospalax_trevelyani_-_2.jpg",
+  "file": "Em_-_Chrysospalax_trevelyani_-_2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Giant_golden_mole",
+  "scope": "species",
+  "kind": "fossil"
  },
  "chubutisaurus-insignis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Chubutisaurus_insignis.jpg/960px-Chubutisaurus_insignis.jpg",
@@ -6975,6 +7012,18 @@
   "article": "https://en.wikipedia.org/wiki/Great_spotted_woodpecker",
   "scope": "species"
  },
+ "dendrohyrax-arboreus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Tree-hyrax.jpg/960px-Tree-hyrax.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Charles J. Sharp",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Tree-hyrax.jpg",
+  "file": "Tree-hyrax.jpg",
+  "article": "https://en.wikipedia.org/wiki/Southern_tree_hyrax",
+  "scope": "species"
+ },
  "dendrorhynchoides-curvidentatus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Dendrorhynchoides_curvidentatus_Holotype_NGMC.jpg/960px-Dendrorhynchoides_curvidentatus_Holotype_NGMC.jpg",
   "width": 800,
@@ -7717,6 +7766,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "dugong-dugon": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Dugong.JPG/960px-Dugong.JPG",
+  "width": 800,
+  "height": 567,
+  "artist": "Gejuni",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Dugong.JPG",
+  "file": "Dugong.JPG",
+  "article": "https://en.wikipedia.org/wiki/Dugong",
+  "scope": "genus"
+ },
  "dunkleosteus-terrelli": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Dunkleosteus_terrelli_%28fossil_fish%29_%28Cleveland_Shale_Member%2C_Ohio_Shale%2C_Upper_Devonian%3B_Rocky_River_Valley%2C_Cleveland%2C_Ohio%2C_USA%29_21_%2834001200911%29.jpg/960px-Dunkleosteus_terrelli_%28fossil_fish%29_%28Cleveland_Shale_Member%2C_Ohio_Shale%2C_Upper_Devonian%3B_Rocky_River_Valley%2C_Cleveland%2C_Ohio%2C_USA%29_21_%2834001200911%29.jpg",
   "width": 800,
@@ -7792,6 +7853,18 @@
   "article": "https://en.wikipedia.org/wiki/Echinochimaera",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "echinops-telfairi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/0/01/Kleiner-igeltanrek-a.jpg",
+  "width": 800,
+  "height": 510,
+  "artist": "Wilfried Berns www.Tierdoku.com",
+  "license": "CC BY-SA 2.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Kleiner-igeltanrek-a.jpg",
+  "file": "Kleiner-igeltanrek-a.jpg",
+  "article": "https://en.wikipedia.org/wiki/Lesser_hedgehog_tenrec",
+  "scope": "species"
  },
  "ectenosaurus-clidastoides": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ectenosaurus_clidastoides_skeleton.png/960px-Ectenosaurus_clidastoides_skeleton.png",
@@ -8060,6 +8133,30 @@
   "article": "https://en.wikipedia.org/wiki/Elemgasem",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "elephantulus-rufescens": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Galegeeska_rufescens_zoo_frankfurt.jpg/960px-Galegeeska_rufescens_zoo_frankfurt.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "JNguyenFlohic",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Galegeeska_rufescens_zoo_frankfurt.jpg",
+  "file": "Galegeeska_rufescens_zoo_frankfurt.jpg",
+  "article": "https://en.wikipedia.org/wiki/Rufous_sengi",
+  "scope": "species"
+ },
+ "elephas-maximus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Elephas_maximus_%28Bandipur%29.jpg/960px-Elephas_maximus_%28Bandipur%29.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Yathin S Krishnappa",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Elephas_maximus_(Bandipur).jpg",
+  "file": "Elephas_maximus_(Bandipur).jpg",
+  "article": "https://en.wikipedia.org/wiki/Asian_elephant",
+  "scope": "species"
  },
  "elliotsmithia-longiceps": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Elliotsmithia_longiceps.png/960px-Elliotsmithia_longiceps.png",
@@ -8585,6 +8682,18 @@
   "file": "Quagga_photo.jpg",
   "article": "https://en.wikipedia.org/wiki/Quagga",
   "scope": "genus"
+ },
+ "eremitalpa-granti": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Grant%27s_golden_mole_%28Eremitalpa_granti%29_1.jpg/960px-Grant%27s_golden_mole_%28Eremitalpa_granti%29_1.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "no rights reserved",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Grant%27s_golden_mole_(Eremitalpa_granti)_1.jpg",
+  "file": "Grant's_golden_mole_(Eremitalpa_granti)_1.jpg",
+  "article": "https://en.wikipedia.org/wiki/Grant%27s_golden_mole",
+  "scope": "species"
  },
  "eretmochelys-imbricata": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Eretmochelys-imbricata-K%C3%A9lonia-2.JPG/960px-Eretmochelys-imbricata-K%C3%A9lonia-2.JPG",
@@ -10821,6 +10930,18 @@
   "article": "https://en.wikipedia.org/wiki/Common_dwarf_mongoose",
   "scope": "species"
  },
+ "hemicentetes-semispinosus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Lowland_Streaked_Tenrec%2C_Mantadia%2C_Madagascar.jpg/960px-Lowland_Streaked_Tenrec%2C_Mantadia%2C_Madagascar.jpg",
+  "width": 800,
+  "height": 631,
+  "artist": "Frank Vassen",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Lowland_Streaked_Tenrec,_Mantadia,_Madagascar.jpg",
+  "file": "Lowland_Streaked_Tenrec,_Mantadia,_Madagascar.jpg",
+  "article": "https://en.wikipedia.org/wiki/Lowland_streaked_tenrec",
+  "scope": "species"
+ },
  "hemigalus-derbyanus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Banded_palm_civet_10.jpg/960px-Banded_palm_civet_10.jpg",
   "width": 800,
@@ -10972,6 +11093,18 @@
   "article": "https://en.wikipedia.org/wiki/Heterodontosaurus",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "heterohyrax-brucei": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Ein_klippschliefer.jpg/960px-Ein_klippschliefer.jpg",
+  "width": 800,
+  "height": 609,
+  "artist": "Unknown author",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Ein_klippschliefer.jpg",
+  "file": "Ein_klippschliefer.jpg",
+  "article": "https://en.wikipedia.org/wiki/Yellow-spotted_rock_hyrax",
+  "scope": "species"
  },
  "hexinlusaurus-multidens": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Zigong_Dinosaur_Museum_Hexinlusaurus.jpg/960px-Zigong_Dinosaur_Museum_Hexinlusaurus.jpg",
@@ -13583,6 +13716,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "limnogale-mergulus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Limnogale_mergulus_range_map.svg/960px-Limnogale_mergulus_range_map.svg.png",
+  "width": 800,
+  "height": 944,
+  "artist": "Chermundy",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Limnogale_mergulus_range_map.svg",
+  "file": "Limnogale_mergulus_range_map.svg",
+  "article": "https://en.wikipedia.org/wiki/Web-footed_tenrec",
+  "scope": "species"
+ },
  "limosa-lapponica": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bar-tailed_Godwit.jpg/960px-Bar-tailed_Godwit.jpg",
   "width": 800,
@@ -13873,6 +14018,30 @@
   "article": "https://en.wikipedia.org/wiki/Lourinhanosaurus",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "loxodonta-africana": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg/960px-178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg",
+  "file": "178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg",
+  "article": "https://en.wikipedia.org/wiki/African_bush_elephant",
+  "scope": "species"
+ },
+ "loxodonta-cyclotis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Loxodontacyclotis.jpg/960px-Loxodontacyclotis.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Thomas Breuer",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Loxodontacyclotis.jpg",
+  "file": "Loxodontacyclotis.jpg",
+  "article": "https://en.wikipedia.org/wiki/African_forest_elephant",
+  "scope": "species"
  },
  "ludodactylus-sibbicki": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Ludodactylus_sibbicki_holotype.jpg/960px-Ludodactylus_sibbicki_holotype.jpg",
@@ -14279,6 +14448,19 @@
   "file": "Macrogalidia_musschenbroekii.jpg",
   "article": "https://en.wikipedia.org/wiki/Sulawesi_palm_civet",
   "scope": "species"
+ },
+ "macroscelides-proboscideus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Short-eared_Elephant_Shrew_%282014%29_by_Clyde_Nishimura._Original_from_Smithsonian%27s_National_Zoo._Digitally_enhanced_by_rawpixel._%2851128444162%29.jpg/960px-Short-eared_Elephant_Shrew_%282014%29_by_Clyde_Nishimura._Original_from_Smithsonian%27s_National_Zoo._Digitally_enhanced_by_rawpixel._%2851128444162%29.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Rawpixel Ltd",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Short-eared_Elephant_Shrew_(2014)_by_Clyde_Nishimura._Original_from_Smithsonian%27s_National_Zoo._Digitally_enhanced_by_rawpixel._(51128444162).jpg",
+  "file": "Short-eared_Elephant_Shrew_(2014)_by_Clyde_Nishimura._Original_from_Smithsonian's_National_Zoo._Digitally_enhanced_by_rawpixel._(51128444162).jpg",
+  "article": "https://en.wikipedia.org/wiki/Karoo_round-eared_sengi",
+  "scope": "species",
+  "kind": "restoration"
  },
  "macrospondylus-bollensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Macrospondylus_bollensis_Holzmaden.jpg/960px-Macrospondylus_bollensis_Holzmaden.jpg",
@@ -15353,6 +15535,18 @@
   "article": "https://en.wikipedia.org/wiki/Microdictyon",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "microgale-longicaudata": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Microgale_longicaudata_range_map.svg/960px-Microgale_longicaudata_range_map.svg.png",
+  "width": 800,
+  "height": 944,
+  "artist": "Chermundy",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Microgale_longicaudata_range_map.svg",
+  "file": "Microgale_longicaudata_range_map.svg",
+  "article": "https://en.wikipedia.org/wiki/Lesser_long-tailed_shrew_tenrec",
+  "scope": "species"
  },
  "microgomphodon-oligocynus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Sesamodon1%D0%92%D0%98.jpg/960px-Sesamodon1%D0%92%D0%98.jpg",
@@ -17318,6 +17512,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "ornithorhynchus-anatinus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Duck-billed_platypus_%28Ornithorhynchus_anatinus%29_Scottsdale.jpg/960px-Duck-billed_platypus_%28Ornithorhynchus_anatinus%29_Scottsdale.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Duck-billed_platypus_(Ornithorhynchus_anatinus)_Scottsdale.jpg",
+  "file": "Duck-billed_platypus_(Ornithorhynchus_anatinus)_Scottsdale.jpg",
+  "article": "https://en.wikipedia.org/wiki/Platypus",
+  "scope": "species"
+ },
  "ornithosuchus-woodwardi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Ornithosuchus_woodwardi.jpg/960px-Ornithosuchus_woodwardi.jpg",
   "width": 800,
@@ -17369,6 +17575,18 @@
   "article": "https://en.wikipedia.org/wiki/Orthosuchus_stormbergi",
   "scope": "species",
   "kind": "skeletal"
+ },
+ "orycteropus-afer": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Orycteropus_afer_175359469.jpg/960px-Orycteropus_afer_175359469.jpg",
+  "width": 800,
+  "height": 554,
+  "artist": "Kelly Abram",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Orycteropus_afer_175359469.jpg",
+  "file": "Orycteropus_afer_175359469.jpg",
+  "article": "https://en.wikipedia.org/wiki/Aardvark",
+  "scope": "species"
  },
  "oryctolagus-cuniculus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Oryctolagus_cuniculus_-_euqirneto_-_419737670_%28cropped%29.jpeg/960px-Oryctolagus_cuniculus_-_euqirneto_-_419737670_%28cropped%29.jpeg",
@@ -18662,6 +18880,19 @@
   "article": "https://en.wikipedia.org/wiki/West_African_potto",
   "scope": "species"
  },
+ "petrodromus-tetradactylus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Petrodromus_tetradactylus-Zootaxa.jpg/960px-Petrodromus_tetradactylus-Zootaxa.jpg",
+  "width": 800,
+  "height": 380,
+  "artist": "Galen B. Rathbun",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Petrodromus_tetradactylus-Zootaxa.jpg",
+  "file": "Petrodromus_tetradactylus-Zootaxa.jpg",
+  "article": "https://en.wikipedia.org/wiki/Four-toed_sengi",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "petromyzon-marinus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Petromyzon_marinus.001_-_Aquarium_Finisterrae.jpg/960px-Petromyzon_marinus.001_-_Aquarium_Finisterrae.jpg",
   "width": 800,
@@ -18673,6 +18904,19 @@
   "file": "Petromyzon_marinus.001_-_Aquarium_Finisterrae.jpg",
   "article": "https://en.wikipedia.org/wiki/Sea_lamprey",
   "scope": "species"
+ },
+ "petrosaltator-rozeti": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Petrosaltator_rozeti-Zootaxa.jpg/960px-Petrosaltator_rozeti-Zootaxa.jpg",
+  "width": 800,
+  "height": 795,
+  "artist": "Galen B. Rathbun",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Petrosaltator_rozeti-Zootaxa.jpg",
+  "file": "Petrosaltator_rozeti-Zootaxa.jpg",
+  "article": "https://en.wikipedia.org/wiki/North_African_sengi",
+  "scope": "species",
+  "kind": "fossil"
  },
  "phacochoerus-africanus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Southern_warthog_%28Phacochoerus_africanus_sundevallii%29_male.jpg/960px-Southern_warthog_%28Phacochoerus_africanus_sundevallii%29_male.jpg",
@@ -19440,6 +19684,18 @@
   "article": "https://en.wikipedia.org/wiki/Red_river_hog",
   "scope": "species"
  },
+ "potamogale-velox": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Potamogale_velox_340101862.jpg/960px-Potamogale_velox_340101862.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Julien Renoult",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Potamogale_velox_340101862.jpg",
+  "file": "Potamogale_velox_340101862.jpg",
+  "article": "https://en.wikipedia.org/wiki/Giant_otter_shrew",
+  "scope": "species"
+ },
  "potamornis-skutchi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Potamornis_skull.png/960px-Potamornis_skull.png",
   "width": 800,
@@ -19655,6 +19911,18 @@
   "article": "https://en.wikipedia.org/wiki/Procariama",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "procavia-capensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/190_Rock_hyrax_family_in_Damaraland_Photo_by_Giles_Laurent_%28cropped%29.jpg/960px-190_Rock_hyrax_family_in_Damaraland_Photo_by_Giles_Laurent_%28cropped%29.jpg",
+  "width": 800,
+  "height": 988,
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:190_Rock_hyrax_family_in_Damaraland_Photo_by_Giles_Laurent_(cropped).jpg",
+  "file": "190_Rock_hyrax_family_in_Damaraland_Photo_by_Giles_Laurent_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Rock_hyrax",
+  "scope": "species"
  },
  "proceratosaurus-bradleyi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Proceratosaurus_holotype_skull.jpg/960px-Proceratosaurus_holotype_skull.jpg",
@@ -20961,6 +21229,18 @@
   "scope": "species",
   "kind": "restoration"
  },
+ "rhynchocyon-petersi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Rhynchocyon_petersi_from_side_cropped_mirror.png/960px-Rhynchocyon_petersi_from_side_cropped_mirror.png",
+  "width": 800,
+  "height": 517,
+  "artist": "Joey Makalintal from Pennsylvania, USA",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rhynchocyon_petersi_from_side_cropped_mirror.png",
+  "file": "Rhynchocyon_petersi_from_side_cropped_mirror.png",
+  "article": "https://en.wikipedia.org/wiki/Black_and_rufous_sengi",
+  "scope": "species"
+ },
  "rhynchogale-melleri": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Smit.m.rhinogale.melleri.jpg",
   "width": 800,
@@ -21965,6 +22245,18 @@
   "article": "https://en.wikipedia.org/wiki/Setapedites",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "setifer-setosus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Greater_Hedgehog_Tenrec_%28Setifer_setosus%29_%289614561811%29.jpg/960px-Greater_Hedgehog_Tenrec_%28Setifer_setosus%29_%289614561811%29.jpg",
+  "width": 800,
+  "height": 528,
+  "artist": "Bernard DUPONT from FRANCE",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Greater_Hedgehog_Tenrec_(Setifer_setosus)_(9614561811).jpg",
+  "file": "Greater_Hedgehog_Tenrec_(Setifer_setosus)_(9614561811).jpg",
+  "article": "https://en.wikipedia.org/wiki/Greater_hedgehog_tenrec",
+  "scope": "species"
  },
  "seymouria-baylorensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Seymouria1.jpg/960px-Seymouria1.jpg",
@@ -23257,6 +23549,18 @@
   "article": "https://en.wikipedia.org/wiki/African_buffalo",
   "scope": "species"
  },
+ "tachyglossus-aculeatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Wild_shortbeak_echidna.jpg/960px-Wild_shortbeak_echidna.jpg",
+  "width": 800,
+  "height": 534,
+  "artist": "User:Fir0002",
+  "license": "GFDL 1.2",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/fdl-1.2.html",
+  "source": "https://commons.wikimedia.org/wiki/File:Wild_shortbeak_echidna.jpg",
+  "file": "Wild_shortbeak_echidna.jpg",
+  "article": "https://en.wikipedia.org/wiki/Short-beaked_echidna",
+  "scope": "species"
+ },
  "taeniolabis-taoensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Taeniolabis_taoensis.png/960px-Taeniolabis_taoensis.png",
   "width": 800,
@@ -23635,6 +23939,18 @@
   "article": "https://en.wikipedia.org/wiki/Tenontosaurus",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "tenrec-ecaudatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Tanrek.jpg/960px-Tanrek.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "Unknown author",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Tanrek.jpg",
+  "file": "Tanrek.jpg",
+  "article": "https://en.wikipedia.org/wiki/Tailless_tenrec",
+  "scope": "species"
  },
  "tenuicruris-piscanexum": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Tenuicruris_piscanexum_%28holotype%2C_KK_F1451%29.png/960px-Tenuicruris_piscanexum_%28holotype%2C_KK_F1451%29.png",
@@ -24408,6 +24724,42 @@
   "article": "https://en.wikipedia.org/wiki/Triceratops_prorsus",
   "scope": "species",
   "kind": "restoration"
+ },
+ "trichechus-inunguis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Manati_amazonico_en_Iquitos.jpg/960px-Manati_amazonico_en_Iquitos.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Alan Kotok",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Manati_amazonico_en_Iquitos.jpg",
+  "file": "Manati_amazonico_en_Iquitos.jpg",
+  "article": "https://en.wikipedia.org/wiki/Amazonian_manatee",
+  "scope": "species"
+ },
+ "trichechus-manatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Manatee_with_calf.PD_-_colour_corrected.jpg/960px-Manatee_with_calf.PD_-_colour_corrected.jpg",
+  "width": 800,
+  "height": 525,
+  "artist": "Galen Rathbun",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Manatee_with_calf.PD_-_colour_corrected.jpg",
+  "file": "Manatee_with_calf.PD_-_colour_corrected.jpg",
+  "article": "https://en.wikipedia.org/wiki/West_Indian_manatee",
+  "scope": "species"
+ },
+ "trichechus-senegalensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/African_manatee_at_Coex_Aquarium%2C_South_Korea.jpg/960px-African_manatee_at_Coex_Aquarium%2C_South_Korea.jpg",
+  "width": 800,
+  "height": 1067,
+  "artist": "Gameraquai",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:African_manatee_at_Coex_Aquarium,_South_Korea.jpg",
+  "file": "African_manatee_at_Coex_Aquarium,_South_Korea.jpg",
+  "article": "https://en.wikipedia.org/wiki/African_manatee",
+  "scope": "species"
  },
  "trigonosaurus-pricei": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Trigonosaurus_pricei_%28holotype%2C_MCT_1488-R_-_cervical_and_dorsal_vertebraez%29.jpg/960px-Trigonosaurus_pricei_%28holotype%2C_MCT_1488-R_-_cervical_and_dorsal_vertebraez%29.jpg",
@@ -25840,6 +26192,42 @@
   "article": "https://en.wikipedia.org/wiki/Yuxisaurus",
   "scope": "genus",
   "kind": "skeletal"
+ },
+ "zaglossus-attenboroughi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Zaglossus_attenboroughi_Flannery.jpg/960px-Zaglossus_attenboroughi_Flannery.jpg",
+  "width": 800,
+  "height": 535,
+  "artist": "Naturalis Biodiversity Center",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Zaglossus_attenboroughi_Flannery.jpg",
+  "file": "Zaglossus_attenboroughi_Flannery.jpg",
+  "article": "https://en.wikipedia.org/wiki/Zaglossus_attenboroughi",
+  "scope": "species"
+ },
+ "zaglossus-bartoni": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Zaglossus_bartoni_-_MUSE.JPG/960px-Zaglossus_bartoni_-_MUSE.JPG",
+  "width": 800,
+  "height": 519,
+  "artist": "Matteo De Stefano/MUSE",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zaglossus_bartoni_-_MUSE.JPG",
+  "file": "Zaglossus_bartoni_-_MUSE.JPG",
+  "article": "https://en.wikipedia.org/wiki/Eastern_long-beaked_echidna",
+  "scope": "species"
+ },
+ "zaglossus-bruijnii": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Long-beakedEchidna.jpg",
+  "width": 800,
+  "height": 612,
+  "artist": "User:Jaganath",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Long-beakedEchidna.jpg",
+  "file": "Long-beakedEchidna.jpg",
+  "article": "https://en.wikipedia.org/wiki/Western_long-beaked_echidna",
+  "scope": "species"
  },
  "zalambdalestes-lechei": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Zalambdalestes_lechei.jpg",
