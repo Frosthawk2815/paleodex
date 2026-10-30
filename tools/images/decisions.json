@@ -3180,6 +3180,15 @@
   "vote": "yes",
   "file": "Machairodus_NNHM.jpg"
  },
+ "mackunda-ctenochasmatoid": {
+  "vote": "no",
+  "file": "Pterodaustro_skull.jpg",
+  "rejectedFiles": [
+   "Pterodaustro_skull.jpg"
+  ],
+  "leaveBlank": true,
+  "note": "Search found a Pterodaustro skull, a different animal; no picture of the specimen exists."
+ },
  "macrauchenia-patachonica": {
   "vote": "yes",
   "file": "Macrauchenia_patachonica_AMNH.jpg"

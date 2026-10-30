@@ -7314,6 +7314,19 @@
   "article": "https://en.wikipedia.org/wiki/Halisaurus",
   "scope": "genus"
  },
+ "haliskia-peterseni": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Haliskia_%28KK_F1426%2C_holotype%29.png/960px-Haliskia_%28KK_F1426%2C_holotype%29.png",
+  "width": 800,
+  "height": 457,
+  "artist": "A. H. Pentland, S. F. Poropat, R. J. Duncan, A. W. A. Kellner, R. A. M. Bantim, J. J. Bevitt, A. M. Tait & K. Grice",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Haliskia_(KK_F1426,_holotype).png",
+  "file": "Haliskia_(KK_F1426,_holotype).png",
+  "article": "https://en.wikipedia.org/wiki/Haliskia",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "halkieria-evangelista": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/32/Halkieria.jpg",
   "width": 800,
@@ -8915,6 +8928,19 @@
   "article": "https://en.wikipedia.org/wiki/Kryptops",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "kunbarrasaurus-ieversi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Kunbarrasaurus_skeleton.jpg/960px-Kunbarrasaurus_skeleton.jpg",
+  "width": 800,
+  "height": 337,
+  "artist": "Stephen F. Poropat, Phil R. Bell, Lachlan J. Hart, Steven W. Salisbury, & Benjamin P. Kear",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kunbarrasaurus_skeleton.jpg",
+  "file": "Kunbarrasaurus_skeleton.jpg",
+  "article": "https://en.wikipedia.org/wiki/Kunbarrasaurus",
+  "scope": "species",
+  "kind": "fossil"
  },
  "kunpengopterus-sinensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Kunpengopterus.png/960px-Kunpengopterus.png",
@@ -14115,6 +14141,19 @@
   "file": "Pteranodon_amnh_martyniuk.jpg",
   "article": "https://en.wikipedia.org/wiki/Pteranodon",
   "scope": "genus",
+  "kind": "fossil"
+ },
+ "pteranodon-sternbergi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Pteranodon_sternbergi_pair.jpg/960px-Pteranodon_sternbergi_pair.jpg",
+  "width": 800,
+  "height": 496,
+  "artist": "Kenn Chaplin from Toronto, Canada",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pteranodon_sternbergi_pair.jpg",
+  "file": "Pteranodon_sternbergi_pair.jpg",
+  "article": "https://en.wikipedia.org/wiki/Pteranodon_sternbergi",
+  "scope": "species",
   "kind": "fossil"
  },
  "pterichthyodes-milleri": {

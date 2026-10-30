@@ -7,6 +7,33 @@ import type { DataSet } from '@/data/sets/types';
 export const MEDIA_EARLY_CRETACEOUS: DataSet = {
   events: [
     formation({
+      id: 'allaru',
+      title: 'Allaru Mudstone',
+      short: 'Allaru',
+      dateText: 'About 102 to 100 million years ago (Early Cretaceous, late Albian)',
+      placeText: 'Marathon Station, near Richmond, Queensland, Australia',
+      lon: 143.5,
+      lat: -20.8,
+      plate: 801,
+      fromMa: 102,
+      toMa: 99.5,
+      jumpMa: 100.5,
+      icon: 'sea',
+      summary: [
+        'Grey mudstone from the floor of the Eromanga Sea, the shallow inland sea that covered much of eastern Australia. It lies above the Toolebuc Formation and below the Mackunda Formation, and records the sea at its widest before it began to dry up.',
+        'Its fossils are mostly sea creatures, but in 1989 a station manager found the skeleton of a small armoured dinosaur, Kunbarrasaurus, whose body had floated out to sea before sinking into the mud. It is the most complete dinosaur skeleton known from Australia.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 100 million years ago' },
+        { label: 'Where today', value: 'Around Richmond, north-central Queensland' },
+        { label: 'Rocks', value: 'Marine mudstone' },
+      ],
+      invertebrates: [
+        { tier: 'pleb', title: 'Ammonites and bivalves', text: 'Ammonites and sea-floor bivalves such as Inoceramus.' },
+      ],
+      keywords: ['allaru', 'marathon station', 'richmond', 'eromanga sea', 'queensland', 'australia', 'cretaceous', 'kunbarrasaurus'],
+    }),
+    formation({
       id: 'mackunda',
       title: 'Mackunda Formation',
       short: 'Mackunda',
@@ -545,6 +572,27 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
     },
   ],
   species: [
+    {
+      id: 'kunbarrasaurus-ieversi',
+      name: 'Kunbarrasaurus ieversi',
+      common: 'Kunbarrasaurus',
+      clade: 'ankylosauria',
+      status: 'full',
+      ageText: 'About 100 million years ago (Early Cretaceous)',
+      placeText: 'Marathon Station, near Richmond, Queensland, Australia (found in marine rocks; it lived on land)',
+      formations: ['allaru'],
+      summary: [
+        'A small, early armoured dinosaur about 2.5 to 3.5 m long, covered in bony plates and studs. Station manager Ian Ievers found it in 1989. It is the most complete dinosaur skeleton known from Australia and the most complete ankylosaur from any of the southern continents: skull, much of the backbone, hips, legs and most of the armour, much of it still in place. It was a land animal; its body floated out to sea and sank into the mud of the Eromanga Sea.',
+        'Its last meal survives in its belly: chopped-up stems and leaves, fern spore cases, and whole seeds and fruit-like bodies, including some from early flowering plants. CT scans showed a very large inner ear for its size and a braincase made largely of cartilage. It was first thought to be a specimen of Minmi, but in 2015 it was named as a genus of its own, from kunbarra, the word for “shield” in the Mayi language of the local Wunumara people.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Lucy Leahey and colleagues, 2015' },
+        { label: 'Length', value: 'About 2.5–3.5 m' },
+        { label: 'Found', value: 'Ian Ievers, 1989' },
+        { label: 'Seen at', value: 'Queensland Museum' },
+      ],
+      keywords: ['kunbarrasaurus', 'ankylosaur', 'armoured dinosaur', 'minmi', 'stomach contents', 'richmond', 'queensland', 'australia', 'cretaceous'],
+    },
     {
       id: 'haliskia-peterseni',
       name: 'Haliskia peterseni',
