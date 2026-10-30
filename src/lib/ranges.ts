@@ -45,6 +45,9 @@ export const EXTINCTION_DRIVERS = new Set([
   'vulpes-vulpes', // red fox: Australia's small mammals
   'sus-scrofa', // wild and feral pigs: island birds and reptiles
   'mustela-erminea', // stoat: New Zealand birds
+  'felis-catus', // domestic and feral cats: dozens of island birds, mammals and reptiles
+  'canis-familiaris', // dogs and dingoes: about a dozen species
+  'oryctolagus-cuniculus', // European rabbit: stripped Laysan Island of plants
 ]);
 
 const inWindow = (t: number, from: number, to: number) => t <= from && (to === 0 ? t >= 0 : t > to);
