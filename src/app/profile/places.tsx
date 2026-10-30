@@ -24,6 +24,7 @@ export default function PlacesScreen() {
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
   const [showAll, setShowAll] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const checkIn = async () => {
     setBusy(true);
@@ -58,13 +59,22 @@ export default function PlacesScreen() {
       <Text style={st.text}>
         Visiting a natural history museum, an accredited zoo or one of the fossil sites in PaleoDex? Check in while you’re there to earn titles.
       </Text>
-      <Text style={st.muted}>Your location is read only when you tap Check in, and never leaves your device. Only the places you visit are saved.</Text>
+      <View style={[st.card, { padding: 14, gap: 4 }]}>
+        <Text style={st.rowTitle}>🔒 Your location stays with you</Text>
+        <Text style={st.rowSub}>
+          I don’t collect, store or sell your location data. Your location is read only when you tap Check in, and it never leaves your device. The places
+          you’ve visited are kept only on this device, and you can delete them at any time. Your titles are kept.
+        </Text>
+      </View>
       <View style={[st.card, { padding: 14, gap: 4 }]}>
         <Text style={st.rowTitle}>⚠️ Stay safe</Text>
         <Text style={st.rowSub}>
+          I don’t want to encourage you to put yourself in danger. Formations that aren’t publicly accessible, are in very remote areas or are in conflict
+          zones don’t award titles. Please leave those to the professionals who make all of this possible.
+        </Text>
+        <Text style={st.rowSub}>
           You don’t need to reach the rocks themselves: you’re checked in anywhere within 25 km of a fossil site, so the nearest town or visitor centre is
           enough. Only visit places open to the public, never enter quarries, mines or private land without permission, and check the tides at coastal sites.
-          Sites in dangerous or very remote places don’t count, so no one is tempted to go there.
         </Text>
       </View>
 
@@ -119,6 +129,22 @@ export default function PlacesScreen() {
           ))}
         </View>
       )}
+
+      {visited.length > 0 && (
+        <Pressable
+          onPress={() => {
+            if (!confirmDelete) return setConfirmDelete(true);
+            update({ places: [] });
+            setConfirmDelete(false);
+            setResult(null);
+          }}
+          accessibilityRole="button"
+          accessibilityHint="Deletes the list of places you've checked in at. Your titles are kept."
+          hitSlop={6}>
+          <Text style={[st.link, { color: palette.badge }]}>{confirmDelete ? 'Tap again to delete your visited places' : 'Delete my visited places'}</Text>
+        </Pressable>
+      )}
+      {confirmDelete && <Text style={st.muted}>Your titles are kept. Only the list of places is deleted.</Text>}
 
       {MUSEUM_AND_ZOO_LIST.length > 0 && (
       <Pressable onPress={() => setShowAll((v) => !v)} accessibilityRole="button" accessibilityState={{ expanded: showAll }} hitSlop={6}>
