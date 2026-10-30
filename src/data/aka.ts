@@ -15,6 +15,10 @@ export const SPECIES_AKA: Record<string, Aka> = {
     names: ['Brontosaurus'],
     note: 'For about a century Brontosaurus was treated as a synonym of Apatosaurus. A 2015 study revived Brontosaurus as its own genus, which PaleoDex follows.',
   },
+  'allosaurus-fragilis': {
+    names: ['Antrodemus'],
+    note: 'Antrodemus valens, named from part of a tail bone in 1870, was long used as the name for Allosaurus. It is now treated as a doubtful name, probably the same animal.',
+  },
   'archaeopteryx-lithographica': { names: ['Urvogel', 'first bird'] },
   'pliosaurus-funkei': { names: ['Predator X'], note: '“Predator X” was its nickname before it was formally named in 2012.' },
   'otodus-megalodon': {
