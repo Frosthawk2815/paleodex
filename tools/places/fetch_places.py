@@ -36,14 +36,14 @@ ACCREDITATION = [
 ]
 
 
-def get(params, tries=6):
+def get(params, tries=20):
     url = API + '?' + urllib.parse.urlencode({**params, 'format': 'json', 'formatversion': 2})
     for i in range(tries):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': UA}), timeout=60) as r:
                 return json.load(r)
         except Exception as e:  # rate limits and network blips: wait and retry
-            wait = 60 * (i + 1)
+            wait = min(600, 120 * (i + 1))
             print(f'  retry in {wait}s ({e})', file=sys.stderr)
             time.sleep(wait)
     raise SystemExit('Wikipedia did not answer')
@@ -78,7 +78,7 @@ def lookup(titles):
             cache[t] = {'title': p['title'], 'coords': co, 'text': text}
         CACHE.write_text(json.dumps(cache))
         print(f'  {min(i + 8, len(todo))}/{len(todo)} looked up', file=sys.stderr, flush=True)
-        time.sleep(12)
+        time.sleep(45)
     return {t: cache.get(t) for t in titles}
 
 
