@@ -632,7 +632,7 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
       id: 'kunbarrasaurus-ieversi',
       name: 'Kunbarrasaurus ieversi',
       common: 'Kunbarrasaurus',
-      clade: 'ankylosauria',
+      clade: 'parankylosauria',
       status: 'full',
       ageText: 'About 102 million years ago (Early Cretaceous)',
       placeText: 'Marathon Station, near Richmond, Queensland, Australia (found in marine rocks; it lived on land)',
@@ -647,7 +647,8 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
         { label: 'Found', value: 'Ian Ievers, 1989' },
         { label: 'Seen at', value: 'Queensland Museum' },
       ],
-      keywords: ['kunbarrasaurus', 'ankylosaur', 'armoured dinosaur', 'minmi', 'stomach contents', 'richmond', 'queensland', 'australia', 'cretaceous'],
+      related: [{ id: 'stegouros-elengassen', note: 'Its Chilean relative in the parankylosaurs, with a bladed tail weapon.' }],
+      keywords: ['kunbarrasaurus', 'parankylosaur', 'ankylosaur', 'armoured dinosaur', 'minmi', 'stomach contents', 'richmond', 'queensland', 'australia', 'cretaceous'],
     },
     {
       id: 'haliskia-peterseni',

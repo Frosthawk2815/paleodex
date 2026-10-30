@@ -7,6 +7,36 @@ import type { DataSet } from '@/data/sets/types';
 export const MEDIA_LATE_CRETACEOUS: DataSet = {
   events: [
     formation({
+      id: 'dorotea',
+      title: 'Dorotea Formation',
+      short: 'Dorotea',
+      dateText: 'About 75 to 71 million years ago (Late Cretaceous, late Campanian to early Maastrichtian)',
+      placeText: 'Cerro Guido, Magallanes, southern Chile',
+      lon: -72.5,
+      lat: -50.9,
+      plate: 291,
+      fromMa: 75,
+      toMa: 71,
+      jumpMa: 73,
+      icon: 'river',
+      summary: [
+        'Sandstones and mudstones from coastal plains and shallow seas at the southern tip of South America, which was then still close to Antarctica. Expeditions to Cerro Guido, near Torres del Paine, have found one of the richest Late Cretaceous faunas of the far south.',
+        'Alongside the armoured Stegouros lived the duck-billed dinosaur relative Gonkoken, titanosaurs, early mammals, plesiosaurs and sharks, with ammonites in the nearby sea.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 75 to 71 million years ago' },
+        { label: 'Where today', value: 'Cerro Guido, near Torres del Paine, Magallanes, Chile' },
+        { label: 'Rocks', value: 'Sandstone and mudstone' },
+      ],
+      groupNotes: [
+        { tier: 'microceleb', title: 'Gonkoken', text: 'Gonkoken nanoi, named in 2023, a duck-billed dinosaur relative whose ancestors reached South America from the north.' },
+        { tier: 'pleb', title: 'Early mammals', text: 'Magallanodon, a gondwanathere, and Orretherium, a meridiolestidan, both from groups found only on the southern continents.' },
+        { tier: 'pleb', title: 'Sea reptiles and sharks', text: 'The plesiosaur Aristonectes, side-necked turtles, and sharks such as Carcharias and Serratolamna.' },
+      ],
+      invertebrates: [{ tier: 'pleb', title: 'Ammonites and bivalves', text: 'Ammonites such as Pachydiscus and Gunnarites, and trigoniid bivalves.' }],
+      keywords: ['dorotea', 'cerro guido', 'magallanes', 'patagonia', 'torres del paine', 'chile', 'cretaceous', 'stegouros'],
+    }),
+    formation({
       id: 'aguja',
       title: 'Aguja Formation',
       short: 'Aguja',
@@ -390,6 +420,13 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
   ],
   clades: [
     {
+      id: 'parankylosauria',
+      name: 'Parankylosauria',
+      common: 'Parankylosaurs',
+      parent: 'ankylosauria',
+      description: 'Small, early-branching armoured dinosaurs from the southern continents, named in 2021: Stegouros from Chile, Kunbarrasaurus from Australia and probably Antarctopelta from Antarctica. Their lineage must have split from other ankylosaurs by the Jurassic. Stegouros had a flat, bladed tail weapon, and Antarctopelta may have too.',
+    },
+    {
       id: 'protostegidae',
       name: 'Protostegidae',
       common: 'Giant sea turtles',
@@ -422,6 +459,27 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
     },
   ],
   species: [
+    {
+      id: 'stegouros-elengassen',
+      name: 'Stegouros elengassen',
+      common: 'Stegouros',
+      clade: 'parankylosauria',
+      status: 'full',
+      ageText: 'About 74 million years ago (Late Cretaceous)',
+      placeText: 'Cerro Guido, Magallanes, Chile',
+      formations: ['dorotea'],
+      summary: [
+        'A small armoured dinosaur about 2 m long, known from an almost complete skeleton named in 2021. Its tail ended in a flat, frond-like weapon made of seven pairs of bony blades fused together, unlike the club of Ankylosaurus or the spikes of Stegosaurus. Its describers called it a macuahuitl, after an Aztec war club edged with blades.',
+        'Its mix of features at first suggested a stegosaur, hence the name, which means “roof tail”, but it turned out to be an early ankylosaur. It founded a new southern group, the parankylosaurs, with Kunbarrasaurus from Australia and probably Antarctopelta from Antarctica. Elengassen is an armoured beast from the legends of the Aónik’enk people of Patagonia.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Sergio Soto-Acuña and colleagues, 2021' },
+        { label: 'Length', value: 'About 2 m' },
+        { label: 'Tail', value: 'Flat, bladed weapon of seven pairs of fused osteoderms' },
+      ],
+      related: [{ id: 'kunbarrasaurus-ieversi', note: 'Its Australian relative in the parankylosaurs.' }],
+      keywords: ['stegouros', 'parankylosaur', 'ankylosaur', 'macuahuitl', 'tail weapon', 'chile', 'patagonia', 'cretaceous'],
+    },
     {
       id: 'deinosuchus-riograndensis',
       name: 'Deinosuchus riograndensis',
