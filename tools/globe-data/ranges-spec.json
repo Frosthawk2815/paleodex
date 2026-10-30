@@ -209,7 +209,9 @@
     "lastSeen": {
       "country": "Russia",
       "yearsAgo": 4000,
-      "text": "Wrangel Island, Russia, about 4,000 years ago"
+      "text": "Wrangel Island, Russia, about 4,000 years ago",
+      "lon": -179.4,
+      "lat": 71.2
     }
   },
   "thylacinus-cynocephalus": {
@@ -256,7 +258,9 @@
     "lastSeen": {
       "country": "Australia",
       "year": 1936,
-      "text": "Hobart Zoo, Tasmania, Australia: the last known thylacine died on 7 September 1936"
+      "text": "Hobart Zoo, Tasmania, Australia: the last known thylacine died on 7 September 1936",
+      "lon": 147.33,
+      "lat": -42.88
     }
   },
   "raphus-cucullatus": {
@@ -311,7 +315,9 @@
     "lastSeen": {
       "country": "United States of America",
       "year": 1914,
-      "text": "Cincinnati Zoo, USA: Martha, the last passenger pigeon, died on 1 September 1914"
+      "text": "Cincinnati Zoo, USA: Martha, the last passenger pigeon, died on 1 September 1914",
+      "lon": -84.51,
+      "lat": 39.14
     }
   },
   "pinguinus-impennis": {
@@ -414,7 +420,9 @@
     "lastSeen": {
       "country": "Russia",
       "year": 1768,
-      "text": "Commander Islands, Russia: the last were killed around 1768"
+      "text": "Commander Islands, Russia: the last were killed around 1768",
+      "lon": 166.5,
+      "lat": 55.0
     }
   },
   "dinornis-robustus": {
@@ -870,7 +878,9 @@
     "lastSeen": {
       "country": "United States of America",
       "yearsAgo": 10000,
-      "text": "Around the Great Lakes, USA, about 10,000 years ago"
+      "text": "Around the Great Lakes, USA, about 10,000 years ago",
+      "lon": -84.0,
+      "lat": 43.0
     }
   },
   "camelops-hesternus": {
@@ -37225,6 +37235,8 @@
     ],
     "lastSeen": {
       "country": "Australia",
+      "lon": 137.5,
+      "lat": -25.5,
       "year": 1931,
       "text": "Simpson Desert, Australia: the last specimen was collected in 1931"
     }
@@ -37671,6 +37683,8 @@
     ],
     "lastSeen": {
       "country": "Australia",
+      "lon": 140.6,
+      "lat": -37.3,
       "year": 1939,
       "text": "South-eastern South Australia: the last known toolache wallaby died in captivity in 1939"
     }
@@ -37855,6 +37869,8 @@
     ],
     "lastSeen": {
       "country": "Australia",
+      "lon": 139.5,
+      "lat": -27.0,
       "year": 1935,
       "text": "North-eastern South Australia: last seen in 1935"
     }

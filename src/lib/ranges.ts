@@ -9,7 +9,8 @@ import { decodeLonLatRing, type Polygon } from '@/lib/geography';
 import { yearToMa } from '@/lib/time';
 
 export type RangePhase = { fromMa: number; toMa: number; label: string; polygons: string[][] };
-// Where the last one was seen alive. The skull marker sits at the centre of `country`.
+// Where the last one was seen alive. The skull marker sits at lon/lat: an exact spot where known,
+// otherwise the centre of `country`.
 export type LastSeen = { country: string; lon: number; lat: number; ma: number; year?: number; text: string };
 export type Range = { phases: RangePhase[]; lastSeen?: LastSeen };
 

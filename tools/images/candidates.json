@@ -14683,6 +14683,19 @@
   "article": "https://en.wikipedia.org/wiki/Greater_bilby",
   "scope": "species"
  },
+ "macrotis-leucura": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Macrotis_leucura_lesser_bilby_museum_specimen.png/500px-Macrotis_leucura_lesser_bilby_museum_specimen.png",
+  "width": 500,
+  "height": 544,
+  "artist": "Francisco Godino",
+  "license": "FAL",
+  "licenseUrl": "http://artlibre.org/licence/lal/en",
+  "source": "https://commons.wikimedia.org/wiki/File:Macrotis_leucura_lesser_bilby_museum_specimen.png",
+  "file": "Macrotis_leucura_lesser_bilby_museum_specimen.png",
+  "article": "https://en.wikipedia.org/wiki/Lesser_bilby",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "madoqua-kirkii": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Madoqua_kirkii_-_male_%28Namutoni%29.jpg/960px-Madoqua_kirkii_-_male_%28Namutoni%29.jpg",
   "width": 800,

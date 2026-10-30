@@ -419,16 +419,17 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           const pos: [number, number] = [lastSeen.lon, lastSeen.lat];
           const xy = projection(pos);
           return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05
-            ? [{ id, xy, name: speciesName(id), country: lastSeen.country, extra: 0, zoomTo: 0 }]
+            ? [{ id, xy, name: speciesName(id), spot: `${lastSeen.lon.toFixed(1)},${lastSeen.lat.toFixed(1)}`, extra: 0, zoomTo: 0 }]
             : [];
         })
       : [];
-  // Several species last seen in the same country are stacked in a column, one label per row.
+  // Several species last seen at the same spot (usually the middle of a country) are stacked in
+  // a column, one label per row.
   // A column only fits over the country when zoomed in; further out the column would reach other
   // continents, so the group shows as one marker ("+3") that zooms in when tapped.
   const ROW_PX = 58;
-  for (const country of new Set(skulls.map((sk) => sk.country))) {
-    const same = skulls.filter((o) => o.country === country);
+  for (const spot of new Set(skulls.map((sk) => sk.spot))) {
+    const same = skulls.filter((o) => o.spot === spot);
     if (same.length < 2) continue;
     const fitsR = ((same.length - 1) * ROW_PX) / 0.3;
     if (earthR >= fitsR) {

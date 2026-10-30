@@ -132,7 +132,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
                   <PointIcon kind="skull" size={30} />
                   <View style={info.cardText}>
                     <Text style={info.cardTitle}>{range.lastSeen.text} ›</Text>
-                    <Text style={info.cardNote}>The skull marker sits at the centre of {range.lastSeen.country} until then</Text>
+                    <Text style={info.cardNote}>The skull marker shows on the globe up to that date</Text>
                   </View>
                 </View>
               </Pressable>

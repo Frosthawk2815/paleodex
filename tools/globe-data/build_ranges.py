@@ -134,7 +134,8 @@ def main():
         if 'lastSeen' in s:
             ls = s['lastSeen']
             years_ago = ls['yearsAgo'] if 'yearsAgo' in ls else this_year - ls['year']
-            lon, lat = labels[ls['country']]
+            # An exact spot ('lon'/'lat') if given, otherwise the middle of the country.
+            lon, lat = (ls['lon'], ls['lat']) if 'lon' in ls else labels[ls['country']]
             entry['lastSeen'] = {
                 'country': ls['country'],
                 'lon': lon,
