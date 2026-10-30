@@ -7,6 +7,30 @@ import type { DataSet } from '@/data/sets/types';
 export const MEDIA_EARLY_CRETACEOUS: DataSet = {
   events: [
     formation({
+      id: 'mackunda',
+      title: 'Mackunda Formation',
+      short: 'Mackunda',
+      dateText: 'About 104 to 96 million years ago (late Early to early Late Cretaceous; dating debated)',
+      placeText: 'Near Muttaburra, central Queensland, Australia',
+      lon: 144.55,
+      lat: -22.6,
+      plate: 801,
+      fromMa: 104,
+      toMa: 95,
+      jumpMa: 99,
+      icon: 'sea',
+      summary: [
+        'Sandstones and mudstones laid down along the shores of the Eromanga Sea, a shallow inland sea that once covered much of eastern Australia, as it was drying up and giving way to the river plains of the Winton Formation above.',
+        'It was long dated to about 104 to 102 million years ago, but a 2026 study of tiny zircon crystals from the Muttaburrasaurus site gave about 96 million years, though with a wide margin of error.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 104 to 96 million years ago (debated)' },
+        { label: 'Where today', value: 'Around Muttaburra, central Queensland' },
+        { label: 'Rocks', value: 'Sandstone, siltstone and mudstone of a shrinking inland sea' },
+      ],
+      keywords: ['mackunda', 'muttaburra', 'eromanga sea', 'queensland', 'australia', 'cretaceous', 'muttaburrasaurus'],
+    }),
+    formation({
       id: 'wonthaggi',
       title: 'Wonthaggi Formation',
       short: 'Wonthaggi',
@@ -512,6 +536,27 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
     },
   ],
   species: [
+    {
+      id: 'muttaburrasaurus-langdoni',
+      name: 'Muttaburrasaurus langdoni',
+      common: 'Muttaburrasaurus',
+      clade: 'iguanodontia',
+      status: 'full',
+      ageText: 'About 100 million years ago (Cretaceous)',
+      placeText: 'Muttaburra, central Queensland, Australia',
+      formations: ['mackunda'],
+      summary: [
+        'A large plant-eating ornithopod, around 7 to 8 m long, best known for the big, hollow bump on top of its snout. Grazier Doug Langdon found the skeleton by a creek near Muttaburra in 1963, and it was named in 1981. It is one of the most complete dinosaurs from Australia.',
+        'A 2026 study CT-scanned its skull. It found that the bulbous nose is built from bones not seen in other dinosaurs rather than from the usual nasal bones, and that it had teeth at the front of its snout, unexpected in its group. Its brain had a large region for smell, which the researchers suggest helped it pick out particular plants. Whether it is closest to Iguanodon and its relatives or to the European rhabdodontids is still debated.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Alan Bartholomai and Ralph Molnar, 1981' },
+        { label: 'Length', value: 'About 7–8 m' },
+        { label: 'Found', value: 'Doug Langdon, 1963' },
+        { label: 'Seen at', value: 'Queensland Museum' },
+      ],
+      keywords: ['muttaburrasaurus', 'muttaburra', 'ornithopod', 'iguanodont', 'big nose', 'queensland', 'australia', 'cretaceous'],
+    },
     {
       id: 'koolasuchus-cleelandi',
       name: 'Koolasuchus cleelandi',
