@@ -8,7 +8,7 @@ import { EARTH_RADIUS_KM, MOON_DISTANCE_TODAY_KM, MOON_RADIUS_KM, moonDistanceKm
 import { geographyAt, landCentre, QUATERNARY_MA } from '@/lib/geography';
 import { EXTINCTIONS, extinctionAt } from '@/lib/extinctions';
 import { siteAt } from '@/lib/plates';
-import { badgeBg, pointPosition, pointVisible, visiblePoints } from '@/lib/events';
+import { badgeBg, pointPosition, visiblePoints } from '@/lib/events';
 import { EVENTS, type EventPoint, type HistoryEvent } from '@/data/events';
 import { moonView } from '@/lib/moon-surface';
 import { FLAG_FOOT, PointIconShape } from '@/components/point-icon';
@@ -56,6 +56,7 @@ const clampZoom = (z: number) => Math.min(MAX_ZOOM, Math.max(0.001, z));
 // own, slowing down until it stops or is touched again.
 function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => void, onActive?: (active: boolean) => void) {
   let baseRadius = 150;
+  let landCentre: [number, number] = [0, 0];
   let lastDx = 0;
   let lastDy = 0;
   let lastPinch = 0;
@@ -79,6 +80,9 @@ function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => voi
   const spinBy = (dx: number, dy: number) =>
     setCamera((c) => {
       if (c.view === 'moon') return c; // the Moon always shows its near side
+      // Turning the opening view by hand fixes it in place, so moving the timeline no longer
+      // re-centres it on the continents.
+      if (c.anchor === 'land') c = { ...c, anchor: 'free', lon: c.lon - landCentre[0], lat: c.lat - landCentre[1] * 0.6 };
       const k = ((180 / Math.PI) * DRAG_SPEED) / Math.max(baseRadius * c.zoom, 40);
       return { ...c, lon: c.lon + dx * k, lat: Math.max(-85, Math.min(85, c.lat - dy * k)) };
     });
@@ -162,7 +166,10 @@ function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => voi
   const setBaseRadius = (r: number) => {
     baseRadius = r;
   };
-  return { panHandlers: responder.panHandlers, stop, setBaseRadius };
+  const setLandCentre = (c: [number, number]) => {
+    landCentre = c;
+  };
+  return { panHandlers: responder.panHandlers, stop, setBaseRadius, setLandCentre };
 }
 
 // A lumpy outline for the asteroid, as offsets from its centre (unit radius).
@@ -183,12 +190,14 @@ type Marker = { event: HistoryEvent; point: EventPoint; index: number; xy: [numb
 // Rock formations get a different marker colour from other events.
 const markerColor = (e: HistoryEvent) => (e.kind === 'Rock formation' ? '#FF9EC7' : '#FFD54A');
 
-// The event point a camera anchor ('event:<id>:<index>') refers to, if it's showing at `timeMa`.
-function anchoredPoint(anchor: string, timeMa: number): EventPoint | undefined {
+// The event point a camera anchor ('event:<id>:<index>') refers to. The camera keeps following
+// it (moving with its plate) at any time, so moving the timeline stays over the same region even
+// before or after the point itself is showing.
+function anchoredPoint(anchor: string): EventPoint | undefined {
   if (!anchor.startsWith('event:')) return undefined;
   const [, id, index] = anchor.split(':');
   const point = EVENTS.find((e) => e.id === id)?.points[Number(index)];
-  return point && point.body === 'earth' && pointVisible(point, timeMa) ? point : undefined;
+  return point && point.body === 'earth' ? point : undefined;
 }
 
 // A fixed place a camera anchor refers to: a last sighting ('skull:<species>') or the middle of
@@ -303,15 +312,17 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   const step = timeMa > QUATERNARY_MA ? Math.round(timeMa * 10) / 10 : Math.round(timeMa * 1000) / 1000;
   const geo = useMemo(() => geographyAt(step), [step]);
   const centre = useMemo(() => landCentre(geo.land), [geo]);
+  useEffect(() => pan.setLandCentre(centre), [pan, centre]);
   const showAsteroid = asteroidVisible(timeMa);
   const impactSite = useMemo(() => siteAt(K_PG.site!, step), [step]);
-  // Keep facing a focused site while the timeline is still at its event.
+  // Keep facing a focused extinction site (moving with its plate) after jumping to it...
   const current = extinctionAt(timeMa);
-  const anchorSite = current?.site && camera.anchor === current.id ? current.site : undefined;
-  // ...or an event point after jumping to it, while that point is showing.
-  const anchorPoint = anchoredPoint(camera.anchor, timeMa);
-  // ...or a fixed place (a species' last sighting or range).
-  const fixedAnchor = useMemo(() => anchorLonLat(camera.anchor), [camera.anchor]);
+  const anchorSite = EXTINCTIONS.find((e) => e.id === camera.anchor)?.site;
+  // ...or an event point after jumping to it...
+  const anchorPoint = anchoredPoint(camera.anchor);
+  // ...or a fixed place (a species' last sighting or range). A view the user has turned by hand
+  // ('free') stays put; only the opening view ('land') follows the continents as they move.
+  const fixedAnchor = useMemo(() => (camera.anchor === 'free' ? ([0, 0] as [number, number]) : anchorLonLat(camera.anchor)), [camera.anchor]);
   const anchorPos = anchorSite ? siteAt(anchorSite, step) : anchorPoint ? pointPosition(anchorPoint, step) : fixedAnchor;
 
   // The selected species' range at this time.
