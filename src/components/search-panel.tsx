@@ -4,6 +4,7 @@ import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-na
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { EVENTS, type HistoryEvent } from '@/data/events';
 import { type Palette, usePalette } from '@/hooks/use-palette';
+import { applyFonts } from '@/lib/theme';
 import { type Extinction, EXTINCTIONS } from '@/lib/extinctions';
 import { type Unit, UNITS_BY_LEVEL } from '@/lib/time';
 import { SHARED_SHORTHANDS } from '@/data/aka';
@@ -199,7 +200,7 @@ type Props = {
 // Search for events, mass extinctions and units of geological time.
 export function SearchPanel({ onSelect, onClose }: Props) {
   const palette = usePalette();
-  const styles = useMemo(() => makeStyles(palette), [palette]);
+  const styles = useMemo(() => applyFonts(makeStyles(palette), palette.fonts, []), [palette]);
   const [query, setQuery] = useState('');
   const results = useMemo(() => search(query), [query]);
 

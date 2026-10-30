@@ -26,7 +26,15 @@ export type Palette = {
   chipBorder: string;
   pressed: string;
   dark: boolean;
+  // Set for the paper theme: which paper to draw behind pages, and its fonts (once loaded).
+  paper?: Paper;
+  fonts?: PaperFonts;
 };
+
+export type Paper = 'ancient' | 'modern';
+export type PaperStyle = 'mixed' | Paper;
+// headingScale enlarges headings for hands that run small.
+export type PaperFonts = { heading: string; body: string; bodyBold: string; italic?: string; headingScale: number };
 
 // A colour the user can choose, in a lighter and a darker variant.
 // lightName/darkName replace "light <name>" / "dark <name>" when a variant has its own name.
@@ -162,6 +170,95 @@ export function customPalette(c: CustomTheme, highContrast: boolean): Palette {
     chip: readable(dark ? '#D9CCFF' : '#5B3FB0', bgs, target),
     badge: readable(dark ? '#FF9EC7' : '#A8305F', bgs, target),
   });
+}
+
+// Old parchment: brown-black ink, with headings in red as in medieval manuscripts.
+const PARCHMENT = finish({
+  background: '#EAD9B2',
+  card: '#E1CB9B',
+  text: '#2B1C0E',
+  muted: '#5A4329',
+  border: '#B0905F',
+  track: '#D8C08E',
+  link: '#7A2B0C',
+  accent: '#8C1A1A',
+  chip: '#43306E',
+  badge: '#8C1A1A',
+});
+
+// A modern notebook: white lined paper, blue ballpoint and red pen.
+const NOTEBOOK = finish({
+  background: '#FCFBF4',
+  card: '#FFFFFF',
+  text: '#16244A',
+  muted: '#46557A',
+  border: '#C3D2E7',
+  track: '#E8EEF6',
+  link: '#1C4DB5',
+  accent: '#B8322A',
+  chip: '#5B3FB0',
+  badge: '#B0306A',
+});
+
+export const PAPER_FONTS_BY_KIND: Record<Paper, PaperFonts> = {
+  ancient: { heading: 'UncialAntiqua', body: 'IMFell', bodyBold: 'IMFell', italic: 'IMFell-Italic', headingScale: 1 },
+  modern: { heading: 'Caveat-Bold', body: 'Kalam', bodyBold: 'Kalam-Bold', headingScale: 1.3 },
+};
+
+export function paperPalette(kind: Paper, highContrast: boolean, fontsReady: boolean): Palette {
+  const base = kind === 'ancient' ? PARCHMENT : NOTEBOOK;
+  const p: Palette = highContrast
+    ? {
+        ...base,
+        text: '#000000',
+        muted: base.text,
+        border: kind === 'ancient' ? '#6E5230' : '#5F7398',
+        link: readable(base.link, [base.background, base.card], 7),
+        accent: readable(base.accent, [base.background, base.card], 7),
+        badge: readable(base.badge, [base.background, base.card], 7),
+      }
+    : base;
+  return { ...p, paper: kind, fonts: fontsReady ? PAPER_FONTS_BY_KIND[kind] : undefined };
+}
+
+type TextLike = { color?: unknown; fontWeight?: unknown; fontStyle?: unknown; fontSize?: number; fontFamily?: string };
+
+// Give every text style in a stylesheet the paper theme's fonts: headings in the heading hand, the
+// rest in the body hand (bold where the style is bold, italic where it is italic).
+export function applyFonts<T extends Record<string, object>>(styles: T, fonts: PaperFonts | undefined, headingKeys: string[]): T {
+  if (!fonts) return styles;
+  const out: Record<string, object> = {};
+  for (const [key, raw] of Object.entries(styles)) {
+    const s = raw as TextLike;
+    if (key === 'italic') {
+      out[key] = fonts.italic ? { ...s, fontFamily: fonts.italic } : s;
+      continue;
+    }
+    if (s.color === undefined) {
+      out[key] = s;
+      continue;
+    }
+    const heading = headingKeys.includes(key);
+    const bold = s.fontWeight !== undefined && Number(s.fontWeight) >= 600;
+    const italic = s.fontStyle === 'italic' && fonts.italic;
+    const fontFamily = heading ? fonts.heading : italic ? fonts.italic! : bold ? fonts.bodyBold : fonts.body;
+    out[key] = {
+      ...s,
+      fontFamily,
+      // Custom fonts carry their own weight and slant; asking for more can swap in the system font.
+      fontWeight: 'normal',
+      ...(italic ? { fontStyle: 'normal' } : {}),
+      ...(heading && s.fontSize ? { fontSize: Math.round(s.fontSize * fonts.headingScale) } : {}),
+    };
+  }
+  return out as T;
+}
+
+// The paper font for one piece of text, for screens that style text inline.
+export function paperFont(p: Palette, kind: 'heading' | 'body' | 'bold') {
+  if (!p.fonts) return null;
+  const fontFamily = kind === 'heading' ? p.fonts.heading : kind === 'bold' ? p.fonts.bodyBold : p.fonts.body;
+  return { fontFamily, fontWeight: 'normal' as const };
 }
 
 export const describeContrast = (fg: string, bg: string) => `${contrast(fg, bg).toFixed(1)}:1`;

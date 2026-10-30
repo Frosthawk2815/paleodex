@@ -2,11 +2,23 @@ import { Link, Stack, useLocalSearchParams } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { PaperBackground } from '@/components/paper-sheet';
 import { SeriesTimeline } from '@/components/series-timeline';
 import { durationLabel, getPeriod, PERIODS, rangeLabel, textOn } from '@/data/periods';
 import { usePalette } from '@/hooks/use-palette';
+import { PageEra } from '@/lib/era';
+import { paperFont } from '@/lib/theme';
 
-export default function PeriodScreen() {
+// Periods are the ancient past, so the mixed paper theme shows them on parchment.
+export default function PeriodRoute() {
+  return (
+    <PageEra value="ancient">
+      <PeriodScreen />
+    </PageEra>
+  );
+}
+
+function PeriodScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const palette = usePalette();
   const insets = useSafeAreaInsets();
@@ -32,11 +44,12 @@ export default function PeriodScreen() {
       contentInsetAdjustmentBehavior="automatic"
       contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 32 }]}>
       <Stack.Screen options={{ title: period.name }} />
+      {palette.paper && <PaperBackground kind={palette.paper} />}
 
       <View style={[styles.banner, { backgroundColor: period.color }]}>
-        <Text style={[styles.era, { color: onColor }]}>{period.era} Era</Text>
-        <Text style={[styles.name, { color: onColor }]}>{period.name}</Text>
-        <Text style={[styles.tagline, { color: onColor }]}>{period.tagline}</Text>
+        <Text style={[styles.era, { color: onColor }, paperFont(palette, 'heading')]}>{period.era} Era</Text>
+        <Text style={[styles.name, { color: onColor }, paperFont(palette, 'heading')]}>{period.name}</Text>
+        <Text style={[styles.tagline, { color: onColor }, paperFont(palette, 'body')]}>{period.tagline}</Text>
       </View>
 
       <View style={styles.stats}>
@@ -44,22 +57,22 @@ export default function PeriodScreen() {
         <Stat label={period.endMa === 0 ? 'So far' : 'Lasted'} value={durationLabel(period)} />
       </View>
 
-      <Text style={[styles.body, { color: palette.text }]}>{period.summary}</Text>
+      <Text style={[styles.body, { color: palette.text }, paperFont(palette, 'body')]}>{period.summary}</Text>
 
       <SeriesTimeline period={period} />
 
-      <Text style={[styles.heading, { color: palette.text }]}>Life and events</Text>
+      <Text style={[styles.heading, { color: palette.text }, paperFont(palette, 'heading')]}>Life and events</Text>
       {period.highlights.map((h) => (
         <View key={h} style={styles.bulletRow}>
           <View style={[styles.bullet, { backgroundColor: period.color }]} />
-          <Text style={[styles.body, styles.bulletText, { color: palette.text }]}>{h}</Text>
+          <Text style={[styles.body, styles.bulletText, { color: palette.text }, paperFont(palette, 'body')]}>{h}</Text>
         </View>
       ))}
 
-      <Text style={[styles.heading, { color: palette.text }]}>
+      <Text style={[styles.heading, { color: palette.text }, paperFont(palette, 'heading')]}>
         {period.endMa === 0 ? 'Where it stands' : 'How it ended'}
       </Text>
-      <Text style={[styles.body, { color: palette.text }]}>{period.ending}</Text>
+      <Text style={[styles.body, { color: palette.text }, paperFont(palette, 'body')]}>{period.ending}</Text>
 
       <View style={styles.nav}>
         {prev ? <NavLink id={prev.id} label={`← ${prev.name}`} align="left" /> : <View style={styles.navSpacer} />}
@@ -73,8 +86,8 @@ function Stat({ label, value }: { label: string; value: string }) {
   const palette = usePalette();
   return (
     <View style={[styles.stat, { backgroundColor: palette.card, borderColor: palette.border }]}>
-      <Text style={[styles.statLabel, { color: palette.muted }]}>{label}</Text>
-      <Text style={[styles.statValue, { color: palette.text }]}>{value}</Text>
+      <Text style={[styles.statLabel, { color: palette.muted }, paperFont(palette, 'bold')]}>{label}</Text>
+      <Text style={[styles.statValue, { color: palette.text }, paperFont(palette, 'bold')]}>{value}</Text>
     </View>
   );
 }
@@ -90,7 +103,7 @@ function NavLink({ id, label, align }: { id: string; label: string; align: 'left
               styles.navButton,
               { backgroundColor: palette.card, borderColor: palette.border, opacity: pressed ? 0.6 : 1 },
             ]}>
-            <Text style={[styles.navText, { color: palette.text, textAlign: align }]}>{label}</Text>
+            <Text style={[styles.navText, { color: palette.text, textAlign: align }, paperFont(palette, 'bold')]}>{label}</Text>
           </View>
         )}
       </Pressable>

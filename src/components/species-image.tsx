@@ -6,6 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { type Palette, usePalette } from '@/hooks/use-palette';
 
 import { imageCaption, imageOf } from '@/lib/images';
+import { applyFonts } from '@/lib/theme';
 import { useMainUserPhoto } from '@/lib/user-photos';
 
 const sourceName = (url: string) => (url.includes('commons.wikimedia.org') ? 'Wikimedia Commons' : 'Wikipedia');
@@ -17,7 +18,7 @@ const open = (url?: string | null) => {
 export function SpeciesImage({ speciesId, name }: { speciesId: string; name: string }) {
   const mine = useMainUserPhoto(speciesId);
   const palette = usePalette();
-  const styles = useMemo(() => makeStyles(palette), [palette]);
+  const styles = useMemo(() => applyFonts(makeStyles(palette), palette.fonts, []), [palette]);
   const img = imageOf(speciesId);
   // A photo the user chose to show here replaces the stock picture.
   if (mine) {

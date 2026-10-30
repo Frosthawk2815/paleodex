@@ -11,6 +11,7 @@ import { type Palette, usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
 import { cladeById, speciesById } from '@/lib/life';
 import { type Avatar, type OpenRequest, type PageRef, useProfile, useTextScale } from '@/lib/profile';
+import { applyFonts } from '@/lib/theme';
 
 // What to show for a saved page: its name, a short description and a picture if it has one.
 export function pageInfo(page: PageRef): { title: string; subtitle: string; imageId?: string } | null {
@@ -31,7 +32,7 @@ export function pageInfo(page: PageRef): { title: string; subtitle: string; imag
 export function useProfileStyles() {
   const palette = usePalette();
   const scale = useTextScale();
-  return useMemo(() => makeStyles(palette, scale), [palette, scale]);
+  return useMemo(() => applyFonts(makeStyles(palette, scale), palette.fonts, ['title', 'heading']), [palette, scale]);
 }
 
 function makeStyles(p: Palette, s: number) {

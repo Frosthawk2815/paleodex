@@ -1,6 +1,6 @@
 import { Link, router, useFocusEffect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useDeferredValue, useEffect, useEffectEvent, useRef, useState } from 'react';
+import { useDeferredValue, useEffect, useEffectEvent, useMemo, useRef, useState } from 'react';
 import {
   BackHandler,
   type LayoutChangeEvent,
@@ -20,11 +20,13 @@ import { SpeciesInfo } from '@/components/species-info';
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { Globe } from '@/components/globe';
 import { AvatarImage } from '@/components/profile-ui';
+import { PageSheet } from '@/components/paper-sheet';
 import { usePalette } from '@/hooks/use-palette';
 import { type SearchResult, SearchPanel } from '@/components/search-panel';
 import { TimeBar, type TimeBarHandle } from '@/components/time-bar';
 import { EVENTS, type HistoryEvent } from '@/data/events';
 import { extinctionAt } from '@/lib/extinctions';
+import { cladeEra, type Era, eventEra, speciesEra } from '@/lib/era';
 import { cladeById, formationById, pastPointIndex, speciesById } from '@/lib/life';
 import { birthMaOf, type PageRef, useProfile } from '@/lib/profile';
 import { lastSeenJumpMa, phaseJumpMa, rangeOf } from '@/lib/ranges';
@@ -59,6 +61,14 @@ export default function GlobeScreen() {
   const [area, setArea] = useState({ width: 0, height: 0 });
   const [focus, setFocus] = useState<Focus | null>(null);
   const [selected, setSelected] = useState<Selection | null>(null);
+  // Whether the open page is about the ancient past or the modern world (for the paper theme).
+  const selectedEra = useMemo<Era>(() => {
+    if (!selected) return 'ancient';
+    if (selected.kind === 'event') return eventEra(selected.event);
+    if (selected.kind === 'clade') return cladeEra(selected.id);
+    const s = speciesById(selected.id);
+    return s ? speciesEra(s) : 'ancient';
+  }, [selected]);
   // Pages shown before the current one, most recent last, for the "previous page" button.
   const [history, setHistory] = useState<Selection[]>([]);
   // A modern species whose range is shaded on the globe.
@@ -320,7 +330,7 @@ export default function GlobeScreen() {
         </View>
 
         {selected && (
-          <View onLayout={onInfoLayout} style={[styles.infoSheet, { backgroundColor: palette.background }]}>
+          <PageSheet era={selectedEra} onLayout={onInfoLayout} style={styles.infoSheet}>
             {selected.kind === 'event' && (
               <EventInfo
                 event={selected.event}
@@ -357,7 +367,7 @@ export default function GlobeScreen() {
             {selected.kind === 'clade' && cladeById(selected.id) && (
               <CladeInfo clade={cladeById(selected.id)!} onBack={backToGlobe} {...nav} onOpenClade={openClade} onOpenSpecies={openSpecies} />
             )}
-          </View>
+          </PageSheet>
         )}
       </ScrollView>
 

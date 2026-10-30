@@ -3,6 +3,7 @@ import { StyleSheet, type TextStyle } from 'react-native';
 
 import { type Palette, usePalette } from '@/hooks/use-palette';
 import { useTextScale } from '@/lib/profile';
+import { applyFonts } from '@/lib/theme';
 
 // Styles shared by the information sections below the globe, in the user's theme colours.
 const makeInfo = (p: Palette) =>
@@ -226,7 +227,7 @@ export function useInfoStyles(): InfoStyles {
   const scale = useTextScale();
   const palette = usePalette();
   return useMemo(() => {
-    const base = makeInfo(palette);
+    const base = applyFonts(makeInfo(palette), palette.fonts, ['title', 'heading', 'kicker', 'subtitle']);
     if (scale === 1) return base;
     const out = {} as Record<string, TextStyle>;
     for (const [key, style] of Object.entries(base) as [string, TextStyle][]) {

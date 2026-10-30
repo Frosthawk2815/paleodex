@@ -4,7 +4,7 @@ import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { isDark } from '@/lib/colors';
 import { type TextSize, type Theme, useProfile } from '@/lib/profile';
-import { compatible, type CustomTheme, readableTextColors, resolveText, SWATCHES } from '@/lib/theme';
+import { compatible, type CustomTheme, type PaperStyle, readableTextColors, resolveText, SWATCHES } from '@/lib/theme';
 
 // A row of options where one is chosen.
 function Choice<T extends string>({ options, value, onChange }: { options: { value: T; label: string }[]; value: T; onChange: (v: T) => void }) {
@@ -57,12 +57,33 @@ export default function SettingsScreen() {
           { value: 'light', label: 'Light' },
           { value: 'dark', label: 'Dark' },
           { value: 'custom', label: 'Custom' },
+          { value: 'paper', label: 'Paper' },
         ]}
         value={s.theme}
         onChange={(theme) => updateSettings({ theme })}
       />
       <Text style={st.muted}>Applies to species, group and formation pages and these menus. The globe stays dark, like the night sky.</Text>
       {s.theme === 'custom' && <CustomColors />}
+      {s.theme === 'paper' && (
+        <View style={{ gap: 8, marginTop: 4 }}>
+          <Choice<PaperStyle>
+            options={[
+              { value: 'mixed', label: 'Mixed' },
+              { value: 'ancient', label: 'Ancient parchment' },
+              { value: 'modern', label: 'Modern notebook' },
+            ]}
+            value={s.paper}
+            onChange={(paper) => updateSettings({ paper })}
+          />
+          <Text style={st.muted}>
+            {s.paper === 'mixed'
+              ? 'Pages about prehistoric life look like old parchment written in a manuscript hand. Living animals and recent history look like a handwritten notebook, as do these menus.'
+              : s.paper === 'ancient'
+                ? 'Every page looks like old parchment, written in a manuscript hand.'
+                : 'Every page looks like a lined notebook, written by hand.'}
+          </Text>
+        </View>
+      )}
 
       <Text style={st.heading}>Text size</Text>
       <Choice<TextSize>

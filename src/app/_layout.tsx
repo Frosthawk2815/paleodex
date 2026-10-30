@@ -1,8 +1,10 @@
+import { useFonts } from 'expo-font';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 
 import { useMemo } from 'react';
 
 import { usePalette } from '@/hooks/use-palette';
+import { FontsReady, PAPER_FONTS } from '@/lib/fonts';
 import { ProfileProvider } from '@/lib/profile';
 import { UserPhotosProvider } from '@/lib/user-photos';
 
@@ -32,11 +34,15 @@ function Screens() {
 }
 
 export default function RootLayout() {
+  // The paper theme's fonts load in the background; the app shows straight away.
+  const [fontsLoaded] = useFonts(PAPER_FONTS);
   return (
-    <ProfileProvider>
-      <UserPhotosProvider>
-        <Screens />
-      </UserPhotosProvider>
-    </ProfileProvider>
+    <FontsReady value={fontsLoaded}>
+      <ProfileProvider>
+        <UserPhotosProvider>
+          <Screens />
+        </UserPhotosProvider>
+      </ProfileProvider>
+    </FontsReady>
   );
 }
