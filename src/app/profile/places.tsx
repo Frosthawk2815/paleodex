@@ -6,6 +6,7 @@ import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { formatDistance, MUSEUM_AND_ZOO_LIST, type Place, placeById, placesNear } from '@/lib/places';
 import { useProfile } from '@/lib/profile';
+import { TITLES } from '@/lib/titles';
 
 const ICON: Record<Place['kind'], string> = { museum: '🏛️', zoo: '🦒', site: '⛏️' };
 const KIND: Record<Place['kind'], string> = { museum: 'Natural history museum', zoo: 'Accredited zoo', site: 'Fossil site' };
@@ -46,6 +47,22 @@ export default function PlacesScreen() {
     }
   };
 
+  // Deletes the visited places, and if asked, the titles earned by visiting places.
+  const deletePlaces = (withTitles: boolean) => {
+    if (withTitles) {
+      const placeTitles = new Set(TITLES.filter((x) => x.inPerson).map((x) => x.id));
+      update({
+        places: [],
+        titles: profile.titles.filter((id) => !placeTitles.has(id)),
+        title: profile.title && placeTitles.has(profile.title) ? null : profile.title,
+      });
+    } else {
+      update({ places: [] });
+    }
+    setConfirmDelete(false);
+    setResult(null);
+  };
+
   const visited = profile.places.map(placeById).filter((p): p is Place => !!p);
   const counts = (kind: Place['kind']) => visited.filter((p) => p.kind === kind).length;
   const byCountry = useMemo(() => {
@@ -63,7 +80,7 @@ export default function PlacesScreen() {
         <Text style={st.rowTitle}>🔒 Your location stays with you</Text>
         <Text style={st.rowSub}>
           I don’t collect, store or sell your location data. Your location is read only when you tap Check in, and it never leaves your device. The places
-          you’ve visited are kept only on this device, and you can delete them at any time. Your titles are kept.
+          you’ve visited are kept only on this device, and you can delete them at any time, keeping or removing the titles they earned.
         </Text>
       </View>
       <View style={[st.card, { padding: 14, gap: 4 }]}>
@@ -130,21 +147,29 @@ export default function PlacesScreen() {
         </View>
       )}
 
-      {visited.length > 0 && (
-        <Pressable
-          onPress={() => {
-            if (!confirmDelete) return setConfirmDelete(true);
-            update({ places: [] });
-            setConfirmDelete(false);
-            setResult(null);
-          }}
-          accessibilityRole="button"
-          accessibilityHint="Deletes the list of places you've checked in at. Your titles are kept."
-          hitSlop={6}>
-          <Text style={[st.link, { color: palette.badge }]}>{confirmDelete ? 'Tap again to delete your visited places' : 'Delete my visited places'}</Text>
+      {visited.length > 0 && !confirmDelete && (
+        <Pressable onPress={() => setConfirmDelete(true)} accessibilityRole="button" hitSlop={6}>
+          <Text style={[st.link, { color: palette.badge }]}>Delete my visited places</Text>
         </Pressable>
       )}
-      {confirmDelete && <Text style={st.muted}>Your titles are kept. Only the list of places is deleted.</Text>}
+      {confirmDelete && (
+        <View style={[st.card, { padding: 14, gap: 10 }]}>
+          <Text style={st.rowTitle}>Delete your visited places?</Text>
+          <Text style={st.rowSub}>Choose whether to keep the titles you earned by visiting them.</Text>
+          <Pressable onPress={() => deletePlaces(false)} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed]}>
+            <Text style={st.buttonText}>Delete places, keep my titles</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => deletePlaces(true)}
+            accessibilityRole="button"
+            style={({ pressed }) => [st.button, { backgroundColor: '#B3261E' }, pressed && st.pressed]}>
+            <Text style={st.buttonText}>Delete places and their titles</Text>
+          </Pressable>
+          <Pressable onPress={() => setConfirmDelete(false)} accessibilityRole="button" hitSlop={6} style={{ alignSelf: 'center' }}>
+            <Text style={st.link}>Cancel</Text>
+          </Pressable>
+        </View>
+      )}
 
       {MUSEUM_AND_ZOO_LIST.length > 0 && (
       <Pressable onPress={() => setShowAll((v) => !v)} accessibilityRole="button" accessibilityState={{ expanded: showAll }} hitSlop={6}>
