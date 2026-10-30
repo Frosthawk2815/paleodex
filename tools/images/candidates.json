@@ -4012,6 +4012,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "corriebaatar-marywaltersae": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/d/da/Corriebaatar.png",
+  "width": 800,
+  "height": 905,
+  "artist": "THOMAS H. RICH, DAVID W. KRAUSE, PETER TRUSLER, MATT A. WHITE, LESLEY KOOL, ALISTAIR R. EVANS, STEVEN MORTON, and PATRICIA VICKERS-RICH",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Corriebaatar.png",
+  "file": "Corriebaatar.png",
+  "article": "https://en.wikipedia.org/wiki/Corriebaatar",
+  "scope": "species",
+  "kind": "restoration"
+ },
  "corvus-corax": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Corvus_corax_clarionensis%2C_Point_Reyes_National_Seashore.jpg/960px-Corvus_corax_clarionensis%2C_Point_Reyes_National_Seashore.jpg",
   "width": 800,
@@ -6707,6 +6720,19 @@
   "article": "https://en.wikipedia.org/wiki/Broad-striped_Malagasy_mongoose",
   "scope": "species"
  },
+ "galleonosaurus-dorisae": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Galleonosaurus_specimens.jpg/960px-Galleonosaurus_specimens.jpg",
+  "width": 800,
+  "height": 889,
+  "artist": "Matthew C. Herne, Jay P. Nair, Alistair R. Evans and Alan M. Tait",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Galleonosaurus_specimens.jpg",
+  "file": "Galleonosaurus_specimens.jpg",
+  "article": "https://en.wikipedia.org/wiki/Galleonosaurus",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "gallimimus-bullatus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Gallimimus_bullatus.001_-_Natural_History_Museum_of_London.JPG/960px-Gallimimus_bullatus.001_-_Natural_History_Museum_of_London.JPG",
   "width": 800,
@@ -8774,6 +8800,19 @@
   "file": "Pygmy_sperm_whale_size.svg",
   "article": "https://en.wikipedia.org/wiki/Pygmy_sperm_whale",
   "scope": "species"
+ },
+ "koolasuchus-cleelandi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Koolasuchus_mandibles.jpg/960px-Koolasuchus_mandibles.jpg",
+  "width": 800,
+  "height": 611,
+  "artist": "Stephen F. Poropat, Phil R. Bell, Lachlan J. Hart, Steven W. Salisbury, & Benjamin P. Kear",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Koolasuchus_mandibles.jpg",
+  "file": "Koolasuchus_mandibles.jpg",
+  "article": "https://en.wikipedia.org/wiki/Koolasuchus",
+  "scope": "species",
+  "kind": "fossil"
  },
  "kopidodon-macrognathus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Kopidodon_macrognathus_-_National_Museum_of_Nature_and_Science%2C_Tokyo_-_DSC07781.JPG/960px-Kopidodon_macrognathus_-_National_Museum_of_Nature_and_Science%2C_Tokyo_-_DSC07781.JPG",
@@ -14289,6 +14328,19 @@
   "file": "PyroScaleSilhouetWiki.png",
   "article": "https://en.wikipedia.org/wiki/Pyroraptor",
   "scope": "genus",
+  "kind": "fossil"
+ },
+ "qantassaurus-intrepidus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Qantassaurus_skel_aus.jpg/960px-Qantassaurus_skel_aus.jpg",
+  "width": 800,
+  "height": 532,
+  "artist": "Matt Martyniuk (Dinoguy2)",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Qantassaurus_skel_aus.jpg",
+  "file": "Qantassaurus_skel_aus.jpg",
+  "article": "https://en.wikipedia.org/wiki/Qantassaurus",
+  "scope": "species",
   "kind": "fossil"
  },
  "qianzhousaurus-sinensis": {
