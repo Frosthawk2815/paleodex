@@ -257,18 +257,6 @@
   "article": "https://en.wikipedia.org/wiki/Addax",
   "scope": "genus"
  },
- "adelobasileus-cromptoni": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Adelobasileus_cromptoni.jpg",
-  "width": 800,
-  "height": 363,
-  "artist": "Nobu Tamura (https://spinops.blogspot.com)",
-  "license": "CC BY 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Adelobasileus_cromptoni.jpg",
-  "file": "Adelobasileus_cromptoni.jpg",
-  "article": "https://en.wikipedia.org/wiki/Adelobasileus",
-  "scope": "genus"
- },
  "adratiklit-boulahfa": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Adratiklit_Skeletal.svg/960px-Adratiklit_Skeletal.svg.png",
   "width": 800,
@@ -551,18 +539,6 @@
   "article": "https://en.wikipedia.org/wiki/Ahvaytum_bahndooiveche",
   "scope": "species",
   "kind": "restoration"
- },
- "aidachar-paludalis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Aidachar_paludalis.jpg/960px-Aidachar_paludalis.jpg",
-  "width": 800,
-  "height": 429,
-  "artist": "DiBgd",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Aidachar_paludalis.jpg",
-  "file": "Aidachar_paludalis.jpg",
-  "article": "https://en.wikipedia.org/wiki/Aidachar",
-  "scope": "genus"
  },
  "ailuropoda-melanoleuca": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/960px-Grosser_Panda.JPG",
@@ -1007,18 +983,6 @@
   "article": "https://en.wikipedia.org/wiki/Allosaurus_jimmadseni",
   "scope": "species",
   "kind": "restoration"
- },
- "allothrissops-mesogaster": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Allothrissops.jpg/960px-Allothrissops.jpg",
-  "width": 800,
-  "height": 1067,
-  "artist": "User:Haplochromis",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Allothrissops.jpg",
-  "file": "Allothrissops.jpg",
-  "article": "https://en.wikipedia.org/wiki/Allothrissops",
-  "scope": "genus"
  },
  "alnashetri-cerropoliciensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Alnashetri_cerropoliciensis_%28MPCA_Pv_377%29.jpg/960px-Alnashetri_cerropoliciensis_%28MPCA_Pv_377%29.jpg",
@@ -2657,18 +2621,6 @@
   "scope": "species",
   "kind": "restoration"
  },
- "australerpeton-cosgriffi": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Australerpeton12DB.jpg/960px-Australerpeton12DB.jpg",
-  "width": 800,
-  "height": 530,
-  "artist": "Dmitry Bogdanov",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Australerpeton12DB.jpg",
-  "file": "Australerpeton12DB.jpg",
-  "article": "https://en.wikipedia.org/wiki/Australerpeton",
-  "scope": "genus"
- },
  "australodocus-bohetii": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Australodocus.jpeg/960px-Australodocus.jpeg",
   "width": 800,
@@ -3038,18 +2990,6 @@
   "article": "https://en.wikipedia.org/wiki/Balaur_bondoc",
   "scope": "species",
   "kind": "fossil"
- },
- "balhuticaris-voltae": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Balhuticaris.png/960px-Balhuticaris.png",
-  "width": 800,
-  "height": 480,
-  "artist": "Qohelet12",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Balhuticaris.png",
-  "file": "Balhuticaris.png",
-  "article": "https://en.wikipedia.org/wiki/Balhuticaris",
-  "scope": "genus"
  },
  "bambiraptor-feinbergi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Dans_l%27ombre_des_dinosaures_-_Bambiraptor_jeune_-_04.jpg/960px-Dans_l%27ombre_des_dinosaures_-_Bambiraptor_jeune_-_04.jpg",
@@ -4106,18 +4046,6 @@
   "scope": "genus",
   "kind": "restoration"
  },
- "bullacephalus-jacksoni": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/97/Burnetiamorpha.jpg",
-  "width": 800,
-  "height": 1165,
-  "artist": "Mojcaj",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-  "source": "https://commons.wikimedia.org/wiki/File:Burnetiamorpha.jpg",
-  "file": "Burnetiamorpha.jpg",
-  "article": "https://en.wikipedia.org/wiki/Bullacephalus",
-  "scope": "genus"
- },
  "bunolagus-monticularis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/4/47/Bunolagus_monticularis_imported_from_iNaturalist_photo_15093370_on_5_February_2020_%28cropped%29.jpg",
   "width": 800,
@@ -4142,18 +4070,6 @@
   "article": "https://en.wikipedia.org/wiki/Burgessia",
   "scope": "genus",
   "kind": "fossil"
- },
- "burgessomedusa-phasmiformis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Rspb20222490_si_0011-003.jpg/960px-Rspb20222490_si_0011-003.jpg",
-  "width": 800,
-  "height": 869,
-  "artist": "Justin Moon, Jean-Bernard Caron, Joseph Moysiuk",
-  "license": "CC BY 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Rspb20222490_si_0011-003.jpg",
-  "file": "Rspb20222490_si_0011-003.jpg",
-  "article": "https://en.wikipedia.org/wiki/Burgessomedusa",
-  "scope": "genus"
  },
  "buriolestes-schultzi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Buriolestes_schultzi_restoration.png/960px-Buriolestes_schultzi_restoration.png",
@@ -4497,18 +4413,6 @@
   "scope": "genus",
   "kind": "fossil"
  },
- "canadaspis-perfecta": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/USNM_PAL_57703_Canadaspis_perfecta_Image_03.jpg/960px-USNM_PAL_57703_Canadaspis_perfecta_Image_03.jpg",
-  "width": 800,
-  "height": 533,
-  "artist": "Jean-Bernard Caron",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "source": "https://commons.wikimedia.org/wiki/File:USNM_PAL_57703_Canadaspis_perfecta_Image_03.jpg",
-  "file": "USNM_PAL_57703_Canadaspis_perfecta_Image_03.jpg",
-  "article": "https://en.wikipedia.org/wiki/Canadaspis",
-  "scope": "genus"
- },
  "canis-familiaris": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Huskiesatrest.jpg/960px-Huskiesatrest.jpg",
   "width": 800,
@@ -4780,18 +4684,6 @@
   "scope": "genus",
   "kind": "fossil"
  },
- "carsioptychus-coarctatus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Carsioptychus_coarctatus24DB.jpg/960px-Carsioptychus_coarctatus24DB.jpg",
-  "width": 800,
-  "height": 361,
-  "artist": "ДиБгд",
-  "license": "CC BY 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Carsioptychus_coarctatus24DB.jpg",
-  "file": "Carsioptychus_coarctatus24DB.jpg",
-  "article": "https://en.wikipedia.org/wiki/Carsioptychus",
-  "scope": "genus"
- },
  "castor-canadensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/6b/American_Beaver.jpg",
   "width": 800,
@@ -4954,18 +4846,6 @@
   "article": "https://en.wikipedia.org/wiki/Guinea_pig",
   "scope": "species"
  },
- "cearachelys-placidoi": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Cearachelys_placidoi_MN_01.jpg/960px-Cearachelys_placidoi_MN_01.jpg",
-  "width": 800,
-  "height": 900,
-  "artist": "Dornicke",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Cearachelys_placidoi_MN_01.jpg",
-  "file": "Cearachelys_placidoi_MN_01.jpg",
-  "article": "https://en.wikipedia.org/wiki/Cearachelys",
-  "scope": "genus"
- },
  "cebuella-pygmaea": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Pygmy_Marmoset_%285336773146%29.jpg/960px-Pygmy_Marmoset_%285336773146%29.jpg",
   "width": 800,
@@ -5076,18 +4956,6 @@
   "article": "https://en.wikipedia.org/wiki/Cerasinops_hodgskissi",
   "scope": "species",
   "kind": "restoration"
- },
- "ceratonykus-oculatus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Ceratonykus_oculatus.jpg",
-  "width": 800,
-  "height": 538,
-  "artist": "Nobu Tamura (https://spinops.blogspot.com)",
-  "license": "CC BY 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Ceratonykus_oculatus.jpg",
-  "file": "Ceratonykus_oculatus.jpg",
-  "article": "https://en.wikipedia.org/wiki/Ceratonykus",
-  "scope": "genus"
  },
  "ceratops-montanus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Protoceratops_andrewsi_Restoration.png/960px-Protoceratops_andrewsi_Restoration.png",
@@ -5368,18 +5236,6 @@
   "article": "https://en.wikipedia.org/wiki/Chapalmalania",
   "scope": "genus",
   "kind": "restoration"
- },
- "charassognathus-gracilis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/7/75/Charassognathus.jpg",
-  "width": 800,
-  "height": 482,
-  "artist": "Mojcaj",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-  "source": "https://commons.wikimedia.org/wiki/File:Charassognathus.jpg",
-  "file": "Charassognathus.jpg",
-  "article": "https://en.wikipedia.org/wiki/Charassognathus",
-  "scope": "genus"
  },
  "chasmosaurus-belli": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/ChasmosaurusROM.JPG/960px-ChasmosaurusROM.JPG",
@@ -6638,18 +6494,6 @@
   "file": "Cryptoprocta_Ferox.JPG",
   "article": "https://en.wikipedia.org/wiki/Fossa_%28animal%29",
   "scope": "species"
- },
- "cteniogenys-antiquus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Cteniogenys_dentary.jpg/960px-Cteniogenys_dentary.jpg",
-  "width": 800,
-  "height": 533,
-  "artist": "Yale Peabody Museum",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Cteniogenys_dentary.jpg",
-  "file": "Cteniogenys_dentary.jpg",
-  "article": "https://en.wikipedia.org/wiki/Cteniogenys",
-  "scope": "genus"
  },
  "ctenochasma-elegans": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Ctenochasma_elegans.jpg/960px-Ctenochasma_elegans.jpg",
@@ -7948,18 +7792,6 @@
   "article": "https://en.wikipedia.org/wiki/Echinochimaera",
   "scope": "genus",
   "kind": "fossil"
- },
- "echmatocrinus-brachiatus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/5/57/Echmatocrinus_Brachiatus.jpg",
-  "width": 800,
-  "height": 1311,
-  "artist": "Claire H. from New York City, USA",
-  "license": "CC BY-SA 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Echmatocrinus_Brachiatus.jpg",
-  "file": "Echmatocrinus_Brachiatus.jpg",
-  "article": "https://en.wikipedia.org/wiki/Echmatocrinus",
-  "scope": "genus"
  },
  "ectenosaurus-clidastoides": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ectenosaurus_clidastoides_skeleton.png/960px-Ectenosaurus_clidastoides_skeleton.png",
@@ -10964,18 +10796,6 @@
   "scope": "genus",
   "kind": "fossil"
  },
- "helmetia-expansa": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/USNM_PAL_83952_Helmetia_expansa_Image_03.jpg/960px-USNM_PAL_83952_Helmetia_expansa_Image_03.jpg",
-  "width": 800,
-  "height": 533,
-  "artist": "Jean-Bernard Caron",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "source": "https://commons.wikimedia.org/wiki/File:USNM_PAL_83952_Helmetia_expansa_Image_03.jpg",
-  "file": "USNM_PAL_83952_Helmetia_expansa_Image_03.jpg",
-  "article": "https://en.wikipedia.org/wiki/Helmetia",
-  "scope": "genus"
- },
  "heloderma-suspectum": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Gila_monster2.JPG/960px-Gila_monster2.JPG",
   "width": 800,
@@ -11048,18 +10868,6 @@
   "file": "Herpestes_ichneumon_Египетский_мангуст,_или_фараонова_крыса,_или_ихневмо́н.jpg",
   "article": "https://en.wikipedia.org/wiki/Egyptian_mongoose",
   "scope": "species"
- },
- "herpetoskylax-hopsoni": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Herpetoskylax.jpg",
-  "width": 800,
-  "height": 475,
-  "artist": "Mojcaj",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-  "source": "https://commons.wikimedia.org/wiki/File:Herpetoskylax.jpg",
-  "file": "Herpetoskylax.jpg",
-  "article": "https://en.wikipedia.org/wiki/Herpetoskylax",
-  "scope": "genus"
  },
  "herrerasaurus-ischigualastensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Herrerasaurus_skeleton.jpg/960px-Herrerasaurus_skeleton.jpg",
@@ -12139,18 +11947,6 @@
   "scope": "genus",
   "kind": "fossil"
  },
- "impidens-hancoxi": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Impidens.jpg/960px-Impidens.jpg",
-  "width": 800,
-  "height": 367,
-  "artist": "Daeng Dino",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Impidens.jpg",
-  "file": "Impidens.jpg",
-  "article": "https://en.wikipedia.org/wiki/Impidens",
-  "scope": "genus"
- },
  "inawentu-oslatus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Inawentu_oslatus_Skeletal.png/960px-Inawentu_oslatus_Skeletal.png",
   "width": 800,
@@ -12535,18 +12331,6 @@
   "article": "https://en.wikipedia.org/wiki/Jiangjunosaurus",
   "scope": "genus",
   "kind": "restoration"
- },
- "jiangxisaurus-ganzhouensis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Jiangxisaurus.jpg/960px-Jiangxisaurus.jpg",
-  "width": 800,
-  "height": 501,
-  "artist": "Danny Cicchetti",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Jiangxisaurus.jpg",
-  "file": "Jiangxisaurus.jpg",
-  "article": "https://en.wikipedia.org/wiki/Jiangxisaurus",
-  "scope": "genus"
  },
  "jidapterus-edentus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Jidapterus.PNG/960px-Jidapterus.PNG",
@@ -13294,18 +13078,6 @@
   "article": "https://en.wikipedia.org/wiki/Common_woolly_monkey",
   "scope": "species"
  },
- "laidleria-gracilis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Laidleria1DB.jpg/960px-Laidleria1DB.jpg",
-  "width": 800,
-  "height": 460,
-  "artist": "Creator: Dmitry Bogdanov",
-  "license": "CC BY 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Laidleria1DB.jpg",
-  "file": "Laidleria1DB.jpg",
-  "article": "https://en.wikipedia.org/wiki/Laidleria",
-  "scope": "genus"
- },
  "lama-guanicoe": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Guanaco_%28Lama_guanicoe%29_Leona_Amarga.jpg/960px-Guanaco_%28Lama_guanicoe%29_Leona_Amarga.jpg",
   "width": 800,
@@ -13343,18 +13115,6 @@
   "article": "https://en.wikipedia.org/wiki/Laolestes",
   "scope": "genus",
   "kind": "restoration"
- },
- "laplatasaurus-araukanicus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Laplatasaurus_Tibia-Fibula.png/960px-Laplatasaurus_Tibia-Fibula.png",
-  "width": 800,
-  "height": 363,
-  "artist": "Gunnar Bivens",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Laplatasaurus_Tibia-Fibula.png",
-  "file": "Laplatasaurus_Tibia-Fibula.png",
-  "article": "https://en.wikipedia.org/wiki/Laplatasaurus",
-  "scope": "genus"
  },
  "latimeria-chalumnae": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast%2C_South_Africa%2C_on_22_November_2019.png/960px-Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast%2C_South_Africa%2C_on_22_November_2019.png",
@@ -13719,18 +13479,6 @@
   "article": "https://en.wikipedia.org/wiki/Liaoceratops",
   "scope": "genus",
   "kind": "fossil"
- },
- "liaoningopterus-gui": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/LiaoningopterusDB.jpg/960px-LiaoningopterusDB.jpg",
-  "width": 800,
-  "height": 754,
-  "artist": "Dmitry Bogdanov",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:LiaoningopterusDB.jpg",
-  "file": "LiaoningopterusDB.jpg",
-  "article": "https://en.wikipedia.org/wiki/Liaoningopterus",
-  "scope": "genus"
  },
  "liaoningornis-longidigitus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Liaoningornis_048.JPG/960px-Liaoningornis_048.JPG",
@@ -14112,18 +13860,6 @@
   "file": "Loris_tardigradus_tardigradus_001.jpg",
   "article": "https://en.wikipedia.org/wiki/Red_slender_loris",
   "scope": "species"
- },
- "losillasaurus-giganteus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Museo_de_Ciencias_Naturales_de_Valencia_AD_11.JPG/960px-Museo_de_Ciencias_Naturales_de_Valencia_AD_11.JPG",
-  "width": 800,
-  "height": 600,
-  "artist": "19Tarrestnom65",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Museo_de_Ciencias_Naturales_de_Valencia_AD_11.JPG",
-  "file": "Museo_de_Ciencias_Naturales_de_Valencia_AD_11.JPG",
-  "article": "https://en.wikipedia.org/wiki/Losillasaurus",
-  "scope": "genus"
  },
  "lourinhanosaurus-antunesi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Lourinhanosaurus_antunesi.jpg/960px-Lourinhanosaurus_antunesi.jpg",
@@ -15899,18 +15635,6 @@
   "scope": "genus",
   "kind": "skeletal"
  },
- "moghreberia-nmachouensis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Moghreberia.jpg",
-  "width": 800,
-  "height": 683,
-  "artist": "ДиБгд at Russian Wikipedia",
-  "license": "Public domain",
-  "licenseUrl": null,
-  "source": "https://commons.wikimedia.org/wiki/File:Moghreberia.jpg",
-  "file": "Moghreberia.jpg",
-  "article": "https://en.wikipedia.org/wiki/Moghreberia",
-  "scope": "genus"
- },
  "mola-mola": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Mola_mola.jpg/960px-Mola_mola.jpg",
   "width": 800,
@@ -16515,18 +16239,6 @@
   "scope": "genus",
   "kind": "skeletal"
  },
- "navajodactylus-boerei": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Significant_pterosaur_discoveries_in_western_North_America.png",
-  "width": 800,
-  "height": 1134,
-  "artist": "Andrew A. Farke",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Significant_pterosaur_discoveries_in_western_North_America.png",
-  "file": "Significant_pterosaur_discoveries_in_western_North_America.png",
-  "article": "https://en.wikipedia.org/wiki/Navajodactylus",
-  "scope": "genus"
- },
  "navaornis-hestiae": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Navaornis_hestiae_holotype.png/960px-Navaornis_hestiae_holotype.png",
   "width": 800,
@@ -16933,18 +16645,6 @@
   "scope": "genus",
   "kind": "fossil"
  },
- "ningchengopterus-liuae": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Ningchengopterus_liuae.jpg",
-  "width": 800,
-  "height": 619,
-  "artist": "Nobu Tamura (http://spinops.blogspot.com)",
-  "license": "CC BY 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Ningchengopterus_liuae.jpg",
-  "file": "Ningchengopterus_liuae.jpg",
-  "article": "https://en.wikipedia.org/wiki/Ningchengopterus",
-  "scope": "genus"
- },
  "niobrarasaurus-coleii": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Niobrarasaurus_skeleton.jpg/960px-Niobrarasaurus_skeleton.jpg",
   "width": 800,
@@ -17213,18 +16913,6 @@
   "article": "https://en.wikipedia.org/wiki/American_pika",
   "scope": "species",
   "kind": "fossil"
- },
- "odaraia-alata": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Odaraia.png/960px-Odaraia.png",
-  "width": 800,
-  "height": 533,
-  "artist": "Qohelet12",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Odaraia.png",
-  "file": "Odaraia.png",
-  "article": "https://en.wikipedia.org/wiki/Odaraia",
-  "scope": "genus"
  },
  "odobenocetops-peruvianus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Odobenocetops_leptodon_MNHN_SAO_202.png/960px-Odobenocetops_leptodon_MNHN_SAO_202.png",
@@ -18862,18 +18550,6 @@
   "scope": "genus",
   "kind": "fossil"
  },
- "pelanomodon-moschops": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/PelanomodonDB16.jpg/960px-PelanomodonDB16.jpg",
-  "width": 800,
-  "height": 489,
-  "artist": "DiBgd",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:PelanomodonDB16.jpg",
-  "file": "PelanomodonDB16.jpg",
-  "article": "https://en.wikipedia.org/wiki/Pelanomodon",
-  "scope": "genus"
- },
  "pelea-capreolus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Grey_Rhebok_%28Pelea_capreolus%29_male_at_Karoo_NP%2C_Western_Cape%2C_South_Africa.jpg/960px-Grey_Rhebok_%28Pelea_capreolus%29_male_at_Karoo_NP%2C_Western_Cape%2C_South_Africa.jpg",
   "width": 800,
@@ -19500,18 +19176,6 @@
   "article": "https://en.wikipedia.org/wiki/Pleurosaurus",
   "scope": "genus",
   "kind": "fossil"
- },
- "pliohippus-pernix": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Pliohippus_Pernix.jpg/960px-Pliohippus_Pernix.jpg",
-  "width": 800,
-  "height": 483,
-  "artist": "Claire H. from New York City, USA",
-  "license": "CC BY-SA 2.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Pliohippus_Pernix.jpg",
-  "file": "Pliohippus_Pernix.jpg",
-  "article": "https://en.wikipedia.org/wiki/Pliohippus",
-  "scope": "genus"
  },
  "pliosaurus-funkei": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Dinosaurium%2C_Pliosaurus_rossicus_1.jpg/960px-Dinosaurium%2C_Pliosaurus_rossicus_1.jpg",
@@ -20920,18 +20584,6 @@
   "scope": "genus",
   "kind": "fossil"
  },
- "rabidosaurus-cristatus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Rabidosaurus12DB.jpg/960px-Rabidosaurus12DB.jpg",
-  "width": 800,
-  "height": 537,
-  "artist": "Dmitry Bogdanov",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Rabidosaurus12DB.jpg",
-  "file": "Rabidosaurus12DB.jpg",
-  "article": "https://en.wikipedia.org/wiki/Rabidosaurus",
-  "scope": "genus"
- },
  "rahonavis-ostromi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Maniraptoran_ROM.jpg/960px-Maniraptoran_ROM.jpg",
   "width": 800,
@@ -21826,18 +21478,6 @@
   "article": "https://en.wikipedia.org/wiki/Sapeornis",
   "scope": "genus",
   "kind": "fossil"
- },
- "saperion-glumaceum": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/%E7%8E%89%E6%BA%AA%E5%B8%82%E5%8D%9A%E7%89%A9%E9%A6%86-%E5%AF%92%E6%AD%A6%E7%BA%AA%E6%97%A9%E6%9C%9F-%E4%BA%91%E5%8D%97%E6%BE%84%E6%B1%9F-%E8%86%9C%E7%8A%B6%E8%B0%9C%E8%99%AB_Saperion_glumaceum.jpg/960px-%E7%8E%89%E6%BA%AA%E5%B8%82%E5%8D%9A%E7%89%A9%E9%A6%86-%E5%AF%92%E6%AD%A6%E7%BA%AA%E6%97%A9%E6%9C%9F-%E4%BA%91%E5%8D%97%E6%BE%84%E6%B1%9F-%E8%86%9C%E7%8A%B6%E8%B0%9C%E8%99%AB_Saperion_glumaceum.jpg",
-  "width": 800,
-  "height": 910,
-  "artist": "瑞丽江的河水",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:%E7%8E%89%E6%BA%AA%E5%B8%82%E5%8D%9A%E7%89%A9%E9%A6%86-%E5%AF%92%E6%AD%A6%E7%BA%AA%E6%97%A9%E6%9C%9F-%E4%BA%91%E5%8D%97%E6%BE%84%E6%B1%9F-%E8%86%9C%E7%8A%B6%E8%B0%9C%E8%99%AB_Saperion_glumaceum.jpg",
-  "file": "玉溪市博物馆-寒武纪早期-云南澄江-膜状谜虫_Saperion_glumaceum.jpg",
-  "article": "https://en.wikipedia.org/wiki/Saperion",
-  "scope": "genus"
  },
  "sarahsaurus-aurifontanalis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Sarahsaurus_braincase.jpg/960px-Sarahsaurus_braincase.jpg",
@@ -22853,18 +22493,6 @@
   "article": "https://en.wikipedia.org/wiki/Greenland_shark",
   "scope": "species"
  },
- "sonidosaurus-saihangaobiensis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Sonidosaurus.jpg",
-  "width": 800,
-  "height": 600,
-  "artist": "Machairo",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Sonidosaurus.jpg",
-  "file": "Sonidosaurus.jpg",
-  "article": "https://en.wikipedia.org/wiki/Sonidosaurus",
-  "scope": "genus"
- },
  "sonselasuchus-cedrus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Sonselasuchus_cedrus_%28holotype%2C_PEFO_47305_-_UWBM_119436%29.png/960px-Sonselasuchus_cedrus_%28holotype%2C_PEFO_47305_-_UWBM_119436%29.png",
   "width": 800,
@@ -23580,18 +23208,6 @@
   "article": "https://en.wikipedia.org/wiki/Suuwassea_emilieae",
   "scope": "species",
   "kind": "fossil"
- },
- "syllipsimopodi-bideni": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Syllipsimopodi_bideni.webp/960px-Syllipsimopodi_bideni.webp",
-  "width": 800,
-  "height": 675,
-  "artist": "Christopher D. Whalen & Neil H. Landman",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Syllipsimopodi_bideni.webp",
-  "file": "Syllipsimopodi_bideni.webp",
-  "article": "https://en.wikipedia.org/wiki/Syllipsimopodi",
-  "scope": "genus"
  },
  "sylvicapra-grimmia": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/C%C3%A9phalophe_de_grimm%2C_crop.jpg/960px-C%C3%A9phalophe_de_grimm%2C_crop.jpg",
@@ -25204,18 +24820,6 @@
   "scope": "genus",
   "kind": "restoration"
  },
- "uluops-uluops": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/3/36/M741033.png",
-  "width": 800,
-  "height": 474,
-  "artist": "Y. Rollot, S. W. Evers, W. G. Joyce",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "source": "https://commons.wikimedia.org/wiki/File:M741033.png",
-  "file": "M741033.png",
-  "article": "https://en.wikipedia.org/wiki/Uluops",
-  "scope": "genus"
- },
  "unaysaurus-tolentinoi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Skeletal_reconstruction_of_Unaysaurus_tolentinoi.png/960px-Skeletal_reconstruction_of_Unaysaurus_tolentinoi.png",
   "width": 800,
@@ -25240,18 +24844,6 @@
   "file": "Israel._Eurasian_Hoopoe_(6497645007).jpg",
   "article": "https://en.wikipedia.org/wiki/Eurasian_hoopoe",
   "scope": "species"
- },
- "uralosaurus-magnus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Uralosaurus_magnus.jpg/960px-Uralosaurus_magnus.jpg",
-  "width": 800,
-  "height": 531,
-  "artist": "Creator:Dmitry Bogdanov",
-  "license": "CC BY 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Uralosaurus_magnus.jpg",
-  "file": "Uralosaurus_magnus.jpg",
-  "article": "https://en.wikipedia.org/wiki/Uralosaurus",
-  "scope": "genus"
  },
  "urocyon-cinereoargenteus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Gray_fox.jpg/960px-Gray_fox.jpg",
@@ -25772,18 +25364,6 @@
   "article": "https://en.wikipedia.org/wiki/Andean_condor",
   "scope": "species"
  },
- "wadiasaurus-indicus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Wadiasaurus1DB.jpg/960px-Wadiasaurus1DB.jpg",
-  "width": 800,
-  "height": 479,
-  "artist": "Dmitry Bogdanov",
-  "license": "CC BY-SA 3.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Wadiasaurus1DB.jpg",
-  "file": "Wadiasaurus1DB.jpg",
-  "article": "https://en.wikipedia.org/wiki/Wadiasaurus",
-  "scope": "genus"
- },
  "wakaleo-schouteni": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Life_reconstruction_of_the_marsupial_lion_Wakaleo_oldfieldi.jpg",
   "width": 800,
@@ -25925,18 +25505,6 @@
   "file": "Xenopus_laevis_02.jpg",
   "article": "https://en.wikipedia.org/wiki/African_clawed_frog",
   "scope": "species"
- },
- "xenotarsosaurus-bonapartei": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Xenotarsosaurus_lower_leg.jpg",
-  "width": 800,
-  "height": 1626,
-  "artist": "Rafael Delcourt.",
-  "license": "CC BY 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Xenotarsosaurus_lower_leg.jpg",
-  "file": "Xenotarsosaurus_lower_leg.jpg",
-  "article": "https://en.wikipedia.org/wiki/Xenotarsosaurus",
-  "scope": "genus"
  },
  "xenovenator-espinosai": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Xenovenator_espinosai_%28holotype%2C_CPC_2973%29.png/960px-Xenovenator_espinosai_%28holotype%2C_CPC_2973%29.png",
@@ -26144,18 +25712,6 @@
   "article": "https://en.wikipedia.org/wiki/Yeutherium",
   "scope": "genus",
   "kind": "restoration"
- },
- "yimenosaurus-youngi": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/%E7%8E%89%E6%BA%AA%E5%B8%82%E5%8D%9A%E7%89%A9%E9%A6%86-%E4%BE%8F%E7%BD%97%E7%BA%AA%E6%97%A9%E6%9C%9F-%E6%98%93%E9%97%A8%E5%8E%BF%E5%8D%81%E8%A1%97%E4%B9%A1%E8%84%9A%E5%AE%B6%E5%BA%97-%E6%98%93%E9%97%A8%E9%BE%99_Yimenosaurus_1.jpg/960px-%E7%8E%89%E6%BA%AA%E5%B8%82%E5%8D%9A%E7%89%A9%E9%A6%86-%E4%BE%8F%E7%BD%97%E7%BA%AA%E6%97%A9%E6%9C%9F-%E6%98%93%E9%97%A8%E5%8E%BF%E5%8D%81%E8%A1%97%E4%B9%A1%E8%84%9A%E5%AE%B6%E5%BA%97-%E6%98%93%E9%97%A8%E9%BE%99_Yimenosaurus_1.jpg",
-  "width": 800,
-  "height": 683,
-  "artist": "瑞丽江的河水",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:%E7%8E%89%E6%BA%AA%E5%B8%82%E5%8D%9A%E7%89%A9%E9%A6%86-%E4%BE%8F%E7%BD%97%E7%BA%AA%E6%97%A9%E6%9C%9F-%E6%98%93%E9%97%A8%E5%8E%BF%E5%8D%81%E8%A1%97%E4%B9%A1%E8%84%9A%E5%AE%B6%E5%BA%97-%E6%98%93%E9%97%A8%E9%BE%99_Yimenosaurus_1.jpg",
-  "file": "玉溪市博物馆-侏罗纪早期-易门县十街乡脚家店-易门龙_Yimenosaurus_1.jpg",
-  "article": "https://en.wikipedia.org/wiki/Yimenosaurus",
-  "scope": "genus"
  },
  "yingshanosaurus-jichuanensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Yingshanosaurus_Skeletal.svg/960px-Yingshanosaurus_Skeletal.svg.png",
