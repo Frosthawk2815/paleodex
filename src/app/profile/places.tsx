@@ -83,7 +83,7 @@ export default function PlacesScreen() {
           {result.here.length > 0 ? (
             result.here.map((p) => (
               <Text key={p.id} style={st.rowTitle}>
-                {ICON[p.kind]} You’re at {p.name}!
+                {ICON[p.kind]} You’re at {p.name}{p.spot ? ` (${p.spot})` : ''}!
               </Text>
             ))
           ) : (
@@ -92,7 +92,8 @@ export default function PlacesScreen() {
           <Text style={[st.rowSub, { marginTop: 4 }]}>Nearest to you:</Text>
           {result.nearest.map(({ place, metres }) => (
             <Text key={place.id} style={st.rowSub}>
-              {ICON[place.kind]} {place.name} · {formatDistance(metres)}
+              {ICON[place.kind]} {place.name}
+              {place.spot ? ` (${place.spot})` : ''} · {formatDistance(metres)}
             </Text>
           ))}
         </View>

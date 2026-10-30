@@ -6,7 +6,8 @@ import placeData from '@/data/places.json';
 import { EVENTS } from '@/data/events';
 
 export type PlaceKind = 'museum' | 'zoo' | 'site';
-export type Place = { id: string; kind: PlaceKind; name: string; country?: string; lat: number; lon: number; accreditation?: string };
+// spot names the public access point a fossil site was checked in at, when it isn't the main one.
+export type Place = { id: string; kind: PlaceKind; name: string; spot?: string; country?: string; lat: number; lon: number; accreditation?: string };
 
 const MUSEUMS_AND_ZOOS = placeData as Place[];
 
@@ -51,6 +52,40 @@ export const UNSAFE_SITES: Record<string, string> = {
   'cerro-fortaleza': 'Remote Patagonian steppe, expedition only',
 };
 
+// Extra check-in points for formations that stretch across whole regions: well-known public
+// places (parks, visitor centres, museums built on the rock) where people see that formation, so
+// a visit there counts even far from the formation's main map point.
+export const ACCESS_POINTS: Record<string, { spot: string; lat: number; lon: number }[]> = {
+  morrison: [
+    { spot: 'Dinosaur Ridge, Colorado', lat: 39.677, lon: -105.195 },
+    { spot: 'Garden Park Fossil Area, Colorado', lat: 38.53, lon: -105.22 },
+    { spot: 'Rabbit Valley, Colorado', lat: 39.183, lon: -109.017 },
+    { spot: 'Jurassic National Monument (Cleveland-Lloyd Quarry), Utah', lat: 39.323, lon: -110.688 },
+    { spot: 'Wyoming Dinosaur Center, Thermopolis', lat: 43.646, lon: -108.213 },
+    { spot: 'Como Bluff, Wyoming', lat: 41.87, lon: -106.08 },
+  ],
+  'hell-creek': [
+    { spot: 'Makoshika State Park, Montana', lat: 47.08, lon: -104.69 },
+    { spot: 'Fort Peck Interpretive Center, Montana', lat: 48.0, lon: -106.45 },
+    { spot: 'Marmarth, North Dakota', lat: 46.296, lon: -103.92 },
+  ],
+  chinle: [
+    { spot: 'Petrified Forest National Park, Arizona', lat: 34.98, lon: -109.79 },
+    { spot: 'Capitol Reef National Park, Utah', lat: 38.29, lon: -111.26 },
+  ],
+  'judith-river': [{ spot: 'Phillips County Museum, Malta, Montana', lat: 48.36, lon: -107.87 }],
+  wahweap: [{ spot: 'Big Water Visitor Center, Utah', lat: 37.08, lon: -111.66 }],
+  kaiparowits: [{ spot: 'Escalante Interagency Visitor Center, Utah', lat: 37.77, lon: -111.61 }],
+  niobrara: [{ spot: 'Sternberg Museum of Natural History, Hays, Kansas', lat: 38.9, lon: -99.3 }],
+  'white-river': [{ spot: 'Toadstool Geologic Park, Nebraska', lat: 42.86, lon: -103.58 }],
+  chalk: [
+    { spot: 'Seven Sisters and Birling Gap, Sussex', lat: 50.743, lon: 0.2 },
+    { spot: 'Flamborough Head, Yorkshire', lat: 54.116, lon: -0.08 },
+  ],
+  muschelkalk: [{ spot: 'Muschelkalkmuseum, Ingelfingen', lat: 49.3, lon: 9.65 }],
+  lameta: [{ spot: 'Balasinor Dinosaur Fossil Park, Raiyoli, Gujarat', lat: 22.97, lon: 73.36 }],
+};
+
 // Every other rock formation's present-day location is a fossil site. A formation with several
 // localities gives several points with one id.
 const SITES: Place[] = EVENTS.filter((e) => e.kind === 'Rock formation' && !UNSAFE_SITES[e.id]).flatMap((e) => {
@@ -63,7 +98,8 @@ const SITES: Place[] = EVENTS.filter((e) => e.kind === 'Rock formation' && !UNSA
       seen.add(k);
       return true;
     })
-    .map((p) => ({ id: `site-${e.id}`, kind: 'site' as const, name: e.title, lat: p.lat, lon: p.lon }));
+    .map((p): Place => ({ id: `site-${e.id}`, kind: 'site', name: e.title, lat: p.lat, lon: p.lon }))
+    .concat((ACCESS_POINTS[e.id] ?? []).map((a) => ({ id: `site-${e.id}`, kind: 'site', name: e.title, spot: a.spot, lat: a.lat, lon: a.lon })));
 });
 
 export const PLACES: Place[] = [...MUSEUMS_AND_ZOOS, ...SITES];
@@ -94,7 +130,8 @@ export function placesNear(lat: number, lon: number, accuracy: number | null) {
     nearest.push(d);
     if (nearest.length === 5) break;
   }
-  return { here: [...new Map(here.map((d) => [d.place.id, d])).values()], nearest };
+  // One entry per place, at its closest point.
+  return { here: [...new Map([...here].reverse().map((d) => [d.place.id, d])).values()].reverse(), nearest };
 }
 
 export const formatDistance = (m: number) => (m < 1000 ? `${Math.round(m)} m` : m < 100000 ? `${(m / 1000).toFixed(1)} km` : `${Math.round(m / 1000).toLocaleString()} km`);
