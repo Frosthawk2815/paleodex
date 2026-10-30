@@ -7011,6 +7011,19 @@
   "scope": "genus",
   "kind": "skeletal"
  },
+ "gigantspinosaurus-sichuanensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Zigong_Dinosaur_Museum_Gigantspinosaurus.jpg/960px-Zigong_Dinosaur_Museum_Gigantspinosaurus.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Zhangzhugang",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zigong_Dinosaur_Museum_Gigantspinosaurus.jpg",
+  "file": "Zigong_Dinosaur_Museum_Gigantspinosaurus.jpg",
+  "article": "https://en.wikipedia.org/wiki/Gigantspinosaurus",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "gillicus-arcuatus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Gillicus_arcuatus-Niobara_Formation-Kansas-USA.tif/lossy-page1-960px-Gillicus_arcuatus-Niobara_Formation-Kansas-USA.tif.jpg",
   "width": 800,
@@ -17325,6 +17338,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "tuojiangosaurus-multispinus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Natural_History_Museum_Tuojiangosaurus.jpg/960px-Natural_History_Museum_Tuojiangosaurus.jpg",
+  "width": 800,
+  "height": 426,
+  "artist": "Ayca Wilson from Farnborough, UK",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Natural_History_Museum_Tuojiangosaurus.jpg",
+  "file": "Natural_History_Museum_Tuojiangosaurus.jpg",
+  "article": "https://en.wikipedia.org/wiki/Tuojiangosaurus",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "tupuxuara-longicristatus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Pterosaur_flying_around_-_panoramio.jpg/960px-Pterosaur_flying_around_-_panoramio.jpg",
   "width": 800,
@@ -17950,6 +17976,19 @@
   "source": "https://commons.wikimedia.org/wiki/File:Yabeinosaurus-Beijing_Museum_of_Natural_History.jpg",
   "file": "Yabeinosaurus-Beijing_Museum_of_Natural_History.jpg",
   "article": "https://en.wikipedia.org/wiki/Yabeinosaurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "yangchuanosaurus-shangyouensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Yangchuanosaurus_shangyouensis.JPG/960px-Yangchuanosaurus_shangyouensis.JPG",
+  "width": 800,
+  "height": 522,
+  "artist": "Laikayiu",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Yangchuanosaurus_shangyouensis.JPG",
+  "file": "Yangchuanosaurus_shangyouensis.JPG",
+  "article": "https://en.wikipedia.org/wiki/Yangchuanosaurus",
   "scope": "genus",
   "kind": "fossil"
  },
