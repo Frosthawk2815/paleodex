@@ -71,18 +71,24 @@ function makeStyles(p: Palette, s: number) {
   });
 }
 
+// The picture behind a profile picture: a photo they uploaded or a species picture.
+export const avatarUri = (avatar: Avatar) => (avatar?.kind === 'upload' ? avatar.uri : avatar?.kind === 'species' ? imageOf(avatar.id)?.thumb : undefined);
+
+// Up to two initials from a name.
+export const initialsOf = (name: string) =>
+  name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]!.toUpperCase())
+    .join('');
+
 // The user's profile picture: a species picture, a photo they uploaded, or their initials.
 export function AvatarImage({ avatar, name, size }: { avatar: Avatar; name: string; size: number }) {
   const palette = usePalette();
-  const uri = avatar?.kind === 'upload' ? avatar.uri : avatar?.kind === 'species' ? imageOf(avatar.id)?.thumb : undefined;
-  const initials =
-    name
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((w) => w[0]!.toUpperCase())
-      .join('') || '🦖';
+  const uri = avatarUri(avatar);
+  const initials = initialsOf(name) || '🦖';
   const round = { width: size, height: size, borderRadius: size / 2 };
   if (uri) {
     return <Image source={{ uri }} style={[round, { backgroundColor: palette.track }]} contentFit="cover" accessibilityLabel="Profile picture" />;

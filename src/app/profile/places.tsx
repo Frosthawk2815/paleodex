@@ -2,6 +2,7 @@ import { Accuracy, getCurrentPositionAsync, requestForegroundPermissionsAsync } 
 import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
+import { PlacePicker } from '@/components/place-picker';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { formatDistance, MUSEUM_AND_ZOO_LIST, type Place, placeById, placesNear } from '@/lib/places';
@@ -73,28 +74,26 @@ export default function PlacesScreen() {
 
   return (
     <ScrollView style={st.screen} contentContainerStyle={st.content}>
-      <Text style={st.text}>
-        Visiting a natural history museum, an accredited zoo or one of the fossil sites in PaleoDex? Check in while you’re there to earn titles.
-      </Text>
       <View style={[st.card, { padding: 14, gap: 4 }]}>
         <Text style={st.rowTitle}>🔒 Your location stays with you</Text>
         <Text style={st.rowSub}>
-          I don’t collect, store or sell your location data. Your location is read only when you tap Check in, and it never leaves your device. The places
-          you’ve visited are kept only on this device, and you can delete them at any time, keeping or removing the titles they earned.
-        </Text>
-      </View>
-      <View style={[st.card, { padding: 14, gap: 4 }]}>
-        <Text style={st.rowTitle}>⚠️ Stay safe</Text>
-        <Text style={st.rowSub}>
-          I don’t want to encourage you to put yourself in danger. Formations that aren’t publicly accessible, are in very remote areas or are in conflict
-          zones don’t award titles. Please leave those to the professionals who make all of this possible.
-        </Text>
-        <Text style={st.rowSub}>
-          You don’t need to reach the rocks themselves: you’re checked in anywhere within 25 km of a fossil site, so the nearest town or visitor centre is
-          enough. Only visit places open to the public, never enter quarries, mines or private land without permission, and check the tides at coastal sites.
+          I don’t collect, store or sell your location data. Your location is read only when you tap a location button, and it never leaves your device.
+          Your birthplace, your home and the places you’ve visited are kept only on this device, and you can delete them at any time, keeping or removing
+          the titles they earned.
         </Text>
       </View>
 
+      <Text style={st.heading}>Place of birth</Text>
+      <Text style={st.muted}>Your birthplace and home appear on the globe with your profile picture, and travel with the continents through time.</Text>
+      <PlacePicker label="Place of birth" value={profile.birthplace} onChange={(birthplace) => update({ birthplace })} />
+
+      <Text style={st.heading}>Where you live now</Text>
+      <PlacePicker label="Home" value={profile.home} onChange={(home) => update({ home })} />
+
+      <Text style={st.heading}>Where you are now</Text>
+      <Text style={st.text}>
+        Visiting a natural history museum, an accredited zoo or one of the fossil sites in PaleoDex? Check in while you’re there to earn titles.
+      </Text>
       <Pressable
         onPress={checkIn}
         disabled={busy}
@@ -125,6 +124,20 @@ export default function PlacesScreen() {
           ))}
         </View>
       )}
+
+
+      <View style={[st.card, { padding: 14, gap: 4 }]}>
+        <Text style={st.rowTitle}>⚠️ Stay safe</Text>
+        <Text style={st.rowSub}>
+          I don’t want to encourage you to put yourself in danger. Formations that aren’t publicly accessible, are in very remote areas or are in conflict
+          zones don’t award titles. Please leave those to the professionals who make all of this possible.
+        </Text>
+        <Text style={st.rowSub}>
+          You don’t need to reach the rocks themselves: you’re checked in anywhere within 25 km of a fossil site, so the nearest town or visitor centre is
+          enough. Only visit places open to the public, never enter quarries, mines or private land without permission, and check the tides at coastal sites.
+        </Text>
+      </View>
+
 
       <Text style={st.heading}>Places you’ve visited</Text>
       <Text style={st.muted}>

@@ -19,8 +19,8 @@ import { EventInfo } from '@/components/event-info';
 import { SpeciesInfo } from '@/components/species-info';
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { Globe } from '@/components/globe';
-import { AvatarImage } from '@/components/profile-ui';
 import { PageSheet } from '@/components/paper-sheet';
+import { AvatarImage, avatarUri, initialsOf } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { type SearchResult, SearchPanel } from '@/components/search-panel';
 import { TimeBar, type TimeBarHandle } from '@/components/time-bar';
@@ -47,12 +47,20 @@ function selectionLabel(s: Selection): string {
 
 const pageOf = (s: Selection): PageRef => ({ kind: s.kind, id: s.kind === 'event' ? s.event.id : s.id });
 
-type Focus = { kind: 'site' | 'moon' | 'event' | 'skull' | 'range'; id: string; index?: number; n: number };
+type Focus = { kind: 'site' | 'moon' | 'event' | 'skull' | 'range' | 'user'; id: string; index?: number; n: number };
 
 export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
   const palette = usePalette();
   const { profile, addRecent, request, setRequest, reduceMotion } = useProfile();
+  // The user's birthplace and home, shown on the globe.
+  const userPlaces = useMemo(
+    () => [
+      ...(profile.birthplace ? [{ key: 'birthplace', label: 'Born here', color: '#FFD54F', place: profile.birthplace }] : []),
+      ...(profile.home ? [{ key: 'home', label: 'Home', color: '#4FC3F7', place: profile.home }] : []),
+    ].map((u) => ({ ...u, image: avatarUri(profile.avatar), initials: initialsOf(profile.name) || '★' })),
+    [profile.birthplace, profile.home, profile.avatar, profile.name],
+  );
   const birthMa = birthMaOf(profile);
   // Height of the visible page; the globe section fills it. Measured, because the window size
   // isn't known when the web version is rendered ahead of time.
@@ -205,6 +213,11 @@ export default function GlobeScreen() {
   const showRequest = () => {
     if (!request) return;
     setRequest(null);
+    if (request.kind === 'user') {
+      lookAt('user', request.which);
+      backToGlobe();
+      return;
+    }
     if (request.kind === 'time') {
       bar.current?.goToTime(request.ma);
       backToGlobe();
@@ -321,6 +334,7 @@ export default function GlobeScreen() {
                 onClearRange={() => setRangeId(undefined)}
                 onSelectSpecies={openSpeciesHere}
                 reduceMotion={reduceMotion}
+                userPlaces={userPlaces}
               />
             )}
           </View>

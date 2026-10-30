@@ -1,7 +1,7 @@
 import { geoDistance, geoGraticule10, geoOrthographic, geoPath } from 'd3-geo';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { PanResponder, Platform, Pressable, type HostInstance, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Svg, { Circle, Defs, G, Line, LinearGradient, Path, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
+import Svg, { Circle, ClipPath, Defs, G, Image as SvgImage, Line, LinearGradient, Path, RadialGradient, Stop, Text as SvgText } from 'react-native-svg';
 
 import { asteroidVisible } from '@/lib/impact';
 import { EARTH_RADIUS_KM, MOON_DISTANCE_TODAY_KM, MOON_RADIUS_KM, moonDistanceKm } from '@/lib/moon';
@@ -15,6 +15,7 @@ import { FLAG_FOOT, PointIconShape } from '@/components/point-icon';
 import { EXTINCTION_DRIVERS, phaseCentre, phaseIndexAt, phasePolygons, rangeOf, visibleSkulls } from '@/lib/ranges';
 import { speciesById } from '@/lib/life';
 import { declutter, type Group } from '@/lib/declutter';
+import type { UserPlace } from '@/lib/user-places';
 
 const GRATICULE = geoGraticule10();
 // SVG text defaults to a serif font on the web; match the app's sans-serif.
@@ -235,7 +236,8 @@ type Props = {
   // Moon for an event there.
   // For 'event', `index` is which of the event's points to look at.
   // 'skull' looks at where a species was last seen; 'range' at one phase (`index`) of its range.
-  focus: { kind: 'site' | 'moon' | 'event' | 'skull' | 'range'; id: string; index?: number; n: number } | null;
+  // 'user' looks at one of the user's own places (id 'birthplace' or 'home').
+  focus: { kind: 'site' | 'moon' | 'event' | 'skull' | 'range' | 'user'; id: string; index?: number; n: number } | null;
   // Called when an event's marker is tapped (with the index of the point tapped).
   onSelectEvent: (e: HistoryEvent, index: number) => void;
   // Called when a drag on the globe starts (true) and ends (false). Must be a stable function.
@@ -247,6 +249,9 @@ type Props = {
   onSelectSpecies?: (id: string) => void;
   // Stop the globe when released instead of letting it coast.
   reduceMotion?: boolean;
+  // The user's own places (birthplace, home), drawn as pins that travel with their plate.
+  // Each pin shows the user's profile picture, or their initials if they have none.
+  userPlaces?: { key: string; label: string; color: string; place: UserPlace; image?: string; initials: string }[];
 };
 
 const K_PG = EXTINCTIONS.find((e) => e.cause === 'asteroid')!;
@@ -255,12 +260,14 @@ const K_PG = EXTINCTIONS.find((e) => e.cause === 'asteroid')!;
 // (Steller’s sea cow).
 const inSentence = (name: string) => (/^[A-Z][a-z]*['’]s\b/.test(name) ? name : name.charAt(0).toLowerCase() + name.slice(1));
 
-export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging, rangeId, onClearRange, onSelectSpecies, reduceMotion }: Props) {
+export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging, rangeId, onClearRange, onSelectSpecies, reduceMotion, userPlaces }: Props) {
   const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land', view: 'earth', moonZoom: 1 });
   const [pan] = useState(() => createCameraResponder(setCamera, onDragging));
   // Stop any spin when the globe goes away.
   useEffect(() => pan.stop, [pan]);
-  const [seenFocus, setSeenFocus] = useState(focus);
+  // Starts empty so that a globe rebuilt on returning to this screen (e.g. from the profile) still
+  // turns to the latest place it was asked to look at.
+  const [seenFocus, setSeenFocus] = useState<Props['focus']>(null);
   // A group of overlapping markers the user tapped while fully zoomed in: pick one from a list.
   const [chooser, setChooser] = useState<Marker[] | null>(null);
   const container = useRef<HostInstance>(null);
@@ -273,6 +280,8 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
       setCamera((c) => ({ ...c, view: 'moon', moonZoom: 1.3 }));
     } else if (focus && point) {
       setCamera({ lon: 0, lat: 0, zoom: point.zoom ?? 4, anchor: `event:${focus.id}:${focus.index ?? 0}`, view: 'earth', moonZoom: 1 });
+    } else if (focus?.kind === 'user') {
+      setCamera({ lon: 0, lat: 0, zoom: 2.5, anchor: `user:${focus.id}`, view: 'earth', moonZoom: 1 });
     } else if (focus?.kind === 'skull' || focus?.kind === 'range') {
       const anchor = focus.kind === 'skull' ? `skull:${focus.id}` : `range:${focus.id}:${focus.index ?? 0}`;
       if (anchorLonLat(anchor)) setCamera({ lon: 0, lat: 0, zoom: focus.kind === 'skull' ? 3 : 1.4, anchor, view: 'earth', moonZoom: 1 });
@@ -332,7 +341,15 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   // ...or a fixed place (a species' last sighting or range). A view the user has turned by hand
   // ('free') stays put; only the opening view ('land') follows the continents as they move.
   const fixedAnchor = useMemo(() => (camera.anchor === 'free' ? ([0, 0] as [number, number]) : anchorLonLat(camera.anchor)), [camera.anchor]);
-  const anchorPos = anchorSite ? siteAt(anchorSite, step) : anchorPoint ? pointPosition(anchorPoint, step) : fixedAnchor;
+  // ...or one of the user's own places, moving with its plate.
+  const userAnchor = camera.anchor.startsWith('user:') ? userPlaces?.find((u) => `user:${u.key}` === camera.anchor)?.place : undefined;
+  const anchorPos = anchorSite
+    ? siteAt(anchorSite, step)
+    : userAnchor
+      ? siteAt(userAnchor, step)
+      : anchorPoint
+        ? pointPosition(anchorPoint, step)
+        : fixedAnchor;
 
   // The selected species' range at this time.
   const range = rangeId ? rangeOf(rangeId) : undefined;
@@ -430,6 +447,15 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05
             ? [{ id, xy, name: speciesName(id), spot: `${lastSeen.lon.toFixed(1)},${lastSeen.lat.toFixed(1)}`, extra: 0, zoomTo: 0 }]
             : [];
+        })
+      : [];
+  // The user's birthplace and home, where they were at this time.
+  const userPins =
+    !moonMode && earthR > 40
+      ? (userPlaces ?? []).flatMap((u) => {
+          const pos = siteAt(u.place, step);
+          const xy = projection(pos);
+          return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05 ? [{ ...u, xy }] : [];
         })
       : [];
   // Several species last seen at the same spot (usually the middle of a country) are stacked in
@@ -642,6 +668,50 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
               </SvgText>
             </G>
           ))}
+
+          {userPins.map(({ key, label, color, xy, image, initials }) => {
+            const cx = xy[0];
+            const cy = xy[1] - 30;
+            return (
+              <G key={`user-${key}`}>
+                <Line x1={xy[0]} y1={xy[1]} x2={cx} y2={cy + 14} stroke={color} strokeWidth={2.5} />
+                <Circle cx={xy[0]} cy={xy[1]} r={3} fill={color} stroke="#05070D" strokeWidth={1} />
+                <Circle cx={cx} cy={cy} r={15} fill={color} stroke="#05070D" strokeWidth={1.5} />
+                {image ? (
+                  <>
+                    <Defs>
+                      <ClipPath id={`user-clip-${key}`}>
+                        <Circle cx={cx} cy={cy} r={12} />
+                      </ClipPath>
+                    </Defs>
+                    <Circle cx={cx} cy={cy} r={12} fill="#2A2825" />
+                    <SvgImage
+                      href={image}
+                      x={cx - 12}
+                      y={cy - 12}
+                      width={24}
+                      height={24}
+                      preserveAspectRatio="xMidYMid slice"
+                      clipPath={`url(#user-clip-${key})`}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <Circle cx={cx} cy={cy} r={12} fill="#2F7DE1" />
+                    <SvgText fontFamily={SVG_FONT} x={cx} y={cy + 4} fill="#FFFFFF" fontSize={initials.length > 1 ? 10 : 12} fontWeight="700" textAnchor="middle">
+                      {initials}
+                    </SvgText>
+                  </>
+                )}
+                <SvgText fontFamily={SVG_FONT} x={cx + 20} y={cy + 4} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={12} fontWeight="700">
+                  {label}
+                </SvgText>
+                <SvgText fontFamily={SVG_FONT} x={cx + 20} y={cy + 4} fill={color} fontSize={12} fontWeight="700">
+                  {label}
+                </SvgText>
+              </G>
+            );
+          })}
 
           {!moonMode && moonOnScreen && (
             <G>

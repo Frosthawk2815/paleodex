@@ -7,6 +7,7 @@ import { AccessibilityInfo } from 'react-native';
 
 import { type CustomTheme, DEFAULT_CUSTOM, type PaperStyle } from '@/lib/theme';
 import { yearToMa } from '@/lib/time';
+import type { UserPlace } from '@/lib/user-places';
 
 // A page in the information section: a species, a group, or an event (formation, trackway...).
 export type PageRef = { kind: 'species' | 'clade' | 'event'; id: string };
@@ -30,10 +31,13 @@ export type Profile = {
   title: string | null;
   // Museums, zoos and fossil sites the user has checked in at (ids from places.ts).
   places: string[];
+  // Where they were born and where they live now, if they chose to add them.
+  birthplace: UserPlace | null;
+  home: UserPlace | null;
   settings: Settings;
 };
 // Something another screen (e.g. the profile) asks the main screen to show when it returns to it.
-export type OpenRequest = { kind: 'page'; page: PageRef } | { kind: 'time'; ma: number };
+export type OpenRequest = { kind: 'page'; page: PageRef } | { kind: 'time'; ma: number } | { kind: 'user'; which: 'birthplace' | 'home' };
 
 export const RECENT_LIMIT = 10;
 export const TEXT_SCALE: Record<TextSize, number> = { normal: 1, large: 1.15, larger: 1.3 };
@@ -49,6 +53,8 @@ const DEFAULT: Profile = {
   titles: [],
   title: null,
   places: [],
+  birthplace: null,
+  home: null,
   settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed' },
 };
 
