@@ -546,6 +546,26 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
   ],
   species: [
     {
+      id: 'haliskia-peterseni',
+      name: 'Haliskia peterseni',
+      common: 'Haliskia',
+      clade: 'anhangueridae',
+      status: 'full',
+      ageText: 'About 100 million years ago (Early Cretaceous, late Albian)',
+      placeText: 'Near Richmond, Queensland, Australia',
+      formations: ['toolebuc'],
+      summary: [
+        'A fish-eating pterosaur with a wingspan of about 4.6 m, named in 2024. About 22% of its skeleton survives, including a complete lower jaw with teeth, making it the most complete pterosaur ever found in Australia. Its name means “sea phantom”.',
+        'It belonged to the anhanguerians, pterosaurs with crests on the tips of their jaws and interlocking, spiky teeth for snatching slippery prey from the water, and it hunted over the Eromanga Sea that then covered inland Queensland. Its throat bones survive too, and its describers think they anchored a strong, muscular tongue that helped it swallow prey. Kevin Petersen, a curator at the Kronosaurus Korner museum, found it in 2021, and it is named after him.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Adele Pentland and colleagues, 2024' },
+        { label: 'Wingspan', value: 'About 4.6 m' },
+        { label: 'Seen at', value: 'Kronosaurus Korner, Richmond, Queensland' },
+      ],
+      keywords: ['haliskia', 'pterosaur', 'anhanguerian', 'sea phantom', 'richmond', 'kronosaurus korner', 'queensland', 'australia', 'cretaceous'],
+    },
+    {
       id: 'mackunda-ctenochasmatoid',
       name: 'Ctenochasmatoidea indet.',
       common: 'Mackunda ctenochasmatoid',
