@@ -19,6 +19,14 @@ export const SPECIES_AKA: Record<string, Aka> = {
     names: ['Antrodemus'],
     note: 'Antrodemus valens, named from part of a tail bone in 1870, was long used as the name for Allosaurus. It is now treated as a doubtful name, probably the same animal.',
   },
+  'lagosuchus-talampayensis': {
+    names: ['Marasuchus'],
+    note: 'Better fossils from the same rocks were named Marasuchus lilloensis in 1994. Some researchers think they belong to Lagosuchus, others keep Marasuchus separate.',
+  },
+  'lesothosaurus-diagnosticus': {
+    names: ['Fabrosaurus'],
+    note: 'Fabrosaurus australis, named in 1964 from a piece of jaw from the same rocks, may be the same animal; it is usually treated as a doubtful name.',
+  },
   'archaeopteryx-lithographica': { names: ['Urvogel', 'first bird'] },
   'pliosaurus-funkei': { names: ['Predator X'], note: '“Predator X” was its nickname before it was formally named in 2012.' },
   'otodus-megalodon': {
