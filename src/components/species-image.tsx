@@ -27,7 +27,7 @@ export function SpeciesImage({ speciesId, name }: { speciesId: string; name: str
           recyclingKey={`mine:${mine.id}`}
           accessibilityLabel={`Your photo of ${name}`}
         />
-        <Text style={styles.credit}>Your photo · change or remove it under Your pictures, at the bottom of this page</Text>
+        <Text style={styles.credit}>Your photo · manage it in Profile › Your Images</Text>
       </View>
     );
   }

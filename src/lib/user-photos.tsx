@@ -14,12 +14,12 @@ export type UserPhoto = { id: string; uri: string; width?: number; height?: numb
 export type SpeciesPhotos = { photos: UserPhoto[]; mainId?: string };
 
 const STORAGE_KEY = 'paleodex.userPhotos.v1';
-const MAX_PICK = 10;
 const isWeb = Platform.OS === 'web';
 
 type UserPhotosContext = {
   photosOf: (speciesId: string) => SpeciesPhotos;
-  // Asks the user to choose photos and adds them; returns a message if something went wrong.
+  // Asks the user to choose a photo from their device and adds it, showing it at the top of the
+  // species page; returns a message if something went wrong.
   addPhotos: (speciesId: string) => Promise<string | null>;
   removePhoto: (speciesId: string, photoId: string) => void;
   // Show a photo at the top of the species page in place of the stock picture (or stop, with undefined).
@@ -63,8 +63,6 @@ export function UserPhotosProvider({ children }: { children: ReactNode }) {
     try {
       const result = await launchImageLibraryAsync({
         mediaTypes: ['images'],
-        allowsMultipleSelection: true,
-        selectionLimit: MAX_PICK,
         quality: isWeb ? 0.5 : 0.7,
         base64: isWeb,
       });
@@ -87,7 +85,7 @@ export function UserPhotosProvider({ children }: { children: ReactNode }) {
       if (added.length === 0) return 'Those photos couldn’t be read. Try different ones.';
       setStore((s) => {
         const cur = s[speciesId] ?? EMPTY;
-        return { ...s, [speciesId]: { ...cur, photos: [...added.reverse(), ...cur.photos] } };
+        return { ...s, [speciesId]: { photos: [...added.reverse(), ...cur.photos], mainId: added[0]!.id } };
       });
       return null;
     } catch {
