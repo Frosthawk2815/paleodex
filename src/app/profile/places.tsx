@@ -120,9 +120,11 @@ export default function PlacesScreen() {
         </View>
       )}
 
+      {MUSEUM_AND_ZOO_LIST.length > 0 && (
       <Pressable onPress={() => setShowAll((v) => !v)} accessibilityRole="button" accessibilityState={{ expanded: showAll }} hitSlop={6}>
         <Text style={st.link}>{showAll ? 'Hide the museums and zoos ▲' : `See all ${MUSEUM_AND_ZOO_LIST.length} museums and zoos ▼`}</Text>
       </Pressable>
+      )}
       {showAll &&
         byCountry.map(([country, list]) => (
           <View key={country} style={{ gap: 4 }}>
