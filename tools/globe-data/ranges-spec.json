@@ -49934,5 +49934,1979 @@
         ]
       }
     ]
+  },
+  "pitangus-sulphuratus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -100,
+              25.8,
+              -97,
+              28
+            ]
+          },
+          {
+            "countries": [
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay",
+              "Uruguay",
+              "Trinidad and Tobago"
+            ],
+            "exclude": [
+              "Chile"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -38,
+              -53.6,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "tyrannus-tyrannus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -125,
+              42,
+              -60,
+              60
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -125,
+              28,
+              -67,
+              49
+            ]
+          },
+          {
+            "countries": [
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Bolivia"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -12,
+              -50,
+              3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pyrocephalus-obscurus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -118,
+              26,
+              -96,
+              37
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -116,
+              14.5,
+              -88,
+              32.5
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "Honduras",
+              "Nicaragua",
+              "El Salvador"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "furnarius-rufus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Uruguay",
+              "Paraguay"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -66,
+              -42,
+              -53.6,
+              -22
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -60,
+              -34,
+              -40,
+              -10
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -66,
+              -22,
+              -58,
+              -13
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "gymnopithys-leucaspis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama"
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -79,
+              -4,
+              -67,
+              9
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -5,
+              -75,
+              1
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -78,
+              -8,
+              -70,
+              -2
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -6,
+              -66,
+              2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "machaeropterus-deliciosus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Colombia",
+            "bbox": [
+              -78.5,
+              0.5,
+              -75.5,
+              7
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -2.5,
+              -78,
+              1.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rupicola-peruvianus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -73,
+              7.5,
+              -69,
+              10.5
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -77.5,
+              0,
+              -72,
+              8
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -79.5,
+              -5,
+              -77,
+              1
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -79,
+              -14,
+              -69,
+              -4
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -69,
+              -18,
+              -64,
+              -14
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "procnias-albus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Guyana",
+              "Suriname"
+            ]
+          },
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -66,
+              3,
+              -59.8,
+              8
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -62,
+              0,
+              -50,
+              5
+            ]
+          },
+          {
+            "country": "Trinidad and Tobago",
+            "bbox": [
+              -61.9,
+              10,
+              -60.5,
+              11
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "setophaga-petechia": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              42,
+              -55,
+              69
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -165,
+              25,
+              -67,
+              70
+            ]
+          },
+          {
+            "countries": [
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Cuba",
+              "Jamaica",
+              "Haiti",
+              "Dominican Rep.",
+              "Puerto Rico",
+              "Bahamas"
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -78,
+              0,
+              -71,
+              12
+            ]
+          },
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -73,
+              7,
+              -60,
+              12
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -81,
+              -5,
+              -79,
+              1
+            ]
+          },
+          {
+            "country": "Peru",
+            "bbox": [
+              -81.5,
+              -10,
+              -79,
+              -3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "setophaga-kirtlandii": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 56,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -85.5,
+              43.5,
+              -83.5,
+              45.5
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -90.5,
+              44,
+              -89,
+              45.5
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -77,
+              44.5,
+              -75.5,
+              45.5
+            ]
+          },
+          {
+            "country": "Bahamas",
+            "bbox": [
+              -79,
+              21,
+              -72,
+              27
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -86.5,
+              43,
+              -83,
+              46
+            ]
+          }
+        ]
+      },
+      {
+        "from": 56,
+        "to": 31,
+        "label": "Low point: about 200 singing males",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -85,
+              44,
+              -84,
+              45
+            ]
+          },
+          {
+            "country": "Bahamas",
+            "bbox": [
+              -79,
+              21,
+              -72,
+              27
+            ]
+          }
+        ]
+      },
+      {
+        "from": 31,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -85.5,
+              43.5,
+              -83.5,
+              45.5
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -90.5,
+              44,
+              -89,
+              45.5
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -77,
+              44.5,
+              -75.5,
+              45.5
+            ]
+          },
+          {
+            "country": "Bahamas",
+            "bbox": [
+              -79,
+              21,
+              -72,
+              27
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "setophaga-striata": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              45,
+              -52,
+              69
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -165,
+              59,
+              -141,
+              69
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -76,
+              42,
+              -67,
+              47
+            ]
+          },
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -73,
+              0,
+              -60,
+              10
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -76,
+              -4,
+              -67,
+              8
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -10,
+              -50,
+              3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "agelaius-phoeniceus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              42,
+              -55,
+              62
+            ]
+          },
+          {
+            "countries": [
+              "United States of America",
+              "Mexico",
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Cuba",
+              "Bahamas"
+            ],
+            "latMax": 62
+          }
+        ]
+      }
+    ]
+  },
+  "icterus-galbula": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -115,
+              42,
+              -64,
+              56
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -105,
+              30,
+              -67,
+              49
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -106,
+              14.5,
+              -86,
+              25
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama"
+            ]
+          },
+          {
+            "country": "Colombia",
+            "bbox": [
+              -78,
+              3,
+              -71,
+              12
+            ]
+          },
+          {
+            "country": "Venezuela",
+            "bbox": [
+              -73,
+              7,
+              -62,
+              12
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "molothrus-ater": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -120,
+              49,
+              -95,
+              56
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -112,
+              30,
+              -90,
+              49
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -110,
+              22,
+              -97,
+              32.7
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -128,
+              42,
+              -60,
+              60
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -125,
+              25,
+              -67,
+              49
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -117,
+              15,
+              -86,
+              32.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "psarocolius-montezuma": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Mexico",
+            "bbox": [
+              -98,
+              14.5,
+              -86.5,
+              21
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica"
+            ]
+          },
+          {
+            "country": "Panama",
+            "bbox": [
+              -83,
+              7.5,
+              -78.5,
+              9.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "melospiza-melodia": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              42,
+              -55,
+              62
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -175,
+              51,
+              -141,
+              62
+            ]
+          },
+          {
+            "countries": [
+              "United States of America"
+            ],
+            "latMax": 50
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -117,
+              18,
+              -97,
+              32.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "junco-hyemalis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -141,
+              42,
+              -55,
+              69
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -165,
+              55,
+              -141,
+              69
+            ]
+          },
+          {
+            "countries": [
+              "United States of America"
+            ],
+            "latMax": 50
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -117,
+              19,
+              -98,
+              32.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vireo-olivaceus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -125,
+              42,
+              -55,
+              62
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -110,
+              25,
+              -67,
+              49
+            ]
+          },
+          {
+            "countries": [
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Bolivia"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -12,
+              -50,
+              3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "passerina-ciris": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -106,
+              25,
+              -91,
+              37
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -82.5,
+              25,
+              -76,
+              34
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -110,
+              14.5,
+              -86,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "Honduras",
+              "El Salvador",
+              "Nicaragua",
+              "Cuba",
+              "Bahamas"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "tangara-chilensis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Bolivia"
+            ]
+          },
+          {
+            "country": "Brazil",
+            "bbox": [
+              -74,
+              -12,
+              -50,
+              3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "coereba-flaveola": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Mexico",
+            "bbox": [
+              -98,
+              14.5,
+              -86.5,
+              21
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "El Salvador",
+              "Honduras",
+              "Nicaragua",
+              "Costa Rica",
+              "Panama",
+              "Colombia",
+              "Venezuela",
+              "Guyana",
+              "Suriname",
+              "Ecuador",
+              "Peru",
+              "Brazil",
+              "Bolivia",
+              "Paraguay",
+              "Jamaica",
+              "Haiti",
+              "Dominican Rep.",
+              "Puerto Rico",
+              "Bahamas",
+              "Trinidad and Tobago"
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -65,
+              -28,
+              -53.6,
+              -22
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "camarhynchus-pallidus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -91.7,
+              -1.2,
+              -89.2,
+              0.3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "sialia-sialis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -105,
+              42,
+              -64,
+              51
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -105,
+              25,
+              -67,
+              49
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -106,
+              14.5,
+              -88,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Guatemala",
+              "Belize",
+              "Honduras",
+              "El Salvador",
+              "Nicaragua"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cyanocitta-cristata": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -120,
+              42,
+              -55,
+              56
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -105,
+              25,
+              -67,
+              49
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "corvus-moneduloides": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "New Caledonia"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "nucifraga-columbiana": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -122,
+              32,
+              -104,
+              49
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -125,
+              49,
+              -112,
+              57
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -116,
+              30.5,
+              -115,
+              31.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "drepanis-coccinea": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -160.3,
+              18.9,
+              -154.8,
+              22.3
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -156.2,
+              19.2,
+              -154.9,
+              20.1
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -156.4,
+              20.6,
+              -156,
+              20.9
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -159.7,
+              22,
+              -159.4,
+              22.2
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "spinus-tristis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Canada",
+            "bbox": [
+              -125,
+              42,
+              -55,
+              54
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -125,
+              25,
+              -67,
+              49
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -117,
+              20,
+              -97,
+              32.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "prosthemadera-novaeseelandiae": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "New Zealand"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "manorina-melanocephala": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              138,
+              -39,
+              153.6,
+              -19
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              144.5,
+              -43.6,
+              148.4,
+              -40.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "anthochaera-phrygia": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              146,
+              -37.5,
+              152,
+              -29.5
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              138.5,
+              -38,
+              153,
+              -26
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              146,
+              -37.5,
+              152,
+              -29.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "malurus-cyaneus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Australia",
+            "bbox": [
+              138,
+              -39,
+              153.6,
+              -24
+            ]
+          },
+          {
+            "country": "Australia",
+            "bbox": [
+              144.5,
+              -43.6,
+              148.4,
+              -40.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cicinnurus-respublica": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Indonesia",
+            "bbox": [
+              130.3,
+              -0.95,
+              131.3,
+              0.1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pteridophora-alberti": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Papua New Guinea",
+            "bbox": [
+              142,
+              -7,
+              146,
+              -5
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              136,
+              -5,
+              141,
+              -3.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "amblyornis-inornata": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Indonesia",
+            "bbox": [
+              132.5,
+              -2,
+              134.5,
+              -0.7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "callaeas-wilsoni": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              172.5,
+              -41.6,
+              178.6,
+              -34.4
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              172.5,
+              -39.5,
+              178.6,
+              -34.4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "heteralocha-acutirostris": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              174.5,
+              -41.6,
+              178.5,
+              -37.5
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Last known range",
+        "regions": [
+          {
+            "country": "New Zealand",
+            "bbox": [
+              175,
+              -41.5,
+              176.8,
+              -39
+            ]
+          }
+        ]
+      }
+    ],
+    "lastSeen": {
+      "country": "New Zealand",
+      "lon": 175.6,
+      "lat": -40.8,
+      "year": 1907,
+      "text": "Tararua Range, New Zealand: the last confirmed sighting, in 1907"
+    }
+  },
+  "acanthisitta-chloris": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "New Zealand"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "moho-braccatus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -159.8,
+              21.85,
+              -159.3,
+              22.25
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Last known range",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -159.7,
+              22,
+              -159.4,
+              22.2
+            ]
+          }
+        ]
+      }
+    ],
+    "lastSeen": {
+      "country": "United States of America",
+      "lon": -159.55,
+      "lat": 22.1,
+      "year": 1987,
+      "text": "Alakaʻi Swamp, Kauaʻi, Hawaii: the last one was heard in 1987"
+    }
+  },
+  "gymnorhina-tibicen": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Australia"
+            ]
+          },
+          {
+            "country": "Papua New Guinea",
+            "bbox": [
+              141,
+              -10,
+              147,
+              -7
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Australia"
+            ]
+          },
+          {
+            "country": "Papua New Guinea",
+            "bbox": [
+              141,
+              -10,
+              147,
+              -7
+            ]
+          },
+          {
+            "country": "New Zealand",
+            "bbox": [
+              166,
+              -47,
+              178.6,
+              -34.4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "rhipidura-leucophrys": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Australia",
+              "Papua New Guinea",
+              "Solomon Is."
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              130,
+              -9,
+              141,
+              -1
+            ]
+          }
+        ]
+      }
+    ]
   }
 }
