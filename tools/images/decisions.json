@@ -614,7 +614,10 @@
  },
  "avaceratops-lammersi": {
   "vote": "no",
-  "file": "Avaceratops_squamosal.png"
+  "file": "Avaceratops_squamosal.png",
+  "rejectedFiles": [
+   "Avaceratops_squamosal.png"
+  ]
  },
  "avahi-laniger": {
   "vote": "yes",
@@ -1218,7 +1221,10 @@
  },
  "cheracebus-torquatus": {
   "vote": "no",
-  "file": "Collared_Titi_area.png"
+  "file": "Collared_Titi_area.png",
+  "rejectedFiles": [
+   "Collared_Titi_area.png"
+  ]
  },
  "chirodipterus-australis": {
   "vote": "yes",
@@ -1526,7 +1532,10 @@
  },
  "cystophora-cristata": {
   "vote": "no",
-  "file": "2016-klappmützemuseumkoenig.jpg"
+  "file": "2016-klappmützemuseumkoenig.jpg",
+  "rejectedFiles": [
+   "2016-klappmützemuseumkoenig.jpg"
+  ]
  },
  "dacentrurus-armatus": {
   "vote": "yes",
@@ -2613,6 +2622,7 @@
   "file": "Members_of_Genus_Homo_2.png",
   "rejectedFiles": [
    "Aegyptopithecus_NT.jpg",
+   "Homo_sapiens_sapiens,_Oase,_Rumänien_(Daniela_Hitzemann).jpg",
    "Members_of_Genus_Homo_2.png"
   ]
  },
@@ -3566,7 +3576,10 @@
  },
  "metriacanthosaurus-parkeri": {
   "vote": "no",
-  "file": "Metriacanthosaurus_holotype.png"
+  "file": "Metriacanthosaurus_holotype.png",
+  "rejectedFiles": [
+   "Metriacanthosaurus_holotype.png"
+  ]
  },
  "metriorhynchus-superciliosus": {
   "vote": "yes",
@@ -3842,7 +3855,10 @@
  },
  "neophocaena-phocaenoides": {
   "vote": "no",
-  "file": "Stamps_of_Indonesia,_040-05.jpg"
+  "file": "Stamps_of_Indonesia,_040-05.jpg",
+  "rejectedFiles": [
+   "Stamps_of_Indonesia,_040-05.jpg"
+  ]
  },
  "neotragus-pygmaeus": {
   "vote": "yes",
@@ -4370,7 +4386,10 @@
  },
  "peltephilus-strepens": {
   "vote": "no",
-  "file": "Peltephilus_ferox.JPG"
+  "file": "Peltephilus_ferox.JPG",
+  "rejectedFiles": [
+   "Peltephilus_ferox.JPG"
+  ]
  },
  "peponocephala-electra": {
   "vote": "yes",
@@ -4438,7 +4457,10 @@
  },
  "phuwiangvenator-yaemniyomi": {
   "vote": "no",
-  "file": "Phuwiangvenator_Hands.png"
+  "file": "Phuwiangvenator_Hands.png",
+  "rejectedFiles": [
+   "Phuwiangvenator_Hands.png"
+  ]
  },
  "phyllobates-terribilis": {
   "vote": "yes",
@@ -4694,7 +4716,10 @@
  },
  "proteus-anguinus": {
   "vote": "no",
-  "file": "Proteus_anguinus_distribution.png"
+  "file": "Proteus_anguinus_distribution.png",
+  "rejectedFiles": [
+   "Proteus_anguinus_distribution.png"
+  ]
  },
  "prothylacynus-patagonicus": {
   "vote": "yes",
@@ -4822,7 +4847,10 @@
  },
  "pygoscelis-papua": {
   "vote": "no",
-  "file": "Gentoo_Penguin.png"
+  "file": "Gentoo_Penguin.png",
+  "rejectedFiles": [
+   "Gentoo_Penguin.png"
+  ]
  },
  "pyroraptor-olympius": {
   "vote": "yes",
@@ -4962,7 +4990,10 @@
  },
  "rhyniognatha-hirsti": {
   "vote": "no",
-  "file": "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg"
+  "file": "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg",
+  "rejectedFiles": [
+   "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg"
+  ]
  },
  "rinchenia-mongoliensis": {
   "vote": "yes",
@@ -5258,7 +5289,11 @@
  },
  "simias-concolor": {
   "vote": "no",
-  "file": "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg"
+  "file": "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg",
+  "rejectedFiles": [
+   "EosimiasDB15.jpg",
+   "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg"
+  ]
  },
  "simosuchus-clarki": {
   "vote": "yes",
@@ -5360,6 +5395,13 @@
   "vote": "yes",
   "file": "Galápagos_penguin_(Spheniscus_mendiculus)_male.jpg"
  },
+ "spheniscus-urbinai": {
+  "vote": "no",
+  "file": "African.penguin.bristol.750pix_(Pingstone).jpg",
+  "rejectedFiles": [
+   "African.penguin.bristol.750pix_(Pingstone).jpg"
+  ]
+ },
  "sphenodon-punctatus": {
   "vote": "yes",
   "file": "Tuatara_(5205719005).jpg"
@@ -5378,7 +5420,10 @@
  },
  "spinosaurus-mirabilis": {
   "vote": "no",
-  "file": "Spinosaurid_MNBH_EGA1.jpg"
+  "file": "Spinosaurid_MNBH_EGA1.jpg",
+  "rejectedFiles": [
+   "Spinosaurid_MNBH_EGA1.jpg"
+  ]
  },
  "squalicorax-falcatus": {
   "vote": "yes",

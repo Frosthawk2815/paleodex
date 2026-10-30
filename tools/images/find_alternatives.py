@@ -68,6 +68,22 @@ def main():
     info = fetch.file_info(sorted({f for fs in images.values() for f in fs}))
 
     genus_of = lambda sid: species.get(sid, {}).get('name', '').split(' ')[0] or '?'
+    epithets = {}
+    for sp in species.values():
+        g, _, e = sp['name'].partition(' ')
+        if e:
+            epithets.setdefault(g.lower(), set()).add(e.lower())
+
+    def named_after(sid, f):
+        # The genus must start a word (so Eosimias is not taken for Simias), and the file must not
+        # name a different species of the same genus that has its own entry (Homo sapiens is not
+        # a Neanderthal).
+        name = f.lower().replace(' ', '_')
+        g = genus_of(sid).lower()
+        if not re.search(r'(^|[^a-z])' + re.escape(g), name):
+            return False
+        own = species.get(sid, {}).get('name', '').partition(' ')[2].lower()
+        return not any(re.search(re.escape(g) + r'[_,]+' + re.escape(e), name) for e in epithets.get(g, set()) - {own})
     found, none = 0, []
     for sid in rejected:
         tried = set(decisions[sid].get('rejectedFiles', [])) | {decisions[sid]['file']}
@@ -79,7 +95,7 @@ def main():
                     continue
                 # Articles also show other animals (galleries, size charts, relatives), so only
                 # accept files named after this genus.
-                if genus_of(sid).lower() not in f.lower():
+                if not named_after(sid, f):
                     continue
                 options.append((PREFERENCE[fetch.kind_of(d['text'])], f, t, d))
         if not options:
