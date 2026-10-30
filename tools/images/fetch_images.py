@@ -26,7 +26,7 @@ THUMB_WIDTH = 800
 BATCH = 50
 PAUSE = 20  # seconds between requests: Wikimedia throttles anonymous API use hard
 
-FREE_LICENSE = re.compile(r'^(cc0|cc[ -]by|public domain|pd\b|no restrictions|attribution|copyrighted free use|gfdl)', re.I)
+FREE_LICENSE = re.compile(r'^(cc0|cc[ -]by|public domain|pd\b|no restrictions|attribution|copyrighted free use|gfdl|fal\b|free art)', re.I)
 SKELETAL = re.compile(r'skeletal', re.I)
 RESTORATION = re.compile(
     r'restoration|reconstruction|reconstructed|life ?size model|paleoart|palaeoart|illustration|drawing|painting|'
