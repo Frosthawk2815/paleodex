@@ -7,6 +7,30 @@ import type { DataSet } from '@/data/sets/types';
 export const MEDIA_EARLY_CRETACEOUS: DataSet = {
   events: [
     formation({
+      id: 'clearwater',
+      title: 'Clearwater Formation',
+      short: 'Clearwater',
+      dateText: 'About 113 to 111 million years ago (Early Cretaceous, late Aptian)',
+      placeText: 'Suncor Millennium Mine, near Fort McMurray, Alberta, Canada',
+      lon: -111.5,
+      lat: 57.0,
+      plate: 101,
+      fromMa: 113,
+      toMa: 111,
+      jumpMa: 112,
+      icon: 'sea',
+      summary: [
+        'Dark marine mudstones and sands laid down on the floor of the Boreal Sea, an arm of the Arctic Ocean that reached deep into what is now western Canada. They lie above the oil sands of northern Alberta and are dug through by the giant open-pit mines there, where machine operators have found marine reptiles, ammonites and, once, a dinosaur.',
+        'That dinosaur, the nodosaur Borealopelta, is one of the best-preserved dinosaurs ever found: its body was carried out to sea, sank on its back and was buried so quickly that its armour, skin and stomach contents survived in three dimensions.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 112 million years ago' },
+        { label: 'Where today', value: 'Oil sands mines near Fort McMurray, Alberta' },
+        { label: 'Rocks', value: 'Marine mudstone and sandstone (Wabiskaw Member)' },
+      ],
+      keywords: ['clearwater', 'wabiskaw', 'fort mcmurray', 'oil sands', 'suncor', 'alberta', 'canada', 'cretaceous', 'borealopelta', 'boreal sea'],
+    }),
+    formation({
       id: 'weald-clay',
       title: 'Weald Clay (Smokejacks Pit)',
       short: 'Weald Clay',
@@ -463,6 +487,28 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
     },
   ],
   species: [
+    {
+      id: 'borealopelta-markmitchelli',
+      name: 'Borealopelta markmitchelli',
+      common: 'Borealopelta',
+      clade: 'ankylosauria',
+      status: 'full',
+      ageText: 'About 112 million years ago (Early Cretaceous)',
+      placeText: 'Fort McMurray, Alberta, Canada (found in marine rocks; it lived on nearby land)',
+      formations: ['clearwater'],
+      summary: [
+        'A nodosaur, an armoured dinosaur without a tail club, about 5.5 m long and around 1,300 kg, with long spikes over its shoulders. It lived on land near the coast; it is known only because its body washed out to sea and was buried on the sea floor, in rocks that otherwise hold marine life. In 2011 Shawn Funk, a machine operator at an oil sands mine, struck it while digging. It is one of the best-preserved dinosaurs known: the front half of the body survives in three dimensions with its armour plates and their horny coverings, and skin, still in place, so it looks more like a statue than a skeleton. Preparing it took technician Mark Mitchell, its namesake, more than 7,000 hours.',
+        'Traces of pigment in its skin, described in 2017, show it was reddish-brown and countershaded, darker on its back and paler underneath. Such camouflage suggests that even a 1.3-tonne armoured animal had to hide from big predators.',
+        'Its stomach contents, described in 2020, are mostly ferns, picked out over other plants, with bits of charcoal suggesting it browsed regrowth after a wildfire. A twig in the gut shows it died in late spring or summer. Its carcass then floated out to sea, bloated, before sinking on its back.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Caleb Brown and colleagues, 2017' },
+        { label: 'Length', value: 'About 5.5 m' },
+        { label: 'Weight', value: 'About 1,300 kg' },
+        { label: 'Seen at', value: 'Royal Tyrrell Museum, Drumheller, Alberta' },
+      ],
+      keywords: ['borealopelta', 'nodosaur', 'nodosaurid', 'ankylosaur', 'armoured dinosaur', 'mummy', 'fort mcmurray', 'alberta', 'cretaceous'],
+    },
     {
       id: 'baryonyx-walkeri',
       name: 'Baryonyx walkeri',
