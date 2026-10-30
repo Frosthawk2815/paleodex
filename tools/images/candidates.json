@@ -15004,6 +15004,19 @@
   "scope": "species",
   "kind": "restoration"
  },
+ "sarcosaurus-woodi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Sarcosaurus_known_material.png/960px-Sarcosaurus_known_material.png",
+  "width": 800,
+  "height": 468,
+  "artist": "Eotyrannu5",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sarcosaurus_known_material.png",
+  "file": "Sarcosaurus_known_material.png",
+  "article": "https://en.wikipedia.org/wiki/Sarcosaurus",
+  "scope": "genus",
+  "kind": "skeletal"
+ },
  "sarcosuchus-imperator": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Museum_of_Natural_History_Sarcosuchus.jpg/960px-Museum_of_Natural_History_Sarcosuchus.jpg",
   "width": 800,
@@ -17264,6 +17277,18 @@
   "source": "https://commons.wikimedia.org/wiki/File:2010-kodiak-bear-1.jpg",
   "file": "2010-kodiak-bear-1.jpg",
   "article": "https://en.wikipedia.org/wiki/Brown_bear",
+  "scope": "species"
+ },
+ "ursus-maritimus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/66/Polar_Bear_-_Alaska_%28cropped%29.jpg",
+  "width": 800,
+  "height": 803,
+  "artist": "Alan Wilson",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Polar_Bear_-_Alaska_(cropped).jpg",
+  "file": "Polar_Bear_-_Alaska_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Polar_bear",
   "scope": "species"
  },
  "ursus-spelaeus": {
