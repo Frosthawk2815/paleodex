@@ -23,6 +23,10 @@ export const SPECIES_AKA: Record<string, Aka> = {
     names: ['Marasuchus'],
     note: 'Better fossils from the same rocks were named Marasuchus lilloensis in 1994. Some researchers think they belong to Lagosuchus, others keep Marasuchus separate.',
   },
+  'suchomimus-tenerensis': {
+    names: ['Cristatusaurus'],
+    note: 'Cristatusaurus lapparenti, named in 1998 from jaw scraps from the same rocks, may be the same animal; it is usually treated as a doubtful name.',
+  },
   'lesothosaurus-diagnosticus': {
     names: ['Fabrosaurus'],
     note: 'Fabrosaurus australis, named in 1964 from a piece of jaw from the same rocks, may be the same animal; it is usually treated as a doubtful name.',

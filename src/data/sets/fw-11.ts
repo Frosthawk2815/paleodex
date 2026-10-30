@@ -17,7 +17,6 @@ const CYN = ['karoo-cynognathus'];
 const CYN_AGE = 'About 248 to 242 million years ago (Early to Middle Triassic)';
 const KAROO = 'Karoo Basin, South Africa';
 const RR = ['rio-do-rasto'];
-const RR_PLACE = 'Rio Grande do Sul, Brazil';
 
 export const FW_11: DataSet = {
   events: [

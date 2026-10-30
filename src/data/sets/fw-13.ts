@@ -10,7 +10,6 @@ const KIRT_AGE = 'About 75 to 73 million years ago (Late Cretaceous, late Campan
 const KIRT_PLACE = 'San Juan Basin, New Mexico, USA';
 const CDP = ['cerro-del-pueblo'];
 const CDP_AGE = 'About 73.5 million years ago (Late Cretaceous, late Campanian)';
-const CDP_PLACE = 'Coahuila, Mexico';
 const MOR = ['moreno'];
 const MOR_AGE = 'About 70 to 66 million years ago (Late Cretaceous, Maastrichtian)';
 const MOR_PLACE = 'Panoche Hills, Fresno County, California, USA';

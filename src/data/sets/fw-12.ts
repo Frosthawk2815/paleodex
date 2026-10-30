@@ -21,7 +21,6 @@ const BC = ['bajo-de-la-carpa'];
 const BC_AGE = 'About 86 to 83 million years ago (Late Cretaceous, Santonian)';
 const SAR = ['sarmiento'];
 const SAR_AGE = 'About 29 to 24 million years ago (late Oligocene)';
-const SAR_PLACE = 'Patagonia, Argentina';
 
 export const FW_12: DataSet = {
   events: [
