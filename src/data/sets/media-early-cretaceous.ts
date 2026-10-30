@@ -29,7 +29,6 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
         { label: 'Rocks', value: 'Sandstone, siltstone and mudstone of a shrinking inland sea' },
       ],
       groupNotes: [
-        { tier: 'microceleb', title: 'A filter-feeding pterosaur', text: 'Bones of a ctenochasmatoid, a member of the pterosaur group with long jaws full of fine, comb-like teeth for straining food from water, flew over the shores of the inland sea.' },
         { tier: 'pleb', title: 'Mackerel sharks', text: 'Teeth of lamniform sharks, relatives of today’s great white and mako, from the inland sea.' },
         { tier: 'pleb', title: 'Another ornithopod', text: 'Bones of a second, unnamed large plant-eating ornithopod, perhaps related to Iguanodon.' },
       ],
@@ -546,6 +545,26 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
     },
   ],
   species: [
+    {
+      id: 'mackunda-ctenochasmatoid',
+      name: 'Ctenochasmatoidea indet.',
+      common: 'Mackunda ctenochasmatoid',
+      clade: 'ctenochasmatoidea',
+      status: 'full',
+      ageText: 'About 100 million years ago (Cretaceous)',
+      placeText: 'Vellum Downs, south-west of Hughenden, Queensland, Australia',
+      formations: ['mackunda'],
+      summary: [
+        'An unnamed pterosaur known from a single upper arm bone (humerus) found in the Mackunda Formation and described in 2010 by Timothy Fletcher and Steven Salisbury. Its shape suggested it may belong to the ctenochasmatoids, a group of pterosaurs with long jaws that in many species were lined with fine, comb-like teeth for straining small animals from water.',
+        'If the identification is right, it is the only ctenochasmatoid known from Australia; most Queensland pterosaurs belong to other groups, such as the toothed anhanguerians like Ferrodraco. One bone is not enough to name a species, so it is known simply as an indeterminate ctenochasmatoid, and the identification is tentative. It would have flown over the shores of the shrinking Eromanga Sea.',
+      ],
+      facts: [
+        { label: 'Described', value: 'Timothy Fletcher and Steven Salisbury, 2010' },
+        { label: 'Known from', value: 'One humerus (upper arm bone)' },
+        { label: 'Name', value: 'None: too incomplete to name a species' },
+      ],
+      keywords: ['ctenochasmatoid', 'ctenochasmatoidea', 'pterosaur', 'mackunda', 'hughenden', 'queensland', 'australia', 'cretaceous', 'filter feeder'],
+    },
     {
       id: 'muttaburrasaurus-langdoni',
       name: 'Muttaburrasaurus langdoni',
