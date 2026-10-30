@@ -28,6 +28,16 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
         { label: 'Where today', value: 'Around Muttaburra, central Queensland' },
         { label: 'Rocks', value: 'Sandstone, siltstone and mudstone of a shrinking inland sea' },
       ],
+      groupNotes: [
+        { tier: 'microceleb', title: 'A filter-feeding pterosaur', text: 'Bones of a ctenochasmatoid, a member of the pterosaur group with long jaws full of fine, comb-like teeth for straining food from water, flew over the shores of the inland sea.' },
+        { tier: 'pleb', title: 'Mackerel sharks', text: 'Teeth of lamniform sharks, relatives of today’s great white and mako, from the inland sea.' },
+        { tier: 'pleb', title: 'Another ornithopod', text: 'Bones of a second, unnamed large plant-eating ornithopod, perhaps related to Iguanodon.' },
+      ],
+      invertebrates: [
+        { tier: 'microceleb', title: 'Heteromorph ammonites', text: 'Labeceras and Myloceras, ammonites whose shells grew in open hooks and loose spirals rather than tight coils.' },
+        { tier: 'pleb', title: 'Bivalves', text: 'Clams and scallop relatives, including giant flat Inoceramus, Aucellina and Maccoyella, living on the muddy sea floor.' },
+        { tier: 'pleb', title: 'Belemnites and sea snails', text: 'Belemnites (squid-like animals with bullet-shaped inner shells) and sea snails such as Euspira and Anchura.' },
+      ],
       keywords: ['mackunda', 'muttaburra', 'eromanga sea', 'queensland', 'australia', 'cretaceous', 'muttaburrasaurus'],
     }),
     formation({
