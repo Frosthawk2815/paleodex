@@ -36,6 +36,17 @@ export const RANGES: Record<string, Range> = Object.fromEntries(
 
 export const rangeOf = (id: string): Range | undefined => RANGES[id];
 
+// Species whose spread or introduction into new places helped cause other species' extinctions.
+// While one of their ranges is shown, the globe keeps showing extinction markers.
+export const EXTINCTION_DRIVERS = new Set([
+  'homo-sapiens',
+  'rattus-rattus', // black rat: island birds, bats and lizards worldwide
+  'rattus-norvegicus', // brown rat: island birds and mammals
+  'vulpes-vulpes', // red fox: Australia's small mammals
+  'sus-scrofa', // wild and feral pigs: island birds and reptiles
+  'mustela-erminea', // stoat: New Zealand birds
+]);
+
 const inWindow = (t: number, from: number, to: number) => t <= from && (to === 0 ? t >= 0 : t > to);
 
 // The index of the range phase showing at `timeMa`, or -1 if the species wasn't alive then.

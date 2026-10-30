@@ -12,7 +12,7 @@ import { badgeBg, pointPosition, visiblePoints } from '@/lib/events';
 import { EVENTS, type EventPoint, type HistoryEvent } from '@/data/events';
 import { moonView } from '@/lib/moon-surface';
 import { FLAG_FOOT, PointIconShape } from '@/components/point-icon';
-import { phaseCentre, phaseIndexAt, phasePolygons, rangeOf, visibleSkulls } from '@/lib/ranges';
+import { EXTINCTION_DRIVERS, phaseCentre, phaseIndexAt, phasePolygons, rangeOf, visibleSkulls } from '@/lib/ranges';
 import { speciesById } from '@/lib/life';
 import { declutter, type Group } from '@/lib/declutter';
 
@@ -395,8 +395,12 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   const moonSurface = useMemo(() => moonView(moonCx, moonCy, moonDrawR), [moonCx, moonCy, moonDrawR]);
   // Event markers: on the Moon in the close-up, otherwise on Earth (when it's big enough).
   const centreLonLat: [number, number] = [-rotLon, -rotLat];
+  // While a modern species' range is shown, rock formations and other species' extinction markers
+  // are hidden so the range stands out (except for species that helped drive extinctions).
+  const showingRange = !moonMode && !!range && !!rangeId;
   const markers: Marker[] = (moonMode ? visiblePoints('moon', timeMa) : earthR > 40 ? visiblePoints('earth', timeMa) : []).flatMap(
     (v) => {
+      if (showingRange && v.event.kind === 'Rock formation') return [];
       if (moonMode) {
         const xy = moonSurface.project(v.point.lon, v.point.lat);
         return xy ? [{ ...v, xy }] : [];
@@ -411,6 +415,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   const skulls =
     !moonMode && earthR > 40
       ? visibleSkulls(timeMa, rangeId).flatMap(({ id, lastSeen }) => {
+          if (showingRange && id !== rangeId && !EXTINCTION_DRIVERS.has(rangeId)) return [];
           const pos: [number, number] = [lastSeen.lon, lastSeen.lat];
           const xy = projection(pos);
           return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05
