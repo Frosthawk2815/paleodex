@@ -6,6 +6,35 @@ import type { DataSet } from '@/data/sets/types';
 export const FAMILIES_4: DataSet = {
   events: [
     formation({
+      id: 'upper-shaximiao',
+      title: 'Upper Shaximiao Formation',
+      short: 'Upper Shaximiao',
+      dateText: 'About 163 to 157 million years ago (Late Jurassic)',
+      placeText: 'Sichuan Basin, around Zigong and Chongqing, China',
+      lon: 104.9,
+      lat: 29.2,
+      plate: 611,
+      fromMa: 163,
+      toMa: 157,
+      jumpMa: 160,
+      icon: 'river',
+      summary: [
+        'Red mudstones and sandstones laid down by rivers and lakes across the Sichuan Basin, a warm, seasonally dry lowland in the Late Jurassic. It lies above the Lower Shaximiao Formation of Dashanpu and holds the next chapter of Sichuan’s dinosaur story.',
+        'Its dinosaurs echo those of North America’s Morrison Formation: long-necked mamenchisaurids, plated stegosaurs such as Tuojiangosaurus, Chungkingosaurus and the giant-spined Gigantspinosaurus, and the big allosaur relative Yangchuanosaurus. Many are displayed at the Zigong Dinosaur Museum.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 160 million years ago' },
+        { label: 'Where today', value: 'Zigong, Chongqing and elsewhere in the Sichuan Basin' },
+        { label: 'Rocks', value: 'Red mudstone and sandstone' },
+      ],
+      groupNotes: [
+        { tier: 'microceleb', title: 'Mamenchisaurus', text: 'Very long-necked sauropods such as Mamenchisaurus hochuanensis and M. constructus, the first Mamenchisaurus ever found.' },
+        { tier: 'pleb', title: 'More stegosaurs', text: 'The small Chungkingosaurus, one of several stegosaurs that lived here at the same time.' },
+        { tier: 'pleb', title: 'Others', text: 'Crocodile relatives, turtles, fish and plesiosaurs from the rivers and lakes.' },
+      ],
+      keywords: ['upper shaximiao', 'shaximiao', 'sichuan', 'zigong', 'chongqing', 'china', 'jurassic', 'gigantspinosaurus', 'yangchuanosaurus', 'tuojiangosaurus'],
+    }),
+    formation({
       id: 'elliot',
       title: 'Elliot Formation',
       short: 'Elliot',
@@ -55,6 +84,57 @@ export const FAMILIES_4: DataSet = {
     }),
   ],
   species: [
+    {
+      id: 'gigantspinosaurus-sichuanensis',
+      name: 'Gigantspinosaurus sichuanensis',
+      common: 'Gigantspinosaurus',
+      clade: 'stegosauria',
+      status: 'full',
+      ageText: 'About 160 million years ago (Late Jurassic)',
+      placeText: 'Zigong, Sichuan, China',
+      formations: ['upper-shaximiao'],
+      summary: [
+        'A stegosaur about 4.2 to 4.5 m long with small back plates but enormous spines growing from its shoulders, each about twice the length of the shoulder blade beneath it. How the spines were angled in life is still debated; they may have pointed out sideways or backwards, for defence or display.',
+        'The holotype preserves patches of skin on its left shoulder, described in 2008, among the first skin impressions known from any stegosaur, showing small, many-sided scales. Its relationships are uncertain: some studies find it one of the earliest-branching stegosaurs, others closer to Huayangosaurus. It was first named in an unpublished thesis in 1992 and formally described later.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Ouyang Hui, 1992' },
+        { label: 'Length', value: 'About 4.2–4.5 m' },
+        { label: 'Shoulder spines', value: 'About twice the length of the shoulder blade' },
+        { label: 'Seen at', value: 'Zigong Dinosaur Museum' },
+      ],
+      keywords: ['gigantspinosaurus', 'stegosaur', 'shoulder spikes', 'skin impression', 'sichuan', 'zigong', 'china', 'jurassic'],
+    },
+    {
+      id: 'tuojiangosaurus-multispinus',
+      name: 'Tuojiangosaurus multispinus',
+      common: 'Tuojiangosaurus',
+      clade: 'stegosauria',
+      status: 'full',
+      ageText: 'About 160 million years ago (Late Jurassic)',
+      placeText: 'Zigong, Sichuan, China',
+      formations: ['upper-shaximiao'],
+      summary: [
+        'A stegosaur about 6.5 m long with two rows of tall, pointed plates down its back and two pairs of spikes on its tail. Named in 1977, it was the first nearly complete stegosaur skeleton found in Asia, and casts of it have stood in museums around the world. It is named after the Tuo River.',
+      ],
+      facts: [{ label: 'Named', value: 'Dong Zhiming and colleagues, 1977' }, { label: 'Length', value: 'About 6.5 m' }],
+      keywords: ['tuojiangosaurus', 'stegosaur', 'sichuan', 'zigong', 'china', 'jurassic'],
+    },
+    {
+      id: 'yangchuanosaurus-shangyouensis',
+      name: 'Yangchuanosaurus shangyouensis',
+      common: 'Yangchuanosaurus',
+      clade: 'allosauroidea',
+      status: 'full',
+      ageText: 'About 160 million years ago (Late Jurassic)',
+      placeText: 'Yongchuan, Chongqing, China',
+      formations: ['upper-shaximiao'],
+      summary: [
+        'The top predator of Late Jurassic Sichuan, a big allosaur relative about 8 to 10 m long with a deep skull, a low ridge on its snout and bony bumps over its eyes. Workers building a dam reservoir in Yongchuan found a nearly complete skeleton in 1977. It belongs to the metriacanthosaurids, Asian cousins of Allosaurus, and would have hunted the stegosaurs and sauropods it lived with.',
+      ],
+      facts: [{ label: 'Named', value: 'Dong Zhiming and colleagues, 1978' }, { label: 'Length', value: 'About 8–10 m' }],
+      keywords: ['yangchuanosaurus', 'metriacanthosaurid', 'allosaur', 'theropod', 'chongqing', 'sichuan', 'china', 'jurassic'],
+    },
     // Elliot
     { id: 'heterodontosaurus-tucki', name: 'Heterodontosaurus tucki', common: 'Heterodontosaurus', clade: 'heterodontosauridae', status: 'full', ageText: 'About 200 to 190 million years ago', placeText: 'South Africa', formations: ['elliot'],
       summary: ['A small plant-eater about 1–1.75 m long with three kinds of teeth: cutting front teeth, a pair of tusks and chisel-like cheek teeth. Its strong hands may have been used for digging. Whether the tusks were for fighting, display or eating is not known.'],

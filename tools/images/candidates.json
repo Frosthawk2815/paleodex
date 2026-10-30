@@ -179,6 +179,19 @@
   "article": "https://en.wikipedia.org/wiki/Addax",
   "scope": "genus"
  },
+ "adratiklit-boulahfa": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Adratiklit_Skeletal.svg/960px-Adratiklit_Skeletal.svg.png",
+  "width": 800,
+  "height": 306,
+  "artist": "SlvrHwk",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Adratiklit_Skeletal.svg",
+  "file": "Adratiklit_Skeletal.svg",
+  "article": "https://en.wikipedia.org/wiki/Adratiklit",
+  "scope": "species",
+  "kind": "skeletal"
+ },
  "aeger-tipularius": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Aeger_tipularius_%28fossil_shrimp%29_Solnhofen_Limestone.jpg/960px-Aeger_tipularius_%28fossil_shrimp%29_Solnhofen_Limestone.jpg",
   "width": 800,
@@ -1801,6 +1814,19 @@
   "article": "https://en.wikipedia.org/wiki/Austroraptor",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "austrosaurus-mckillopi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Austrosaurus_vertebrae.jpg/960px-Austrosaurus_vertebrae.jpg",
+  "width": 800,
+  "height": 260,
+  "artist": "Stephen F. Poropat, Phil R. Bell, Lachlan J. Hart, Steven W. Salisbury, & Benjamin P. Kear",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Austrosaurus_vertebrae.jpg",
+  "file": "Austrosaurus_vertebrae.jpg",
+  "article": "https://en.wikipedia.org/wiki/Austrosaurus",
+  "scope": "species",
+  "kind": "fossil"
  },
  "avaceratops-lammersi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Avaceratops_BW.jpg",
@@ -3998,6 +4024,19 @@
   "file": "Conraua_goliath_photo_from_iNaturalist_539752953.jpg",
   "article": "https://en.wikipedia.org/wiki/Goliath_frog",
   "scope": "species"
+ },
+ "cooyoo-australis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Cooyoo_australis_23.jpg/960px-Cooyoo_australis_23.jpg",
+  "width": 800,
+  "height": 409,
+  "artist": "ДиБгд",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cooyoo_australis_23.jpg",
+  "file": "Cooyoo_australis_23.jpg",
+  "article": "https://en.wikipedia.org/wiki/Cooyoo",
+  "scope": "species",
+  "kind": "restoration"
  },
  "cormohipparion-occidentale": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Cormohipparion_occidentale_%28sturdy_three-toed_horse%29_%28Ash_Hollow_Formation%2C_Miocene%2C_11.83_Ma%3B_Ashfall_Fossil_Beds%2C_Nebraska%2C_USA%29_4.jpg/960px-Cormohipparion_occidentale_%28sturdy_three-toed_horse%29_%28Ash_Hollow_Formation%2C_Miocene%2C_11.83_Ma%3B_Ashfall_Fossil_Beds%2C_Nebraska%2C_USA%29_4.jpg",
@@ -11562,6 +11601,32 @@
   "article": "https://en.wikipedia.org/wiki/Hainan_black_crested_gibbon",
   "scope": "species"
  },
+ "nothosaurus-mirabilis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Skeleton_Nothosauria_naturkundemuseum_Berlin.jpg/960px-Skeleton_Nothosauria_naturkundemuseum_Berlin.jpg",
+  "width": 800,
+  "height": 369,
+  "artist": "Elke Wetzig at commons.wikipedia",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Skeleton_Nothosauria_naturkundemuseum_Berlin.jpg",
+  "file": "Skeleton_Nothosauria_naturkundemuseum_Berlin.jpg",
+  "article": "https://en.wikipedia.org/wiki/Nothosaurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "notochelone-costata": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Poropatetal2023_Notochelone.png/960px-Poropatetal2023_Notochelone.png",
+  "width": 800,
+  "height": 863,
+  "artist": "Stephen F. Poropat, Phil R. Bell, Lachlan J. Hart, Steven W. Salisbury, & Benjamin P. Kear",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Poropatetal2023_Notochelone.png",
+  "file": "Poropatetal2023_Notochelone.png",
+  "article": "https://en.wikipedia.org/wiki/Notochelone",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "notogoneus-osculus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Notogoneus_osculus_UMNH.jpg/960px-Notogoneus_osculus_UMNH.jpg",
   "width": 800,
@@ -13320,6 +13385,19 @@
   "source": "https://commons.wikimedia.org/wiki/File:Placerias.jpg",
   "file": "Placerias.jpg",
   "article": "https://en.wikipedia.org/wiki/Placerias",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "placodus-gigas": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Placodus_gigas_2.JPG/960px-Placodus_gigas_2.JPG",
+  "width": 800,
+  "height": 853,
+  "artist": "Ghedoghedo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Placodus_gigas_2.JPG",
+  "file": "Placodus_gigas_2.JPG",
+  "article": "https://en.wikipedia.org/wiki/Placodus",
   "scope": "genus",
   "kind": "fossil"
  },
@@ -15930,6 +16008,19 @@
   "article": "https://en.wikipedia.org/wiki/Great_hammerhead",
   "scope": "species"
  },
+ "spicomellus-afer": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Spicomellus_Skeletal.svg/960px-Spicomellus_Skeletal.svg.png",
+  "width": 800,
+  "height": 317,
+  "artist": "SlvrHwk",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Spicomellus_Skeletal.svg",
+  "file": "Spicomellus_Skeletal.svg",
+  "article": "https://en.wikipedia.org/wiki/Spicomellus",
+  "scope": "species",
+  "kind": "skeletal"
+ },
  "spilogale-putorius": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Spilogale_putorius_%282%29.jpg",
   "width": 800,
@@ -16018,6 +16109,19 @@
   "article": "https://en.wikipedia.org/wiki/Stegotherium",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "stegouros-elengassen": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Stegouros_elengassen_holotype_and_skeletal.png",
+  "width": 800,
+  "height": 653,
+  "artist": "Alexander Vargas",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Stegouros_elengassen_holotype_and_skeletal.png",
+  "file": "Stegouros_elengassen_holotype_and_skeletal.png",
+  "article": "https://en.wikipedia.org/wiki/Stegouros",
+  "scope": "species",
+  "kind": "skeletal"
  },
  "stenella-longirostris": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Gray%27s_spinner_dolphin_%28Stenella_longirostris_longirostris%29_Panglao_%28cropped%29.jpg/960px-Gray%27s_spinner_dolphin_%28Stenella_longirostris_longirostris%29_Panglao_%28cropped%29.jpg",
