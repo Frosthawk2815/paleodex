@@ -19,7 +19,13 @@ import { declutter, type Group } from '@/lib/declutter';
 const GRATICULE = geoGraticule10();
 // SVG text defaults to a serif font on the web; match the app's sans-serif.
 const SVG_FONT = Platform.OS === 'web' ? 'system-ui, -apple-system, Segoe UI, Roboto, sans-serif' : undefined;
-const DRAG_DEGREES_PER_PIXEL = 0.4;
+// 1 makes the surface follow the finger exactly; a little more feels livelier.
+const DRAG_SPEED = 1.15;
+// Momentum after a swipe: start above this speed (px/ms), lose speed each frame, stop below.
+const SPIN_START_SPEED = 0.25;
+const SPIN_MAX_SPEED = 4;
+const SPIN_FRICTION = 0.95;
+const SPIN_STOP_SPEED = 0.02;
 const MAX_ZOOM = 24; // roughly country scale
 const MIN_EARTH_PX = 7; // Earth and Moon are drawn at least this big when zoomed far out
 const MIN_MOON_PX = 3;
@@ -45,24 +51,93 @@ const clampZoom = (z: number) => Math.min(MAX_ZOOM, Math.max(0.001, z));
 
 // Turns one-finger drags into spin and two-finger pinches into zoom.
 // `onActive` reports when a drag starts and ends, so a page around the globe can stop scrolling.
+// `setBaseRadius` tells it the globe's radius at zoom 1, so the surface follows the finger.
+// Drag movement is applied once per frame, and a quick swipe leaves the globe spinning on its
+// own, slowing down until it stops or is touched again.
 function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => void, onActive?: (active: boolean) => void) {
+  let baseRadius = 150;
   let lastDx = 0;
   let lastDy = 0;
   let lastPinch = 0;
-  return PanResponder.create({
+  let pinched = false;
+  let pendingDx = 0;
+  let pendingDy = 0;
+  let frame = 0;
+  let spin = 0;
+  // Recent finger positions, for the release speed (not every platform reports it reliably).
+  let samples: { t: number; x: number; y: number }[] = [];
+  const releaseVelocity = () => {
+    const now = Date.now();
+    const recent = samples.filter((p) => now - p.t <= 100);
+    if (recent.length < 2) return { vx: 0, vy: 0 };
+    const a = recent[0];
+    const b = recent[recent.length - 1];
+    const dt = Math.max(1, b.t - a.t);
+    return { vx: (b.x - a.x) / dt, vy: (b.y - a.y) / dt };
+  };
+
+  const spinBy = (dx: number, dy: number) =>
+    setCamera((c) => {
+      if (c.view === 'moon') return c; // the Moon always shows its near side
+      const k = ((180 / Math.PI) * DRAG_SPEED) / Math.max(baseRadius * c.zoom, 40);
+      return { ...c, lon: c.lon + dx * k, lat: Math.max(-85, Math.min(85, c.lat - dy * k)) };
+    });
+  const flush = () => {
+    frame = 0;
+    if (pendingDx || pendingDy) spinBy(pendingDx, pendingDy);
+    pendingDx = 0;
+    pendingDy = 0;
+  };
+  const stop = () => {
+    if (spin) cancelAnimationFrame(spin);
+    spin = 0;
+  };
+  // Keep turning at the release speed (pixels per millisecond), slowing by friction.
+  const coast = (vx: number, vy: number) => {
+    let last = Date.now();
+    const step = () => {
+      const now = Date.now();
+      const dt = Math.min(50, now - last);
+      last = now;
+      spinBy(vx * dt, vy * dt);
+      const decay = Math.pow(SPIN_FRICTION, dt / 16.7);
+      vx *= decay;
+      vy *= decay;
+      spin = Math.hypot(vx, vy) > SPIN_STOP_SPEED ? requestAnimationFrame(step) : 0;
+    };
+    spin = requestAnimationFrame(step);
+  };
+
+  const responder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onMoveShouldSetPanResponder: () => true,
     onPanResponderGrant: () => {
+      stop();
       lastDx = 0;
       lastDy = 0;
       lastPinch = 0;
+      pinched = false;
+      samples = [];
       onActive?.(true);
     },
-    onPanResponderRelease: () => onActive?.(false),
-    onPanResponderTerminate: () => onActive?.(false),
+    onPanResponderRelease: () => {
+      flush();
+      onActive?.(false);
+      const { vx, vy } = releaseVelocity();
+      const speed = Math.hypot(vx, vy);
+      if (!pinched && speed > SPIN_START_SPEED) {
+        const scale = Math.min(1, SPIN_MAX_SPEED / speed);
+        coast(vx * scale, vy * scale);
+      }
+    },
+    onPanResponderTerminate: () => {
+      flush();
+      onActive?.(false);
+    },
     onPanResponderMove: (evt, g) => {
       const touches = evt.nativeEvent.touches;
       if (touches.length >= 2) {
+        pinched = true;
         const d = Math.hypot(touches[0].pageX - touches[1].pageX, touches[0].pageY - touches[1].pageY);
         if (lastPinch > 0) {
           const factor = d / lastPinch;
@@ -74,19 +149,20 @@ function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => voi
         return;
       }
       lastPinch = 0;
-      const dx = g.dx - lastDx;
-      const dy = g.dy - lastDy;
+      samples.push({ t: Date.now(), x: g.dx, y: g.dy });
+      if (samples.length > 20) samples.shift();
+      pendingDx += g.dx - lastDx;
+      pendingDy += g.dy - lastDy;
       lastDx = g.dx;
       lastDy = g.dy;
-      setCamera((c) => {
-        if (c.view === 'moon') return c; // the Moon always shows its near side
-        // Spin slower when zoomed in so the surface follows the finger.
-        const k = DRAG_DEGREES_PER_PIXEL / Math.max(c.zoom, 0.3);
-        return { ...c, lon: c.lon + dx * k, lat: Math.max(-85, Math.min(85, c.lat - dy * k)) };
-      });
+      if (!frame) frame = requestAnimationFrame(flush);
     },
     onPanResponderTerminationRequest: () => false,
   });
+  const setBaseRadius = (r: number) => {
+    baseRadius = r;
+  };
+  return { panHandlers: responder.panHandlers, stop, setBaseRadius };
 }
 
 // A lumpy outline for the asteroid, as offsets from its centre (unit radius).
@@ -166,6 +242,8 @@ const inSentence = (name: string) => (/^[A-Z][a-z]*['’]s\b/.test(name) ? name 
 export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging, rangeId, onClearRange, onSelectSpecies }: Props) {
   const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land', view: 'earth', moonZoom: 1 });
   const [pan] = useState(() => createCameraResponder(setCamera, onDragging));
+  // Stop any spin when the globe goes away.
+  useEffect(() => pan.stop, [pan]);
   const [seenFocus, setSeenFocus] = useState(focus);
   // A group of overlapping markers the user tapped while fully zoomed in: pick one from a list.
   const [chooser, setChooser] = useState<Marker[] | null>(null);
@@ -173,6 +251,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
 
   if (seenFocus !== focus) {
     setSeenFocus(focus);
+    pan.stop(); // a jump elsewhere ends any spin
     const point = focus?.kind === 'event' ? EVENTS.find((e) => e.id === focus.id)?.points[focus.index ?? 0] : undefined;
     if (focus?.kind === 'moon' || point?.body === 'moon') {
       setCamera((c) => ({ ...c, view: 'moon', moonZoom: 1.3 }));
@@ -205,6 +284,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   const minZoom = (w - 70) / (MOON_DISTANCE_TODAY_KM / EARTH_RADIUS_KM) / baseR;
   if (camera.zoom < minZoom) setCamera((c) => ({ ...c, zoom: minZoom }));
   const zoom = Math.max(minZoom, camera.zoom);
+  useEffect(() => pan.setBaseRadius(baseR), [pan, baseR]);
   const rPx = baseR * zoom;
   const earthR = Math.max(rPx, MIN_EARTH_PX);
 
