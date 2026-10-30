@@ -3,6 +3,8 @@ import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 
 import { useMemo } from 'react';
 
+import { AchievementWatcher } from '@/components/achievements';
+import { ToastProvider } from '@/components/toast';
 import { usePalette } from '@/hooks/use-palette';
 import { FontsReady, PAPER_FONTS } from '@/lib/fonts';
 import { ProfileProvider } from '@/lib/profile';
@@ -26,6 +28,7 @@ function Screens() {
         <Stack.Screen name="profile/favourites" options={{ title: 'Favourites' }} />
         <Stack.Screen name="profile/recent" options={{ title: 'Recently viewed' }} />
         <Stack.Screen name="profile/images" options={{ title: 'Your Images' }} />
+        <Stack.Screen name="profile/titles" options={{ title: 'Titles' }} />
         <Stack.Screen name="profile/settings" options={{ title: 'Settings' }} />
         <Stack.Screen name="profile/edit" options={{ title: 'Edit profile' }} />
       </Stack>
@@ -40,7 +43,10 @@ export default function RootLayout() {
     <FontsReady value={fontsLoaded}>
       <ProfileProvider>
         <UserPhotosProvider>
-          <Screens />
+          <ToastProvider>
+            <Screens />
+            <AchievementWatcher />
+          </ToastProvider>
         </UserPhotosProvider>
       </ProfileProvider>
     </FontsReady>

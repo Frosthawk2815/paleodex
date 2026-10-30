@@ -6,6 +6,7 @@ import { AvatarImage, useProfileStyles, useShowOnGlobe } from '@/components/prof
 import { usePalette } from '@/hooks/use-palette';
 import { birthDateOf, birthMaOf, useProfile } from '@/lib/profile';
 import { levelOf, tallyOf } from '@/lib/points';
+import { titleById, TITLES } from '@/lib/titles';
 import { useUserPhotos } from '@/lib/user-photos';
 
 // The profile menu: who the user is, their favourites and recent pages, settings, and credits.
@@ -20,6 +21,7 @@ export default function ProfileScreen() {
   const rows: { label: string; detail?: string; href: Href }[] = [
     { label: 'Favourites', detail: `${profile.favourites.length} saved`, href: '/profile/favourites' },
     { label: 'Recently viewed', detail: profile.recent.length === 1 ? 'Your last page' : `Your last ${profile.recent.length} pages`, href: '/profile/recent' },
+    { label: 'Titles', detail: `${profile.titles.length} of ${TITLES.length} earned${titleById(profile.title) ? ` · showing ${titleById(profile.title)!.name}` : ''}`, href: '/profile/titles' },
     { label: 'Your Images', detail: allPhotos.length === 1 ? '1 photo' : `${allPhotos.length} photos`, href: '/profile/images' },
     { label: 'Settings', detail: 'Theme, text size and accessibility', href: '/profile/settings' },
     { label: 'Edit profile', detail: 'Name, birth date and picture', href: '/profile/edit' },
@@ -30,6 +32,7 @@ export default function ProfileScreen() {
       <View style={{ alignItems: 'center', gap: 8, paddingVertical: 8 }}>
         <AvatarImage avatar={profile.avatar} name={profile.name} size={96} />
         <Text style={st.title}>{profile.name || 'Your profile'}</Text>
+        {titleById(profile.title) && <Text style={[st.link, { fontStyle: 'italic' }]}>{titleById(profile.title)!.name}</Text>}
         <ProgressBar visited={profile.visited} />
         {born ? (
           <Pressable onPress={() => showOnGlobe({ kind: 'time', ma: bornMa! })} accessibilityRole="button" hitSlop={6}>

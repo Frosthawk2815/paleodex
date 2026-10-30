@@ -25,6 +25,9 @@ export type Profile = {
   recent: PageRef[];
   // Every page ever opened ("species:id"), for exploration points.
   visited: string[];
+  // Titles earned (ids from titles.ts), and the one shown under their name.
+  titles: string[];
+  title: string | null;
   settings: Settings;
 };
 // Something another screen (e.g. the profile) asks the main screen to show when it returns to it.
@@ -41,6 +44,8 @@ const DEFAULT: Profile = {
   favourites: [],
   recent: [],
   visited: [],
+  titles: [],
+  title: null,
   settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed' },
 };
 
@@ -59,6 +64,8 @@ type ProfileContext = {
   reduceMotion: boolean;
   request: OpenRequest | null;
   setRequest: (r: OpenRequest | null) => void;
+  // True once the saved profile has been read.
+  loaded: boolean;
 };
 
 const Context = createContext<ProfileContext | null>(null);
@@ -68,6 +75,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
   const [request, setRequest] = useState<OpenRequest | null>(null);
   const [systemReduceMotion, setSystemReduceMotion] = useState(false);
   const loaded = useRef(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Load the saved profile once; storage can be unavailable (e.g. private browsing), so fall back
   // to the defaults.
@@ -83,6 +91,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       .catch(() => {})
       .finally(() => {
         loaded.current = true;
+        setIsLoaded(true);
       });
   }, []);
 
@@ -139,8 +148,9 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       reduceMotion: profile.settings.reduceMotion || systemReduceMotion,
       request,
       setRequest,
+      loaded: isLoaded,
     }),
-    [profile, update, updateSettings, isFavourite, toggleFavourite, addRecent, clearRecent, systemReduceMotion, request],
+    [profile, update, updateSettings, isFavourite, toggleFavourite, addRecent, clearRecent, systemReduceMotion, request, isLoaded],
   );
   return <Context value={value}>{children}</Context>;
 }

@@ -24,7 +24,7 @@ export const tallyOf = (visited: string[]) => visited.reduce((sum, k) => sum + p
 
 // The points needed to reach each level, and its title. The whole app is worth about 34,000
 // points, so Naturalist means seeing a good part of it.
-const LEVELS: { at: number; title: string }[] = [
+export const LEVELS: { at: number; title: string }[] = [
   { at: 0, title: 'Egg' },
   { at: 100, title: 'Cinephile' },
   { at: 500, title: 'Paleo Enjoyer' },
