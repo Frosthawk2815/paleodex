@@ -90,6 +90,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "accipiter-nisus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/%D0%AF%D1%81%D1%82%D1%80%D0%B5%D0%B1-%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D0%B5%D0%BB%D1%8F%D1%82%D0%BD%D0%B8%D0%BA_%28Accipiter_nisus%2C_m%29%2C_%D0%98%D0%B7%D0%BC%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%B0%D1%80%D0%BA.jpg/960px-%D0%AF%D1%81%D1%82%D1%80%D0%B5%D0%B1-%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D0%B5%D0%BB%D1%8F%D1%82%D0%BD%D0%B8%D0%BA_%28Accipiter_nisus%2C_m%29%2C_%D0%98%D0%B7%D0%BC%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%B0%D1%80%D0%BA.jpg",
+  "width": 800,
+  "height": 1190,
+  "artist": "Dion Art",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:%D0%AF%D1%81%D1%82%D1%80%D0%B5%D0%B1-%D0%BF%D0%B5%D1%80%D0%B5%D0%BF%D0%B5%D0%BB%D1%8F%D1%82%D0%BD%D0%B8%D0%BA_(Accipiter_nisus,_m),_%D0%98%D0%B7%D0%BC%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D0%B0%D1%80%D0%BA.jpg",
+  "file": "Ястреб-перепелятник_(Accipiter_nisus,_m),_Измайловский_парк.jpg",
+  "article": "https://en.wikipedia.org/wiki/Eurasian_sparrowhawk",
+  "scope": "species"
+ },
  "achelousaurus-horneri": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Achelousaurus_holotype_%281%29.jpg/960px-Achelousaurus_holotype_%281%29.jpg",
   "width": 800,
@@ -333,6 +345,18 @@
   "article": "https://en.wikipedia.org/wiki/Aegisuchus",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "aegypius-monachus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Buitre_negro_%281%29.jpg/960px-Buitre_negro_%281%29.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "Juan Lacruz",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Buitre_negro_(1).jpg",
+  "file": "Buitre_negro_(1).jpg",
+  "article": "https://en.wikipedia.org/wiki/Cinereous_vulture",
+  "scope": "species"
  },
  "aegyptopithecus-zeuxis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Aegyptopithecus_NT.jpg/500px-Aegyptopithecus_NT.jpg",
@@ -1957,6 +1981,30 @@
   "article": "https://en.wikipedia.org/wiki/Common_swift",
   "scope": "species"
  },
+ "aquila-audax": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Aquila_audax_-_Captain%27s_Flat.jpg/960px-Aquila_audax_-_Captain%27s_Flat.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Aquila_audax_-_Captain%27s_Flat.jpg",
+  "file": "Aquila_audax_-_Captain's_Flat.jpg",
+  "article": "https://en.wikipedia.org/wiki/Wedge-tailed_eagle",
+  "scope": "species"
+ },
+ "aquila-chrysaetos": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_%28Switzerland%29_Photo_by_Giles_Laurent.jpg/960px-015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_%28Switzerland%29_Photo_by_Giles_Laurent.jpg",
+  "width": 800,
+  "height": 1000,
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_(Switzerland)_Photo_by_Giles_Laurent.jpg",
+  "file": "015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_(Switzerland)_Photo_by_Giles_Laurent.jpg",
+  "article": "https://en.wikipedia.org/wiki/Golden_eagle",
+  "scope": "species"
+ },
  "aquilonifer-spinosus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Aquilonifer.png/960px-Aquilonifer.png",
   "width": 800,
@@ -2442,6 +2490,18 @@
   "article": "https://en.wikipedia.org/wiki/Astraspis_desiderata",
   "scope": "species",
   "kind": "restoration"
+ },
+ "astur-gentilis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Northern_Goshawk_ad_M2.jpg/500px-Northern_Goshawk_ad_M2.jpg",
+  "width": 500,
+  "height": 816,
+  "artist": "Norbert Kenntner, Berlin",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Northern_Goshawk_ad_M2.jpg",
+  "file": "Northern_Goshawk_ad_M2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Eurasian_goshawk",
+  "scope": "species"
  },
  "atelerix-albiventris": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atelerix_albiventris.jpg/500px-Atelerix_albiventris.jpg",
@@ -4158,6 +4218,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "buteo-jamaicensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Red-tailed_Hawk_%2845812546121%29.jpg/960px-Red-tailed_Hawk_%2845812546121%29.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Becky Matsubara from El Sobrante, California",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Red-tailed_Hawk_(45812546121).jpg",
+  "file": "Red-tailed_Hawk_(45812546121).jpg",
+  "article": "https://en.wikipedia.org/wiki/Red-tailed_hawk",
+  "scope": "species"
+ },
  "byronosaurus-jaffei": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Byronosaurus_jaffei_headden.jpg/500px-Byronosaurus_jaffei_headden.jpg",
   "width": 500,
@@ -5738,6 +5810,30 @@
   "article": "https://en.wikipedia.org/wiki/Cimolichthys",
   "scope": "genus",
   "kind": "skeletal"
+ },
+ "circaetus-gallicus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Short-toed_Snake-Eagle_in_Bhigwan_August_2025_by_Tisha_Mukherjee_01.jpg/960px-Short-toed_Snake-Eagle_in_Bhigwan_August_2025_by_Tisha_Mukherjee_01.jpg",
+  "width": 800,
+  "height": 571,
+  "artist": "Tisha Mukherjee",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Short-toed_Snake-Eagle_in_Bhigwan_August_2025_by_Tisha_Mukherjee_01.jpg",
+  "file": "Short-toed_Snake-Eagle_in_Bhigwan_August_2025_by_Tisha_Mukherjee_01.jpg",
+  "article": "https://en.wikipedia.org/wiki/Short-toed_snake_eagle",
+  "scope": "species"
+ },
+ "circus-aeruginosus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/M%C3%A4nnliche_Rohrweihe_im_Flug_04.jpg/960px-M%C3%A4nnliche_Rohrweihe_im_Flug_04.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Stephan Sprinz",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:M%C3%A4nnliche_Rohrweihe_im_Flug_04.jpg",
+  "file": "Männliche_Rohrweihe_im_Flug_04.jpg",
+  "article": "https://en.wikipedia.org/wiki/Western_marsh_harrier",
+  "scope": "species"
  },
  "cistecephalus-microrhinus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Cistecephalus_microrhinus_54.jpg/960px-Cistecephalus_microrhinus_54.jpg",
@@ -8180,6 +8276,30 @@
   "article": "https://en.wikipedia.org/wiki/Ekrixinatosaurus",
   "scope": "genus",
   "kind": "skeletal"
+ },
+ "elanoides-forficatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Swallow-tailed_Kite_%2834163638494%29.jpg/960px-Swallow-tailed_Kite_%2834163638494%29.jpg",
+  "width": 800,
+  "height": 640,
+  "artist": "Andy Morffew from Itchen Abbas, Hampshire, UK",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Swallow-tailed_Kite_(34163638494).jpg",
+  "file": "Swallow-tailed_Kite_(34163638494).jpg",
+  "article": "https://en.wikipedia.org/wiki/Swallow-tailed_kite",
+  "scope": "species"
+ },
+ "elanus-caeruleus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Black-winged_Kite_in_Tal_Chhapar_Sanctuary_November_2025_by_Tisha_Mukherjee_03.jpg/960px-Black-winged_Kite_in_Tal_Chhapar_Sanctuary_November_2025_by_Tisha_Mukherjee_03.jpg",
+  "width": 800,
+  "height": 1193,
+  "artist": "Tisha Mukherjee",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Black-winged_Kite_in_Tal_Chhapar_Sanctuary_November_2025_by_Tisha_Mukherjee_03.jpg",
+  "file": "Black-winged_Kite_in_Tal_Chhapar_Sanctuary_November_2025_by_Tisha_Mukherjee_03.jpg",
+  "article": "https://en.wikipedia.org/wiki/Black-winged_kite",
+  "scope": "species"
  },
  "elaphodus-cephalophus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Tufteddeer-2.jpg/960px-Tufteddeer-2.jpg",
@@ -10800,6 +10920,43 @@
   "article": "https://en.wikipedia.org/wiki/Leadbeater%27s_possum",
   "scope": "species"
  },
+ "gypaetus-barbatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/010e_Wild_Bearded_Vulture_in_flight_at_Pfyn-Finges_%28Switzerland%29_Photo_by_Giles_Laurent.jpg/960px-010e_Wild_Bearded_Vulture_in_flight_at_Pfyn-Finges_%28Switzerland%29_Photo_by_Giles_Laurent.jpg",
+  "width": 800,
+  "height": 1000,
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:010e_Wild_Bearded_Vulture_in_flight_at_Pfyn-Finges_(Switzerland)_Photo_by_Giles_Laurent.jpg",
+  "file": "010e_Wild_Bearded_Vulture_in_flight_at_Pfyn-Finges_(Switzerland)_Photo_by_Giles_Laurent.jpg",
+  "article": "https://en.wikipedia.org/wiki/Bearded_vulture",
+  "scope": "species",
+  "kind": "fossil"
+ },
+ "gyps-bengalensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/White_rumped_vulture_in_chitwan_national_park.jpg/960px-White_rumped_vulture_in_chitwan_national_park.jpg",
+  "width": 800,
+  "height": 500,
+  "artist": "Prasan Shrestha",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:White_rumped_vulture_in_chitwan_national_park.jpg",
+  "file": "White_rumped_vulture_in_chitwan_national_park.jpg",
+  "article": "https://en.wikipedia.org/wiki/White-rumped_vulture",
+  "scope": "species"
+ },
+ "gyps-rueppelli": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/R%C3%BCppell%27s_griffon_vulture_%28Gyps_rueppelli_rueppelli%29_Serengeti.jpg/960px-R%C3%BCppell%27s_griffon_vulture_%28Gyps_rueppelli_rueppelli%29_Serengeti.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:R%C3%BCppell%27s_griffon_vulture_(Gyps_rueppelli_rueppelli)_Serengeti.jpg",
+  "file": "Rüppell's_griffon_vulture_(Gyps_rueppelli_rueppelli)_Serengeti.jpg",
+  "article": "https://en.wikipedia.org/wiki/R%C3%BCppell%27s_vulture",
+  "scope": "species"
+ },
  "hadrocodium-wui": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Hadrocodium-000.jpg/960px-Hadrocodium-000.jpg",
   "width": 800,
@@ -10849,6 +11006,18 @@
   "source": "https://commons.wikimedia.org/wiki/File:Bald_eagle_about_to_fly_in_Alaska_(2016).jpg",
   "file": "Bald_eagle_about_to_fly_in_Alaska_(2016).jpg",
   "article": "https://en.wikipedia.org/wiki/Bald_eagle",
+  "scope": "species"
+ },
+ "haliaeetus-pelagicus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Haliaeetus_pelagicus_%28Rausu%2C_Japan%29.jpg/960px-Haliaeetus_pelagicus_%28Rausu%2C_Japan%29.jpg",
+  "width": 800,
+  "height": 534,
+  "artist": "Michael Pinczolits",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Haliaeetus_pelagicus_(Rausu,_Japan).jpg",
+  "file": "Haliaeetus_pelagicus_(Rausu,_Japan).jpg",
+  "article": "https://en.wikipedia.org/wiki/Steller%27s_sea_eagle",
   "scope": "species"
  },
  "halichoerus-grypus": {
@@ -10988,6 +11157,18 @@
   "article": "https://en.wikipedia.org/wiki/Harenadraco",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "harpia-harpyja": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Harpia_harpyja_001_800.jpg/500px-Harpia_harpyja_001_800.jpg",
+  "width": 500,
+  "height": 544,
+  "artist": "http://www.birdphotos.com",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Harpia_harpyja_001_800.jpg",
+  "file": "Harpia_harpyja_001_800.jpg",
+  "article": "https://en.wikipedia.org/wiki/Harpy_eagle",
+  "scope": "species"
  },
  "harpoceras-falciferum": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Posidonienschiefer_Holzmaden_-_d.jpg/960px-Posidonienschiefer_Holzmaden_-_d.jpg",
@@ -15860,6 +16041,18 @@
   "scope": "genus",
   "kind": "restoration"
  },
+ "milvus-milvus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Milvus_milvus_R%28ThKraft%29.jpg/500px-Milvus_milvus_R%28ThKraft%29.jpg",
+  "width": 500,
+  "height": 667,
+  "artist": "Thomas Kraft (ThKraft)",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Milvus_milvus_R(ThKraft).jpg",
+  "file": "Milvus_milvus_R(ThKraft).jpg",
+  "article": "https://en.wikipedia.org/wiki/Red_kite",
+  "scope": "species"
+ },
  "mimipiscis-toombsi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Mimipiscis_Eusthenopteron_skulls_quadratojugal.png/960px-Mimipiscis_Eusthenopteron_skulls_quadratojugal.png",
   "width": 800,
@@ -16893,6 +17086,18 @@
   "scope": "species",
   "kind": "fossil"
  },
+ "neophron-percnopterus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Egyptian_Vulture%2C_Socotra.jpg/960px-Egyptian_Vulture%2C_Socotra.jpg",
+  "width": 800,
+  "height": 800,
+  "artist": "Rod Waddington",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Egyptian_Vulture,_Socotra.jpg",
+  "file": "Egyptian_Vulture,_Socotra.jpg",
+  "article": "https://en.wikipedia.org/wiki/Egyptian_vulture",
+  "scope": "species"
+ },
  "neotragus-pygmaeus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Royal_antelope.jpg/500px-Royal_antelope.jpg",
   "width": 500,
@@ -17753,6 +17958,19 @@
   "article": "https://en.wikipedia.org/wiki/Orkoraptor",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "ornimegalonyx-oteroi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg/960px-Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg.png",
+  "width": 800,
+  "height": 988,
+  "artist": "Di (they-them)",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg",
+  "file": "Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg",
+  "article": "https://en.wikipedia.org/wiki/Ornimegalonyx",
+  "scope": "species",
+  "kind": "skeletal"
  },
  "ornithodesmus-cluniculus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ornithodesmus_sacrum.jpg/960px-Ornithodesmus_sacrum.jpg",
@@ -19173,6 +19391,18 @@
   "article": "https://en.wikipedia.org/wiki/Eastern_barred_bandicoot",
   "scope": "species"
  },
+ "pernis-apivorus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Wespenbussard_European_honey_buzzard_Pernis_apivorus%2C_crop.jpg/960px-Wespenbussard_European_honey_buzzard_Pernis_apivorus%2C_crop.jpg",
+  "width": 800,
+  "height": 790,
+  "artist": "Andreas Trepte",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Wespenbussard_European_honey_buzzard_Pernis_apivorus,_crop.jpg",
+  "file": "Wespenbussard_European_honey_buzzard_Pernis_apivorus,_crop.jpg",
+  "article": "https://en.wikipedia.org/wiki/European_honey_buzzard",
+  "scope": "species"
+ },
  "perodicticus-potto": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/West_African_potto_%28Perodicticus_potto%29_Ankasa.jpg/960px-West_African_potto_%28Perodicticus_potto%29_Ankasa.jpg",
   "width": 800,
@@ -19583,6 +19813,18 @@
   "article": "https://en.wikipedia.org/wiki/White-faced_saki",
   "scope": "species"
  },
+ "pithecophaga-jefferyi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Pamarayeg_IIIx2_%28cropped%29.jpg/500px-Pamarayeg_IIIx2_%28cropped%29.jpg",
+  "width": 500,
+  "height": 874,
+  "artist": "Aimee Valencia",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pamarayeg_IIIx2_(cropped).jpg",
+  "file": "Pamarayeg_IIIx2_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Philippine_eagle",
+  "scope": "species"
+ },
  "placenticeras-meeki": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Placenticeratidae_-_Placenticeras_meeki.JPG/960px-Placenticeratidae_-_Placenticeras_meeki.JPG",
   "width": 800,
@@ -19924,6 +20166,18 @@
   "article": "https://en.wikipedia.org/wiki/Polacanthus",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "polemaetus-bellicosus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Martial_eagle_%28Polemaetus_bellicosus%29.jpg/960px-Martial_eagle_%28Polemaetus_bellicosus%29.jpg",
+  "width": 800,
+  "height": 1200,
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Martial_eagle_(Polemaetus_bellicosus).jpg",
+  "file": "Martial_eagle_(Polemaetus_bellicosus).jpg",
+  "article": "https://en.wikipedia.org/wiki/Martial_eagle",
+  "scope": "species"
  },
  "polycotylus-latippinus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Polycotylus_with_fetus_LACM.jpg/960px-Polycotylus_with_fetus_LACM.jpg",
@@ -21747,6 +22001,18 @@
   "article": "https://en.wikipedia.org/wiki/Volcano_rabbit",
   "scope": "species",
   "kind": "fossil"
+ },
+ "rostrhamus-sociabilis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/087_Male_Snail_kite_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg/960px-087_Male_Snail_kite_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg",
+  "width": 800,
+  "height": 1000,
+  "artist": "Giles Laurent",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:087_Male_Snail_kite_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent.jpg",
+  "file": "087_Male_Snail_kite_in_Encontro_das_Águas_State_Park_Photo_by_Giles_Laurent.jpg",
+  "article": "https://en.wikipedia.org/wiki/Snail_kite",
+  "scope": "species"
  },
  "rubidgea-atrox": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Rubidgea_atroxDB.jpg/960px-Rubidgea_atroxDB.jpg",
@@ -23589,6 +23855,18 @@
   "scope": "genus",
   "kind": "restoration"
  },
+ "stephanoaetus-coronatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Crowned_Eagle_%28Stephanoaetus_coronatus%29_with_prey_..._%2829591438981%29.jpg/960px-Crowned_Eagle_%28Stephanoaetus_coronatus%29_with_prey_..._%2829591438981%29.jpg",
+  "width": 800,
+  "height": 594,
+  "artist": "Bernard DUPONT from FRANCE",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Crowned_Eagle_(Stephanoaetus_coronatus)_with_prey_..._(29591438981).jpg",
+  "file": "Crowned_Eagle_(Stephanoaetus_coronatus)_with_prey_..._(29591438981).jpg",
+  "article": "https://en.wikipedia.org/wiki/Crowned_eagle",
+  "scope": "species"
+ },
  "sterna-paradisaea": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Arctic_tern_%28Sterna_paradisaea%29_Flatey_3.jpg/960px-Arctic_tern_%28Sterna_paradisaea%29_Flatey_3.jpg",
   "width": 800,
@@ -24353,6 +24631,18 @@
   "article": "https://en.wikipedia.org/wiki/Tenuicruris",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "terathopius-ecaudatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Bateleur_%28Terathopius_ecaudatus%29_male_Serengeti.jpg/960px-Bateleur_%28Terathopius_ecaudatus%29_male_Serengeti.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Charles J. Sharp",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bateleur_(Terathopius_ecaudatus)_male_Serengeti.jpg",
+  "file": "Bateleur_(Terathopius_ecaudatus)_male_Serengeti.jpg",
+  "article": "https://en.wikipedia.org/wiki/Bateleur",
+  "scope": "species"
  },
  "teratophoneus-curriei": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Teratophoneus_curriei_adult_and_juvenile_2_salt_lake_city.jpg/960px-Teratophoneus_curriei_adult_and_juvenile_2_salt_lake_city.jpg",
