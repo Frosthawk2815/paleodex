@@ -5295,6 +5295,10 @@
    "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg"
   ]
  },
+ "simolestes-vorax": {
+  "vote": "no",
+  "file": "Plesiosaurus_indicus_mandible.jpg"
+ },
  "simosuchus-clarki": {
   "vote": "yes",
   "file": "Simosuchus_clarki,_ROM.jpg"
@@ -5358,6 +5362,10 @@
  "somniosus-microcephalus": {
   "vote": "yes",
   "file": "Somniosus_microcephalus_okeanos.jpg"
+ },
+ "sotalia-fluviatilis": {
+  "vote": "yes",
+  "file": "Sotalia_fluviatilis_Amazon_River_Dolphin.jpg"
  },
  "sousa-chinensis": {
   "vote": "yes",
@@ -5549,6 +5557,10 @@
   "vote": "yes",
   "file": "African_buffalo_(Syncerus_caffer_caffer)_male_with_cattle_egret.jpg"
  },
+ "takifugu-rubripes": {
+  "vote": "yes",
+  "file": "Fugu_in_Tank.jpg"
+ },
  "talenkauen-santacrucensis": {
   "vote": "yes",
   "file": "Talenkauen.jpg"
@@ -5684,6 +5696,10 @@
  "thoatherium-minusculum": {
   "vote": "yes",
   "file": "Reports_of_the_Princeton_University_Expeditions_to_Patagonia,_1896-1899._J._B._Hatcher_in_charge_(1901)_(14749873255).jpg"
+ },
+ "thoracosaurus-neocesariensis": {
+  "vote": "yes",
+  "file": "Thoracosaurus_macrorhynchus.jpeg"
  },
  "threskiornis-aethiopicus": {
   "vote": "yes",
@@ -5893,6 +5909,10 @@
   "vote": "yes",
   "file": "Edmontosaurus_Family_Clean.png"
  },
+ "uintacrinus-socialis": {
+  "vote": "yes",
+  "file": "From_the_Niobrara_Formation_during_the_Upper_Cretaceous_in_Western_Kansas,_US,_Uintacrinus_socialis_Grinnell.jpg"
+ },
  "uluciala-rotundata": {
   "vote": "no",
   "file": "Uluciala_rotundata_(lower_beaks).png",
@@ -6013,6 +6033,10 @@
   "vote": "yes",
   "file": "AndeanCondorMale.jpg"
  },
+ "wakaleo-schouteni": {
+  "vote": "yes",
+  "file": "Life_reconstruction_of_the_marsupial_lion_Wakaleo_oldfieldi.jpg"
+ },
  "weigeltisaurus-jaekeli": {
   "vote": "yes",
   "file": "SMNK-PAL_2882.png"
@@ -6069,6 +6093,10 @@
   "vote": "yes",
   "file": "Laika_ac_Dino_Kingdom_2012_(7882288828).jpg"
  },
+ "zalambdalestes-lechei": {
+  "vote": "yes",
+  "file": "Zalambdalestes_lechei.jpg"
+ },
  "zalmoxes-robustus": {
   "vote": "no",
   "file": "Zalmoxes_robustus_dentary.jpg",
@@ -6085,9 +6113,17 @@
   "vote": "yes",
   "file": "Zarafasaura_at_Wyoming_Dinosaur_Center.jpg"
  },
+ "zby-atlanticus": {
+  "vote": "no",
+  "file": "Zby_holotype.png"
+ },
  "zephyrosaurus-schaffi": {
   "vote": "yes",
   "file": "Zephyrosaurus_in_Berlin.jpg"
+ },
+ "zhangheotherium-quinquecuspidens": {
+  "vote": "yes",
+  "file": "Zhangheotherium_quinquecuspidens.jpg"
  },
  "zhuchengtyrannus-magnus": {
   "vote": "yes",

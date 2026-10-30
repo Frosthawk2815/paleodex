@@ -14777,6 +14777,18 @@
   "article": "https://en.wikipedia.org/wiki/Greenland_shark",
   "scope": "species"
  },
+ "sotalia-fluviatilis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Sotalia_fluviatilis_Amazon_River_Dolphin.jpg",
+  "width": 800,
+  "height": 1064,
+  "artist": "Allen Sheffield from USA",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sotalia_fluviatilis_Amazon_River_Dolphin.jpg",
+  "file": "Sotalia_fluviatilis_Amazon_River_Dolphin.jpg",
+  "article": "https://en.wikipedia.org/wiki/Tucuxi",
+  "scope": "species"
+ },
  "sousa-chinensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Pink_Dolphin.JPG/960px-Pink_Dolphin.JPG",
   "width": 800,
@@ -15271,6 +15283,18 @@
   "article": "https://en.wikipedia.org/wiki/African_buffalo",
   "scope": "species"
  },
+ "takifugu-rubripes": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/25/Fugu_in_Tank.jpg",
+  "width": 800,
+  "height": 439,
+  "artist": "Unknown author",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Fugu_in_Tank.jpg",
+  "file": "Fugu_in_Tank.jpg",
+  "article": "https://en.wikipedia.org/wiki/Takifugu_rubripes",
+  "scope": "species"
+ },
  "talenkauen-santacrucensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Talenkauen.jpg/960px-Talenkauen.jpg",
   "width": 800,
@@ -15645,6 +15669,18 @@
   "article": "https://en.wikipedia.org/wiki/Thoatherium",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "thoracosaurus-neocesariensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Thoracosaurus_macrorhynchus.jpeg",
+  "width": 800,
+  "height": 1280,
+  "artist": "Unknown author",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Thoracosaurus_macrorhynchus.jpeg",
+  "file": "Thoracosaurus_macrorhynchus.jpeg",
+  "article": "https://en.wikipedia.org/wiki/Thoracosaurus",
+  "scope": "genus"
  },
  "threskiornis-aethiopicus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Sacred_ibis_%28Threskiornis_aethiopicus%29.jpg/960px-Sacred_ibis_%28Threskiornis_aethiopicus%29.jpg",
@@ -16201,6 +16237,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "uintacrinus-socialis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/11/From_the_Niobrara_Formation_during_the_Upper_Cretaceous_in_Western_Kansas%2C_US%2C_Uintacrinus_socialis_Grinnell.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "James St. John (jsj1771) https://www.flickr.com/people/jsjgeology/",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:From_the_Niobrara_Formation_during_the_Upper_Cretaceous_in_Western_Kansas,_US,_Uintacrinus_socialis_Grinnell.jpg",
+  "file": "From_the_Niobrara_Formation_during_the_Upper_Cretaceous_in_Western_Kansas,_US,_Uintacrinus_socialis_Grinnell.jpg",
+  "article": "https://en.wikipedia.org/wiki/Uintacrinus",
+  "scope": "genus"
+ },
  "upupa-epops": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Israel._Eurasian_Hoopoe_%286497645007%29.jpg/960px-Israel._Eurasian_Hoopoe_%286497645007%29.jpg",
   "width": 800,
@@ -16525,6 +16573,19 @@
   "article": "https://en.wikipedia.org/wiki/Andean_condor",
   "scope": "species"
  },
+ "wakaleo-schouteni": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Life_reconstruction_of_the_marsupial_lion_Wakaleo_oldfieldi.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "Peter Schouten",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Life_reconstruction_of_the_marsupial_lion_Wakaleo_oldfieldi.jpg",
+  "file": "Life_reconstruction_of_the_marsupial_lion_Wakaleo_oldfieldi.jpg",
+  "article": "https://en.wikipedia.org/wiki/Wakaleo",
+  "scope": "genus",
+  "kind": "restoration"
+ },
  "weigeltisaurus-jaekeli": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/SMNK-PAL_2882.png/960px-SMNK-PAL_2882.png",
   "width": 800,
@@ -16677,6 +16738,19 @@
   "article": "https://en.wikipedia.org/wiki/Yutyrannus",
   "scope": "genus"
  },
+ "zalambdalestes-lechei": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Zalambdalestes_lechei.jpg",
+  "width": 800,
+  "height": 631,
+  "artist": "Robert Niedźwiedzki",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zalambdalestes_lechei.jpg",
+  "file": "Zalambdalestes_lechei.jpg",
+  "article": "https://en.wikipedia.org/wiki/Zalambdalestes",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "zalophus-californianus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/California_Sea_Lion%2C_Monterey%2C_California%2C_United_States_imported_from_iNaturalist_photo_203598492.jpg/960px-California_Sea_Lion%2C_Monterey%2C_California%2C_United_States_imported_from_iNaturalist_photo_203598492.jpg",
   "width": 800,
@@ -16711,6 +16785,19 @@
   "source": "https://commons.wikimedia.org/wiki/File:Zephyrosaurus_in_Berlin.jpg",
   "file": "Zephyrosaurus_in_Berlin.jpg",
   "article": "https://en.wikipedia.org/wiki/Zephyrosaurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "zhangheotherium-quinquecuspidens": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Zhangheotherium_quinquecuspidens.jpg",
+  "width": 800,
+  "height": 858,
+  "artist": "Laikayiu",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Zhangheotherium_quinquecuspidens.jpg",
+  "file": "Zhangheotherium_quinquecuspidens.jpg",
+  "article": "https://en.wikipedia.org/wiki/Zhangheotherium",
   "scope": "genus",
   "kind": "fossil"
  },
