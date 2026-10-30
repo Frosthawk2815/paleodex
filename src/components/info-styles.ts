@@ -1,4 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { useMemo } from 'react';
+import { StyleSheet, type TextStyle } from 'react-native';
+
+import { useTextScale } from '@/lib/profile';
 
 // Styles shared by the information sections below the globe.
 export const info = StyleSheet.create({
@@ -204,3 +207,27 @@ export const info = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+type InfoStyles = typeof info;
+const scaled = new Map<number, InfoStyles>();
+
+// The shared styles with text enlarged to the user's text size setting.
+export function useInfoStyles(): InfoStyles {
+  const scale = useTextScale();
+  return useMemo(() => {
+    if (scale === 1) return info;
+    const hit = scaled.get(scale);
+    if (hit) return hit;
+    const out = {} as Record<string, TextStyle>;
+    for (const [key, style] of Object.entries(info) as [string, TextStyle][]) {
+      out[key] = {
+        ...style,
+        ...(style.fontSize ? { fontSize: Math.round(style.fontSize * scale) } : {}),
+        ...(style.lineHeight ? { lineHeight: Math.round(style.lineHeight * scale) } : {}),
+      };
+    }
+    const result = StyleSheet.create(out) as unknown as InfoStyles;
+    scaled.set(scale, result);
+    return result;
+  }, [scale]);
+}

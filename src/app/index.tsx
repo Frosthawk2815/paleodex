@@ -1,4 +1,4 @@
-import { Link } from 'expo-router';
+import { Link, router, useFocusEffect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useDeferredValue, useEffect, useEffectEvent, useRef, useState } from 'react';
 import {
@@ -12,18 +12,20 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Svg, { Circle, Line } from 'react-native-svg';
+import Svg, { Circle, Line, Path } from 'react-native-svg';
 
 import { CladeInfo } from '@/components/clade-info';
 import { EventInfo } from '@/components/event-info';
 import { SpeciesInfo } from '@/components/species-info';
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { Globe } from '@/components/globe';
+import { AvatarImage } from '@/components/profile-ui';
 import { type SearchResult, SearchPanel } from '@/components/search-panel';
 import { TimeBar, type TimeBarHandle } from '@/components/time-bar';
-import type { HistoryEvent } from '@/data/events';
+import { EVENTS, type HistoryEvent } from '@/data/events';
 import { extinctionAt } from '@/lib/extinctions';
 import { cladeById, formationById, pastPointIndex, speciesById } from '@/lib/life';
+import { birthMaOf, type PageRef, useProfile } from '@/lib/profile';
 import { lastSeenJumpMa, phaseJumpMa, rangeOf } from '@/lib/ranges';
 import { contextAt, timeLabel } from '@/lib/time';
 
@@ -40,10 +42,14 @@ function selectionLabel(s: Selection): string {
   return item?.common || item?.name || 'Previous';
 }
 
+const pageOf = (s: Selection): PageRef => ({ kind: s.kind, id: s.kind === 'event' ? s.event.id : s.id });
+
 type Focus = { kind: 'site' | 'moon' | 'event' | 'skull' | 'range'; id: string; index?: number; n: number };
 
 export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
+  const { profile, addRecent, request, setRequest, reduceMotion } = useProfile();
+  const birthMa = birthMaOf(profile);
   // Height of the visible page; the globe section fills it. Measured, because the window size
   // isn't known when the web version is rendered ahead of time.
   const [pageHeight, setPageHeight] = useState(0);
@@ -92,9 +98,10 @@ export default function GlobeScreen() {
   const showInfo = (next: Selection, scroll = true) => {
     if (selected && !sameSelection(selected, next)) setHistory((h) => [...h, selected].slice(-50));
     setSelected(next);
+    addRecent(pageOf(next));
     syncRange(next);
     if (!scroll) return;
-    if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: true });
+    if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: !reduceMotion });
     else scrollToInfo.current = true;
   };
   const selectEvent = (e: HistoryEvent) => showInfo({ kind: 'event', event: e });
@@ -149,10 +156,11 @@ export default function GlobeScreen() {
     if (!previous) return;
     setHistory((h) => h.slice(0, -1));
     setSelected(previous);
+    addRecent(pageOf(previous));
     syncRange(previous);
     if (previous.kind === 'species') travelToSpecies(previous.id);
     else if (previous.kind === 'event') jumpToPoint(previous.event, 0);
-    if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: true });
+    if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: !reduceMotion });
   };
   // Android's back button goes to the previous page while there is one.
   const onHardwareBack = useEffectEvent(goPrevious);
@@ -166,7 +174,7 @@ export default function GlobeScreen() {
     return () => sub.remove();
   }, [hasPrevious]);
   const nav = { onPrevious: previous ? goPrevious : undefined, previousLabel: previous ? selectionLabel(previous) : undefined };
-  const backToGlobe = () => page.current?.scrollTo({ y: 0, animated: true });
+  const backToGlobe = () => page.current?.scrollTo({ y: 0, animated: !reduceMotion });
   // Jump to a point and scroll back up to see it on the globe.
   const jumpAndShow = (e: HistoryEvent, index: number) => {
     jumpToPoint(e, index);
@@ -177,9 +185,32 @@ export default function GlobeScreen() {
     infoY.current = e.nativeEvent.layout.y;
     if (scrollToInfo.current) {
       scrollToInfo.current = false;
-      page.current?.scrollTo({ y: e.nativeEvent.layout.y, animated: true });
+      page.current?.scrollTo({ y: e.nativeEvent.layout.y, animated: !reduceMotion });
     }
   };
+
+  // Show what another screen asked for (e.g. a favourite chosen in the profile) on returning here.
+  const showRequest = () => {
+    if (!request) return;
+    setRequest(null);
+    if (request.kind === 'time') {
+      bar.current?.goToTime(request.ma);
+      backToGlobe();
+      return;
+    }
+    const { kind, id } = request.page;
+    if (kind === 'species') openSpecies(id);
+    else if (kind === 'clade') openClade(id);
+    else {
+      const event = EVENTS.find((e) => e.id === id);
+      if (event) {
+        jumpToPoint(event, 0);
+        showInfo({ kind: 'event', event });
+      }
+    }
+  };
+  // Runs whenever this screen is shown; it does nothing unless a request is waiting.
+  useFocusEffect(showRequest);
 
   const onSearchSelect = (r: SearchResult) => {
     setSearching(false);
@@ -225,6 +256,21 @@ export default function GlobeScreen() {
                 <Line x1={15.5} y1={15.5} x2={21} y2={21} stroke="#FFFFFF" strokeWidth={2.4} strokeLinecap="round" />
               </Svg>
             </Pressable>
+            <Pressable
+                onPress={() => router.push('/profile')}
+                accessibilityRole="button"
+                accessibilityLabel="Your profile, favourites, settings and credits"
+                hitSlop={8}
+                style={({ pressed }) => [styles.searchButton, styles.profileButton, pressed && styles.searchPressed]}>
+                {profile.avatar ? (
+                  <AvatarImage avatar={profile.avatar} name={profile.name} size={38} />
+                ) : (
+                  <Svg width={20} height={20} viewBox="0 0 24 24">
+                    <Circle cx={12} cy={8} r={4} stroke="#FFFFFF" strokeWidth={2.2} fill="none" />
+                    <Path d="M4 21 C4 16 8 14 12 14 C16 14 20 16 20 21" stroke="#FFFFFF" strokeWidth={2.2} fill="none" strokeLinecap="round" />
+                  </Svg>
+                )}
+            </Pressable>
             <Text style={styles.app}>PaleoDex</Text>
             <Text style={styles.time} accessibilityLiveRegion="polite">
               {timeLabel(timeMa)}
@@ -262,18 +308,13 @@ export default function GlobeScreen() {
                 rangeId={rangeId}
                 onClearRange={() => setRangeId(undefined)}
                 onSelectSpecies={openSpeciesHere}
+                reduceMotion={reduceMotion}
               />
             )}
           </View>
 
-          <TimeBar ref={bar} onChange={setTimeMa} onSite={(e) => lookAt('site', e.id)} />
+          <TimeBar ref={bar} onChange={setTimeMa} onSite={(e) => lookAt('site', e.id)} reduceMotion={reduceMotion} birthMa={birthMa} />
           <Text style={styles.hint}>Slide or tap the timeline to travel in time · drag to spin · pinch to zoom</Text>
-          <Text style={styles.credit}>
-            Land and sea: Scotese & Wright (2018) PALEOMAP · Sea level: Spratt & Lisiecki (2016), Bintanja & van de Wal (2008)
-          </Text>
-          <Link href="/credits" style={styles.creditLink}>
-            Image and data credits ›
-          </Link>
         </View>
 
         {selected && (
@@ -362,6 +403,11 @@ const styles = StyleSheet.create({
   searchPressed: {
     backgroundColor: 'rgba(255,255,255,0.25)',
   },
+  // Sits just below the search button.
+  profileButton: {
+    top: 48,
+    overflow: 'hidden',
+  },
   searchLayer: {
     position: 'absolute',
     top: 0,
@@ -423,18 +469,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 4,
     paddingHorizontal: 16,
-  },
-  creditLink: {
-    color: '#9CC8FF',
-    fontSize: 12,
-    textAlign: 'center',
-    marginTop: 6,
-    paddingVertical: 4,
-  },
-  credit: {
-    color: 'rgba(255,255,255,0.35)',
-    fontSize: 10,
-    textAlign: 'center',
-    marginTop: 2,
   },
 });

@@ -3,7 +3,7 @@ import { Pressable, Text, View } from 'react-native';
 
 import { CladeCrumbs } from '@/components/clade-crumbs';
 import { InfoNav } from '@/components/info-nav';
-import { info } from '@/components/info-styles';
+import { useInfoStyles } from '@/components/info-styles';
 import { type Clade, CLADES, type Species } from '@/data/life';
 import { childClades, cladeById, cladePath, speciesInClade } from '@/lib/life';
 
@@ -18,6 +18,7 @@ type Props = {
 
 // The information section for a group: where it sits in the tree and every species in it.
 export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies }: Props) {
+  const info = useInfoStyles();
   const path = cladePath(clade.id);
   const children = childClades(clade.id);
   const species = speciesInClade(clade.id);
@@ -29,7 +30,7 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
 
   return (
     <View style={info.wrap}>
-      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} />
+      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} page={{ kind: 'clade', id: clade.id }} />
 
       <Text style={info.kicker}>Group</Text>
       <Text style={info.title} accessibilityRole="header">
@@ -80,6 +81,7 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
 }
 
 export function SpeciesRow({ species, onPress }: { species: Species; onPress: () => void }) {
+  const info = useInfoStyles();
   const group = cladeById(species.clade);
   return (
     <Pressable

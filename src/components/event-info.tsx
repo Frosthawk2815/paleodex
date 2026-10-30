@@ -5,7 +5,7 @@ import { badgeBg, pointVisible } from '@/lib/events';
 import { PointIcon } from '@/components/point-icon';
 import { SpeciesRow } from '@/components/clade-info';
 import { InfoNav } from '@/components/info-nav';
-import { info } from '@/components/info-styles';
+import { useInfoStyles } from '@/components/info-styles';
 import type { Clade, Species } from '@/data/life';
 import { familyOf, speciesAtEvent, speciesById, speciesInFormation } from '@/lib/life';
 
@@ -25,6 +25,7 @@ type Props = {
 
 // The information section shown below the globe for a selected event.
 export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, onJump, onOpenSpecies, onOpenClade }: Props) {
+  const info = useInfoStyles();
   // Species found here, grouped by family (e.g. tyrannosaurs).
   const families: { family: Clade | undefined; members: Species[] }[] = [];
   for (const s of speciesInFormation(event.id)) {
@@ -36,7 +37,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
 
   return (
     <View style={styles.wrap}>
-      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} />
+      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} page={{ kind: 'event', id: event.id }} />
 
       <Text style={styles.kicker}>{event.kind}</Text>
       <Text style={styles.title} accessibilityRole="header">
@@ -148,6 +149,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
 
 // Notes in three tiers: superstars as cards, microcelebs as short explainers, plebs as a list.
 function TierNotes({ heading, notes }: { heading: string; notes?: InvertebrateNote[] }) {
+  const info = useInfoStyles();
   if (!notes || notes.length === 0) return null;
   const plebs = notes.filter((n) => n.tier === 'pleb');
   return (

@@ -35,7 +35,15 @@
           "imageWidth": 76
         }
       ],
-      "expo-image"
+      "expo-image",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "PaleoDex uses your photos only if you choose one as your profile picture.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

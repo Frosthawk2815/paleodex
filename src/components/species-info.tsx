@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { InfoNav } from '@/components/info-nav';
-import { info } from '@/components/info-styles';
+import { useInfoStyles } from '@/components/info-styles';
 import { PointIcon } from '@/components/point-icon';
 import type { HistoryEvent } from '@/data/events';
 import type { Species } from '@/data/life';
@@ -30,6 +30,7 @@ type Props = {
 
 // The information section for a species: what it was and the formations it's found in.
 export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onOpenEvent, onJumpRange, onJumpLastSeen }: Props) {
+  const info = useInfoStyles();
   const [tab, setTab] = useState<'about' | 'relatives'>('about');
   const path = cladePath(species.clade);
   const family = familyOf(species);
@@ -46,7 +47,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
   return (
     <View style={info.wrap}>
-      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} />
+      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} page={{ kind: 'species', id: species.id }} />
 
       <SpeciesImage speciesId={species.id} name={species.name} />
 

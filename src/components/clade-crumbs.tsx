@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { info } from '@/components/info-styles';
+import { useInfoStyles } from '@/components/info-styles';
 import type { Clade } from '@/data/life';
 
 // Well-known groups, best first: the collapsed path starts at the first of these it contains,
@@ -18,6 +18,7 @@ const TAIL = 2;
 // A family-tree path that starts collapsed (a familiar big group, "⋯ N more", then the closest
 // groups) and expands in place to show every level, with an arrow at the end to collapse it again.
 export function CladeCrumbs({ path, onOpenClade }: { path: Clade[]; onOpenClade: (id: string) => void }) {
+  const info = useInfoStyles();
   // Which path was expanded: a different species or group starts collapsed again.
   const key = path.map((c) => c.id).join('/');
   const [openKey, setOpenKey] = useState<string | null>(null);

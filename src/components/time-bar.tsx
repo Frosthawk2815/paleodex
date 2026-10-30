@@ -56,13 +56,17 @@ type Props = {
   onChange: (timeMa: number) => void;
   // Called when a marker for an extinction with a site (e.g. Chicxulub) is tapped.
   onSite: (e: Extinction) => void;
+  // Jump instead of animating when moving along the timeline.
+  reduceMotion?: boolean;
+  // The user's birth date (in Ma), marked on the strip when there is room.
+  birthMa?: number;
 };
 
 // A horizontal strip of geological time, oldest on the left; whatever sits under the centre
 // marker is the selected time. Tapping an era, period, series or stage zooms the strip to just
 // that unit. The arrows step to the next or previous unit one level down, and the middle
 // button zooms back out to all of time without moving the marker.
-export function TimeBar({ ref, onChange, onSite }: Props) {
+export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props) {
   const scroll = useRef<ScrollViewInstance>(null);
   const [viewWidth, setViewWidth] = useState(0);
   const [focus, setFocus] = useState<Unit>(ALL_TIME);
@@ -122,7 +126,7 @@ export function TimeBar({ ref, onChange, onSite }: Props) {
   const go = (t: number, nextFocus: Unit) => {
     if (nextFocus === focus) {
       time.current = t;
-      scrollToTime(t, true);
+      scrollToTime(t, !reduceMotion);
       // Report the new time now: a short scroll may not send a scroll event we act on.
       onChange(t);
     } else {
@@ -179,6 +183,8 @@ export function TimeBar({ ref, onChange, onSite }: Props) {
   for (let t = Math.ceil(focus.endMa / step0) * step0; t <= focus.startMa + 1e-9; t += step0) ticks.push(Number(t.toPrecision(12)));
   const markers = EXTINCTIONS.filter((e) => e.ma <= focus.startMa && e.ma >= focus.endMa);
   const crumbs = ancestors(focus);
+  // The birth marker shows only when it sits clear of the 'Today' label.
+  const showBirth = birthMa !== undefined && birthMa <= focus.startMa && birthMa >= focus.endMa && x(0) - x(birthMa) > 44;
 
   return (
     <View onLayout={(e: LayoutChangeEvent) => setViewWidth(e.nativeEvent.layout.width)}>
@@ -244,6 +250,16 @@ export function TimeBar({ ref, onChange, onSite }: Props) {
                     {tickLabel(t)}
                   </Text>
                 ))}
+                {showBirth && (
+                  <Pressable
+                    onPress={() => go(birthMa!, focus)}
+                    accessibilityRole="button"
+                    accessibilityLabel="Jump to the year you were born"
+                    hitSlop={6}
+                    style={[styles.eventMarker, { left: x(birthMa!) - 30 }]}>
+                    <Text style={styles.birthText}>★ You</Text>
+                  </Pressable>
+                )}
                 {markers.map((e) => (
                   <Pressable
                     key={e.id}
@@ -382,6 +398,11 @@ const styles = StyleSheet.create({
   eventText: {
     fontSize: 11,
     fontWeight: '700',
+  },
+  birthText: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#FFD54F',
   },
   marker: {
     position: 'absolute',

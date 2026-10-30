@@ -64,6 +64,8 @@ function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => voi
   let pendingDx = 0;
   let pendingDy = 0;
   let frame = 0;
+  // With reduce motion on, the globe stops when released instead of coasting.
+  let still = false;
   let spin = 0;
   // Recent finger positions, for the release speed (not every platform reports it reliably).
   let samples: { t: number; x: number; y: number }[] = [];
@@ -129,7 +131,7 @@ function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => voi
       onActive?.(false);
       const { vx, vy } = releaseVelocity();
       const speed = Math.hypot(vx, vy);
-      if (!pinched && speed > SPIN_START_SPEED) {
+      if (!still && !pinched && speed > SPIN_START_SPEED) {
         const scale = Math.min(1, SPIN_MAX_SPEED / speed);
         coast(vx * scale, vy * scale);
       }
@@ -169,7 +171,10 @@ function createCameraResponder(setCamera: (update: (c: Camera) => Camera) => voi
   const setLandCentre = (c: [number, number]) => {
     landCentre = c;
   };
-  return { panHandlers: responder.panHandlers, stop, setBaseRadius, setLandCentre };
+  const setReduceMotion = (on: boolean) => {
+    still = on;
+  };
+  return { panHandlers: responder.panHandlers, stop, setBaseRadius, setLandCentre, setReduceMotion };
 }
 
 // A lumpy outline for the asteroid, as offsets from its centre (unit radius).
@@ -240,6 +245,8 @@ type Props = {
   onClearRange?: () => void;
   // Called when a skull marker (a species' last sighting) is tapped.
   onSelectSpecies?: (id: string) => void;
+  // Stop the globe when released instead of letting it coast.
+  reduceMotion?: boolean;
 };
 
 const K_PG = EXTINCTIONS.find((e) => e.cause === 'asteroid')!;
@@ -248,7 +255,7 @@ const K_PG = EXTINCTIONS.find((e) => e.cause === 'asteroid')!;
 // (Steller’s sea cow).
 const inSentence = (name: string) => (/^[A-Z][a-z]*['’]s\b/.test(name) ? name : name.charAt(0).toLowerCase() + name.slice(1));
 
-export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging, rangeId, onClearRange, onSelectSpecies }: Props) {
+export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging, rangeId, onClearRange, onSelectSpecies, reduceMotion }: Props) {
   const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land', view: 'earth', moonZoom: 1 });
   const [pan] = useState(() => createCameraResponder(setCamera, onDragging));
   // Stop any spin when the globe goes away.
@@ -289,11 +296,13 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
 
   // Scale: rPx is the true Earth radius in pixels; zoom 1 fits the globe to the view.
   // The furthest zoom fits today's Earth–Moon distance across the view.
-  const baseR = Math.min(w, h) / 2 - 8;
+  // Never negative, even while the screen is hidden and measures as zero.
+  const baseR = Math.max(1, Math.min(w, h) / 2 - 8);
   const minZoom = (w - 70) / (MOON_DISTANCE_TODAY_KM / EARTH_RADIUS_KM) / baseR;
   if (camera.zoom < minZoom) setCamera((c) => ({ ...c, zoom: minZoom }));
   const zoom = Math.max(minZoom, camera.zoom);
   useEffect(() => pan.setBaseRadius(baseR), [pan, baseR]);
+  useEffect(() => pan.setReduceMotion(!!reduceMotion), [pan, reduceMotion]);
   const rPx = baseR * zoom;
   const earthR = Math.max(rPx, MIN_EARTH_PX);
 
