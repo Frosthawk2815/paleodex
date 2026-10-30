@@ -2352,6 +2352,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "borealopelta-markmitchelli": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Borealopelta_Royal_Tyrrell_4.jpg/960px-Borealopelta_Royal_Tyrrell_4.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Etemenanki3",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Borealopelta_Royal_Tyrrell_4.jpg",
+  "file": "Borealopelta_Royal_Tyrrell_4.jpg",
+  "article": "https://en.wikipedia.org/wiki/Borealopelta",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "borealosuchus-sternbergii": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Borealosuchus_skeleton_cast.jpg/960px-Borealosuchus_skeleton_cast.jpg",
   "width": 800,
