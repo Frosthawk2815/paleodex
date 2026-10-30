@@ -423,5 +423,16 @@ export const FW_18: DataSet = {
       summary: ['A fast-running, two-legged dryosaurid plant-eater about 1.2 m long or more, related to Dryosaurus of the Morrison Formation. Its bones were first thought to belong to Hypsilophodon, then Camptosaurus and then Dryosaurus before it got its own genus.'],
       facts: [{ label: 'Named', value: 'Peter Galton, 1975 (as Dryosaurus canaliculatus); genus 1977' }],
       keywords: ['valdosaurus', 'dryosaurid', 'ornithopod', 'wealden', 'isle of wight', 'cretaceous'] },
+    { id: 'ornimegalonyx-oteroi', name: 'Ornimegalonyx oteroi', common: 'Cuban giant owl', clade: 'strigidae', status: 'full', ageText: 'Late Pleistocene, perhaps until about 10,000 years ago', placeText: 'Caves and sinkholes of Cuba', formations: [],
+      summary: [
+        'One of the largest owls that ever lived, standing about 1 m tall and perhaps weighing around 9 kg (estimates vary), with long, powerful legs. Its short wings and heavy legs suggest it could barely fly, if at all, and hunted on the ground, running down prey like a giant roadrunner.',
+        'It probably preyed on giant hutias, large rodents of the Caribbean, and perhaps young ground sloths. Like many Caribbean animals, it disappeared around the end of the Ice Age or soon after; when exactly, and whether people played a part, is uncertain.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Oscar Arredondo, 1958' },
+        { label: 'Height', value: 'About 1–1.1 m (estimate)' },
+      ],
+      related: [{ id: 'bubo-virginianus', note: 'A living owl of similar build, though far smaller.' }],
+      keywords: ['ornimegalonyx', 'cuban giant owl', 'giant owl', 'flightless owl', 'cuba', 'pleistocene', 'ice age'] },
   ],
 };
