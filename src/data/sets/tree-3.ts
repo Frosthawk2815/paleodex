@@ -82,7 +82,7 @@ export const TREE_3: DataSet = {
     { id: 'mirischia-asymmetrica', name: 'Mirischia asymmetrica', common: 'Mirischia', clade: 'compsognathidae', status: 'full', ageText: 'About 113 to 110 million years ago', placeText: 'Ceará, Brazil', formations: ['romualdo'],
       summary: ['A small compsognathid about 2 m long whose hip bones differ between its left and right sides. A structure in its pelvis may be an air sac like those of birds.'],
       facts: [{ label: 'Named', value: 'Darren Naish, David Martill and Eberhard Frey, 2004' }], keywords: ['mirischia', 'compsognathid', 'cretaceous'] },
-    { id: 'ilokelesia-aguadagrandensis', name: 'Ilokelesia aguadagrandensis', common: 'Ilokelesia', clade: 'ceratosauria', status: 'full', ageText: 'About 95 million years ago', placeText: 'Neuquén, Argentina', formations: ['huincul'],
+    { id: 'ilokelesia-aguadagrandensis', name: 'Ilokelesia aguadagrandensis', common: 'Ilokelesia', clade: 'ceratosauria', status: 'full', ageText: 'About 106 million years ago (Early Cretaceous, Albian; re-dated in 2026)', placeText: 'Neuquén, Argentina', formations: ['huincul'],
       summary: ['A medium-sized abelisauroid theropod known from a partial skeleton, a smaller neighbour of Skorpiovenator.'],
       facts: [{ label: 'Named', value: 'Rodolfo Coria and Leonardo Salgado, 2000' }], keywords: ['ilokelesia', 'abelisaur', 'cretaceous'] },
     { id: 'daphoenodon-superbus', name: 'Daphoenodon superbus', common: 'Daphoenodon', clade: 'amphicyonidae', status: 'full', ageText: 'About 23 to 20 million years ago', placeText: 'Nebraska and Wyoming, USA', formations: ['agate'],

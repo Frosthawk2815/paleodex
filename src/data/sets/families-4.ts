@@ -213,8 +213,8 @@ export const FAMILIES_4: DataSet = {
     { id: 'cedarosaurus-weiskopfae', name: 'Cedarosaurus weiskopfae', common: 'Cedarosaurus', clade: 'macronaria', status: 'full', ageText: 'About 135 to 125 million years ago', placeText: 'Utah, USA', formations: ['yellow-cat'],
       summary: ['A brachiosaurid sauropod, a smaller relative of Brachiosaurus. Over 100 gizzard stones were found with one skeleton.'],
       facts: [{ label: 'Named', value: 'Virginia Tidwell and colleagues, 1999' }], keywords: ['cedarosaurus', 'brachiosaurid', 'gastroliths', 'cretaceous'] },
-    { id: 'cathartesaura-anaerobica', name: 'Cathartesaura anaerobica', common: 'Cathartesaura', clade: 'rebbachisauridae', status: 'full', ageText: 'About 95 million years ago', placeText: 'Río Negro, Argentina', formations: ['huincul'],
-      summary: ['A rebbachisaurid sauropod about 15 m long, one of the last of its family. Its name refers to the vultures nesting at the site and to the energy company Anaeróbicos S.A. that supported the work.'],
+    { id: 'cathartesaura-anaerobica', name: 'Cathartesaura anaerobica', common: 'Cathartesaura', clade: 'rebbachisauridae', status: 'full', ageText: 'About 106 million years ago (Early Cretaceous, Albian; re-dated in 2026)', placeText: 'Río Negro, Argentina', formations: ['huincul'],
+      summary: ['A rebbachisaurid sauropod about 15 m long. Its name refers to the vultures nesting at the site and to the energy company Anaeróbicos S.A. that supported the work.'],
       facts: [{ label: 'Named', value: 'Pablo Gallina and Sebastián Apesteguía, 2005' }], keywords: ['cathartesaura', 'rebbachisaurid', 'cretaceous'] },
   ],
 };
