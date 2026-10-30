@@ -160,8 +160,13 @@
   "file": "Texas_Alioramus.jpg"
  },
  "alioramus-remotus": {
-  "vote": "yes",
-  "file": "Texas_Alioramus.jpg"
+  "vote": "no",
+  "file": "Texas_Alioramus.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of alioramus-altai",
+  "rejectedFiles": [
+   "Texas_Alioramus.jpg"
+  ]
  },
  "allaeochelys-crassesculpta": {
   "vote": "yes",
@@ -552,8 +557,13 @@
   "file": "Alligator_Gar_10.JPG"
  },
  "atractosteus-strausi": {
-  "vote": "yes",
-  "file": "Alligator_Gar_10.JPG"
+  "vote": "no",
+  "file": "Alligator_Gar_10.JPG",
+  "leaveBlank": true,
+  "note": "duplicate of atractosteus-spatula",
+  "rejectedFiles": [
+   "Alligator_Gar_10.JPG"
+  ]
  },
  "atrociraptor-marshalli": {
   "vote": "yes",
@@ -780,8 +790,13 @@
   "file": "Borealosuchus_skeleton_cast.jpg"
  },
  "borealosuchus-wilsoni": {
-  "vote": "yes",
-  "file": "Borealosuchus_skeleton_cast.jpg"
+  "vote": "no",
+  "file": "Borealosuchus_skeleton_cast.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of borealosuchus-sternbergii",
+  "rejectedFiles": [
+   "Borealosuchus_skeleton_cast.jpg"
+  ]
  },
  "borhyaena-tuberata": {
   "vote": "yes",
@@ -984,8 +999,13 @@
   "file": "White_shark.jpg"
  },
  "carcharodontosaurus-iguidensis": {
-  "vote": "yes",
-  "file": "Ultimate_Dinosaurs_Carcharodontosaurus.jpg"
+  "vote": "no",
+  "file": "Ultimate_Dinosaurs_Carcharodontosaurus.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of carcharodontosaurus-saharicus",
+  "rejectedFiles": [
+   "Ultimate_Dinosaurs_Carcharodontosaurus.jpg"
+  ]
  },
  "carcharodontosaurus-saharicus": {
   "vote": "yes",
@@ -1724,8 +1744,13 @@
   "file": "Draconyx_Skeletal.svg"
  },
  "dracorex-hogwartsia": {
-  "vote": "yes",
-  "file": "Pachycephalosaurus_wyomingensis_ROM.jpg"
+  "vote": "no",
+  "file": "Pachycephalosaurus_wyomingensis_ROM.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of pachycephalosaurus-wyomingensis",
+  "rejectedFiles": [
+   "Pachycephalosaurus_wyomingensis_ROM.jpg"
+  ]
  },
  "dracovenator-regenti": {
   "vote": "yes",
@@ -2296,8 +2321,13 @@
   "file": "Globidens_NMNH.jpg"
  },
  "glyptotherium-arizonae": {
-  "vote": "yes",
-  "file": "Glyptotherium_texanum_Holotype_NMNH.jpg"
+  "vote": "no",
+  "file": "Glyptotherium_texanum_Holotype_NMNH.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of glyptotherium-texanum",
+  "rejectedFiles": [
+   "Glyptotherium_texanum_Holotype_NMNH.jpg"
+  ]
  },
  "glyptotherium-texanum": {
   "vote": "yes",
@@ -2388,8 +2418,13 @@
   "file": "Halkieria.jpg"
  },
  "hallucigenia-fortis": {
-  "vote": "yes",
-  "file": "USNM_PAL_83935_Hallucigenia_sparsa_Image_1.jpg"
+  "vote": "no",
+  "file": "USNM_PAL_83935_Hallucigenia_sparsa_Image_1.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of hallucigenia-sparsa",
+  "rejectedFiles": [
+   "USNM_PAL_83935_Hallucigenia_sparsa_Image_1.jpg"
+  ]
  },
  "hallucigenia-sparsa": {
   "vote": "yes",
@@ -2661,8 +2696,13 @@
   "file": "Hypacrosaurus_Royal_Tyrrell.jpg"
  },
  "hypacrosaurus-stebingeri": {
-  "vote": "yes",
-  "file": "Hypacrosaurus_Royal_Tyrrell.jpg"
+  "vote": "no",
+  "file": "Hypacrosaurus_Royal_Tyrrell.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of hypacrosaurus-altispinus",
+  "rejectedFiles": [
+   "Hypacrosaurus_Royal_Tyrrell.jpg"
+  ]
  },
  "hyperodapedon-sanjuanensis": {
   "vote": "yes",
@@ -3658,8 +3698,13 @@
   "file": "Ngorongoro_Grant-Gazelle.jpg"
  },
  "nanotyrannus-lancensis": {
-  "vote": "yes",
-  "file": "Tyrannosaurus_Rex_Jane.jpg"
+  "vote": "no",
+  "file": "Tyrannosaurus_Rex_Jane.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of nanotyrannus-lethaeus",
+  "rejectedFiles": [
+   "Tyrannosaurus_Rex_Jane.jpg"
+  ]
  },
  "nanotyrannus-lethaeus": {
   "vote": "yes",
@@ -4002,8 +4047,13 @@
   "file": "Pachyrhinosaurus_Royal_Tyrrell_1.jpg"
  },
  "pachyrhinosaurus-perotorum": {
-  "vote": "yes",
-  "file": "Pachyrhinosaurus_Royal_Tyrrell_1.jpg"
+  "vote": "no",
+  "file": "Pachyrhinosaurus_Royal_Tyrrell_1.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of pachyrhinosaurus-canadensis",
+  "rejectedFiles": [
+   "Pachyrhinosaurus_Royal_Tyrrell_1.jpg"
+  ]
  },
  "pachyrhizodus-caninus": {
   "vote": "yes",
@@ -5255,8 +5305,13 @@
   "file": "Stenopterygius_quadriscissus.jpg"
  },
  "stereosternum-tumidum": {
-  "vote": "yes",
-  "file": "Mesosaurus_tenuidens_1.jpg"
+  "vote": "no",
+  "file": "Mesosaurus_tenuidens_1.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of mesosaurus-tenuidens",
+  "rejectedFiles": [
+   "Mesosaurus_tenuidens_1.jpg"
+  ]
  },
  "sterna-paradisaea": {
   "vote": "yes",
@@ -5367,8 +5422,13 @@
   "file": "Taniwhasaurus_Antarctic_Dinosaurs.jpg"
  },
  "tanystropheus-hydroides": {
-  "vote": "yes",
-  "file": "Tanystropheus_longobardicus_4.JPG"
+  "vote": "no",
+  "file": "Tanystropheus_longobardicus_4.JPG",
+  "leaveBlank": true,
+  "note": "duplicate of tanystropheus-longobardicus",
+  "rejectedFiles": [
+   "Tanystropheus_longobardicus_4.JPG"
+  ]
  },
  "tanystropheus-longobardicus": {
   "vote": "yes",
@@ -5567,8 +5627,13 @@
   "file": "Tiny_the_Torosaurus.jpg"
  },
  "torvosaurus-gurneyi": {
-  "vote": "yes",
-  "file": "Torvosaurus_Museum_of_Ancient_Life_2.jpg"
+  "vote": "no",
+  "file": "Torvosaurus_Museum_of_Ancient_Life_2.jpg",
+  "leaveBlank": true,
+  "note": "duplicate of torvosaurus-tanneri",
+  "rejectedFiles": [
+   "Torvosaurus_Museum_of_Ancient_Life_2.jpg"
+  ]
  },
  "torvosaurus-tanneri": {
   "vote": "yes",
