@@ -323,16 +323,28 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           const pos: [number, number] = [lastSeen.lon, lastSeen.lat];
           const xy = projection(pos);
           return xy && geoDistance(pos, centreLonLat) < Math.PI / 2 - 0.05
-            ? [{ id, xy, name: speciesName(id), country: lastSeen.country }]
+            ? [{ id, xy, name: speciesName(id), country: lastSeen.country, extra: 0, zoomTo: 0 }]
             : [];
         })
       : [];
-  // Several species last seen in the same country are stacked in a column, one label per row,
-  // rather than on top of each other.
-  for (const sk of skulls) {
-    const same = skulls.filter((o) => o.country === sk.country);
-    const k = same.indexOf(sk);
-    if (same.length > 1) sk.xy = [sk.xy[0] + (k % 2 === 0 ? -16 : 16), sk.xy[1] + (k - (same.length - 1) / 2) * 58];
+  // Several species last seen in the same country are stacked in a column, one label per row.
+  // A column only fits over the country when zoomed in; further out the column would reach other
+  // continents, so the group shows as one marker ("+3") that zooms in when tapped.
+  const ROW_PX = 58;
+  for (const country of new Set(skulls.map((sk) => sk.country))) {
+    const same = skulls.filter((o) => o.country === country);
+    if (same.length < 2) continue;
+    const fitsR = ((same.length - 1) * ROW_PX) / 0.3;
+    if (earthR >= fitsR) {
+      same.forEach((sk, k) => {
+        sk.xy = [sk.xy[0] + (k % 2 === 0 ? -16 : 16), sk.xy[1] + (k - (same.length - 1) / 2) * ROW_PX];
+      });
+    } else {
+      const lead = same.find((sk) => sk.id === rangeId) ?? same[0];
+      lead.extra = same.length - 1;
+      lead.zoomTo = (fitsR * 1.1) / baseR;
+      for (const sk of same) if (sk !== lead) skulls.splice(skulls.indexOf(sk), 1);
+    }
   }
   // Overlapping markers are grouped: the one the camera is following leads, then trackways and
   // events, then dig sites. Labels that would collide with one already drawn are hidden.
@@ -512,15 +524,15 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
             );
           })}
 
-          {skulls.map(({ id, xy, name }) => (
+          {skulls.map(({ id, xy, name, extra }) => (
             <G key={`skull-${id}`}>
               <Circle cx={xy[0]} cy={xy[1]} r={2.5} fill="#FFFFFF" />
               <PointIconShape kind="skull" x={xy[0]} y={xy[1] - 21} size={36} />
               <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 16} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={12} fontWeight="700" textAnchor="middle">
-                {`Last ${inSentence(name)}`}
+                {`Last ${inSentence(name)}${extra ? ` +${extra}` : ''}`}
               </SvgText>
               <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 16} fill="#FFFFFF" fontSize={12} fontWeight="700" textAnchor="middle">
-                {`Last ${inSentence(name)}`}
+                {`Last ${inSentence(name)}${extra ? ` +${extra}` : ''}`}
               </SvgText>
             </G>
           ))}
@@ -587,12 +599,20 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           </ScrollView>
         </View>
       )}
-      {skulls.map(({ id, xy, name }) => (
+      {skulls.map(({ id, xy, name, extra, zoomTo }) => (
         <Pressable
           key={`skull-${id}-hit`}
-          onPress={() => onSelectSpecies?.(id)}
+          onPress={() =>
+            extra
+              ? setCamera({ lon: 0, lat: 0, zoom: zoomTo, anchor: `skull:${id}`, view: 'earth', moonZoom: 1 })
+              : onSelectSpecies?.(id)
+          }
           accessibilityRole="button"
-          accessibilityLabel={`Where the last ${inSentence(name)} was seen alive: read more`}
+          accessibilityLabel={
+            extra
+              ? `Where the last ${inSentence(name)} and ${extra} more were seen alive: zoom in`
+              : `Where the last ${inSentence(name)} was seen alive: read more`
+          }
           style={[styles.hit, { left: xy[0] - 22, top: xy[1] - 40, width: 44, height: 56 }]}
         />
       ))}
