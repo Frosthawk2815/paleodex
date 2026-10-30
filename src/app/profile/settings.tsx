@@ -117,7 +117,7 @@ function SwatchPicker({ label, value, onChange, allowed }: { label: string; valu
                   onPress={() => ok && onChange(c)}
                   disabled={!ok}
                   accessibilityRole="radio"
-                  accessibilityLabel={`${label}: ${variant === 'light' ? 'light' : 'dark'} ${sw.name.toLowerCase()}${ok ? '' : ', not available with your other colours'}`}
+                  accessibilityLabel={`${label}: ${(variant === 'light' ? sw.lightName : sw.darkName) ?? `${variant} ${sw.name.toLowerCase()}`}${ok ? '' : ', not available with your other colours'}`}
                   accessibilityState={{ checked: on, disabled: !ok }}
                   aria-checked={on}
                   hitSlop={3}

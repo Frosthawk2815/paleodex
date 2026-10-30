@@ -29,8 +29,10 @@ export type Palette = {
 };
 
 // A colour the user can choose, in a lighter and a darker variant.
-export type Swatch = { name: string; light: string; dark: string };
+// lightName/darkName replace "light <name>" / "dark <name>" when a variant has its own name.
+export type Swatch = { name: string; light: string; dark: string; lightName?: string; darkName?: string };
 export const SWATCHES: Swatch[] = [
+  { name: 'Black and white', light: '#FFFFFF', dark: '#000000', lightName: 'white', darkName: 'black' },
   { name: 'Grey', light: '#E8E6E1', dark: '#26262A' },
   { name: 'Red', light: '#F6D5D2', dark: '#561A1A' },
   { name: 'Orange', light: '#FADDC4', dark: '#5A2C0D' },
