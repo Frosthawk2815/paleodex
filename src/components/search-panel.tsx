@@ -8,6 +8,7 @@ import { type Unit, UNITS_BY_LEVEL } from '@/lib/time';
 import { SHARED_SHORTHANDS } from '@/data/aka';
 import { type Clade, CLADES, SPECIES, type Species } from '@/data/life';
 import { speciesInClade } from '@/lib/life';
+import { rangeOf } from '@/lib/ranges';
 
 export type SearchResult =
   | { kind: 'event'; event: HistoryEvent }
@@ -34,16 +35,28 @@ const EXTINCTION_WORDS: Record<string, string> = {
 
 const fmtMa = (ma: number) => (ma >= 1 ? `${Number(ma.toPrecision(5))} Ma` : `${Math.round(ma * 1_000_000).toLocaleString('en-US')} years ago`);
 
+// A species still alive today: its range runs up to the present and it has no last sighting.
+const isLiving = (s: Species) => {
+  const r = rangeOf(s.id);
+  return !!r && !r.lastSeen && r.phases[r.phases.length - 1]?.toMa === 0;
+};
+
 const ITEMS: Item[] = [
   // Species first, so "t rex" finds the animal before the places it's found.
-  ...SPECIES.map((s) => ({
-    key: `species:${s.id}`,
-    title: s.name,
-    subtitle: `Species${s.common ? ` · ${s.common}` : ''}${s.aka?.length ? ` · also ${s.aka.slice(0, 2).join(', ')}` : ''} · ${s.ageText.replace(/ \(.*\)$/, '')}`,
-    words: [s.name, s.common ?? '', ...(s.aka ?? []), ...(s.keywords ?? [])].join(' ').toLowerCase(),
-    names: [s.name, s.common ?? '', ...(s.aka ?? []), ...(s.akaSearch ?? [])].filter(Boolean),
-    result: { kind: 'species' as const, species: s },
-  })),
+  // Living animals are listed by their everyday name (e.g. “Ball python”) with the scientific name
+  // underneath; extinct ones keep their scientific name first.
+  ...SPECIES.map((s) => {
+    const plain = isLiving(s) && !!s.common;
+    const second = plain ? s.name : s.common;
+    return {
+      key: `species:${s.id}`,
+      title: plain ? s.common! : s.name,
+      subtitle: `Species${second ? ` · ${second}` : ''}${s.aka?.length ? ` · also ${s.aka.slice(0, 2).join(', ')}` : ''} · ${s.ageText.replace(/ \(.*\)$/, '')}`,
+      words: [s.name, s.common ?? '', ...(s.aka ?? []), ...(s.keywords ?? [])].join(' ').toLowerCase(),
+      names: [s.name, s.common ?? '', ...(s.aka ?? []), ...(s.akaSearch ?? [])].filter(Boolean),
+      result: { kind: 'species' as const, species: s },
+    };
+  }),
   ...CLADES.map((c) => ({
     key: `clade:${c.id}`,
     title: c.common,
