@@ -130,6 +130,32 @@ def file_info(files):
                 'licenseUrl': (m.get('LicenseUrl') or {}).get('value'),
                 'text': ' '.join([name, get('ObjectName'), get('ImageDescription')]),
             }
+    return {k: standard_thumb(v) for k, v in out.items()}
+
+
+# Wikimedia rate-limits apps that load original files or unusual thumbnail sizes (HTTP 429) and
+# asks for its standard thumbnail widths instead. The API hands back the original file when it is
+# narrower than the 960 px standard size, so such files are switched to the 500 px standard size.
+STANDARD_WIDTH = 500
+
+
+def standard_thumb(entry):
+    """Point an image entry at a standard-size Wikimedia thumbnail instead of the original file."""
+    url = entry.get('thumb') or ''
+    m = re.match(r'^(https://upload\.wikimedia\.org/wikipedia/[^/]+)/([0-9a-f]/[0-9a-f]{2})/([^/]+)$', url)
+    if not m:
+        return entry
+    base, hashdir, name = m.groups()
+    ext = name.rsplit('.', 1)[-1].lower()
+    suffix = '.png' if ext == 'svg' else '.jpg' if ext in ('tif', 'tiff') else ''
+    prefix = 'lossy-page1-' if ext in ('tif', 'tiff') else ''
+    w, h = entry.get('width'), entry.get('height')
+    if w and w < STANDARD_WIDTH:
+        return entry
+    out = dict(entry)
+    out['thumb'] = f'{base}/thumb/{hashdir}/{name}/{prefix}{STANDARD_WIDTH}px-{name}{suffix}'
+    if w and h:
+        out['width'], out['height'] = STANDARD_WIDTH, round(h * STANDARD_WIDTH / w)
     return out
 
 
