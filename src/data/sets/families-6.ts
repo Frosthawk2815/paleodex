@@ -64,7 +64,7 @@ export const FAMILIES_6: DataSet = {
     { id: 'hyaenodonta', name: 'Hyaenodonta', common: 'Hyaenodonts', parent: 'eutheria', family: true, description: 'Meat-eating mammals outside the true carnivorans, with shearing teeth further back in the jaw.' },
     { id: 'merycoidodontidae', name: 'Merycoidodontidae', common: 'Oreodonts', parent: 'artiodactyla', family: true, description: 'Sheep- to pig-sized plant-eaters, extremely common in North America; their nearest living relatives are probably camels.' },
     { id: 'lagomorpha', name: 'Lagomorpha', common: 'Rabbits, hares and pikas', parent: 'eutheria', family: true, description: 'Rabbits, hares and pikas and their fossil relatives.' },
-    { id: 'embrithopoda', name: 'Embrithopoda', common: 'Embrithopods', parent: 'eutheria', family: true, description: 'Heavy plant-eaters from Africa and nearby lands, relatives of elephants and sea cows.' },
+    { id: 'embrithopoda', name: 'Embrithopoda', common: 'Embrithopods', parent: 'paenungulata', family: true, description: 'Heavy plant-eaters from Africa and nearby lands, relatives of elephants and sea cows.' },
     { id: 'cingulata', name: 'Cingulata', common: 'Armadillos and relatives', parent: 'eutheria', family: true, description: 'Armadillos and their extinct relatives, protected by bony armour.' },
   ],
   species: [
