@@ -8,6 +8,7 @@ import { usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
 import { speciesById } from '@/lib/life';
 import { useProfile } from '@/lib/profile';
+import { useUserPhotos } from '@/lib/user-photos';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -36,6 +37,8 @@ export default function EditProfileScreen() {
 
   // Favourite species that have a picture can be used as the profile picture.
   const pictures = profile.favourites.filter((f) => f.kind === 'species' && imageOf(f.id)).map((f) => f.id);
+  // ...and so can the user's own photos of species.
+  const { allPhotos } = useUserPhotos();
 
   const saveDate = () => {
     if (!day && !month && !year) {
@@ -155,6 +158,28 @@ export default function EditProfileScreen() {
             );
           })}
         </View>
+      )}
+      {allPhotos.length > 0 && (
+        <>
+          <Text style={st.muted}>Or one of your own photos of species:</Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+            {allPhotos.map((p) => {
+              const on = profile.avatar?.kind === 'upload' && profile.avatar.uri === p.uri;
+              const s = speciesById(p.speciesId);
+              return (
+                <Pressable
+                  key={`${p.speciesId}:${p.id}`}
+                  onPress={() => update({ avatar: { kind: 'upload', uri: p.uri } })}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Use your photo of ${s?.common || s?.name} as your profile picture`}
+                  accessibilityState={{ selected: on }}
+                  style={({ pressed }) => [{ borderRadius: 40, borderWidth: 3, borderColor: on ? '#2F7DE1' : 'transparent' }, pressed && st.pressed]}>
+                  <Image source={{ uri: p.uri }} style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: palette.track }} contentFit="cover" />
+                </Pressable>
+              );
+            })}
+          </View>
+        </>
       )}
       {profile.avatar && (
         <Pressable onPress={() => update({ avatar: null })} accessibilityRole="button" hitSlop={6}>

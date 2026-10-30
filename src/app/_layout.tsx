@@ -2,6 +2,7 @@ import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 
 import { useScheme } from '@/hooks/use-palette';
 import { ProfileProvider } from '@/lib/profile';
+import { UserPhotosProvider } from '@/lib/user-photos';
 
 function Screens() {
   const scheme = useScheme();
@@ -25,7 +26,9 @@ function Screens() {
 export default function RootLayout() {
   return (
     <ProfileProvider>
-      <Screens />
+      <UserPhotosProvider>
+        <Screens />
+      </UserPhotosProvider>
     </ProfileProvider>
   );
 }

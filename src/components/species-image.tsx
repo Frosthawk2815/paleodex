@@ -3,6 +3,7 @@ import { openBrowserAsync } from 'expo-web-browser';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { imageCaption, imageOf } from '@/lib/images';
+import { useMainUserPhoto } from '@/lib/user-photos';
 
 const sourceName = (url: string) => (url.includes('commons.wikimedia.org') ? 'Wikimedia Commons' : 'Wikipedia');
 const open = (url?: string | null) => {
@@ -11,7 +12,25 @@ const open = (url?: string | null) => {
 
 // A species' picture with its credit: who made it, its licence, and where it was found.
 export function SpeciesImage({ speciesId, name }: { speciesId: string; name: string }) {
+  const mine = useMainUserPhoto(speciesId);
   const img = imageOf(speciesId);
+  // A photo the user chose to show here replaces the stock picture.
+  if (mine) {
+    const r = mine.width && mine.height ? Math.min(2, Math.max(0.8, mine.width / mine.height)) : 4 / 3;
+    return (
+      <View style={styles.wrap}>
+        <Image
+          source={{ uri: mine.uri }}
+          style={[styles.image, { aspectRatio: r }]}
+          contentFit="contain"
+          transition={200}
+          recyclingKey={`mine:${mine.id}`}
+          accessibilityLabel={`Your photo of ${name}`}
+        />
+        <Text style={styles.credit}>Your photo · change or remove it under Your pictures, at the bottom of this page</Text>
+      </View>
+    );
+  }
   if (!img) return null;
   const caption = imageCaption(img, name.split(' ')[0]);
   // Keep very tall or very wide pictures to a sensible box; the whole image stays visible.

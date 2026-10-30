@@ -9,6 +9,7 @@ import type { Species } from '@/data/life';
 import { SpeciesRow } from '@/components/clade-info';
 import { CladeCrumbs } from '@/components/clade-crumbs';
 import { SpeciesImage } from '@/components/species-image';
+import { UserPhotoGallery } from '@/components/user-photo-gallery';
 import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf, speciesById, trackwaysOf } from '@/lib/life';
 import { badgeBg } from '@/lib/events';
 import { rangeOf } from '@/lib/ranges';
@@ -229,6 +230,8 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
           )}
         </>
       )}
+
+      <UserPhotoGallery speciesId={species.id} name={species.common || species.name} />
     </View>
   );
 }
