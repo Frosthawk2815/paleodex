@@ -60,12 +60,8 @@
   "file": "Aeger_tipularius_(fossil_shrimp)_Solnhofen_Limestone.jpg"
  },
  "aegirocassis-benmoulai": {
-  "vote": "no",
-  "file": "YPM_237172_Aegirocassis_benmoulae.jpg",
-  "rejectedFiles": [
-   "20191021_Peytoia_nathorsti_Laggania_cambria.png",
-   "YPM_237172_Aegirocassis_benmoulae.jpg"
-  ]
+  "vote": "yes",
+  "file": "20191205_Aegirocassis_benmoulai_Aegirocassis_benmoulae.png"
  },
  "aegirosaurus-leptospondylus": {
   "vote": "yes",
@@ -76,12 +72,8 @@
   "file": "Aegyptopithecus_NT.jpg"
  },
  "aegyptosaurus-baharijensis": {
-  "vote": "no",
-  "file": "Aegyptosaurus.png",
-  "rejectedFiles": [
-   "Aegyptosaurus.png",
-   "AmpelosaurusDB.jpg"
-  ]
+  "vote": "yes",
+  "file": "Aegyptosaurus_LM.png"
  },
  "aenocyon-dirus": {
   "vote": "yes",
@@ -124,12 +116,8 @@
   "file": "Akainacephalus_mount_lateral_view.webp"
  },
  "alamosaurus-sanjuanensis": {
-  "vote": "no",
-  "file": "Alamosaurus.jpg",
-  "rejectedFiles": [
-   "Alamosaurus.jpg",
-   "AmpelosaurusDB.jpg"
-  ]
+  "vote": "yes",
+  "file": "Perot_Museum_Alamosaurus_and_Tyrannosaurus.jpg"
  },
  "alanqa-saharica": {
   "vote": "yes",
@@ -340,13 +328,8 @@
   "file": "Anomalocaris_canadensis_(TMP_2023.003.0003),_Royal_Tyrrell_Museum,_Drumheller,_Alberta,_2025-07-13.jpg"
  },
  "anserimimus-planinychus": {
-  "vote": "no",
-  "note": "Outdated restoration; find a newer picture.",
-  "file": "Anserimimus.jpg",
-  "rejectedFiles": [
-   "Allosaurus_Revised.jpg",
-   "Anserimimus.jpg"
-  ]
+  "vote": "yes",
+  "file": "Anserimimus_planinychus.png"
  },
  "anteosaurus-magnificus": {
   "vote": "yes",
@@ -445,12 +428,8 @@
   "file": "Scarlet_macaw_(Ara_macao_cyanopterus)_Copan.jpg"
  },
  "arambourgiania-philadelphiae": {
-  "vote": "no",
-  "file": "Arambourgiania_philadelphiae.JPG",
-  "rejectedFiles": [
-   "Aerotitan_sudamericanus.png",
-   "Arambourgiania_philadelphiae.JPG"
-  ]
+  "vote": "yes",
+  "file": "Arambourgiania_philadelphiae_reconstruction.png"
  },
  "arapaima-gigas": {
   "vote": "yes",
@@ -545,12 +524,8 @@
   "file": "Asteriornis.svg"
  },
  "astraspis-desiderata": {
-  "vote": "no",
-  "file": "Astraspis_FMNH.jpg",
-  "rejectedFiles": [
-   "Arandaspis_NT.jpg",
-   "Astraspis_FMNH.jpg"
-  ]
+  "vote": "yes",
+  "file": "Astraspis_desiderata_paleoart_with_light_rays.tif"
  },
  "ateles-geoffroyi": {
   "vote": "yes",
@@ -613,11 +588,8 @@
   "file": "Austroraptor_Restoration.png"
  },
  "avaceratops-lammersi": {
-  "vote": "no",
-  "file": "Avaceratops_squamosal.png",
-  "rejectedFiles": [
-   "Avaceratops_squamosal.png"
-  ]
+  "vote": "yes",
+  "file": "Avaceratops_BW.jpg"
  },
  "avahi-laniger": {
   "vote": "yes",
@@ -653,11 +625,7 @@
  },
  "bahariasaurus-ingens": {
   "vote": "no",
-  "file": "Bahariasaurus_plate.png",
-  "rejectedFiles": [
-   "Allosaurus_Revised.jpg",
-   "Bahariasaurus_plate.png"
-  ]
+  "file": "Bahariasaurus_ingens,_like_megaraptora.jpg"
  },
  "balaena-mysticetus": {
   "vote": "yes",
@@ -697,11 +665,7 @@
  },
  "barbaridactylus-grandis": {
   "vote": "no",
-  "file": "Journal.pbio.2001663.png",
-  "rejectedFiles": [
-   "Campylogn_DB.jpg",
-   "Journal.pbio.2001663.png"
-  ]
+  "file": "Barbaridactylus_Humerus_-_Longrich_et_al_2018.PNG"
  },
  "barosaurus-lentus": {
   "vote": "yes",
@@ -748,12 +712,8 @@
   "file": "Beelzebufo_UMMNH.jpg"
  },
  "beipiaosaurus-inexpectus": {
-  "vote": "no",
-  "file": "Beipiaosaurus_holotype_fossil.png",
-  "rejectedFiles": [
-   "Ambopteryx_restoration.png",
-   "Beipiaosaurus_holotype_fossil.png"
-  ]
+  "vote": "yes",
+  "file": "Beipiaosaurus_Restoration.png"
  },
  "belemnotheutis-antiquus": {
   "vote": "yes",
@@ -824,12 +784,8 @@
   "file": "Borhyaena_tuberata.JPG"
  },
  "borophagus-diversidens": {
-  "vote": "no",
-  "file": "Borophagus_diversidens.JPG",
-  "rejectedFiles": [
-   "Aelurodon_illustration.png",
-   "Borophagus_diversidens.JPG"
-  ]
+  "vote": "yes",
+  "file": "Borophagus_secundus.jpg"
  },
  "bos-gaurus": {
   "vote": "yes",
@@ -848,12 +804,8 @@
   "file": "Bothriolepis_canadensis-001.JPG"
  },
  "brachiosaurus-altithorax": {
-  "vote": "no",
-  "file": "Brachiosaurus_mount.jpg",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Brachiosaurus_mount.jpg"
-  ]
+  "vote": "yes",
+  "file": "Brachiosaurus_altithorax.jpg"
  },
  "brachychampsa-montana": {
   "vote": "yes",
@@ -1169,11 +1121,7 @@
  },
  "chalicotherium-goldfussi": {
   "vote": "no",
-  "file": "31_-_Chalicotherium_goldfussi_-_Astaracien_-_St_Gaudens_-_MHNT.PAL.2010.31.1_Up.jpg",
-  "rejectedFiles": [
-   "31_-_Chalicotherium_goldfussi_-_Astaracien_-_St_Gaudens_-_MHNT.PAL.2010.31.1_Up.jpg",
-   "European_late_Miocene_landscape.jpg"
-  ]
+  "file": "Chalicotherium_goldfussi_MHNT_Pal_2010_0_31_3_Valentine.jpg"
  },
  "champsosaurus": {
   "vote": "yes",
@@ -1221,10 +1169,7 @@
  },
  "cheracebus-torquatus": {
   "vote": "no",
-  "file": "Collared_Titi_area.png",
-  "rejectedFiles": [
-   "Collared_Titi_area.png"
-  ]
+  "file": "Cheracebus.webp"
  },
  "chirodipterus-australis": {
   "vote": "yes",
@@ -1284,11 +1229,7 @@
  },
  "citipes-elegans": {
   "vote": "no",
-  "file": "Citipes_skeletal.jpg",
-  "rejectedFiles": [
-   "Anzu_wyliei.jpg",
-   "Citipes_skeletal.jpg"
-  ]
+  "file": "Citipes_Metatarsal_Histology.png"
  },
  "civettictis-civetta": {
   "vote": "yes",
@@ -1360,11 +1301,7 @@
  },
  "coniophis-precedens": {
   "vote": "no",
-  "file": "Coniophis_holotype_Marsh_1892.png",
-  "rejectedFiles": [
-   "Coniophis_holotype_Marsh_1892.png",
-   "Dinilysia_NT.jpg"
-  ]
+  "file": "Coniophis.jpg"
  },
  "connochaetes-taurinus": {
   "vote": "yes",
@@ -1531,11 +1468,8 @@
   "file": "Cyprinus_carpio_2008_G1_(cropped).jpg"
  },
  "cystophora-cristata": {
-  "vote": "no",
-  "file": "2016-klappmützemuseumkoenig.jpg",
-  "rejectedFiles": [
-   "2016-klappmützemuseumkoenig.jpg"
-  ]
+  "vote": "yes",
+  "file": "Cystophora_cristata_02_MWNH_187.JPG"
  },
  "dacentrurus-armatus": {
   "vote": "yes",
@@ -1695,11 +1629,7 @@
  },
  "dinheirosaurus-lourinhanensis": {
   "vote": "no",
-  "file": "Dinheirosaurus_holotype.png",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Dinheirosaurus_holotype.png"
-  ]
+  "file": "Dinheirosaurus.png"
  },
  "dinictis-felina": {
   "vote": "yes",
@@ -1866,12 +1796,8 @@
   "file": "Edmontosaurus_annectens_specimen.jpg"
  },
  "effigia-okeeffeae": {
-  "vote": "no",
-  "file": "Effigia_skull_diagram.png",
-  "rejectedFiles": [
-   "Arizonasaurus_BW_white_background.jpg",
-   "Effigia_skull_diagram.png"
-  ]
+  "vote": "yes",
+  "file": "Effigia_BW_white_background.jpg"
  },
  "einiosaurus-procurvicornis": {
   "vote": "yes",
@@ -1954,12 +1880,8 @@
   "file": "Eocaecilia.png"
  },
  "eocarcharia-dinops": {
-  "vote": "no",
-  "file": "Eocarcharia_Skulls.svg",
-  "rejectedFiles": [
-   "Acrocanthosaurus_restoration.jpg",
-   "Eocarcharia_Skulls.svg"
-  ]
+  "vote": "yes",
+  "file": "Eocarcharia.jpg"
  },
  "eoconstrictor-fischeri": {
   "vote": "yes",
@@ -2130,12 +2052,8 @@
   "file": "Euoticus_elegantulus_30281428_(cropped).jpg"
  },
  "euparkeria-capensis": {
-  "vote": "no",
-  "file": "Euparkeria_capensis_type_bonebed.png",
-  "rejectedFiles": [
-   "Erythrosuchus.png",
-   "Euparkeria_capensis_type_bonebed.png"
-  ]
+  "vote": "yes",
+  "file": "Euparkeria_NT_small.jpg"
  },
  "eupleres-goudotii": {
   "vote": "no",
@@ -2490,12 +2408,8 @@
   "file": "Posidonienschiefer_Holzmaden_-_d.jpg"
  },
  "hatzegopteryx-thambema": {
-  "vote": "no",
-  "file": "Hatzegopteryx_humerus.jpg",
-  "rejectedFiles": [
-   "Campylogn_DB.jpg",
-   "Hatzegopteryx_humerus.jpg"
-  ]
+  "vote": "yes",
+  "file": "Hatzegopteryx_thambema.png"
  },
  "hauffiosaurus-zanoni": {
   "vote": "yes",
@@ -2651,12 +2565,8 @@
   "file": "Hoplophoneus_primevus_IMG_4443_(cropped).jpg"
  },
  "howesia-browni": {
-  "vote": "no",
-  "file": "Howesia_browni_(SAM-PK-K10180,_left_lateral).jpg",
-  "rejectedFiles": [
-   "Drepanosaurus_unguicaudatus_on_a_branch.jpg",
-   "Howesia_browni_(SAM-PK-K10180,_left_lateral).jpg"
-  ]
+  "vote": "yes",
+  "file": "Howesia_browni.png"
  },
  "huadanosaurus-sinensis": {
   "vote": "yes",
@@ -2735,12 +2645,8 @@
   "file": "Hyneria.jpg"
  },
  "hynerpeton-bassetti": {
-  "vote": "no",
-  "file": "Hynerpeton_ANSP.jpg",
-  "rejectedFiles": [
-   "Acanthostega_BW.jpg",
-   "Hynerpeton_ANSP.jpg"
-  ]
+  "vote": "yes",
+  "file": "Hynerpeton_BW.jpg"
  },
  "hypacrosaurus-altispinus": {
   "vote": "yes",
@@ -2827,12 +2733,8 @@
   "file": "Incisivosaurus_gauthieri.jpg"
  },
  "incisoscutum-ritchiei": {
-  "vote": "no",
-  "file": "Incisoscutum_WAM_03.3.28.png",
-  "rejectedFiles": [
-   "Ailuracantha.png",
-   "Incisoscutum_WAM_03.3.28.png"
-  ]
+  "vote": "yes",
+  "file": "Incisoscutum_ritchiei.png"
  },
  "indopacetus-pacificus": {
   "vote": "yes",
@@ -2975,12 +2877,8 @@
   "file": "Ammoniten_Kosmoceras_ornatum.jpg"
  },
  "kosmoceratops-richardsoni": {
-  "vote": "no",
-  "file": "コスモケラトプス・リカルゾニ頭骨.jpg",
-  "rejectedFiles": [
-   "Centrosaurus.png",
-   "コスモケラトプス・リカルゾニ頭骨.jpg"
-  ]
+  "vote": "yes",
+  "file": "Kosmoceratops_NT_small.jpg"
  },
  "kotlassia-prima": {
   "vote": "yes",
@@ -3043,12 +2941,8 @@
   "file": "Coelacanth_off_Pumula_on_the_KwaZulu-Natal_South_Coast,_South_Africa,_on_22_November_2019.png"
  },
  "leedsichthys-problematicus": {
-  "vote": "no",
-  "file": "Leedsichthys_problematicus_FMNH.jpg",
-  "rejectedFiles": [
-   "Aspidorhynchus_NT.jpg",
-   "Leedsichthys_problematicus_FMNH.jpg"
-  ]
+  "vote": "yes",
+  "file": "Leedsichthys_paleoart.jpg"
  },
  "leidyosuchus-canadensis": {
   "vote": "yes",
@@ -3187,12 +3081,8 @@
   "file": "Grey-cheeked_Mangabey.JPG"
  },
  "loricatosaurus-priscus": {
-  "vote": "no",
-  "file": "Lexovisaurus.jpg",
-  "rejectedFiles": [
-   "Adratiklit_boulahfa.png",
-   "Lexovisaurus.jpg"
-  ]
+  "vote": "yes",
+  "file": "Loricatosaurus_priscus.png"
  },
  "loris-tardigradus": {
   "vote": "yes",
@@ -3215,12 +3105,8 @@
   "file": "Lurdusaurus_arenatus.jpg"
  },
  "lusotitan-atalaiensis": {
-  "vote": "no",
-  "file": "Lusotitan_humerus.png",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Lusotitan_humerus.png"
-  ]
+  "vote": "yes",
+  "file": "Lusotitan.jpg"
  },
  "lutra-lutra": {
   "vote": "yes",
@@ -3304,11 +3190,7 @@
  },
  "magyarosaurus-dacus": {
   "vote": "no",
-  "file": "Titanosaur_remains_used_to_erect_Magyarosaurus_dacus.jpg",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Titanosaur_remains_used_to_erect_Magyarosaurus_dacus.jpg"
-  ]
+  "file": "Life_reconstruction_of_Magyarosaurus_dacus.jpg"
  },
  "mahajangasuchus-insignis": {
   "vote": "yes",
@@ -3323,12 +3205,8 @@
   "file": "Maiasaura_skeleton.jpg"
  },
  "maip-macrothorax": {
-  "vote": "no",
-  "file": "Maip_macrothorax.png",
-  "rejectedFiles": [
-   "Aerosteon_BW.jpg",
-   "Maip_macrothorax.png"
-  ]
+  "vote": "yes",
+  "file": "Maip_macrothorax_reconstruction.jpg"
  },
  "majungasaurus-crenatissimus": {
   "vote": "yes",
@@ -3455,12 +3333,8 @@
   "file": "Megatherium_americanum_Skeleton_NHM.JPG"
  },
  "megazostrodon-rudnerae": {
-  "vote": "no",
-  "file": "Megazostrodon,_Erythrotherium_&_Morganucodon_teeth.png",
-  "rejectedFiles": [
-   "Abdalodon_diastematicus_life_restoration.jpg",
-   "Megazostrodon,_Erythrotherium_&_Morganucodon_teeth.png"
-  ]
+  "vote": "yes",
+  "file": "Megazostrodon_sp._Natural_History_Museum_-_London.jpg"
  },
  "mei-long": {
   "vote": "yes",
@@ -3468,11 +3342,7 @@
  },
  "mekosuchus-whitehunterensis": {
   "vote": "no",
-  "file": "Mekosuchus_holotype.png",
-  "rejectedFiles": [
-   "Crocodylus_anthropophagus_NT.jpg",
-   "Mekosuchus_holotype.png"
-  ]
+  "file": "Mekosuchus_inexpectans.JPG"
  },
  "melanocetus-johnsonii": {
   "vote": "yes",
@@ -3551,12 +3421,8 @@
   "file": "Mesosaurus_tenuidens_1.jpg"
  },
  "mesosuchus-browni": {
-  "vote": "no",
-  "file": "Euparkeria_Mesosuchus_bonebed.png",
-  "rejectedFiles": [
-   "Euparkeria_Mesosuchus_bonebed.png",
-   "Hyperodapedon_sanjuanensis.png"
-  ]
+  "vote": "yes",
+  "file": "Mesosuchus_browni.png"
  },
  "messapicetus-gregarius": {
   "vote": "no",
@@ -3576,10 +3442,7 @@
  },
  "metriacanthosaurus-parkeri": {
   "vote": "no",
-  "file": "Metriacanthosaurus_holotype.png",
-  "rejectedFiles": [
-   "Metriacanthosaurus_holotype.png"
-  ]
+  "file": "Metriacanthosaurus_ilium.png"
  },
  "metriorhynchus-superciliosus": {
   "vote": "yes",
@@ -3671,23 +3534,15 @@
  },
  "morelladon-beltrani": {
   "vote": "no",
-  "file": "Morelladon_dorsal_vertebrae.PNG",
-  "rejectedFiles": [
-   "Chakisaurus_nekul.png",
-   "Morelladon_dorsal_vertebrae.PNG"
-  ]
+  "file": "Morelladon_pelvis.PNG"
  },
  "moropus-elatus": {
   "vote": "yes",
   "file": "Moropus_elatus.jpg"
  },
  "moros-intrepidus": {
-  "vote": "no",
-  "file": "Moros_intrepidus.png",
-  "rejectedFiles": [
-   "Allosaurus_Revised.jpg",
-   "Moros_intrepidus.png"
-  ]
+  "vote": "yes",
+  "file": "Moros_intrepidus_reconstruction.png"
  },
  "mosasaurus-hoffmannii": {
   "vote": "yes",
@@ -3730,12 +3585,8 @@
   "file": "Chinesischer_Muntjak_Muntiacus_reevesi_Zoo_Augsburg-04.jpg"
  },
  "muraenosaurus-leedsii": {
-  "vote": "no",
-  "file": "Muraenosaurus_leedsii.jpg",
-  "rejectedFiles": [
-   "Attenborosaurus_BW.jpg",
-   "Muraenosaurus_leedsii.jpg"
-  ]
+  "vote": "yes",
+  "file": "Muraenosaurus_leedsii.png"
  },
  "murusraptor-barrosaensis": {
   "vote": "yes",
@@ -3814,12 +3665,8 @@
   "file": "Natovenator_skeletal_(holotype).png"
  },
  "neimongosaurus-yangi": {
-  "vote": "no",
-  "file": "Neimongosaurus_yangi.jpg",
-  "rejectedFiles": [
-   "Ambopteryx_restoration.png",
-   "Neimongosaurus_yangi.jpg"
-  ]
+  "vote": "yes",
+  "file": "Neimongosaurus.jpg"
  },
  "nemegtomaia-barsboldi": {
   "vote": "yes",
@@ -3854,11 +3701,8 @@
   "file": "Australian_sea_lion_02.JPG"
  },
  "neophocaena-phocaenoides": {
-  "vote": "no",
-  "file": "Stamps_of_Indonesia,_040-05.jpg",
-  "rejectedFiles": [
-   "Stamps_of_Indonesia,_040-05.jpg"
-  ]
+  "vote": "yes",
+  "file": "NeophocaenaPhocaenoides.JPG"
  },
  "neotragus-pygmaeus": {
   "vote": "yes",
@@ -3881,12 +3725,8 @@
   "file": "Neuquenraptor_Skeletal.svg"
  },
  "neusticosaurus-pusillus": {
-  "vote": "no",
-  "file": "Neuticosaurus.jpg",
-  "rejectedFiles": [
-   "Attenborosaurus_BW.jpg",
-   "Neuticosaurus.jpg"
-  ]
+  "vote": "yes",
+  "file": "Neusticosaurus_pusillus.JPG"
  },
  "nigersaurus-taqueti": {
   "vote": "yes",
@@ -4205,12 +4045,8 @@
   "file": "Caïman_de_Schneider_(Paleosuchus_trigonatus).jpg"
  },
  "pambdelurion-whittingtoni": {
-  "vote": "no",
-  "file": "Doi_10.5061_dryad.7jh0q_S1.tif",
-  "rejectedFiles": [
-   "20191022_Kerygmachela_kierkegaardi_without_lobopods.png",
-   "Doi_10.5061_dryad.7jh0q_S1.tif"
-  ]
+  "vote": "yes",
+  "file": "20191112_Pambdelurion_whittingtoni.png"
  },
  "pan-troglodytes": {
   "vote": "yes",
@@ -4290,11 +4126,7 @@
  },
  "paralititan-stromeri": {
   "vote": "no",
-  "file": "Paralititan_stromeri_by_Hatem_Moushir_9.JPG",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Paralititan_stromeri_by_Hatem_Moushir_9.JPG"
-  ]
+  "file": "Paralititan_vertebra.jpg"
  },
  "paramylodon-harlani": {
   "vote": "yes",
@@ -4353,12 +4185,8 @@
   "file": "Pecari_tajacu_-_02.jpg"
  },
  "pectinodon-bakkeri": {
-  "vote": "no",
-  "file": "Pectinodon.png",
-  "rejectedFiles": [
-   "Hell_Creek_Formation_Fauna.png",
-   "Pectinodon.png"
-  ]
+  "vote": "yes",
+  "file": "Pectinodon_TD.png"
  },
  "pekania-pennanti": {
   "vote": "yes",
@@ -4374,22 +4202,15 @@
  },
  "pelecanimimus-polyodon": {
   "vote": "no",
-  "file": "Pelecanimimus_restoration.jpeg",
-  "rejectedFiles": [
-   "Allosaurus_Revised.jpg",
-   "Pelecanimimus_restoration.jpeg"
-  ]
+  "file": "Pelecanimimus_047.JPG"
  },
  "pelecanus-onocrotalus": {
   "vote": "yes",
   "file": "Great_white_pelican_(Pelecanus_onocrotalus).jpg"
  },
  "peltephilus-strepens": {
-  "vote": "no",
-  "file": "Peltephilus_ferox.JPG",
-  "rejectedFiles": [
-   "Peltephilus_ferox.JPG"
-  ]
+  "vote": "yes",
+  "file": "Peltephilus_ferox_skull.jpg"
  },
  "peponocephala-electra": {
   "vote": "yes",
@@ -4457,10 +4278,7 @@
  },
  "phuwiangvenator-yaemniyomi": {
   "vote": "no",
-  "file": "Phuwiangvenator_Hands.png",
-  "rejectedFiles": [
-   "Phuwiangvenator_Hands.png"
-  ]
+  "file": "Phuwiangvenator_Metatarsals.png"
  },
  "phyllobates-terribilis": {
   "vote": "yes",
@@ -4479,12 +4297,8 @@
   "file": "Great_Auk_(Pinguinis_impennis)_specimen,_Kelvingrove,_Glasgow_-_geograph.org.uk_-_1108249.jpg"
  },
  "pisanosaurus-mertii": {
-  "vote": "no",
-  "file": "Pisanosaurus_skull.png",
-  "rejectedFiles": [
-   "Diodorus_restoration.jpg",
-   "Pisanosaurus_skull.png"
-  ]
+  "vote": "yes",
+  "file": "Pisanosaurus_NT_small.jpg"
  },
  "piscobalaena-nana": {
   "vote": "yes",
@@ -4691,24 +4505,16 @@
   "file": "Protarchaeopteryx-Geological_Museum_of_China.jpg"
  },
  "protathlitis-cinctorrensis": {
-  "vote": "no",
-  "file": "Protathlitis_(3ANA83,_mid-caudal_vertebrae).png",
-  "rejectedFiles": [
-   "Allosaurus_Revised.jpg",
-   "Protathlitis_(3ANA83,_mid-caudal_vertebrae).png"
-  ]
+  "vote": "yes",
+  "file": "Skeletal_reconstruction_of_Protathlitis_cinctorrensis.webp"
  },
  "proteles-cristata": {
   "vote": "yes",
   "file": "Aardwolf,_Buffalo_Springs_National_Park,_Kenya_1_(cropped).jpg"
  },
  "proterochampsa-barrionuevoi": {
-  "vote": "no",
-  "file": "Proterochampsa_skull.png",
-  "rejectedFiles": [
-   "Doswellia_kaltenbachi_life_restoration.png",
-   "Proterochampsa_skull.png"
-  ]
+  "vote": "yes",
+  "file": "Proterochampsa.jpg"
  },
  "proterosuchus-fergusi": {
   "vote": "yes",
@@ -4814,12 +4620,8 @@
   "file": "Mountain_Lion_in_Glacier_National_Park.jpg"
  },
  "purussaurus-mirandai": {
-  "vote": "no",
-  "file": "Purussaurus_skull.PNG",
-  "rejectedFiles": [
-   "Crocodylus_anthropophagus_NT.jpg",
-   "Purussaurus_skull.PNG"
-  ]
+  "vote": "yes",
+  "file": "Purussaurus_BW.jpg"
  },
  "pusa-hispida": {
   "vote": "yes",
@@ -4847,10 +4649,7 @@
  },
  "pygoscelis-papua": {
   "vote": "no",
-  "file": "Gentoo_Penguin.png",
-  "rejectedFiles": [
-   "Gentoo_Penguin.png"
-  ]
+  "file": "Pygoscelis_papua_MWNH_0520.JPG"
  },
  "pyroraptor-olympius": {
   "vote": "yes",
@@ -4910,11 +4709,7 @@
  },
  "rebbachisaurus-garasbae": {
   "vote": "no",
-  "file": "Holotype_material_of_Rebbachisaurus_garasbae.jpg",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Holotype_material_of_Rebbachisaurus_garasbae.jpg"
-  ]
+  "file": "Rebbachisaurus_assigned_vert.jpg"
  },
  "redlichia-rex": {
   "vote": "yes",
@@ -4929,12 +4724,8 @@
   "file": "Regalecus_glesne,_Naturhistorisches_Museum_Wien.jpg"
  },
  "repenomamus-robustus": {
-  "vote": "no",
-  "file": "Repenomamus-Paleozoological_Museum_of_China.jpg",
-  "rejectedFiles": [
-   "Cronopio_NT.jpg",
-   "Repenomamus-Paleozoological_Museum_of_China.jpg"
-  ]
+  "vote": "yes",
+  "file": "Psittacosaurus_and_Repenomamus_life_restoration_-_Han_et_al_2023.png"
  },
  "revueltosaurus-callenderi": {
   "vote": "yes",
@@ -4990,10 +4781,7 @@
  },
  "rhyniognatha-hirsti": {
   "vote": "no",
-  "file": "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg",
-  "rejectedFiles": [
-   "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg"
-  ]
+  "file": "Rhyniognatha_specimen.png"
  },
  "rinchenia-mongoliensis": {
   "vote": "yes",
@@ -5008,12 +4796,8 @@
   "file": "Riparovenator_holotype.webp"
  },
  "rocasaurus-muniozi": {
-  "vote": "no",
-  "file": "Rocasaurus.jpg",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Rocasaurus.jpg"
-  ]
+  "vote": "yes",
+  "file": "Rocasaurus_muniozi.jpg"
  },
  "rubidgea-atrox": {
   "vote": "yes",
@@ -5084,12 +4868,8 @@
   "file": "Wst_atlantischer_lachs_stoer_001.jpg"
  },
  "sanajeh-indicus": {
-  "vote": "no",
-  "file": "Sanajeh_fossil.png",
-  "rejectedFiles": [
-   "Dinilysia_NT.jpg",
-   "Sanajeh_fossil.png"
-  ]
+  "vote": "yes",
+  "file": "Sanajeh_skull.png"
  },
  "saniwa-ensidens": {
   "vote": "yes",
@@ -5117,11 +4897,11 @@
  },
  "sarahsaurus-aurifontanalis": {
   "vote": "no",
-  "file": "Sarahsaurus.jpg",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Sarahsaurus.jpg"
-  ]
+  "file": "Sarahsaurus_braincase.jpg"
+ },
+ "sarcosaurus-woodi": {
+  "vote": "yes",
+  "file": "Sarcosaurus_known_material.png"
  },
  "sarcosuchus-imperator": {
   "vote": "yes",
@@ -5276,12 +5056,8 @@
   "file": "Sifrhippus_sandrae_LACM.jpg"
  },
  "sigilmassasaurus-brevicollis": {
-  "vote": "no",
-  "file": "Sigilmassasaurus_vertebra.png",
-  "rejectedFiles": [
-   "Allosaurus_Revised.jpg",
-   "Sigilmassasaurus_vertebra.png"
-  ]
+  "vote": "yes",
+  "file": "Life_reconstruction_of_Sigilmassasaurus_brevicollis.png"
  },
  "silurus-glanis": {
   "vote": "yes",
@@ -5376,12 +5152,8 @@
   "file": "Speothos_venaticus_Zoo_Praha_2011-5_(cropped).jpg"
  },
  "sphaerotholus-buchholtzae": {
-  "vote": "no",
-  "file": "Sphaerotholus.png",
-  "rejectedFiles": [
-   "Sphaerotholus.png",
-   "Stegoceras_validum.jpg"
-  ]
+  "vote": "yes",
+  "file": "Sphaerotholus.jpg"
  },
  "sphecomyrma-freyi": {
   "vote": "yes",
@@ -5428,10 +5200,7 @@
  },
  "spinosaurus-mirabilis": {
   "vote": "no",
-  "file": "Spinosaurid_MNBH_EGA1.jpg",
-  "rejectedFiles": [
-   "Spinosaurid_MNBH_EGA1.jpg"
-  ]
+  "file": "Digital_flesh_model_of_Spinosaurus.jpg"
  },
  "squalicorax-falcatus": {
   "vote": "yes",
@@ -5530,12 +5299,8 @@
   "file": "Blue-footed-booby.jpg"
  },
  "supersaurus-vivianae": {
-  "vote": "no",
-  "file": "Supersaurus-Holotype-BYU9025-PerspectiveWarp.png",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Supersaurus-Holotype-BYU9025-PerspectiveWarp.png"
-  ]
+  "vote": "yes",
+  "file": "Supersaurus_dinosaur.png"
  },
  "suricata-suricatta": {
   "vote": "yes",
@@ -5578,12 +5343,8 @@
   ]
  },
  "tangvayosaurus-hoffeti": {
-  "vote": "no",
-  "file": "TangvayosaurusSV3.jpg",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "TangvayosaurusSV3.jpg"
-  ]
+  "vote": "yes",
+  "file": "Femur_Tangvayosaurus_hoffeti.jpg"
  },
  "taniwhasaurus-oweni": {
   "vote": "yes",
@@ -5766,24 +5527,16 @@
   "file": "Skeleton_of_Titanis_at_the_Florida_Museum_of_Natural_History.jpg"
  },
  "titanoboa-cerrejonensis": {
-  "vote": "no",
-  "file": "Titanoboa_paratype_precloacal_vertebra_UF-IGM_2_edited_with_scale_bar.jpg",
-  "rejectedFiles": [
-   "Dinilysia_NT.jpg",
-   "Titanoboa_paratype_precloacal_vertebra_UF-IGM_2_edited_with_scale_bar.jpg"
-  ]
+  "vote": "yes",
+  "file": "Titanoboa_NT.jpg"
  },
  "titanomyrma-gigantea": {
   "vote": "yes",
   "file": "Titanomyrma_gigantea_SMFMEI00998.jpg"
  },
  "titanosaurus-indicus": {
-  "vote": "no",
-  "file": "Titanosaurus.jpg",
-  "rejectedFiles": [
-   "AmpelosaurusDB.jpg",
-   "Titanosaurus.jpg"
-  ]
+  "vote": "yes",
+  "file": "Titanosaurus_Thigh_Fossil_@VNGeol.Museum.jpg"
  },
  "tomistoma-schlegelii": {
   "vote": "yes",
@@ -5791,11 +5544,7 @@
  },
  "tornieria-africana": {
   "vote": "no",
-  "file": "Tornieria_caudal.png",
-  "rejectedFiles": [
-   "500_gigantosaurus_dwdu1912cropped.jpg",
-   "Tornieria_caudal.png"
-  ]
+  "file": "Tornieria_skull.png"
  },
  "torosaurus-latus": {
   "vote": "yes",
@@ -5933,6 +5682,10 @@
   "vote": "yes",
   "file": "2010-kodiak-bear-1.jpg"
  },
+ "ursus-maritimus": {
+  "vote": "yes",
+  "file": "Polar_Bear_-_Alaska_(cropped).jpg"
+ },
  "ursus-spelaeus": {
   "vote": "yes",
   "file": "Teufelshöhle-Höhlenbär-Dreiviertelprofil.jpg"
@@ -5994,12 +5747,8 @@
   "file": "Velocisaurus_Skeletal.png"
  },
  "venaticosuchus-rusconii": {
-  "vote": "no",
-  "file": "Venaticosuchus_skull_diagram.png",
-  "rejectedFiles": [
-   "Arizonasaurus_BW_white_background.jpg",
-   "Venaticosuchus_skull_diagram.png"
-  ]
+  "vote": "yes",
+  "file": "Venaticosuchus_life_reconstruction.png"
  },
  "viavenator-exxoni": {
   "vote": "yes",
@@ -6042,12 +5791,8 @@
   "file": "SMNK-PAL_2882.png"
  },
  "westlothiana-lizziae": {
-  "vote": "no",
-  "file": "Counterpart_of_Westlothiana_lizziae.png",
-  "rejectedFiles": [
-   "Acanthostega_gunnari.png",
-   "Counterpart_of_Westlothiana_lizziae.png"
-  ]
+  "vote": "yes",
+  "file": "Westlothiana_BW.jpg"
  },
  "wintonotitan-wattsi": {
   "vote": "yes",
@@ -6098,12 +5843,8 @@
   "file": "Zalambdalestes_lechei.jpg"
  },
  "zalmoxes-robustus": {
-  "vote": "no",
-  "file": "Zalmoxes_robustus_dentary.jpg",
-  "rejectedFiles": [
-   "Chakisaurus_nekul.png",
-   "Zalmoxes_robustus_dentary.jpg"
-  ]
+  "vote": "yes",
+  "file": "Zalmoxes_TD.png"
  },
  "zalophus-californianus": {
   "vote": "yes",
