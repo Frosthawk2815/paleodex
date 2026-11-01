@@ -346,7 +346,10 @@
  },
  "allkaruen-koi": {
   "vote": "no",
-  "file": "Allkaruen_endocast.png"
+  "file": "Allkaruen_endocast.png",
+  "rejectedFiles": [
+   "Allkaruen_endocast.png"
+  ]
  },
  "allocebus-trichotis": {
   "vote": "yes",
@@ -1039,7 +1042,10 @@
  },
  "avicranium-renestoi": {
   "vote": "no",
-  "file": "Avicranium_3D_scan.jpg"
+  "file": "Avicranium_3D_scan.jpg",
+  "rejectedFiles": [
+   "Avicranium_3D_scan.jpg"
+  ]
  },
  "avimimus-portentosus": {
   "vote": "yes",
@@ -1540,7 +1546,10 @@
  },
  "bustingorrytitan-shiva": {
   "vote": "no",
-  "file": "Bustingorrytitan_(axial_skeleton).jpg"
+  "file": "Bustingorrytitan_(axial_skeleton).jpg",
+  "rejectedFiles": [
+   "Bustingorrytitan_(axial_skeleton).jpg"
+  ]
  },
  "buteo-jamaicensis": {
   "vote": "yes",
@@ -2321,7 +2330,10 @@
  },
  "coniophis-precedens": {
   "vote": "no",
-  "file": "Coniophis_holotype_Marsh_1892.png"
+  "file": "Coniophis_holotype_Marsh_1892.png",
+  "rejectedFiles": [
+   "Coniophis_holotype_Marsh_1892.png"
+  ]
  },
  "connochaetes-taurinus": {
   "vote": "yes",
@@ -2457,7 +2469,10 @@
  },
  "crosbysaurus-harrisae": {
   "vote": "no",
-  "file": "Crosbysaurus_hypothetical.png"
+  "file": "Crosbysaurus_hypothetical.png",
+  "rejectedFiles": [
+   "Crosbysaurus_hypothetical.png"
+  ]
  },
  "crossarchus-obscurus": {
   "vote": "yes",
@@ -2793,7 +2808,10 @@
  },
  "dinheirosaurus-lourinhanensis": {
   "vote": "no",
-  "file": "Dinheirosaurus_holotype.png"
+  "file": "Dinheirosaurus_holotype.png",
+  "rejectedFiles": [
+   "Dinheirosaurus_holotype.png"
+  ]
  },
  "dinictis-felina": {
   "vote": "yes",
@@ -3030,7 +3048,10 @@
  },
  "efraasia-minor": {
   "vote": "no",
-  "file": "Efraasia_skull.jpg"
+  "file": "Efraasia_skull.jpg",
+  "rejectedFiles": [
+   "Efraasia_skull.jpg"
+  ]
  },
  "eilenodon-robustus": {
   "vote": "no",
@@ -3150,7 +3171,10 @@
  },
  "enhydrocyon-stenocephalus": {
   "vote": "no",
-  "file": "A_Lower_Miocene_fauna_from_South_Dakota_(1907)_fig._6.png"
+  "file": "A_Lower_Miocene_fauna_from_South_Dakota_(1907)_fig._6.png",
+  "rejectedFiles": [
+   "A_Lower_Miocene_fauna_from_South_Dakota_(1907)_fig._6.png"
+  ]
  },
  "enigmacursor-mollyborthwickae": {
   "vote": "yes",
@@ -5768,7 +5792,10 @@
  },
  "metriacanthosaurus-parkeri": {
   "vote": "no",
-  "file": "Metriacanthosaurus_holotype.png"
+  "file": "Metriacanthosaurus_holotype.png",
+  "rejectedFiles": [
+   "Metriacanthosaurus_holotype.png"
+  ]
  },
  "metriorhynchus-superciliosus": {
   "vote": "yes",
@@ -5924,7 +5951,10 @@
  },
  "monoclonius-crassus": {
   "vote": "no",
-  "file": "Monoclonius_crassus.jpg"
+  "file": "Monoclonius_crassus.jpg",
+  "rejectedFiles": [
+   "Monoclonius_crassus.jpg"
+  ]
  },
  "monodelphis-domestica": {
   "vote": "yes",
@@ -7002,7 +7032,10 @@
  },
  "pelecanimimus-polyodon": {
   "vote": "no",
-  "file": "Pelecanimimus_restoration.jpeg"
+  "file": "Pelecanimimus_restoration.jpeg",
+  "rejectedFiles": [
+   "Pelecanimimus_restoration.jpeg"
+  ]
  },
  "pelecanus-crispus": {
   "vote": "yes",
@@ -7982,7 +8015,10 @@
  },
  "rhyniognatha-hirsti": {
   "vote": "no",
-  "file": "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg"
+  "file": "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg",
+  "rejectedFiles": [
+   "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg"
+  ]
  },
  "rhynochetos-jubatus": {
   "vote": "yes",
@@ -8444,7 +8480,10 @@
  },
  "simias-concolor": {
   "vote": "no",
-  "file": "Simias_concolor.jpg"
+  "file": "Simias_concolor.jpg",
+  "rejectedFiles": [
+   "Simias_concolor.jpg"
+  ]
  },
  "similicaudipteryx-yixianensis": {
   "vote": "yes",
@@ -8990,7 +9029,10 @@
  },
  "tendaguria-tanzaniensis": {
   "vote": "no",
-  "file": "Tendaguria_anterior_dorsal_vertebra.png"
+  "file": "Tendaguria_anterior_dorsal_vertebra.png",
+  "rejectedFiles": [
+   "Tendaguria_anterior_dorsal_vertebra.png"
+  ]
  },
  "tenontosaurus-tilletti": {
   "vote": "yes",
@@ -9194,7 +9236,10 @@
  },
  "tornieria-africana": {
   "vote": "no",
-  "file": "Tornieria_caudal.png"
+  "file": "Tornieria_caudal.png",
+  "rejectedFiles": [
+   "Tornieria_caudal.png"
+  ]
  },
  "torosaurus-latus": {
   "vote": "yes",
@@ -9263,7 +9308,10 @@
  },
  "triassurus-sixtelae": {
   "vote": "no",
-  "file": "Triassurus_flipped.png"
+  "file": "Triassurus_flipped.png",
+  "rejectedFiles": [
+   "Triassurus_flipped.png"
+  ]
  },
  "triceratops-horridus": {
   "vote": "yes",
