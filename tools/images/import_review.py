@@ -19,6 +19,12 @@ HERE = __file__.rsplit('/', 1)[0]
 text = open(sys.argv[1], encoding='utf-8').read()
 decisions = json.load(open(f'{HERE}/decisions.json'))
 candidates = json.load(open(f'{HERE}/candidates.json'))
+# Pictures the owner pinned by hand (overrides.json) keep their decision: a review answer may be
+# for the picture they replaced, as the answers name the species but not the picture.
+try:
+    pinned = set(json.load(open(f'{HERE}/overrides.json')))
+except FileNotFoundError:
+    pinned = set()
 counts = {}
 for vote in ('yes', 'no', 'outdated'):
     m = re.search(rf'^{vote}:(.*)$', text, re.MULTILINE)
@@ -27,6 +33,9 @@ for vote in ('yes', 'no', 'outdated'):
     for sid in ids:
         if sid not in candidates:
             print('  no candidate for', sid)
+            continue
+        if sid in pinned:
+            print('  kept the hand-picked picture for', sid, f'(ignored "{vote}", probably for the picture it replaced)')
             continue
         # Record which picture the answer was for, so a replacement picture is asked about again.
         entry = {'vote': 'no' if vote == 'outdated' else vote, 'file': candidates[sid]['file']}
