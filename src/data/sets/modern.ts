@@ -17,9 +17,10 @@ export const MODERN: DataSet = {
     {
       id: 'proboscidea',
       name: 'Proboscidea',
-      common: 'Elephants and mammoths',
+      common: 'Proboscideans',
       parent: 'paenungulata',
-      description: 'Trunked mammals: today’s three elephant species and many extinct ones, from mammoths to mastodons.',
+      description:
+        'Trunked mammals: today’s three elephant species and their many extinct relatives. They began in Africa about 60 million years ago as fox-sized animals like Eritherium, grew trunks and tusks, and branched into deinotheres, mastodons, gomphotheres, shovel-tuskers, stegodons and true elephants and mammoths, spreading to every continent except Australia and Antarctica. Many island forms shrank into dwarfs.',
     },
     {
       id: 'sirenia',

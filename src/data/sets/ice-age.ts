@@ -156,7 +156,7 @@ export const ICE_AGE: DataSet = {
       id: 'mammut-americanum',
       name: 'Mammut americanum',
       common: 'American mastodon',
-      clade: 'proboscidea',
+      clade: 'mammutidae',
       status: 'full',
       ageText: 'About 1 million to 11,000 years ago',
       placeText: 'North and Central America',

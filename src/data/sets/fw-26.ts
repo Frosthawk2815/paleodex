@@ -137,7 +137,7 @@ export const FW_26: DataSet = {
       id: 'stegodon-florensis',
       name: 'Stegodon florensis',
       common: 'Flores dwarf Stegodon',
-      clade: 'proboscidea',
+      clade: 'stegodontidae',
       status: 'full',
       ageText: 'About 800,000 to 50,000 years ago (Pleistocene)',
       placeText: 'Flores, Indonesia',

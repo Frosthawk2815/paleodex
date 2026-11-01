@@ -6,6 +6,7 @@ import { InfoNav } from '@/components/info-nav';
 import { useInfoStyles } from '@/components/info-styles';
 import { type Clade, CLADES, type Species } from '@/data/life';
 import { childClades, cladeById, cladePath, speciesInClade } from '@/lib/life';
+import { speciesMa } from '@/lib/quiz';
 import { useUnitText } from '@/lib/profile';
 
 type Props = {
@@ -18,6 +19,16 @@ type Props = {
 };
 
 // The information section for a group: where it sits in the tree and every species in it.
+// When a species first appears, in millions of years, read from its date text: "About 37 to 35
+// million years ago" -> 37, "About 400,000 to 4,000 years ago" -> 0.4, "Living today" -> 0.
+function startMa(text: string): number | null {
+  if (/^living/i.test(text)) return 0;
+  const m = text.match(/([\d.,]+)\s*(million)?(?:\s*(?:to|–|-)\s*[\d.,]+\s*(million)?)?\s*years/i);
+  if (!m) return null;
+  const n = Number(m[1]!.replace(/,/g, ''));
+  return m[2] || m[3] ? n : n / 1e6;
+}
+
 export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies }: Props) {
   const info = useInfoStyles();
   const u = useUnitText();
@@ -25,10 +36,13 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
   const children = childClades(clade.id);
   const species = speciesInClade(clade.id);
 
-  // List species under the group they belong to, in family-tree order.
-  const sections = CLADES.map((c) => ({ clade: c, members: species.filter((s) => s.clade === c.id) })).filter(
-    (s) => s.members.length > 0,
-  );
+  // List species under the group they belong to, in family-tree order, and within each group from
+  // oldest to youngest so the list reads as an evolutionary story (living species last).
+  const age = (s: Species) => startMa(s.ageText) ?? speciesMa(s) ?? -1;
+  const sections = CLADES.map((c) => ({
+    clade: c,
+    members: species.filter((s) => s.clade === c.id).sort((a, b) => age(b) - age(a)),
+  })).filter((s) => s.members.length > 0);
 
   return (
     <View style={info.wrap}>

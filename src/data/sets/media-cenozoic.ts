@@ -757,7 +757,7 @@ export const MEDIA_CENOZOIC: DataSet = {
       id: 'deinotherium-giganteum',
       name: 'Deinotherium giganteum',
       common: 'Deinotherium',
-      clade: 'proboscidea',
+      clade: 'deinotheriidae',
       status: 'full',
       ageText: 'About 10 to 7 million years ago',
       placeText: 'Europe',
