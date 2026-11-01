@@ -333,7 +333,7 @@ export const SPECIES_MEANINGS: Record<string, Meaning> = {
   'hapalochlaena-lunulata': 'crescent-marked',
   'thaumoctopus-mimicus': 'mimic',
   'isotelus-gigas': 'giant',
-  'zavacephale-rinpoche': { meaning: 'precious one', note: 'A Tibetan title, given because the skeleton was found inside a rock like a gem.' },
+  'zavacephale-rinpoche': 'precious one',
   'yi-qi': 'strange',
   'mammuthus-exilis': 'small',
   'mammuthus-meridionalis': 'southern',
