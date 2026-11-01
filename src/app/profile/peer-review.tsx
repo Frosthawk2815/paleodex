@@ -403,7 +403,6 @@ export default function PeerReviewScreen() {
           shows after each round.
         </Text>
         <Pressable onPress={host} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
-          <Text style={{ fontSize: 28 }}>🏟️</Text>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Host a Peer Review</Text>
             <Text style={st.rowSub}>Choose the rounds and share a battle code</Text>
@@ -411,7 +410,6 @@ export default function PeerReviewScreen() {
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <Pressable onPress={() => setStage({ kind: 'join', status: 'idle' })} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
-          <Text style={{ fontSize: 28 }}>🔑</Text>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Join a Peer Review</Text>
             <Text style={st.rowSub}>Enter the host’s battle code</Text>

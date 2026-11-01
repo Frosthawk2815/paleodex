@@ -343,7 +343,6 @@ export default function BattleScreen() {
           to find new dinosaurs. Between them they named more than 130 new species, from Stegosaurus and Triceratops to Camarasaurus.
         </Text>
         <Pressable onPress={host} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
-          <Text style={{ fontSize: 28 }}>🏕️</Text>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Host a game</Text>
             <Text style={st.rowSub}>Get a battle code to send to the other player</Text>
@@ -351,7 +350,6 @@ export default function BattleScreen() {
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <Pressable onPress={() => setStage({ kind: 'join', status: 'idle' })} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
-          <Text style={{ fontSize: 28 }}>🔑</Text>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Join a game</Text>
             <Text style={st.rowSub}>Enter the battle code you were sent</Text>

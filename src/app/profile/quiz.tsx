@@ -42,7 +42,6 @@ export default function QuizScreen() {
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
         <Text style={st.text}>How much do you know about prehistoric life? Questions are drawn from everything in PaleoDex, at five levels of difficulty.</Text>
         <Pressable onPress={() => setStage({ kind: 'setup' })} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
-          <Text style={{ fontSize: 28 }}>🦖</Text>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Play solo</Text>
             <Text style={st.rowSub}>Ten questions on the subject and level you choose</Text>
@@ -50,7 +49,6 @@ export default function QuizScreen() {
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <Pressable onPress={() => router.push('/profile/battle')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
-          <Text style={{ fontSize: 28 }}>⚔️</Text>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Bone War</Text>
             <Text style={st.rowSub}>Play someone on another phone with a battle code</Text>
@@ -58,7 +56,6 @@ export default function QuizScreen() {
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <Pressable onPress={() => router.push('/profile/peer-review')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
-          <Text style={{ fontSize: 28 }}>🏟️</Text>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Peer Review</Text>
             <Text style={st.rowSub}>A group game for 3 to 30 players, with a leaderboard after each round</Text>
