@@ -87,7 +87,7 @@ export function QuestionView({
   // Answers taken away by 50/50.
   hidden?: number[];
   lifelines?: Lifeline[];
-  // Head to head: waiting for the other player before moving on.
+  // Bone War: waiting for the other player before moving on.
   nextDisabled?: boolean;
 }) {
   const st = useProfileStyles();

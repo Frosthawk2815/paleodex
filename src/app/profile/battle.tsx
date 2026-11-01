@@ -19,7 +19,7 @@ type Role = 'host' | 'guest';
 type Progress = { answered: number; score: number; done: boolean };
 type PlayStage = Extract<Stage, { kind: 'play' }>;
 
-// Seconds to answer each head-to-head question.
+// Seconds to answer each Bone War question.
 const QUESTION_SECONDS = 30;
 
 type Stage =
@@ -59,7 +59,7 @@ const ERRORS: Record<Extract<LinkState, { kind: 'error' }>['reason'], string> = 
   server: 'The connection service couldn’t be reached. Check your internet connection and try again.',
 };
 
-// Head to head: two players on different phones, connected directly (peer to peer) with a battle
+// Bone War: two players on different phones, connected directly (peer to peer) with a battle
 // code, answer the same ten questions.
 export default function BattleScreen() {
   const st = useProfileStyles();
@@ -708,7 +708,7 @@ export default function BattleScreen() {
         }}
         accessibilityRole="button"
         style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-        <Text style={st.buttonText}>Back to head to head</Text>
+        <Text style={st.buttonText}>Back to Bone War</Text>
       </Pressable>
     </ScrollView>
   );

@@ -63,8 +63,8 @@
       [
         "@config-plugins/react-native-webrtc",
         {
-          "cameraPermission": "PaleoDex does not use your camera. This is required by the connection library used for head-to-head games.",
-          "microphonePermission": "PaleoDex does not use your microphone. This is required by the connection library used for head-to-head games."
+          "cameraPermission": "PaleoDex does not use your camera. This is required by the connection library used for Bone War games.",
+          "microphonePermission": "PaleoDex does not use your microphone. This is required by the connection library used for Bone War games."
         }
       ]
     ],
