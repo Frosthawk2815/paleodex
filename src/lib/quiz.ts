@@ -1,6 +1,7 @@
 // The quiz: multiple-choice questions built from PaleoDex's own data, so every answer matches what
 // the app shows. Each round draws questions at one difficulty (1 to 5, by how obscure the subject
-// is) from a category: everything, dinosaurs, one group, or one period.
+// is) from a category: everything, dinosaurs, mammals (with their synapsid relatives), one group, or
+// one period.
 
 import { EVENTS, type HistoryEvent } from '@/data/events';
 import { CLADES, SPECIES, type Species } from '@/data/life';
@@ -20,7 +21,7 @@ export const DIFFICULTIES: { level: Difficulty; name: string; detail: string }[]
   { level: 5, name: 'Professor', detail: 'Rare species and the fine detail of the timescale' },
 ];
 
-export type Category = { kind: 'all' } | { kind: 'dinosaurs' } | { kind: 'clade'; id: string } | { kind: 'period'; id: string };
+export type Category = { kind: 'all' } | { kind: 'dinosaurs' } | { kind: 'mammals' } | { kind: 'clade'; id: string } | { kind: 'period'; id: string };
 export const categoryKey = (c: Category) => (c.kind === 'clade' || c.kind === 'period' ? `${c.kind}:${c.id}` : c.kind);
 
 export type Question = {
@@ -131,6 +132,11 @@ function alsoTrue(s: Species): Set<string> {
 }
 const lower = (text: string) => text.charAt(0).toLowerCase() + text.slice(1);
 const isDinosaur = (s: Species) => pathIds(s).has('dinosauria') && !pathIds(s).has('aves');
+// Mammals and their earlier synapsid relatives (such as Dimetrodon and the cynodonts).
+const isSynapsid = (s: Species) => pathIds(s).has('synapsida');
+// Synapsids that are clearly not mammals. Cynodonts are left out: some of them (Brasilodon,
+// Hadrocodium) are counted as the earliest mammals by some researchers.
+const isClearNonMammalSynapsid = (s: Species) => isSynapsid(s) && !pathIds(s).has('mammalia') && !pathIds(s).has('cynodontia');
 
 export const label = (s: Species) => s.common || s.name;
 const named = (s: Species) => (s.common && s.common !== s.name ? `${s.common} (${s.name})` : s.name);
@@ -172,9 +178,11 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
   // What kind of animal is it?
   {
     levels: [1, 2],
-    make: (s) => {
+    make: (s, c) => {
       const kind = kindOf(s);
       if (!kind) return null;
+      // In the mammals quiz the answer would nearly always be "a mammal": ask only about earlier synapsids.
+      if (c.category.kind === 'mammals' && pathIds(s).has('mammalia')) return null;
       const excluded = alsoTrue(s);
       const wrong = sample([...new Set(KINDS.map((k) => k.label))].filter((k) => !excluded.has(k)), 3);
       return build(`kind:${s.id}`, `What kind of animal is ${named(s)}?`, kind, wrong, `${label(s)} was ${lower(kind)}.`, { speciesId: s.id });
@@ -297,11 +305,30 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
   {
     levels: [1, 2],
     make: (s, c) => {
-      if (c.category.kind === 'period' || isDinosaur(s) || alsoTrue(s).has('A dinosaur') || !kindOf(s)) return null;
+      if (c.category.kind === 'period' || c.category.kind === 'mammals' || isDinosaur(s) || alsoTrue(s).has('A dinosaur') || !kindOf(s)) return null;
       const dinos = sample((c.category.kind === 'dinosaurs' ? c.pool : SPECIES).filter((o) => isDinosaur(o) && FAMOUS.has(o.id)), 3);
       return build(`notdino:${s.id}`, 'Which of these is not a dinosaur?', label(s), dinos.map(label), `${label(s)} was ${lower(kindOf(s)!)}, not a dinosaur.`, {
         speciesId: s.id,
       });
+    },
+  },
+  // Which of these is not a mammal? (An early synapsid among true mammals.)
+  {
+    levels: [1, 2, 3],
+    make: (s, c) => {
+      if (!['all', 'mammals'].includes(c.category.kind) && !(c.category.kind === 'clade' && pathIds(s).has(c.category.id))) return null;
+      if (!isClearNonMammalSynapsid(s)) return null;
+      const mammals = (c.category.kind === 'mammals' ? c.pool : SPECIES).filter(
+        (o) => pathIds(o).has('mammalia') && (FAMOUS.has(o.id) || (!!o.common && o.status === 'full' && !!c.imageFor(o.id))),
+      );
+      return build(
+        `notmammal:${s.id}`,
+        'Which of these is not a mammal?',
+        label(s),
+        sample(mammals, 3).map(label),
+        `${label(s)} was a synapsid, an early relative of mammals: closer to mammals than to reptiles, but not a mammal itself.`,
+        { speciesId: s.id },
+      );
     },
   },
 ];
@@ -402,6 +429,7 @@ function timescaleQuestion(level: Difficulty, period?: string): Question | null 
 // The species a category covers.
 export function categoryPool(c: Category): Species[] {
   if (c.kind === 'dinosaurs') return SPECIES.filter(isDinosaur);
+  if (c.kind === 'mammals') return SPECIES.filter(isSynapsid);
   if (c.kind === 'clade') return speciesInClade(c.id);
   if (c.kind === 'period') {
     const p = PERIODS.find((x) => x.id === c.id);
@@ -415,7 +443,7 @@ export function categoryPool(c: Category): Species[] {
 }
 
 // Groups worth a quiz of their own: big groups and families with plenty of species.
-export const QUIZ_GROUPS = CLADES.filter((c) => !['animalia', 'chordata', 'vertebrata'].includes(c.id) && speciesInClade(c.id).length >= 12).sort((a, b) =>
+export const QUIZ_GROUPS = CLADES.filter((c) => !['animalia', 'chordata', 'vertebrata', 'mammalia', 'synapsida'].includes(c.id) && speciesInClade(c.id).length >= 12).sort((a, b) =>
   (a.common || a.name).localeCompare(b.common || b.name),
 );
 

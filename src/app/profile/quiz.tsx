@@ -18,9 +18,11 @@ const categoryName = (c: Category) =>
     ? 'All of prehistoric life'
     : c.kind === 'dinosaurs'
       ? 'Dinosaurs'
-      : c.kind === 'clade'
-        ? (cladeById(c.id)?.common ?? c.id)
-        : `The ${PERIODS.find((p) => p.id === c.id)?.name ?? c.id}`;
+      : c.kind === 'mammals'
+        ? 'Mammals'
+        : c.kind === 'clade'
+          ? (cladeById(c.id)?.common ?? c.id)
+          : `The ${PERIODS.find((p) => p.id === c.id)?.name ?? c.id}`;
 
 // The quiz: choose solo play (more ways to play will come later), a category and a difficulty, then
 // answer ten questions built from PaleoDex's own data.
@@ -105,10 +107,12 @@ export default function QuizScreen() {
           <View style={st.divider} />
           {choice({ kind: 'dinosaurs' }, 'Dinosaurs', 'From the earliest dinosaurs to the last')}
           <View style={st.divider} />
+          {choice({ kind: 'mammals' }, 'Mammals', 'Mammals past and present, and their early synapsid relatives such as Dimetrodon')}
+          <View style={st.divider} />
           {choice(
             category.kind === 'clade' ? category : { kind: 'clade', id: '' },
             category.kind === 'clade' ? `Group: ${categoryName(category)}` : 'A particular group',
-            'Tyrannosaurs, pterosaurs, mammals and more',
+            'Tyrannosaurs, pterosaurs, sharks and more',
             () => setPicking(picking === 'group' ? null : 'group'),
           )}
           <View style={st.divider} />
