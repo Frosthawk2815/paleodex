@@ -32176,26 +32176,6 @@
       }
     ]
   },
-  "homo-naledi": {
-    "phases": [
-      {
-        "from": 335000,
-        "to": 236000,
-        "label": "Rising Star Cave, Cradle of Humankind",
-        "regions": [
-          {
-            "country": "South Africa",
-            "bbox": [
-              27.5,
-              -26.15,
-              27.9,
-              -25.85
-            ]
-          }
-        ]
-      }
-    ]
-  },
   "homo-erectus": {
     "phases": [
       {

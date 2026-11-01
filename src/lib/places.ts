@@ -80,6 +80,7 @@ export const ACCESS_POINTS: Record<string, { spot: string; lat: number; lon: num
   kaiparowits: [{ spot: 'Escalante Interagency Visitor Center, Utah', lat: 37.77, lon: -111.61 }],
   niobrara: [{ spot: 'Sternberg Museum of Natural History, Hays, Kansas', lat: 38.9, lon: -99.3 }],
   'white-river': [{ spot: 'Toadstool Geologic Park, Nebraska', lat: 42.86, lon: -103.58 }],
+  'rising-star': [{ spot: 'Maropeng visitor centre, Cradle of Humankind', lat: -25.966, lon: 27.662 }],
   'john-day': [{ spot: 'Painted Hills Unit, John Day Fossil Beds', lat: 44.66, lon: -120.25 }],
   chalk: [
     { spot: 'Seven Sisters and Birling Gap, Sussex', lat: 50.743, lon: 0.2 },

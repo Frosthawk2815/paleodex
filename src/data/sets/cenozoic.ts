@@ -600,7 +600,7 @@ export const CENOZOIC: DataSet = {
       status: 'full',
       ageText: 'About 335,000 to 236,000 years ago',
       placeText: 'Rising Star Cave, Cradle of Humankind, South Africa',
-      formations: [],
+      formations: ['rising-star'],
       phylo: 1.4,
       summary: [
         'In 2013 cavers Rick Hunter and Steven Tucker squeezed through an 18 cm-wide crack deep in the Rising Star Cave and found bones covering the floor of a chamber. Lee Berger’s team recruited slim scientists to go in, and recovered over 1,500 bones from at least 15 individuals, the richest find of any human relative in Africa, named in 2015. More, including a partial skeleton called “Neo” and a child’s skull called “Leti”, came from nearby chambers.',
