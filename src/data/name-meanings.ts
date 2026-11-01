@@ -251,6 +251,9 @@ export const GENUS_MEANINGS: Record<string, Meaning> = {
   Micropachycephalosaurus: { meaning: 'small thick-headed lizard', note: 'Named as a tiny pachycephalosaur, a group it probably does not belong to.' },
   Zavacephale: { meaning: 'root head', note: 'From the Tibetan zava, “root” or “origin”, as the oldest dome-headed dinosaur.' },
   Stenopelix: 'narrow pelvis',
+  Altirhinus: 'high nose',
+  Shamosaurus: { meaning: 'Gobi lizard', note: 'From Shamo, the Chinese name for the Gobi Desert.' },
+  Pholidosaurus: 'scaly lizard',
   // ---- Synapsids ----
   Dimetrodon: 'two measures of teeth',
   Edaphosaurus: 'pavement lizard',
