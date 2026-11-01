@@ -325,6 +325,10 @@ export default function BattleScreen() {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
         <Text style={st.text}>Play a friend on another phone: you both answer the same ten questions, and the higher score wins.</Text>
+        <Text style={st.muted}>
+          Named after the Bone Wars of the late 1800s, when rival fossil hunters Edward Drinker Cope and Othniel Marsh raced, spied on and sabotaged each other
+          to find new dinosaurs. Between them they named more than 130 new species, from Stegosaurus and Triceratops to Camarasaurus.
+        </Text>
         <Pressable onPress={host} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <Text style={{ fontSize: 28 }}>🏕️</Text>
           <View style={st.rowText}>
