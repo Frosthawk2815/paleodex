@@ -248,6 +248,7 @@ export const GENUS_MEANINGS: Record<string, Meaning> = {
   Palaeoloxodon: 'ancient slanting tooth',
   Anancus: { meaning: 'without a bend', note: 'From its long, straight tusks.' },
   Yi: { meaning: 'wing', note: 'Mandarin; with its species name qi (“strange”) it reads “strange wing”, the shortest name of any dinosaur.' },
+  Micropachycephalosaurus: { meaning: 'small thick-headed lizard', note: 'Named as a tiny pachycephalosaur, a group it probably does not belong to.' },
   // ---- Synapsids ----
   Dimetrodon: 'two measures of teeth',
   Edaphosaurus: 'pavement lizard',
