@@ -564,3 +564,38 @@ export function makeRound(category: Category, level: Difficulty, imageFor: Image
 // Whether a category has enough to quiz on.
 export const categorySize = (c: Category) => categoryPool(c).length;
 export const isModern = isModernSpecies;
+
+// ---------------------------------------------------------------------------------------------
+// Lifelines
+
+// 50/50: two wrong answers, chosen at random, to take away.
+export function fiftyFifty(q: Question): number[] {
+  return shuffle(q.options.map((_, i) => i).filter((i) => i !== q.answer)).slice(0, 2);
+}
+
+// A fresh question for Refresh and Switcheroo: from the given quiz, and not about a question or
+// species already in the round.
+export function replacementQuestion(category: Category, level: Difficulty, imageFor: ImageFor, current: Question[], show: (t: string) => string = (t) => t): Question | null {
+  const ids = new Set(current.map((q) => q.id));
+  const species = new Set(current.map((q) => q.speciesId).filter(Boolean));
+  for (let i = 0; i < 3; i++) {
+    const q = makeRound(category, level, imageFor, 10, show).find((x) => !ids.has(x.id) && !(x.speciesId && species.has(x.speciesId)));
+    if (q) return q;
+  }
+  return null;
+}
+
+// Switcheroo, when the target is already playing the sender's own quiz: one level harder, or at
+// the top level, a different topic picked at random.
+export function switcherooQuiz(mine: { category: Category; level: Difficulty }, playing: { category: Category; level: Difficulty }): { category: Category; level: Difficulty } {
+  const same = categoryKey(mine.category) === categoryKey(playing.category) && mine.level === playing.level;
+  if (!same) return mine;
+  if (mine.level < 5) return { category: mine.category, level: (mine.level + 1) as Difficulty };
+  const basics: Category[] = [{ kind: 'all' }, { kind: 'dinosaurs' }, { kind: 'mammals' }];
+  const topics: Category[] = [
+    ...basics,
+    ...PERIODS.map((p): Category => ({ kind: 'period', id: p.id })),
+    ...QUIZ_GROUPS.map((c): Category => ({ kind: 'clade', id: c.id })),
+  ].filter((c) => categoryKey(c) !== categoryKey(mine.category) && categoryPool(c).length >= 20);
+  return { category: pick(topics) ?? { kind: 'all' }, level: 5 };
+}

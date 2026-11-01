@@ -11,6 +11,50 @@ import type { Question } from '@/lib/quiz';
 const GOOD = '#2E7D32';
 const BAD = '#C62828';
 
+// A lifeline (50/50, Refresh, Copy, Switcheroo): each can be used once per quiz.
+export type Lifeline = { key: string; icon: string; label: string; used: boolean; available: boolean; onPress: () => void; hint: string };
+
+function LifelineBar({ lifelines }: { lifelines: Lifeline[] }) {
+  const st = useProfileStyles();
+  const palette = usePalette();
+  return (
+    <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
+      {lifelines.map((l) => {
+        const off = l.used || !l.available;
+        return (
+          <Pressable
+            key={l.key}
+            onPress={l.onPress}
+            disabled={off}
+            accessibilityRole="button"
+            accessibilityLabel={`${l.label}${l.used ? ', already used' : ''}. ${l.hint}`}
+            accessibilityState={{ disabled: off }}
+            style={({ pressed }) => [
+              {
+                flexGrow: 1,
+                flexBasis: 90,
+                paddingVertical: 8,
+                paddingHorizontal: 10,
+                borderRadius: 12,
+                borderWidth: 1,
+                borderColor: palette.border,
+                backgroundColor: palette.card,
+                alignItems: 'center',
+              },
+              off && { opacity: 0.4 },
+              pressed && st.pressed,
+            ]}>
+            <Text style={st.rowTitle}>
+              {l.icon} {l.label}
+            </Text>
+            <Text style={[st.rowSub, { fontSize: 11 }]}>{l.used ? 'Used' : l.hint}</Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
 // One quiz question: progress bar, picture, prompt and answers, then the explanation once answered.
 export function QuestionView({
   q,
@@ -23,6 +67,8 @@ export function QuestionView({
   nextLabel,
   header,
   allowReadMore = true,
+  hidden = [],
+  lifelines,
 }: {
   q: Question;
   index: number;
@@ -36,6 +82,9 @@ export function QuestionView({
   header?: ReactNode;
   // "Read about…" leaves the quiz, so it is hidden during a live game.
   allowReadMore?: boolean;
+  // Answers taken away by 50/50.
+  hidden?: number[];
+  lifelines?: Lifeline[];
 }) {
   const st = useProfileStyles();
   const palette = usePalette();
@@ -54,6 +103,7 @@ export function QuestionView({
         <View style={{ width: `${((index + (answered ? 1 : 0)) / total) * 100}%`, height: '100%', backgroundColor: palette.link }} />
       </View>
       {header}
+      {lifelines && !answered && <LifelineBar lifelines={lifelines} />}
       {q.image && (
         <Image
           source={{ uri: q.image }}
@@ -67,6 +117,7 @@ export function QuestionView({
       </Text>
       <View style={{ gap: 8 }}>
         {q.options.map((o, i) => {
+          if (hidden.includes(i)) return null;
           const isRight = i === q.answer;
           const isChosen = i === chosen;
           const color = answered && isRight ? GOOD : answered && isChosen ? BAD : undefined;

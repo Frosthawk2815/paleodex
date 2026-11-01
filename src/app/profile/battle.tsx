@@ -10,7 +10,7 @@ import { usePalette } from '@/hooks/use-palette';
 import { type Link, type LinkState, newBattleCode, openLink } from '@/lib/battle/link';
 import { imageOf } from '@/lib/images';
 import { useProfile } from '@/lib/profile';
-import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, makeRound, type Question } from '@/lib/quiz';
+import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, fiftyFifty, makeRound, type Question, replacementQuestion, switcherooQuiz } from '@/lib/quiz';
 import { toImperial } from '@/lib/units';
 
 type Pick = { category: Category; level: Difficulty };
@@ -24,7 +24,8 @@ type Stage =
   | { kind: 'pick' }
   // Both players are ready: show both choices, and if they differ, roll for odds or evens.
   | { kind: 'decide'; host: Pick; guest: Pick; roll: number | null; chosen: Pick }
-  | { kind: 'play'; questions: Question[]; chosen: Pick; index: number; picked: number | null; score: number }
+  // hidden: answers removed by 50/50; switched: questions the other player changed, with where from.
+  | { kind: 'play'; questions: Question[]; chosen: Pick; index: number; picked: number | null; score: number; hidden: number[]; switched: Record<number, string> }
   | { kind: 'result'; chosen: Pick; score: number; total: number }
   | { kind: 'ended'; message: string };
 
@@ -56,6 +57,11 @@ export default function BattleScreen() {
   const [theirName, setTheirName] = useState('');
   const [theirProgress, setTheirProgress] = useState<Progress>({ answered: 0, score: 0, done: false });
   const [shown, setShown] = useState<number | null>(null);
+  // Lifelines used this game (each once per quiz), the other player's answers (for Copy), and a
+  // message about a Switcheroo.
+  const [used, setUsed] = useState({ fifty: false, copy: false, swap: false });
+  const [theirAnswers, setTheirAnswers] = useState<Record<number, { qid: string; choice: number }>>({});
+  const [notice, setNotice] = useState<string | null>(null);
 
   const link = useRef<Link | null>(null);
   const [role, setRole] = useState<Role>('host');
@@ -106,6 +112,14 @@ export default function BattleScreen() {
     setStage({ kind: 'pick' });
   };
 
+  const startPlay = (questions: Question[], chosen: Pick) => {
+    setUsed({ fifty: false, copy: false, swap: false });
+    setTheirAnswers({});
+    setNotice(null);
+    setTheirProgress({ answered: 0, score: 0, done: false });
+    setStage({ kind: 'play', questions, chosen, index: 0, picked: null, score: 0, hidden: [], switched: {} });
+  };
+
   // The host decides once both players are ready, and builds the questions so both get the same.
   const decide = (mine: Pick, theirs: Pick) => {
     if (deciding.current) return;
@@ -120,7 +134,7 @@ export default function BattleScreen() {
         // checked to read differently in both metric and imperial.
         const questions = makeRound(chosen.category, chosen.level, (id) => imageOf(id)?.thumb, 10, toImperial);
         link.current?.send({ t: 'start', questions, chosen });
-        setStage({ kind: 'play', questions, chosen, index: 0, picked: null, score: 0 });
+        startPlay(questions, chosen);
       },
       roll === null ? 2000 : 4500,
     );
@@ -151,11 +165,34 @@ export default function BattleScreen() {
           setStage({ kind: 'decide', host: m.host as Pick, guest: m.guest as Pick, roll: m.roll as number | null, chosen: m.roll === null || winnerOf(m.roll as number) === 'host' ? (m.host as Pick) : (m.guest as Pick) });
           break;
         case 'start':
-          setTheirProgress({ answered: 0, score: 0, done: false });
-          setStage({ kind: 'play', questions: m.questions as Question[], chosen: m.chosen as Pick, index: 0, picked: null, score: 0 });
+          startPlay(m.questions as Question[], m.chosen as Pick);
           break;
         case 'progress':
           setTheirProgress((p) => ({ ...p, answered: Number(m.answered) || 0, score: Number(m.score) || 0 }));
+          if (typeof m.qid === 'string' && typeof m.index === 'number' && typeof m.choice === 'number') {
+            setTheirAnswers((a) => ({ ...a, [m.index as number]: { qid: m.qid as string, choice: m.choice as number } }));
+          }
+          break;
+        case 'switch': {
+          // Switcheroo: replace one of my coming questions (never the one on screen).
+          const question = m.question as Question | null;
+          const label = String(m.label ?? '');
+          if (stage.kind !== 'play' || !question) {
+            link.current?.send({ t: 'switch-missed' });
+            break;
+          }
+          const target = Math.max(Number(m.index) || 0, stage.index + 1);
+          if (target >= stage.questions.length) {
+            link.current?.send({ t: 'switch-missed' });
+            break;
+          }
+          setStage({ ...stage, questions: stage.questions.map((x, i) => (i === target ? question : x)), switched: { ...stage.switched, [target]: label } });
+          setNotice(`🔀 ${Who} used Switcheroo! ${target === stage.index + 1 ? 'Your next question' : `Question ${target + 1}`} is now from ${label}.`);
+          break;
+        }
+        case 'switch-missed':
+          setUsed((x) => ({ ...x, swap: false }));
+          setNotice(`Too late: ${who} had already reached their last question, so your Switcheroo is back.`);
           break;
         case 'done':
           setTheirProgress((p) => ({ ...p, score: Number(m.score) || 0, done: true }));
@@ -397,14 +434,20 @@ export default function BattleScreen() {
         </View>
       );
     }
+    // Copy works once the other player has answered this same question (not one they were switched).
+    const theirAnswer = theirAnswers[stage.index];
+    const canCopy = !!theirAnswer && theirAnswer.qid === q.id;
+    // Switcheroo needs a question still to come for the other player.
+    const canSwap = !theirProgress.done && theirProgress.answered < total - 1;
     const choose = (i: number) => {
       if (stage.picked !== null) return;
       const score = stage.score + (i === q.answer ? 1 : 0);
-      setStage({ ...stage, picked: i, score });
-      link.current?.send({ t: 'progress', answered: stage.index + 1, score });
+      setStage({ ...stage, picked: i, score, hidden: stage.hidden.filter((h) => h !== i) });
+      link.current?.send({ t: 'progress', answered: stage.index + 1, score, index: stage.index, qid: q.id, choice: i });
     };
     const next = () => {
-      if (stage.index + 1 < total) setStage({ ...stage, index: stage.index + 1, picked: null });
+      setNotice(null);
+      if (stage.index + 1 < total) setStage({ ...stage, index: stage.index + 1, picked: null, hidden: [] });
       else {
         link.current?.send({ t: 'done', score: stage.score });
         setStage({ kind: 'result', chosen: stage.chosen, score: stage.score, total });
@@ -421,10 +464,69 @@ export default function BattleScreen() {
         onNext={next}
         nextLabel={stage.index + 1 < total ? 'Next question' : 'See the result'}
         allowReadMore={false}
+        hidden={stage.hidden}
+        lifelines={[
+          {
+            key: 'fifty',
+            icon: '✂️',
+            label: '50/50',
+            hint: 'Remove two wrong answers',
+            used: used.fifty,
+            available: true,
+            onPress: () => {
+              setUsed((x) => ({ ...x, fifty: true }));
+              setStage({ ...stage, hidden: fiftyFifty(q) });
+            },
+          },
+          {
+            key: 'copy',
+            icon: '👀',
+            label: 'Copy',
+            hint: canCopy ? `Use ${who}’s answer` : `Once ${who} has answered`,
+            used: used.copy,
+            available: canCopy,
+            onPress: () => {
+              if (!theirAnswer) return;
+              setUsed((x) => ({ ...x, copy: true }));
+              choose(theirAnswer.choice);
+            },
+          },
+          {
+            key: 'swap',
+            icon: '🔀',
+            label: 'Switcheroo',
+            hint: `Change ${who}’s next question`,
+            used: used.swap,
+            available: canSwap,
+            onPress: () => {
+              const target = switcherooQuiz(myPick, stage.chosen);
+              const question = replacementQuestion(target.category, target.level, (id) => imageOf(id)?.thumb, stage.questions, toImperial);
+              if (!question) return;
+              const label = `${categoryName(target.category)}, level ${target.level}`;
+              setUsed((x) => ({ ...x, swap: true }));
+              link.current?.send({ t: 'switch', index: theirProgress.answered, question, label });
+              setNotice(`🔀 Switcheroo sent: ${who}’s next question is now from ${label}.`);
+            },
+          },
+        ]}
         header={
-          <Text style={st.muted}>
-            ⚔️ {Who}: {theirProgress.done ? 'finished' : `${theirProgress.answered} of ${total} answered`} · score {theirProgress.score}
-          </Text>
+          <>
+            <Text style={st.muted}>
+              ⚔️ {Who}: {theirProgress.done ? 'finished' : `${theirProgress.answered} of ${total} answered`} · score {theirProgress.score}
+            </Text>
+            {!!stage.switched[stage.index] && (
+              <View style={[st.card, { padding: 10, borderColor: palette.accent, borderWidth: 2 }]}>
+                <Text style={st.rowTitle}>
+                  🔀 Switched by {who}: {stage.switched[stage.index]}
+                </Text>
+              </View>
+            )}
+            {!!notice && (
+              <Text style={[st.rowSub, { color: palette.accent }]} accessibilityLiveRegion="polite">
+                {notice}
+              </Text>
+            )}
+          </>
         }
       />
     );

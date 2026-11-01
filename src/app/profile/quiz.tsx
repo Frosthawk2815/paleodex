@@ -8,10 +8,10 @@ import { QuestionView } from '@/components/quiz-question';
 import { usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
 import { useProfile, useUnitText } from '@/lib/profile';
-import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, makeRound, type Question } from '@/lib/quiz';
+import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, fiftyFifty, makeRound, type Question, replacementQuestion } from '@/lib/quiz';
 import { useUserPhotos } from '@/lib/user-photos';
 
-type Stage = { kind: 'menu' } | { kind: 'setup' } | { kind: 'play'; questions: Question[]; index: number; chosen: number | null; score: number } | { kind: 'done'; score: number; total: number; best: boolean };
+type Stage = { kind: 'menu' } | { kind: 'setup' } | { kind: 'play'; questions: Question[]; index: number; chosen: number | null; score: number; hidden: number[] } | { kind: 'done'; score: number; total: number; best: boolean };
 
 // The quiz: choose solo play or a head-to-head game with a friend, then for solo play a category
 // and a difficulty, then answer ten questions built from PaleoDex's own data.
@@ -24,6 +24,8 @@ export default function QuizScreen() {
   const [stage, setStage] = useState<Stage>({ kind: 'menu' });
   const [category, setCategory] = useState<Category>({ kind: 'dinosaurs' });
   const [level, setLevel] = useState<Difficulty>(1);
+  // Lifelines used this round (each once per quiz).
+  const [used, setUsed] = useState({ fifty: false, refresh: false });
 
   // The user's own photo of a species if they have one, otherwise PaleoDex's picture.
   const imageFor = (id: string) => {
@@ -35,7 +37,8 @@ export default function QuizScreen() {
 
   const start = () => {
     const questions = makeRound(category, level, imageFor, 10, u);
-    setStage({ kind: 'play', questions, index: 0, chosen: null, score: 0 });
+    setUsed({ fifty: false, refresh: false });
+    setStage({ kind: 'play', questions, index: 0, chosen: null, score: 0, hidden: [] });
   };
 
   if (stage.kind === 'menu') {
@@ -123,7 +126,7 @@ export default function QuizScreen() {
   };
   const next = () => {
     if (stage.index + 1 < stage.questions.length) {
-      setStage({ ...stage, index: stage.index + 1, chosen: null });
+      setStage({ ...stage, index: stage.index + 1, chosen: null, hidden: [] });
       return;
     }
     const key = `${categoryKey(category)}:${level}`;
@@ -135,6 +138,35 @@ export default function QuizScreen() {
   return (
     <QuestionView
       q={q}
+      hidden={stage.hidden}
+      lifelines={[
+        {
+          key: 'fifty',
+          icon: '✂️',
+          label: '50/50',
+          hint: 'Remove two wrong answers',
+          used: used.fifty,
+          available: true,
+          onPress: () => {
+            setUsed((x) => ({ ...x, fifty: true }));
+            setStage({ ...stage, hidden: fiftyFifty(q) });
+          },
+        },
+        {
+          key: 'refresh',
+          icon: '🔄',
+          label: 'Refresh',
+          hint: 'Swap for a new question',
+          used: used.refresh,
+          available: true,
+          onPress: () => {
+            const fresh = replacementQuestion(category, level, imageFor, stage.questions, u);
+            if (!fresh) return;
+            setUsed((x) => ({ ...x, refresh: true }));
+            setStage({ ...stage, questions: stage.questions.map((x, i) => (i === stage.index ? fresh : x)), hidden: [] });
+          },
+        },
+      ]}
       index={stage.index}
       total={stage.questions.length}
       score={stage.score}
