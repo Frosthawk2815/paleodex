@@ -1,10 +1,10 @@
 import * as Clipboard from 'expo-clipboard';
-import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
-import { initialsOf, useProfileStyles } from '@/components/profile-ui';
+import { PlayerAvatar } from '@/components/player-avatar';
+import { useProfileStyles } from '@/components/profile-ui';
 import { categoryName, QuizPicker } from '@/components/quiz-picker';
 import { QuestionView } from '@/components/quiz-question';
 import { usePalette } from '@/hooks/use-palette';
@@ -60,19 +60,6 @@ const DEFAULT_ROUNDS: Quiz[] = [
   { category: { kind: 'all' }, level: 4 },
 ];
 const NO_USED: Used = { fifty: false, copy: false, swap: false, hurry: false };
-
-// A player's picture: their shrunken photo, PaleoDex's picture of their chosen species, or initials.
-function PlayerAvatar({ player, size }: { player: Player; size: number }) {
-  const palette = usePalette();
-  const uri = player.avatar?.kind === 'image' ? player.avatar.uri : player.avatar?.kind === 'species' ? imageOf(player.avatar.id)?.thumb : undefined;
-  const round = { width: size, height: size, borderRadius: size / 2 };
-  if (uri) return <Image source={{ uri }} style={[round, { backgroundColor: palette.track }]} contentFit="cover" accessibilityLabel={`${player.name}’s picture`} />;
-  return (
-    <View style={[round, { backgroundColor: palette.link, alignItems: 'center', justifyContent: 'center' }]}>
-      <Text style={{ color: '#fff', fontWeight: '700', fontSize: size * 0.38 }}>{initialsOf(player.name) || '🦖'}</Text>
-    </View>
-  );
-}
 
 export default function PeerReviewScreen() {
   const st = useProfileStyles();
@@ -393,7 +380,7 @@ export default function PeerReviewScreen() {
   const PlayerLine = ({ p, rank }: { p: Player; rank?: number }) => (
     <View style={[st.row, !p.connected && { opacity: 0.45 }]}>
       {rank !== undefined && <Text style={[st.rowTitle, { width: 30 }]}>{rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `${rank}.`}</Text>}
-      <PlayerAvatar player={p} size={40} />
+      <PlayerAvatar name={p.name} avatar={p.avatar} size={40} />
       <View style={st.rowText}>
         <Text style={st.rowTitle}>
           {p.name}

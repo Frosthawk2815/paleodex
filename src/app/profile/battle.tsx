@@ -3,14 +3,17 @@ import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
-import { useProfileStyles } from '@/components/profile-ui';
+import { PlayerAvatar } from '@/components/player-avatar';
+import { AvatarImage, useProfileStyles } from '@/components/profile-ui';
 import { categoryName, QuizPicker } from '@/components/quiz-picker';
 import { QuestionView } from '@/components/quiz-question';
 import { usePalette } from '@/hooks/use-palette';
+import { type SharedAvatar, shareableAvatar } from '@/lib/battle/avatar';
 import { type Link, type LinkState, newBattleCode, openLink } from '@/lib/battle/link';
 import { imageOf } from '@/lib/images';
 import { useProfile } from '@/lib/profile';
 import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, fiftyFifty, makeRound, type Question, replacementQuestion, switcherooQuiz } from '@/lib/quiz';
+import { titleById } from '@/lib/titles';
 import { toImperial } from '@/lib/units';
 import { useOwnPicture } from '@/lib/user-photos';
 
@@ -54,7 +57,7 @@ const winnerOf = (n: number): Role => (n % 2 === 1 ? 'host' : 'guest');
 
 const ERRORS: Record<Extract<LinkState, { kind: 'error' }>['reason'], string> = {
   'code-taken': 'That battle code is already in use. Try hosting again for a new one.',
-  'no-host': 'No game was found with that code. Check the code with your friend, and that their game is still waiting.',
+  'no-host': 'No game was found with that code. Check the code with the other player, and that their game is still waiting.',
   failed: 'The phones couldn’t connect to each other. Some mobile and work networks block direct connections: try both being on Wi-Fi.',
   server: 'The connection service couldn’t be reached. Check your internet connection and try again.',
 };
@@ -80,7 +83,9 @@ export default function BattleScreen() {
   const [level, setLevel] = useState<Difficulty>(1);
   const [ready, setReady] = useState(false);
   const [theirPick, setTheirPick] = useState<Pick | null>(null);
-  const [theirName, setTheirName] = useState('');
+  // The other player's profile: name, title and picture (sent when the phones connect).
+  const [them, setThem] = useState<{ name: string; title: string; avatar: SharedAvatar }>({ name: '', title: '', avatar: null });
+  const [mine, setMine] = useState<SharedAvatar>(null);
   const [theirProgress, setTheirProgress] = useState<Progress>({ answered: 0, score: 0, done: false });
   const [shown, setShown] = useState<number | null>(null);
   // Lifelines used this game (each once per quiz), the other player's answers (for Copy), and a
@@ -96,9 +101,11 @@ export default function BattleScreen() {
   const handle = useRef<(msg: Record<string, unknown>) => void>(() => {});
   const onState = useRef<(s: LinkState) => void>(() => {});
   const myName = profile.name.trim();
-  // The other player's name, or "your friend": `who` mid-sentence, `Who` at the start of one.
-  const who = theirName || 'your friend';
-  const Who = theirName || 'Your friend';
+  // The other player's name, or if they haven't set one, "the host" or "the challenger": `who`
+  // mid-sentence, `Who` at the start of one.
+  const fallback = role === 'host' ? 'the challenger' : 'the host';
+  const who = them.name || fallback;
+  const Who = them.name || fallback.charAt(0).toUpperCase() + fallback.slice(1);
   // Set once the host has decided, so a late message can't start a second round.
   const deciding = useRef(false);
   const myPick: Pick = { category, level };
@@ -106,7 +113,9 @@ export default function BattleScreen() {
   // Close the connection when leaving the screen.
   useEffect(() => () => link.current?.close(), []);
 
-  const connect = (r: Role, c: string) => {
+  const connect = async (r: Role, c: string) => {
+    // A small copy of my picture, ready to send when the phones connect.
+    setMine(await shareableAvatar(profile.avatar, ownPicture));
     setRole(r);
     link.current?.close();
     link.current = openLink(
@@ -198,7 +207,7 @@ export default function BattleScreen() {
       if (s.kind === 'waiting') setStage((x) => (x.kind === 'host' ? { ...x, status: 'waiting' } : x));
       else if (s.kind === 'connecting') setStage((x) => (x.kind === 'host' && x.status === 'waiting' ? { ...x, status: 'joining' } : x));
       else if (s.kind === 'open') {
-        if (myName) link.current?.send({ t: 'hello', name: myName });
+        link.current?.send({ t: 'hello', name: myName, title: titleById(profile.title)?.name ?? '', avatar: mine });
         backToPick();
       } else if (s.kind === 'error') setStage({ kind: 'ended', message: ERRORS[s.reason] });
       else if (s.kind === 'closed') setStage((x) => (x.kind === 'ended' || x.kind === 'start' ? x : { kind: 'ended', message: `${Who} has left the game.` }));
@@ -207,7 +216,11 @@ export default function BattleScreen() {
     handle.current = (m) => {
       switch (m.t) {
         case 'hello':
-          if (typeof m.name === 'string' && m.name.trim()) setTheirName(m.name.trim().slice(0, 30));
+          setThem({
+            name: typeof m.name === 'string' ? m.name.trim().slice(0, 30) : '',
+            title: typeof m.title === 'string' ? m.title.slice(0, 40) : '',
+            avatar: (m.avatar as SharedAvatar) ?? null,
+          });
           break;
         case 'pick': {
           const p = (m.pick as Pick | null) ?? null;
@@ -324,7 +337,7 @@ export default function BattleScreen() {
   if (stage.kind === 'start') {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
-        <Text style={st.text}>Play a friend on another phone: you both answer the same ten questions, and the higher score wins.</Text>
+        <Text style={st.text}>Play someone on another phone: you both answer the same ten questions, and the higher score wins.</Text>
         <Text style={st.muted}>
           Named after the Bone Wars of the late 1800s, when rival fossil hunters Edward Drinker Cope and Othniel Marsh raced, spied on and sabotaged each other
           to find new dinosaurs. Between them they named more than 130 new species, from Stegosaurus and Triceratops to Camarasaurus.
@@ -333,7 +346,7 @@ export default function BattleScreen() {
           <Text style={{ fontSize: 28 }}>🏕️</Text>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Host a game</Text>
-            <Text style={st.rowSub}>Get a battle code to send to your friend</Text>
+            <Text style={st.rowSub}>Get a battle code to send to the other player</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
@@ -341,7 +354,7 @@ export default function BattleScreen() {
           <Text style={{ fontSize: 28 }}>🔑</Text>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Join a game</Text>
-            <Text style={st.rowSub}>Enter the battle code your friend sent you</Text>
+            <Text style={st.rowSub}>Enter the battle code you were sent</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
@@ -372,10 +385,10 @@ export default function BattleScreen() {
         <Pressable onPress={copy} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
           <Text style={st.buttonText}>{copied ? 'Copied!' : '📋 Copy code'}</Text>
         </Pressable>
-        <Text style={[st.text, { textAlign: 'center' }]}>Send this code to your friend. They choose Join a game and type it in.</Text>
+        <Text style={[st.text, { textAlign: 'center' }]}>Send this code to the other player. They choose Join a game and type it in.</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }} accessibilityLiveRegion="polite">
           <ActivityIndicator color={palette.link} />
-          <Text style={st.muted}>{stage.status === 'connecting' ? 'Setting up…' : stage.status === 'joining' ? 'Your friend is joining…' : 'Waiting for your friend to join…'}</Text>
+          <Text style={st.muted}>{stage.status === 'connecting' ? 'Setting up…' : stage.status === 'joining' ? 'Someone is joining…' : 'Waiting for someone to join…'}</Text>
         </View>
         <Pressable onPress={leave} accessibilityRole="button" hitSlop={6}>
           <Text style={st.link}>Cancel</Text>
@@ -423,7 +436,13 @@ export default function BattleScreen() {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content} keyboardShouldPersistTaps="handled">
         <View style={[st.card, { padding: 14, gap: 4 }]} accessibilityLiveRegion="polite">
-          <Text style={st.rowTitle}>⚔️ Connected to {who}</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <PlayerAvatar name={them.name} avatar={them.avatar} size={44} />
+            <View style={{ flex: 1 }}>
+              <Text style={st.rowTitle}>⚔️ Connected to {who}</Text>
+              {!!them.title && <Text style={st.rowSub}>{them.title}</Text>}
+            </View>
+          </View>
           <Text style={st.rowSub}>
             {theirPick ? `${Who} has chosen and is ready.` : `${Who} is choosing.`} If you choose differently, a roll of odds or evens decides:{' '}
             {role === 'host' ? 'you have odds' : 'you have evens'}.
@@ -480,6 +499,7 @@ export default function BattleScreen() {
             <Text style={st.heading}>You chose different quizzes</Text>
             <View style={[st.card, { alignSelf: 'stretch' }]}>
               <View style={st.row}>
+                <AvatarImage avatar={profile.avatar} name={profile.name} size={36} />
                 <View style={st.rowText}>
                   <Text style={st.rowTitle}>You ({me === 'host' ? 'odds' : 'evens'})</Text>
                   <Text style={st.rowSub}>{pickText(mine)}</Text>
@@ -487,6 +507,7 @@ export default function BattleScreen() {
               </View>
               <View style={st.divider} />
               <View style={st.row}>
+                <PlayerAvatar name={them.name} avatar={them.avatar} size={36} />
                 <View style={st.rowText}>
                   <Text style={st.rowTitle}>
                     {Who} ({me === 'host' ? 'evens' : 'odds'})
@@ -612,9 +633,12 @@ export default function BattleScreen() {
         ]}
         header={
           <>
-            <Text style={st.muted}>
-              ⚔️ {Who}: {theirAnswers[stage.index] !== undefined ? 'has answered' : 'still answering'} · score {theirProgress.score}
-            </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <PlayerAvatar name={them.name} avatar={them.avatar} size={24} />
+              <Text style={[st.muted, { flex: 1 }]}>
+                {Who}: {theirAnswers[stage.index] !== undefined ? 'has answered' : 'still answering'} · score {theirProgress.score}
+              </Text>
+            </View>
             {stage.picked === null && (
               <View style={{ gap: 4 }} accessibilityLabel={`${secondsLeft} seconds left`} accessible>
                 <Text style={[st.rowTitle, secondsLeft <= 5 && { color: '#C62828' }]}>⏱️ {secondsLeft} s</Text>
@@ -668,6 +692,7 @@ export default function BattleScreen() {
             </Text>
             <View style={[st.card, { alignSelf: 'stretch' }]}>
               <View style={st.row}>
+                <AvatarImage avatar={profile.avatar} name={profile.name} size={36} />
                 <Text style={[st.rowTitle, { flex: 1 }]}>You</Text>
                 <Text style={st.rowTitle}>
                   {stage.score} / {stage.total}
@@ -675,7 +700,11 @@ export default function BattleScreen() {
               </View>
               <View style={st.divider} />
               <View style={st.row}>
-                <Text style={[st.rowTitle, { flex: 1 }]}>{Who}</Text>
+                <PlayerAvatar name={them.name} avatar={them.avatar} size={36} />
+                <View style={{ flex: 1 }}>
+                  <Text style={st.rowTitle}>{Who}</Text>
+                  {!!them.title && <Text style={st.rowSub}>{them.title}</Text>}
+                </View>
                 <Text style={st.rowTitle}>
                   {theirs} / {stage.total}
                 </Text>
