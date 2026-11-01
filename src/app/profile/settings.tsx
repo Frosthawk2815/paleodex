@@ -44,7 +44,7 @@ function Toggle({ label, detail, value, onChange }: { label: string; detail: str
   );
 }
 
-// Theme, text size and accessibility settings.
+// Theme, text size, units and accessibility settings.
 export default function SettingsScreen() {
   const st = useProfileStyles();
   const { profile, updateSettings } = useProfile();

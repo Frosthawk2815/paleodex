@@ -306,7 +306,7 @@ export default function QuizScreen() {
       </View>
       {answered && (
         <View style={[st.card, { padding: 14, gap: 6 }]} accessibilityLiveRegion="polite">
-          <Text style={[st.rowTitle, { color: stage.chosen === q.answer ? good : bad }]}>{stage.chosen === q.answer ? 'Correct!' : `The answer is ${u(q.options[q.answer])}.`}</Text>
+          <Text style={[st.rowTitle, { color: stage.chosen === q.answer ? good : bad }]}>{stage.chosen === q.answer ? 'Correct!' : `The answer is ${u(q.options[q.answer]).replace(/^(A|An|About) /, (w) => w.toLowerCase())}.`}</Text>
           <Text style={st.rowSub}>{u(q.explanation)}</Text>
           {subject && (
             <Pressable onPress={() => showOnGlobe({ kind: 'page', page: { kind: 'species', id: subject.id } })} accessibilityRole="button" hitSlop={6}>

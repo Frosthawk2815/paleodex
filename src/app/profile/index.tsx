@@ -25,7 +25,7 @@ export default function ProfileScreen() {
     { label: 'Titles', detail: `${profile.titles.length} of ${TITLES.length} earned${titleById(profile.title) ? ` · showing ${titleById(profile.title)!.name}` : ''}`, href: '/profile/titles' },
     { label: 'Places', detail: profile.places.length ? `Birthplace, home and check-ins · ${profile.places.length} visited` : 'Birthplace, home and check-ins at museums, zoos and fossil sites', href: '/profile/places' },
     { label: 'Your Images', detail: allPhotos.length === 1 ? '1 photo' : `${allPhotos.length} photos`, href: '/profile/images' },
-    { label: 'Settings', detail: 'Theme, text size and accessibility', href: '/profile/settings' },
+    { label: 'Settings', detail: 'Theme, text size, units and accessibility', href: '/profile/settings' },
     { label: 'Edit profile', detail: 'Name, birth date and picture', href: '/profile/edit' },
   ];
 
