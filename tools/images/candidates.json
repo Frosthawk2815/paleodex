@@ -6292,6 +6292,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "chaoyangsaurus-youngi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Chaoyangsaurus.png/500px-Chaoyangsaurus.png",
+  "width": 500,
+  "height": 276,
+  "artist": "Jaime A. Headden",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chaoyangsaurus.png",
+  "file": "Chaoyangsaurus.png",
+  "article": "https://en.wikipedia.org/wiki/Chaoyangsaurus",
+  "scope": "genus",
+  "kind": "skeletal"
+ },
  "chapalmalania-altaefrontis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Chapalmalania_3.png/960px-Chapalmalania_3.png",
   "width": 800,
@@ -18264,6 +18277,18 @@
   "article": "https://en.wikipedia.org/wiki/Collared_falconet",
   "scope": "species"
  },
+ "micropachycephalosaurus-hongtuyanensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Micropachycephalosaurus_TD.png/960px-Micropachycephalosaurus_TD.png",
+  "width": 800,
+  "height": 347,
+  "artist": "TotalDino",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Micropachycephalosaurus_TD.png",
+  "file": "Micropachycephalosaurus_TD.png",
+  "article": "https://en.wikipedia.org/wiki/Micropachycephalosaurus",
+  "scope": "genus"
+ },
  "microraptor-zhaoianus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Microraptor_gui_holotype.png/960px-Microraptor_gui_holotype.png",
   "width": 800,
@@ -27380,6 +27405,19 @@
   "scope": "genus",
   "kind": "skeletal"
  },
+ "stenopelix-valdensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Stenopelix.jpg/960px-Stenopelix.jpg",
+  "width": 800,
+  "height": 752,
+  "artist": "Richard J. Butler and Robert M. Sullivan",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Stenopelix.jpg",
+  "file": "Stenopelix.jpg",
+  "article": "https://en.wikipedia.org/wiki/Stenopelix",
+  "scope": "genus",
+  "kind": "restoration"
+ },
  "stenopterygius-quadriscissus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Stenopterygius_quadriscissus.jpg/960px-Stenopterygius_quadriscissus.jpg",
   "width": 800,
@@ -30934,6 +30972,18 @@
   "source": "https://commons.wikimedia.org/wiki/File:Zarafasaura_at_Wyoming_Dinosaur_Center.jpg",
   "file": "Zarafasaura_at_Wyoming_Dinosaur_Center.jpg",
   "article": "https://en.wikipedia.org/wiki/Zarafasaura",
+  "scope": "genus"
+ },
+ "zavacephale-rinpoche": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Zavacephale.jpg/960px-Zavacephale.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "Eight heads serpent",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zavacephale.jpg",
+  "file": "Zavacephale.jpg",
+  "article": "https://en.wikipedia.org/wiki/Zavacephale",
   "scope": "genus"
  },
  "zby-atlanticus": {
