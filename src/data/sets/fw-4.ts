@@ -13,8 +13,8 @@ export const FW_4: DataSet = {
     {
       id: 'ceratopsia',
       name: 'Ceratopsia',
-      common: 'early horned dinosaurs',
-      parent: 'ornithischia',
+      common: 'Ceratopsians',
+      parent: 'marginocephalia',
       family: true,
       description:
         'The horned dinosaurs and their early relatives: plant-eaters with a parrot-like beak and a unique bone, the rostral, at the tip of the upper jaw. The earliest, in the Late Jurassic of China, were small and ran on two legs; the giant horned and frilled ceratopsids came much later.',

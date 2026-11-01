@@ -12,7 +12,7 @@ export const TREE_2: DataSet = {
     { id: 'ctenochasmatidae', name: 'Ctenochasmatidae', common: 'Comb-jawed pterosaurs', parent: 'ctenochasmatoidea', family: true, description: 'Pterosaurs with long jaws full of fine, comb-like teeth for filtering food from water.' },
     { id: 'germanodactylidae', name: 'Germanodactylidae', common: 'Germanodactylids', parent: 'pterosauria', family: true, description: 'Small crested pterosaurs from the Late Jurassic of Europe.' },
     { id: 'heterodontosauridae', name: 'Heterodontosauridae', common: 'Heterodontosaurs', parent: 'ornithischia', family: true, description: 'Small, early bird-hipped dinosaurs with tusk-like canines as well as grinding cheek teeth.' },
-    { id: 'leptoceratopsidae', name: 'Leptoceratopsidae', common: 'Leptoceratopsids', parent: 'ornithischia', family: true, description: 'Small, hornless relatives of the horned dinosaurs with deep jaws for chewing.' },
+    { id: 'leptoceratopsidae', name: 'Leptoceratopsidae', common: 'Leptoceratopsids', parent: 'ceratopsia', family: true, description: 'Small, hornless relatives of the horned dinosaurs with deep jaws for chewing.' },
     { id: 'docodonta', name: 'Docodonta', common: 'Docodonts', parent: 'mammalia', family: true, description: 'Early mammal relatives of the Jurassic with complex grinding teeth; some swam, dug or glided.' },
     { id: 'osteoglossiformes', name: 'Osteoglossiformes', common: 'Bonytongues', parent: 'actinopterygii', family: true, description: 'Fish with toothed tongues, such as the arowana and arapaima.' },
     { id: 'perciformes', name: 'Perciformes', common: 'Perch-like fish', parent: 'actinopterygii', family: true, description: 'Spiny-finned fish such as perch and bass, one of the largest groups of vertebrates.' },
