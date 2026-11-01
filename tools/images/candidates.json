@@ -1387,6 +1387,18 @@
   "article": "https://en.wikipedia.org/wiki/Amphibamus",
   "scope": "genus"
  },
+ "amphioctopus-marginatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Coconut_Octopus_%28Amphioctopus_marginatus%29_%286079648725%29.jpg/960px-Coconut_Octopus_%28Amphioctopus_marginatus%29_%286079648725%29.jpg",
+  "width": 800,
+  "height": 480,
+  "artist": "Bernard DUPONT from FRANCE",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Coconut_Octopus_(Amphioctopus_marginatus)_(6079648725).jpg",
+  "file": "Coconut_Octopus_(Amphioctopus_marginatus)_(6079648725).jpg",
+  "article": "https://en.wikipedia.org/wiki/Amphioctopus_marginatus",
+  "scope": "species"
+ },
  "amphiprion-ocellaris": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Clown_fish_in_the_Andaman_Coral_Reef.jpg/960px-Clown_fish_in_the_Andaman_Coral_Reef.jpg",
   "width": 800,
@@ -2438,6 +2450,19 @@
   "article": "https://en.wikipedia.org/wiki/Ruby-throated_hummingbird",
   "scope": "species"
  },
+ "architeuthis-dux": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Giant_squid_Ranheim.jpg/960px-Giant_squid_Ranheim.jpg",
+  "width": 800,
+  "height": 1200,
+  "artist": "NTNU Vitenskapsmuseet",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Giant_squid_Ranheim.jpg",
+  "file": "Giant_squid_Ranheim.jpg",
+  "article": "https://en.wikipedia.org/wiki/Giant_squid",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "arctictis-binturong": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Binturong_in_Overloon.jpg/500px-Binturong_in_Overloon.jpg",
   "width": 500,
@@ -2610,6 +2635,19 @@
   "article": "https://en.wikipedia.org/wiki/Argentinosaurus",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "argonauta-argo": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Argonautidae_-_Argonauta_argo.JPG/960px-Argonautidae_-_Argonauta_argo.JPG",
+  "width": 800,
+  "height": 601,
+  "artist": "Hectonichus",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Argonautidae_-_Argonauta_argo.JPG",
+  "file": "Argonautidae_-_Argonauta_argo.JPG",
+  "article": "https://en.wikipedia.org/wiki/Argonauta_argo",
+  "scope": "species",
+  "kind": "fossil"
  },
  "argusianus-argus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Argusianus_argus%2C_Khao_Sok%2C_Thailand_1.jpg/960px-Argusianus_argus%2C_Khao_Sok%2C_Thailand_1.jpg",
@@ -5889,6 +5927,19 @@
   "article": "https://en.wikipedia.org/wiki/White_rhinoceros",
   "scope": "species"
  },
+ "ceraurus-pleurexanthemus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Ceraurus_plus_baby%2C_Late_Ordovician%2C_Trenton_Group%2C_Quebec%2C_Canada_-_Houston_Museum_of_Natural_Science_-_DSC01562.JPG/960px-Ceraurus_plus_baby%2C_Late_Ordovician%2C_Trenton_Group%2C_Quebec%2C_Canada_-_Houston_Museum_of_Natural_Science_-_DSC01562.JPG",
+  "width": 800,
+  "height": 1037,
+  "artist": "Daderot",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Ceraurus_plus_baby,_Late_Ordovician,_Trenton_Group,_Quebec,_Canada_-_Houston_Museum_of_Natural_Science_-_DSC01562.JPG",
+  "file": "Ceraurus_plus_baby,_Late_Ordovician,_Trenton_Group,_Quebec,_Canada_-_Houston_Museum_of_Natural_Science_-_DSC01562.JPG",
+  "article": "https://en.wikipedia.org/wiki/Ceraurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "cercocebus-torquatus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Rotscheitelmangabe_Cercocebus_torquatus_Tierpark_Hellabrunn-1.jpg/960px-Rotscheitelmangabe_Cercocebus_torquatus_Tierpark_Hellabrunn-1.jpg",
   "width": 800,
@@ -8859,6 +8910,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "dosidicus-gigas": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Dosidicus_gigas.jpg/500px-Dosidicus_gigas.jpg",
+  "width": 500,
+  "height": 364,
+  "artist": "Image courtesy of NOAA/MBARI 2006",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Dosidicus_gigas.jpg",
+  "file": "Dosidicus_gigas.jpg",
+  "article": "https://en.wikipedia.org/wiki/Humboldt_squid",
+  "scope": "species"
+ },
  "draconyx-loureiroi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Draconyx_Skeletal.svg/960px-Draconyx_Skeletal.svg.png",
   "width": 800,
@@ -9566,6 +9629,19 @@
   "scope": "genus",
   "kind": "restoration"
  },
+ "endoceras-giganteum": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Endoceras.JPG/960px-Endoceras.JPG",
+  "width": 800,
+  "height": 476,
+  "artist": "Ghedoghedo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Endoceras.JPG",
+  "file": "Endoceras.JPG",
+  "article": "https://en.wikipedia.org/wiki/Endoceras",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "endothiodon-bathystoma": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Endothiodon.jpg/960px-Endothiodon.jpg",
   "width": 800,
@@ -9667,6 +9743,18 @@
   "article": "https://en.wikipedia.org/wiki/Entelognathus",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "enteroctopus-dofleini": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Enteroctopus_dolfeini.jpg/960px-Enteroctopus_dolfeini.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "NOAA/R. N. Lea [1]",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Enteroctopus_dolfeini.jpg",
+  "file": "Enteroctopus_dolfeini.jpg",
+  "article": "https://en.wikipedia.org/wiki/Giant_Pacific_octopus",
+  "scope": "species"
  },
  "entothyreos-synnaustrus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Entothryeos.png/960px-Entothryeos.png",
@@ -12474,6 +12562,18 @@
   "article": "https://en.wikipedia.org/wiki/Eastern_lesser_bamboo_lemur",
   "scope": "species"
  },
+ "hapalochlaena-lunulata": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Hapalochlaena_lunulata2.JPG/960px-Hapalochlaena_lunulata2.JPG",
+  "width": 800,
+  "height": 1005,
+  "artist": "Jens Petersen",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Hapalochlaena_lunulata2.JPG",
+  "file": "Hapalochlaena_lunulata2.JPG",
+  "article": "https://en.wikipedia.org/wiki/Greater_blue-ringed_octopus",
+  "scope": "species"
+ },
  "haplocanthosaurus-priscus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Haplocanthosaurus_in_Cleveland_Museum_of_Natural_History.jpg/960px-Haplocanthosaurus_in_Cleveland_Museum_of_Natural_History.jpg",
   "width": 800,
@@ -14140,6 +14240,19 @@
   "article": "https://en.wikipedia.org/wiki/Isodapedon",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "isotelus-gigas": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Isotelus_rex_%28TMP_2009.003.0003%29%2C_Royal_Tyrrell_Museum%2C_Drumheller%2C_Alberta%2C_2025-07-13.jpg/960px-Isotelus_rex_%28TMP_2009.003.0003%29%2C_Royal_Tyrrell_Museum%2C_Drumheller%2C_Alberta%2C_2025-07-13.jpg",
+  "width": 800,
+  "height": 954,
+  "artist": "Chris Woodrich",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Isotelus_rex_(TMP_2009.003.0003),_Royal_Tyrrell_Museum,_Drumheller,_Alberta,_2025-07-13.jpg",
+  "file": "Isotelus_rex_(TMP_2009.003.0003),_Royal_Tyrrell_Museum,_Drumheller,_Alberta,_2025-07-13.jpg",
+  "article": "https://en.wikipedia.org/wiki/Isotelus",
+  "scope": "genus",
+  "kind": "fossil"
  },
  "istiodactylus-latidens": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Istiodactylus.tif/lossy-page1-960px-Istiodactylus.tif.jpg",
@@ -17626,6 +17739,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "mesonychoteuthis-hamiltoni": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Colossal_squid_size_comparison.png/960px-Colossal_squid_size_comparison.png",
+  "width": 800,
+  "height": 480,
+  "artist": "Middle East birds study",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Colossal_squid_size_comparison.png",
+  "file": "Colossal_squid_size_comparison.png",
+  "article": "https://en.wikipedia.org/wiki/Colossal_squid",
+  "scope": "species"
+ },
  "mesoplodon-densirostris": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Blainville%27s_beaked_whale_size.svg/960px-Blainville%27s_beaked_whale_size.svg.png",
   "width": 800,
@@ -18833,6 +18958,19 @@
   "scope": "genus",
   "kind": "skeletal"
  },
+ "nautilus-pompilius": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Nautilus_pompilius_%28detail%29.jpg/960px-Nautilus_pompilius_%28detail%29.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Hans Hillewaert",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_(detail).jpg",
+  "file": "Nautilus_pompilius_(detail).jpg",
+  "article": "https://en.wikipedia.org/wiki/Chambered_nautilus",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "navajodactylus-boerei": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Significant_pterosaur_discoveries_in_western_North_America.png/500px-Significant_pterosaur_discoveries_in_western_North_America.png",
   "width": 500,
@@ -19641,6 +19779,18 @@
   "scope": "species",
   "kind": "fossil"
  },
+ "octopus-vulgaris": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Octopus2.jpg/960px-Octopus2.jpg",
+  "width": 800,
+  "height": 609,
+  "artist": "albert kok",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Octopus2.jpg",
+  "file": "Octopus2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Common_octopus",
+  "scope": "species"
+ },
  "odaraia-alata": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Odaraia.png/960px-Odaraia.png",
   "width": 800,
@@ -20155,6 +20305,18 @@
   "article": "https://en.wikipedia.org/wiki/Orretherium",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "orthoceras-regulare": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Orthoceras_BW.jpg/500px-Orthoceras_BW.jpg",
+  "width": 500,
+  "height": 278,
+  "artist": "Nobu Tamura (http://spinops.blogspot.com)",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Orthoceras_BW.jpg",
+  "file": "Orthoceras_BW.jpg",
+  "article": "https://en.wikipedia.org/wiki/Orthoceras",
+  "scope": "genus"
  },
  "orthosuchus-stormbergi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Orthosuchus_skeletal.png/960px-Orthosuchus_skeletal.png",
@@ -25556,6 +25718,18 @@
   "article": "https://en.wikipedia.org/wiki/Northern_plains_gray_langur",
   "scope": "species"
  },
+ "sepia-officinalis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Sepia_com%C3%BAn_%28Sepia_officinalis%29%2C_Parque_natural_de_la_Arr%C3%A1bida%2C_Portugal%2C_2020-07-21%2C_DD_62.jpg/960px-Sepia_com%C3%BAn_%28Sepia_officinalis%29%2C_Parque_natural_de_la_Arr%C3%A1bida%2C_Portugal%2C_2020-07-21%2C_DD_62.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Diego Delso",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sepia_com%C3%BAn_(Sepia_officinalis),_Parque_natural_de_la_Arr%C3%A1bida,_Portugal,_2020-07-21,_DD_62.jpg",
+  "file": "Sepia_común_(Sepia_officinalis),_Parque_natural_de_la_Arrábida,_Portugal,_2020-07-21,_DD_62.jpg",
+  "article": "https://en.wikipedia.org/wiki/Common_cuttlefish",
+  "scope": "species"
+ },
  "sericipterus-wucaiwanensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Sericipterus_NT.jpg/500px-Sericipterus_NT.jpg",
   "width": 500,
@@ -26551,6 +26725,18 @@
   "file": "Carduelis_tristis_-Michigan,_USA_-male-8.jpg",
   "article": "https://en.wikipedia.org/wiki/American_goldfinch",
   "scope": "species"
+ },
+ "spirula-spirula": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Spirula_spirula1.jpg/960px-Spirula_spirula1.jpg",
+  "width": 800,
+  "height": 478,
+  "artist": "Ewald Heinrich Rübsaamen",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Spirula_spirula1.jpg",
+  "file": "Spirula_spirula1.jpg",
+  "article": "https://en.wikipedia.org/wiki/Spirula",
+  "scope": "genus"
  },
  "spondylosoma-absconditum": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Spondylosoma_aphanosaur_skeletal.png/960px-Spondylosoma_aphanosaur_skeletal.png",
@@ -27842,6 +28028,18 @@
   "article": "https://en.wikipedia.org/wiki/Tharrhias",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "thaumoctopus-mimicus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Mimic_Octopus_2.jpg/500px-Mimic_Octopus_2.jpg",
+  "width": 500,
+  "height": 625,
+  "artist": "Steve Childs",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mimic_Octopus_2.jpg",
+  "file": "Mimic_Octopus_2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Mimic_octopus",
+  "scope": "species"
  },
  "theriognathus-microps": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Theriognathus_microps_Ruhuhu_Tanzania.JPG/960px-Theriognathus_microps_Ruhuhu_Tanzania.JPG",
@@ -29194,6 +29392,19 @@
   "article": "https://en.wikipedia.org/wiki/Vallibonavenatrix",
   "scope": "genus",
   "kind": "skeletal"
+ },
+ "vampyroteuthis-infernalis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Vampyroteuthis_illustration.jpg/500px-Vampyroteuthis_illustration.jpg",
+  "width": 500,
+  "height": 319,
+  "artist": "Carl Chun",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Vampyroteuthis_illustration.jpg",
+  "file": "Vampyroteuthis_illustration.jpg",
+  "article": "https://en.wikipedia.org/wiki/Vampire_squid",
+  "scope": "species",
+  "kind": "restoration"
  },
  "vanellus-vanellus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Northern-Lapwing-Vanellus-vanellus.jpg/960px-Northern-Lapwing-Vanellus-vanellus.jpg",
