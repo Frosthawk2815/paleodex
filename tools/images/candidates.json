@@ -1326,6 +1326,19 @@
   "article": "https://en.wikipedia.org/wiki/Axolotl",
   "scope": "species"
  },
+ "amebelodon-fricki": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Amebelodon_mandible.jpg/960px-Amebelodon_mandible.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "IJReid",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Amebelodon_mandible.jpg",
+  "file": "Amebelodon_mandible.jpg",
+  "article": "https://en.wikipedia.org/wiki/Amebelodon",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "amia-calva": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Amia_calva.png/960px-Amia_calva.png",
   "width": 800,
@@ -1436,6 +1449,19 @@
   "article": "https://en.wikipedia.org/wiki/Amurosaurus_riabinini",
   "scope": "species",
   "kind": "restoration"
+ },
+ "anancus-arvernensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Anancus_arvernensis.JPG/960px-Anancus_arvernensis.JPG",
+  "width": 800,
+  "height": 732,
+  "artist": "Ghedoghedo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Anancus_arvernensis.JPG",
+  "file": "Anancus_arvernensis.JPG",
+  "article": "https://en.wikipedia.org/wiki/Anancus",
+  "scope": "genus",
+  "kind": "fossil"
  },
  "anas-platyrhynchos": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Anas_platyrhynchos_male_female_quadrat.jpg/960px-Anas_platyrhynchos_male_female_quadrat.jpg",
@@ -3625,6 +3651,19 @@
   "article": "https://en.wikipedia.org/wiki/Baryonyx",
   "scope": "genus",
   "kind": "skeletal"
+ },
+ "barytherium-grave": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Barytherium_skull_%28BMNH_6818%29.png/960px-Barytherium_skull_%28BMNH_6818%29.png",
+  "width": 800,
+  "height": 731,
+  "artist": "Sneaking stoat 2",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Barytherium_skull_(BMNH_6818).png",
+  "file": "Barytherium_skull_(BMNH_6818).png",
+  "article": "https://en.wikipedia.org/wiki/Barytherium",
+  "scope": "genus",
+  "kind": "restoration"
  },
  "bashanosaurus-primitivus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Bashanosaurus_Skeletal.svg/960px-Bashanosaurus_Skeletal.svg.png",
@@ -7807,6 +7846,18 @@
   "article": "https://en.wikipedia.org/wiki/Dhole",
   "scope": "species"
  },
+ "cuvieronius-hyodon": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Cuvieronius_hyodon_892.jpg/960px-Cuvieronius_hyodon_892.jpg",
+  "width": 800,
+  "height": 651,
+  "artist": "Ghedo",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cuvieronius_hyodon_892.jpg",
+  "file": "Cuvieronius_hyodon_892.jpg",
+  "article": "https://en.wikipedia.org/wiki/Cuvieronius",
+  "scope": "genus"
+ },
  "cyamodus-hildegardis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Cyamodus_1.JPG/960px-Cyamodus_1.JPG",
   "width": 800,
@@ -10359,6 +10410,19 @@
   "article": "https://en.wikipedia.org/wiki/European_robin",
   "scope": "species"
  },
+ "eritherium-azzouzorum": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Eritherium_azzouzorum_54.JPG/960px-Eritherium_azzouzorum_54.JPG",
+  "width": 800,
+  "height": 817,
+  "artist": "Ghedoghedo",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Eritherium_azzouzorum_54.JPG",
+  "file": "Eritherium_azzouzorum_54.JPG",
+  "article": "https://en.wikipedia.org/wiki/Eritherium",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "erketu-ellisoni": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Erketu_ellisoni_skeletal.png/960px-Erketu_ellisoni_skeletal.png",
   "width": 800,
@@ -12155,6 +12219,19 @@
   "article": "https://en.wikipedia.org/wiki/Gojirasaurus",
   "scope": "genus",
   "kind": "skeletal"
+ },
+ "gomphotherium-angustidens": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Gophotherium_at_AMNH.jpg/960px-Gophotherium_at_AMNH.jpg",
+  "width": 800,
+  "height": 572,
+  "artist": "Ryan Schwark",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Gophotherium_at_AMNH.jpg",
+  "file": "Gophotherium_at_AMNH.jpg",
+  "article": "https://en.wikipedia.org/wiki/Gomphotherium",
+  "scope": "genus",
+  "kind": "fossil"
  },
  "gondwanatitan-faustoi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Gondwanatitan_faustoi_%28holotype%2C_MN_4111-V%29.jpg/960px-Gondwanatitan_faustoi_%28holotype%2C_MN_4111-V%29.jpg",
@@ -17109,6 +17186,31 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "mammuthus-exilis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Mammuthus_exilis.jpg/500px-Mammuthus_exilis.jpg",
+  "width": 500,
+  "height": 284,
+  "artist": "Franko Fonseca from Redondo Beach, USA",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mammuthus_exilis.jpg",
+  "file": "Mammuthus_exilis.jpg",
+  "article": "https://en.wikipedia.org/wiki/Pygmy_mammoth",
+  "scope": "species"
+ },
+ "mammuthus-meridionalis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Museum_of_Natural_History_Southern_Mammoth.jpg/960px-Museum_of_Natural_History_Southern_Mammoth.jpg",
+  "width": 800,
+  "height": 843,
+  "artist": "Shadowgate from Novara, ITALY",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Museum_of_Natural_History_Southern_Mammoth.jpg",
+  "file": "Museum_of_Natural_History_Southern_Mammoth.jpg",
+  "article": "https://en.wikipedia.org/wiki/Mammuthus_meridionalis",
+  "scope": "species",
+  "kind": "skeletal"
+ },
  "mammuthus-primigenius": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Siegsdorfer_Mammut.jpg/960px-Siegsdorfer_Mammut.jpg",
   "width": 800,
@@ -19734,6 +19836,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "notiomastodon-platensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Stegomastodon_CCB.JPG/960px-Stegomastodon_CCB.JPG",
+  "width": 800,
+  "height": 532,
+  "artist": "Gergas",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Stegomastodon_CCB.JPG",
+  "file": "Stegomastodon_CCB.JPG",
+  "article": "https://en.wikipedia.org/wiki/Notiomastodon",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "notobatrachus-degiustoi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Notobatrachus_NT.jpg/500px-Notobatrachus_NT.jpg",
   "width": 500,
@@ -21010,6 +21125,32 @@
   "source": "https://commons.wikimedia.org/wiki/File:Palaeoloxodon_cypriotes.png",
   "file": "Palaeoloxodon_cypriotes.png",
   "article": "https://en.wikipedia.org/wiki/Palaeoloxodon_cypriotes",
+  "scope": "species",
+  "kind": "fossil"
+ },
+ "palaeoloxodon-falconeri": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Palaeoloxodon_falconeri_%28Sicilian_dwarf_elephant%29.jpg/960px-Palaeoloxodon_falconeri_%28Sicilian_dwarf_elephant%29.jpg",
+  "width": 800,
+  "height": 424,
+  "artist": "James St. John",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Palaeoloxodon_falconeri_(Sicilian_dwarf_elephant).jpg",
+  "file": "Palaeoloxodon_falconeri_(Sicilian_dwarf_elephant).jpg",
+  "article": "https://en.wikipedia.org/wiki/Palaeoloxodon_falconeri",
+  "scope": "species",
+  "kind": "fossil"
+ },
+ "palaeoloxodon-namadicus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Palaeoloxodon_namadicus.JPG/960px-Palaeoloxodon_namadicus.JPG",
+  "width": 800,
+  "height": 1423,
+  "artist": "Royroydeb",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Palaeoloxodon_namadicus.JPG",
+  "file": "Palaeoloxodon_namadicus.JPG",
+  "article": "https://en.wikipedia.org/wiki/Palaeoloxodon_namadicus",
   "scope": "species",
   "kind": "fossil"
  },
@@ -22354,6 +22495,19 @@
   "scope": "genus",
   "kind": "skeletal"
  },
+ "phosphatherium-escuilliei": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Phosphatherium_escuilliei.JPG/500px-Phosphatherium_escuilliei.JPG",
+  "width": 500,
+  "height": 746,
+  "artist": "Ghedoghedo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Phosphatherium_escuilliei.JPG",
+  "file": "Phosphatherium_escuilliei.JPG",
+  "article": "https://en.wikipedia.org/wiki/Phosphatherium",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "phrynosoma-cornutum": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Phrynosoma_cornutum_-_Flickr_-_aspidoscelis_%289%29.jpg/960px-Phrynosoma_cornutum_-_Flickr_-_aspidoscelis_%289%29.jpg",
   "width": 800,
@@ -22663,6 +22817,19 @@
   "source": "https://commons.wikimedia.org/wiki/File:Plateosaurus_Skelett_2.jpg",
   "file": "Plateosaurus_Skelett_2.jpg",
   "article": "https://en.wikipedia.org/wiki/Plateosaurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "platybelodon-grangeri": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Hohhot.inner_mongolia_museum.Platybelodon_grangeri.2.jpg/960px-Hohhot.inner_mongolia_museum.Platybelodon_grangeri.2.jpg",
+  "width": 800,
+  "height": 530,
+  "artist": "Popolon",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Hohhot.inner_mongolia_museum.Platybelodon_grangeri.2.jpg",
+  "file": "Hohhot.inner_mongolia_museum.Platybelodon_grangeri.2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Platybelodon",
   "scope": "genus",
   "kind": "fossil"
  },
@@ -23217,6 +23384,18 @@
   "article": "https://en.wikipedia.org/wiki/Priacodon",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "primelephas-gomphotheroides": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Primelephas_gomphotheroides.png/960px-Primelephas_gomphotheroides.png",
+  "width": 800,
+  "height": 615,
+  "artist": "Antonio Rares Mihaila",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Primelephas_gomphotheroides.png",
+  "file": "Primelephas_gomphotheroides.png",
+  "article": "https://en.wikipedia.org/wiki/Primelephas",
+  "scope": "genus"
  },
  "prionailurus-bengalensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Prionailurus_bengalensis_bengalensis_2-D%C3%A9coupe.JPG/960px-Prionailurus_bengalensis_bengalensis_2-D%C3%A9coupe.JPG",
@@ -27061,6 +27240,71 @@
   "kind": "fossil"
  },
  "stegodon-florensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg/960px-Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg",
+  "width": 800,
+  "height": 462,
+  "artist": "Gary Todd from Xinzheng, China",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "file": "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Stegodon",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "stegodon-ganesa": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg/960px-Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg",
+  "width": 800,
+  "height": 462,
+  "artist": "Gary Todd from Xinzheng, China",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "file": "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Stegodon",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "stegodon-insignis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg/960px-Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg",
+  "width": 800,
+  "height": 462,
+  "artist": "Gary Todd from Xinzheng, China",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "file": "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Stegodon",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "stegodon-kaisensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg/960px-Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg",
+  "width": 800,
+  "height": 462,
+  "artist": "Gary Todd from Xinzheng, China",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "file": "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Stegodon",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "stegodon-orientalis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg/960px-Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg",
+  "width": 800,
+  "height": 462,
+  "artist": "Gary Todd from Xinzheng, China",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "file": "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Stegodon",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "stegodon-zdanskyi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg/960px-Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg",
   "width": 800,
   "height": 462,
