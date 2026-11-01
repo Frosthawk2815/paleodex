@@ -12,15 +12,16 @@ const GOOD = '#2E7D32';
 const BAD = '#C62828';
 
 // A lifeline (50/50, Refresh, Copy, Switcheroo): each can be used once per quiz.
-export type Lifeline = { key: string; icon: string; label: string; used: boolean; available: boolean; onPress: () => void; hint: string };
+// afterAnswer: only usable once you have answered (Hurry Up); the others only before.
+export type Lifeline = { key: string; icon: string; label: string; used: boolean; available: boolean; onPress: () => void; hint: string; afterAnswer?: boolean };
 
-function LifelineBar({ lifelines }: { lifelines: Lifeline[] }) {
+function LifelineBar({ lifelines, answered }: { lifelines: Lifeline[]; answered: boolean }) {
   const st = useProfileStyles();
   const palette = usePalette();
   return (
     <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
       {lifelines.map((l) => {
-        const off = l.used || !l.available;
+        const off = l.used || !l.available || !!l.afterAnswer !== answered;
         return (
           <Pressable
             key={l.key}
@@ -47,7 +48,7 @@ function LifelineBar({ lifelines }: { lifelines: Lifeline[] }) {
             <Text style={st.rowTitle}>
               {l.icon} {l.label}
             </Text>
-            <Text style={[st.rowSub, { fontSize: 11 }]}>{l.used ? 'Used' : l.hint}</Text>
+            <Text style={[st.rowSub, { fontSize: 11 }]}>{l.used ? 'Used' : l.afterAnswer && !answered ? 'After you answer' : l.hint}</Text>
           </Pressable>
         );
       })}
@@ -69,6 +70,7 @@ export function QuestionView({
   allowReadMore = true,
   hidden = [],
   lifelines,
+  nextDisabled = false,
 }: {
   q: Question;
   index: number;
@@ -85,6 +87,8 @@ export function QuestionView({
   // Answers taken away by 50/50.
   hidden?: number[];
   lifelines?: Lifeline[];
+  // Head to head: waiting for the other player before moving on.
+  nextDisabled?: boolean;
 }) {
   const st = useProfileStyles();
   const palette = usePalette();
@@ -103,7 +107,9 @@ export function QuestionView({
         <View style={{ width: `${((index + (answered ? 1 : 0)) / total) * 100}%`, height: '100%', backgroundColor: palette.link }} />
       </View>
       {header}
-      {lifelines && !answered && <LifelineBar lifelines={lifelines} />}
+      {lifelines && (!answered || lifelines.some((l) => l.afterAnswer && !l.used)) && (
+        <LifelineBar lifelines={answered ? lifelines.filter((l) => l.afterAnswer) : lifelines} answered={answered} />
+      )}
       {q.image && (
         <Image
           source={{ uri: q.image }}
@@ -139,7 +145,9 @@ export function QuestionView({
       {answered && (
         <View style={[st.card, { padding: 14, gap: 6 }]} accessibilityLiveRegion="polite">
           <Text style={[st.rowTitle, { color: chosen === q.answer ? GOOD : BAD }]}>
-            {chosen === q.answer ? 'Correct!' : `The answer is ${u(q.options[q.answer]!).replace(/^(A|An|About) /, (w) => w.toLowerCase())}.`}
+            {chosen === q.answer
+              ? 'Correct!'
+              : `${chosen === -1 ? 'Time’s up! ' : ''}The answer is ${u(q.options[q.answer]!).replace(/^(A|An|About) /, (w) => w.toLowerCase())}.`}
           </Text>
           <Text style={st.rowSub}>{u(q.explanation)}</Text>
           {allowReadMore && subject && (
@@ -150,7 +158,12 @@ export function QuestionView({
         </View>
       )}
       {answered && (
-        <Pressable onPress={onNext} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed]}>
+        <Pressable
+          onPress={onNext}
+          disabled={nextDisabled}
+          accessibilityRole="button"
+          accessibilityState={{ disabled: nextDisabled }}
+          style={({ pressed }) => [st.button, pressed && st.pressed, nextDisabled && { opacity: 0.6 }]}>
           <Text style={st.buttonText}>{nextLabel}</Text>
         </Pressable>
       )}

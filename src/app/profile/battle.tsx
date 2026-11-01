@@ -16,6 +16,10 @@ import { toImperial } from '@/lib/units';
 type Pick = { category: Category; level: Difficulty };
 type Role = 'host' | 'guest';
 type Progress = { answered: number; score: number; done: boolean };
+type PlayStage = Extract<Stage, { kind: 'play' }>;
+
+// Seconds to answer each head-to-head question.
+const QUESTION_SECONDS = 30;
 
 type Stage =
   | { kind: 'start' }
@@ -25,7 +29,20 @@ type Stage =
   // Both players are ready: show both choices, and if they differ, roll for odds or evens.
   | { kind: 'decide'; host: Pick; guest: Pick; roll: number | null; chosen: Pick }
   // hidden: answers removed by 50/50; switched: questions the other player changed, with where from.
-  | { kind: 'play'; questions: Question[]; chosen: Pick; index: number; picked: number | null; score: number; hidden: number[]; switched: Record<number, string> }
+  // picked is -1 when time ran out. deadline: when the 30 seconds for this question end. waiting:
+  // this player is ready to move on but the other hasn't answered yet.
+  | {
+      kind: 'play';
+      questions: Question[];
+      chosen: Pick;
+      index: number;
+      picked: number | null;
+      score: number;
+      hidden: number[];
+      switched: Record<number, string>;
+      deadline: number;
+      waiting: boolean;
+    }
   | { kind: 'result'; chosen: Pick; score: number; total: number }
   | { kind: 'ended'; message: string };
 
@@ -59,9 +76,11 @@ export default function BattleScreen() {
   const [shown, setShown] = useState<number | null>(null);
   // Lifelines used this game (each once per quiz), the other player's answers (for Copy), and a
   // message about a Switcheroo.
-  const [used, setUsed] = useState({ fifty: false, copy: false, swap: false });
+  const [used, setUsed] = useState({ fifty: false, copy: false, swap: false, hurry: false });
   const [theirAnswers, setTheirAnswers] = useState<Record<number, { qid: string; choice: number }>>({});
   const [notice, setNotice] = useState<string | null>(null);
+  const [now, setNow] = useState(0);
+  const timeUp = useRef<() => void>(() => {});
 
   const link = useRef<Link | null>(null);
   const [role, setRole] = useState<Role>('host');
@@ -112,12 +131,37 @@ export default function BattleScreen() {
     setStage({ kind: 'pick' });
   };
 
+  // Answer the current question (-1: time ran out), and tell the other player.
+  const answer = (i: number) => {
+    if (stage.kind !== 'play' || stage.picked !== null) return;
+    const q = stage.questions[stage.index];
+    if (!q) return;
+    const score = stage.score + (i === q.answer ? 1 : 0);
+    setStage({ ...stage, picked: i, score, hidden: stage.hidden.filter((h) => h !== i) });
+    link.current?.send({ t: 'progress', answered: stage.index + 1, score, index: stage.index, qid: q.id, choice: i });
+  };
+  const advance = (p: PlayStage) => {
+    setNotice(null);
+    if (p.index + 1 < p.questions.length) {
+      setStage({ ...p, index: p.index + 1, picked: null, hidden: [], deadline: Date.now() + QUESTION_SECONDS * 1000, waiting: false });
+    } else {
+      link.current?.send({ t: 'done', score: p.score });
+      setStage({ kind: 'result', chosen: p.chosen, score: p.score, total: p.questions.length });
+    }
+  };
+  // Both players move on together: once both have answered (or run out of time).
+  const next = () => {
+    if (stage.kind !== 'play') return;
+    if (theirAnswers[stage.index] !== undefined) advance(stage);
+    else setStage({ ...stage, waiting: true });
+  };
+
   const startPlay = (questions: Question[], chosen: Pick) => {
-    setUsed({ fifty: false, copy: false, swap: false });
+    setUsed({ fifty: false, copy: false, swap: false, hurry: false });
     setTheirAnswers({});
     setNotice(null);
     setTheirProgress({ answered: 0, score: 0, done: false });
-    setStage({ kind: 'play', questions, chosen, index: 0, picked: null, score: 0, hidden: [], switched: {} });
+    setStage({ kind: 'play', questions, chosen, index: 0, picked: null, score: 0, hidden: [], switched: {}, deadline: Date.now() + QUESTION_SECONDS * 1000, waiting: false });
   };
 
   // The host decides once both players are ready, and builds the questions so both get the same.
@@ -150,6 +194,7 @@ export default function BattleScreen() {
       } else if (s.kind === 'error') setStage({ kind: 'ended', message: ERRORS[s.reason] });
       else if (s.kind === 'closed') setStage((x) => (x.kind === 'ended' || x.kind === 'start' ? x : { kind: 'ended', message: `${Who} has left the game.` }));
     };
+    timeUp.current = () => answer(-1);
     handle.current = (m) => {
       switch (m.t) {
         case 'hello':
@@ -171,28 +216,50 @@ export default function BattleScreen() {
           setTheirProgress((p) => ({ ...p, answered: Number(m.answered) || 0, score: Number(m.score) || 0 }));
           if (typeof m.qid === 'string' && typeof m.index === 'number' && typeof m.choice === 'number') {
             setTheirAnswers((a) => ({ ...a, [m.index as number]: { qid: m.qid as string, choice: m.choice as number } }));
+            // I was waiting for them to answer this question: move on now.
+            if (stage.kind === 'play' && stage.waiting && m.index === stage.index) advance(stage);
           }
           break;
         case 'switch': {
-          // Switcheroo: replace one of my coming questions (never the one on screen).
+          // Switcheroo from the other player.
           const question = m.question as Question | null;
           const label = String(m.label ?? '');
           if (stage.kind !== 'play' || !question) {
             link.current?.send({ t: 'switch-missed' });
             break;
           }
-          const target = Math.max(Number(m.index) || 0, stage.index + 1);
-          if (target >= stage.questions.length) {
-            link.current?.send({ t: 'switch-missed' });
-            break;
+          // My next question, or on the last question, the one on screen. If I had already
+          // answered it, that answer no longer counts and I get the new question instead.
+          const last = stage.index + 1 >= stage.questions.length;
+          const target = last ? stage.index : stage.index + 1;
+          const switched = { ...stage, questions: stage.questions.map((x, i) => (i === target ? question : x)), switched: { ...stage.switched, [target]: label } };
+          if (last) {
+            const hadAnswered = stage.picked !== null;
+            const lost = stage.picked !== null && stage.picked === stage.questions[stage.index]?.answer ? 1 : 0;
+            // A switched question on screen gets a fresh 30 seconds.
+            setStage({ ...switched, picked: null, score: stage.score - lost, hidden: [], waiting: false, deadline: Date.now() + QUESTION_SECONDS * 1000 });
+            if (lost) link.current?.send({ t: 'score', score: stage.score - lost });
+            setNotice(`🔀 ${Who} used Switcheroo! ${hadAnswered ? 'Your answer doesn’t count: here’s a new last question.' : 'Your last question has been switched.'}`);
+          } else {
+            setStage(switched);
+            setNotice(`🔀 ${Who} used Switcheroo! Your next question is now from ${label}.`);
           }
-          setStage({ ...stage, questions: stage.questions.map((x, i) => (i === target ? question : x)), switched: { ...stage.switched, [target]: label } });
-          setNotice(`🔀 ${Who} used Switcheroo! ${target === stage.index + 1 ? 'Your next question' : `Question ${target + 1}`} is now from ${label}.`);
           break;
         }
+        case 'hurry':
+          // Hurry Up: my time for this question is cut in half.
+          if (stage.kind === 'play' && m.index === stage.index && stage.picked === null) {
+            const left = Math.max(1000, (stage.deadline - Date.now()) / 2);
+            setStage({ ...stage, deadline: Date.now() + left });
+            setNotice(`⏳ ${Who} used Hurry Up! Your time has been cut in half.`);
+          }
+          break;
         case 'switch-missed':
           setUsed((x) => ({ ...x, swap: false }));
           setNotice(`Too late: ${who} had already reached their last question, so your Switcheroo is back.`);
+          break;
+        case 'score':
+          setTheirProgress((p) => ({ ...p, score: Number(m.score) || 0 }));
           break;
         case 'done':
           setTheirProgress((p) => ({ ...p, score: Number(m.score) || 0, done: true }));
@@ -223,6 +290,19 @@ export default function BattleScreen() {
     }, 90);
     return () => clearInterval(id);
   }, [roll, reduceMotion]);
+
+  // The question timer: ticks while the current question is unanswered, and answers it as
+  // "time's up" when the 30 seconds run out.
+  const deadline = stage.kind === 'play' && stage.picked === null ? stage.deadline : null;
+  useEffect(() => {
+    if (deadline === null) return;
+    const id = setInterval(() => {
+      const t = Date.now();
+      setNow(t);
+      if (t >= deadline) timeUp.current();
+    }, 250);
+    return () => clearInterval(id);
+  }, [deadline]);
 
   const setMyReady = (on: boolean) => {
     setReady(on);
@@ -434,25 +514,16 @@ export default function BattleScreen() {
         </View>
       );
     }
-    // Copy works once the other player has answered this same question (not one they were switched).
+    // Copy works once the other player has answered this same question (not one they were
+    // switched, and not one where their time ran out).
     const theirAnswer = theirAnswers[stage.index];
-    const canCopy = !!theirAnswer && theirAnswer.qid === q.id;
-    // Switcheroo needs a question still to come for the other player.
-    const canSwap = !theirProgress.done && theirProgress.answered < total - 1;
-    const choose = (i: number) => {
-      if (stage.picked !== null) return;
-      const score = stage.score + (i === q.answer ? 1 : 0);
-      setStage({ ...stage, picked: i, score, hidden: stage.hidden.filter((h) => h !== i) });
-      link.current?.send({ t: 'progress', answered: stage.index + 1, score, index: stage.index, qid: q.id, choice: i });
-    };
-    const next = () => {
-      setNotice(null);
-      if (stage.index + 1 < total) setStage({ ...stage, index: stage.index + 1, picked: null, hidden: [] });
-      else {
-        link.current?.send({ t: 'done', score: stage.score });
-        setStage({ kind: 'result', chosen: stage.chosen, score: stage.score, total });
-      }
-    };
+    const canCopy = !!theirAnswer && theirAnswer.qid === q.id && theirAnswer.choice >= 0;
+    // Switcheroo changes the other player's next question, or on the last question, their current
+    // one, even if they have answered it (that answer then doesn't count).
+    const last = stage.index === total - 1;
+    const canSwap = !theirProgress.done;
+    const secondsLeft = Math.max(0, Math.min(QUESTION_SECONDS, Math.ceil((stage.deadline - now) / 1000)));
+    const choose = answer;
     return (
       <QuestionView
         q={q}
@@ -462,7 +533,8 @@ export default function BattleScreen() {
         chosen={stage.picked}
         onChoose={choose}
         onNext={next}
-        nextLabel={stage.index + 1 < total ? 'Next question' : 'See the result'}
+        nextLabel={stage.waiting ? `Waiting for ${who} to answer…` : stage.index + 1 < total ? 'Next question' : 'See the result'}
+        nextDisabled={stage.waiting}
         allowReadMore={false}
         hidden={stage.hidden}
         lifelines={[
@@ -492,10 +564,24 @@ export default function BattleScreen() {
             },
           },
           {
+            key: 'hurry',
+            icon: '⏳',
+            label: 'Hurry Up',
+            hint: `Halve ${who}’s time`,
+            afterAnswer: true,
+            used: used.hurry,
+            available: theirAnswers[stage.index] === undefined && !theirProgress.done,
+            onPress: () => {
+              setUsed((x) => ({ ...x, hurry: true }));
+              link.current?.send({ t: 'hurry', index: stage.index });
+              setNotice(`⏳ Hurry Up sent: ${who}’s time for this question is cut in half.`);
+            },
+          },
+          {
             key: 'swap',
             icon: '🔀',
             label: 'Switcheroo',
-            hint: `Change ${who}’s next question`,
+            hint: last ? `Change ${who}’s last question` : `Change ${who}’s next question`,
             used: used.swap,
             available: canSwap,
             onPress: () => {
@@ -505,15 +591,25 @@ export default function BattleScreen() {
               const label = `${categoryName(target.category)}, level ${target.level}`;
               setUsed((x) => ({ ...x, swap: true }));
               link.current?.send({ t: 'switch', index: theirProgress.answered, question, label });
-              setNotice(`🔀 Switcheroo sent: ${who}’s next question is now from ${label}.`);
+              // On the last question their earlier answer no longer counts: wait for their new one.
+              if (last) setTheirAnswers((a) => Object.fromEntries(Object.entries(a).filter(([k]) => Number(k) !== stage.index)));
+              setNotice(`🔀 Switcheroo sent: ${who}’s ${last ? 'last' : 'next'} question is now from ${label}.`);
             },
           },
         ]}
         header={
           <>
             <Text style={st.muted}>
-              ⚔️ {Who}: {theirProgress.done ? 'finished' : `${theirProgress.answered} of ${total} answered`} · score {theirProgress.score}
+              ⚔️ {Who}: {theirAnswers[stage.index] !== undefined ? 'has answered' : 'still answering'} · score {theirProgress.score}
             </Text>
+            {stage.picked === null && (
+              <View style={{ gap: 4 }} accessibilityLabel={`${secondsLeft} seconds left`} accessible>
+                <Text style={[st.rowTitle, secondsLeft <= 5 && { color: '#C62828' }]}>⏱️ {secondsLeft} s</Text>
+                <View style={{ height: 4, borderRadius: 2, backgroundColor: palette.track, overflow: 'hidden' }}>
+                  <View style={{ width: `${(secondsLeft / QUESTION_SECONDS) * 100}%`, height: '100%', backgroundColor: secondsLeft <= 5 ? '#C62828' : palette.accent }} />
+                </View>
+              </View>
+            )}
             {!!stage.switched[stage.index] && (
               <View style={[st.card, { padding: 10, borderColor: palette.accent, borderWidth: 2 }]}>
                 <Text style={st.rowTitle}>

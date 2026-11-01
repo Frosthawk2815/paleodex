@@ -585,12 +585,15 @@ export function replacementQuestion(category: Category, level: Difficulty, image
   return null;
 }
 
-// Switcheroo, when the target is already playing the sender's own quiz: one level harder, or at
-// the top level, a different topic picked at random.
+// Switcheroo: the quiz the switched question comes from. It is never easier than the quiz the
+// target is playing: from the sender's own pick, at its level or the level being played, whichever
+// is higher. If that is just the quiz already being played (the sender's pick won, or both picked
+// the same), it is one level harder, or at the top level, a different topic picked at random.
 export function switcherooQuiz(mine: { category: Category; level: Difficulty }, playing: { category: Category; level: Difficulty }): { category: Category; level: Difficulty } {
-  const same = categoryKey(mine.category) === categoryKey(playing.category) && mine.level === playing.level;
-  if (!same) return mine;
-  if (mine.level < 5) return { category: mine.category, level: (mine.level + 1) as Difficulty };
+  const level = Math.max(mine.level, playing.level) as Difficulty;
+  const same = categoryKey(mine.category) === categoryKey(playing.category) && level === playing.level;
+  if (!same) return { category: mine.category, level };
+  if (level < 5) return { category: mine.category, level: (level + 1) as Difficulty };
   const basics: Category[] = [{ kind: 'all' }, { kind: 'dinosaurs' }, { kind: 'mammals' }];
   const topics: Category[] = [
     ...basics,
