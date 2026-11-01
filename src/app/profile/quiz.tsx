@@ -7,7 +7,7 @@ import { PERIODS } from '@/data/periods';
 import { usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
 import { cladeById, speciesById } from '@/lib/life';
-import { useProfile } from '@/lib/profile';
+import { useProfile, useUnitText } from '@/lib/profile';
 import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, makeRound, QUIZ_GROUPS, type Question } from '@/lib/quiz';
 import { useUserPhotos } from '@/lib/user-photos';
 
@@ -30,6 +30,8 @@ export default function QuizScreen() {
   const showOnGlobe = useShowOnGlobe();
   const { profile, update } = useProfile();
   const { photosOf } = useUserPhotos();
+  // Questions, answers and explanations are written in metric and shown in the user's units.
+  const u = useUnitText();
   const [stage, setStage] = useState<Stage>({ kind: 'menu' });
   const [category, setCategory] = useState<Category>({ kind: 'dinosaurs' });
   const [level, setLevel] = useState<Difficulty>(1);
@@ -45,7 +47,7 @@ export default function QuizScreen() {
   const bestFor = (c: Category, d: Difficulty) => profile.quizBest[`${categoryKey(c)}:${d}`];
 
   const start = () => {
-    const questions = makeRound(category, level, imageFor);
+    const questions = makeRound(category, level, imageFor, 10, u);
     setStage({ kind: 'play', questions, index: 0, chosen: null, score: 0 });
   };
 
@@ -275,7 +277,7 @@ export default function QuizScreen() {
         />
       )}
       <Text style={st.title} accessibilityRole="header">
-        {q.prompt}
+        {u(q.prompt)}
       </Text>
       <View style={{ gap: 8 }}>
         {q.options.map((o, i) => {
@@ -288,14 +290,14 @@ export default function QuizScreen() {
               onPress={() => choose(i)}
               disabled={answered}
               accessibilityRole="button"
-              accessibilityLabel={`${o}${answered && isRight ? ', correct answer' : answered && isChosen ? ', your answer, wrong' : ''}`}
+              accessibilityLabel={`${u(o)}${answered && isRight ? ', correct answer' : answered && isChosen ? ', your answer, wrong' : ''}`}
               style={({ pressed }) => [
                 st.card,
                 st.row,
                 color && { borderColor: color, borderWidth: 2, backgroundColor: `${color}22` },
                 pressed && st.pressed,
               ]}>
-              <Text style={[st.rowTitle, { flex: 1 }]}>{o}</Text>
+              <Text style={[st.rowTitle, { flex: 1 }]}>{u(o)}</Text>
               {answered && isRight && <Text style={[st.rowTitle, { color: good }]}>✓</Text>}
               {answered && isChosen && !isRight && <Text style={[st.rowTitle, { color: bad }]}>✗</Text>}
             </Pressable>
@@ -304,8 +306,8 @@ export default function QuizScreen() {
       </View>
       {answered && (
         <View style={[st.card, { padding: 14, gap: 6 }]} accessibilityLiveRegion="polite">
-          <Text style={[st.rowTitle, { color: stage.chosen === q.answer ? good : bad }]}>{stage.chosen === q.answer ? 'Correct!' : `The answer is ${q.options[q.answer]}.`}</Text>
-          <Text style={st.rowSub}>{q.explanation}</Text>
+          <Text style={[st.rowTitle, { color: stage.chosen === q.answer ? good : bad }]}>{stage.chosen === q.answer ? 'Correct!' : `The answer is ${u(q.options[q.answer])}.`}</Text>
+          <Text style={st.rowSub}>{u(q.explanation)}</Text>
           {subject && (
             <Pressable onPress={() => showOnGlobe({ kind: 'page', page: { kind: 'species', id: subject.id } })} accessibilityRole="button" hitSlop={6}>
               <Text style={st.link}>Read about {subject.common || subject.name} ›</Text>

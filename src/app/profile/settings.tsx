@@ -5,6 +5,7 @@ import { usePalette } from '@/hooks/use-palette';
 import { isDark } from '@/lib/colors';
 import { type TextSize, type Theme, useProfile } from '@/lib/profile';
 import { compatible, type CustomTheme, type PaperStyle, readableTextColors, resolveText, SWATCHES } from '@/lib/theme';
+import type { Units } from '@/lib/units';
 
 // A row of options where one is chosen.
 function Choice<T extends string>({ options, value, onChange }: { options: { value: T; label: string }[]; value: T; onChange: (v: T) => void }) {
@@ -96,6 +97,21 @@ export default function SettingsScreen() {
         onChange={(textSize) => updateSettings({ textSize })}
       />
       <Text style={st.muted}>Enlarges species, group and formation pages and these menus. PaleoDex also follows your device’s text size.</Text>
+
+      <Text style={st.heading}>Units</Text>
+      <Choice<Units>
+        options={[
+          { value: 'metric', label: 'Metric' },
+          { value: 'imperial', label: 'Imperial' },
+        ]}
+        value={s.units}
+        onChange={(units) => updateSettings({ units })}
+      />
+      <Text style={st.muted}>
+        {s.units === 'metric'
+          ? 'Sizes, weights and distances in metres, kilograms and kilometres.'
+          : 'Sizes, weights and distances in feet, pounds and miles, converted from the metric figures and rounded, as most are estimates.'}
+      </Text>
 
       <Text style={st.heading}>Accessibility</Text>
       <View style={st.card}>

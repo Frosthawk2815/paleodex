@@ -6,6 +6,7 @@ import { InfoNav } from '@/components/info-nav';
 import { useInfoStyles } from '@/components/info-styles';
 import { type Clade, CLADES, type Species } from '@/data/life';
 import { childClades, cladeById, cladePath, speciesInClade } from '@/lib/life';
+import { useUnitText } from '@/lib/profile';
 
 type Props = {
   clade: Clade;
@@ -19,6 +20,7 @@ type Props = {
 // The information section for a group: where it sits in the tree and every species in it.
 export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies }: Props) {
   const info = useInfoStyles();
+  const u = useUnitText();
   const path = cladePath(clade.id);
   const children = childClades(clade.id);
   const species = speciesInClade(clade.id);
@@ -42,7 +44,7 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
 
       {path.length > 1 && <CladeCrumbs path={path.slice(0, -1)} onOpenClade={onOpenClade} />}
 
-      <Text style={info.body}>{clade.description}</Text>
+      <Text style={info.body}>{u(clade.description)}</Text>
 
       {children.length > 0 && (
         <>

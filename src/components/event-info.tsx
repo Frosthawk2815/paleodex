@@ -8,6 +8,7 @@ import { InfoNav } from '@/components/info-nav';
 import { useInfoStyles } from '@/components/info-styles';
 import type { Clade, Species } from '@/data/life';
 import { familyOf, speciesAtEvent, speciesById, speciesInFormation } from '@/lib/life';
+import { useUnitText } from '@/lib/profile';
 
 const CERTAINTY = { known: 'Trackmaker', likely: 'Likely trackmaker', possible: 'Possible trackmaker' } as const;
 
@@ -26,6 +27,7 @@ type Props = {
 // The information section shown below the globe for a selected event.
 export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, onJump, onOpenSpecies, onOpenClade }: Props) {
   const info = useInfoStyles();
+  const u = useUnitText();
   // Species found here, grouped by family (e.g. tyrannosaurs).
   const families: { family: Clade | undefined; members: Species[] }[] = [];
   for (const s of speciesInFormation(event.id)) {
@@ -72,7 +74,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
 
       {event.summary.map((p) => (
         <Text key={p} style={info.body}>
-          {p}
+          {u(p)}
         </Text>
       ))}
 
@@ -86,7 +88,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
                 <View key={t.id}>
                   <SpeciesRow species={s} onPress={() => onOpenSpecies(t.id)} />
                   <Text style={[info.rowNote, styles.trackNote]}>
-                    {CERTAINTY[t.certainty]}. {t.note}
+                    {CERTAINTY[t.certainty]}. {u(t.note)}
                   </Text>
                 </View>
               ) : null;
@@ -139,7 +141,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
         {event.facts.map((f) => (
           <View key={f.label} style={info.factRow}>
             <Text style={info.factLabel}>{f.label}</Text>
-            <Text style={info.factValue}>{f.value}</Text>
+            <Text style={info.factValue}>{u(f.value)}</Text>
           </View>
         ))}
       </View>
@@ -150,6 +152,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
 // Notes in three tiers: superstars as cards, microcelebs as short explainers, plebs as a list.
 function TierNotes({ heading, notes }: { heading: string; notes?: InvertebrateNote[] }) {
   const info = useInfoStyles();
+  const u = useUnitText();
   if (!notes || notes.length === 0) return null;
   const plebs = notes.filter((n) => n.tier === 'pleb');
   return (
@@ -161,7 +164,7 @@ function TierNotes({ heading, notes }: { heading: string; notes?: InvertebrateNo
           <View key={n.title} style={info.card}>
             <Text style={info.kicker}>★ Superstar</Text>
             <Text style={[info.rowTitle, { fontSize: 17, marginTop: 4 }]}>{n.title}</Text>
-            <Text style={info.body}>{n.text}</Text>
+            <Text style={info.body}>{u(n.text)}</Text>
           </View>
         ))}
       {notes
@@ -169,12 +172,12 @@ function TierNotes({ heading, notes }: { heading: string; notes?: InvertebrateNo
         .map((n) => (
           <View key={n.title} style={{ gap: 2 }}>
             <Text style={info.rowTitle}>{n.title}</Text>
-            <Text style={[info.body, { marginTop: 0, fontSize: 15, lineHeight: 22 }]}>{n.text}</Text>
+            <Text style={[info.body, { marginTop: 0, fontSize: 15, lineHeight: 22 }]}>{u(n.text)}</Text>
           </View>
         ))}
       {plebs.length > 0 && (
         <Text style={info.meta}>
-          Also present: {plebs.map((n) => n.text.replace(/\.$/, '').toLowerCase()).join(', ')}.
+          Also present: {plebs.map((n) => u(n.text).replace(/\.$/, '').toLowerCase()).join(', ')}.
         </Text>
       )}
     </>

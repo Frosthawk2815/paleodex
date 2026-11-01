@@ -13,6 +13,7 @@ import { AddPhotoButton } from '@/components/user-photo-gallery';
 import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf, speciesById, trackwaysOf } from '@/lib/life';
 import { badgeBg } from '@/lib/events';
 import { rangeOf } from '@/lib/ranges';
+import { useUnitText } from '@/lib/profile';
 import { timeLabel } from '@/lib/time';
 
 type Props = {
@@ -32,6 +33,7 @@ type Props = {
 // The information section for a species: what it was and the formations it's found in.
 export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onOpenEvent, onJumpRange, onJumpLastSeen }: Props) {
   const info = useInfoStyles();
+  const u = useUnitText();
   const [tab, setTab] = useState<'about' | 'relatives'>('about');
   const path = cladePath(species.clade);
   const family = familyOf(species);
@@ -193,7 +195,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
           {species.summary.map((p) => (
             <Text key={p} style={info.body}>
-              {p}
+              {u(p)}
             </Text>
           ))}
 
@@ -206,7 +208,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
                   return other ? (
                     <View key={r.id}>
                       <SpeciesRow species={other} onPress={() => onOpenSpecies(r.id)} />
-                      <Text style={[info.rowNote, styles.relatedNote]}>{r.note}</Text>
+                      <Text style={[info.rowNote, styles.relatedNote]}>{u(r.note)}</Text>
                     </View>
                   ) : null;
                 })}
@@ -219,7 +221,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
               {species.facts.map((f) => (
                 <View key={f.label} style={info.factRow}>
                   <Text style={info.factLabel}>{f.label}</Text>
-                  <Text style={info.factValue}>{f.value}</Text>
+                  <Text style={info.factValue}>{u(f.value)}</Text>
                 </View>
               ))}
             </View>

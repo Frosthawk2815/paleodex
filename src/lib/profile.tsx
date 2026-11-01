@@ -7,6 +7,7 @@ import { AccessibilityInfo } from 'react-native';
 
 import { type CustomTheme, DEFAULT_CUSTOM, type PaperStyle } from '@/lib/theme';
 import { yearToMa } from '@/lib/time';
+import { toImperial, type Units } from '@/lib/units';
 import type { UserPlace } from '@/lib/user-places';
 
 // A page in the information section: a species, a group, or an event (formation, trackway...).
@@ -15,7 +16,7 @@ export type PageRef = { kind: 'species' | 'clade' | 'event'; id: string };
 export type Avatar = { kind: 'species'; id: string } | { kind: 'upload'; uri: string } | null;
 export type Theme = 'system' | 'light' | 'dark' | 'custom' | 'paper';
 export type TextSize = 'normal' | 'large' | 'larger';
-export type Settings = { theme: Theme; textSize: TextSize; highContrast: boolean; reduceMotion: boolean; custom: CustomTheme; paper: PaperStyle };
+export type Settings = { theme: Theme; textSize: TextSize; highContrast: boolean; reduceMotion: boolean; custom: CustomTheme; paper: PaperStyle; units: Units };
 export type Profile = {
   name: string;
   // 'YYYY-MM-DD', or null if they haven't set one.
@@ -58,7 +59,7 @@ const DEFAULT: Profile = {
   birthplace: null,
   home: null,
   quizBest: {},
-  settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed' },
+  settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed', units: 'metric' },
 };
 
 const samePage = (a: PageRef, b: PageRef) => a.kind === b.kind && a.id === b.id;
@@ -192,4 +193,10 @@ export function birthMaOf(profile: Profile): number | undefined {
   const start = new Date(d.getFullYear(), 0, 1).getTime();
   const fraction = (d.getTime() - start) / (365.25 * 24 * 3600 * 1000);
   return yearToMa(d.getFullYear() + fraction);
+}
+
+// A function that shows a piece of page text in the user's chosen units (metric or imperial).
+export function useUnitText(): (text: string) => string {
+  const units = useProfile().profile.settings.units;
+  return useCallback((text: string) => (units === 'imperial' ? toImperial(text) : text), [units]);
 }

@@ -23,6 +23,7 @@ export default function PlacesScreen() {
   const st = useProfileStyles();
   const palette = usePalette();
   const { profile, update } = useProfile();
+  const imperial = profile.settings.units === 'imperial';
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
   const [showAll, setShowAll] = useState(false);
@@ -123,7 +124,7 @@ export default function PlacesScreen() {
           {result.nearest.map(({ place, metres }) => (
             <Text key={place.id} style={st.rowSub}>
               {ICON[place.kind]} {place.name}
-              {place.spot ? ` (${place.spot})` : ''} · {formatDistance(metres)}
+              {place.spot ? ` (${place.spot})` : ''} · {formatDistance(metres, imperial)}
             </Text>
           ))}
         </View>
@@ -137,7 +138,7 @@ export default function PlacesScreen() {
           zones don’t award titles. Please leave those to the professionals who make all of this possible.
         </Text>
         <Text style={st.rowSub}>
-          You don’t need to reach the rocks themselves: you’re checked in anywhere within 25 km of a fossil site, so the nearest town or visitor centre is
+          You don’t need to reach the rocks themselves: you’re checked in anywhere within {imperial ? '15 miles' : '25 km'} of a fossil site, so the nearest town or visitor centre is
           enough. Only visit places open to the public, never enter quarries, mines or private land without permission, and check the tides at coastal sites.
         </Text>
       </View>

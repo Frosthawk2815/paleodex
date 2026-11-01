@@ -137,4 +137,10 @@ export function placesNear(lat: number, lon: number, accuracy: number | null) {
   return { here: [...new Map([...here].reverse().map((d) => [d.place.id, d])).values()].reverse(), nearest };
 }
 
-export const formatDistance = (m: number) => (m < 1000 ? `${Math.round(m)} m` : m < 100000 ? `${(m / 1000).toFixed(1)} km` : `${Math.round(m / 1000).toLocaleString()} km`);
+export const formatDistance = (m: number, imperial = false) => {
+  if (imperial) {
+    const mi = m / 1609.344;
+    return mi < 0.2 ? `${Math.round(m * 3.28084)} ft` : mi < 100 ? `${mi.toFixed(1)} mi` : `${Math.round(mi).toLocaleString()} mi`;
+  }
+  return m < 1000 ? `${Math.round(m)} m` : m < 100000 ? `${(m / 1000).toFixed(1)} km` : `${Math.round(m / 1000).toLocaleString()} km`;
+};

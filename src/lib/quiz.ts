@@ -365,7 +365,10 @@ export const QUIZ_GROUPS = CLADES.filter((c) => !['animalia', 'chordata', 'verte
 
 // A round of questions at one difficulty. Subjects are drawn from the right obscurity, then the
 // neighbouring ones if the category is small.
-export function makeRound(category: Category, level: Difficulty, imageFor: ImageFor, count = 10): Question[] {
+// show: how text will be displayed (e.g. converted to imperial units). A question is left out if two
+// of its answers would read the same once shown that way (two lengths rounding to the same feet).
+export function makeRound(category: Category, level: Difficulty, imageFor: ImageFor, count = 10, show: (t: string) => string = (t) => t): Question[] {
+  const distinct = (q: Question) => new Set(q.options.map(show)).size === q.options.length;
   const pool = categoryPool(category);
   const ctx: Ctx = { level, pool, imageFor, category };
   const byTier = (t: number) => pool.filter((s) => obscurity(s, !!imageFor(s.id)) === t);
@@ -385,7 +388,7 @@ export function makeRound(category: Category, level: Difficulty, imageFor: Image
     category.kind === 'period' ? Math.round(count * 0.3) : category.kind !== 'all' ? 0 : level >= 4 ? Math.round(count * 0.2) : level === 3 ? 1 : 0;
   for (let i = 0; i < timescaleCount * 3 && out.filter((q) => q.id.match(/^(after|laststage|stageof):/)).length < timescaleCount; i++) {
     const q = timescaleQuestion(level, category.kind === 'period' ? category.id : undefined);
-    if (q && !seen.has(q.id)) {
+    if (q && distinct(q) && !seen.has(q.id)) {
       seen.add(q.id);
       out.push(q);
     }
@@ -399,7 +402,7 @@ export function makeRound(category: Category, level: Difficulty, imageFor: Image
     for (const t of shuffle(types)) {
       const q = t.make(s, ctx);
       const kind = q?.id.split(':')[0] ?? '';
-      if (q && !seen.has(q.id) && (typeCount.get(kind) ?? 0) < perType) {
+      if (q && distinct(q) && !seen.has(q.id) && (typeCount.get(kind) ?? 0) < perType) {
         typeCount.set(kind, (typeCount.get(kind) ?? 0) + 1);
         seen.add(q.id);
         usedSpecies.add(s.id);
@@ -414,7 +417,7 @@ export function makeRound(category: Category, level: Difficulty, imageFor: Image
     if (usedSpecies.has(s.id)) continue;
     for (const t of shuffle(types)) {
       const q = t.make(s, ctx);
-      if (q && !seen.has(q.id)) {
+      if (q && distinct(q) && !seen.has(q.id)) {
         seen.add(q.id);
         usedSpecies.add(s.id);
         out.push(q);
