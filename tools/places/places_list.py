@@ -204,3 +204,20 @@ ACCREDITED = {
     'Budapest Zoo and Botanical Garden': 'EAZA', 'Jerusalem Biblical Zoo': 'EAZA', 'Singapore Zoo': 'WAZA',
     'Auckland Zoo': 'ZAA', 'Zagreb Zoo': 'EAZA',
 }
+
+# Places whose article Wikidata couldn't match by name, looked up by hand on Wikidata (searching
+# other names and checking the country). Each: list title -> (name shown, lat, lon, Wikidata id).
+HAND = {
+    'Senckenberg Natural History Museum': ('Senckenberg Natural History Museum', 50.1175, 8.65167, 'Q706441'),
+    'State Museum of Natural History Stuttgart': ('State Museum of Natural History Stuttgart', 48.80547, 9.19008, 'Q28738776'),
+    'Museum of Natural Sciences (Brussels)': ('Royal Belgian Institute of Natural Sciences', 50.83655, 4.37656, 'Q16665660'),
+    'Natural History Museum, University of Oslo': ('Natural History Museum, Oslo', 59.91984, 10.77169, 'Q1840963'),
+    'Natural History Museum (Ireland)': ('Natural History Museum, Dublin', 53.33976, -6.253, 'Q6033599'),
+    'Museo del Desierto': ('Museo del Desierto', 25.41404, -100.96374, 'Q24502406'),
+    'Egidio Feruglio Paleontology Museum': ('Egidio Feruglio Paleontology Museum', -43.2491, -65.3074, 'Q6940985'),
+    'Carmen Funes Municipal Museum': ('Carmen Funes Municipal Museum', -38.93111, -69.19361, 'Q1324895'),
+    'Geology Museum (Bandung)': ('Bandung Geological Museum', -6.9007, 107.6215, 'Q7475825'),
+    'Gyeongnam Goseong Dinosaur Museum': ('Goseong Dinosaur Museum', 34.9081, 128.1485, 'Q5587165'),
+    'National Science Museum (South Korea)': ('National Science Museum, Daejeon', 36.37616, 127.37507, 'Q487077'),
+    'Regional Museum of Natural History, Mysore': ('Regional Museum of Natural History, Mysore', 12.30585, 76.6741, 'Q7309109'),
+}

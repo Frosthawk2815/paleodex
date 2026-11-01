@@ -92,8 +92,8 @@
   "kind": "museum",
   "name": "Darwin Museum",
   "country": "Russia",
-  "lat": 55.69068,
-  "lon": 37.56144
+  "lat": 55.69145,
+  "lon": 37.56125
  },
  {
   "id": "museum-national-museum-of-brazil",
@@ -152,20 +152,20 @@
   "lon": 88.35083
  },
  {
+  "id": "museum-regional-museum-of-natural-history-mysore",
+  "kind": "museum",
+  "name": "Regional Museum of Natural History, Mysore",
+  "country": "India",
+  "lat": 12.30585,
+  "lon": 76.6741
+ },
+ {
   "id": "museum-regional-museum-of-natural-history-bhopal",
   "kind": "museum",
   "name": "Regional Museum of Natural History, Bhopal",
   "country": "India",
   "lat": 23.21374,
   "lon": 77.42615
- },
- {
-  "id": "museum-chhatrapati-shivaji-maharaj-vastu-sangrahalaya",
-  "kind": "museum",
-  "name": "Chhatrapati Shivaji Maharaj Vastu Sangrahalaya",
-  "country": "India",
-  "lat": 18.92667,
-  "lon": 72.83222
  },
  {
   "id": "museum-natural-history-museum-london",
@@ -200,20 +200,20 @@
   "lon": 13.3792
  },
  {
-  "id": "museum-palaeontological-museum-munich",
+  "id": "museum-senckenberg-natural-history-museum",
   "kind": "museum",
-  "name": "Palaeontological Museum, Munich",
+  "name": "Senckenberg Natural History Museum",
   "country": "Germany",
-  "lat": 48.1476,
-  "lon": 11.5638
+  "lat": 50.1175,
+  "lon": 8.65167
  },
  {
-  "id": "museum-jura-museum",
+  "id": "museum-state-museum-of-natural-history-stuttgart",
   "kind": "museum",
-  "name": "Jura Museum",
+  "name": "State Museum of Natural History Stuttgart",
   "country": "Germany",
-  "lat": 48.89501,
-  "lon": 11.16861
+  "lat": 48.80547,
+  "lon": 9.19008
  },
  {
   "id": "museum-national-museum-of-natural-history-france",
@@ -256,12 +256,12 @@
   "lon": -58.4377
  },
  {
-  "id": "museum-ernesto-bachmann-paleontological-museum",
+  "id": "museum-egidio-feruglio-paleontology-museum",
   "kind": "museum",
-  "name": "Ernesto Bachmann Paleontological Museum",
+  "name": "Egidio Feruglio Paleontology Museum",
   "country": "Argentina",
-  "lat": -39.26076,
-  "lon": -68.78391
+  "lat": -43.2491,
+  "lon": -65.3074
  },
  {
   "id": "museum-national-museum-of-nature-and-science",
@@ -320,6 +320,14 @@
   "lon": -5.27421
  },
  {
+  "id": "museum-museo-del-desierto",
+  "kind": "museum",
+  "name": "Museo del Desierto",
+  "country": "Mexico",
+  "lat": 25.41404,
+  "lon": -100.96374
+ },
+ {
   "id": "museum-iziko-south-african-museum",
   "kind": "museum",
   "name": "Iziko South African Museum",
@@ -344,6 +352,14 @@
   "lon": 106.79701
  },
  {
+  "id": "museum-bandung-geological-museum",
+  "kind": "museum",
+  "name": "Bandung Geological Museum",
+  "country": "Indonesia",
+  "lat": -6.9007,
+  "lon": 107.6215
+ },
+ {
   "id": "museum-museum-of-evolution-of-polish-academy-of-sciences",
   "kind": "museum",
   "name": "Museum of Evolution of Polish Academy of Sciences",
@@ -358,6 +374,22 @@
   "country": "Poland",
   "lat": 51.0175,
   "lon": 21.54861
+ },
+ {
+  "id": "museum-goseong-dinosaur-museum",
+  "kind": "museum",
+  "name": "Goseong Dinosaur Museum",
+  "country": "South Korea",
+  "lat": 34.9081,
+  "lon": 128.1485
+ },
+ {
+  "id": "museum-national-science-museum-daejeon",
+  "kind": "museum",
+  "name": "National Science Museum, Daejeon",
+  "country": "South Korea",
+  "lat": 36.37616,
+  "lon": 127.37507
  },
  {
   "id": "museum-egyptian-geological-museum",
@@ -424,6 +456,14 @@
   "lon": 4.47333
  },
  {
+  "id": "museum-royal-belgian-institute-of-natural-sciences",
+  "kind": "museum",
+  "name": "Royal Belgian Institute of Natural Sciences",
+  "country": "Belgium",
+  "lat": 50.83655,
+  "lon": 4.37656
+ },
+ {
   "id": "museum-natural-history-museum-vienna",
   "kind": "museum",
   "name": "Natural History Museum, Vienna",
@@ -448,6 +488,14 @@
   "lon": 18.05361
  },
  {
+  "id": "museum-natural-history-museum-oslo",
+  "kind": "museum",
+  "name": "Natural History Museum, Oslo",
+  "country": "Norway",
+  "lat": 59.91984,
+  "lon": 10.77169
+ },
+ {
   "id": "museum-natural-history-museum-of-denmark",
   "kind": "museum",
   "name": "Natural History Museum of Denmark",
@@ -462,6 +510,14 @@
   "country": "Finland",
   "lat": 60.17139,
   "lon": 24.93139
+ },
+ {
+  "id": "museum-natural-history-museum-dublin",
+  "kind": "museum",
+  "name": "Natural History Museum, Dublin",
+  "country": "Ireland",
+  "lat": 53.33976,
+  "lon": -6.253
  },
  {
   "id": "museum-museu-da-lourinh",

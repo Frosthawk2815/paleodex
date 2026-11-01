@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
-from places_list import ACCREDITED, LIMIT, MUSEUMS, TIERS, ZOOS  # noqa: E402
+from places_list import ACCREDITED, HAND, LIMIT, MUSEUMS, TIERS, ZOOS  # noqa: E402
 
 UA = 'PaleoDex/1.0 (educational app; https://github.com/Frosthawk2815/paleodex)'
 API = 'https://en.wikipedia.org/w/api.php'
@@ -115,6 +115,9 @@ def main():
     for kind, items in (('museum', MUSEUMS), ('zoo', ZOOS)):
         for country, title in items:
             p = pages.get(title)
+            if title in HAND and not (p and p['coords']):
+                name, lat, lon, _qid = HAND[title]
+                p = {'title': name, 'coords': {'lat': lat, 'lon': lon}, 'text': ''}
             if not p:
                 dropped.append((kind, country, title, 'no article'))
                 continue
