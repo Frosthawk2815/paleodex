@@ -8709,6 +8709,24 @@
   "vote": "yes",
   "file": "Royal_Tyrrell_Museum_Stegoceras.jpg"
  },
+ "stegodon-insignis": {
+  "vote": "no",
+  "file": "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "leaveBlank": true,
+  "note": "duplicate of stegodon-florensis",
+  "rejectedFiles": [
+   "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg"
+  ]
+ },
+ "stegodon-kaisensis": {
+  "vote": "no",
+  "file": "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "leaveBlank": true,
+  "note": "duplicate of stegodon-florensis",
+  "rejectedFiles": [
+   "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg"
+  ]
+ },
  "stegosaurus-stenops": {
   "vote": "yes",
   "file": "Journal.pone.0138352.g001A.jpg"
