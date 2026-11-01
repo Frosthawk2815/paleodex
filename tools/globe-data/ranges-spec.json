@@ -56586,5 +56586,988 @@
         ]
       }
     ]
+  },
+  "bos-taurus": {
+    "phases": [
+      {
+        "from": 10500,
+        "to": 6000,
+        "label": "Domesticated in the Near East and the Indus Valley",
+        "regions": [
+          {
+            "countries": [
+              "Turkey",
+              "Syria",
+              "Iraq",
+              "Israel",
+              "Lebanon",
+              "Jordan",
+              "Cyprus"
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              44,
+              30,
+              52,
+              39
+            ]
+          },
+          {
+            "countries": [
+              "Pakistan"
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              68,
+              20,
+              80,
+              32
+            ]
+          }
+        ]
+      },
+      {
+        "from": 6000,
+        "to": 500,
+        "label": "Spread across the Old World",
+        "regions": [
+          {
+            "continents": [
+              "Europe",
+              "Asia"
+            ],
+            "latMax": 65
+          },
+          {
+            "continents": [
+              "Africa"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -50,
+            "latMax": 70
+          }
+        ]
+      }
+    ]
+  },
+  "equus-caballus": {
+    "phases": [
+      {
+        "from": 4500,
+        "to": 4000,
+        "label": "Domesticated on the steppe",
+        "regions": [
+          {
+            "country": "Russia",
+            "bbox": [
+              38,
+              44,
+              52,
+              54
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              46,
+              45,
+              55,
+              52
+            ]
+          },
+          {
+            "country": "Ukraine",
+            "bbox": [
+              33,
+              46,
+              40,
+              50
+            ]
+          }
+        ]
+      },
+      {
+        "from": 4000,
+        "to": 500,
+        "label": "Spread across Eurasia and North Africa with riders and chariots",
+        "regions": [
+          {
+            "continents": [
+              "Europe",
+              "Asia"
+            ],
+            "latMax": 62
+          },
+          {
+            "continents": [
+              "Africa"
+            ],
+            "latMin": 10
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -50,
+            "latMax": 70
+          }
+        ]
+      }
+    ]
+  },
+  "equus-asinus": {
+    "phases": [
+      {
+        "from": 7000,
+        "to": 4500,
+        "label": "Domesticated in East Africa",
+        "regions": [
+          {
+            "countries": [
+              "Sudan",
+              "Egypt",
+              "Ethiopia",
+              "Eritrea",
+              "Somalia",
+              "Djibouti",
+              "Kenya"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 4500,
+        "to": 500,
+        "label": "Spread with traders",
+        "regions": [
+          {
+            "continents": [
+              "Africa"
+            ],
+            "latMin": -5
+          },
+          {
+            "countries": [
+              "Turkey",
+              "Syria",
+              "Iraq",
+              "Israel",
+              "Lebanon",
+              "Jordan",
+              "Cyprus"
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              44,
+              30,
+              52,
+              39
+            ]
+          },
+          {
+            "countries": [
+              "Portugal",
+              "Spain",
+              "France",
+              "Belgium",
+              "Netherlands",
+              "Luxembourg",
+              "Germany",
+              "Switzerland",
+              "Austria",
+              "Italy",
+              "Denmark",
+              "Poland",
+              "Czechia",
+              "Slovakia",
+              "Hungary",
+              "Slovenia",
+              "Croatia",
+              "Bosnia and Herzegovina",
+              "Serbia",
+              "Montenegro",
+              "Albania",
+              "North Macedonia",
+              "Greece",
+              "Bulgaria",
+              "Romania"
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              44,
+              25,
+              63,
+              40
+            ]
+          },
+          {
+            "countries": [
+              "Afghanistan",
+              "Pakistan",
+              "India"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -45,
+            "latMax": 60
+          }
+        ]
+      }
+    ]
+  },
+  "sus-domesticus": {
+    "phases": [
+      {
+        "from": 10500,
+        "to": 7000,
+        "label": "Domesticated in Anatolia and China",
+        "regions": [
+          {
+            "countries": [
+              "Turkey",
+              "Syria",
+              "Iraq"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              105,
+              25,
+              122,
+              40
+            ]
+          }
+        ]
+      },
+      {
+        "from": 7000,
+        "to": 500,
+        "label": "Spread across Eurasia",
+        "regions": [
+          {
+            "continents": [
+              "Europe",
+              "Asia"
+            ],
+            "latMax": 62
+          },
+          {
+            "continents": [
+              "Africa"
+            ],
+            "latMin": 20
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -50,
+            "latMax": 70
+          }
+        ]
+      }
+    ]
+  },
+  "ovis-aries": {
+    "phases": [
+      {
+        "from": 10500,
+        "to": 7000,
+        "label": "Domesticated in the Near East",
+        "regions": [
+          {
+            "countries": [
+              "Turkey",
+              "Syria",
+              "Iraq",
+              "Israel",
+              "Lebanon",
+              "Jordan",
+              "Cyprus"
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              44,
+              30,
+              52,
+              39
+            ]
+          }
+        ]
+      },
+      {
+        "from": 7000,
+        "to": 500,
+        "label": "Spread across the Old World",
+        "regions": [
+          {
+            "continents": [
+              "Europe",
+              "Asia"
+            ],
+            "latMax": 65
+          },
+          {
+            "continents": [
+              "Africa"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -55,
+            "latMax": 70
+          }
+        ]
+      }
+    ]
+  },
+  "capra-hircus": {
+    "phases": [
+      {
+        "from": 10500,
+        "to": 7000,
+        "label": "Domesticated in the Zagros and Anatolia",
+        "regions": [
+          {
+            "countries": [
+              "Turkey",
+              "Syria",
+              "Iraq",
+              "Israel",
+              "Lebanon",
+              "Jordan",
+              "Cyprus"
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              44,
+              30,
+              52,
+              39
+            ]
+          }
+        ]
+      },
+      {
+        "from": 7000,
+        "to": 500,
+        "label": "Spread across the Old World",
+        "regions": [
+          {
+            "continents": [
+              "Europe",
+              "Asia"
+            ],
+            "latMax": 65
+          },
+          {
+            "continents": [
+              "Africa"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -50,
+            "latMax": 70
+          }
+        ]
+      }
+    ]
+  },
+  "gallus-gallus-domesticus": {
+    "phases": [
+      {
+        "from": 3500,
+        "to": 2500,
+        "label": "Domesticated in Southeast Asia",
+        "regions": [
+          {
+            "countries": [
+              "Thailand",
+              "Myanmar",
+              "Laos",
+              "Cambodia",
+              "Vietnam"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              97,
+              20,
+              110,
+              26
+            ]
+          }
+        ]
+      },
+      {
+        "from": 2500,
+        "to": 500,
+        "label": "Spread across the Old World and the Pacific",
+        "regions": [
+          {
+            "continents": [
+              "Europe",
+              "Asia"
+            ],
+            "latMax": 65
+          },
+          {
+            "continents": [
+              "Africa"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -55,
+            "latMax": 70
+          }
+        ]
+      }
+    ]
+  },
+  "lama-glama": {
+    "phases": [
+      {
+        "from": 7000,
+        "to": 500,
+        "label": "Domesticated in the Andes",
+        "regions": [
+          {
+            "country": "Peru",
+            "bbox": [
+              -80,
+              -18,
+              -68,
+              -3
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -70,
+              -23,
+              -64,
+              -14
+            ]
+          },
+          {
+            "country": "Chile",
+            "bbox": [
+              -71,
+              -27,
+              -66,
+              -17
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -68,
+              -28,
+              -64,
+              -21
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -5,
+              -77,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Peru",
+            "bbox": [
+              -80,
+              -18,
+              -68,
+              -3
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -70,
+              -23,
+              -64,
+              -14
+            ]
+          },
+          {
+            "country": "Chile",
+            "bbox": [
+              -71,
+              -27,
+              -66,
+              -17
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -68,
+              -28,
+              -64,
+              -21
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -5,
+              -77,
+              1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vicugna-pacos": {
+    "phases": [
+      {
+        "from": 7000,
+        "to": 500,
+        "label": "Domesticated in the Andes",
+        "regions": [
+          {
+            "country": "Peru",
+            "bbox": [
+              -80,
+              -18,
+              -68,
+              -3
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -70,
+              -23,
+              -64,
+              -14
+            ]
+          },
+          {
+            "country": "Chile",
+            "bbox": [
+              -71,
+              -27,
+              -66,
+              -17
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -68,
+              -28,
+              -64,
+              -21
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -5,
+              -77,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Peru",
+            "bbox": [
+              -80,
+              -18,
+              -68,
+              -3
+            ]
+          },
+          {
+            "country": "Bolivia",
+            "bbox": [
+              -70,
+              -23,
+              -64,
+              -14
+            ]
+          },
+          {
+            "country": "Chile",
+            "bbox": [
+              -71,
+              -27,
+              -66,
+              -17
+            ]
+          },
+          {
+            "country": "Argentina",
+            "bbox": [
+              -68,
+              -28,
+              -64,
+              -21
+            ]
+          },
+          {
+            "country": "Ecuador",
+            "bbox": [
+              -80,
+              -5,
+              -77,
+              1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bubalus-bubalis": {
+    "phases": [
+      {
+        "from": 5000,
+        "to": 500,
+        "label": "Domesticated in South and East Asia",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Pakistan",
+              "Bangladesh",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              18,
+              122,
+              34
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "India",
+              "Pakistan",
+              "Nepal",
+              "Bangladesh",
+              "Sri Lanka",
+              "Myanmar",
+              "Thailand",
+              "Laos",
+              "Cambodia",
+              "Vietnam",
+              "Malaysia",
+              "Indonesia",
+              "Philippines",
+              "Egypt",
+              "Italy"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              98,
+              18,
+              122,
+              34
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bos-grunniens": {
+    "phases": [
+      {
+        "from": 7000,
+        "to": 500,
+        "label": "Domesticated on the Tibetan Plateau",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              78,
+              27,
+              104,
+              40
+            ]
+          },
+          {
+            "countries": [
+              "Nepal",
+              "Bhutan"
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              78,
+              27,
+              104,
+              40
+            ]
+          },
+          {
+            "countries": [
+              "Mongolia",
+              "Nepal",
+              "Bhutan"
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              74,
+              30,
+              80,
+              36
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              72,
+              34,
+              77,
+              37
+            ]
+          },
+          {
+            "countries": [
+              "Kyrgyzstan",
+              "Tajikistan"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "camelus-bactrianus": {
+    "phases": [
+      {
+        "from": 6000,
+        "to": 500,
+        "label": "Domesticated in Central Asia",
+        "regions": [
+          {
+            "countries": [
+              "Mongolia",
+              "Kazakhstan",
+              "Turkmenistan",
+              "Uzbekistan"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              36,
+              112,
+              46
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Mongolia",
+              "Kazakhstan",
+              "Kyrgyzstan",
+              "Uzbekistan",
+              "Turkmenistan",
+              "Afghanistan"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              75,
+              36,
+              112,
+              46
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              45,
+              44,
+              52,
+              50
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "apis-mellifera": {
+    "phases": [
+      {
+        "from": 10000,
+        "to": 500,
+        "label": "Native range",
+        "regions": [
+          {
+            "continents": [
+              "Europe"
+            ],
+            "latMax": 62
+          },
+          {
+            "continents": [
+              "Africa"
+            ]
+          },
+          {
+            "countries": [
+              "Turkey",
+              "Syria",
+              "Iraq",
+              "Israel",
+              "Lebanon",
+              "Jordan",
+              "Cyprus"
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              44,
+              30,
+              52,
+              39
+            ]
+          },
+          {
+            "country": "Iran",
+            "bbox": [
+              44,
+              25,
+              63,
+              40
+            ]
+          }
+        ]
+      },
+      {
+        "from": 500,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "world": true,
+            "latMin": -50,
+            "latMax": 65
+          }
+        ]
+      }
+    ]
   }
 }
