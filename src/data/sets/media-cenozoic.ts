@@ -586,7 +586,7 @@ export const MEDIA_CENOZOIC: DataSet = {
       formations: ['wadi-al-hitan'],
       phylo: 3,
       summary: [
-        'A long, eel-like early whale up to about 18 m long, with tiny back legs about 60 cm long, useless for walking. It was the top predator of its seas. Its name means “king lizard”, because the first bones were thought to belong to a sea reptile.',
+        'A long, eel-like early whale up to about 18 m long, with tiny back legs about 60 cm long, useless for walking. It was the top predator of its seas.',
       ],
       facts: [
         { label: 'Named', value: 'Charles Andrews, 1904 (as Zeuglodon isis)' },

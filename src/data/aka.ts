@@ -6,11 +6,11 @@
 export type Aka = { names: string[]; search?: string[]; note?: string };
 
 export const SPECIES_AKA: Record<string, Aka> = {
-  'tyrannosaurus-rex': { names: ['tyrant lizard king'], search: ['T. rex', 'T-rex', 'Trex'] },
+  'tyrannosaurus-rex': { names: [], search: ['T. rex', 'T-rex', 'Trex', 'tyrant lizard king'] },
   'nanotyrannus-lethaeus': { names: ['Jane'] },
   'spinosaurus-aegyptiacus': { names: ['Spino'] },
   'triceratops-horridus': { names: ['Trike'] },
-  'brontosaurus-excelsus': { names: ['thunder lizard'] },
+  'brontosaurus-excelsus': { names: [], search: ['thunder lizard'] },
   'apatosaurus-ajax': {
     names: ['Brontosaurus'],
     note: 'For about a century Brontosaurus was treated as a synonym of Apatosaurus. A 2015 study revived Brontosaurus as its own genus, which PaleoDex follows.',
@@ -46,13 +46,10 @@ export const SPECIES_AKA: Record<string, Aka> = {
   'kaprosuchus-saharicus': { names: ['BoarCroc'] },
   'laganosuchus-thaumastos': { names: ['PancakeCroc'] },
   'araripesuchus-wegeneri': { names: ['DogCroc'] },
-  'deinosuchus-riograndensis': { names: ['terror crocodile'] },
+  'deinosuchus-riograndensis': { names: [], search: ['terror crocodile'] },
   'titanoboa-cerrejonensis': { names: ['giant snake'] },
   'varanus-priscus': { names: ['Megalania prisca', 'giant goanna'], note: 'Long known as Megalania prisca; it is now placed in Varanus with living monitor lizards.' },
-  'basilosaurus-isis': {
-    names: ['king lizard'],
-    note: 'Its name means “king lizard”: the first bones were thought to be a giant reptile. It was an early whale.',
-  },
+  'basilosaurus-isis': { names: [], search: ['king lizard'] },
   'livyatan-melvillei': { names: ['Leviathan melvillei'], note: 'First named Leviathan in 2010, then renamed Livyatan because the name Leviathan was already taken.' },
   'odobenocetops-peruvianus': { names: ['walrus whale'] },
   'smilodon-fatalis': {
@@ -91,12 +88,13 @@ export const SPECIES_AKA: Record<string, Aka> = {
     names: ['Indricotherium', 'Baluchitherium', 'giant rhino'],
     note: 'Indricotherium and Baluchitherium are often treated as synonyms of Paraceratherium, though some researchers keep Indricotherium separate.',
   },
-  'megacerops-coloradensis': { names: ['Brontotherium', 'thunder beast'], note: 'Brontotherium is a synonym of Megacerops.' },
+  'megacerops-coloradensis': { names: ['Brontotherium'], search: ['thunder beast'], note: 'Brontotherium is a synonym of Megacerops.' },
   'daeodon-shoshonensis': { names: ['Dinohyus', 'hell pig', 'terminator pig'], note: 'Dinohyus is a synonym. Despite the nickname, entelodonts were not pigs.' },
   'archaeotherium-mortoni': { names: ['hell pig'] },
   'gastornis-giganteus': { names: ['Diatryma'], note: 'North American fossils were long called Diatryma; they are now placed in Gastornis.' },
   'eohippus-angustidens': {
-    names: ['Hyracotherium', 'dawn horse'],
+    names: ['Hyracotherium'],
+    search: ['dawn horse'],
     note: 'Often called Hyracotherium, a name now usually kept for a European animal outside the horse family.',
   },
   'australopithecus-afarensis': { names: ['Lucy'] },
@@ -112,7 +110,7 @@ export const SPECIES_AKA: Record<string, Aka> = {
   'stupendemys-geographicus': { names: ['giant turtle'] },
   'arthropleura-armata': { names: ['giant millipede'] },
   'meganeura-monyi': { names: ['giant dragonfly'], note: 'Not a true dragonfly: a griffinfly, from an older related group.' },
-  'anomalocaris-canadensis': { names: ['abnormal shrimp'] },
+  'anomalocaris-canadensis': { names: [], search: ['abnormal shrimp'] },
 };
 
 export const CLADE_AKA: Record<string, Aka> = {

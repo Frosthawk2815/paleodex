@@ -61,6 +61,8 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
         {species.name}
       </Text>
       {!!species.common && <Text style={info.subtitle}>{species.common}</Text>}
+      {meaning && <Text style={info.meta}>Name means: {nameMeaningText(meaning)}</Text>}
+      {!!meaning?.notes.length && <Text style={info.note}>{meaning.notes.join(' ')}</Text>}
       {!!species.aka?.length && <Text style={info.meta}>Also called {species.aka.join(', ')}</Text>}
       {!!species.akaNote && <Text style={info.note}>{species.akaNote}</Text>}
 
@@ -218,22 +220,10 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
             </>
           )}
 
-          {(species.facts || meaning) && (
+          {species.facts && (
             <View style={info.facts}>
-              {meaning && (
-                <View style={info.factRow}>
-                  <Text style={info.factLabel}>Name means</Text>
-                  <Text style={info.factValue}>{nameMeaningText(meaning)}</Text>
-                </View>
-              )}
-              {!!meaning?.notes.length && (
-                <View style={info.factRow}>
-                  <Text style={info.factLabel}>About the name</Text>
-                  <Text style={info.factValue}>{meaning.notes.join(' ')}</Text>
-                </View>
-              )}
-              {(species.facts ?? [])
-                // A "Name means" fact is replaced by the translation above.
+              {species.facts
+                // A "Name means" fact is replaced by the translation under the name.
                 .filter((f) => !(meaning && /^name means$/i.test(f.label)))
                 .map((f) => (
                   <View key={f.label} style={info.factRow}>

@@ -19,10 +19,10 @@ export function nameMeaning(s: Species): NameMeaning | null {
   };
 }
 
-// "Tyrannosaurus: “tyrant lizard”; rex: “king”"
+// "Tyrannosaurus “tyrant lizard” · rex “king”"
 export function nameMeaningText(m: NameMeaning): string {
   const parts: string[] = [];
-  if (m.genusMeaning) parts.push(`${m.genus}: “${m.genusMeaning}”`);
-  if (m.epithet && m.epithetMeaning) parts.push(`${m.epithet}: “${m.epithetMeaning}”`);
-  return parts.join('; ');
+  if (m.genusMeaning) parts.push(`${m.genus} “${m.genusMeaning}”`);
+  if (m.epithet && m.epithetMeaning) parts.push(`${m.epithet} “${m.epithetMeaning}”`);
+  return parts.join(' · ');
 }
