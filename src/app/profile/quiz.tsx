@@ -13,7 +13,7 @@ import { useOwnPicture } from '@/lib/user-photos';
 
 type Stage = { kind: 'menu' } | { kind: 'setup' } | { kind: 'play'; questions: Question[]; index: number; chosen: number | null; score: number; hidden: number[] } | { kind: 'done'; score: number; total: number; best: boolean };
 
-// The quiz: choose solo play or a Bone War game with a friend, then for solo play a category
+// The quiz: choose solo play, a Bone War game with a friend or a Peer Review game with a group, then for solo play a category
 // and a difficulty, then answer ten questions built from PaleoDex's own data.
 export default function QuizScreen() {
   const st = useProfileStyles();
@@ -54,6 +54,14 @@ export default function QuizScreen() {
           <View style={st.rowText}>
             <Text style={st.rowTitle}>Bone War</Text>
             <Text style={st.rowSub}>Play a friend on another phone with a battle code</Text>
+          </View>
+          <Text style={st.chevron}>›</Text>
+        </Pressable>
+        <Pressable onPress={() => router.push('/profile/peer-review')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
+          <Text style={{ fontSize: 28 }}>🏟️</Text>
+          <View style={st.rowText}>
+            <Text style={st.rowTitle}>Peer Review</Text>
+            <Text style={st.rowSub}>A group game for 3 to 30 players, with a leaderboard after each round</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>

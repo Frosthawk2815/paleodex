@@ -32,6 +32,7 @@ function Screens() {
         <Stack.Screen name="profile/places" options={{ title: 'Places' }} />
         <Stack.Screen name="profile/quiz" options={{ title: 'Quiz' }} />
         <Stack.Screen name="profile/battle" options={{ title: 'Bone War' }} />
+        <Stack.Screen name="profile/peer-review" options={{ title: 'Peer Review' }} />
         <Stack.Screen name="profile/settings" options={{ title: 'Settings' }} />
         <Stack.Screen name="profile/edit" options={{ title: 'Edit profile' }} />
       </Stack>
