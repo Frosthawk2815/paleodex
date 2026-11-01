@@ -235,6 +235,9 @@ export const GENUS_MEANINGS: Record<string, Meaning> = {
   // ---- Trilobites ----
   Isotelus: { meaning: 'equal ends', note: 'From its head and tail shields, which are much the same size and shape.' },
   Ceraurus: 'horn tail',
+  Dinofelis: 'terrible cat',
+  Chasmaporthetes: 'canyon runner',
+  Stegodon: 'roofed tooth',
   // ---- Synapsids ----
   Dimetrodon: 'two measures of teeth',
   Edaphosaurus: 'pavement lizard',
@@ -317,6 +320,8 @@ export const SPECIES_MEANINGS: Record<string, Meaning> = {
   'hapalochlaena-lunulata': 'crescent-marked',
   'thaumoctopus-mimicus': 'mimic',
   'isotelus-gigas': 'giant',
+  'crocodylus-anthropophagus': 'man-eating',
+  'homo-habilis': { meaning: 'handy', note: 'It was thought to have made the stone tools found with it at Olduvai.' },
   'mekosuchus-inexpectatus': { meaning: 'unexpected', note: 'No crocodiles had been known from New Caledonia before its bones were found.' },
 };
 
