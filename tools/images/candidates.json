@@ -1201,6 +1201,19 @@
   "article": "https://en.wikipedia.org/wiki/Mantled_howler",
   "scope": "species"
  },
+ "altirhinus-kurzanovi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Altirhinus_kurzanovi.JPG/960px-Altirhinus_kurzanovi.JPG",
+  "width": 800,
+  "height": 530,
+  "artist": "Ghedoghedo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Altirhinus_kurzanovi.JPG",
+  "file": "Altirhinus_kurzanovi.JPG",
+  "article": "https://en.wikipedia.org/wiki/Altirhinus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "alvarezsaurus-calvoi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Alvarezsaurus.jpg/960px-Alvarezsaurus.jpg",
   "width": 800,
@@ -6630,6 +6643,19 @@
   "file": "Hexaprotodon_liberiensis_in_Edinburgh_Zoo.JPG",
   "article": "https://en.wikipedia.org/wiki/Pygmy_hippopotamus",
   "scope": "species"
+ },
+ "choyrodon-barsboldi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Choyrodon_skull.jpg/500px-Choyrodon_skull.jpg",
+  "width": 500,
+  "height": 611,
+  "artist": "Terry A. Gates",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Choyrodon_skull.jpg",
+  "file": "Choyrodon_skull.jpg",
+  "article": "https://en.wikipedia.org/wiki/Choyrodon",
+  "scope": "genus",
+  "kind": "fossil"
  },
  "chrotogale-owstoni": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Chrotogale_owstoni_PWP.jpg/960px-Chrotogale_owstoni_PWP.jpg",
@@ -15041,6 +15067,19 @@
   "scope": "genus",
   "kind": "skeletal"
  },
+ "khurendukhosaurus-orlovi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Khurendukhosaurus.jpg/960px-Khurendukhosaurus.jpg",
+  "width": 800,
+  "height": 436,
+  "artist": "Matsumoto, R., Tsogtbaatar, K., Ishigaki, S., Tsogtbaatar, C., Enkhtaivan, Z., and Evans, S.E.",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Khurendukhosaurus.jpg",
+  "file": "Khurendukhosaurus.jpg",
+  "article": "https://en.wikipedia.org/wiki/Khurendukhosaurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "kimmerosaurus-langhami": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Kimmerosaurus.png/960px-Kimmerosaurus.png",
   "width": 800,
@@ -22507,6 +22546,19 @@
   "article": "https://en.wikipedia.org/wiki/Greater_flamingo",
   "scope": "species"
  },
+ "pholidosaurus-schaumburgensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Pholidosaurus.jpg/960px-Pholidosaurus.jpg",
+  "width": 800,
+  "height": 314,
+  "artist": "FunkMonk",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pholidosaurus.jpg",
+  "file": "Pholidosaurus.jpg",
+  "article": "https://en.wikipedia.org/wiki/Pholidosaurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "phorusrhacos-longissimus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Phorusrhacos_skeletal_based_on_MPEF-PV.png/960px-Phorusrhacos_skeletal_based_on_MPEF-PV.png",
   "width": 800,
@@ -28253,6 +28305,19 @@
   "article": "https://en.wikipedia.org/wiki/White-lipped_peccary",
   "scope": "species"
  },
+ "tchoiria-namsarai": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Tchoiria_skeleton.PNG/960px-Tchoiria_skeleton.PNG",
+  "width": 800,
+  "height": 600,
+  "artist": "Rodrigo Mundaca",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tchoiria_skeleton.PNG",
+  "file": "Tchoiria_skeleton.PNG",
+  "article": "https://en.wikipedia.org/wiki/Tchoiria",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "teleoceras-major": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Teleoceras_Horsfall.jpg/960px-Teleoceras_Horsfall.jpg",
   "width": 800,
@@ -30630,6 +30695,19 @@
   "article": "https://en.wikipedia.org/wiki/Xuanhanosaurus",
   "scope": "genus",
   "kind": "skeletal"
+ },
+ "xuanhuaceratops-niei": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Xuanhuaceratops_niei_head.png/960px-Xuanhuaceratops_niei_head.png",
+  "width": 800,
+  "height": 647,
+  "artist": "Mette Aumala",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Xuanhuaceratops_niei_head.png",
+  "file": "Xuanhuaceratops_niei_head.png",
+  "article": "https://en.wikipedia.org/wiki/Xuanhuaceratops",
+  "scope": "genus",
+  "kind": "restoration"
  },
  "yabeinosaurus-tenuis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Yabeinosaurus-Beijing_Museum_of_Natural_History.jpg/960px-Yabeinosaurus-Beijing_Museum_of_Natural_History.jpg",
