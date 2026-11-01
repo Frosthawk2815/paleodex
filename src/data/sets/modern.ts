@@ -129,7 +129,7 @@ export const MODERN: DataSet = {
       id: 'homo-floresiensis',
       phylo: 1.5,
       name: 'Homo floresiensis',
-      common: 'Flores “hobbit”',
+      common: 'Flores Man',
       clade: 'hominidae',
       status: 'full',
       ageText: 'About 700,000 to 50,000 years ago',
