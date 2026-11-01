@@ -13,6 +13,7 @@ import { AddPhotoButton } from '@/components/user-photo-gallery';
 import { cladePath, eventById, familyOf, formationById, pastPointIndex, relativesOf, speciesById, trackwaysOf } from '@/lib/life';
 import { badgeBg } from '@/lib/events';
 import { rangeOf } from '@/lib/ranges';
+import { nameMeaning, nameMeaningText } from '@/lib/names';
 import { useUnitText } from '@/lib/profile';
 import { timeLabel } from '@/lib/time';
 
@@ -34,6 +35,7 @@ type Props = {
 export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onOpenEvent, onJumpRange, onJumpLastSeen }: Props) {
   const info = useInfoStyles();
   const u = useUnitText();
+  const meaning = nameMeaning(species);
   const [tab, setTab] = useState<'about' | 'relatives'>('about');
   const path = cladePath(species.clade);
   const family = familyOf(species);
@@ -216,14 +218,29 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
             </>
           )}
 
-          {species.facts && (
+          {(species.facts || meaning) && (
             <View style={info.facts}>
-              {species.facts.map((f) => (
-                <View key={f.label} style={info.factRow}>
-                  <Text style={info.factLabel}>{f.label}</Text>
-                  <Text style={info.factValue}>{u(f.value)}</Text>
+              {meaning && (
+                <View style={info.factRow}>
+                  <Text style={info.factLabel}>Name means</Text>
+                  <Text style={info.factValue}>{nameMeaningText(meaning)}</Text>
                 </View>
-              ))}
+              )}
+              {!!meaning?.notes.length && (
+                <View style={info.factRow}>
+                  <Text style={info.factLabel}>About the name</Text>
+                  <Text style={info.factValue}>{meaning.notes.join(' ')}</Text>
+                </View>
+              )}
+              {(species.facts ?? [])
+                // A "Name means" fact is replaced by the translation above.
+                .filter((f) => !(meaning && /^name means$/i.test(f.label)))
+                .map((f) => (
+                  <View key={f.label} style={info.factRow}>
+                    <Text style={info.factLabel}>{f.label}</Text>
+                    <Text style={info.factValue}>{u(f.value)}</Text>
+                  </View>
+                ))}
             </View>
           )}
 

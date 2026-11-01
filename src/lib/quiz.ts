@@ -6,6 +6,7 @@
 import { EVENTS, type HistoryEvent } from '@/data/events';
 import { CLADES, SPECIES, type Species } from '@/data/life';
 import { PERIODS } from '@/data/periods';
+import { GENUS_MEANINGS, meaningNote, meaningText, SPECIES_MEANINGS } from '@/data/name-meanings';
 import { SIZE_FACTS, type SizeFact } from '@/data/quiz-sizes';
 import { isModernSpecies } from '@/lib/era';
 import { cladePath, pastPointIndex, relativesOf, speciesInClade } from '@/lib/life';
@@ -168,6 +169,13 @@ const formationOf = (s: Species) =>
   s.formations.map((id) => EVENTS.find((e) => e.id === id)).find((e): e is HistoryEvent => !!e && e.kind === 'Rock formation');
 const speciesInFormation = (id: string) => SPECIES.filter((s) => s.formations.includes(id));
 
+// Name meanings that make good questions: not ones that just repeat the name (Albertosaurus,
+// "Alberta lizard"; Quetzalcoatlus, after Quetzalcoatl) or say where it is from.
+const giveaway = (name: string, meaning: string) => meaning.toLowerCase().includes(name.slice(0, 4).toLowerCase()) || /^(from|after) /.test(meaning);
+const GOOD_GENUS_MEANINGS = Object.entries(GENUS_MEANINGS).filter(([g, m]) => !giveaway(g, meaningText(m)));
+const GOOD_SPECIES_MEANINGS = Object.entries(SPECIES_MEANINGS).filter(([id, m]) => !giveaway(id.split('-').slice(1).join(' '), meaningText(m)));
+const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
+
 // ---------------------------------------------------------------------------------------------
 // Question types. Each takes a subject species (or nothing) and returns a question, or null if it
 // doesn't suit that subject.
@@ -308,6 +316,34 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       if (c.category.kind === 'period' || c.category.kind === 'mammals' || isDinosaur(s) || alsoTrue(s).has('A dinosaur') || !kindOf(s)) return null;
       const dinos = sample((c.category.kind === 'dinosaurs' ? c.pool : SPECIES).filter((o) => isDinosaur(o) && FAMOUS.has(o.id)), 3);
       return build(`notdino:${s.id}`, 'Which of these is not a dinosaur?', label(s), dinos.map(label), `${label(s)} was ${lower(kindOf(s)!)}, not a dinosaur.`, {
+        speciesId: s.id,
+      });
+    },
+  },
+  // What does its name mean?
+  {
+    levels: [1, 2, 3, 4, 5],
+    make: (s) => {
+      const genus = s.name.split(' ')[0]!;
+      const m = GENUS_MEANINGS[genus];
+      if (!m || giveaway(genus, meaningText(m))) return null;
+      const right = meaningText(m);
+      const wrong = sample(GOOD_GENUS_MEANINGS.map(([, o]) => meaningText(o)).filter((t) => t !== right), 3).map(cap);
+      const note = meaningNote(m);
+      return build(`meaning:${genus}`, `What does the name ${genus} mean?`, cap(right), wrong, `${genus} means “${right}”.${note ? ` ${note}` : ''}`, { speciesId: s.id });
+    },
+  },
+  // What does its species name mean? (rex, "king")
+  {
+    levels: [2, 3, 4, 5],
+    make: (s) => {
+      const m = SPECIES_MEANINGS[s.id];
+      const epithet = s.name.split(' ').slice(1).join(' ');
+      if (!m || !epithet || giveaway(epithet, meaningText(m))) return null;
+      const right = meaningText(m);
+      const wrong = sample(GOOD_SPECIES_MEANINGS.map(([, o]) => meaningText(o)).filter((t) => t !== right), 3).map(cap);
+      const note = meaningNote(m);
+      return build(`epithet:${s.id}`, `In the name ${s.name}, what does “${epithet}” mean?`, cap(right), wrong, `“${epithet}” means “${right}”.${note ? ` ${note}` : ''}`, {
         speciesId: s.id,
       });
     },
