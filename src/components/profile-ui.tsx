@@ -12,13 +12,14 @@ import { imageOf } from '@/lib/images';
 import { cladeById, speciesById } from '@/lib/life';
 import { type Avatar, type OpenRequest, type PageRef, useProfile, useTextScale } from '@/lib/profile';
 import { applyFonts } from '@/lib/theme';
+import { useOwnPicture } from '@/lib/user-photos';
 
 // What to show for a saved page: its name, a short description and a picture if it has one.
 export function pageInfo(page: PageRef): { title: string; subtitle: string; imageId?: string } | null {
   if (page.kind === 'species') {
     const s = speciesById(page.id);
     if (!s) return null;
-    return { title: s.common || s.name, subtitle: s.common ? s.name : 'Species', imageId: imageOf(s.id) ? s.id : undefined };
+    return { title: s.common || s.name, subtitle: s.common ? s.name : 'Species', imageId: s.id };
   }
   if (page.kind === 'clade') {
     const c = cladeById(page.id);
@@ -72,7 +73,9 @@ function makeStyles(p: Palette, s: number) {
 }
 
 // The picture behind a profile picture: a photo they uploaded or a species picture.
-export const avatarUri = (avatar: Avatar) => (avatar?.kind === 'upload' ? avatar.uri : avatar?.kind === 'species' ? imageOf(avatar.id)?.thumb : undefined);
+// A species picture is the user's own photo of it if they chose one (pass ownPicture from useOwnPicture).
+export const avatarUri = (avatar: Avatar, ownPicture?: (id: string) => string | undefined) =>
+  avatar?.kind === 'upload' ? avatar.uri : avatar?.kind === 'species' ? (ownPicture?.(avatar.id) ?? imageOf(avatar.id)?.thumb) : undefined;
 
 // Up to two initials from a name.
 export const initialsOf = (name: string) =>
@@ -87,7 +90,8 @@ export const initialsOf = (name: string) =>
 // The user's profile picture: a species picture, a photo they uploaded, or their initials.
 export function AvatarImage({ avatar, name, size }: { avatar: Avatar; name: string; size: number }) {
   const palette = usePalette();
-  const uri = avatarUri(avatar);
+  const ownPicture = useOwnPicture();
+  const uri = avatarUri(avatar, ownPicture);
   const initials = initialsOf(name) || '🦖';
   const round = { width: size, height: size, borderRadius: size / 2 };
   if (uri) {
@@ -104,9 +108,10 @@ export function AvatarImage({ avatar, name, size }: { avatar: Avatar; name: stri
 export function PageRow({ page, onPress, onRemove }: { page: PageRef; onPress: () => void; onRemove?: () => void }) {
   const st = useProfileStyles();
   const palette = usePalette();
+  const ownPicture = useOwnPicture();
   const item = pageInfo(page);
   if (!item) return null;
-  const thumb = item.imageId ? imageOf(item.imageId)?.thumb : undefined;
+  const thumb = item.imageId ? (ownPicture(item.imageId) ?? imageOf(item.imageId)?.thumb) : undefined;
   return (
     <View style={st.row}>
       <Pressable

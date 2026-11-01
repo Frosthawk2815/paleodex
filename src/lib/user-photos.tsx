@@ -143,3 +143,16 @@ export function useMainUserPhoto(speciesId: string): UserPhoto | undefined {
   const { photos, mainId } = useUserPhotos().photosOf(speciesId);
   return mainId ? photos.find((p) => p.id === mainId) : undefined;
 }
+
+// A function giving the photo the user chose to show for a species (its "main" photo), if any.
+// Everywhere a species picture appears, this replaces PaleoDex's picture, as on species pages.
+export function useOwnPicture(): (speciesId: string) => string | undefined {
+  const { photosOf } = useUserPhotos();
+  return useCallback(
+    (speciesId: string) => {
+      const { photos, mainId } = photosOf(speciesId);
+      return mainId ? photos.find((p) => p.id === mainId)?.uri : undefined;
+    },
+    [photosOf],
+  );
+}

@@ -8,7 +8,7 @@ import { usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
 import { speciesById } from '@/lib/life';
 import { useProfile } from '@/lib/profile';
-import { useUserPhotos } from '@/lib/user-photos';
+import { useOwnPicture, useUserPhotos } from '@/lib/user-photos';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -36,9 +36,10 @@ export default function EditProfileScreen() {
   const [photoMessage, setPhotoMessage] = useState('');
 
   // Favourite species that have a picture can be used as the profile picture.
-  const pictures = profile.favourites.filter((f) => f.kind === 'species' && imageOf(f.id)).map((f) => f.id);
-  // ...and so can the user's own photos of species.
+  // (Shown with the user's own photo of the species if they chose one.)
   const { allPhotos } = useUserPhotos();
+  const ownPicture = useOwnPicture();
+  const pictures = profile.favourites.filter((f) => f.kind === 'species' && (ownPicture(f.id) || imageOf(f.id))).map((f) => f.id);
 
   const saveDate = () => {
     if (!day && !month && !year) {
@@ -153,7 +154,7 @@ export default function EditProfileScreen() {
                 accessibilityLabel={`Use ${s?.common || s?.name} as your profile picture`}
                 accessibilityState={{ selected: on }}
                 style={({ pressed }) => [{ borderRadius: 40, borderWidth: 3, borderColor: on ? '#2F7DE1' : 'transparent' }, pressed && st.pressed]}>
-                <Image source={{ uri: imageOf(id)!.thumb }} style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: palette.track }} contentFit="cover" />
+                <Image source={{ uri: ownPicture(id) ?? imageOf(id)?.thumb }} style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: palette.track }} contentFit="cover" />
               </Pressable>
             );
           })}

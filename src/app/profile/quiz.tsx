@@ -9,7 +9,7 @@ import { usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
 import { useProfile, useUnitText } from '@/lib/profile';
 import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, fiftyFifty, makeRound, type Question, replacementQuestion } from '@/lib/quiz';
-import { useUserPhotos } from '@/lib/user-photos';
+import { useOwnPicture } from '@/lib/user-photos';
 
 type Stage = { kind: 'menu' } | { kind: 'setup' } | { kind: 'play'; questions: Question[]; index: number; chosen: number | null; score: number; hidden: number[] } | { kind: 'done'; score: number; total: number; best: boolean };
 
@@ -19,7 +19,7 @@ export default function QuizScreen() {
   const st = useProfileStyles();
   const palette = usePalette();
   const { profile, update } = useProfile();
-  const { photosOf } = useUserPhotos();
+  const ownPicture = useOwnPicture();
   const u = useUnitText();
   const [stage, setStage] = useState<Stage>({ kind: 'menu' });
   const [category, setCategory] = useState<Category>({ kind: 'dinosaurs' });
@@ -28,11 +28,7 @@ export default function QuizScreen() {
   const [used, setUsed] = useState({ fifty: false, refresh: false });
 
   // The user's own photo of a species if they have one, otherwise PaleoDex's picture.
-  const imageFor = (id: string) => {
-    const mine = photosOf(id);
-    const own = mine.photos.find((p) => p.id === mine.mainId) ?? mine.photos[0];
-    return own?.uri ?? imageOf(id)?.thumb;
-  };
+  const imageFor = (id: string) => ownPicture(id) ?? imageOf(id)?.thumb;
   const bestFor = (c: Category, d: Difficulty) => profile.quizBest[`${categoryKey(c)}:${d}`];
 
   const start = () => {

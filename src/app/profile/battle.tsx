@@ -12,6 +12,7 @@ import { imageOf } from '@/lib/images';
 import { useProfile } from '@/lib/profile';
 import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, fiftyFifty, makeRound, type Question, replacementQuestion, switcherooQuiz } from '@/lib/quiz';
 import { toImperial } from '@/lib/units';
+import { useOwnPicture } from '@/lib/user-photos';
 
 type Pick = { category: Category; level: Difficulty };
 type Role = 'host' | 'guest';
@@ -64,6 +65,14 @@ export default function BattleScreen() {
   const st = useProfileStyles();
   const palette = usePalette();
   const { profile, reduceMotion } = useProfile();
+  const ownPicture = useOwnPicture();
+  // Questions come from the host with PaleoDex's pictures; each player sees their own photo of the
+  // animal instead, if they have one (photos never leave the phone).
+  const withMyPhoto = (q: Question): Question => {
+    if (!q.image || !q.speciesId) return q;
+    const own = ownPicture(q.speciesId);
+    return own ? { ...q, image: own } : q;
+  };
   const [stage, setStage] = useState<Stage>({ kind: 'start' });
   const [code, setCode] = useState('');
   const [copied, setCopied] = useState(false);
@@ -526,7 +535,7 @@ export default function BattleScreen() {
     const choose = answer;
     return (
       <QuestionView
-        q={q}
+        q={withMyPhoto(q)}
         index={stage.index}
         total={total}
         score={stage.score}

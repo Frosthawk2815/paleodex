@@ -29,6 +29,7 @@ import { extinctionAt } from '@/lib/extinctions';
 import { cladeEra, type Era, eventEra, speciesEra } from '@/lib/era';
 import { cladeById, formationById, pastPointIndex, speciesById } from '@/lib/life';
 import { birthMaOf, type PageRef, useProfile } from '@/lib/profile';
+import { useOwnPicture } from '@/lib/user-photos';
 import { lastSeenJumpMa, phaseJumpMa, rangeOf } from '@/lib/ranges';
 import { contextAt, timeLabel } from '@/lib/time';
 
@@ -53,13 +54,14 @@ export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
   const palette = usePalette();
   const { profile, addRecent, request, setRequest, reduceMotion } = useProfile();
+  const ownPicture = useOwnPicture();
   // The user's birthplace and home, shown on the globe.
   const userPlaces = useMemo(
     () => [
       ...(profile.birthplace ? [{ key: 'birthplace', label: 'Born here', color: '#FFD54F', place: profile.birthplace }] : []),
       ...(profile.home ? [{ key: 'home', label: 'Home', color: '#4FC3F7', place: profile.home }] : []),
-    ].map((u) => ({ ...u, image: avatarUri(profile.avatar), initials: initialsOf(profile.name) || '★' })),
-    [profile.birthplace, profile.home, profile.avatar, profile.name],
+    ].map((u) => ({ ...u, image: avatarUri(profile.avatar, ownPicture), initials: initialsOf(profile.name) || '★' })),
+    [profile.birthplace, profile.home, profile.avatar, profile.name, ownPicture],
   );
   const birthMa = birthMaOf(profile);
   // Height of the visible page; the globe section fills it. Measured, because the window size
