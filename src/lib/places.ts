@@ -48,6 +48,8 @@ export const UNSAFE_SITES: Record<string, string> = {
   shishugou: 'Junggar Basin desert, Xinjiang',
   xiagou: 'Remote Gobi in Gansu',
   bissekty: 'Kyzylkum Desert, expedition only',
+  'khuren-dukh': 'Remote Gobi, expedition only',
+  obernkirchen: 'Working sandstone quarry, not open to the public',
   madygen: 'Batken region, Kyrgyzstan: near the disputed Tajik border, scene of armed clashes in 2021 and 2022',
   sakamena: 'Remote south-western Madagascar with few roads',
   manda: 'Remote Ruhuhu Basin, Tanzania, with no roads',

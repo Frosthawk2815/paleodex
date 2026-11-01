@@ -249,6 +249,8 @@ export const GENUS_MEANINGS: Record<string, Meaning> = {
   Anancus: { meaning: 'without a bend', note: 'From its long, straight tusks.' },
   Yi: { meaning: 'wing', note: 'Mandarin; with its species name qi (“strange”) it reads “strange wing”, the shortest name of any dinosaur.' },
   Micropachycephalosaurus: { meaning: 'small thick-headed lizard', note: 'Named as a tiny pachycephalosaur, a group it probably does not belong to.' },
+  Zavacephale: { meaning: 'root head', note: 'From the Tibetan zava, “root” or “origin”, as the oldest dome-headed dinosaur.' },
+  Stenopelix: 'narrow pelvis',
   // ---- Synapsids ----
   Dimetrodon: 'two measures of teeth',
   Edaphosaurus: 'pavement lizard',
@@ -331,6 +333,7 @@ export const SPECIES_MEANINGS: Record<string, Meaning> = {
   'hapalochlaena-lunulata': 'crescent-marked',
   'thaumoctopus-mimicus': 'mimic',
   'isotelus-gigas': 'giant',
+  'zavacephale-rinpoche': { meaning: 'precious one', note: 'A Tibetan title, given because the skeleton was found inside a rock like a gem.' },
   'yi-qi': 'strange',
   'mammuthus-exilis': 'small',
   'mammuthus-meridionalis': 'southern',
