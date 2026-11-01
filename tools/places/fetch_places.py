@@ -1,6 +1,6 @@
-"""Look up each museum and zoo in places_list.py on English Wikipedia: its coordinates, and for zoos
-the accrediting association its article names. Writes src/data/places.json and prints anything
-that was dropped, for review.
+"""Look up each museum and zoo in places_list.py (by its English Wikipedia article) on Wikidata: its
+coordinates, and for zoos the associations it is a member of or accredited by. Writes
+src/data/places.json and prints anything that was dropped, for review.
 
 Run: python3 -I tools/places/fetch_places.py
 """
@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
-from places_list import LIMIT, MUSEUMS, TIERS, ZOOS  # noqa: E402
+from places_list import ACCREDITED, LIMIT, MUSEUMS, TIERS, ZOOS  # noqa: E402
 
 UA = 'PaleoDex/1.0 (educational app; https://github.com/Frosthawk2815/paleodex)'
 API = 'https://en.wikipedia.org/w/api.php'
@@ -49,37 +49,56 @@ def get(params, tries=20):
     raise SystemExit('Wikipedia did not answer')
 
 
-CACHE = Path(__file__).parent / 'cache.json'
+SPARQL = 'https://query.wikidata.org/sparql'
+
+
+def sparql(query):
+    body = urllib.parse.urlencode({'query': query, 'format': 'json'}).encode()
+    for i in range(10):
+        try:
+            req = urllib.request.Request(SPARQL, data=body, headers={'User-Agent': UA, 'Accept': 'application/sparql-results+json',
+                                                                   'Content-Type': 'application/x-www-form-urlencoded'})
+            with urllib.request.urlopen(req, timeout=120) as r:
+                return json.load(r)['results']['bindings']
+        except Exception as e:
+            # Wikidata may allow as little as one query a minute.
+            print(f'  retry in 70s ({e})', file=sys.stderr)
+            time.sleep(70)
+    raise SystemExit('Wikidata did not answer')
 
 
 def lookup(titles):
-    """Coordinates and article text for each title, cached in cache.json so a run that is cut off
-    by rate limits can pick up where it stopped."""
-    cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
-    todo = [t for t in titles if t not in cache]
-    for i in range(0, len(todo), 8):
-        batch = todo[i:i + 8]
-        d = get({'action': 'query', 'titles': '|'.join(batch), 'prop': 'coordinates|revisions', 'rvprop': 'content',
-                 'rvslots': 'main', 'redirects': 1, 'colimit': 'max', 'coprimary': 'primary'})
-        q = d['query']
-        back = {t: t for t in batch}
-        for m in q.get('normalized', []) + q.get('redirects', []):
-            for k, v in list(back.items()):
-                if v == m['from']:
-                    back[k] = m['to']
-        pages = {p['title']: p for p in q['pages']}
-        for t in batch:
-            p = pages.get(back[t])
-            if not p or p.get('missing'):
-                cache[t] = None
+    """For each article title: its Wikidata coordinates and, as 'text', the names of the
+    associations it is a member of (P463) or accredited by (P5514), for the accreditation check."""
+    out = {t: None for t in titles}
+    # All in one query, as Wikidata may allow only one a minute.
+    for i in range(0, len(titles), 250):
+        batch = titles[i:i + 250]
+        values = ' '.join(json.dumps(t, ensure_ascii=False) + '@en' for t in batch)
+        rows = sparql(f"""
+SELECT ?title ?coord ?orgLabel ?via WHERE {{
+  VALUES ?title {{ {values} }}
+  # The English Wikipedia article of that name, or failing that an item with it as its English name.
+  {{ ?article schema:about ?item; schema:isPartOf <https://en.wikipedia.org/>; schema:name ?title. BIND("article" AS ?via) }}
+  UNION {{ ?item rdfs:label ?title. ?item wdt:P625 []. BIND("label" AS ?via) }}
+  OPTIONAL {{ ?item p:P625 ?cs. ?cs ps:P625 ?coord. FILTER NOT EXISTS {{ ?cs wikibase:rank wikibase:DeprecatedRank }} }}
+  OPTIONAL {{ ?item wdt:P463|wdt:P5514 ?org. ?org rdfs:label ?orgLabel. FILTER(lang(?orgLabel) = "en") }}
+}}""")
+        # Rows found through the article come first and win over a match by name.
+        rows.sort(key=lambda r: r['via']['value'] != 'article')
+        for r in rows:
+            t = r['title']['value']
+            cur = out.get(t) or {'title': t, 'coords': None, 'text': '', 'via': r['via']['value']}
+            if cur['via'] == 'article' and r['via']['value'] == 'label':
                 continue
-            text = p.get('revisions', [{}])[0].get('slots', {}).get('main', {}).get('content', '')
-            co = (p.get('coordinates') or [None])[0]
-            cache[t] = {'title': p['title'], 'coords': co, 'text': text}
-        CACHE.write_text(json.dumps(cache))
-        print(f'  {min(i + 8, len(todo))}/{len(todo)} looked up', file=sys.stderr, flush=True)
-        time.sleep(45)
-    return {t: cache.get(t) for t in titles}
+            if 'coord' in r and not cur['coords']:
+                lon, lat = re.match(r'Point\(([-\d.eE]+) ([-\d.eE]+)\)', r['coord']['value']).groups()
+                cur['coords'] = {'lat': float(lat), 'lon': float(lon)}
+            if 'orgLabel' in r:
+                cur['text'] += ' | ' + r['orgLabel']['value']
+            out[t] = cur
+        time.sleep(2)
+    return out
 
 
 def slug(s):
@@ -105,6 +124,7 @@ def main():
             note = None
             if kind == 'zoo':
                 found = [name for name, pat in ACCREDITATION if re.search(pat, p['text'])]
+                found += [a.strip() for a in ACCREDITED.get(title, '').split(',') if a.strip() and a.strip() not in found]
                 if not found:
                     dropped.append((kind, country, title, 'no accreditation found in article'))
                     continue

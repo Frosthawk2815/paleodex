@@ -1,1 +1,991 @@
-[]
+[
+ {
+  "id": "museum-american-museum-of-natural-history",
+  "kind": "museum",
+  "name": "American Museum of Natural History",
+  "country": "United States",
+  "lat": 40.78083,
+  "lon": -73.97444
+ },
+ {
+  "id": "museum-national-museum-of-natural-history",
+  "kind": "museum",
+  "name": "National Museum of Natural History",
+  "country": "United States",
+  "lat": 38.8913,
+  "lon": -77.0259
+ },
+ {
+  "id": "museum-field-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Field Museum of Natural History",
+  "country": "United States",
+  "lat": 41.86628,
+  "lon": -87.61704
+ },
+ {
+  "id": "museum-royal-tyrrell-museum-of-palaeontology",
+  "kind": "museum",
+  "name": "Royal Tyrrell Museum of Palaeontology",
+  "country": "Canada",
+  "lat": 51.47917,
+  "lon": -112.79
+ },
+ {
+  "id": "museum-royal-ontario-museum",
+  "kind": "museum",
+  "name": "Royal Ontario Museum",
+  "country": "Canada",
+  "lat": 43.66757,
+  "lon": -79.39468
+ },
+ {
+  "id": "museum-canadian-museum-of-nature",
+  "kind": "museum",
+  "name": "Canadian Museum of Nature",
+  "country": "Canada",
+  "lat": 45.41278,
+  "lon": -75.68889
+ },
+ {
+  "id": "museum-national-natural-history-museum-of-china",
+  "kind": "museum",
+  "name": "National Natural History Museum of China",
+  "country": "China",
+  "lat": 39.88165,
+  "lon": 116.39365
+ },
+ {
+  "id": "museum-paleozoological-museum-of-china",
+  "kind": "museum",
+  "name": "Paleozoological Museum of China",
+  "country": "China",
+  "lat": 39.93625,
+  "lon": 116.32778
+ },
+ {
+  "id": "museum-shanghai-natural-history-museum",
+  "kind": "museum",
+  "name": "Shanghai Natural History Museum",
+  "country": "China",
+  "lat": 31.23354,
+  "lon": 121.48278
+ },
+ {
+  "id": "museum-moscow-paleontological-museum",
+  "kind": "museum",
+  "name": "Moscow Paleontological Museum",
+  "country": "Russia",
+  "lat": 55.62389,
+  "lon": 37.51389
+ },
+ {
+  "id": "museum-zoological-museum-of-the-zoological-institute-of-the-russian-academy-of-sciences",
+  "kind": "museum",
+  "name": "Zoological Museum of the Zoological Institute of the Russian Academy of Sciences",
+  "country": "Russia",
+  "lat": 59.9426,
+  "lon": 30.3056
+ },
+ {
+  "id": "museum-darwin-museum",
+  "kind": "museum",
+  "name": "Darwin Museum",
+  "country": "Russia",
+  "lat": 55.69068,
+  "lon": 37.56144
+ },
+ {
+  "id": "museum-national-museum-of-brazil",
+  "kind": "museum",
+  "name": "National Museum of Brazil",
+  "country": "Brazil",
+  "lat": -22.90583,
+  "lon": -43.22611
+ },
+ {
+  "id": "museum-museum-of-zoology-of-the-university-of-s-o-paulo",
+  "kind": "museum",
+  "name": "Museum of Zoology of the University of São Paulo",
+  "country": "Brazil",
+  "lat": -23.58806,
+  "lon": -46.61
+ },
+ {
+  "id": "museum-museu-paraense-em-lio-goeldi",
+  "kind": "museum",
+  "name": "Museu Paraense Emílio Goeldi",
+  "country": "Brazil",
+  "lat": -1.4525,
+  "lon": -48.47639
+ },
+ {
+  "id": "museum-australian-museum",
+  "kind": "museum",
+  "name": "Australian Museum",
+  "country": "Australia",
+  "lat": -33.8743,
+  "lon": 151.213
+ },
+ {
+  "id": "museum-melbourne-museum",
+  "kind": "museum",
+  "name": "Melbourne Museum",
+  "country": "Australia",
+  "lat": -37.80334,
+  "lon": 144.97144
+ },
+ {
+  "id": "museum-queensland-museum",
+  "kind": "museum",
+  "name": "Queensland Museum",
+  "country": "Australia",
+  "lat": -27.47317,
+  "lon": 153.01742
+ },
+ {
+  "id": "museum-indian-museum",
+  "kind": "museum",
+  "name": "Indian Museum",
+  "country": "India",
+  "lat": 22.55806,
+  "lon": 88.35083
+ },
+ {
+  "id": "museum-regional-museum-of-natural-history-bhopal",
+  "kind": "museum",
+  "name": "Regional Museum of Natural History, Bhopal",
+  "country": "India",
+  "lat": 23.21374,
+  "lon": 77.42615
+ },
+ {
+  "id": "museum-chhatrapati-shivaji-maharaj-vastu-sangrahalaya",
+  "kind": "museum",
+  "name": "Chhatrapati Shivaji Maharaj Vastu Sangrahalaya",
+  "country": "India",
+  "lat": 18.92667,
+  "lon": 72.83222
+ },
+ {
+  "id": "museum-natural-history-museum-london",
+  "kind": "museum",
+  "name": "Natural History Museum, London",
+  "country": "United Kingdom",
+  "lat": 51.49611,
+  "lon": -0.17611
+ },
+ {
+  "id": "museum-oxford-university-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Oxford University Museum of Natural History",
+  "country": "United Kingdom",
+  "lat": 51.75903,
+  "lon": -1.25642
+ },
+ {
+  "id": "museum-national-museum-of-scotland",
+  "kind": "museum",
+  "name": "National Museum of Scotland",
+  "country": "United Kingdom",
+  "lat": 55.94694,
+  "lon": -3.19
+ },
+ {
+  "id": "museum-museum-f-r-naturkunde-berlin",
+  "kind": "museum",
+  "name": "Museum für Naturkunde Berlin",
+  "country": "Germany",
+  "lat": 52.5302,
+  "lon": 13.3792
+ },
+ {
+  "id": "museum-palaeontological-museum-munich",
+  "kind": "museum",
+  "name": "Palaeontological Museum, Munich",
+  "country": "Germany",
+  "lat": 48.1476,
+  "lon": 11.5638
+ },
+ {
+  "id": "museum-jura-museum",
+  "kind": "museum",
+  "name": "Jura Museum",
+  "country": "Germany",
+  "lat": 48.89501,
+  "lon": 11.16861
+ },
+ {
+  "id": "museum-national-museum-of-natural-history-france",
+  "kind": "museum",
+  "name": "National Museum of Natural History, France",
+  "country": "France",
+  "lat": 48.84222,
+  "lon": 2.35611
+ },
+ {
+  "id": "museum-mus-um-de-toulouse",
+  "kind": "museum",
+  "name": "Muséum de Toulouse",
+  "country": "France",
+  "lat": 43.59306,
+  "lon": 1.44917
+ },
+ {
+  "id": "museum-mus-e-des-confluences",
+  "kind": "museum",
+  "name": "Musée des Confluences",
+  "country": "France",
+  "lat": 45.73235,
+  "lon": 4.81792
+ },
+ {
+  "id": "museum-la-plata-museum",
+  "kind": "museum",
+  "name": "La Plata Museum",
+  "country": "Argentina",
+  "lat": -34.909,
+  "lon": -57.93542
+ },
+ {
+  "id": "museum-bernardino-rivadavia-natural-sciences-argentine-museum",
+  "kind": "museum",
+  "name": "Bernardino Rivadavia Natural Sciences Argentine Museum",
+  "country": "Argentina",
+  "lat": -34.6048,
+  "lon": -58.4377
+ },
+ {
+  "id": "museum-ernesto-bachmann-paleontological-museum",
+  "kind": "museum",
+  "name": "Ernesto Bachmann Paleontological Museum",
+  "country": "Argentina",
+  "lat": -39.26076,
+  "lon": -68.78391
+ },
+ {
+  "id": "museum-national-museum-of-nature-and-science",
+  "kind": "museum",
+  "name": "National Museum of Nature and Science",
+  "country": "Japan",
+  "lat": 35.71632,
+  "lon": 139.77654
+ },
+ {
+  "id": "museum-fukui-prefectural-dinosaur-museum",
+  "kind": "museum",
+  "name": "Fukui Prefectural Dinosaur Museum",
+  "country": "Japan",
+  "lat": 36.08291,
+  "lon": 136.50667
+ },
+ {
+  "id": "museum-osaka-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Osaka Museum of Natural History",
+  "country": "Japan",
+  "lat": 34.61036,
+  "lon": 135.52261
+ },
+ {
+  "id": "museum-museo-civico-di-storia-naturale-di-milano",
+  "kind": "museum",
+  "name": "Museo Civico di Storia Naturale di Milano",
+  "country": "Italy",
+  "lat": 45.47278,
+  "lon": 9.20246
+ },
+ {
+  "id": "museum-la-specola",
+  "kind": "museum",
+  "name": "La Specola",
+  "country": "Italy",
+  "lat": 43.76463,
+  "lon": 11.24713
+ },
+ {
+  "id": "museum-national-museum-of-natural-sciences",
+  "kind": "museum",
+  "name": "National Museum of Natural Sciences",
+  "country": "Spain",
+  "lat": 40.44103,
+  "lon": -3.69028
+ },
+ {
+  "id": "museum-jurassic-museum-of-asturias",
+  "kind": "museum",
+  "name": "Jurassic Museum of Asturias",
+  "country": "Spain",
+  "lat": 43.50107,
+  "lon": -5.27421
+ },
+ {
+  "id": "museum-iziko-south-african-museum",
+  "kind": "museum",
+  "name": "Iziko South African Museum",
+  "country": "South Africa",
+  "lat": -33.92864,
+  "lon": 18.41522
+ },
+ {
+  "id": "museum-ditsong-national-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Ditsong National Museum of Natural History",
+  "country": "South Africa",
+  "lat": -25.75,
+  "lon": 28.19
+ },
+ {
+  "id": "museum-bogor-zoology-museum",
+  "kind": "museum",
+  "name": "Bogor Zoology Museum",
+  "country": "Indonesia",
+  "lat": -6.60365,
+  "lon": 106.79701
+ },
+ {
+  "id": "museum-museum-of-evolution-of-polish-academy-of-sciences",
+  "kind": "museum",
+  "name": "Museum of Evolution of Polish Academy of Sciences",
+  "country": "Poland",
+  "lat": 52.23167,
+  "lon": 21.00639
+ },
+ {
+  "id": "museum-ba-t-w-jurassic-park",
+  "kind": "museum",
+  "name": "Bałtów Jurassic Park",
+  "country": "Poland",
+  "lat": 51.0175,
+  "lon": 21.54861
+ },
+ {
+  "id": "museum-egyptian-geological-museum",
+  "kind": "museum",
+  "name": "Egyptian Geological Museum",
+  "country": "Egypt",
+  "lat": 29.9963,
+  "lon": 31.2286
+ },
+ {
+  "id": "museum-nairobi-national-museum",
+  "kind": "museum",
+  "name": "Nairobi National Museum",
+  "country": "Kenya",
+  "lat": -1.27404,
+  "lon": 36.8145
+ },
+ {
+  "id": "museum-national-museum-of-natural-history-at-the-national-academy-of-sciences-of-ukraine",
+  "kind": "museum",
+  "name": "National Museum of Natural History at the National Academy of Sciences of Ukraine",
+  "country": "Ukraine",
+  "lat": 50.44545,
+  "lon": 30.51489
+ },
+ {
+  "id": "museum-chilean-national-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Chilean National Museum of Natural History",
+  "country": "Chile",
+  "lat": -33.44217,
+  "lon": -70.68184
+ },
+ {
+  "id": "museum-museum-of-natural-history-lima",
+  "kind": "museum",
+  "name": "Museum of Natural History, Lima",
+  "country": "Peru",
+  "lat": -12.07744,
+  "lon": -77.03733
+ },
+ {
+  "id": "museum-national-museum-of-natural-history-manila",
+  "kind": "museum",
+  "name": "National Museum of Natural History (Manila)",
+  "country": "Philippines",
+  "lat": 14.58331,
+  "lon": 120.98219
+ },
+ {
+  "id": "museum-sirindhorn-museum",
+  "kind": "museum",
+  "name": "Sirindhorn Museum",
+  "country": "Thailand",
+  "lat": 16.69222,
+  "lon": 103.52389
+ },
+ {
+  "id": "museum-naturalis-biodiversity-center",
+  "kind": "museum",
+  "name": "Naturalis Biodiversity Center",
+  "country": "Netherlands",
+  "lat": 52.16472,
+  "lon": 4.47333
+ },
+ {
+  "id": "museum-natural-history-museum-vienna",
+  "kind": "museum",
+  "name": "Natural History Museum, Vienna",
+  "country": "Austria",
+  "lat": 48.20513,
+  "lon": 16.35993
+ },
+ {
+  "id": "museum-natural-history-museum-of-bern",
+  "kind": "museum",
+  "name": "Natural History Museum of Bern",
+  "country": "Switzerland",
+  "lat": 46.94214,
+  "lon": 7.44891
+ },
+ {
+  "id": "museum-swedish-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Swedish Museum of Natural History",
+  "country": "Sweden",
+  "lat": 59.36889,
+  "lon": 18.05361
+ },
+ {
+  "id": "museum-natural-history-museum-of-denmark",
+  "kind": "museum",
+  "name": "Natural History Museum of Denmark",
+  "country": "Denmark",
+  "lat": 55.6874,
+  "lon": 12.5769
+ },
+ {
+  "id": "museum-finnish-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Finnish Museum of Natural History",
+  "country": "Finland",
+  "lat": 60.17139,
+  "lon": 24.93139
+ },
+ {
+  "id": "museum-museu-da-lourinh",
+  "kind": "museum",
+  "name": "Museu da Lourinhã",
+  "country": "Portugal",
+  "lat": 39.242,
+  "lon": -9.3133
+ },
+ {
+  "id": "museum-national-museum",
+  "kind": "museum",
+  "name": "National Museum",
+  "country": "Czechia",
+  "lat": 50.07984,
+  "lon": 14.43042
+ },
+ {
+  "id": "museum-hungarian-natural-history-museum",
+  "kind": "museum",
+  "name": "Hungarian Natural History Museum",
+  "country": "Hungary",
+  "lat": 47.48222,
+  "lon": 19.08556
+ },
+ {
+  "id": "museum-goulandris-natural-history-museum",
+  "kind": "museum",
+  "name": "Goulandris Natural History Museum",
+  "country": "Greece",
+  "lat": 38.07437,
+  "lon": 23.81466
+ },
+ {
+  "id": "museum-steinhardt-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Steinhardt Museum of Natural History",
+  "country": "Israel",
+  "lat": 32.1137,
+  "lon": 34.80745
+ },
+ {
+  "id": "museum-lee-kong-chian-natural-history-museum",
+  "kind": "museum",
+  "name": "Lee Kong Chian Natural History Museum",
+  "country": "Singapore",
+  "lat": 1.3016,
+  "lon": 103.774
+ },
+ {
+  "id": "museum-national-museum-of-natural-science",
+  "kind": "museum",
+  "name": "National Museum of Natural Science",
+  "country": "Taiwan",
+  "lat": 24.1575,
+  "lon": 120.66639
+ },
+ {
+  "id": "museum-national-museum-of-ethiopia",
+  "kind": "museum",
+  "name": "National Museum of Ethiopia",
+  "country": "Ethiopia",
+  "lat": 9.03833,
+  "lon": 38.7619
+ },
+ {
+  "id": "museum-natural-history-museum-of-zimbabwe",
+  "kind": "museum",
+  "name": "Natural History Museum of Zimbabwe",
+  "country": "Zimbabwe",
+  "lat": -20.1558,
+  "lon": 28.5965
+ },
+ {
+  "id": "museum-te-papa",
+  "kind": "museum",
+  "name": "Te Papa",
+  "country": "New Zealand",
+  "lat": -41.29056,
+  "lon": 174.78194
+ },
+ {
+  "id": "museum-croatian-natural-history-museum",
+  "kind": "museum",
+  "name": "Croatian Natural History Museum",
+  "country": "Croatia",
+  "lat": 45.81713,
+  "lon": 15.97252
+ },
+ {
+  "id": "museum-grigore-antipa-national-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Grigore Antipa National Museum of Natural History",
+  "country": "Romania",
+  "lat": 44.4531,
+  "lon": 26.0846
+ },
+ {
+  "id": "museum-national-museum-of-natural-history-bulgaria",
+  "kind": "museum",
+  "name": "National Museum of Natural History, Bulgaria",
+  "country": "Bulgaria",
+  "lat": 42.69568,
+  "lon": 23.32846
+ },
+ {
+  "id": "museum-natural-history-museum-in-belgrade",
+  "kind": "museum",
+  "name": "Natural History Museum in Belgrade",
+  "country": "Serbia",
+  "lat": 44.81228,
+  "lon": 20.46135
+ },
+ {
+  "id": "museum-slovenian-museum-of-natural-history",
+  "kind": "museum",
+  "name": "Slovenian Museum of Natural History",
+  "country": "Slovenia",
+  "lat": 46.05222,
+  "lon": 14.49944
+ },
+ {
+  "id": "zoo-san-diego-zoo",
+  "kind": "zoo",
+  "name": "San Diego Zoo",
+  "country": "United States",
+  "lat": 32.73611,
+  "lon": -117.15139,
+  "accreditation": "AZA, WAZA"
+ },
+ {
+  "id": "zoo-bronx-zoo",
+  "kind": "zoo",
+  "name": "Bronx Zoo",
+  "country": "United States",
+  "lat": 40.85028,
+  "lon": -73.87833,
+  "accreditation": "AZA"
+ },
+ {
+  "id": "zoo-national-zoological-park",
+  "kind": "zoo",
+  "name": "National Zoological Park",
+  "country": "United States",
+  "lat": 38.92944,
+  "lon": -77.04972,
+  "accreditation": "AZA"
+ },
+ {
+  "id": "zoo-toronto-zoo",
+  "kind": "zoo",
+  "name": "Toronto Zoo",
+  "country": "Canada",
+  "lat": 43.82028,
+  "lon": -79.18222,
+  "accreditation": "AZA, CAZA"
+ },
+ {
+  "id": "zoo-calgary-zoo",
+  "kind": "zoo",
+  "name": "Calgary Zoo",
+  "country": "Canada",
+  "lat": 51.04583,
+  "lon": -114.03333,
+  "accreditation": "AZA, CAZA"
+ },
+ {
+  "id": "zoo-taronga-zoo",
+  "kind": "zoo",
+  "name": "Taronga Zoo",
+  "country": "Australia",
+  "lat": -33.84333,
+  "lon": 151.24111,
+  "accreditation": "ZAA"
+ },
+ {
+  "id": "zoo-melbourne-zoo",
+  "kind": "zoo",
+  "name": "Melbourne Zoo",
+  "country": "Australia",
+  "lat": -37.78476,
+  "lon": 144.9521,
+  "accreditation": "ZAA"
+ },
+ {
+  "id": "zoo-australia-zoo",
+  "kind": "zoo",
+  "name": "Australia Zoo",
+  "country": "Australia",
+  "lat": -26.8366,
+  "lon": 152.9595,
+  "accreditation": "ZAA"
+ },
+ {
+  "id": "zoo-london-zoo",
+  "kind": "zoo",
+  "name": "London Zoo",
+  "country": "United Kingdom",
+  "lat": 51.53556,
+  "lon": -0.15583,
+  "accreditation": "AZA, BIAZA, EAZA"
+ },
+ {
+  "id": "zoo-chester-zoo",
+  "kind": "zoo",
+  "name": "Chester Zoo",
+  "country": "United Kingdom",
+  "lat": 53.22667,
+  "lon": -2.88417,
+  "accreditation": "BIAZA, EAZA"
+ },
+ {
+  "id": "zoo-edinburgh-zoo",
+  "kind": "zoo",
+  "name": "Edinburgh Zoo",
+  "country": "United Kingdom",
+  "lat": 55.9425,
+  "lon": -3.27,
+  "accreditation": "BIAZA, EAZA"
+ },
+ {
+  "id": "zoo-berlin-zoo",
+  "kind": "zoo",
+  "name": "Berlin Zoo",
+  "country": "Germany",
+  "lat": 52.50833,
+  "lon": 13.3375,
+  "accreditation": "AZA, EAZA, WAZA"
+ },
+ {
+  "id": "zoo-hellabrunn-zoo",
+  "kind": "zoo",
+  "name": "Hellabrunn Zoo",
+  "country": "Germany",
+  "lat": 48.09722,
+  "lon": 11.55417,
+  "accreditation": "AZA, EAZA, WAZA"
+ },
+ {
+  "id": "zoo-leipzig-zoological-garden",
+  "kind": "zoo",
+  "name": "Leipzig Zoological Garden",
+  "country": "Germany",
+  "lat": 51.34842,
+  "lon": 12.3706,
+  "accreditation": "AZA, EAZA, WAZA"
+ },
+ {
+  "id": "zoo-paris-zoological-park",
+  "kind": "zoo",
+  "name": "Paris Zoological Park",
+  "country": "France",
+  "lat": 48.83222,
+  "lon": 2.41861,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-zooparc-de-beauval",
+  "kind": "zoo",
+  "name": "ZooParc de Beauval",
+  "country": "France",
+  "lat": 47.24763,
+  "lon": 1.35044,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-m-nagerie-du-jardin-des-plantes",
+  "kind": "zoo",
+  "name": "Ménagerie du Jardin des Plantes",
+  "country": "France",
+  "lat": 48.84545,
+  "lon": 2.36033,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-ueno-zoo",
+  "kind": "zoo",
+  "name": "Ueno Zoo",
+  "country": "Japan",
+  "lat": 35.7175,
+  "lon": 139.77139,
+  "accreditation": "JAZA"
+ },
+ {
+  "id": "zoo-asahiyama-zoo",
+  "kind": "zoo",
+  "name": "Asahiyama Zoo",
+  "country": "Japan",
+  "lat": 43.76805,
+  "lon": 142.47978,
+  "accreditation": "JAZA"
+ },
+ {
+  "id": "zoo-tama-zoological-park",
+  "kind": "zoo",
+  "name": "Tama Zoological Park",
+  "country": "Japan",
+  "lat": 35.651,
+  "lon": 139.402,
+  "accreditation": "JAZA"
+ },
+ {
+  "id": "zoo-bioparco-di-roma",
+  "kind": "zoo",
+  "name": "Bioparco di Roma",
+  "country": "Italy",
+  "lat": 41.91747,
+  "lon": 12.48519,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-parco-natura-viva",
+  "kind": "zoo",
+  "name": "Parco Natura Viva",
+  "country": "Italy",
+  "lat": 45.4786,
+  "lon": 10.7969,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-bioparc-valencia",
+  "kind": "zoo",
+  "name": "Bioparc Valencia",
+  "country": "Spain",
+  "lat": 39.47802,
+  "lon": -0.4075,
+  "accreditation": "AZA, EAZA, WAZA"
+ },
+ {
+  "id": "zoo-zoo-aquarium-de-madrid",
+  "kind": "zoo",
+  "name": "Zoo Aquarium de Madrid",
+  "country": "Spain",
+  "lat": 40.40861,
+  "lon": -3.7625,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-africam-safari",
+  "kind": "zoo",
+  "name": "Africam Safari",
+  "country": "Mexico",
+  "lat": 18.93712,
+  "lon": -98.13671,
+  "accreditation": "AZA"
+ },
+ {
+  "id": "zoo-johannesburg-zoo",
+  "kind": "zoo",
+  "name": "Johannesburg Zoo",
+  "country": "South Africa",
+  "lat": -26.16637,
+  "lon": 28.03819,
+  "accreditation": "PAAZA"
+ },
+ {
+  "id": "zoo-pretoria-zoo",
+  "kind": "zoo",
+  "name": "Pretoria Zoo",
+  "country": "South Africa",
+  "lat": -25.73833,
+  "lon": 28.18917,
+  "accreditation": "PAAZA"
+ },
+ {
+  "id": "zoo-wroc-aw-zoo",
+  "kind": "zoo",
+  "name": "Wrocław Zoo",
+  "country": "Poland",
+  "lat": 51.10471,
+  "lon": 17.07075,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-warsaw-zoo",
+  "kind": "zoo",
+  "name": "Warsaw Zoo",
+  "country": "Poland",
+  "lat": 52.25778,
+  "lon": 21.02222,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-artis",
+  "kind": "zoo",
+  "name": "Artis",
+  "country": "Netherlands",
+  "lat": 52.36611,
+  "lon": 4.91667,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-antwerp-zoo",
+  "kind": "zoo",
+  "name": "Antwerp Zoo",
+  "country": "Belgium",
+  "lat": 51.21639,
+  "lon": 4.42333,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-sch-nbrunn-zoo",
+  "kind": "zoo",
+  "name": "Schönbrunn Zoo",
+  "country": "Austria",
+  "lat": 48.18222,
+  "lon": 16.3025,
+  "accreditation": "AZA, EAZA, WAZA"
+ },
+ {
+  "id": "zoo-z-rich-zoo",
+  "kind": "zoo",
+  "name": "Zürich Zoo",
+  "country": "Switzerland",
+  "lat": 47.385,
+  "lon": 8.57306,
+  "accreditation": "AZA, EAZA, WAZA"
+ },
+ {
+  "id": "zoo-copenhagen-zoo",
+  "kind": "zoo",
+  "name": "Copenhagen Zoo",
+  "country": "Denmark",
+  "lat": 55.67278,
+  "lon": 12.52139,
+  "accreditation": "AZA, EAZA, WAZA"
+ },
+ {
+  "id": "zoo-kolm-rden-wildlife-park",
+  "kind": "zoo",
+  "name": "Kolmården Wildlife Park",
+  "country": "Sweden",
+  "lat": 58.66528,
+  "lon": 16.46639,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-kristiansand-zoo-and-amusement-park",
+  "kind": "zoo",
+  "name": "Kristiansand Zoo and Amusement Park",
+  "country": "Norway",
+  "lat": 58.18506,
+  "lon": 8.14141,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-korkeasaari-zoo",
+  "kind": "zoo",
+  "name": "Korkeasaari Zoo",
+  "country": "Finland",
+  "lat": 60.175,
+  "lon": 24.98417,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-dublin-zoo",
+  "kind": "zoo",
+  "name": "Dublin Zoo",
+  "country": "Ireland",
+  "lat": 53.35389,
+  "lon": -6.30389,
+  "accreditation": "BIAZA, EAZA"
+ },
+ {
+  "id": "zoo-lisbon-zoo",
+  "kind": "zoo",
+  "name": "Lisbon Zoo",
+  "country": "Portugal",
+  "lat": 38.74325,
+  "lon": -9.169,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-prague-zoo",
+  "kind": "zoo",
+  "name": "Prague Zoo",
+  "country": "Czechia",
+  "lat": 50.11694,
+  "lon": 14.40611,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-budapest-zoo-and-botanical-garden",
+  "kind": "zoo",
+  "name": "Budapest Zoo and Botanical Garden",
+  "country": "Hungary",
+  "lat": 47.5191,
+  "lon": 19.0783,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-jerusalem-biblical-zoo",
+  "kind": "zoo",
+  "name": "Jerusalem Biblical Zoo",
+  "country": "Israel",
+  "lat": 31.74944,
+  "lon": 35.17694,
+  "accreditation": "EAZA"
+ },
+ {
+  "id": "zoo-singapore-zoo",
+  "kind": "zoo",
+  "name": "Singapore Zoo",
+  "country": "Singapore",
+  "lat": 1.40471,
+  "lon": 103.79105,
+  "accreditation": "WAZA"
+ },
+ {
+  "id": "zoo-auckland-zoo",
+  "kind": "zoo",
+  "name": "Auckland Zoo",
+  "country": "New Zealand",
+  "lat": -36.86278,
+  "lon": 174.72083,
+  "accreditation": "ZAA"
+ },
+ {
+  "id": "zoo-zagreb-zoo",
+  "kind": "zoo",
+  "name": "Zagreb Zoo",
+  "country": "Croatia",
+  "lat": 45.8221,
+  "lon": 16.02128,
+  "accreditation": "EAZA"
+ }
+]
