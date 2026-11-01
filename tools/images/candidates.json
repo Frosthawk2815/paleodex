@@ -2111,6 +2111,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "apis-mellifera": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Apis_mellifera_Western_honey_bee.jpg/960px-Apis_mellifera_Western_honey_bee.jpg",
+  "width": 800,
+  "height": 665,
+  "artist": "Andreas Trepte",
+  "license": "CC BY-SA 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Apis_mellifera_Western_honey_bee.jpg",
+  "file": "Apis_mellifera_Western_honey_bee.jpg",
+  "article": "https://en.wikipedia.org/wiki/Western_honey_bee",
+  "scope": "species"
+ },
  "aplestosuchus-sordidus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Aplestosuchus.png/960px-Aplestosuchus.png",
   "width": 800,
@@ -4235,6 +4247,18 @@
   "article": "https://en.wikipedia.org/wiki/Gaur",
   "scope": "species"
  },
+ "bos-grunniens": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Sarlyk_Yak2.jpg/960px-Sarlyk_Yak2.jpg",
+  "width": 800,
+  "height": 617,
+  "artist": "Alexandr frolov",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sarlyk_Yak2.jpg",
+  "file": "Sarlyk_Yak2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Yak",
+  "scope": "species"
+ },
  "bos-primigenius": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Copenhagen_Aurochse.jpg/960px-Copenhagen_Aurochse.jpg",
   "width": 800,
@@ -4246,6 +4270,18 @@
   "file": "Copenhagen_Aurochse.jpg",
   "article": "https://en.wikipedia.org/wiki/Aurochs",
   "scope": "genus"
+ },
+ "bos-taurus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/960px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg",
+  "width": 800,
+  "height": 536,
+  "artist": "Kim Hansen",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cow_(Fleckvieh_breed)_Oeschinensee_Slaunger_2009-07-07.jpg",
+  "file": "Cow_(Fleckvieh_breed)_Oeschinensee_Slaunger_2009-07-07.jpg",
+  "article": "https://en.wikipedia.org/wiki/Cattle",
+  "scope": "species"
  },
  "boselaphus-tragocamelus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Nilgai_%28Boselaphus_tragocamelus%29_male.jpg/960px-Nilgai_%28Boselaphus_tragocamelus%29_male.jpg",
@@ -4524,6 +4560,18 @@
   "source": "https://commons.wikimedia.org/wiki/File:Indian_Water_Buffalo_Bubalus_arnee_by_Dr_Raju_Kasambe_IMG_0347_(11)_(cropped).jpg",
   "file": "Indian_Water_Buffalo_Bubalus_arnee_by_Dr_Raju_Kasambe_IMG_0347_(11)_(cropped).jpg",
   "article": "https://en.wikipedia.org/wiki/Wild_water_buffalo",
+  "scope": "species"
+ },
+ "bubalus-bubalis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Water_buffalo_at_Rinca.jpg/960px-Water_buffalo_at_Rinca.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Alexander Vasenin",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Water_buffalo_at_Rinca.jpg",
+  "file": "Water_buffalo_at_Rinca.jpg",
+  "article": "https://en.wikipedia.org/wiki/Water_buffalo",
   "scope": "species"
  },
  "bubo-bubo": {
@@ -5134,6 +5182,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "camelus-bactrianus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Camelus_bactrianus_%2855026866188%29.jpg/960px-Camelus_bactrianus_%2855026866188%29.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Christian Ursilva from Copenhagen, Denmark",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Camelus_bactrianus_(55026866188).jpg",
+  "file": "Camelus_bactrianus_(55026866188).jpg",
+  "article": "https://en.wikipedia.org/wiki/Bactrian_camel",
+  "scope": "species"
+ },
  "camelus-dromedarius": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Camelus_dromedarius_in_Nuweiba.jpg/960px-Camelus_dromedarius_in_Nuweiba.jpg",
   "width": 800,
@@ -5283,6 +5343,18 @@
   "source": "https://commons.wikimedia.org/wiki/File:Pygmy_right_whale.png",
   "file": "Pygmy_right_whale.png",
   "article": "https://en.wikipedia.org/wiki/Pygmy_right_whale",
+  "scope": "species"
+ },
+ "capra-hircus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hausziege_04.jpg/960px-Hausziege_04.jpg",
+  "width": 800,
+  "height": 800,
+  "artist": "Kuebi = Armin Kübelbeck",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Hausziege_04.jpg",
+  "file": "Hausziege_04.jpg",
+  "article": "https://en.wikipedia.org/wiki/Goat",
   "scope": "species"
  },
  "capra-ibex": {
@@ -10115,6 +10187,30 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "equus-asinus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Donkey_in_Clovelly%2C_North_Devon%2C_England.jpg/500px-Donkey_in_Clovelly%2C_North_Devon%2C_England.jpg",
+  "width": 500,
+  "height": 358,
+  "artist": "Adrian Pingstone",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Donkey_in_Clovelly,_North_Devon,_England.jpg",
+  "file": "Donkey_in_Clovelly,_North_Devon,_England.jpg",
+  "article": "https://en.wikipedia.org/wiki/Donkey",
+  "scope": "species"
+ },
+ "equus-caballus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Nokota_Horses_cropped.jpg/500px-Nokota_Horses_cropped.jpg",
+  "width": 500,
+  "height": 344,
+  "artist": "Nokota_Horses.jpg: François Marchal derivative work: Dana boomer (talk)",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "source": "https://commons.wikimedia.org/wiki/File:Nokota_Horses_cropped.jpg",
+  "file": "Nokota_Horses_cropped.jpg",
+  "article": "https://en.wikipedia.org/wiki/Horse",
+  "scope": "species"
+ },
  "equus-occidentalis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Equus_occidentalis_skeleton.jpg/960px-Equus_occidentalis_skeleton.jpg",
   "width": 800,
@@ -11411,6 +11507,18 @@
   "source": "https://commons.wikimedia.org/wiki/File:Red_jungle_fowl.png",
   "file": "Red_jungle_fowl.png",
   "article": "https://en.wikipedia.org/wiki/Red_junglefowl",
+  "scope": "species"
+ },
+ "gallus-gallus-domesticus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Male_and_female_chicken_sitting_together.jpg/500px-Male_and_female_chicken_sitting_together.jpg",
+  "width": 500,
+  "height": 668,
+  "artist": "Andrei Niemimäki from Turku, Finland",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Male_and_female_chicken_sitting_together.jpg",
+  "file": "Male_and_female_chicken_sitting_together.jpg",
+  "article": "https://en.wikipedia.org/wiki/Chicken",
   "scope": "species"
  },
  "gansus-yumenensis": {
@@ -15238,6 +15346,18 @@
   "file": "Laidleria1DB.jpg",
   "article": "https://en.wikipedia.org/wiki/Laidleria",
   "scope": "genus"
+ },
+ "lama-glama": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Llamas%2C_Vernagt-Stausee%2C_Italy.jpg/960px-Llamas%2C_Vernagt-Stausee%2C_Italy.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "Andrija12345678",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Llamas,_Vernagt-Stausee,_Italy.jpg",
+  "file": "Llamas,_Vernagt-Stausee,_Italy.jpg",
+  "article": "https://en.wikipedia.org/wiki/Llama",
+  "scope": "species"
  },
  "lama-guanicoe": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Guanaco_%28Lama_guanicoe%29_Leona_Amarga.jpg/960px-Guanaco_%28Lama_guanicoe%29_Leona_Amarga.jpg",
@@ -20578,6 +20698,18 @@
   "article": "https://en.wikipedia.org/wiki/Oviraptor",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "ovis-aries": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flock_of_sheep.jpg/960px-Flock_of_sheep.jpg",
+  "width": 800,
+  "height": 1216,
+  "artist": "Keith Weller",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Flock_of_sheep.jpg",
+  "file": "Flock_of_sheep.jpg",
+  "article": "https://en.wikipedia.org/wiki/Sheep",
+  "scope": "species"
  },
  "ovis-canadensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/New_Mexico_Bighorn_Sheep.JPG/960px-New_Mexico_Bighorn_Sheep.JPG",
@@ -27266,6 +27398,18 @@
   "article": "https://en.wikipedia.org/wiki/Meerkat",
   "scope": "species"
  },
+ "sus-domesticus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Pig_farm_Vampula_1.jpg/960px-Pig_farm_Vampula_1.jpg",
+  "width": 800,
+  "height": 496,
+  "artist": "kallerna",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pig_farm_Vampula_1.jpg",
+  "file": "Pig_farm_Vampula_1.jpg",
+  "article": "https://en.wikipedia.org/wiki/Pig",
+  "scope": "species"
+ },
  "sus-scrofa": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg/960px-Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg",
   "width": 800,
@@ -29673,6 +29817,18 @@
   "article": "https://en.wikipedia.org/wiki/Viavenator",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "vicugna-pacos": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Alpaca_in_Higashiyama_Zoo_-_1.jpg/960px-Alpaca_in_Higashiyama_Zoo_-_1.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "KKPCW",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Alpaca_in_Higashiyama_Zoo_-_1.jpg",
+  "file": "Alpaca_in_Higashiyama_Zoo_-_1.jpg",
+  "article": "https://en.wikipedia.org/wiki/Alpaca",
+  "scope": "species"
  },
  "vicugna-vicugna": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Vicuna_%2889163948%29_%28cropped%29.jpg/960px-Vicuna_%2889163948%29_%28cropped%29.jpg",
