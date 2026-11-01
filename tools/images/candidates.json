@@ -6290,6 +6290,19 @@
   "article": "https://en.wikipedia.org/wiki/Charassognathus",
   "scope": "genus"
  },
+ "chasmaporthetes-nitidula": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Fossils_at_Hezheng_Paleozoological_Museum_31_%28cropped%29.jpg/960px-Fossils_at_Hezheng_Paleozoological_Museum_31_%28cropped%29.jpg",
+  "width": 800,
+  "height": 760,
+  "artist": "STW932",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Fossils_at_Hezheng_Paleozoological_Museum_31_(cropped).jpg",
+  "file": "Fossils_at_Hezheng_Paleozoological_Museum_31_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Chasmaporthetes",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "chasmosaurus-belli": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/ChasmosaurusROM.JPG/960px-ChasmosaurusROM.JPG",
   "width": 800,
@@ -7436,6 +7449,19 @@
   "file": "Crocodylus_acutus_mexico_02-edit1.jpg",
   "article": "https://en.wikipedia.org/wiki/American_crocodile",
   "scope": "species"
+ },
+ "crocodylus-anthropophagus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Crocodylus_anthropophagus_mandibular_remains.png/960px-Crocodylus_anthropophagus_mandibular_remains.png",
+  "width": 800,
+  "height": 369,
+  "artist": "Brochu CA, Njau J, Blumenschine RJ, Densmore LD",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Crocodylus_anthropophagus_mandibular_remains.png",
+  "file": "Crocodylus_anthropophagus_mandibular_remains.png",
+  "article": "https://en.wikipedia.org/wiki/Crocodylus_anthropophagus",
+  "scope": "species",
+  "kind": "fossil"
  },
  "crocodylus-halli": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Crocodylus_halli.jpg/500px-Crocodylus_halli.jpg",
@@ -8728,6 +8754,18 @@
   "article": "https://en.wikipedia.org/wiki/Dinodontosaurus",
   "scope": "genus",
   "kind": "skeletal"
+ },
+ "dinofelis-barlowi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Dinofelis15DB.jpg/960px-Dinofelis15DB.jpg",
+  "width": 800,
+  "height": 340,
+  "artist": "Dmitry Bogdanov",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dinofelis15DB.jpg",
+  "file": "Dinofelis15DB.jpg",
+  "article": "https://en.wikipedia.org/wiki/Dinofelis",
+  "scope": "genus"
  },
  "dinogorgon-rubidgei": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Dinogorgon.png/500px-Dinogorgon.png",
@@ -17447,6 +17485,19 @@
   "file": "Meganeura_monyi_MNHN_R51142_1.jpg",
   "article": "https://en.wikipedia.org/wiki/Meganeura",
   "scope": "genus"
+ },
+ "megantereon-whitei": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Megantereon_cultridens_skeleton.jpg/960px-Megantereon_cultridens_skeleton.jpg",
+  "width": 800,
+  "height": 904,
+  "artist": "Ghedoghedo",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Megantereon_cultridens_skeleton.jpg",
+  "file": "Megantereon_cultridens_skeleton.jpg",
+  "article": "https://en.wikipedia.org/wiki/Megantereon",
+  "scope": "genus",
+  "kind": "fossil"
  },
  "megapnosaurus-kayentakatae": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Syntarsus_kayentakatae.png/500px-Syntarsus_kayentakatae.png",
@@ -28310,6 +28361,19 @@
   "file": "Gelada_(Theropithecus_gelada_gelada)_male_2.jpg",
   "article": "https://en.wikipedia.org/wiki/Gelada",
   "scope": "species"
+ },
+ "theropithecus-oswaldi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Theropithecus_NMNH.jpg/960px-Theropithecus_NMNH.jpg",
+  "width": 800,
+  "height": 679,
+  "artist": "Jonathan Chen",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Theropithecus_NMNH.jpg",
+  "file": "Theropithecus_NMNH.jpg",
+  "article": "https://en.wikipedia.org/wiki/Theropithecus_oswaldi",
+  "scope": "species",
+  "kind": "fossil"
  },
  "thoatherium-minusculum": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Reports_of_the_Princeton_University_Expeditions_to_Patagonia%2C_1896-1899._J._B._Hatcher_in_charge_%281901%29_%2814749873255%29.jpg/960px-Reports_of_the_Princeton_University_Expeditions_to_Patagonia%2C_1896-1899._J._B._Hatcher_in_charge_%281901%29_%2814749873255%29.jpg",
