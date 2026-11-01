@@ -5,6 +5,7 @@
 import { EVENTS, type HistoryEvent } from '@/data/events';
 import { CLADES, SPECIES, type Species } from '@/data/life';
 import { PERIODS } from '@/data/periods';
+import { SIZE_FACTS, type SizeFact } from '@/data/quiz-sizes';
 import { isModernSpecies } from '@/lib/era';
 import { cladePath, pastPointIndex, relativesOf, speciesInClade } from '@/lib/life';
 import { rangeOf } from '@/lib/ranges';
@@ -305,6 +306,61 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
   },
 ];
 
+// ---------------------------------------------------------------------------------------------
+// Size questions: "what is the average length of an adult ...?", from quiz-sizes.ts.
+
+const sig2 = (v: number) => {
+  if (v >= 10) {
+    const p = 10 ** (Math.floor(Math.log10(v)) - 1);
+    return Math.round(v / p) * p;
+  }
+  return Math.round(v * 10) / 10;
+};
+// A metric size in a sensible unit: "About 7 m", "About 74 cm", "About 2–3 tonnes".
+function sizeText(measure: SizeFact['measure'], value: number | [number, number]): string {
+  const [lo, hi] = typeof value === 'number' ? [value, value] : value;
+  // The unit suits the smaller figure, so a range never reads "0.6–1.1 tonnes".
+  const [div, unit] =
+    measure === 'length' ? (hi < 0.01 ? [0.001, 'mm'] : lo < 1 ? [0.01, 'cm'] : [1, 'm']) : hi < 1 ? [0.001, 'g'] : lo < 1000 ? [1, 'kg'] : [1000, 'tonnes'];
+  const n = (v: number) => sig2(v / div).toLocaleString('en-US');
+  const name = unit === 'tonnes' && hi === 1000 ? 'tonne' : unit;
+  return lo === hi ? `About ${n(lo)} ${name}` : `About ${n(lo)}–${n(hi)} ${name}`;
+}
+const scale = (v: number | [number, number], k: number): number | [number, number] => (typeof v === 'number' ? v * k : [v[0] * k, v[1] * k]);
+// Whether two sizes could be confused: their ranges overlap, or single figures are within 25%.
+const span = (v: number | [number, number]): [number, number] => (typeof v === 'number' ? [v / 1.25, v * 1.25] : v);
+const overlaps = (a: number | [number, number], b: number | [number, number]) => span(a)[0] <= span(b)[1] && span(b)[0] <= span(a)[1];
+
+// How hard a size question is: the species' obscurity, plus 1 for naming a sex, plus 1 for the
+// less familiar sex.
+export const sizeDifficulty = (f: SizeFact, s: Species, imageFor: ImageFor) =>
+  Math.min(5, obscurity(s, !!imageFor(s.id)) + (f.sex ? 1 : 0) + (f.lesser ? 1 : 0)) as Difficulty;
+
+export function sizeQuestion(f: SizeFact, s: Species): Question | null {
+  const who = `an adult ${f.sex ? `${f.sex} ` : ''}${named(s)}`;
+  const what = f.measure === 'length' ? 'length' : 'weight';
+  const base = f.max ? `How ${f.measure === 'length' ? 'long' : 'heavy'} can ${who} grow?` : `what is the average ${what} of ${who}?`;
+  const prompt = f.max
+    ? f.known === 'fossils'
+      ? `Based on the fossils we have, ${lower(base)}`
+      : base
+    : f.known === 'fossils'
+      ? `Based on the fossils we have, ${base}`
+      : f.known === 'remains'
+        ? `Based on the specimens we have, ${base}`
+        : base.charAt(0).toUpperCase() + base.slice(1);
+  const right = sizeText(f.measure, f.value);
+  // The other sex's figure makes a good wrong answer; the rest are clearly bigger or smaller.
+  // Wrong answers never overlap the right one or each other.
+  const otherSex = f.sex ? SIZE_FACTS.find((o) => o.id === f.id && o.measure === f.measure && o.sex && o.sex !== f.sex) : undefined;
+  const chosen: (number | [number, number])[] = [f.value];
+  for (const v of [...(otherSex ? [otherSex.value] : []), ...shuffle([0.25, 0.5, 2, 4, 8]).map((k) => scale(f.value, k))]) {
+    if (!chosen.some((c) => overlaps(c, v))) chosen.push(v);
+  }
+  const wrong = chosen.slice(1).map((v) => sizeText(f.measure, v));
+  return build(`size:${f.id}:${f.measure}:${f.sex ?? 'any'}`, prompt, right, wrong, f.explanation, { speciesId: s.id });
+}
+
 // Questions about the geological timescale, for the period category and the hardest levels.
 function timescaleQuestion(level: Difficulty, period?: string): Question | null {
   const periods = UNITS_BY_LEVEL.period;
@@ -390,6 +446,19 @@ export function makeRound(category: Category, level: Difficulty, imageFor: Image
     const q = timescaleQuestion(level, category.kind === 'period' ? category.id : undefined);
     if (q && distinct(q) && !seen.has(q.id)) {
       seen.add(q.id);
+      out.push(q);
+    }
+  }
+  // Up to two size questions, at this level, about animals in the category.
+  const poolIds = new Set(pool.map((s) => s.id));
+  for (const f of shuffle(SIZE_FACTS)) {
+    if (out.filter((q) => q.id.startsWith('size:')).length >= 2) break;
+    const s = poolIds.has(f.id) ? SPECIES.find((x) => x.id === f.id) : undefined;
+    if (!s || usedSpecies.has(s.id) || sizeDifficulty(f, s, imageFor) !== level) continue;
+    const q = sizeQuestion(f, s);
+    if (q && distinct(q) && !seen.has(q.id)) {
+      seen.add(q.id);
+      usedSpecies.add(s.id);
       out.push(q);
     }
   }
