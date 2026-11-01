@@ -99,7 +99,7 @@ export const FAMILIES_7: DataSet = {
     { id: 'protosiren-smithae', name: 'Protosiren smithae', common: 'Protosiren', clade: 'sirenia', status: 'full', ageText: 'About 41 to 39 million years ago', placeText: 'Egypt', formations: ['wadi-al-hitan'],
       summary: ['An early sea cow with small hind legs, mostly or entirely aquatic, living alongside early whales in the Eocene sea.'],
       facts: [{ label: 'Named', value: 'Daryl Domning and Philip Gingerich, 1994' }], keywords: ['protosiren', 'sea cow', 'sirenian', 'eocene'] },
-    { id: 'dinictis-felina', name: 'Dinictis felina', common: 'Dinictis', clade: 'nimravidae', status: 'full', ageText: 'About 33 to 29 million years ago', placeText: 'Great Plains, USA', formations: ['white-river'],
+    { id: 'dinictis-felina', name: 'Dinictis felina', common: 'Dinictis', clade: 'nimravidae', status: 'full', ageText: 'About 33 to 29 million years ago', placeText: 'Great Plains and Oregon, USA', formations: ['white-river', 'john-day'],
       summary: ['A lynx-sized nimravid, a “false sabre-tooth cat” with moderately long upper canines.'],
       facts: [{ label: 'Named', value: 'Joseph Leidy, 1854' }], keywords: ['dinictis', 'nimravid', 'oligocene'] },
     { id: 'leptauchenia-decora', name: 'Leptauchenia decora', common: 'Leptauchenia', clade: 'merycoidodontidae', status: 'full', ageText: 'About 32 to 28 million years ago', placeText: 'Great Plains, USA', formations: ['white-river'],

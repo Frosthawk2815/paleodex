@@ -47,6 +47,7 @@ export const UNSAFE_SITES: Record<string, string> = {
   shishugou: 'Junggar Basin desert, Xinjiang',
   xiagou: 'Remote Gobi in Gansu',
   bissekty: 'Kyzylkum Desert, expedition only',
+  madygen: 'Batken region, Kyrgyzstan: near the disputed Tajik border, scene of armed clashes in 2021 and 2022',
   sakamena: 'Remote south-western Madagascar with few roads',
   manda: 'Remote Ruhuhu Basin, Tanzania, with no roads',
   'cerro-fortaleza': 'Remote Patagonian steppe, expedition only',
@@ -78,6 +79,7 @@ export const ACCESS_POINTS: Record<string, { spot: string; lat: number; lon: num
   kaiparowits: [{ spot: 'Escalante Interagency Visitor Center, Utah', lat: 37.77, lon: -111.61 }],
   niobrara: [{ spot: 'Sternberg Museum of Natural History, Hays, Kansas', lat: 38.9, lon: -99.3 }],
   'white-river': [{ spot: 'Toadstool Geologic Park, Nebraska', lat: 42.86, lon: -103.58 }],
+  'john-day': [{ spot: 'Painted Hills Unit, John Day Fossil Beds', lat: 44.66, lon: -120.25 }],
   chalk: [
     { spot: 'Seven Sisters and Birling Gap, Sussex', lat: 50.743, lon: 0.2 },
     { spot: 'Flamborough Head, Yorkshire', lat: 54.116, lon: -0.08 },

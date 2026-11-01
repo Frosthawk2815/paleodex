@@ -113,14 +113,14 @@ export const PICKS_3: DataSet = {
       jumpMa: 85,
       icon: 'dunes',
       summary: [
-        'Sandy river and dune deposits around Neuquén city and Añelo, known for small crocodile relatives, snakes and birds, as well as the megaraptoran Tratayenia and the raptor-like Diuqin.',
+        'Sandy river and dune deposits around Neuquén city and Añelo, known for small crocodile relatives, snakes and birds, as well as the megaraptorans Tratayenia and Rinconraptor, and the raptor-like Diuqin.',
       ],
       facts: [
         { label: 'Age', value: 'About 85 million years ago' },
         { label: 'Where today', value: 'Neuquén province, Argentina' },
         { label: 'Rocks', value: 'Sandstone' },
       ],
-      keywords: ['bajo de la carpa', 'neuquen', 'anelo', 'argentina', 'cretaceous', 'tratayenia', 'diuqin', 'megaraptoran'],
+      keywords: ['bajo de la carpa', 'neuquen', 'anelo', 'argentina', 'cretaceous', 'tratayenia', 'rinconraptor', 'diuqin', 'megaraptoran'],
     }),
     formation({
       // Aerosteon's exact locality is not given in the sources used; placed in southern Mendoza.

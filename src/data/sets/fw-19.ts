@@ -25,7 +25,7 @@ export const FW_19: DataSet = {
       status: 'full',
       ageText: 'About 237 million years ago (Late Triassic)',
       placeText: 'Guizhou, China',
-      formations: [],
+      formations: ['xiaowa'],
       summary: [
         'A flat, armoured amphibian about 74 cm long, named in 2026 from two nearly complete skeletons found in rocks laid down in the open sea, dozens of kilometres from land. It may be the first amphibian known to have lived its whole life in salt water.',
         'Strontium in its bones matches Triassic seawater, which suggests it grew up drinking it. Its describers think it lay on the sea floor and sucked in passing prey. Living amphibians cannot cope with salt water, so outside scientists have called the find potentially revolutionary; the marine lifestyle is an interpretation of two specimens and may be tested by further finds.',
@@ -45,7 +45,7 @@ export const FW_19: DataSet = {
       status: 'full',
       ageText: 'About 86 to 83 million years ago (Late Cretaceous)',
       placeText: 'Cerro Overo, near Rincón de los Sauces, Neuquén, Argentina',
-      formations: [],
+      formations: ['bajo-de-la-carpa'],
       summary: [
         'A megaraptorid, one of the long-armed, big-clawed predators of Cretaceous South America and Australia, named in 2026. It was about 7 metres long, an estimate from comparing its vertebrae with better-known relatives, and is known from parts of the backbone, a humerus and a tibia.',
         'Its bones were first spotted in 2016 and dug up in 2019. The genus is named after Rincón de los Sauces, and the species honours Laura Pipo, a researcher on the 2019 dig who died in 2020.',
@@ -65,7 +65,7 @@ export const FW_19: DataSet = {
       status: 'full',
       ageText: 'About 230 million years ago (Middle to Late Triassic)',
       placeText: 'Madygen, Kyrgyzstan',
-      formations: [],
+      formations: ['madygen'],
       summary: [
         'A small reptile from lakeside forests of the Madygen Formation, known from one poorly preserved skeleton and several impressions. It is famous for a row of long, flat structures along its back, which gave it its name, “long scales”.',
         'In the 1990s and 2000s some claimed the back structures were feathers and that Longisquama was close to the ancestry of birds. A 2012 restudy found they are skin appendages, not feathers, and it is now regarded as a diapsid reptile of uncertain position with no bearing on bird origins.',
@@ -85,7 +85,7 @@ export const FW_19: DataSet = {
       status: 'full',
       ageText: 'About 30 to 25 million years ago (Oligocene)',
       placeText: 'John Day Basin, Oregon, USA',
-      formations: [],
+      formations: ['john-day'],
       summary: [
         'A cow-sized oreodont, one of a family of sheep- to cow-sized grazing and browsing mammals found only in North America, common in the John Day fossil beds of Oregon. Oreodonts are often compared with pigs or sheep, but they were their own branch of even-toed hoofed mammals.',
         'Its name is uncertain: a 2014 restudy found no clear differences between Eporeodon and Eucrotaphus from the same rocks, and recommended merging them, though it is not yet known whether they are one species (perhaps males and females) or two living side by side.',
