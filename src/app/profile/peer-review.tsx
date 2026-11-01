@@ -436,7 +436,7 @@ export default function PeerReviewScreen() {
           <Text style={st.rowSub}>
             Each phone connects directly to the host’s phone, which passes the game between players. To find each other, phones briefly use a free public
             connection service (PeerJS) and Google’s address lookup (STUN). Your name, title and a small copy of your profile picture are shared with the other
-            players for the leaderboard. Nothing is stored.
+            players for the leaderboard: your own photo, including your own photo of the animal you chose as your picture. Nothing is stored.
           </Text>
         </View>
       </ScrollView>
