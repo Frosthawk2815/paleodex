@@ -13273,6 +13273,19 @@
   "scope": "species",
   "kind": "fossil"
  },
+ "homo-habilis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/KNM_ER_1813_%28H._habilis%29.png/500px-KNM_ER_1813_%28H._habilis%29.png",
+  "width": 500,
+  "height": 469,
+  "artist": "John Hawks, Marina Elliott, Peter Schmid, Steven E. Churchill, Darryl J. de Ruiter, Eric M. Roberts, Hannah Hilbert-Wolf, Heather M. Garvin, Scott A. Williams, Lucas K. Delezene, Elen M. Feuerriegel, Patrick Randolph-Quinney, Tracy L. Kivell, Myra F. Laird, Gaokgatlhe Tawane, Jeremy M. DeSilva, Shara E. Bailey, Juliet K. Brophy, Marc R. Meyer, Matthew M. Skinner, Matthew W. Tocheri, Caroline VanSickle, Christopher S. Walker, Timothy L. Campbell, Brian Kuhn, Ashley Kruger, Steven Tucker, Alia Gurtov, Nompumelelo Hlophe, Rick Hunter, Hannah Morris, Becca Peixotto, Maropeng Ramalepa, Dirk van Rooyen, Mathabela Tsikoane, Pedro Boshoff, Paul H.G.M. Dirks, Lee R. Berger",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:KNM_ER_1813_(H._habilis).png",
+  "file": "KNM_ER_1813_(H._habilis).png",
+  "article": "https://en.wikipedia.org/wiki/Homo_habilis",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "homo-longi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Homo_longi_holotype.jpg/500px-Homo_longi_holotype.jpg",
   "width": 500,
@@ -15755,6 +15768,19 @@
   "file": "Marabou_stork_(Leptoptilos_crumenifer).jpg",
   "article": "https://en.wikipedia.org/wiki/Marabou_stork",
   "scope": "species"
+ },
+ "leptoptilos-robustus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Holotype_and_referred_left_tibiotarsi_of_Leptoptilos_robustus.png/500px-Holotype_and_referred_left_tibiotarsi_of_Leptoptilos_robustus.png",
+  "width": 500,
+  "height": 537,
+  "artist": "Meijer et al. (2022)",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Holotype_and_referred_left_tibiotarsi_of_Leptoptilos_robustus.png",
+  "file": "Holotype_and_referred_left_tibiotarsi_of_Leptoptilos_robustus.png",
+  "article": "https://en.wikipedia.org/wiki/Leptoptilos_robustus",
+  "scope": "species",
+  "kind": "fossil"
  },
  "leptosuchus-crosbiensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Leptosuchus_crosbiensis.jpg/960px-Leptosuchus_crosbiensis.jpg",
@@ -21836,6 +21862,18 @@
   "scope": "species",
   "kind": "restoration"
  },
+ "pelorovis-oldowayensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Pelorovis_oldowayensis_2.jpg/960px-Pelorovis_oldowayensis_2.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Haplochromis",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pelorovis_oldowayensis_2.jpg",
+  "file": "Pelorovis_oldowayensis_2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Pelorovis",
+  "scope": "genus"
+ },
  "peltephilus-strepens": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Peltephilus_ferox_skull.jpg/500px-Peltephilus_ferox_skull.jpg",
   "width": 500,
@@ -26971,6 +27009,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "stegodon-florensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg/960px-Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg",
+  "width": 800,
+  "height": 462,
+  "artist": "Gary Todd from Xinzheng, China",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "file": "Giant_Mastodon_Skeleton_(10096915486)_(cropped).jpg",
+  "article": "https://en.wikipedia.org/wiki/Stegodon",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "stegosaurus-stenops": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Journal.pone.0138352.g001A.jpg/960px-Journal.pone.0138352.g001A.jpg",
   "width": 800,
@@ -27096,6 +27147,19 @@
   "file": "Crowned_Eagle_(Stephanoaetus_coronatus)_with_prey_..._(29591438981).jpg",
   "article": "https://en.wikipedia.org/wiki/Crowned_eagle",
   "scope": "species"
+ },
+ "stephanorhinus-kirchbergensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Dicerorhinus_kirchbergensis.JPG/960px-Dicerorhinus_kirchbergensis.JPG",
+  "width": 800,
+  "height": 443,
+  "artist": "Ghedoghedo",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dicerorhinus_kirchbergensis.JPG",
+  "file": "Dicerorhinus_kirchbergensis.JPG",
+  "article": "https://en.wikipedia.org/wiki/Stephanorhinus_kirchbergensis",
+  "scope": "species",
+  "kind": "fossil"
  },
  "sterna-paradisaea": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Arctic_tern_%28Sterna_paradisaea%29_Flatey_3.jpg/960px-Arctic_tern_%28Sterna_paradisaea%29_Flatey_3.jpg",
