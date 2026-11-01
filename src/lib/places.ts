@@ -39,6 +39,7 @@ export const UNSAFE_SITES: Record<string, string> = {
   'britta-dal': 'Remote East Greenland',
   fram: 'Ellesmere Island, high Arctic',
   agardhfjellet: 'Svalbard: polar bears outside the settlements',
+  vikinghogda: 'Svalbard: polar bears outside the settlements',
   'prince-creek': 'Alaska’s North Slope, no roads',
   // Deep desert and wilderness expeditions
   nemegt: 'Remote Gobi, expedition only',
