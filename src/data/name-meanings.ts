@@ -317,6 +317,7 @@ export const SPECIES_MEANINGS: Record<string, Meaning> = {
   'hapalochlaena-lunulata': 'crescent-marked',
   'thaumoctopus-mimicus': 'mimic',
   'isotelus-gigas': 'giant',
+  'mekosuchus-inexpectatus': { meaning: 'unexpected', note: 'No crocodiles had been known from New Caledonia before its bones were found.' },
 };
 
 export const meaningText = (m: Meaning) => (typeof m === 'string' ? m : m.meaning);
