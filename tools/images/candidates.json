@@ -27339,6 +27339,19 @@
   "article": "https://en.wikipedia.org/wiki/Eastern_cottontail",
   "scope": "species"
  },
+ "sylviornis-neocaledoniae": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Sylviornis.PNG/960px-Sylviornis.PNG",
+  "width": 800,
+  "height": 659,
+  "artist": "Trevor H. Worthy,Miyess Mitri,Warren D. Handley,Michael S. Y. Lee,Atholl Anderson,Christophe Sand",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Sylviornis.PNG",
+  "file": "Sylviornis.PNG",
+  "article": "https://en.wikipedia.org/wiki/Sylviornis",
+  "scope": "genus",
+  "kind": "skeletal"
+ },
  "symphalangus-syndactylus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Siamang_Tierpark_Hellabrunn-4.jpg/960px-Siamang_Tierpark_Hellabrunn-4.jpg",
   "width": 800,
