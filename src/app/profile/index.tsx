@@ -21,6 +21,7 @@ export default function ProfileScreen() {
   const rows: { label: string; detail?: string; href: Href }[] = [
     { label: 'Favourites', detail: `${profile.favourites.length} saved`, href: '/profile/favourites' },
     { label: 'Recently viewed', detail: profile.recent.length === 1 ? 'Your last page' : `Your last ${profile.recent.length} pages`, href: '/profile/recent' },
+    { label: 'Quiz', detail: 'Test what you know: dinosaurs, groups and periods, at five levels', href: '/profile/quiz' },
     { label: 'Titles', detail: `${profile.titles.length} of ${TITLES.length} earned${titleById(profile.title) ? ` · showing ${titleById(profile.title)!.name}` : ''}`, href: '/profile/titles' },
     { label: 'Places', detail: profile.places.length ? `Birthplace, home and check-ins · ${profile.places.length} visited` : 'Birthplace, home and check-ins at museums, zoos and fossil sites', href: '/profile/places' },
     { label: 'Your Images', detail: allPhotos.length === 1 ? '1 photo' : `${allPhotos.length} photos`, href: '/profile/images' },

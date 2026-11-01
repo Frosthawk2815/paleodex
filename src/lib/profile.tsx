@@ -34,6 +34,8 @@ export type Profile = {
   // Where they were born and where they live now, if they chose to add them.
   birthplace: UserPlace | null;
   home: UserPlace | null;
+  // Best quiz score (out of 10) for each category and difficulty, e.g. "dinosaurs:3".
+  quizBest: Record<string, number>;
   settings: Settings;
 };
 // Something another screen (e.g. the profile) asks the main screen to show when it returns to it.
@@ -55,6 +57,7 @@ const DEFAULT: Profile = {
   places: [],
   birthplace: null,
   home: null,
+  quizBest: {},
   settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed' },
 };
 
