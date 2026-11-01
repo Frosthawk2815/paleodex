@@ -247,6 +247,7 @@ export const GENUS_MEANINGS: Record<string, Meaning> = {
   Primelephas: 'first elephant',
   Palaeoloxodon: 'ancient slanting tooth',
   Anancus: { meaning: 'without a bend', note: 'From its long, straight tusks.' },
+  Yi: { meaning: 'wing', note: 'Mandarin; with its species name qi (“strange”) it reads “strange wing”, the shortest name of any dinosaur.' },
   // ---- Synapsids ----
   Dimetrodon: 'two measures of teeth',
   Edaphosaurus: 'pavement lizard',
@@ -329,6 +330,7 @@ export const SPECIES_MEANINGS: Record<string, Meaning> = {
   'hapalochlaena-lunulata': 'crescent-marked',
   'thaumoctopus-mimicus': 'mimic',
   'isotelus-gigas': 'giant',
+  'yi-qi': 'strange',
   'mammuthus-exilis': 'small',
   'mammuthus-meridionalis': 'southern',
   'stegodon-ganesa': { meaning: 'Ganesha', note: 'After the elephant-headed Hindu god.' },
