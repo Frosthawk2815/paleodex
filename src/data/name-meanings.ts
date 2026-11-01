@@ -254,6 +254,7 @@ export const GENUS_MEANINGS: Record<string, Meaning> = {
   Altirhinus: 'high nose',
   Shamosaurus: { meaning: 'Gobi lizard', note: 'From Shamo, the Chinese name for the Gobi Desert.' },
   Pholidosaurus: 'scaly lizard',
+  Tylosaurus: { meaning: 'knob lizard', note: 'From the bony knob at the tip of its snout.' },
   // ---- Synapsids ----
   Dimetrodon: 'two measures of teeth',
   Edaphosaurus: 'pavement lizard',
@@ -336,6 +337,7 @@ export const SPECIES_MEANINGS: Record<string, Meaning> = {
   'hapalochlaena-lunulata': 'crescent-marked',
   'thaumoctopus-mimicus': 'mimic',
   'isotelus-gigas': 'giant',
+  'tylosaurus-rex': { meaning: 'king', note: 'Shortened, its name is also “T. rex”, which news reports made the most of.' },
   'zavacephale-rinpoche': 'precious one',
   'yi-qi': 'strange',
   'mammuthus-exilis': 'small',

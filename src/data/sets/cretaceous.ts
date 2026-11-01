@@ -1079,13 +1079,15 @@ export const CRETACEOUS: DataSet = {
       placeText: 'Kansas and elsewhere, USA',
       formations: ['niobrara'],
       summary: [
-        'A giant mosasaur up to about 13 m long with a bony, pointed snout, perhaps used to ram prey or rivals. Stomach contents show it ate almost anything: fish, sharks, plesiosaurs, other mosasaurs, even a flightless bird.',
+        'A giant mosasaur with a bony, pointed snout, perhaps used to ram prey or rivals. Stomach contents show it ate almost anything: fish, sharks, plesiosaurs, other mosasaurs, even a flightless bird.',
+        'In 2026 several of the largest skeletons long counted as Tylosaurus proriger, up to about 13 m long, were found to belong to a new species with serrated teeth, Tylosaurus rex, so the biggest “Tylosaurus” in many books is now T. rex.',
       ],
       facts: [
         { label: 'Named', value: 'Edward Drinker Cope, 1869' },
-        { label: 'Length', value: 'Up to about 13 m' },
+        { label: 'Length', value: 'Large; its biggest specimens were reassigned to T. rex in 2026' },
         { label: 'Diet', value: 'Fish, sharks, sea reptiles and diving birds' },
       ],
+      related: [{ id: 'tylosaurus-rex', note: 'A larger relative with serrated teeth, named in 2026 from specimens once counted as this species.' }],
       keywords: ['tylosaurus', 'mosasaur', 'sea monster', 'cretaceous'],
     },
     {
