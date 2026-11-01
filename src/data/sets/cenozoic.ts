@@ -557,7 +557,7 @@ export const CENOZOIC: DataSet = {
       status: 'full',
       ageText: 'About 2.3 to 1.3 million years ago (Pleistocene)',
       placeText: 'East Africa: Ethiopia, Kenya, Tanzania and Malawi',
-      formations: [],
+      formations: ['olduvai'],
       phylo: 1.2,
       summary: [
         'A “robust” relative of humans with a huge jaw, cheek teeth about four times the size of ours, very thick enamel, and a crest along the top of its skull for enormous chewing muscles. Its brain was about 500–550 cm³, a little larger than a chimpanzee’s. Mary Leakey found the first skull at Olduvai Gorge, Tanzania, in 1959, and it was nicknamed “Nutcracker Man”.',
@@ -579,7 +579,7 @@ export const CENOZOIC: DataSet = {
       status: 'full',
       ageText: 'About 2 to 1 million years ago (Pleistocene)',
       placeText: 'Swartkrans, Kromdraai and Drimolen caves, South Africa',
-      formations: [],
+      formations: ['swartkrans'],
       phylo: 1.1,
       summary: [
         'The southern African “robust” hominin, with big cheek teeth and a crested skull, though less extreme than its East African relative Paranthropus boisei. Robert Broom named it in 1938 from a skull found at Kromdraai by a schoolboy, Gert Terblanche; hundreds of fossils have since come from the caves of the Cradle of Humankind. Its diet was more varied than boisei’s, including harder foods.',
@@ -622,7 +622,7 @@ export const CENOZOIC: DataSet = {
       status: 'full',
       ageText: 'About 2 million to 110,000 years ago',
       placeText: 'Africa and Asia, from Georgia to China and Java',
-      formations: [],
+      formations: ['olduvai'],
       phylo: 1.3,
       summary: [
         'The first human species with a body much like ours: tall, long-legged and built for walking and running long distances, with a brain that grew over its history from about 600 to over 1,000 cm³. It was the first to spread out of Africa, reaching Dmanisi in Georgia about 1.8 million years ago and China and Java soon after. It made teardrop-shaped Acheulean hand axes for over a million years, and probably used fire.',

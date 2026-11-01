@@ -65,7 +65,7 @@ export const ICE_AGE: DataSet = {
       status: 'full',
       ageText: 'About 300,000 to 25,000 years ago',
       placeText: 'Europe',
-      formations: [],
+      formations: ['krapina'],
       summary: [
         'A huge bear, males up to about 500 kg, that hibernated in caves, where many died over the winters, leaving thousands of skeletons: over 30,000 in the Drachenhöhle in Austria alone. Its teeth show it ate mostly plants. It may have declined as people competed with it for caves and climate cooled.',
       ],
@@ -84,7 +84,7 @@ export const ICE_AGE: DataSet = {
       status: 'full',
       ageText: 'About 400,000 to 7,700 years ago',
       placeText: 'Europe to Siberia',
-      formations: [],
+      formations: ['harbin'],
       summary: [
         'A giant deer, not an elk and not only Irish, standing about 2.1 m at the shoulder with antlers up to 3.6 m across, the largest of any deer. Many have been dug from Irish peat bogs. It survived longest in western Siberia, until about 7,700 years ago.',
       ],

@@ -112,7 +112,7 @@ export const MODERN: DataSet = {
       status: 'full',
       ageText: 'About 400,000 to 40,000 years ago',
       placeText: 'Europe and western and central Asia',
-      formations: [],
+      formations: ['krapina'],
       summary: [
         'Our closest extinct relatives: stocky, strong, big-brained humans adapted to the cold of Ice Age Europe. They made fine stone tools, controlled fire, hunted large animals, buried some of their dead and made simple ornaments and cave markings.',
         'Modern humans arrived in Europe from about 45,000 years ago, and within a few thousand years the Neanderthals were gone. The two interbred: most people with ancestry from outside Africa carry about 1 to 2% Neanderthal DNA.',
@@ -134,7 +134,7 @@ export const MODERN: DataSet = {
       status: 'full',
       ageText: 'About 700,000 to 50,000 years ago',
       placeText: 'Liang Bua cave and the Soa Basin, Flores, Indonesia',
-      formations: [],
+      formations: ['liang-bua'],
       summary: [
         'A tiny human found in 2003 in Liang Bua cave on the island of Flores and nicknamed the “hobbit”. The best skeleton, a woman known as LB1, stood about 1.06 m tall and had a brain of about 420 cm³, about the size of a chimpanzee’s, yet her species made stone tools. It had long, flat feet, short legs and a wrist built like an ape’s.',
         'At first its bones were thought to be as young as 12,000 years, but redating in 2016 showed they are about 100,000 to 60,000 years old, with its stone tools from about 190,000 to 50,000 years ago. It disappeared around the time modern humans reached the region, though whether they were the cause is not known. Even older, 700,000-year-old fossils from the Soa Basin, described in 2016 and 2024, come from people just as small.',
@@ -156,7 +156,7 @@ export const MODERN: DataSet = {
       status: 'full',
       ageText: 'About 220,000 to 50,000 years ago, perhaps later',
       placeText: 'Asia, from Siberia and the Tibetan Plateau to China and Taiwan',
-      formations: [],
+      formations: ['harbin'],
       summary: [
         'An extinct group of humans first discovered from DNA alone. In 2010 the genome from a tiny finger bone found in Denisova Cave, in Siberia’s Altai Mountains, revealed a kind of human no one knew existed, the closest relatives of the Neanderthals. For years they were known only from a few teeth and bone scraps.',
         'Proteins later identified a jaw from a cave on the Tibetan Plateau (2019), at least 160,000 years old, and a jaw dredged from the sea off Taiwan (2025). In 2025, proteins and DNA from the Harbin “Dragon Man” skull, at least 146,000 years old, showed it was Denisovan, giving the first look at a face: a big brain, a heavy brow and very large teeth. Because that skull had been named Homo longi in 2021, many researchers now use that name for Denisovans, though others prefer not to give them a species name. In 2026, teeth, bones and over 1,300 stone tools from Bianfu Cave in Yunnan, about 167,000 to 134,000 years old, and proteins from fossils at Xujiayao in northern China added more.',
@@ -177,7 +177,7 @@ export const MODERN: DataSet = {
       status: 'full',
       ageText: 'About 400,000 to 4,000 years ago',
       placeText: 'Northern Eurasia and North America; last on Wrangel Island, Russia',
-      formations: [],
+      formations: ['harbin'],
       summary: [
         'An elephant built for the Ice Age, about the size of an African elephant, with a coat of long hair, small ears, a short tail, a fatty hump and long, curving tusks. It grazed the vast, dry “mammoth steppe” that stretched from Spain to Canada.',
         'As the Ice Age ended the steppe shrank and people hunted mammoths, and most populations were gone by about 10,000 years ago. A small population hung on, cut off on Wrangel Island in the Arctic Ocean, until about 4,000 years ago, when the pyramids of Giza were already standing.',
@@ -328,7 +328,7 @@ export const MODERN: DataSet = {
       status: 'full',
       ageText: 'About 650,000 years ago to 1627',
       placeText: 'Europe, North Africa and Asia; last in Poland',
-      formations: [],
+      formations: ['krapina'],
       summary: [
         'The wild ancestor of domestic cattle: huge, long-horned and fierce, with bulls standing about 1.8 m at the shoulder. Aurochs are painted on the walls of Lascaux cave, and cattle were domesticated from them about 10,500 years ago in the Middle East and separately in South Asia.',
         'Hunting and the loss of forests to farming pushed them back to central Europe. The last herd was protected as royal game in the Jaktorów Forest in Poland, where the last aurochs, a cow, died in 1627.',
