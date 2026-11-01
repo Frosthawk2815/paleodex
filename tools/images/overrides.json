@@ -14,5 +14,17 @@
   "artist": "Dmitry Bogdanov",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "mekosuchus-whitehunterensis": {
+  "file": "Mekosuchus spp.png",
+  "why": "Owner's choice: Armin Reindl's restoration shows both Mekosuchus species, so it is used for both.",
+  "scope": "genus",
+  "kind": "restoration"
+ },
+ "mekosuchus-inexpectatus": {
+  "file": "Mekosuchus spp.png",
+  "why": "Owner's choice: Armin Reindl's restoration shows both Mekosuchus species, so it is used for both.",
+  "scope": "genus",
+  "kind": "restoration"
  }
 }

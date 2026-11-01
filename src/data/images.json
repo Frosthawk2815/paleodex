@@ -14427,6 +14427,32 @@
   "scope": "species",
   "kind": "fossil"
  },
+ "mekosuchus-inexpectatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Mekosuchus_spp.png/960px-Mekosuchus_spp.png",
+  "width": 800,
+  "height": 900,
+  "artist": "Armin Reindl",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mekosuchus_spp.png",
+  "file": "Mekosuchus_spp.png",
+  "article": "https://commons.wikimedia.org/wiki/File:Mekosuchus_spp.png",
+  "scope": "genus",
+  "kind": "restoration"
+ },
+ "mekosuchus-whitehunterensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Mekosuchus_spp.png/960px-Mekosuchus_spp.png",
+  "width": 800,
+  "height": 900,
+  "artist": "Armin Reindl",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mekosuchus_spp.png",
+  "file": "Mekosuchus_spp.png",
+  "article": "https://commons.wikimedia.org/wiki/File:Mekosuchus_spp.png",
+  "scope": "genus",
+  "kind": "restoration"
+ },
  "melanocetus-johnsonii": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Humpback_anglerfish.png/500px-Humpback_anglerfish.png",
   "width": 500,

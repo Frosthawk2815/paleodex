@@ -48,9 +48,16 @@ def main():
     species = {s['id']: s for s in species_list}
     order = {s['id']: i for i, s in enumerate(species_list)}
 
+    # Pictures the owner pinned by hand (overrides.json) may be shared on purpose, e.g. one
+    # restoration showing two species.
+    try:
+        pinned = set(json.load(open(f'{HERE}/overrides.json')))
+    except FileNotFoundError:
+        pinned = set()
     by_file = defaultdict(list)
     for sid, c in candidates.items():
-        by_file[c['file']].append(sid)
+        if sid not in pinned:
+            by_file[c['file']].append(sid)
     groups = {f: sids for f, sids in by_file.items() if len(sids) > 1}
     print(f'{len(groups)} pictures shared by more than one species')
     if '--check' in sys.argv:

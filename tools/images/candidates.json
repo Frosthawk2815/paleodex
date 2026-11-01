@@ -17392,6 +17392,19 @@
   "scope": "genus",
   "kind": "restoration"
  },
+ "mekosuchus-inexpectatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Mekosuchus_spp.png/960px-Mekosuchus_spp.png",
+  "width": 800,
+  "height": 900,
+  "artist": "Armin Reindl",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mekosuchus_spp.png",
+  "file": "Mekosuchus_spp.png",
+  "article": "https://commons.wikimedia.org/wiki/File:Mekosuchus_spp.png",
+  "scope": "genus",
+  "kind": "restoration"
+ },
  "mekosuchus-whitehunterensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Mekosuchus_spp.png/960px-Mekosuchus_spp.png",
   "width": 800,
@@ -17401,8 +17414,8 @@
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Mekosuchus_spp.png",
   "file": "Mekosuchus_spp.png",
-  "article": "https://en.wikipedia.org/wiki/Mekosuchus_whitehunterensis",
-  "scope": "species",
+  "article": "https://commons.wikimedia.org/wiki/File:Mekosuchus_spp.png",
+  "scope": "genus",
   "kind": "restoration"
  },
  "melanerpes-formicivorus": {

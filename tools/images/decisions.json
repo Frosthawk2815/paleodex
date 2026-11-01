@@ -4938,8 +4938,9 @@
   "file": "Mei_long_holotype_(cropped).jpg"
  },
  "mekosuchus-whitehunterensis": {
-  "vote": "no",
-  "file": "Mekosuchus_inexpectans.JPG",
+  "vote": "yes",
+  "file": "Mekosuchus_spp.png",
+  "note": "Owner chose this picture for both Mekosuchus species.",
   "rejectedFiles": [
    "Mekosuchus_inexpectans.JPG"
   ]
@@ -8587,5 +8588,11 @@
  "zuul-crurivastator": {
   "vote": "yes",
   "file": "ZuulROM2.jpg"
+ },
+ "mekosuchus-inexpectatus": {
+  "vote": "yes",
+  "file": "Mekosuchus_spp.png",
+  "note": "Owner chose this picture for both Mekosuchus species.",
+  "rejectedFiles": []
  }
 }
