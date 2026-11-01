@@ -56244,5 +56244,347 @@
         ]
       }
     ]
+  },
+  "nautilus-pompilius": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              95,
+              -30,
+              180,
+              15
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "architeuthis-dux": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -60,
+              180,
+              65
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mesonychoteuthis-hamiltoni": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -75,
+              180,
+              -40
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dosidicus-gigas": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "sea": [
+              -120,
+              -50,
+              -70,
+              35
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -140,
+              -50,
+              -70,
+              60
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "sepia-officinalis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -25,
+              -35,
+              42,
+              62
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "spirula-spirula": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -40,
+              180,
+              40
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "octopus-vulgaris": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -30,
+              -35,
+              42,
+              55
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "enteroctopus-dofleini": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              120,
+              20,
+              180,
+              62
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              30,
+              -115,
+              62
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hapalochlaena-lunulata": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              90,
+              -35,
+              160,
+              25
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "thaumoctopus-mimicus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              95,
+              -15,
+              155,
+              15
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "amphioctopus-marginatus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              70,
+              -25,
+              160,
+              30
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vampyroteuthis-infernalis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -45,
+              180,
+              45
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "argonauta-argo": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -40,
+              180,
+              40
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

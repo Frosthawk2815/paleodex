@@ -219,6 +219,22 @@ export const GENUS_MEANINGS: Record<string, Meaning> = {
   Beelzebufo: 'devil toad',
   Titanoboa: 'titanic boa',
   Vasuki: { meaning: 'Vasuki', note: 'After the king of serpents in Hindu mythology, often shown around the neck of Shiva.' },
+  // ---- Cephalopods ----
+  Orthoceras: 'straight horn',
+  Cameroceras: 'chambered horn',
+  Endoceras: 'inner horn',
+  Nautilus: 'sailor',
+  Architeuthis: 'chief squid',
+  Mesonychoteuthis: 'middle-hooked squid',
+  Vampyroteuthis: 'vampire squid',
+  Octopus: 'eight-footed',
+  Spirula: 'little coil',
+  Hapalochlaena: 'soft cloak',
+  Thaumoctopus: 'wonder octopus',
+  Argonauta: { meaning: 'Argonaut', note: 'After the Argonauts, the sailors of Greek myth: the female was once thought to sail the sea using her shell.' },
+  // ---- Trilobites ----
+  Isotelus: { meaning: 'equal ends', note: 'From its head and tail shields, which are much the same size and shape.' },
+  Ceraurus: 'horn tail',
   // ---- Synapsids ----
   Dimetrodon: 'two measures of teeth',
   Edaphosaurus: 'pavement lizard',
@@ -294,6 +310,13 @@ export const SPECIES_MEANINGS: Record<string, Meaning> = {
   'dorudon-atrox': 'fierce',
   'mammuthus-primigenius': 'firstborn',
   'pachycephalosaurus-wyomingensis': 'from Wyoming',
+  'vampyroteuthis-infernalis': 'from hell',
+  'architeuthis-dux': 'leader',
+  'octopus-vulgaris': 'common',
+  'sepia-officinalis': { meaning: 'of the apothecaries', note: 'Cuttlefish ink and cuttlebone were once sold as medicines.' },
+  'hapalochlaena-lunulata': 'crescent-marked',
+  'thaumoctopus-mimicus': 'mimic',
+  'isotelus-gigas': 'giant',
 };
 
 export const meaningText = (m: Meaning) => (typeof m === 'string' ? m : m.meaning);

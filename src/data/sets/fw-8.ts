@@ -691,7 +691,7 @@ export const FW_8: DataSet = {
       id: 'syllipsimopodi-bideni',
       name: 'Syllipsimopodi bideni',
       common: 'Syllipsimopodi',
-      clade: 'cephalopoda',
+      clade: 'coleoidea',
       status: 'full',
       ageText: BG_AGE,
       placeText: BG_PLACE,
