@@ -6040,17 +6040,17 @@
   "scope": "species"
  },
  "chalicotherium-goldfussi": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/31_-_Chalicotherium_goldfussi_-_Astaracien_-_St_Gaudens_-_MHNT.PAL.2010.31.1_Up.jpg/960px-31_-_Chalicotherium_goldfussi_-_Astaracien_-_St_Gaudens_-_MHNT.PAL.2010.31.1_Up.jpg",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Chalicotherium_brevirostris_DB24.jpg/960px-Chalicotherium_brevirostris_DB24.jpg",
   "width": 800,
-  "height": 494,
-  "artist": "Didier Descouens",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:31_-_Chalicotherium_goldfussi_-_Astaracien_-_St_Gaudens_-_MHNT.PAL.2010.31.1_Up.jpg",
-  "file": "31_-_Chalicotherium_goldfussi_-_Astaracien_-_St_Gaudens_-_MHNT.PAL.2010.31.1_Up.jpg",
-  "article": "https://en.wikipedia.org/wiki/Chalicotherium",
+  "height": 628,
+  "artist": "Dmitry Bogdanov",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chalicotherium_brevirostris_DB24.jpg",
+  "file": "Chalicotherium_brevirostris_DB24.jpg",
+  "article": "https://commons.wikimedia.org/wiki/File:Chalicotherium_brevirostris_DB24.jpg",
   "scope": "genus",
-  "kind": "fossil"
+  "kind": "restoration"
  },
  "champsosaurus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Champsosaurus_natator.jpg/960px-Champsosaurus_natator.jpg",

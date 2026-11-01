@@ -1731,8 +1731,9 @@
   ]
  },
  "chalicotherium-goldfussi": {
-  "vote": "no",
-  "file": "Chalicotherium_goldfussi_MHNT_Pal_2010_0_31_3_Valentine.jpg",
+  "vote": "yes",
+  "file": "Chalicotherium_brevirostris_DB24.jpg",
+  "note": "Owner asked for a life restoration rather than teeth.",
   "rejectedFiles": [
    "Chalicotherium_goldfussi_MHNT_Pal_2010_0_31_3_Valentine.jpg"
   ]

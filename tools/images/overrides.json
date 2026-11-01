@@ -7,5 +7,12 @@
  "ornimegalonyx-oteroi": {
   "file": "Homo sapiens VS Ornimegalonyx oteroi size comparison.svg",
   "why": "Owner's choice: the size comparison with a person rather than the restoration."
+ },
+ "chalicotherium-goldfussi": {
+  "file": "Chalicotherium brevirostris DB24.jpg",
+  "why": "Owner's choice: a life restoration showing its knuckle-walking, gorilla-like build instead of isolated teeth (it shows the related Chalicotherium brevirostris).",
+  "artist": "Dmitry Bogdanov",
+  "scope": "genus",
+  "kind": "restoration"
  }
 }

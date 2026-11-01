@@ -4874,6 +4874,19 @@
   "article": "https://en.wikipedia.org/wiki/Basking_shark",
   "scope": "species"
  },
+ "chalicotherium-goldfussi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Chalicotherium_brevirostris_DB24.jpg/960px-Chalicotherium_brevirostris_DB24.jpg",
+  "width": 800,
+  "height": 628,
+  "artist": "Dmitry Bogdanov",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chalicotherium_brevirostris_DB24.jpg",
+  "file": "Chalicotherium_brevirostris_DB24.jpg",
+  "article": "https://commons.wikimedia.org/wiki/File:Chalicotherium_brevirostris_DB24.jpg",
+  "scope": "genus",
+  "kind": "restoration"
+ },
  "champsosaurus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Champsosaurus_natator.jpg/960px-Champsosaurus_natator.jpg",
   "width": 800,
