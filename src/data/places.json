@@ -641,6 +641,22 @@
   "lon": 14.49944
  },
  {
+  "id": "museum-central-museum-of-dinosaurs-of-mongolia",
+  "kind": "museum",
+  "name": "Central Museum of Dinosaurs of Mongolia",
+  "country": "Mongolia",
+  "lat": 47.9234,
+  "lon": 106.9057
+ },
+ {
+  "id": "museum-gobi-museum-of-nature-and-history",
+  "kind": "museum",
+  "name": "Gobi Museum of Nature and History",
+  "country": "Mongolia",
+  "lat": 43.58383,
+  "lon": 104.42661
+ },
+ {
   "id": "zoo-san-diego-zoo",
   "kind": "zoo",
   "name": "San Diego Zoo",

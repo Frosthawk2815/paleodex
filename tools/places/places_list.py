@@ -89,7 +89,8 @@ MUSEUMS = [
     ('Mexico', 'Museo del Desierto'),
     ('South Africa', 'Iziko South African Museum'),
     ('South Africa', 'Ditsong National Museum of Natural History'),
-    ('Mongolia', 'Central Museum of Mongolian Dinosaurs'),
+    ('Mongolia', 'Central Museum of Dinosaurs of Mongolia'),
+    ('Mongolia', 'Gobi Museum of Nature and History'),
     ('Indonesia', 'Bogor Zoology Museum'),
     ('Indonesia', 'Geology Museum (Bandung)'),
     ('Poland', 'Museum of Evolution of Polish Academy of Sciences'),
@@ -219,6 +220,8 @@ HAND = {
     'Geology Museum (Bandung)': ('Bandung Geological Museum', -6.9007, 107.6215, 'Q7475825'),
     'Gyeongnam Goseong Dinosaur Museum': ('Goseong Dinosaur Museum', 34.9081, 128.1485, 'Q5587165'),
     'National Science Museum (South Korea)': ('National Science Museum, Daejeon', 36.37616, 127.37507, 'Q487077'),
+    'Central Museum of Dinosaurs of Mongolia': ('Central Museum of Dinosaurs of Mongolia', 47.9234, 106.9057, 'Q56302237'),
+    'Gobi Museum of Nature and History': ('Gobi Museum of Nature and History', 43.58383, 104.42661, 'Q129260826'),
     'Regional Museum of Natural History, Mysore': ('Regional Museum of Natural History, Mysore', 12.30585, 76.6741, 'Q7309109'),
 }
 
