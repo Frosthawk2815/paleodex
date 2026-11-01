@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
-from places_list import ACCREDITED, HAND, LIMIT, MUSEUMS, TIERS, ZOOS  # noqa: E402
+from places_list import ACCREDITED, HAND, LIMIT, MUSEUMS, NOTES, TIERS, ZOOS  # noqa: E402
 
 UA = 'PaleoDex/1.0 (educational app; https://github.com/Frosthawk2815/paleodex)'
 API = 'https://en.wikipedia.org/w/api.php'
@@ -142,6 +142,8 @@ def main():
                      'lat': round(p['coords']['lat'], 5), 'lon': round(p['coords']['lon'], 5)}
             if note:
                 place['accreditation'] = note
+            if title in NOTES:
+                place['note'] = NOTES[title]
             places.append(place)
     out = ROOT / 'src/data/places.json'
     out.write_text(json.dumps(places, ensure_ascii=False, indent=1) + '\n')

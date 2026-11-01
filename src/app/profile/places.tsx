@@ -108,9 +108,13 @@ export default function PlacesScreen() {
         <View style={[st.card, { padding: 14, gap: 6 }]} accessibilityLiveRegion="polite">
           {result.here.length > 0 ? (
             result.here.map((p) => (
-              <Text key={p.id} style={st.rowTitle}>
-                {ICON[p.kind]} You’re at {p.name}{p.spot ? ` (${p.spot})` : ''}!
-              </Text>
+              <View key={p.id} style={{ gap: 2 }}>
+                <Text style={st.rowTitle}>
+                  {ICON[p.kind]} You’re at {p.name}
+                  {p.spot ? ` (${p.spot})` : ''}!
+                </Text>
+                {!!p.note && <Text style={st.rowSub}>{p.note}</Text>}
+              </View>
             ))
           ) : (
             <Text style={st.rowTitle}>No museum, zoo or fossil site here yet.</Text>
@@ -153,6 +157,7 @@ export default function PlacesScreen() {
                 <View style={st.rowText}>
                   <Text style={st.rowTitle}>{p.name}</Text>
                   <Text style={st.rowSub}>{[KIND[p.kind], p.country].filter(Boolean).join(' · ')}</Text>
+                  {!!p.note && <Text style={st.rowSub}>{p.note}</Text>}
                 </View>
               </View>
             </View>

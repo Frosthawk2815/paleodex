@@ -7,7 +7,7 @@ import { EVENTS } from '@/data/events';
 
 export type PlaceKind = 'museum' | 'zoo' | 'site';
 // spot names the public access point a fossil site was checked in at, when it isn't the main one.
-export type Place = { id: string; kind: PlaceKind; name: string; spot?: string; country?: string; lat: number; lon: number; accreditation?: string };
+export type Place = { id: string; kind: PlaceKind; name: string; spot?: string; country?: string; lat: number; lon: number; accreditation?: string; note?: string };
 
 const MUSEUMS_AND_ZOOS = placeData as Place[];
 

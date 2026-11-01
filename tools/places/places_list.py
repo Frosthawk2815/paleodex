@@ -221,3 +221,9 @@ HAND = {
     'National Science Museum (South Korea)': ('National Science Museum, Daejeon', 36.37616, 127.37507, 'Q487077'),
     'Regional Museum of Natural History, Mysore': ('Regional Museum of Natural History, Mysore', 12.30585, 76.6741, 'Q7309109'),
 }
+
+# Notes shown with a place in the app, e.g. temporary closures. The marker stays at the museum's
+# own building so check-ins keep working when it reopens.
+NOTES = {
+    'Natural History Museum (Ireland)': 'The Merrion Street building, beside Leinster House, is closed for renovation; some of its exhibits are on show at other National Museum of Ireland sites in the meantime.',
+}
