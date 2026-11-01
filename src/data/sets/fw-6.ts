@@ -412,11 +412,16 @@ export const FW_6: DataSet = {
       placeText: 'Montana and the Dakotas, USA',
       formations: ['hell-creek'],
       summary: [
-        'A small caenagnathid, a toothless, beaked relative of Anzu and the oviraptors, weighing about 12 kg, named in 2026 from a partial skull and skeleton and other skull bones. Its name means “chicken from hell”, a nod to Anzu’s nickname.',
+        'A turkey-sized caenagnathid, a toothless, beaked relative of Anzu and the oviraptors, weighing about 11 kg, named in 2026 from a partial skull and skeleton and bones from many Hell Creek sites. Its name means “chicken from hell”, a nod to Anzu’s nickname; the species honours James William Boyd, grandfather of one of its describers.',
+        'Its jaw muscles were arranged in a way seen in no other non-bird dinosaur but matched by living fruit-eating parrots, so its describers argue it was the first known dinosaur specialised for eating fruit. This is worked out from the shape of its skull alone: no fruit, seeds or stomach contents have been found with it.',
       ],
-      facts: [{ label: 'Named', value: 'Gregory Funston and colleagues, 2026' }],
+      facts: [
+        { label: 'Named', value: 'Gregory Funston and colleagues, 2026 (Nature Communications)' },
+        { label: 'Weight', value: 'About 11 kg, roughly a turkey' },
+        { label: 'Diet', value: 'Probably fruit, judged from parrot-like jaw muscles (not direct evidence)' },
+      ],
       related: [{ id: 'anzu-wyliei', note: 'Its larger relative, the original “chicken from hell”.' }],
-      keywords: ['infernogallus', 'caenagnathid', 'oviraptorosaur', 'hell creek', 'montana', 'cretaceous'],
+      keywords: ['infernogallus', 'hell chicken', 'caenagnathid', 'oviraptorosaur', 'fruit', 'frugivore', 'parrot', 'hell creek', 'montana', 'cretaceous'],
     },
     {
       id: 'platytholus-clemensi',
