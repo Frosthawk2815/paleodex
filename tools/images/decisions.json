@@ -346,10 +346,7 @@
  },
  "allkaruen-koi": {
   "vote": "no",
-  "file": "Allkaruen.png",
-  "rejectedFiles": [
-   "Allkaruen.png"
-  ]
+  "file": "Allkaruen_endocast.png"
  },
  "allocebus-trichotis": {
   "vote": "yes",
@@ -1205,11 +1202,8 @@
   "file": "Baryonyx_walkeri_mount_NMNS.jpg"
  },
  "barytherium-grave": {
-  "vote": "no",
-  "file": "Barytherium_skull_(BMNH_6818).png",
-  "rejectedFiles": [
-   "Barytherium_skull_(BMNH_6818).png"
-  ]
+  "vote": "yes",
+  "file": "Barytherium_graveDB1.jpg"
  },
  "bashanosaurus-primitivus": {
   "vote": "yes",
@@ -1589,11 +1583,8 @@
   "file": "Mountain-pygmy-possum.jpg"
  },
  "bustingorrytitan-shiva": {
-  "vote": "no",
-  "file": "Bustingorrytitan_(forelimb_bones).jpg",
-  "rejectedFiles": [
-   "Bustingorrytitan_(forelimb_bones).jpg"
-  ]
+  "vote": "yes",
+  "file": "Bustingorrytitan_(axial_skeleton).jpg"
  },
  "buteo-jamaicensis": {
   "vote": "yes",
@@ -2398,10 +2389,7 @@
  },
  "coniophis-precedens": {
   "vote": "no",
-  "file": "Coniophis.jpg",
-  "rejectedFiles": [
-   "Coniophis.jpg"
-  ]
+  "file": "Coniophis_holotype_Marsh_1892.png"
  },
  "connochaetes-taurinus": {
   "vote": "yes",
@@ -2541,10 +2529,7 @@
  },
  "crosbysaurus-harrisae": {
   "vote": "no",
-  "file": "Crosbysaurus_referred.png",
-  "rejectedFiles": [
-   "Crosbysaurus_referred.png"
-  ]
+  "file": "Crosbysaurus_hypothetical.png"
  },
  "crossarchus-obscurus": {
   "vote": "yes",
@@ -2884,10 +2869,7 @@
  },
  "dinheirosaurus-lourinhanensis": {
   "vote": "no",
-  "file": "Dinheirosaurus.png",
-  "rejectedFiles": [
-   "Dinheirosaurus.png"
-  ]
+  "file": "Dinheirosaurus_holotype.png"
  },
  "dinictis-felina": {
   "vote": "yes",
@@ -5937,11 +5919,8 @@
   "file": "Cambrian_chordate_diversity_Metaspriggina_(cropped).jpg"
  },
  "metriacanthosaurus-parkeri": {
-  "vote": "no",
-  "file": "Metriacanthosaurus_ilium.png",
-  "rejectedFiles": [
-   "Metriacanthosaurus_ilium.png"
-  ]
+  "vote": "yes",
+  "file": "Metriacanthosaurus_holotype.png"
  },
  "metriorhynchus-superciliosus": {
   "vote": "yes",
@@ -6101,11 +6080,7 @@
  },
  "monoclonius-crassus": {
   "vote": "no",
-  "file": "Monoclonius.jpg",
-  "note": "Outdated restoration; find a newer picture.",
-  "rejectedFiles": [
-   "Monoclonius.jpg"
-  ]
+  "file": "Monoclonius_crassus.jpg"
  },
  "monodelphis-domestica": {
   "vote": "yes",
@@ -7215,10 +7190,7 @@
  },
  "pelecanimimus-polyodon": {
   "vote": "no",
-  "file": "Pelecanimimus_047.JPG",
-  "rejectedFiles": [
-   "Pelecanimimus_047.JPG"
-  ]
+  "file": "Pelecanimimus_restoration.jpeg"
  },
  "pelecanus-crispus": {
   "vote": "yes",
@@ -8100,6 +8072,10 @@
   "vote": "yes",
   "file": "Oxford_Dodo_display.jpg"
  },
+ "rastodon-procurvidens": {
+  "vote": "no",
+  "file": "Rastodon_procurvidens_(holotype,_UNIPAMPA_3170).png"
+ },
  "rativates-evadens": {
   "vote": "yes",
   "file": "Rativates_skull.png"
@@ -8218,10 +8194,7 @@
  },
  "rhyniognatha-hirsti": {
   "vote": "no",
-  "file": "Rhyniognatha_specimen.png",
-  "rejectedFiles": [
-   "Rhyniognatha_specimen.png"
-  ]
+  "file": "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg"
  },
  "rhynochetos-jubatus": {
   "vote": "yes",
@@ -8234,6 +8207,10 @@
  "rinchenia-mongoliensis": {
   "vote": "yes",
   "file": "Rinchenia_holotype_skull.jpg"
+ },
+ "rinconraptor-pipoae": {
+  "vote": "no",
+  "file": "Rinconraptor_Skeletal.svg"
  },
  "rinconsaurus-caudamirus": {
   "vote": "yes",
@@ -8687,10 +8664,7 @@
  },
  "simias-concolor": {
   "vote": "no",
-  "file": "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg",
-  "rejectedFiles": [
-   "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg"
-  ]
+  "file": "Simias_concolor.jpg"
  },
  "similicaudipteryx-yixianensis": {
   "vote": "yes",
@@ -9294,10 +9268,7 @@
  },
  "tendaguria-tanzaniensis": {
   "vote": "no",
-  "file": "Tendaguria.png",
-  "rejectedFiles": [
-   "Tendaguria.png"
-  ]
+  "file": "Tendaguria_anterior_dorsal_vertebra.png"
  },
  "tenontosaurus-tilletti": {
   "vote": "yes",
@@ -9509,10 +9480,7 @@
  },
  "tornieria-africana": {
   "vote": "no",
-  "file": "Tornieria_skull.png",
-  "rejectedFiles": [
-   "Tornieria_skull.png"
-  ]
+  "file": "Tornieria_caudal.png"
  },
  "torosaurus-latus": {
   "vote": "yes",

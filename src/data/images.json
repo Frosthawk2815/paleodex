@@ -3614,6 +3614,19 @@
   "scope": "genus",
   "kind": "skeletal"
  },
+ "barytherium-grave": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Barytherium_graveDB1.jpg/960px-Barytherium_graveDB1.jpg",
+  "width": 800,
+  "height": 451,
+  "artist": "DiBgd",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Barytherium_graveDB1.jpg",
+  "file": "Barytherium_graveDB1.jpg",
+  "article": "https://en.wikipedia.org/wiki/Barytherium",
+  "scope": "genus",
+  "kind": "restoration"
+ },
  "bashanosaurus-primitivus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Bashanosaurus_Skeletal.svg/960px-Bashanosaurus_Skeletal.svg.png",
   "width": 800,
@@ -4732,6 +4745,19 @@
   "file": "Mountain-pygmy-possum.jpg",
   "article": "https://en.wikipedia.org/wiki/Mountain_pygmy_possum",
   "scope": "species",
+  "kind": "fossil"
+ },
+ "bustingorrytitan-shiva": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Bustingorrytitan_%28axial_skeleton%29.jpg/960px-Bustingorrytitan_%28axial_skeleton%29.jpg",
+  "width": 800,
+  "height": 743,
+  "artist": "M. E. Simón & L. Salgado",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bustingorrytitan_(axial_skeleton).jpg",
+  "file": "Bustingorrytitan_(axial_skeleton).jpg",
+  "article": "https://en.wikipedia.org/wiki/Bustingorrytitan",
+  "scope": "genus",
   "kind": "fossil"
  },
  "buteo-jamaicensis": {
@@ -17780,6 +17806,19 @@
   "article": "https://en.wikipedia.org/wiki/Metaspriggina",
   "scope": "genus",
   "kind": "restoration"
+ },
+ "metriacanthosaurus-parkeri": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Metriacanthosaurus_holotype.png/960px-Metriacanthosaurus_holotype.png",
+  "width": 800,
+  "height": 397,
+  "artist": "Oxford Museum of Natural History and GB3D Type Fossils Database",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Metriacanthosaurus_holotype.png",
+  "file": "Metriacanthosaurus_holotype.png",
+  "article": "https://en.wikipedia.org/wiki/Metriacanthosaurus",
+  "scope": "genus",
+  "kind": "fossil"
  },
  "metriorhynchus-superciliosus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Thalattosuchus_%28Metriorhynchus%29_superciliosus_skeletal.png/960px-Thalattosuchus_%28Metriorhynchus%29_superciliosus_skeletal.png",
