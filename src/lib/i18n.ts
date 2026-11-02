@@ -10,6 +10,7 @@ import { useCallback } from 'react';
 import de from '@/i18n/de.json';
 import es from '@/i18n/es.json';
 import fr from '@/i18n/fr.json';
+import ga from '@/i18n/ga.json';
 import hi from '@/i18n/hi.json';
 import ja from '@/i18n/ja.json';
 import pt from '@/i18n/pt.json';
@@ -17,7 +18,7 @@ import ru from '@/i18n/ru.json';
 import zh from '@/i18n/zh.json';
 import { useProfile } from '@/lib/profile';
 
-export type Language = 'en' | 'es' | 'fr' | 'de' | 'pt' | 'zh' | 'ja' | 'hi' | 'ru';
+export type Language = 'en' | 'es' | 'fr' | 'de' | 'pt' | 'ga' | 'zh' | 'ja' | 'hi' | 'ru';
 export type LanguageSetting = 'system' | Language;
 
 // Each language's name in its own language, then in English.
@@ -27,13 +28,14 @@ export const LANGUAGES: { code: Language; name: string; english: string }[] = [
   { code: 'fr', name: 'Français', english: 'French' },
   { code: 'de', name: 'Deutsch', english: 'German' },
   { code: 'pt', name: 'Português', english: 'Portuguese' },
+  { code: 'ga', name: 'Gaeilge', english: 'Irish' },
   { code: 'zh', name: '中文（简体）', english: 'Chinese (Simplified)' },
   { code: 'ja', name: '日本語', english: 'Japanese' },
   { code: 'hi', name: 'हिन्दी', english: 'Hindi' },
   { code: 'ru', name: 'Русский', english: 'Russian' },
 ];
 
-const DICTS: Record<Exclude<Language, 'en'>, Record<string, string>> = { es, fr, de, pt, zh, ja, hi, ru };
+const DICTS: Record<Exclude<Language, 'en'>, Record<string, string>> = { es, fr, de, pt, ga, zh, ja, hi, ru };
 
 // The device's language if PaleoDex has it, otherwise English.
 export function deviceLanguage(): Language {

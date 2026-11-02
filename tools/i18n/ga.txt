@@ -1,0 +1,607 @@
+0|, in úsáid cheana
+1|, freagra ceart
+2|, níl sé ar fáil le do dhathanna eile
+3|, ar taispeáint ag barr a leathanaigh
+4|, do fhreagra, mícheart
+5|1 láthair iontaise
+6|1 mhúsaem
+7|1 ghrianghraf
+8|1 teideal rúnda fós le haimsiú
+9|1 ardán
+10|1 zú
+11|Cód 6 dhigit
+12|68 go 66 milliún bliain ó shin
+13|Tá iontráil iomlán don speiceas seo fós le teacht.
+14|Cluiche grúpa do 3 go 30 imreoir, le clár ceannairí tar éis gach babhta
+15|Focal ón déantóir
+16|Grúpa ar leith
+17|Grúpa beo ar leith
+18|Babhta foirfe!
+19|Tréimhse ama
+20|Imreoir
+21|Tráth na gceist do ghrúpa: {min} go {max} imreoir, gach duine ar a fhón féin. Roghnaíonn an t-óstach cúig bhabhta de chúig cheist, agus taispeántar clár ceannairí tar éis gach babhta.
+22|Ceann deacair. Leibhéal níos éasca a thriail?
+23|Faoi
+24|{period}: tuilleadh eolais ›
+25|Thart ar {n} km trasna
+26|Inrochtaineacht
+27|Zú creidiúnaithe
+28|Cuir le ceanáin
+29|Cuir d’ainm, do dháta breithe agus pictiúr leis in Cuir an phróifíl in eagar.
+30|Á chur leis…
+31|Tar éis duit freagra a thabhairt
+32|Beo inniu
+33|Beo inniu: {group}
+34|Gach ainmhí beo
+35|Beatha réamhstairiúil (agus bheo) PaleoDex ar fad
+36|Beatha réamhstairiúil ar fad
+37|An t-am ar fad
+38|Gach {group}
+39|Talamh agus farraige ársa: Scotese & Wright (2018), PALEOMAP PaleoAtlas. Leibhéal na farraige: Spratt & Lisiecki (2016); Bintanja & van de Wal (2008). Scála ama geolaíochta agus dathanna: Cairt Chrono-stratagrafach Idirnáisiúnta an ICS.
+40|Seanphár
+41|Ainmhithe a mhaireann san fhiántas inniu: cad iad agus cá gcónaíonn siad
+42|Cuma
+43|Baineann sé le leathanaigh speiceas, grúpaí agus foirmíochtaí agus leis na roghchláir seo. Fanann an chruinne dorcha, cosúil le spéir na hoíche.
+44|Uathoibríoch
+45|Uathoibríoch, an dath téacs is soléite
+46|Siar
+47|Ar ais chuig Cogadh na gCnámh
+48|Ar ais chuig Piarmheasúnú
+49|Ar ais chuig an Domhan agus an Ghealach
+50|Cúlra
+51|Ialtóga, creimirí agus grúpaí plódaithe eile
+52|Cód cath
+53|Cód cath {code}
+54|Is fearr: {n}/10
+55|Dáta breithe
+56|Baineadh an dáta breithe.
+57|Dáta breithe: {part}
+58|Áit bhreithe, baile agus seiceáil isteach ag músaeim, zúnna agus láithreacha iontaise
+59|Áit bhreithe, baile agus seiceáil isteach · cuairt tugtha ar {n}
+60|Dubh
+61|Cogadh na gCnámh
+62|Rugadh anseo thú
+63|Rugadh in {place} thú · Féach air trí na haoiseanna ›
+64|Rugadh ar {date} thú · Téigh chuig an mbliain sin ›
+65|Caimbriach
+66|Cealaigh
+67|Cealaigh an Piarmheasúnú
+68|Carbónmhar
+69|Cait, príomhaigh, éin chreiche, míolta móra agus tuilleadh
+70|Céanasóch
+71|Brúchtaí an Atlantaigh Láir
+72|Athraigh
+73|Athraigh mo rogha
+74|Athraigh an cheist dheireanach ag {who}
+75|Athraigh an chéad cheist eile ag {who}
+76|Gualdubh
+77|Seiceáil isteach go pearsanta ag láthair iontaise ó PaleoDex.
+78|Seiceáil isteach ag músaem stair an dúlra.
+79|Seiceáil isteach ag zú creidiúnaithe.
+80|Tuairteáil astaróideach Chicxulub
+81|Roghnaigh tráth na gceist eile
+82|Roghnaigh grúpa nó tréimhse ar dtús.
+83|Roghnaigh grúpa nó tréimhse do gach babhta.
+84|Roghnaigh grúpa nó tréimhse le tosú.
+85|Roghnaigh grianghraf ó do ghléas
+86|Roghnaigh na babhtaí agus roinn cód cath
+87|Roghnaigh an gcoinneoidh tú na teidil a thuill tú ag tabhairt cuairte orthu.
+88|Scannánaí
+89|Glan an stair
+90|Dún
+91|Dún an cuardach
+92|Dún an liosta
+93|Leid
+94|Leideanna
+95|Laghdaigh an crann ginealaigh
+96|Ceangailte le {who}
+97|Ag ceangal…
+98|Cóipeáilte!
+99|Cóipeáil
+100|Cóipeáil freagra imreora
+101|Ceart!
+102|Uachtar
+103|Creidiúintí
+104|Cailc
+105|Saincheaptha
+106|LL
+107|Dorcha
+108|Donn dorcha
+109|Lá
+110|Tochaltóir Domhain
+111|Scrios na háiteanna ar thug mé cuairt orthu
+112|Scrios na háiteanna agus a dteidil
+113|Scrios na háiteanna, coinnigh mo theidil
+114|Na háiteanna ar thug tú cuairt orthu a scriosadh?
+115|Deavónach
+116|Deacracht
+117|Dineasáir
+118|Déanta
+119|Ceanglaíonn gach fón go díreach le fón an óstaigh, a sheachadann an cluiche idir na himreoirí. Chun a chéile a aimsiú, úsáideann na fóin seirbhís cheangail phoiblí shaor in aisce (PeerJS) agus cuardach seoltaí Google (STUN) ar feadh tamaillín. Roinntear d’ainm, do theideal agus cóip bheag de do phictiúr próifíle leis na himreoirí eile don chlár ceannairí: do ghrianghraf féin, lena n-áirítear do ghrianghraf féin den ainmhí a roghnaigh tú mar phictiúr. Ní stóráiltear faic.
+120|Tuill gach teideal eile (seachas na cinn as cuairt a thabhairt ar áiteanna).
+121|Tuill teidil ag taiscéaladh. Roghnaigh ceann díobh le taispeáint faoi d’ainm. {n} as {total} tuillte.
+122|An Domhan agus an Ghealach méadaithe · an fad de réir scála
+123|An Domhan–an Ghealach: {n} km (inniu {today} km)
+124|Cuir an phróifíl in eagar
+125|Ubh
+126|Cuir deireadh leis an bPiarmheasúnú
+127|Díothuithe dheireadh an Chaimbriaigh
+128|Díothú dheireadh an Ordaivíciaigh
+129|Díothú dheireadh an Pheirmigh
+130|Díothú dheireadh an Triasaigh
+131|Méadaíonn sé leathanaigh speiceas, grúpaí agus foirmíochtaí agus na roghchláir seo. Leanann PaleoDex méid téacs do ghléis freisin.
+132|Cuir isteach an cód cath
+133|Cuir isteach an cód cath a seoladh chugat
+134|Cuir isteach cód cath an óstaigh
+135|Ré
+136|Cothrom
+137|Eachtra
+138|Eachtraí
+139|Áirítear gach láthair iontaise in PaleoDex freisin: oscail foirmíocht charraige le feiceáil cá bhfuil sí.
+140|Tá cuma leabhar nótaí línithe ar gach leathanach, scríofa de láimh.
+141|Tá cuma seanphár ar gach leathanach, scríofa i lámh lámhscríbhinne.
+142|Tosaíonn gach duine anseo.
+143|Gach rud
+144|Taiscéalaí
+145|Teagmhas díothaithe
+146|IONTRÁIL IOMLÁN
+147|Tá na dathanna tréigthe ró-éagsúil le do chúlra le go mbeadh aon téacs inléite ar an dá cheann.
+148|Ceanáin
+149|Oibrí Allamuigh
+150|Do shuíomh á aimsiú…
+151|Foraois
+152|Láthair iontaise
+153|Aimsithe in
+154|Íomhánna faoi cheadúnas saor ó Wikimedia Commons agus ón Vicipéid. Tugtar creidiúint do gach ceann dá ealaíontóir nó dá ghrianghrafadóir faoin gceadúnas a thaispeántar. Tapáil ceadúnas nó foinse chun é a oscailt. Is léirmhínithe iad athchruthuithe ealaíontóirí agus b’fhéidir nach dtagann siad leis an eolaíocht is déanaí.
+155|Ó na chéad dineasáir go dtí na cinn dheireanacha
+156|Faigh cód cath le seoladh chuig an imreoir eile
+157|Cruinne a thaispeánann an Domhan {n} milliún bliain ó shin. Tarraing chun casadh, fáisc chun súmáil.
+158|Sárobair.
+159|Grúpa
+160|Grúpa: {name}
+161|Grúpaí istigh ann
+162|Gearr am imreora ina leath
+163|Gearr am {who} ina leath
+164|Gearrcach
+165|Foirmíocht Hell Creek ›
+166|Folaigh na músaeim agus na zúnna ▲
+167|Folaigh an raon
+168|Codarsnacht ard
+169|Baile
+170|Baile: {place} · Féach air trí na haoiseanna ›
+171|Bí i d’óstach ar Phiarmheasúnú
+172|Bí i d’óstach ar chluiche
+173|Ainmneacha cáiliúla agus na bunrudaí
+174|Conas a chríochnaigh sé
+175|Cé mhéad atá ar eolas agat faoin mbeatha réamhstairiúil? Tagann na ceisteanna ó PaleoDex ar fad, ar chúig leibhéal deacrachta.
+176|Brostaigh!
+177|Seoladh Brostaigh!: tá am {who} don cheist seo gearrtha ina leath.
+178|Seoladh Brostaigh!: tá am {who} gearrtha ina leath.
+179|Ní bhailím, ní stórálaim agus ní dhíolaim sonraí do shuímh. Ní léitear do shuíomh ach nuair a thapálann tú cnaipe suímh, agus ní fhágann sé do ghléas riamh. Ní choinnítear d’áit bhreithe, do bhaile ná na háiteanna ar thug tú cuairt orthu ach ar an ngléas seo, agus is féidir leat iad a scriosadh am ar bith, ag coinneáil nó ag baint na dteideal a thuill siad.
+180|Níl uaim tú a spreagadh chun tú féin a chur i mbaol. Ní bhronnann foirmíochtaí nach bhfuil ar oscailt don phobal, atá i gceantair an-iargúlta nó i gceantair choinbhleachta teidil. Fág iad sin faoi na gairmithe a fhágann gur féidir é seo ar fad.
+181|Gorm oighir
+182|Má roghnaíonn sibh rudaí difriúla, socraíonn uimhir randamach, corr nó cothrom: tá cothrom agatsa.
+183|Má roghnaíonn sibh rudaí difriúla, socraíonn uimhir randamach, corr nó cothrom: tá corr agatsa.
+184|Creidiúintí íomhánna agus sonraí
+185|Íomhá:
+186|Impiriúil
+187|Neamhoifigiúil
+188|Inveirteabraigh
+189|Comhscór!
+190|Glac páirt
+191|Glac páirt i bPiarmheasúnú
+192|Glac páirt i gcluiche
+193|Léim díreach chuig áiteanna agus amanna in ionad beochana. Ar siúl freisin má iarrann do ghléas níos lú gluaisne.
+194|Léim chuig an mbliain ar rugadh thú
+195|Léim chuig {name}: {cause}
+196|Léim chuig {place}
+197|Iúrasach
+198|Díothú K/Pg
+199|Teanga
+200|Mór
+201|Níos mó
+202|Feicthe beo den uair dheireanach
+203|An {name} deireanach
+204|Mhair sé
+205|Díothú an Deavónaigh Dhéanaigh (Hangenberg)
+206|Díothú an Deavónaigh Dhéanaigh (Kellwasser)
+207|Clár ceannairí tar éis bhabhta {n}
+208|Fág
+209|Fág an cluiche
+210|D’fhág an cluiche
+211|Ainmhithe nach bhfuil chomh cáiliúil agus láithreacha iontaise
+212|Leibhéal {level} · {title}
+213|Leibhéal {level}, {difficulty}
+214|Leibhéal {level}, {title}. {points} pointe, an leibhéal is airde.
+215|Leibhéal {level}, {title}. {points} pointe, {toGo} go dtí an chéad leibhéal eile.
+216|Leibhéal {n} bainte amach
+217|Beatha agus eachtraí
+218|Beatha a aimsíodh anseo
+219|Geal
+220|Déantóir dóchúil na lorg
+221|Faoi ghlas: {name}. {hint}
+222|Féach ar an nGealach go dlúth
+223|Is meastacháin iad figiúirí na gcaillteanas agus athraíonn siad ó staidéar go staidéar.
+224|Caillte
+225|MM
+226|Tháinig slán
+227|Mamaigh
+228|Mamaigh an ama atá thart agus an lae inniu, agus a ngaolta luatha sinapsacha cosúil le Dimetrodon
+229|Sonraí an léarscáil agus na hamlíne
+230|Oll-díothú
+231|Oll-díothú · ceann de na Cúig Mhóra
+232|De réir an ghléis
+233|Roghchláir, cnaipí agus scáileáin. Tá na cuntais ar speicis, grúpaí agus foirmíochtaí fós i mBéarla faoi láthair.
+234|Meisisóch
+235|Méadrach
+236|Measctha
+237|Leabhar nótaí nua-aimseartha
+238|Mí
+239|An Ghealach · {n} km ón Domhan
+240|Ainm
+241|Ainm, dáta breithe agus pictiúr
+242|Ainmnithe as Cogaí na gCnámh ag deireadh na 1800idí, nuair a rith na sealgairí iontaisí iomaíocha Edward Drinker Cope agus Othniel Marsh rás, a rinne spiaireacht agus a rinne sabaitéireacht ar a chéile chun dineasáir nua a aimsiú. Eatarthu d’ainmnigh siad níos mó ná 130 speiceas nua, ó Stegosaurus agus Triceratops go Camarasaurus.
+243|Músaem stair an dúlra
+244|Nádúraí
+245|Dúghorm
+246|An taobh cóngarach, mar a fheictear ón Domhan é
+247|Is gaire duit:
+248|Néigineach
+249|Piarmheasúnú nua leis na himreoirí seo
+250|Scór is fearr nua don tráth na gceist seo!
+251|Ar aghaidh
+252|An chéad cheist eile
+253|Ar aghaidh: babhta {n}, {quiz}
+254|Níor aimsíodh aon Phiarmheasúnú leis an gcód sin, nó tá sé tosaithe cheana. Seiceáil an cód leis an óstach.
+255|Gan leideanna: tagann siad chun solais de réir mar a thaiscéalann tú.
+256|Níor aimsíodh aon chluiche leis an gcód sin. Seiceáil an cód leis an imreoir eile, agus go bhfuil a gcluiche fós ag fanacht.
+257|Níl aon íomhánna fós. Tapáil ＋ ag bun aon leathanaigh speicis le do ghrianghraf féin a chur leis, mar shampla do pheata nó cnámharlach a chonaic tú i músaem.
+258|Níl músaem, zú ná láthair iontaise anseo fós.
+259|Gan teideal fós
+260|Níor aimsíodh baile. Bain triail as baile níos mó in aice láimhe.
+261|Duine ar bith
+262|Dada fós. Oscail leathanach chun do chéad cheann a thuilleamh.
+263|Gnáth
+264|Níl sé go dona. Arís?
+265|Níl sé roinnte ina ardáin
+266|Gan aimsiú
+267|Gan socrú.
+268|Níor aimsíodh aon rud do “{query}”.
+269|Níl aon rud sábháilte fós. Tapáil ☆ Sábháil ag barr aon leathanaigh speicis, grúpa nó foirmíochta lena choinneáil anseo.
+270|Corr
+271|Ar an leathanach
+272|Nuair a bheidh freagra tugtha ag duine éigin
+273|Nuair a bheidh freagra tugtha ag {who}
+274|Ceann de na dineasáir fheoiliteacha is mó.
+275|Ní thairgtear ach dathanna téacs atá éasca le léamh ar do chúlra agus ar do phainéil (le codarsnacht ard, na cinn is láidre amháin). Má athraíonn tú do dhathanna, aistrítear téacs a bheadh deacair le léamh go hUathoibríoch.
+276|Ní thairgtear ach dathanna téacs atá éasca le léamh ar do chúlra agus ar do phainéil. Má athraíonn tú do dhathanna, aistrítear téacs a bheadh deacair le léamh go hUathoibríoch.
+277|Oscail
+278|Oscail gach speiceas ó fhoirmíocht charraige amháin (ceann le trí cinn ar a laghad).
+279|Oscail an leathanach ›
+280|Oscail speicis, grúpaí agus áiteanna chun pointí a thuilleamh. Líonann gach leathanach nua a aimsíonn tú do bharra.
+281|Oscail leathanach {name}
+282|Oscail do chéad leathanach.
+283|Oscail {name}
+284|Osclaíonn sé an leathanach faoin díothú seo
+285|Roghnach. Marcálann sé an bhliain ar rugadh thú ar an amlíne. Fanann sé ar an ngléas seo.
+286|Nó ceann de do ghrianghraif féin de speicis:
+287|Nó úsáid pictiúr de cheann de na speicis is ansa leat:
+288|Nó: ainmhithe beo inniu
+289|Ordaivíceach
+290|{group} eile
+291|Tá cuma seanphár scríofa i lámh lámhscríbhinne ar leathanaigh faoin mbeatha réamhstairiúil. Tá cuma leabhar nótaí lámhscríofa ar ainmhithe beo agus ar stair le déanaí, mar atá ar na roghchláir seo.
+292|Leannán Paleo
+293|Teastaíonn do shuíomh ó PaleoDex chun tú a sheiceáil isteach. Is féidir leat é a cheadú i socruithe do ghléis.
+294|Pailéigineach
+295|Pailéasóch
+296|Painéil
+297|Painéil agus cártaí
+298|Páipéar
+299|Piarmheasúnú
+300|Tréimhse
+301|Tréimhse: {name}
+302|Peirmeach
+303|Grianghraif a chuir tú leis. Fanann siad ar an ngléas seo. Tapáil ceann chun é a thaispeáint ar leathanach a speicis nó chun é a bhaint.
+304|Pictiúr don cheist seo
+305|Pictiúr do {name}
+306|Pictiúr de {name}
+307|Pictiúir ó Wikimedia Commons · Talamh agus farraige: Scotese & Wright (2018) PALEOMAP · Leibhéal na farraige: Spratt & Lisiecki (2016), Bintanja & van de Wal (2008)
+308|Áit bhreithe
+309|Áiteanna
+310|Áiteanna ar thug tú cuairt orthu
+311|Imir arís
+312|Imir i d’aonar
+313|Imir in aghaidh duine ar fhón eile le cód cath
+314|Imir in aghaidh duine ar fhón eile: freagraíonn sibh beirt na deich gceist chéanna, agus buann an scór is airde.
+315|Imreoirí ({n} as {max})
+316|Déantóir féideartha na lorg
+317|Réamhamharc
+318|Roimhe
+319|An leathanach roimhe
+320|An leathanach roimhe: {name}
+321|Ollamh
+322|Próifíl
+323|Pictiúr próifíle
+324|Molta, níl sé ar an gcairt oifigiúil
+325|Ceathartha
+326|Ceist {n} as {total} · scór {score}
+327|Tráth na gCeist
+328|Raon
+329|Raon thar am
+330|Is garbh-mheastacháin iad na raonta.
+331|Speicis neamhchoitianta agus mionsonraí an scála ama
+332|Léigh faoi ›
+333|Léigh faoi {name}
+334|Léigh faoi {name} ›
+335|Réidh: {quiz}, leibhéal {level}
+336|Feicthe le déanaí
+337|Laghdaigh gluaisne
+338|Athnuaigh
+339|Foirmeacha gaolmhara
+340|Gaolta ({n})
+341|Bain
+342|Bain an dáta breithe
+343|Bain ó cheanáin
+344|Bain an grianghraf
+345|Bain an pictiúr próifíle
+346|Bain dhá fhreagra mhíchearta
+347|Bain {name}
+348|Bain: {what}
+349|Foirmíocht charraige
+350|Uimhir á caitheamh
+351|Babhta {round} as {rounds}: {quiz} · {n} as {total} tar éis freagra a thabhairt
+352|SPECIEAS
+353|Saoi
+354|Sábháil an dáta
+355|Sábháilte. Tá sé marcáilte ar an amlíne, agus is féidir leat léim chuige ó do phróifíl.
+356|Leibhéal na farraige {n} m
+357|Cuardaigh
+358|Cuardaigh eachtraí, díothuithe, tréimhsí…
+359|Cuardaigh baile nó cathair…
+360|Cuardaigh grúpaí
+361|Cuardaigh grúpaí…
+362|Cuardaigh grúpaí beo
+363|Cuardaigh grúpaí beo…
+364|Cuardaigh chun é a athrú…
+365|Cuardaigh: {what}
+366|Féach ar na {n} músaem agus zú ar fad ▼
+367|Féach ar an gclár ceannairí
+368|Féach ar an toradh
+369|Féach ar do scór
+370|Seol an cód seo chuig an imreoir eile. Roghnaíonn siad Glac páirt i gcluiche agus clóscríobhann siad é.
+371|Sraith
+372|Sraitheanna agus ardáin
+373|Á shocrú…
+374|Socruithe
+375|Taispeáin
+376|Taispeáin ar an amlíne é ›
+377|Taispeáin ar leathanach an speicis
+378|Taispeáin {n} grúpa eile sa chrann ginealaigh
+379|Ar taispeáint ar an gcruinne anois
+380|Ar taispeáint ✓
+381|Brúchtaí Thrapaí na Sibéire
+382|Siolúrach
+383|Méideanna, meáchain agus faid i dtroithe, i bpuint agus i mílte, tiontaithe ó na figiúirí méadracha agus slánaithe, mar is meastacháin an chuid is mó acu.
+384|Méideanna, meáchain agus faid i méadair, i gcileagraim agus i gciliméadair.
+385|Sleamhnaigh nó tapáil an amlíne chun taisteal trí am · tarraing chun casadh · fáisc chun súmáil
+386|Go dtí seo
+387|Bán bog
+388|Tá duine éigin ag glacadh páirte…
+389|Foinse:
+390|Speisialtóir
+391|Speiceas
+392|Pictiúir speiceas ({n})
+393|Speiceas · iontráil ghearr
+394|Ardán
+395|Cuir réalta le speicis a bhfuil pictiúir acu chun iad a roghnú anseo mar phictiúr próifíle.
+396|Tosaigh babhta {n}
+397|Tosaigh an Piarmheasúnú
+398|Tosaigh: {quiz}, leibhéal {level}
+399|Ag tosú…
+400|Fós le tuilleamh
+401|Stop á thaispeáint ar leathanach an speicis
+402|Téacs agus imlínte níos láidre ar leathanaigh agus ar roghchláir. Le dathanna saincheaptha, ní thairgtear ach na dathanna téacs is soléite.
+403|Babhtáil le ceist nua
+404|Athraigh ceist imreora
+405|Athraithe ag {who}: {quiz}
+406|Athraithe: {quiz}
+407|Malartú
+408|Malartú seolta: tá an cheist dheireanach ag {who} ó {quiz} anois.
+409|Malartú seolta: tá an chéad cheist eile ag {who} ó {quiz} anois.
+410|Malartú seolta: tá ceist {who} ó {quiz} anois.
+411|Tapáil marcóir chun léamh faoi
+412|Tapáil céim chun í a fheiceáil scáthaithe ar an gcruinne.
+413|Tapáil arís chun é a bhaint
+414|Tapáil an Ghealach chun féachaint níos gaire
+415|Tapáil chun é a fheiceáil scáthaithe ar an gcruinne.
+416|Tapáil chun an teideal seo a thaispeáint faoi d’ainm
+417|Tapáil chun stop a chur leis an teideal seo a thaispeáint
+418|Deich gceist ar an ábhar agus ar an leibhéal a roghnaíonn tú
+419|Tástáil a bhfuil ar eolas agat: dineasáir, grúpaí agus tréimhsí, ar chúig leibhéal
+420|Téacs
+421|Méid an téacs
+422|Go raibh maith agat as imirt!
+423|Tá an Piarmheasúnú sin tosaithe cheana.
+424|Tá an Piarmheasúnú sin lán ({n} imreoir).
+425|Tá an cód cath sin in úsáid cheana. Bí i d’óstach arís chun ceann nua a fháil.
+426|Tá an cód sin in úsáid cheana. Bí i d’óstach arís.
+427|Ní cosúil gur dáta fíor é sin. Seiceáil an lá, an mhí agus an bhliain.
+428|Níl an tréimhse sin ann.
+429|Níorbh fhéidir an grianghraf sin a léamh. Bain triail as ceann eile.
+430|Ainmhithe agus scála ama tréimhse amháin
+431|Is é an freagra: {answer}.
+432|Níor oibrigh an ceangal. Bígí beirt ar Wi-Fi agus bain triail eile as.
+433|Níorbh fhéidir teacht ar an tseirbhís cheangail. Seiceáil do cheangal idirlín agus bain triail eile as.
+434|Níorbh fhéidir teacht ar an tseirbhís cheangail. Seiceáil do cheangal idirlín.
+435|Chuir an t-óstach deireadh leis an bPiarmheasúnú.
+436|Is í an uimhir {n}
+437|Níorbh fhéidir leis na fóin ceangal lena chéile. Cuireann roinnt líonraí soghluaiste agus oibre bac ar cheangail dhíreacha: bígí beirt ar Wi-Fi.
+438|An chuid eile de na {family}, na gaolta is gaire ar dtús. Is garbh-ord é: tá a gcrann ginealaigh fós faoi phlé.
+439|Na babhtaí
+440|Taispeántar an marcóir cloigeann ar an gcruinne go dtí an dáta sin
+441|Ceanglaíonn an dá fhón go díreach lena chéile. Chun a chéile a aimsiú, úsáideann siad seirbhís cheangail phoiblí shaor in aisce (PeerJS) agus cuardach seoltaí Google (STUN) ar feadh tamaillín, a fheiceann do sheoladh idirlín, mar a dhéanann aon suíomh gréasáin. Nuair atá siad ceangailte, ní théann do roghanna, ceisteanna ná freagraí ach idir an dá fhón, agus ní stóráiltear faic.
+442|{period}
+443|Tá {period} roinnte ina {n} sraith, chomh maith leis an Antrapacéin neamhoifigiúil. Tapáil ceann chun a hardáin a fheiceáil.
+444|Tá {period} roinnte ina {n} sraith. Tapáil ceann chun a hardáin a fheiceáil.
+445|Téama, méid an téacs, aonaid agus inrochtaineacht
+446|Níl go leor ceisteanna don rogha seo fós. Bain triail as catagóir nó leibhéal eile.
+447|Ní raibh go leor ceisteanna don rogha seo. Roghnaigh arís.
+448|Ní raibh go leor ceisteanna don bhabhta seo.
+449|Níl sé i gceist go mbeadh an aip seo ina hionad ilfhreastail do gach eolas faoi ainmhithe réamhstairiúla nó nua-aimseartha. Molaim duit tuilleadh taighde a dhéanamh. Tógadh í ar m’eolas féin le cabhair ó AI (bhí sé deas eolas níos doimhne a bheith agam ná LLM a bhfuil rochtain idirlín aige, lol, ach ní fhéadfainn í a chódú gan é, ná tíreolaíocht an Domhain trí na haoiseanna a ionsamhlú). Ar aghaidh leat, a úsáideoir dhil, agus aimsigh!
+450|Níorbh fhéidir an leathanach seo a aimsiú.
+451|Athraíodh an cheist seo.
+452|Tá an t-am istigh!
+453|Teideal tuillte
+454|Teidil
+455|Inniu
+456|Rómhall: bhí {who} ag an gceist dheireanach cheana, mar sin tá do Mhalartú ar ais agat.
+457|Déantóir na lorg
+458|Rian lorg
+459|Triasach
+460|Tíreannasáir, teireasáir, siorcanna agus tuilleadh
+461|Aonaid
+462|Úsáid do phictiúr féin
+463|Úsáid do phictiúr féin de {name}
+464|Úsáid do ghrianghraf de {name} mar phictiúr próifíle
+465|Úsáid {name} mar phictiúr próifíle
+466|Úsáid freagra {who}
+467|Úsáidte
+468|In úsáid: {language}.
+469|Tabhair cuairt ar fhoirmíocht charraige ó gach tréimhse gheolaíochta, ón gCaimbriach go dtí an lá inniu.
+470|Tabhair cuairt ar an bhfoirmíocht charraige is sine in PaleoDex, nó ar cheann de na hainmhithe a aimsíodh ann.
+471|Ag tabhairt cuairte ar mhúsaem stair an dúlra, ar zú creidiúnaithe nó ar cheann de láithreacha iontaise PaleoDex? Seiceáil isteach agus tú ann chun teidil a thuilleamh.
+472|Ag fanacht le {n} imreoir ar a laghad, tusa san áireamh. Roinn an cód chun cuireadh a thabhairt dóibh.
+473|Ag fanacht go dtabharfaidh gach duine freagra…
+474|Ag fanacht go nglacfaidh duine éigin páirt…
+475|Ag fanacht go dtosóidh an t-óstach an chéad bhabhta eile…
+476|Ag fanacht go dtosóidh an t-óstach…
+477|Ag fanacht le freagra ó {who}…
+478|Ag fanacht go gcríochnóidh {who} ({n} as {total})…
+479|Ag fanacht le {who}…
+480|Ainmhithe aitheanta agus cathain a mhair siad
+481|Cad air ar mhaith leat go gcuirfí ceisteanna ort?
+482|Cathain
+483|Cá seasann sé
+484|Áit a bhfacthas {name} agus {n} eile beo den uair dheireanach: súmáil isteach
+485|Áit a bhfacthas {name} beo den uair dheireanach: léigh tuilleadh
+486|Cá bhfuil tú anois
+487|Cá bhfuil cónaí ort anois
+488|Bán
+489|Cé a mhair cá háit, agus in éineacht le cé
+490|Cé a d’fhág na lorga
+491|Cé a bhí ann
+492|BBBB
+493|Bliain
+494|Tusa
+495|Tusa (cothrom)
+496|Tusa (corr)
+497|Roghnaigh sibh beirt an rud céanna!
+498|Roghnaigh sibh tráth na gceist difriúla
+499|Ní gá duit na carraigeacha féin a bhaint amach: déantar tú a sheiceáil isteach áit ar bith laistigh de {distance} ó láthair iontaise, mar sin is leor an baile nó an t-ionad cuairteoirí is gaire. Ná tabhair cuairt ach ar áiteanna atá ar oscailt don phobal, ná téigh isteach riamh i gcairéil, i mianaigh ná ar thalamh príobháideach gan chead, agus seiceáil na taoidí ag láithreacha cois cósta.
+500|Níor oscail tú aon leathanach fós.
+501|Fuair tú {score} as {total}
+502|Bhuaigh tú!
+503|D’íomhánna
+504|Ní áirítear do fhreagra: seo ceist dheireanach nua.
+505|Ní áirítear do fhreagra: seo ceist nua.
+506|Do chód cath
+507|Feictear d’áit bhreithe agus do bhaile ar an gcruinne le do phictiúr próifíle, agus gluaiseann siad leis na mór-ranna trí na haoiseanna.
+508|Do rogha: {quiz}
+509|Do leathanach deireanach
+510|Athraíodh do cheist dheireanach.
+511|Do {n} leathanach deireanacha
+512|Do {n} leathanach speiceas, grúpaí agus foirmíochtaí deireanacha, an ceann is déanaí ar dtús.
+513|Níorbh fhéidir do shuíomh a aimsiú. Seiceáil go bhfuil suíomh ar siúl agus bain triail eile as.
+514|Níorbh fhéidir do shuíomh a aimsiú. Bain triail eile as, nó cuardaigh baile ina ionad.
+515|D’ainm
+516|Do ghrianghraf de {name}
+517|Do ghrianghraf · bainistigh é in Próifíl › D’íomhánna
+518|Níorbh fhéidir do ghrianghraif a oscailt. Seiceáil go bhfuil cead ag PaleoDex do ghrianghraif a úsáid.
+519|Do phróifíl
+520|Do phróifíl, do cheanáin, socruithe agus creidiúintí
+521|Do theidil
+522|Tá tú ag {place}!
+523|Bhain tú an leibhéal is airde amach. Lean ort ag taiscéaladh: áirítear do phointí fós.
+524|Súmáil an amlíne amach go dtí an t-am ar fad
+525|Súmáil an amlíne isteach ar {name}
+526|Súmáil an amlíne isteach ar {name}
+527|freisin
+528|ar a dtugtar freisin
+529|óstach
+530|oighearaois agus leibhéal na farraige ag titim
+531|sraith neamhoifigiúil
+532|é
+533|gan ardáin
+534|ní ceann de na Cúig Mhóra é
+535|oscail leathanach an ghrúpa
+536|aigéin gan ocsaigin
+537|an lá inniu
+538|léigh tuilleadh
+539|teideal rúnda
+540|taispeáin ar an gcruinne
+541|ag taispeáint {title}
+542|an dúshlánaí
+543|an t-óstach
+544|inniu
+545|bliain ó shin
+546|tusa
+547|buann do thráth na gceist!
+548|Téacs {colour}
+549|Ré {era}
+550|Ré {era} · {from} go {to} milliún bliain ó shin
+551|{from} go {to}
+552|{n} RCR
+553|{n} CR
+554|{n} billiún bliain ó shin
+555|Láithreacha iontaise: {n}
+556|{n} milliún bliain
+557|{n} milliún bliain ó shin
+558|Músaeim: {n}
+559|{n} as {total} tuillte
+560|Grianghraif: {n}
+561|{n} pointe
+562|{n} pointe go leibhéal {level}. Aimsigh leathanaigh nua chun an barra a líonadh.
+563|Sábháilte: {n}
+564|{n} soicind fágtha
+565|Teidil rúnda fós le haimsiú: {n}
+566|Speicis: {n}
+567|Speicis in PaleoDex: {n}
+568|Ardáin: {n}
+569|{n} míle bliain
+570|{n} míle bliain ó shin
+571|{n} bliain
+572|{n} bliain ó shin
+573|Zúnna: {n}
+574|{quiz} (ó {who})
+575|{quiz} · leibhéal {level}, {difficulty}
+576|{quiz}, leibhéal {level}
+577|{quiz}, leibhéal {level} ({difficulty})
+578|{score} as {total}
+579|{title} · teideal nua díghlasáilte
+580|{who} (cothrom)
+581|{who} (corr)
+582|Tá {who} tar éis rogha a dhéanamh agus réidh.
+583|D’fhág {who} an cluiche.
+584|Tá {who} ag roghnú.
+585|Bhrostaigh {who} thú! Gearradh d’am ina leath.
+586|Bhrostaigh {who} thú! Gearradh d’am ina leath.
+587|D’úsáid {who} Malartú ort!
+588|D’úsáid {who} Malartú ort! Tá do chéad cheist eile ó {quiz} anois.
+589|D’úsáid {who} Malartú!
+590|D’úsáid {who} Malartú! Tá do chéad cheist eile ó {quiz} anois.
+591|Bhuaigh {who}!
+592|{who}: freagra tugtha · scór {score}
+593|{who}: fós ag freagairt · scór {score}
+594|Buann tráth na gceist {who}!
+595|‹ An Domhan
+596|⏳ Cé a bhrostú?
+597|★ Sárlaoch
+598|★ Tusa
+599|⚠️ Fan slán
+600|👀 Freagra cé a chóipeáil?
+601|📋 Cóipeáil an cód
+602|📍 Seiceáil isteach anseo
+603|📍 Úsáid an áit ina bhfuil mé anois
+604|🔀 Ceist cé a athrú?
+605|🔒 Conas a oibríonn an ceangal
+606|🔒 Fanann do shuíomh leat

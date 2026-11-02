@@ -4,7 +4,7 @@ Each .txt has one line per English text, "index|translation", where index is the
 keys.json (the English, as written in t('...') calls and the data the app translates). Every line is
 checked: placeholders such as {n} must match, and arrows and symbols must be kept.
 
-    python3 -I tools/i18n/build.py es fr de pt zh ja hi ru
+    python3 -I tools/i18n/build.py es fr de pt ga zh ja hi ru
 
 When the app gains new text, add it to the END of keys.json (so existing indexes stay put), add a
 line for it to each .txt, and rebuild. Anything missing simply shows in English.
