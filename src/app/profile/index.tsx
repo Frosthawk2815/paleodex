@@ -85,6 +85,13 @@ export default function ProfileScreen() {
             <Text style={st.chevron}>›</Text>
         </Pressable>
       </View>
+
+      <Text style={st.heading}>A note from the maker</Text>
+      <Text style={st.muted}>
+        This app is not intended to be a one-stop shop for all information related to prehistoric or modern animals. I encourage you to do more
+        research. This was built on my knowledge and aided by AI (it was nice to out-niche-pick an LLM with access to the internet lol, but I
+        couldn’t have coded this without it, or simulated Earth’s geography through time). Go forth, dear user, and discover!
+      </Text>
     </ScrollView>
   );
 }
