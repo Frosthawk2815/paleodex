@@ -73,6 +73,9 @@ type ProfileContext = {
   // Records a page as opened: in the recent pages, and the first time, in the visited pages.
   addRecent: (page: PageRef) => void;
   clearRecent: () => void;
+  // Records something seen that is not a page, e.g. "time:69" for a visit to 69 million years ago
+  // on the timeline (for titles; it earns no points).
+  markVisited: (key: string) => void;
   // Reduce motion is on if the user turned it on here or in their device's settings.
   reduceMotion: boolean;
   request: OpenRequest | null;
@@ -148,6 +151,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
     [],
   );
   const clearRecent = useCallback(() => setProfile((p) => ({ ...p, recent: [] })), []);
+  const markVisited = useCallback((key: string) => setProfile((p) => (p.visited.includes(key) ? p : { ...p, visited: [...p.visited, key] })), []);
 
   const value = useMemo(
     () => ({
@@ -158,12 +162,13 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
       toggleFavourite,
       addRecent,
       clearRecent,
+      markVisited,
       reduceMotion: profile.settings.reduceMotion || systemReduceMotion,
       request,
       setRequest,
       loaded: isLoaded,
     }),
-    [profile, update, updateSettings, isFavourite, toggleFavourite, addRecent, clearRecent, systemReduceMotion, request, isLoaded],
+    [profile, update, updateSettings, isFavourite, toggleFavourite, addRecent, clearRecent, markVisited, systemReduceMotion, request, isLoaded],
   );
   return <Context value={value}>{children}</Context>;
 }

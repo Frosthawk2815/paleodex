@@ -12,7 +12,10 @@ export default function TitlesScreen() {
   const palette = usePalette();
   const { profile, update } = useProfile();
   const earned = TITLES.filter((t) => profile.titles.includes(t.id));
-  const locked = TITLES.filter((t) => !profile.titles.includes(t.id));
+  const lockedAll = TITLES.filter((t) => !profile.titles.includes(t.id));
+  // Fully secret titles are not listed until earned; only how many are left is shown.
+  const locked = lockedAll.filter((t) => !t.hidden);
+  const hiddenLeft = lockedAll.length - locked.length;
 
   return (
     <ScrollView style={st.screen} contentContainerStyle={st.content}>
@@ -39,7 +42,7 @@ export default function TitlesScreen() {
                   <Text style={{ fontSize: 22 }}>{t.level !== undefined ? '⭐' : '🏆'}</Text>
                   <View style={st.rowText}>
                     <Text style={st.rowTitle}>{t.name}</Text>
-                    <Text style={st.rowSub}>{t.hint.replace(/^A secret\. /, '')}</Text>
+                    <Text style={st.rowSub}>{t.reveal ?? t.hint.replace(/^A secret\. /, '')}</Text>
                   </View>
                   <Text style={[st.rowSub, on && { color: palette.link, fontWeight: '700' }]}>{on ? 'Showing ✓' : 'Show'}</Text>
                 </Pressable>
@@ -49,7 +52,7 @@ export default function TitlesScreen() {
         </View>
       )}
 
-      {locked.length > 0 && (
+      {(locked.length > 0 || hiddenLeft > 0) && (
         <>
           <Text style={st.heading}>Still to earn</Text>
           <View style={st.card}>
@@ -65,6 +68,20 @@ export default function TitlesScreen() {
                 </View>
               </View>
             ))}
+            {hiddenLeft > 0 && (
+              <View>
+                {locked.length > 0 && <View style={st.divider} />}
+                <View style={st.row} accessible accessibilityLabel={`${hiddenLeft} secret titles still to find`}>
+                  <Text style={{ fontSize: 22, opacity: 0.6 }}>🔒</Text>
+                  <View style={st.rowText}>
+                    <Text style={[st.rowTitle, { color: palette.muted }]}>
+                      {hiddenLeft} secret title{hiddenLeft === 1 ? '' : 's'} still to find
+                    </Text>
+                    <Text style={st.rowSub}>No clues: they turn up as you explore.</Text>
+                  </View>
+                </View>
+              </View>
+            )}
           </View>
         </>
       )}

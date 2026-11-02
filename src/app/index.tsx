@@ -53,7 +53,7 @@ type Focus = { kind: 'site' | 'moon' | 'event' | 'skull' | 'range' | 'user'; id:
 export default function GlobeScreen() {
   const insets = useSafeAreaInsets();
   const palette = usePalette();
-  const { profile, addRecent, request, setRequest, reduceMotion } = useProfile();
+  const { profile, addRecent, request, setRequest, reduceMotion, markVisited } = useProfile();
   const ownPicture = useOwnPicture();
   // The user's birthplace and home, shown on the globe.
   const userPlaces = useMemo(
@@ -92,6 +92,11 @@ export default function GlobeScreen() {
   const scrollToInfo = useRef(false);
   // The globe can lag a frame behind the timeline so scrolling stays smooth.
   const globeTime = useDeferredValue(timeMa);
+  // Visiting 69 million years ago on the timeline earns a title.
+  const at69 = Math.floor(globeTime) === 69;
+  useEffect(() => {
+    if (at69) markVisited('time:69');
+  }, [at69, markVisited]);
   const { period, series, stage } = contextAt(timeMa);
   const extinction = extinctionAt(timeMa);
 

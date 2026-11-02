@@ -28,6 +28,10 @@ export type Title = {
   level?: number;
   // Titles earned by visiting real places.
   inPerson?: boolean;
+  // Fully secret: no hint at all while locked, and not listed until earned. `reveal` says what
+  // earned it, shown once it is earned.
+  hidden?: boolean;
+  reveal?: string;
 };
 
 const count = (c: TitleContext, kind: string) => [...c.visited].filter((k) => k.startsWith(`${kind}:`)).length;
@@ -146,7 +150,9 @@ export const TITLES: Title[] = [
   {
     id: 'animal-i-have-become',
     name: 'The Animal I Have Become',
-    hint: 'A secret. Meet every species of a famous sail-backed river giant.',
+    hint: 'A secret.',
+    hidden: true,
+    reveal: 'You met both Spinosaurus species.',
     earned: (c) => SPINOSAURS.every((id) => seen(c, 'species', id)),
   },
   {
@@ -156,6 +162,104 @@ export const TITLES: Title[] = [
     earned: (c) => JURASSIC_PARK.every((ids) => ids.some((id) => seen(c, 'species', id))),
   },
 ];
+
+// Titles for opening particular pages: [title, what to open (for the hint), species that count].
+// A group instead of species: { clade }. "time:69" is a visit to 69 million years ago.
+type PageTarget = string[] | { clade: string } | { time: string };
+const PAGE_TITLES: [string, string, PageTarget][] = [
+  ['Oh pwincess', 'the grey wolf', ['canis-lupus']],
+  ['oo ee a e a', 'the domestic cat', ['felis-catus']],
+  ['Ima snaaaake', 'a snake', { clade: 'serpentes' }],
+  ['I’m not fat I’m ✨ Poofy ✨', 'the Columbian mammoth', ['mammuthus-columbi']],
+  ['I dont eat junk food', 'Smilodon fatalis', ['smilodon-fatalis']],
+  ['Last one of the season', 'a ground sloth', ['megatherium-americanum', 'paramylodon-harlani', 'megalonyx-leptostomus']],
+  ['Clever girl', 'Deinonychus', ['deinonychus-antirrhopus']],
+  ['A daffy dino', 'Deinocheirus', ['deinocheirus-mirificus']],
+  ['Rex primus', 'Dilophosaurus', ['dilophosaurus-wetherilli']],
+  ['Nevermore', 'the common raven', ['corvus-corax']],
+  ['Im surrounded by idiots', 'the lion', ['panthera-leo']],
+  ['Butcher', 'a shrike', ['lanius-collurio']],
+  ['Little arm shaker', 'Carnotaurus', ['carnotaurus-sastrei']],
+  ['Talk dumb get thumb', 'Iguanodon', ['iguanodon-bernissartensis', 'iguanodon-galvensis']],
+  ['I do my best', 'Anomalocaris', ['anomalocaris-canadensis']],
+  ['Move it move it', 'the ring-tailed lemur', ['lemur-catta']],
+  ['King Julien!!!', 'the mouse lemur', ['microcebus-murinus']],
+  ['I met her on the way to chicago', 'a bird-of-paradise', { clade: 'paradisaeidae' }],
+  ['Finally a worthy opponent', 'the snow leopard', ['panthera-uncia']],
+  ['Bear necessities', 'the sloth bear', ['melursus-ursinus']],
+  ['Oh yeah its all coming together', 'the guanaco', ['lama-guanicoe']],
+  ['nice', '69 million years ago on the timeline', { time: 'time:69' }],
+  ['It is wednesday my dudes', 'a frog', { clade: 'anura' }],
+  ['Perry the platypus!', 'the platypus', ['ornithorhynchus-anatinus']],
+  ['Do you know dawe', 'an echidna', ['tachyglossus-aculeatus', 'zaglossus-bruijnii', 'zaglossus-bartoni', 'zaglossus-attenboroughi']],
+  ['Gotta go fast', 'the hedgehog', ['atelerix-albiventris']],
+  ['You want some blue', 'the satin bowerbird', ['ptilonorhynchus-violaceus']],
+  ['Blessings of the Skyfather', 'Pteranodon longiceps', ['pteranodon-longiceps']],
+  ['Viva Los Herreros!!!', 'Herrerasaurus', ['herrerasaurus-ischigualastensis']],
+  ['Oh hi veno-mous', 'Megalania', ['varanus-priscus']],
+  ['Crocodile Hunter', 'the saltwater crocodile', ['crocodylus-porosus']],
+  ['Everything the light touches', 'Allosaurus', ['allosaurus-fragilis', 'allosaurus-europaeus', 'allosaurus-jimmadseni', 'allosaurus-anax']],
+  ['Dont go further into the water pakicetus', 'Indohyus', ['indohyus-indirae']],
+  ['I just want to catch some fish indohyus', 'Pakicetus', ['pakicetus-inachus']],
+  ['Youre late', 'Homo floresiensis', ['homo-floresiensis']],
+  ['Dream not of what you are', 'Tenontosaurus', ['tenontosaurus-tilletti']],
+  ['Show us the way to Candy mountain', 'Liopleurodon', ['liopleurodon-ferox']],
+  ['Ride wife, life good', 'the gorilla', ['gorilla-gorilla']],
+  ['Apes together strong', 'the chimpanzee', ['pan-troglodytes']],
+  ['Wise man of the forest', 'the orangutan', ['pongo-pygmaeus']],
+  ['Wadiyatalkinabeet', 'Gigantopithecus', ['gigantopithecus-blacki']],
+  ['HONK', 'Quetzalcoatlus', ['quetzalcoatlus-northropi']],
+  ['bub', 'the wolverine', ['gulo-gulo']],
+  ['What’s up brah? Im right here brah', 'the honey badger', ['mellivora-capensis']],
+  ['I dont think he speaks English or Latin', 'the red fox', ['vulpes-vulpes']],
+  ['My sister had a baby and then she passed…', 'the great white shark', ['carcharodon-carcharias']],
+  ['The shark attacker', 'the orca', ['orcinus-orca']],
+  ['The heaviest thing to ever exist aka yo mama', 'the blue whale', ['balaenoptera-musculus']],
+  ['The Arctic Unicorn', 'the narwhal', ['monodon-monoceros']],
+  ['Spirit of the sea', 'the beluga', ['delphinapterus-leucas']],
+  ['Message in a bottle', 'the bottlenose dolphin', ['tursiops-truncatus']],
+  ['Meep meep', 'the roadrunner', ['geococcyx-californianus']],
+  ['indomitable', 'Maip', ['maip-macrothorax']],
+  ['I like rusty spoons', 'Therizinosaurus', ['therizinosaurus-cheloniformis']],
+  ['Hello i am under the water please help me', 'Liaoningosaurus', ['liaoningosaurus-paradoxus']],
+  ['Grumpy is my default', 'Pallas’s cat', ['otocolobus-manul']],
+  ['Doug dimmadome owner dimesdale dimmadome', 'Pachycephalosaurus', ['pachycephalosaurus-wyomingensis']],
+  ['Glorious Purpose', 'Lokiceratops', ['lokiceratops-rangiformis']],
+  ['We got gta6 before micro in path', 'Microraptor', ['microraptor-zhaoianus']],
+  ['Thag simmons got what he deserved', 'Stegosaurus', ['stegosaurus-stenops']],
+  ['I am literally a tank right now, youre not my dad', 'Ankylosaurus', ['ankylosaurus-magniventris']],
+  ['Cant touch this', 'Spicomellus', ['spicomellus-afer']],
+  ['Hello im chris hansen, marlin take a seat', 'the clownfish', ['amphiprion-ocellaris']],
+  ['I liked saber teeth before it was cool', 'a gorgonopsian', { clade: 'gorgonopsia' }],
+  ['The ultimate underdog', 'Nanotyrannus', ['nanotyrannus-lancensis', 'nanotyrannus-lethaeus']],
+  ['fish', 'Leedsichthys', ['leedsichthys-problematicus']],
+  ['Nom nom', 'megalodon', ['otodus-megalodon']],
+  ['Chuckles im in danger', 'Thalassocnus', ['thalassocnus-natans']],
+  ['One shall swim one shall skink', 'Livyatan', ['livyatan-melvillei']],
+];
+
+const slug = (t: string) =>
+  t
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
+TITLES.push(
+  ...PAGE_TITLES.map(([name, what, target]): Title => ({
+    id: `page-${slug(name) || 'nice'}`,
+    name,
+    hint: 'A secret.',
+    hidden: true,
+    reveal: 'time' in target ? `You travelled to ${what}.` : `You opened ${what}.`,
+    earned: (c) =>
+      Array.isArray(target)
+        ? target.some((id) => seen(c, 'species', id))
+        : 'clade' in target
+          ? speciesInClade(target.clade).some((s) => seen(c, 'species', s.id))
+          : c.visited.has(target.time),
+  })),
+);
 
 const visitedOf = (c: TitleContext, kind: string) => [...c.places].filter((id) => id.startsWith(`${kind}-`));
 
@@ -189,4 +293,5 @@ export const titleById = (id: string | null | undefined) => TITLES.find((t) => t
 export const earnedTitles = (c: TitleContext) => TITLES.filter((t) => t.earned(c));
 
 // Sanity check used in development: every species a title asks for exists.
-export const missingTitleSpecies = () => [...SPINOSAURS, ...JURASSIC_PARK.flat()].filter((id) => !speciesById(id));
+export const missingTitleSpecies = () =>
+  [...SPINOSAURS, ...JURASSIC_PARK.flat(), ...PAGE_TITLES.flatMap(([, , t]) => (Array.isArray(t) ? t : []))].filter((id) => !speciesById(id));
