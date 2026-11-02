@@ -1,4 +1,5 @@
 import { Link, Stack, useLocalSearchParams } from 'expo-router';
+import { useEffect } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -7,6 +8,7 @@ import { SeriesTimeline } from '@/components/series-timeline';
 import { durationLabel, getPeriod, PERIODS, rangeLabel, textOn } from '@/data/periods';
 import { usePalette } from '@/hooks/use-palette';
 import { PageEra } from '@/lib/era';
+import { useProfile } from '@/lib/profile';
 import { paperFont } from '@/lib/theme';
 
 // Periods are the ancient past, so the mixed paper theme shows them on parchment.
@@ -23,6 +25,12 @@ function PeriodScreen() {
   const palette = usePalette();
   const insets = useSafeAreaInsets();
   const period = getPeriod(id);
+  // Opening a period's page counts towards titles (e.g. the Cambrian's).
+  const { markVisited } = useProfile();
+  const periodId = period?.id;
+  useEffect(() => {
+    if (periodId) markVisited(`period:${periodId}`);
+  }, [periodId, markVisited]);
 
   if (!period) {
     return (

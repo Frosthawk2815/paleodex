@@ -170,9 +170,9 @@ export const TITLES: Title[] = [
 // Species ids (any of them), a group ({ clade }), an event page ({ event }), a moment on the
 // timeline ({ time }, e.g. "time:69" for 69 million years ago), the mass extinction
 // pages ({ extinctions: 'any' | 'all' }), or every species on a species' Relatives tab
-// ({ relativesOf }). The id is given where a title was renamed, so anyone
+// ({ relativesOf }), or a period's page ({ period }). The id is given where a title was renamed, so anyone
 // who earned it keeps it.
-type PageTarget = string[] | { clade: string } | { event: string } | { time: string } | { extinctions: 'any' | 'all' } | { relativesOf: string };
+type PageTarget = string[] | { clade: string } | { event: string } | { time: string } | { extinctions: 'any' | 'all' } | { relativesOf: string } | { period: string };
 const PAGE_TITLES: [string, string, PageTarget, string?][] = [
   ['Oh pwincess', 'the grey wolf', ['canis-lupus']],
   ['oo ee a e a', 'the domestic cat', ['felis-catus']],
@@ -253,6 +253,7 @@ const PAGE_TITLES: [string, string, PageTarget, string?][] = [
   ['you like jazz?', 'the honey bee', ['apis-mellifera']],
   ['family family family family', 'every relative on the human page', { relativesOf: 'homo-sapiens' }],
   ['I like turtles', 'a turtle', { clade: 'testudines' }],
+  ['the sun is a deadly lazer', 'the Cambrian page', { period: 'cambrian' }],
 ];
 
 const slug = (t: string) =>
@@ -268,12 +269,13 @@ TITLES.push(
     name,
     hint: 'A secret.',
     hidden: true,
-    reveal: Array.isArray(target) || 'clade' in target || 'event' in target || 'relativesOf' in target ? `You opened ${what}.` : `You travelled to ${what} on the timeline.`,
+    reveal: Array.isArray(target) || 'clade' in target || 'event' in target || 'relativesOf' in target || 'period' in target ? `You opened ${what}.` : `You travelled to ${what} on the timeline.`,
     earned: (c) => {
       if (Array.isArray(target)) return target.some((id) => seen(c, 'species', id));
       if ('clade' in target) return speciesInClade(target.clade).some((s) => seen(c, 'species', s.id));
       if ('event' in target) return seen(c, 'event', target.event);
       if ('time' in target) return c.visited.has(target.time);
+      if ('period' in target) return c.visited.has(`period:${target.period}`);
       if ('relativesOf' in target) {
         const s = speciesById(target.relativesOf);
         const rel = s ? relativesOf(s) : [];
