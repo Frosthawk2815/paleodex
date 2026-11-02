@@ -26,13 +26,15 @@ type Props = {
   onOpenSpecies: (id: string) => void;
   // Open a formation's or event's page, moving the timeline and globe to one of its points.
   onOpenEvent: (event: HistoryEvent, index: number) => void;
+  backLabel?: string;
   // For modern species: show one phase of the range on the globe, or the last sighting.
-  onJumpRange: (index: number) => void;
-  onJumpLastSeen: () => void;
+  // Globe actions; left out when the page is read away from the globe (e.g. from the quiz).
+  onJumpRange?: (index: number) => void;
+  onJumpLastSeen?: () => void;
 };
 
 // The information section for a species: what it was and the formations it's found in.
-export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onOpenEvent, onJumpRange, onJumpLastSeen }: Props) {
+export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onOpenEvent, onJumpRange, onJumpLastSeen, backLabel }: Props) {
   const info = useInfoStyles();
   const u = useUnitText();
   const meaning = nameMeaning(species);
@@ -52,7 +54,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
   return (
     <View style={info.wrap}>
-      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} page={{ kind: 'species', id: species.id }} />
+      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} backLabel={backLabel} page={{ kind: 'species', id: species.id }} />
 
       <SpeciesImage speciesId={species.id} name={species.name} />
 
@@ -133,14 +135,15 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
               <Text style={info.heading}>Last seen alive</Text>
               <Pressable
                 onPress={onJumpLastSeen}
-                accessibilityRole="button"
+                disabled={!onJumpLastSeen}
+                accessibilityRole={onJumpLastSeen ? 'button' : 'text'}
                 accessibilityLabel={`${range.lastSeen.text}: show on the globe`}
                 style={({ pressed }) => [info.card, pressed && info.pressed]}>
                 <View style={info.cardRow}>
                   <PointIcon kind="skull" size={30} />
                   <View style={info.cardText}>
-                    <Text style={info.cardTitle}>{range.lastSeen.text} ›</Text>
-                    <Text style={info.cardNote}>The skull marker shows on the globe up to that date</Text>
+                    <Text style={info.cardTitle}>{range.lastSeen.text}{onJumpLastSeen ? ' ›' : ''}</Text>
+                    {onJumpLastSeen && <Text style={info.cardNote}>The skull marker shows on the globe up to that date</Text>}
                   </View>
                 </View>
               </Pressable>
@@ -151,20 +154,21 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
             <>
               <Text style={info.heading}>{phaseOrder.length > 1 ? 'Range over time' : 'Range'}</Text>
               <Text style={info.note}>
-                {phaseOrder.length > 1 ? 'Tap a stage to see it shaded on the globe. ' : 'Tap to see it shaded on the globe. '}
+                {!onJumpRange ? '' : phaseOrder.length > 1 ? 'Tap a stage to see it shaded on the globe. ' : 'Tap to see it shaded on the globe. '}
                 Ranges are approximate.
               </Text>
               {phaseOrder.map(({ p, i }) => (
                 <Pressable
                   key={p.label}
-                  onPress={() => onJumpRange(i)}
-                  accessibilityRole="button"
+                  onPress={() => onJumpRange?.(i)}
+                  disabled={!onJumpRange}
+                  accessibilityRole={onJumpRange ? 'button' : 'text'}
                   accessibilityLabel={`${p.label}: show on the globe`}
                   style={({ pressed }) => [info.card, pressed && info.pressed]}>
                   <View style={info.cardRow}>
                     <View style={styles.swatch} />
                     <View style={info.cardText}>
-                      <Text style={info.cardTitle}>{p.label} ›</Text>
+                      <Text style={info.cardTitle}>{p.label}{onJumpRange ? ' ›' : ''}</Text>
                       <Text style={info.cardNote}>
                         {timeLabel(p.fromMa)} to {p.toMa > 0 ? timeLabel(p.toMa) : 'today'}
                       </Text>

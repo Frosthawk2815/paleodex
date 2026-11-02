@@ -14,20 +14,21 @@ type Props = {
   onPrevious?: () => void;
   previousLabel?: string;
   // Move the timeline to the extinction and scroll up to the globe.
-  onShowOnTimeline: () => void;
+  onShowOnTimeline?: () => void;
+  backLabel?: string;
   onOpenClade: (id: string) => void;
 };
 
 // The page for a mass extinction: how much life was lost, what caused it, and who did and didn't
 // make it through.
-export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, onShowOnTimeline, onOpenClade }: Props) {
+export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, onShowOnTimeline, onOpenClade, backLabel }: Props) {
   const info = useInfoStyles();
   const u = useUnitText();
   const detail = EXTINCTION_DETAILS[extinction.id];
 
   return (
     <View style={info.wrap}>
-      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} page={{ kind: 'extinction', id: extinction.id }} />
+      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} backLabel={backLabel} page={{ kind: 'extinction', id: extinction.id }} />
 
       <Text style={info.kicker}>{extinction.bigFive ? 'Mass extinction · one of the Big Five' : 'Extinction event'}</Text>
       <Text style={info.title} accessibilityRole="header">
@@ -39,9 +40,11 @@ export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, 
       </View>
       {detail && <Text style={[info.subtitle, { textAlign: 'center' }]}>{detail.loss}</Text>}
 
-      <Pressable onPress={onShowOnTimeline} accessibilityRole="button" style={({ pressed }) => [info.card, pressed && info.pressed]}>
-        <Text style={info.cardTitle}>Show it on the timeline ›</Text>
-      </Pressable>
+      {onShowOnTimeline && (
+        <Pressable onPress={onShowOnTimeline} accessibilityRole="button" style={({ pressed }) => [info.card, pressed && info.pressed]}>
+          <Text style={info.cardTitle}>Show it on the timeline ›</Text>
+        </Pressable>
+      )}
 
       {detail?.summary.map((p) => (
         <Text key={p} style={info.body}>

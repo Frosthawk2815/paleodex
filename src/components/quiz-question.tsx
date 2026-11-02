@@ -1,8 +1,9 @@
 import { Image } from 'expo-image';
+import { router } from 'expo-router';
 import type { ReactNode } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
-import { useProfileStyles, useShowOnGlobe } from '@/components/profile-ui';
+import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { speciesById } from '@/lib/life';
 import { useUnitText } from '@/lib/profile';
@@ -82,7 +83,8 @@ export function QuestionView({
   nextLabel: string;
   // Extra line under the progress bar (e.g. the opponent's score).
   header?: ReactNode;
-  // "Read about…" leaves the quiz, so it is hidden during a live game.
+  // "Read about…" opens the page on top of the quiz; it is hidden during a live game, where
+  // stopping to read would be unfair and the other players are waiting.
   allowReadMore?: boolean;
   // Answers taken away by 50/50.
   hidden?: number[];
@@ -92,7 +94,6 @@ export function QuestionView({
 }) {
   const st = useProfileStyles();
   const palette = usePalette();
-  const showOnGlobe = useShowOnGlobe();
   // Questions, answers and explanations are written in metric and shown in the user's units.
   const u = useUnitText();
   const answered = chosen !== null;
@@ -151,7 +152,7 @@ export function QuestionView({
           </Text>
           <Text style={st.rowSub}>{u(q.explanation)}</Text>
           {allowReadMore && subject && (
-            <Pressable onPress={() => showOnGlobe({ kind: 'page', page: { kind: 'species', id: subject.id } })} accessibilityRole="button" hitSlop={6}>
+            <Pressable onPress={() => router.push({ pathname: '/read', params: { kind: 'species', id: subject.id } })} accessibilityRole="button" hitSlop={6}>
               <Text style={st.link}>Read about {subject.common || subject.name} ›</Text>
             </Pressable>
           )}

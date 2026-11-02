@@ -10,10 +10,12 @@ type Props = {
   previousLabel?: string;
   // The page being shown, so it can be starred as a favourite.
   page?: PageRef;
+  // Label for the back button (default: back to the globe).
+  backLabel?: string;
 };
 
 // The buttons at the top of the information section.
-export function InfoNav({ onBack, onPrevious, previousLabel, page }: Props) {
+export function InfoNav({ onBack, onPrevious, previousLabel, page, backLabel = '↑ Back to the globe' }: Props) {
   const info = useInfoStyles();
   return (
     <View style={styles.row}>
@@ -29,7 +31,7 @@ export function InfoNav({ onBack, onPrevious, previousLabel, page }: Props) {
         </Pressable>
       )}
       <Pressable onPress={onBack} accessibilityRole="button" style={({ pressed }) => [info.back, styles.button, pressed && info.pressed]}>
-        <Text style={info.backText}>↑ Back to the globe</Text>
+        <Text style={info.backText}>{backLabel}</Text>
       </Pressable>
       {page && <StarButton page={page} />}
     </View>

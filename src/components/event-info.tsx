@@ -19,13 +19,14 @@ type Props = {
   onPrevious?: () => void;
   previousLabel?: string;
   // Jump the timeline and globe to one of the event's points.
-  onJump: (index: number) => void;
+  onJump?: (index: number) => void;
+  backLabel?: string;
   onOpenSpecies: (id: string) => void;
   onOpenClade: (id: string) => void;
 };
 
 // The information section shown below the globe for a selected event.
-export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, onJump, onOpenSpecies, onOpenClade }: Props) {
+export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, onJump, onOpenSpecies, onOpenClade, backLabel }: Props) {
   const info = useInfoStyles();
   const u = useUnitText();
   // Species found here, grouped by family (e.g. tyrannosaurs).
@@ -39,7 +40,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
 
   return (
     <View style={info.wrap}>
-      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} page={{ kind: 'event', id: event.id }} />
+      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} backLabel={backLabel} page={{ kind: 'event', id: event.id }} />
 
       <Text style={info.kicker}>{event.kind}</Text>
       <Text style={info.title} accessibilityRole="header">
@@ -48,7 +49,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
       <Text style={info.meta}>{event.dateText}</Text>
       <Text style={info.meta}>{event.placeText}</Text>
 
-      {event.points.length > 1 && (
+      {onJump && event.points.length > 1 && (
         <View style={info.jumps}>
           {event.points.map((p, i) => {
             const here = pointVisible(p, timeMa);

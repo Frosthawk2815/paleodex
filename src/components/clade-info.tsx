@@ -16,6 +16,7 @@ type Props = {
   previousLabel?: string;
   onOpenClade: (id: string) => void;
   onOpenSpecies: (id: string) => void;
+  backLabel?: string;
 };
 
 // The information section for a group: where it sits in the tree and every species in it.
@@ -29,7 +30,7 @@ function startMa(text: string): number | null {
   return m[2] || m[3] ? n : n / 1e6;
 }
 
-export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies }: Props) {
+export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, backLabel }: Props) {
   const info = useInfoStyles();
   const u = useUnitText();
   const path = cladePath(clade.id);
@@ -46,7 +47,7 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
 
   return (
     <View style={info.wrap}>
-      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} page={{ kind: 'clade', id: clade.id }} />
+      <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} backLabel={backLabel} page={{ kind: 'clade', id: clade.id }} />
 
       <Text style={info.kicker}>Group</Text>
       <Text style={info.title} accessibilityRole="header">
