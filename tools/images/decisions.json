@@ -346,7 +346,10 @@
  },
  "allkaruen-koi": {
   "vote": "no",
-  "file": "Allkaruen_endocast.png"
+  "file": "Allkaruen_endocast.png",
+  "rejectedFiles": [
+   "Allkaruen_endocast.png"
+  ]
  },
  "allocebus-trichotis": {
   "vote": "yes",
@@ -2389,7 +2392,10 @@
  },
  "coniophis-precedens": {
   "vote": "no",
-  "file": "Coniophis_holotype_Marsh_1892.png"
+  "file": "Coniophis_holotype_Marsh_1892.png",
+  "rejectedFiles": [
+   "Coniophis_holotype_Marsh_1892.png"
+  ]
  },
  "connochaetes-taurinus": {
   "vote": "yes",
@@ -2529,7 +2535,10 @@
  },
  "crosbysaurus-harrisae": {
   "vote": "no",
-  "file": "Crosbysaurus_hypothetical.png"
+  "file": "Crosbysaurus_hypothetical.png",
+  "rejectedFiles": [
+   "Crosbysaurus_hypothetical.png"
+  ]
  },
  "crossarchus-obscurus": {
   "vote": "yes",
@@ -2869,7 +2878,10 @@
  },
  "dinheirosaurus-lourinhanensis": {
   "vote": "no",
-  "file": "Dinheirosaurus_holotype.png"
+  "file": "Dinheirosaurus_holotype.png",
+  "rejectedFiles": [
+   "Dinheirosaurus_holotype.png"
+  ]
  },
  "dinictis-felina": {
   "vote": "yes",
@@ -6080,7 +6092,10 @@
  },
  "monoclonius-crassus": {
   "vote": "no",
-  "file": "Monoclonius_crassus.jpg"
+  "file": "Monoclonius_crassus.jpg",
+  "rejectedFiles": [
+   "Monoclonius_crassus.jpg"
+  ]
  },
  "monodelphis-domestica": {
   "vote": "yes",
@@ -7190,7 +7205,10 @@
  },
  "pelecanimimus-polyodon": {
   "vote": "no",
-  "file": "Pelecanimimus_restoration.jpeg"
+  "file": "Pelecanimimus_restoration.jpeg",
+  "rejectedFiles": [
+   "Pelecanimimus_restoration.jpeg"
+  ]
  },
  "pelecanus-crispus": {
   "vote": "yes",
@@ -8074,7 +8092,10 @@
  },
  "rastodon-procurvidens": {
   "vote": "no",
-  "file": "Rastodon_procurvidens_(holotype,_UNIPAMPA_3170).png"
+  "file": "Rastodon_procurvidens_(holotype,_UNIPAMPA_3170).png",
+  "rejectedFiles": [
+   "Rastodon_procurvidens_(holotype,_UNIPAMPA_3170).png"
+  ]
  },
  "rativates-evadens": {
   "vote": "yes",
@@ -8194,7 +8215,10 @@
  },
  "rhyniognatha-hirsti": {
   "vote": "no",
-  "file": "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg"
+  "file": "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg",
+  "rejectedFiles": [
+   "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg"
+  ]
  },
  "rhynochetos-jubatus": {
   "vote": "yes",
@@ -8210,7 +8234,10 @@
  },
  "rinconraptor-pipoae": {
   "vote": "no",
-  "file": "Rinconraptor_Skeletal.svg"
+  "file": "Rinconraptor_Skeletal.svg",
+  "rejectedFiles": [
+   "Rinconraptor_Skeletal.svg"
+  ]
  },
  "rinconsaurus-caudamirus": {
   "vote": "yes",
@@ -8664,7 +8691,10 @@
  },
  "simias-concolor": {
   "vote": "no",
-  "file": "Simias_concolor.jpg"
+  "file": "Simias_concolor.jpg",
+  "rejectedFiles": [
+   "Simias_concolor.jpg"
+  ]
  },
  "similicaudipteryx-yixianensis": {
   "vote": "yes",
@@ -9268,7 +9298,10 @@
  },
  "tendaguria-tanzaniensis": {
   "vote": "no",
-  "file": "Tendaguria_anterior_dorsal_vertebra.png"
+  "file": "Tendaguria_anterior_dorsal_vertebra.png",
+  "rejectedFiles": [
+   "Tendaguria_anterior_dorsal_vertebra.png"
+  ]
  },
  "tenontosaurus-tilletti": {
   "vote": "yes",
@@ -9480,7 +9513,10 @@
  },
  "tornieria-africana": {
   "vote": "no",
-  "file": "Tornieria_caudal.png"
+  "file": "Tornieria_caudal.png",
+  "rejectedFiles": [
+   "Tornieria_caudal.png"
+  ]
  },
  "torosaurus-latus": {
   "vote": "yes",
