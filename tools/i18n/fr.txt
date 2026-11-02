@@ -1,0 +1,607 @@
+0|, déjà utilisé
+1|, bonne réponse
+2|, indisponible avec vos autres couleurs
+3|, affichée en haut de sa page
+4|, votre réponse, fausse
+5|1 site fossilifère
+6|1 musée
+7|1 photo
+8|Encore 1 titre secret à trouver
+9|1 étage
+10|1 zoo
+11|Code à 6 chiffres
+12|Il y a 68 à 66 millions d’années
+13|La fiche complète de cette espèce est à venir.
+14|Un jeu de groupe de 3 à 30 joueurs, avec un classement après chaque manche
+15|Un mot du créateur
+16|Un groupe précis
+17|Un groupe vivant précis
+18|Une manche parfaite !
+19|Une période de temps
+20|Un joueur
+21|Un quiz de groupe : de {min} à {max} joueurs, chacun sur son téléphone. L’hôte choisit cinq manches de cinq questions, et un classement s’affiche après chaque manche.
+22|Coriace. Essayer un niveau plus facile ?
+23|À propos
+24|{period} : en savoir plus ›
+25|Environ {n} km de large
+26|Accessibilité
+27|Zoo accrédité
+28|Ajouter aux favoris
+29|Ajoutez votre nom, votre date de naissance et votre photo dans Modifier le profil.
+30|Ajout…
+31|Après avoir répondu
+32|Vivants aujourd’hui
+33|Vivants aujourd’hui : {group}
+34|Tous les animaux vivants
+35|Toute la vie préhistorique (et actuelle) de PaleoDex
+36|Toute la vie préhistorique
+37|Tous les temps
+38|Tous les {group}
+39|Terres et mers anciennes : Scotese et Wright (2018), PALEOMAP PaleoAtlas. Niveau de la mer : Spratt et Lisiecki (2016) ; Bintanja et van de Wal (2008). Échelle des temps géologiques et couleurs : Charte chronostratigraphique internationale de l’ICS.
+40|Parchemin ancien
+41|Les animaux qui vivent aujourd’hui à l’état sauvage : ce qu’ils sont et où ils vivent
+42|Apparence
+43|S’applique aux pages des espèces, des groupes et des formations et à ces menus. Le globe reste sombre, comme le ciel nocturne.
+44|Automatique
+45|Automatique, la couleur de texte la plus lisible
+46|Retour
+47|Retour à la Guerre des Os
+48|Retour à la Revue par les Pairs
+49|Retour à la Terre et la Lune
+50|Fond
+51|Chauves-souris, rongeurs et autres groupes nombreux
+52|Code de bataille
+53|Code de bataille {code}
+54|Meilleur : {n}/10
+55|Date de naissance
+56|Date de naissance supprimée.
+57|Date de naissance : {part}
+58|Lieu de naissance, domicile et visites de musées, zoos et sites fossilifères
+59|Lieu de naissance, domicile et visites · {n} visités
+60|Noir
+61|Guerre des Os
+62|Vous êtes né ici
+63|Né à {place} · Voir à travers le temps ›
+64|Né le {date} · Aller à cette année ›
+65|Cambrien
+66|Annuler
+67|Annuler la Revue par les Pairs
+68|Carbonifère
+69|Félins, primates, rapaces, baleines et plus
+70|Cénozoïque
+71|Éruptions de l’Atlantique central
+72|Modifier
+73|Modifier mon choix
+74|Changer la dernière question de {who}
+75|Changer la prochaine question de {who}
+76|Anthracite
+77|Rendez-vous en personne sur un site fossilifère de PaleoDex.
+78|Rendez-vous dans un musée d’histoire naturelle.
+79|Rendez-vous dans un zoo accrédité.
+80|Impact de l’astéroïde de Chicxulub
+81|Choisir un autre quiz
+82|Choisissez d’abord un groupe ou une période.
+83|Choisissez un groupe ou une période pour chaque manche.
+84|Choisissez un groupe ou une période pour commencer.
+85|Choisir une photo sur votre appareil
+86|Choisissez les manches et partagez un code de bataille
+87|Choisissez de garder ou non les titres gagnés en les visitant.
+88|Cinéphile
+89|Effacer l’historique
+90|Fermer
+91|Fermer la recherche
+92|Fermer la liste
+93|Indice
+94|Indices
+95|Replier l’arbre généalogique
+96|Connecté à {who}
+97|Connexion…
+98|Copié !
+99|Copier
+100|Copier la réponse d’un joueur
+101|Correct !
+102|Crème
+103|Crédits
+104|Crétacé
+105|Personnalisé
+106|JJ
+107|Sombre
+108|Brun foncé
+109|Jour
+110|Fouilleur chevronné
+111|Supprimer mes lieux visités
+112|Supprimer les lieux et leurs titres
+113|Supprimer les lieux, garder mes titres
+114|Supprimer vos lieux visités ?
+115|Dévonien
+116|Difficulté
+117|Dinosaures
+118|Terminé
+119|Chaque téléphone se connecte directement à celui de l’hôte, qui transmet la partie aux joueurs. Pour se trouver, les téléphones utilisent brièvement un service de connexion public et gratuit (PeerJS) et la recherche d’adresse de Google (STUN). Votre nom, votre titre et une petite copie de votre photo de profil sont partagés avec les autres joueurs pour le classement : votre propre photo, y compris votre propre photo de l’animal choisi comme image. Rien n’est conservé.
+120|Gagnez tous les autres titres (sauf ceux des visites de lieux).
+121|Gagnez des titres en explorant. Choisissez-en un à afficher sous votre nom. {n} sur {total} obtenus.
+122|Terre et Lune agrandies · distance à l’échelle
+123|Terre–Lune : {n} km (aujourd’hui {today} km)
+124|Modifier le profil
+125|Œuf
+126|Terminer la Revue par les Pairs
+127|Extinctions de la fin du Cambrien
+128|Extinction de la fin de l’Ordovicien
+129|Extinction de la fin du Permien
+130|Extinction de la fin du Trias
+131|Agrandit les pages des espèces, des groupes et des formations et ces menus. PaleoDex suit aussi la taille de texte de votre appareil.
+132|Saisissez le code de bataille
+133|Saisissez le code de bataille reçu
+134|Saisissez le code de bataille de l’hôte
+135|Ère
+136|Pair
+137|Événement
+138|Événements
+139|Tous les sites fossilifères de PaleoDex comptent aussi : ouvrez une formation rocheuse pour voir où elle se trouve.
+140|Chaque page ressemble à un cahier ligné, écrit à la main.
+141|Chaque page ressemble à un vieux parchemin, écrit d’une main de copiste.
+142|Tout le monde commence ici.
+143|Tout
+144|Explorateur
+145|Événement d’extinction
+146|FICHE COMPLÈTE
+147|Les couleurs estompées sont trop différentes de votre fond pour qu’un texte soit lisible sur les deux.
+148|Favoris
+149|Homme de terrain
+150|Localisation…
+151|Forêt
+152|Site fossilifère
+153|Trouvé dans
+154|Images sous licence libre issues de Wikimedia Commons et de Wikipédia. Chacune est créditée à son artiste ou photographe sous la licence indiquée. Touchez une licence ou une source pour l’ouvrir. Les reconstitutions d’artistes sont des interprétations et peuvent ne pas refléter la science la plus récente.
+155|Des premiers dinosaures aux derniers
+156|Obtenez un code de bataille à envoyer à l’autre joueur
+157|Globe montrant la Terre il y a {n} millions d’années. Faites glisser pour tourner, pincez pour zoomer.
+158|Beau travail.
+159|Groupe
+160|Groupe : {name}
+161|Groupes inclus
+162|Diviser par deux le temps d’un joueur
+163|Diviser par deux le temps de {who}
+164|Bébé dino
+165|Formation de Hell Creek ›
+166|Masquer les musées et zoos ▲
+167|Masquer l’aire de répartition
+168|Contraste élevé
+169|Domicile
+170|Domicile : {place} · Voir à travers le temps ›
+171|Organiser une Revue par les Pairs
+172|Organiser une partie
+173|Noms célèbres et bases
+174|Comment elle s’est terminée
+175|Que savez-vous de la vie préhistorique ? Les questions puisent dans tout PaleoDex, sur cinq niveaux de difficulté.
+176|Presse !
+177|Presse ! envoyé : le temps de {who} pour cette question est divisé par deux.
+178|Presse ! envoyé : le temps de {who} est divisé par deux.
+179|Je ne collecte, ne stocke ni ne vends vos données de localisation. Votre position n’est lue que lorsque vous touchez un bouton de localisation, et elle ne quitte jamais votre appareil. Votre lieu de naissance, votre domicile et les lieux visités sont conservés uniquement sur cet appareil, et vous pouvez les supprimer à tout moment, en gardant ou en retirant les titres qu’ils vous ont valus.
+180|Je ne veux pas vous encourager à vous mettre en danger. Les formations qui ne sont pas accessibles au public, situées dans des zones très isolées ou dans des zones de conflit ne donnent pas de titre. Laissez-les aux professionnels qui rendent tout cela possible.
+181|Bleu glacier
+182|Si vous choisissez différemment, un tirage pair ou impair décide : vous avez pair.
+183|Si vous choisissez différemment, un tirage pair ou impair décide : vous avez impair.
+184|Crédits des images et des données
+185|Image :
+186|Impérial
+187|Informel
+188|Invertébrés
+189|Égalité !
+190|Rejoindre
+191|Rejoindre une Revue par les Pairs
+192|Rejoindre une partie
+193|Aller directement aux lieux et aux époques au lieu d’animer. Activé aussi si votre appareil demande de réduire les animations.
+194|Aller à votre année de naissance
+195|Aller à l’{name} : {cause}
+196|Aller à {place}
+197|Jurassique
+198|Extinction K/Pg
+199|Langue
+200|Grand
+201|Plus grand
+202|Vu vivant pour la dernière fois
+203|Dernier {name}
+204|A duré
+205|Extinction du Dévonien supérieur (Hangenberg)
+206|Extinction du Dévonien supérieur (Kellwasser)
+207|Classement après la manche {n}
+208|Quitter
+209|Quitter la partie
+210|A quitté la partie
+211|Animaux moins connus et sites fossilifères
+212|Niveau {level} · {title}
+213|Niveau {level}, {difficulty}
+214|Niveau {level}, {title}. {points} points, niveau maximum.
+215|Niveau {level}, {title}. {points} points, encore {toGo} pour le niveau suivant.
+216|Niveau {n} atteint
+217|Vie et événements
+218|Vie trouvée ici
+219|Clair
+220|Auteur probable des empreintes
+221|Verrouillé : {name}. {hint}
+222|Voir la Lune de près
+223|Les chiffres des pertes sont des estimations et varient selon les études.
+224|Disparus
+225|MM
+226|Ont survécu
+227|Mammifères
+228|Les mammifères d’hier et d’aujourd’hui, et leurs premiers parents synapsides comme Dimetrodon
+229|Données de la carte et de la frise
+230|Extinction massive
+231|Extinction massive · l’une des cinq grandes
+232|Comme l’appareil
+233|Menus, boutons et écrans. Les textes sur les espèces, les groupes et les formations restent en anglais pour l’instant.
+234|Mésozoïque
+235|Métrique
+236|Mixte
+237|Cahier moderne
+238|Mois
+239|Lune · à {n} km de la Terre
+240|Nom
+241|Nom, date de naissance et photo
+242|Nommé d’après la Guerre des os de la fin du XIXᵉ siècle, quand les chasseurs de fossiles rivaux Edward Drinker Cope et Othniel Marsh se sont livré une course, espionnés et sabotés pour trouver de nouveaux dinosaures. À eux deux, ils ont nommé plus de 130 nouvelles espèces, de Stegosaurus et Triceratops à Camarasaurus.
+243|Musée d’histoire naturelle
+244|Naturaliste
+245|Bleu marine
+246|Face visible, vue depuis la Terre
+247|Les plus proches :
+248|Néogène
+249|Nouvelle Revue par les Pairs avec ces joueurs
+250|Nouveau record pour ce quiz !
+251|Suivant
+252|Question suivante
+253|Prochaine : manche {n}, {quiz}
+254|Aucune Revue par les Pairs trouvée avec ce code, ou elle a déjà commencé. Vérifiez le code auprès de l’hôte.
+255|Aucun indice : ils apparaissent au fil de votre exploration.
+256|Aucune partie trouvée avec ce code. Vérifiez le code avec l’autre joueur, et que sa partie attend toujours.
+257|Pas encore d’images. Touchez ＋ en bas de n’importe quelle page d’espèce pour ajouter votre propre photo, comme votre animal ou un squelette vu au musée.
+258|Pas encore de musée, de zoo ni de site fossilifère ici.
+259|Pas encore de titre
+260|Aucune ville trouvée. Essayez une ville plus grande à proximité.
+261|Personne
+262|Aucun pour l’instant. Ouvrez une page pour gagner le premier.
+263|Normal
+264|Pas mal. On recommence ?
+265|Non divisée en étages
+266|Introuvable
+267|Non défini.
+268|Aucun résultat pour « {query} ».
+269|Rien d’enregistré pour l’instant. Touchez ☆ Enregistrer en haut d’une page d’espèce, de groupe ou de formation pour la garder ici.
+270|Impair
+271|Sur la page
+272|Dès que quelqu’un a répondu
+273|Dès que {who} a répondu
+274|L’un des plus grands dinosaures carnivores.
+275|Seules les couleurs de texte faciles à lire sur votre fond et vos panneaux sont proposées (avec le contraste élevé, seulement les plus marquées). Si vous changez vos couleurs, un texte devenu difficile à lire passe en Automatique.
+276|Seules les couleurs de texte faciles à lire sur votre fond et vos panneaux sont proposées. Si vous changez vos couleurs, un texte devenu difficile à lire passe en Automatique.
+277|Ouvrir
+278|Ouvrez toutes les espèces d’une formation rocheuse (qui en compte au moins trois).
+279|Ouvrir la page ›
+280|Ouvrez des espèces, des groupes et des lieux pour gagner des points. Chaque nouvelle page découverte remplit votre barre.
+281|Ouvrir la page {name}
+282|Ouvrez votre première page.
+283|Ouvrir {name}
+284|Ouvre la page sur cette extinction
+285|Facultatif. Marque votre année de naissance sur la frise. Reste sur cet appareil.
+286|Ou une de vos propres photos d’espèces :
+287|Ou utilisez l’image d’une de vos espèces favorites :
+288|Ou : les animaux vivants aujourd’hui
+289|Ordovicien
+290|Autres {group}
+291|Les pages sur la vie préhistorique ressemblent à un vieux parchemin écrit d’une main de copiste. Les animaux actuels et l’histoire récente ressemblent à un cahier écrit à la main, tout comme ces menus.
+292|Fan de paléo
+293|PaleoDex a besoin de votre position pour enregistrer votre visite. Vous pouvez l’autoriser dans les réglages de votre appareil.
+294|Paléogène
+295|Paléozoïque
+296|Panneaux
+297|Panneaux et cartes
+298|Papier
+299|Revue par les Pairs
+300|Période
+301|Période : {name}
+302|Permien
+303|Les photos que vous avez ajoutées. Elles restent sur cet appareil. Touchez-en une pour l’afficher sur la page de son espèce ou la supprimer.
+304|Image de cette question
+305|Image pour {name}
+306|Image de {name}
+307|Images de Wikimedia Commons · Terres et mers : Scotese et Wright (2018) PALEOMAP · Niveau de la mer : Spratt et Lisiecki (2016), Bintanja et van de Wal (2008)
+308|Lieu de naissance
+309|Lieux
+310|Lieux visités
+311|Rejouer
+312|Jouer en solo
+313|Affrontez quelqu’un sur un autre téléphone avec un code de bataille
+314|Affrontez quelqu’un sur un autre téléphone : vous répondez tous les deux aux dix mêmes questions, et le meilleur score gagne.
+315|Joueurs ({n} sur {max})
+316|Auteur possible des empreintes
+317|Aperçu
+318|Précédent
+319|Page précédente
+320|Page précédente : {name}
+321|Professeur
+322|Profil
+323|Photo de profil
+324|Proposé, absent de la charte officielle
+325|Quaternaire
+326|Question {n} sur {total} · score {score}
+327|Quiz
+328|Aire de répartition
+329|Aire de répartition au fil du temps
+330|Les aires de répartition sont approximatives.
+331|Espèces rares et détails fins de l’échelle des temps
+332|En savoir plus ›
+333|En savoir plus sur l’{name}
+334|En savoir plus sur {name} ›
+335|Prêt : {quiz}, niveau {level}
+336|Vus récemment
+337|Réduire les animations
+338|Renouveler
+339|Formes apparentées
+340|Proches parents ({n})
+341|Retirer
+342|Supprimer la date de naissance
+343|Retirer des favoris
+344|Supprimer la photo
+345|Supprimer la photo de profil
+346|Retire deux mauvaises réponses
+347|Retirer {name}
+348|Retirer : {what}
+349|Formation rocheuse
+350|Tirage d’un nombre
+351|Manche {round} sur {rounds} : {quiz} · {n} sur {total} ont répondu
+352|ESPÈCE
+353|Savant
+354|Enregistrer la date
+355|Enregistrée. Elle est marquée sur la frise, et vous pouvez y aller depuis votre profil.
+356|Niveau de la mer {n} m
+357|Rechercher
+358|Rechercher événements, extinctions, périodes…
+359|Rechercher une ville ou un village…
+360|Rechercher des groupes
+361|Rechercher des groupes…
+362|Rechercher des groupes vivants
+363|Rechercher des groupes vivants…
+364|Recherchez pour le modifier…
+365|Rechercher : {what}
+366|Voir les {n} musées et zoos ▼
+367|Voir le classement
+368|Voir le résultat
+369|Voir votre score
+370|Envoyez ce code à l’autre joueur. Il choisit Rejoindre une partie et le saisit.
+371|Série
+372|Séries et étages
+373|Préparation…
+374|Réglages
+375|Afficher
+376|La voir sur la frise ›
+377|Afficher sur la page de l’espèce
+378|Afficher {n} groupes de plus dans l’arbre généalogique
+379|Affiché sur le globe
+380|Affiché ✓
+381|Éruptions des trapps de Sibérie
+382|Silurien
+383|Tailles, poids et distances en pieds, livres et miles, convertis à partir des valeurs métriques et arrondis, la plupart étant des estimations.
+384|Tailles, poids et distances en mètres, kilogrammes et kilomètres.
+385|Faites glisser ou touchez la frise pour voyager dans le temps · faites glisser pour tourner · pincez pour zoomer
+386|Jusqu’ici
+387|Blanc doux
+388|Quelqu’un se connecte…
+389|Source :
+390|Spécialiste
+391|Espèce
+392|Images d’espèces ({n})
+393|Espèce · fiche courte
+394|Étage
+395|Ajoutez en favori des espèces avec image pour pouvoir les choisir ici comme photo de profil.
+396|Lancer la manche {n}
+397|Lancer la Revue par les Pairs
+398|Commencer : {quiz}, niveau {level}
+399|Démarrage…
+400|À gagner
+401|Ne plus afficher sur la page de l’espèce
+402|Texte et bordures plus marqués sur les pages et les menus. Avec des couleurs personnalisées, seules les couleurs de texte les plus lisibles sont proposées.
+403|Remplace la question par une nouvelle
+404|Changer la question d’un joueur
+405|Changée par {who} : {quiz}
+406|Changée : {quiz}
+407|Échange
+408|Échange envoyé : la dernière question de {who} vient maintenant de {quiz}.
+409|Échange envoyé : la prochaine question de {who} vient maintenant de {quiz}.
+410|Échange envoyé : la question de {who} vient maintenant de {quiz}.
+411|Touchez un repère pour en savoir plus
+412|Touchez une étape pour la voir ombrée sur le globe.
+413|Touchez encore pour supprimer
+414|Touchez la Lune pour la voir de plus près
+415|Touchez pour la voir ombrée sur le globe.
+416|Touchez pour afficher ce titre sous votre nom
+417|Touchez pour ne plus afficher ce titre
+418|Dix questions sur le sujet et le niveau de votre choix
+419|Testez vos connaissances : dinosaures, groupes et périodes, sur cinq niveaux
+420|Texte
+421|Taille du texte
+422|Merci d’avoir joué !
+423|Cette Revue par les Pairs a déjà commencé.
+424|Cette Revue par les Pairs est complète ({n} joueurs).
+425|Ce code de bataille est déjà utilisé. Organisez une nouvelle partie pour en obtenir un autre.
+426|Ce code est déjà utilisé. Organisez à nouveau la partie.
+427|Cette date ne semble pas réelle. Vérifiez le jour, le mois et l’année.
+428|Cette période n’existe pas.
+429|Impossible de lire cette photo. Essayez-en une autre.
+430|Les animaux et l’échelle des temps d’une période
+431|La réponse est {answer}.
+432|La connexion n’a pas fonctionné. Essayez d’être tous les deux en Wi-Fi.
+433|Impossible de joindre le service de connexion. Vérifiez votre connexion internet et réessayez.
+434|Impossible de joindre le service de connexion. Vérifiez votre connexion internet.
+435|L’hôte a mis fin à la Revue par les Pairs.
+436|Le nombre est {n}
+437|Les téléphones n’ont pas pu se connecter entre eux. Certains réseaux mobiles et professionnels bloquent les connexions directes : essayez d’être tous les deux en Wi-Fi.
+438|Le reste des {family}, des plus proches parents aux plus éloignés. L’ordre est approximatif : leur arbre généalogique est encore débattu.
+439|Les manches
+440|Le repère en forme de crâne s’affiche sur le globe jusqu’à cette date
+441|Les deux téléphones se connectent directement l’un à l’autre. Pour se trouver, ils utilisent brièvement un service de connexion public et gratuit (PeerJS) et la recherche d’adresse de Google (STUN), qui voient votre adresse internet, comme n’importe quel site web. Une fois connectés, vos choix, questions et réponses ne circulent qu’entre les deux téléphones, et rien n’est conservé.
+442|{period}
+443|{period} : divisé en {n} séries, plus l’Anthropocène informel. Touchez-en une pour voir ses étages.
+444|{period} : divisé en {n} séries. Touchez-en une pour voir ses étages.
+445|Thème, taille du texte, unités et accessibilité
+446|Il n’y a pas encore assez de questions pour ce choix. Essayez une autre catégorie ou un autre niveau.
+447|Il n’y avait pas assez de questions pour ce choix. Choisissez à nouveau.
+448|Il n’y avait pas assez de questions pour cette manche.
+449|Cette appli ne prétend pas réunir toutes les informations sur les animaux préhistoriques ou actuels. Je vous encourage à poursuivre vos recherches. Elle a été construite sur mes connaissances, avec l’aide de l’IA (c’était sympa d’en savoir plus qu’un modèle de langage connecté à internet sur des sujets pointus, lol, mais je n’aurais pas pu la programmer sans elle, ni simuler la géographie de la Terre au fil du temps). Allez, cher utilisateur, partez à la découverte !
+450|Cette page est introuvable.
+451|Cette question a été changée.
+452|Temps écoulé !
+453|Titre obtenu
+454|Titres
+455|Aujourd’hui
+456|Trop tard : {who} avait déjà atteint sa dernière question, votre Échange vous est rendu.
+457|Auteur des empreintes
+458|Piste d’empreintes
+459|Trias
+460|Tyrannosaures, ptérosaures, requins et plus
+461|Unités
+462|Utiliser votre propre image
+463|Utiliser votre propre image de {name}
+464|Utiliser votre photo de {name} comme photo de profil
+465|Utiliser {name} comme photo de profil
+466|Utiliser la réponse de {who}
+467|Utilisé
+468|Langue utilisée : {language}.
+469|Visitez une formation rocheuse de chaque période géologique, du Cambrien à aujourd’hui.
+470|Visitez la plus ancienne formation rocheuse de PaleoDex, ou l’un des animaux qu’on y a trouvés.
+471|Vous visitez un musée d’histoire naturelle, un zoo accrédité ou l’un des sites fossilifères de PaleoDex ? Enregistrez votre visite sur place pour gagner des titres.
+472|En attente d’au moins {n} joueurs, vous compris. Partagez le code pour les inviter.
+473|En attente des réponses de tous…
+474|En attente d’un autre joueur…
+475|En attente du lancement de la manche suivante par l’hôte…
+476|En attente du lancement par l’hôte…
+477|En attente de la réponse de {who}…
+478|En attente que {who} termine ({n} sur {total})…
+479|En attente de {who}…
+480|Animaux connus et l’époque où ils vivaient
+481|Sur quoi voulez-vous être interrogé ?
+482|Quand
+483|Où en est-on
+484|Là où {name} et {n} autres ont été vus vivants pour la dernière fois : zoomez
+485|Là où {name} a été vu vivant pour la dernière fois : en savoir plus
+486|Où vous êtes maintenant
+487|Où vous habitez
+488|Blanc
+489|Qui vivait où, et avec qui
+490|Qui a laissé les empreintes
+491|Qui était là
+492|AAAA
+493|Année
+494|Vous
+495|Vous (pair)
+496|Vous (impair)
+497|Vous avez choisi la même chose !
+498|Vous avez choisi des quiz différents
+499|Inutile d’atteindre les roches elles-mêmes : votre visite compte n’importe où à moins de {distance} d’un site fossilifère, donc la ville ou le centre d’accueil le plus proche suffit. Ne visitez que des lieux ouverts au public, n’entrez jamais dans une carrière, une mine ou un terrain privé sans autorisation, et vérifiez les marées sur les sites côtiers.
+500|Vous n’avez encore ouvert aucune page.
+501|Vous avez obtenu {score} sur {total}
+502|Vous avez gagné !
+503|Vos images
+504|Votre réponse ne compte pas : voici une nouvelle dernière question.
+505|Votre réponse ne compte pas : voici une nouvelle question.
+506|Votre code de bataille
+507|Votre lieu de naissance et votre domicile apparaissent sur le globe avec votre photo de profil, et dérivent avec les continents au fil du temps.
+508|Votre choix : {quiz}
+509|Votre dernière page
+510|Votre dernière question a été changée.
+511|Vos {n} dernières pages
+512|Vos {n} dernières pages d’espèces, de groupes et de formations, les plus récentes en premier.
+513|Votre position est introuvable. Vérifiez que la localisation est activée et réessayez.
+514|Votre position est introuvable. Réessayez ou recherchez plutôt une ville.
+515|Votre nom
+516|Votre photo de {name}
+517|Votre photo · gérez-la dans Profil › Vos images
+518|Impossible d’ouvrir vos photos. Vérifiez que PaleoDex est autorisé à utiliser vos photos.
+519|Votre profil
+520|Votre profil, vos favoris, vos réglages et les crédits
+521|Vos titres
+522|Vous êtes à {place} !
+523|Vous avez atteint le niveau maximum. Continuez d’explorer : vos points comptent toujours.
+524|Dézoomer la frise sur tous les temps
+525|Zoomer la frise sur {name}
+526|Zoomer la frise sur {name}
+527|aussi
+528|aussi appelé
+529|hôte
+530|glaciation et baisse du niveau de la mer
+531|série informelle
+532|cela
+533|aucun étage
+534|pas l’une des cinq grandes
+535|ouvrir la page du groupe
+536|océans privés d’oxygène
+537|aujourd’hui
+538|en savoir plus
+539|titre secret
+540|afficher sur le globe
+541|affiche {title}
+542|le challenger
+543|l’hôte
+544|aujourd’hui
+545|ans
+546|vous
+547|votre quiz l’emporte !
+548|Texte {colour}
+549|Ère {era}
+550|Ère {era} · il y a {from} à {to} millions d’années
+551|{from} à {to}
+552|{n} av. J.-C.
+553|{n} apr. J.-C.
+554|Il y a {n} milliards d’années
+555|{n} sites fossilifères
+556|{n} millions d’années
+557|Il y a {n} millions d’années
+558|{n} musées
+559|{n} sur {total} obtenus
+560|{n} photos
+561|{n} points
+562|{n} points avant le niveau {level}. Découvrez de nouvelles pages pour remplir la barre.
+563|{n} enregistrés
+564|Encore {n} secondes
+565|Encore {n} titres secrets à trouver
+566|{n} espèces
+567|{n} espèces dans PaleoDex
+568|{n} étages
+569|{n} milliers d’années
+570|Il y a {n} milliers d’années
+571|{n} ans
+572|Il y a {n} ans
+573|{n} zoos
+574|{quiz} (de {who})
+575|{quiz} · niveau {level}, {difficulty}
+576|{quiz}, niveau {level}
+577|{quiz}, niveau {level} ({difficulty})
+578|{score} sur {total}
+579|{title} · nouveau titre débloqué
+580|{who} (pair)
+581|{who} (impair)
+582|{who} a choisi et est prêt.
+583|{who} a quitté la partie.
+584|{who} est en train de choisir.
+585|{who} vous a pressé ! Votre temps est divisé par deux.
+586|{who} vous a pressé ! Votre temps est divisé par deux.
+587|{who} vous a fait un Échange !
+588|{who} vous a fait un Échange ! Votre prochaine question vient maintenant de {quiz}.
+589|{who} a utilisé Échange !
+590|{who} a utilisé Échange ! Votre prochaine question vient maintenant de {quiz}.
+591|{who} a gagné !
+592|{who} : a répondu · score {score}
+593|{who} : réfléchit encore · score {score}
+594|Le quiz de {who} l’emporte !
+595|‹ Terre
+596|⏳ Presser qui ?
+597|★ Superstar
+598|★ Vous
+599|⚠️ Restez prudent
+600|👀 Copier la réponse de qui ?
+601|📋 Copier le code
+602|📍 Enregistrer ma visite ici
+603|📍 Utiliser ma position actuelle
+604|🔀 Changer la question de qui ?
+605|🔒 Comment fonctionne la connexion
+606|🔒 Votre position reste chez vous

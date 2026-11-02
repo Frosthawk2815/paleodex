@@ -1,0 +1,607 @@
+0|, bereits benutzt
+1|, richtige Antwort
+2|, mit deinen anderen Farben nicht verfügbar
+3|, oben auf der Seite angezeigt
+4|, deine Antwort, falsch
+5|1 Fossilfundstätte
+6|1 Museum
+7|1 Foto
+8|Noch 1 geheimer Titel zu finden
+9|1 Stufe
+10|1 Zoo
+11|6-stelliger Code
+12|Vor 68 bis 66 Millionen Jahren
+13|Ein vollständiger Eintrag zu dieser Art folgt noch.
+14|Ein Gruppenspiel für 3 bis 30 Personen, mit Rangliste nach jeder Runde
+15|Ein Wort vom Entwickler
+16|Eine bestimmte Gruppe
+17|Eine bestimmte lebende Gruppe
+18|Eine perfekte Runde!
+19|Ein Zeitabschnitt
+20|Ein Mitspieler
+21|Ein Quiz für Gruppen: {min} bis {max} Personen, jede mit ihrem eigenen Handy. Die Spielleitung wählt fünf Runden mit je fünf Fragen, und nach jeder Runde gibt es eine Rangliste.
+22|Ganz schön schwer. Eine leichtere Stufe versuchen?
+23|Über
+24|{period}: mehr dazu ›
+25|Etwa {n} km breit
+26|Barrierefreiheit
+27|Akkreditierter Zoo
+28|Zu Favoriten hinzufügen
+29|Füge unter Profil bearbeiten deinen Namen, dein Geburtsdatum und ein Bild hinzu.
+30|Wird hinzugefügt…
+31|Nach dem Antworten
+32|Heute lebend
+33|Heute lebend: {group}
+34|Alle lebenden Tiere
+35|Das ganze prähistorische (und heutige) Leben in PaleoDex
+36|Das ganze prähistorische Leben
+37|Die ganze Zeit
+38|Alle {group}
+39|Urzeitliches Land und Meer: Scotese & Wright (2018), PALEOMAP PaleoAtlas. Meeresspiegel: Spratt & Lisiecki (2016); Bintanja & van de Wal (2008). Geologische Zeitskala und Farben: Internationale Chronostratigraphische Tabelle der ICS.
+40|Altes Pergament
+41|Tiere, die heute in freier Wildbahn leben: was sie sind und wo sie leben
+42|Darstellung
+43|Gilt für Arten-, Gruppen- und Formationsseiten und diese Menüs. Der Globus bleibt dunkel wie der Nachthimmel.
+44|Automatisch
+45|Automatisch, die am besten lesbare Textfarbe
+46|Zurück
+47|Zurück zum Knochenkrieg
+48|Zurück zum Peer Review
+49|Zurück zu Erde und Mond
+50|Hintergrund
+51|Fledermäuse, Nagetiere und andere artenreiche Gruppen
+52|Kampfcode
+53|Kampfcode {code}
+54|Bestes: {n}/10
+55|Geburtsdatum
+56|Geburtsdatum entfernt.
+57|Geburtsdatum: {part}
+58|Geburtsort, Zuhause und Check-ins in Museen, Zoos und Fossilfundstätten
+59|Geburtsort, Zuhause und Check-ins · {n} besucht
+60|Schwarz
+61|Knochenkrieg
+62|Hier geboren
+63|Geboren in {place} · Durch die Zeit verfolgen ›
+64|Geboren am {date} · Zu diesem Jahr ›
+65|Kambrium
+66|Abbrechen
+67|Peer Review abbrechen
+68|Karbon
+69|Katzen, Primaten, Greifvögel, Wale und mehr
+70|Känozoikum
+71|Ausbrüche im Zentralatlantik
+72|Ändern
+73|Meine Wahl ändern
+74|Die letzte Frage von {who} ändern
+75|Die nächste Frage von {who} ändern
+76|Anthrazit
+77|Checke persönlich an einer Fossilfundstätte aus PaleoDex ein.
+78|Checke in einem Naturkundemuseum ein.
+79|Checke in einem akkreditierten Zoo ein.
+80|Einschlag des Chicxulub-Asteroiden
+81|Ein anderes Quiz wählen
+82|Wähle zuerst eine Gruppe oder einen Zeitabschnitt.
+83|Wähle für jede Runde eine Gruppe oder einen Zeitabschnitt.
+84|Wähle eine Gruppe oder einen Zeitabschnitt, um zu beginnen.
+85|Ein Foto vom Gerät wählen
+86|Wähle die Runden und teile einen Kampfcode
+87|Wähle, ob du die Titel behalten möchtest, die du mit diesen Besuchen verdient hast.
+88|Cineast
+89|Verlauf löschen
+90|Schließen
+91|Suche schließen
+92|Liste schließen
+93|Hinweis
+94|Hinweise
+95|Stammbaum einklappen
+96|Verbunden mit {who}
+97|Verbinde…
+98|Kopiert!
+99|Abschreiben
+100|Die Antwort eines Mitspielers abschreiben
+101|Richtig!
+102|Creme
+103|Danksagungen
+104|Kreide
+105|Eigene
+106|TT
+107|Dunkel
+108|Dunkelbraun
+109|Tag
+110|Tiefgräber
+111|Meine besuchten Orte löschen
+112|Orte und ihre Titel löschen
+113|Orte löschen, Titel behalten
+114|Deine besuchten Orte löschen?
+115|Devon
+116|Schwierigkeit
+117|Dinosaurier
+118|Fertig
+119|Jedes Handy verbindet sich direkt mit dem Handy der Spielleitung, das das Spiel zwischen den Mitspielern weitergibt. Um sich zu finden, nutzen die Handys kurz einen kostenlosen öffentlichen Verbindungsdienst (PeerJS) und Googles Adresssuche (STUN). Dein Name, dein Titel und eine kleine Kopie deines Profilbilds werden für die Rangliste mit den anderen geteilt: dein eigenes Foto, auch dein eigenes Foto des Tiers, das du als Bild gewählt hast. Es wird nichts gespeichert.
+120|Verdiene alle anderen Titel (außer denen für besuchte Orte).
+121|Verdiene Titel beim Erkunden. Wähle einen davon, der unter deinem Namen angezeigt wird. {n} von {total} verdient.
+122|Erde und Mond vergrößert · Abstand maßstabsgetreu
+123|Erde–Mond: {n} km (heute {today} km)
+124|Profil bearbeiten
+125|Ei
+126|Peer Review beenden
+127|Massenaussterben am Ende des Kambriums
+128|Massenaussterben am Ende des Ordoviziums
+129|Massenaussterben am Ende des Perms
+130|Massenaussterben am Ende der Trias
+131|Vergrößert Arten-, Gruppen- und Formationsseiten und diese Menüs. PaleoDex folgt außerdem der Textgröße deines Geräts.
+132|Kampfcode eingeben
+133|Gib den Kampfcode ein, den du bekommen hast
+134|Gib den Kampfcode der Spielleitung ein
+135|Ära
+136|Gerade
+137|Ereignis
+138|Ereignisse
+139|Jede Fossilfundstätte in PaleoDex zählt auch: Öffne eine Gesteinsformation, um zu sehen, wo sie liegt.
+140|Jede Seite sieht aus wie ein liniertes Notizheft, von Hand geschrieben.
+141|Jede Seite sieht aus wie altes Pergament, in Handschrift geschrieben.
+142|Hier fangen alle an.
+143|Alles
+144|Entdecker
+145|Aussterbeereignis
+146|VOLLSTÄNDIGER EINTRAG
+147|Ausgegraute Farben unterscheiden sich zu stark von deinem Hintergrund, als dass Text auf beiden lesbar wäre.
+148|Favoriten
+149|Feldforscher
+150|Suche deinen Standort…
+151|Wald
+152|Fossilfundstätte
+153|Gefunden in
+154|Frei lizenzierte Bilder von Wikimedia Commons und Wikipedia. Jedes ist seiner Künstlerin oder seinem Fotografen unter der angegebenen Lizenz zugeschrieben. Tippe auf eine Lizenz oder Quelle, um sie zu öffnen. Künstlerische Rekonstruktionen sind Interpretationen und entsprechen vielleicht nicht dem neuesten Forschungsstand.
+155|Von den ersten Dinosauriern bis zu den letzten
+156|Hol dir einen Kampfcode für deinen Gegner
+157|Globus mit der Erde vor {n} Millionen Jahren. Ziehen zum Drehen, zusammendrücken zum Zoomen.
+158|Gut gemacht.
+159|Gruppe
+160|Gruppe: {name}
+161|Untergruppen
+162|Die Zeit eines Mitspielers halbieren
+163|Die Zeit von {who} halbieren
+164|Schlüpfling
+165|Hell-Creek-Formation ›
+166|Museen und Zoos ausblenden ▲
+167|Verbreitung ausblenden
+168|Hoher Kontrast
+169|Zuhause
+170|Zuhause: {place} · Durch die Zeit verfolgen ›
+171|Ein Peer Review leiten
+172|Ein Spiel starten
+173|Bekannte Namen und die Grundlagen
+174|Wie es endete
+175|Wie viel weißt du über das prähistorische Leben? Die Fragen stammen aus ganz PaleoDex, in fünf Schwierigkeitsstufen.
+176|Beeil dich!
+177|Beeil dich! gesendet: Die Zeit von {who} für diese Frage ist halbiert.
+178|Beeil dich! gesendet: Die Zeit von {who} ist halbiert.
+179|Ich sammle, speichere oder verkaufe keine Standortdaten. Dein Standort wird nur gelesen, wenn du auf eine Standort-Schaltfläche tippst, und verlässt nie dein Gerät. Dein Geburtsort, dein Zuhause und die besuchten Orte bleiben nur auf diesem Gerät, und du kannst sie jederzeit löschen und dabei die verdienten Titel behalten oder entfernen.
+180|Ich möchte dich nicht dazu verleiten, dich in Gefahr zu bringen. Formationen, die nicht öffentlich zugänglich sind, sehr abgelegen liegen oder sich in Konfliktgebieten befinden, bringen keine Titel. Überlass sie bitte den Fachleuten, die all das möglich machen.
+181|Eisblau
+182|Wenn ihr unterschiedlich wählt, entscheidet eine Zufallszahl, gerade oder ungerade: Du hast gerade.
+183|Wenn ihr unterschiedlich wählt, entscheidet eine Zufallszahl, gerade oder ungerade: Du hast ungerade.
+184|Bild- und Datennachweise
+185|Bild:
+186|Imperial
+187|Inoffiziell
+188|Wirbellose
+189|Unentschieden!
+190|Beitreten
+191|Einem Peer Review beitreten
+192|Einem Spiel beitreten
+193|Springt direkt zu Orten und Zeiten statt zu animieren. Auch aktiv, wenn dein Gerät weniger Bewegung wünscht.
+194|Zu deinem Geburtsjahr springen
+195|Zum {name} springen: {cause}
+196|Springe zu {place}
+197|Jura
+198|K/Pg-Massenaussterben
+199|Sprache
+200|Groß
+201|Größer
+202|Zuletzt lebend gesehen
+203|Letzter {name}
+204|Dauerte
+205|Spätdevonisches Massenaussterben (Hangenberg)
+206|Spätdevonisches Massenaussterben (Kellwasser)
+207|Rangliste nach Runde {n}
+208|Verlassen
+209|Spiel verlassen
+210|Hat das Spiel verlassen
+211|Weniger bekannte Tiere und Fossilfundstätten
+212|Stufe {level} · {title}
+213|Stufe {level}, {difficulty}
+214|Stufe {level}, {title}. {points} Punkte, höchste Stufe.
+215|Stufe {level}, {title}. {points} Punkte, noch {toGo} bis zur nächsten Stufe.
+216|Stufe {n} erreicht
+217|Leben und Ereignisse
+218|Hier gefundenes Leben
+219|Hell
+220|Wahrscheinlicher Spurenerzeuger
+221|Gesperrt: {name}. {hint}
+222|Den Mond aus der Nähe ansehen
+223|Die Verlustzahlen sind Schätzungen und unterscheiden sich je nach Studie.
+224|Ausgestorben
+225|MM
+226|Überlebt
+227|Säugetiere
+228|Säugetiere von damals und heute und ihre frühen synapsiden Verwandten wie Dimetrodon
+229|Daten für Karte und Zeitleiste
+230|Massenaussterben
+231|Massenaussterben · eines der großen fünf
+232|Wie Gerät
+233|Menüs, Schaltflächen und Bildschirme. Die Texte zu Arten, Gruppen und Formationen sind vorerst noch auf Englisch.
+234|Mesozoikum
+235|Metrisch
+236|Gemischt
+237|Modernes Notizheft
+238|Monat
+239|Mond · {n} km von der Erde
+240|Name
+241|Name, Geburtsdatum und Bild
+242|Benannt nach den Knochenkriegen im späten 19. Jahrhundert, als die rivalisierenden Fossiliensammler Edward Drinker Cope und Othniel Marsh um die Wette gruben, sich gegenseitig ausspionierten und sabotierten, um neue Dinosaurier zu finden. Zusammen benannten sie mehr als 130 neue Arten, von Stegosaurus und Triceratops bis Camarasaurus.
+243|Naturkundemuseum
+244|Naturforscher
+245|Marineblau
+246|Vorderseite, von der Erde aus gesehen
+247|Am nächsten bei dir:
+248|Neogen
+249|Neues Peer Review mit diesen Mitspielern
+250|Neuer Bestwert für dieses Quiz!
+251|Weiter
+252|Nächste Frage
+253|Als Nächstes: Runde {n}, {quiz}
+254|Kein Peer Review mit diesem Code gefunden, oder es hat schon begonnen. Prüf den Code mit der Spielleitung.
+255|Keine Hinweise: Sie tauchen beim Erkunden auf.
+256|Kein Spiel mit diesem Code gefunden. Prüf den Code mit deinem Gegner und ob sein Spiel noch wartet.
+257|Noch keine Bilder. Tippe unten auf einer Artenseite auf ＋, um ein eigenes Foto hinzuzufügen, etwa von deinem Haustier oder einem Skelett aus dem Museum.
+258|Hier gibt es noch kein Museum, keinen Zoo und keine Fossilfundstätte.
+259|Noch kein Titel
+260|Kein Ort gefunden. Versuch eine größere Stadt in der Nähe.
+261|Niemand
+262|Noch keine. Öffne eine Seite, um deinen ersten zu verdienen.
+263|Normal
+264|Nicht schlecht. Noch einmal?
+265|Nicht in Stufen unterteilt
+266|Nicht gefunden
+267|Nicht festgelegt.
+268|Nichts gefunden für „{query}“.
+269|Noch nichts gespeichert. Tippe oben auf einer Arten-, Gruppen- oder Formationsseite auf ☆ Speichern, um sie hier zu behalten.
+270|Ungerade
+271|Auf der Seite
+272|Sobald jemand geantwortet hat
+273|Sobald {who} geantwortet hat
+274|Einer der größten fleischfressenden Dinosaurier.
+275|Angeboten werden nur Textfarben, die auf deinem Hintergrund und deinen Feldern gut lesbar sind (bei hohem Kontrast nur die kräftigsten). Wenn du deine Farben änderst, wechselt schwer lesbarer Text zu Automatisch.
+276|Angeboten werden nur Textfarben, die auf deinem Hintergrund und deinen Feldern gut lesbar sind. Wenn du deine Farben änderst, wechselt schwer lesbarer Text zu Automatisch.
+277|Öffnen
+278|Öffne jede Art aus einer Gesteinsformation (mit mindestens drei Arten).
+279|Seite öffnen ›
+280|Öffne Arten, Gruppen und Orte, um Punkte zu sammeln. Jede neu entdeckte Seite füllt deinen Balken.
+281|Die Seite {name} öffnen
+282|Öffne deine erste Seite.
+283|{name} öffnen
+284|Öffnet die Seite über dieses Massenaussterben
+285|Freiwillig. Markiert dein Geburtsjahr auf der Zeitleiste. Bleibt auf diesem Gerät.
+286|Oder eines deiner eigenen Artenfotos:
+287|Oder nimm ein Bild einer deiner Lieblingsarten:
+288|Oder: heute lebende Tiere
+289|Ordovizium
+290|Weitere {group}
+291|Seiten über prähistorisches Leben sehen aus wie altes Pergament in Handschrift. Heutige Tiere und jüngere Geschichte sehen aus wie ein handgeschriebenes Notizheft, genau wie diese Menüs.
+292|Paläo-Fan
+293|PaleoDex braucht deinen Standort zum Einchecken. Du kannst ihn in den Einstellungen deines Geräts erlauben.
+294|Paläogen
+295|Paläozoikum
+296|Felder
+297|Felder und Karten
+298|Papier
+299|Peer Review
+300|Periode
+301|Periode: {name}
+302|Perm
+303|Fotos, die du hinzugefügt hast. Sie bleiben auf diesem Gerät. Tippe auf eines, um es auf seiner Artenseite zu zeigen oder es zu entfernen.
+304|Bild zu dieser Frage
+305|Bild für {name}
+306|Bild von {name}
+307|Bilder von Wikimedia Commons · Land und Meer: Scotese & Wright (2018) PALEOMAP · Meeresspiegel: Spratt & Lisiecki (2016), Bintanja & van de Wal (2008)
+308|Geburtsort
+309|Orte
+310|Besuchte Orte
+311|Noch einmal spielen
+312|Solo spielen
+313|Spiel per Kampfcode gegen jemanden mit einem anderen Handy
+314|Spiel gegen jemanden mit einem anderen Handy: Ihr beantwortet dieselben zehn Fragen, und die höhere Punktzahl gewinnt.
+315|Mitspieler ({n} von {max})
+316|Möglicher Spurenerzeuger
+317|Vorschau
+318|Zurück
+319|Vorherige Seite
+320|Vorherige Seite: {name}
+321|Professor
+322|Profil
+323|Profilbild
+324|Vorgeschlagen, nicht in der offiziellen Tabelle
+325|Quartär
+326|Frage {n} von {total} · Punkte {score}
+327|Quiz
+328|Verbreitung
+329|Verbreitung im Lauf der Zeit
+330|Die Verbreitungsgebiete sind ungefähr.
+331|Seltene Arten und die Feinheiten der Zeitskala
+332|Mehr dazu ›
+333|Mehr über das {name}
+334|Mehr über {name} ›
+335|Bereit: {quiz}, Stufe {level}
+336|Zuletzt angesehen
+337|Weniger Bewegung
+338|Neue Frage
+339|Verwandte Formen
+340|Verwandte ({n})
+341|Entfernen
+342|Geburtsdatum entfernen
+343|Aus Favoriten entfernen
+344|Foto entfernen
+345|Profilbild entfernen
+346|Zwei falsche Antworten entfernen
+347|{name} entfernen
+348|Entfernen: {what}
+349|Gesteinsformation
+350|Zahl wird gewürfelt
+351|Runde {round} von {rounds}: {quiz} · {n} von {total} haben geantwortet
+352|ART
+353|Gelehrter
+354|Datum speichern
+355|Gespeichert. Es ist auf der Zeitleiste markiert, und du kannst von deinem Profil aus dorthin springen.
+356|Meeresspiegel {n} m
+357|Suchen
+358|Ereignisse, Aussterben, Perioden suchen…
+359|Nach einer Stadt oder einem Ort suchen…
+360|Gruppen suchen
+361|Gruppen suchen…
+362|Lebende Gruppen suchen
+363|Lebende Gruppen suchen…
+364|Suchen, um es zu ändern…
+365|Suchen: {what}
+366|Alle {n} Museen und Zoos anzeigen ▼
+367|Rangliste ansehen
+368|Ergebnis ansehen
+369|Deine Punktzahl ansehen
+370|Schick diesen Code an deinen Gegner. Er wählt Einem Spiel beitreten und gibt ihn ein.
+371|Serie
+372|Serien und Stufen
+373|Wird eingerichtet…
+374|Einstellungen
+375|Zeigen
+376|Auf der Zeitleiste zeigen ›
+377|Auf der Artenseite zeigen
+378|{n} weitere Gruppen im Stammbaum zeigen
+379|Wird gerade auf dem Globus gezeigt
+380|Wird gezeigt ✓
+381|Ausbrüche des Sibirischen Trapps
+382|Silur
+383|Größen, Gewichte und Entfernungen in Fuß, Pfund und Meilen, aus den metrischen Werten umgerechnet und gerundet, da die meisten Schätzungen sind.
+384|Größen, Gewichte und Entfernungen in Metern, Kilogramm und Kilometern.
+385|Zeitleiste schieben oder antippen, um durch die Zeit zu reisen · ziehen zum Drehen · zusammendrücken zum Zoomen
+386|Bisher
+387|Weich-Weiß
+388|Jemand tritt bei…
+389|Quelle:
+390|Spezialist
+391|Art
+392|Artenbilder ({n})
+393|Art · Kurzeintrag
+394|Stufe
+395|Markiere Arten mit Bildern als Favoriten, um sie hier als Profilbild wählen zu können.
+396|Runde {n} starten
+397|Peer Review starten
+398|Start: {quiz}, Stufe {level}
+399|Startet…
+400|Noch zu verdienen
+401|Nicht mehr auf der Artenseite zeigen
+402|Kräftigerer Text und Rahmen auf Seiten und in Menüs. Bei eigenen Farben werden nur die am besten lesbaren Textfarben angeboten.
+403|Gegen eine neue Frage tauschen
+404|Die Frage eines Mitspielers tauschen
+405|Getauscht von {who}: {quiz}
+406|Getauscht: {quiz}
+407|Fragentausch
+408|Fragentausch gesendet: Die letzte Frage von {who} stammt jetzt aus {quiz}.
+409|Fragentausch gesendet: Die nächste Frage von {who} stammt jetzt aus {quiz}.
+410|Fragentausch gesendet: Die Frage von {who} stammt jetzt aus {quiz}.
+411|Tippe auf eine Markierung, um mehr zu lesen
+412|Tippe auf einen Abschnitt, um ihn auf dem Globus schattiert zu sehen.
+413|Zum Entfernen noch einmal tippen
+414|Tippe auf den Mond, um ihn näher anzusehen
+415|Tippe, um es auf dem Globus schattiert zu sehen.
+416|Tippen, um diesen Titel unter deinem Namen zu zeigen
+417|Tippen, um diesen Titel nicht mehr zu zeigen
+418|Zehn Fragen zum Thema und zur Stufe deiner Wahl
+419|Teste dein Wissen: Dinosaurier, Gruppen und Zeitabschnitte, in fünf Stufen
+420|Text
+421|Textgröße
+422|Danke fürs Spielen!
+423|Dieses Peer Review hat schon begonnen.
+424|Dieses Peer Review ist voll ({n} Mitspieler).
+425|Dieser Kampfcode wird schon verwendet. Starte ein neues Spiel für einen neuen Code.
+426|Dieser Code wird schon verwendet. Starte das Spiel neu.
+427|Das sieht nicht nach einem echten Datum aus. Prüf Tag, Monat und Jahr.
+428|Diesen Zeitabschnitt gibt es nicht.
+429|Dieses Foto konnte nicht gelesen werden. Versuch ein anderes.
+430|Die Tiere und die Zeitskala eines Zeitabschnitts
+431|Die Antwort ist {answer}.
+432|Die Verbindung hat nicht geklappt. Versucht, beide im WLAN zu sein.
+433|Der Verbindungsdienst war nicht erreichbar. Prüf deine Internetverbindung und versuch es noch einmal.
+434|Der Verbindungsdienst war nicht erreichbar. Prüf deine Internetverbindung.
+435|Die Spielleitung hat das Peer Review beendet.
+436|Die Zahl ist {n}
+437|Die Handys konnten sich nicht miteinander verbinden. Manche Mobil- und Firmennetze blockieren direkte Verbindungen: Versucht, beide im WLAN zu sein.
+438|Die übrigen {family}, die nächsten Verwandten zuerst. Die Reihenfolge ist ungefähr: Ihr Stammbaum ist noch umstritten.
+439|Die Runden
+440|Die Totenkopf-Markierung erscheint bis zu diesem Datum auf dem Globus
+441|Die beiden Handys verbinden sich direkt miteinander. Um sich zu finden, nutzen sie kurz einen kostenlosen öffentlichen Verbindungsdienst (PeerJS) und Googles Adresssuche (STUN), die deine Internetadresse sehen, wie jede Website. Sobald sie verbunden sind, gehen deine Auswahl, Fragen und Antworten nur zwischen den beiden Handys hin und her, und es wird nichts gespeichert.
+442|{period}
+443|{period}: in {n} Serien unterteilt, dazu das inoffizielle Anthropozän. Tippe auf eine, um ihre Stufen zu sehen.
+444|{period}: in {n} Serien unterteilt. Tippe auf eine, um ihre Stufen zu sehen.
+445|Design, Textgröße, Einheiten und Barrierefreiheit
+446|Für diese Auswahl gibt es noch nicht genug Fragen. Versuch eine andere Kategorie oder Stufe.
+447|Für diese Auswahl gab es nicht genug Fragen. Wähle neu.
+448|Für diese Runde gab es nicht genug Fragen.
+449|Diese App will keine Komplettquelle für alles über prähistorische oder heutige Tiere sein. Ich ermutige dich, weiter zu recherchieren. Sie beruht auf meinem Wissen und entstand mit Hilfe von KI (es hat Spaß gemacht, einem Sprachmodell mit Internetzugang in Nischenwissen überlegen zu sein, lol, aber ohne sie hätte ich sie weder programmieren noch die Geografie der Erde durch die Zeit simulieren können). Zieh los, liebe Nutzerin, lieber Nutzer, und entdecke!
+450|Diese Seite wurde nicht gefunden.
+451|Diese Frage wurde getauscht.
+452|Zeit abgelaufen!
+453|Titel verdient
+454|Titel
+455|Heute
+456|Zu spät: {who} war schon bei der letzten Frage, du bekommst deinen Fragentausch zurück.
+457|Spurenerzeuger
+458|Fährte
+459|Trias
+460|Tyrannosaurier, Flugsaurier, Haie und mehr
+461|Einheiten
+462|Eigenes Bild verwenden
+463|Eigenes Bild von {name} verwenden
+464|Dein Foto von {name} als Profilbild verwenden
+465|{name} als Profilbild verwenden
+466|Die Antwort von {who} übernehmen
+467|Benutzt
+468|Verwendet: {language}.
+469|Besuche eine Gesteinsformation aus jeder geologischen Periode, vom Kambrium bis heute.
+470|Besuche die älteste Gesteinsformation in PaleoDex oder eines der dort gefundenen Tiere.
+471|Du besuchst ein Naturkundemuseum, einen akkreditierten Zoo oder eine Fossilfundstätte aus PaleoDex? Checke vor Ort ein, um Titel zu verdienen.
+472|Warte auf mindestens {n} Mitspieler, dich mitgezählt. Teile den Code, um sie einzuladen.
+473|Warte, bis alle geantwortet haben…
+474|Warte, bis jemand beitritt…
+475|Warte, bis die Spielleitung die nächste Runde startet…
+476|Warte, bis die Spielleitung startet…
+477|Warte auf die Antwort von {who}…
+478|Warte, bis {who} fertig ist ({n} von {total})…
+479|Warte auf {who}…
+480|Bekannte Tiere und wann sie lebten
+481|Wozu möchtest du befragt werden?
+482|Wann
+483|Wo es heute steht
+484|Wo {name} und {n} weitere zuletzt lebend gesehen wurden: hineinzoomen
+485|Wo {name} zuletzt lebend gesehen wurde: mehr lesen
+486|Wo du gerade bist
+487|Wo du jetzt wohnst
+488|Weiß
+489|Wer wo lebte und mit wem
+490|Wer die Spuren hinterließ
+491|Wer dort war
+492|JJJJ
+493|Jahr
+494|Du
+495|Du (gerade)
+496|Du (ungerade)
+497|Ihr habt beide dasselbe gewählt!
+498|Ihr habt verschiedene Quizze gewählt
+499|Du musst nicht bis zu den Felsen selbst: Du bist überall im Umkreis von {distance} um eine Fossilfundstätte eingecheckt, also reicht der nächste Ort oder das Besucherzentrum. Besuche nur öffentlich zugängliche Orte, betritt nie Steinbrüche, Bergwerke oder Privatgrund ohne Erlaubnis und achte an Küstenfundstätten auf die Gezeiten.
+500|Du hast noch keine Seiten geöffnet.
+501|Du hast {score} von {total} erreicht
+502|Du hast gewonnen!
+503|Deine Bilder
+504|Deine Antwort zählt nicht: Hier ist eine neue letzte Frage.
+505|Deine Antwort zählt nicht: Hier ist eine neue Frage.
+506|Dein Kampfcode
+507|Dein Geburtsort und dein Zuhause erscheinen mit deinem Profilbild auf dem Globus und wandern mit den Kontinenten durch die Zeit.
+508|Deine Wahl: {quiz}
+509|Deine letzte Seite
+510|Deine letzte Frage wurde getauscht.
+511|Deine letzten {n} Seiten
+512|Deine letzten {n} Arten-, Gruppen- und Formationsseiten, die neueste zuerst.
+513|Dein Standort wurde nicht gefunden. Prüf, ob die Ortung eingeschaltet ist, und versuch es noch einmal.
+514|Dein Standort wurde nicht gefunden. Versuch es noch einmal oder such stattdessen nach einem Ort.
+515|Dein Name
+516|Dein Foto von {name}
+517|Dein Foto · verwalten unter Profil › Deine Bilder
+518|Deine Fotos konnten nicht geöffnet werden. Prüf, ob PaleoDex deine Fotos verwenden darf.
+519|Dein Profil
+520|Dein Profil, Favoriten, Einstellungen und Danksagungen
+521|Deine Titel
+522|Du bist bei {place}!
+523|Du hast die höchste Stufe erreicht. Erkunde weiter: Deine Punkte zählen trotzdem.
+524|Zeitleiste auf die ganze Zeit verkleinern
+525|Zeitleiste auf {name} zoomen
+526|Zeitleiste auf {name} zoomen
+527|auch
+528|auch genannt
+529|Spielleitung
+530|Eiszeit und sinkender Meeresspiegel
+531|inoffizielle Serie
+532|es
+533|keine Stufen
+534|nicht eines der großen fünf
+535|Gruppenseite öffnen
+536|sauerstoffarme Ozeane
+537|heute
+538|mehr lesen
+539|geheimer Titel
+540|auf dem Globus zeigen
+541|zeigt {title}
+542|die Herausforderung
+543|die Spielleitung
+544|heute
+545|Jahre her
+546|du
+547|dein Quiz gewinnt!
+548|Text in {colour}
+549|{era}
+550|{era} · vor {from} bis {to} Millionen Jahren
+551|{from} bis {to}
+552|{n} v. Chr.
+553|{n} n. Chr.
+554|Vor {n} Milliarden Jahren
+555|{n} Fossilfundstätten
+556|{n} Millionen Jahre
+557|Vor {n} Millionen Jahren
+558|{n} Museen
+559|{n} von {total} verdient
+560|{n} Fotos
+561|{n} Punkte
+562|Noch {n} Punkte bis Stufe {level}. Entdecke neue Seiten, um den Balken zu füllen.
+563|{n} gespeichert
+564|Noch {n} Sekunden
+565|Noch {n} geheime Titel zu finden
+566|{n} Arten
+567|{n} Arten in PaleoDex
+568|{n} Stufen
+569|{n} Tausend Jahre
+570|Vor {n} Tausend Jahren
+571|{n} Jahre
+572|Vor {n} Jahren
+573|{n} Zoos
+574|{quiz} (von {who})
+575|{quiz} · Stufe {level}, {difficulty}
+576|{quiz}, Stufe {level}
+577|{quiz}, Stufe {level} ({difficulty})
+578|{score} von {total}
+579|{title} · neuer Titel freigeschaltet
+580|{who} (gerade)
+581|{who} (ungerade)
+582|{who} hat gewählt und ist bereit.
+583|{who} hat das Spiel verlassen.
+584|{who} wählt noch.
+585|{who} hat dich zur Eile gedrängt! Deine Zeit wurde halbiert.
+586|{who} hat dich zur Eile gedrängt! Deine Zeit wurde halbiert.
+587|{who} hat bei dir einen Fragentausch gemacht!
+588|{who} hat bei dir einen Fragentausch gemacht! Deine nächste Frage stammt jetzt aus {quiz}.
+589|{who} hat einen Fragentausch gemacht!
+590|{who} hat einen Fragentausch gemacht! Deine nächste Frage stammt jetzt aus {quiz}.
+591|{who} gewinnt!
+592|{who}: hat geantwortet · Punkte {score}
+593|{who}: antwortet noch · Punkte {score}
+594|Das Quiz von {who} gewinnt!
+595|‹ Erde
+596|⏳ Wen zur Eile drängen?
+597|★ Superstar
+598|★ Du
+599|⚠️ Bleib sicher
+600|👀 Wessen Antwort abschreiben?
+601|📋 Code kopieren
+602|📍 Hier einchecken
+603|📍 Meinen aktuellen Standort verwenden
+604|🔀 Wessen Frage tauschen?
+605|🔒 So funktioniert die Verbindung
+606|🔒 Dein Standort bleibt bei dir
