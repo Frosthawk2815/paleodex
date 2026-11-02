@@ -6,10 +6,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useInfoStyles } from '@/components/info-styles';
 import { useProfile, useTextScale } from '@/lib/profile';
 import { type UserPhoto, useUserPhotos } from '@/lib/user-photos';
+import { useT } from '@/lib/i18n';
 
 // The bottom of a species page: a "+" that picks a photo from the device and shows it at the top
 // of the page. The user's photos are managed in Profile › Your Images.
 export function AddPhotoButton({ speciesId, name }: { speciesId: string; name: string }) {
+  const t = useT();
   const info = useInfoStyles();
   const scale = useTextScale();
   const { addPhotos } = useUserPhotos();
@@ -28,14 +30,14 @@ export function AddPhotoButton({ speciesId, name }: { speciesId: string; name: s
         onPress={add}
         disabled={busy}
         accessibilityRole="button"
-        accessibilityLabel={`Use your own picture of ${name}`}
+        accessibilityLabel={t('Use your own picture of {name}', { name })}
         accessibilityState={{ disabled: busy, busy }}
         hitSlop={6}
         style={({ pressed }) => [styles.addRow, pressed && styles.pressed, busy && styles.disabled]}>
         <View style={[styles.plus, info.card]}>
           <Text style={[styles.plusText, { color: info.cardTitle.color }]}>+</Text>
         </View>
-        <Text style={[styles.addText, { color: info.cardTitle.color, fontSize: Math.round(14 * scale) }]}>{busy ? 'Adding…' : 'Use your own picture'}</Text>
+        <Text style={[styles.addText, { color: info.cardTitle.color, fontSize: Math.round(14 * scale) }]}>{busy ? t('Adding…') : t('Use your own picture')}</Text>
       </Pressable>
       {!!message && <Text style={info.note}>{message}</Text>}
     </View>
@@ -45,6 +47,7 @@ export function AddPhotoButton({ speciesId, name }: { speciesId: string; name: s
 // A grid of the user's photos of one species. Tapping a photo opens it larger, where it can be
 // shown at the top of the species page or removed.
 export function SpeciesPhotoGrid({ speciesId, name, tileColor }: { speciesId: string; name: string; tileColor: string }) {
+  const t = useT();
   const { photosOf, removePhoto, setMain } = useUserPhotos();
   const { profile, update } = useProfile();
   const { photos, mainId } = photosOf(speciesId);
@@ -66,12 +69,12 @@ export function SpeciesPhotoGrid({ speciesId, name, tileColor }: { speciesId: st
             key={p.id}
             onPress={() => setOpen(p)}
             accessibilityRole="button"
-            accessibilityLabel={`Your photo of ${name}${p.id === mainId ? ', shown at the top of its page' : ''}. Open`}
+            accessibilityLabel={`${t('Your photo of {name}', { name })}${p.id === mainId ? t(', shown at the top of its page') : ''}. ${t('Open')}`}
             style={({ pressed }) => [styles.tile, { backgroundColor: tileColor }, pressed && styles.pressed]}>
             <Image source={{ uri: p.uri }} style={styles.thumb} contentFit="cover" recyclingKey={p.id} />
             {p.id === mainId && (
               <View style={styles.badge}>
-                <Text style={styles.badgeText}>On page</Text>
+                <Text style={styles.badgeText}>{t('On page')}</Text>
               </View>
             )}
           </Pressable>
@@ -82,13 +85,13 @@ export function SpeciesPhotoGrid({ speciesId, name, tileColor }: { speciesId: st
         <View style={[styles.viewer, { paddingTop: insets.top + 12, paddingBottom: insets.bottom + 12 }]}>
           {open && (
             <>
-              <Image source={{ uri: open.uri }} style={styles.full} contentFit="contain" accessibilityLabel={`Your photo of ${name}`} />
+              <Image source={{ uri: open.uri }} style={styles.full} contentFit="contain" accessibilityLabel={t('Your photo of {name}', { name })} />
               <View style={styles.actions}>
                 <Pressable
                   onPress={() => setMain(speciesId, isMain ? undefined : open.id)}
                   accessibilityRole="button"
                   style={({ pressed }) => [styles.action, pressed && styles.pressed]}>
-                  <Text style={styles.actionText}>{isMain ? 'Stop showing on species page' : 'Show on species page'}</Text>
+                  <Text style={styles.actionText}>{isMain ? t('Stop showing on species page') : t('Show on species page')}</Text>
                 </Pressable>
                 <Pressable
                   onPress={() => {
@@ -100,10 +103,10 @@ export function SpeciesPhotoGrid({ speciesId, name, tileColor }: { speciesId: st
                   }}
                   accessibilityRole="button"
                   style={({ pressed }) => [styles.action, styles.remove, pressed && styles.pressed]}>
-                  <Text style={styles.actionText}>{confirming ? 'Tap again to remove' : 'Remove photo'}</Text>
+                  <Text style={styles.actionText}>{confirming ? t('Tap again to remove') : t('Remove photo')}</Text>
                 </Pressable>
                 <Pressable onPress={close} accessibilityRole="button" style={({ pressed }) => [styles.action, pressed && styles.pressed]}>
-                  <Text style={styles.actionText}>Close</Text>
+                  <Text style={styles.actionText}>{t('Close')}</Text>
                 </Pressable>
               </View>
             </>

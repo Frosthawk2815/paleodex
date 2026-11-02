@@ -9,9 +9,11 @@ import { usePalette } from '@/hooks/use-palette';
 import { FontsReady, PAPER_FONTS } from '@/lib/fonts';
 import { ProfileProvider } from '@/lib/profile';
 import { UserPhotosProvider } from '@/lib/user-photos';
+import { useT } from '@/lib/i18n';
 
 function Screens() {
   const p = usePalette();
+  const t = useT();
   // Headers and screen backgrounds follow the user's theme, including custom colours.
   const navTheme = useMemo(() => {
     const base = p.dark ? DarkTheme : DefaultTheme;
@@ -23,19 +25,19 @@ function Screens() {
         <Stack.Screen name="index" options={{ title: 'PaleoDex', headerShown: false }} />
         <Stack.Screen name="period/[id]" options={{ title: '' }} />
         <Stack.Screen name="read" options={{ title: '' }} />
-        <Stack.Screen name="credits" options={{ title: 'Credits' }} />
+        <Stack.Screen name="credits" options={{ title: t('Credits') }} />
         <Stack.Screen name="review" options={{ title: 'Review pictures' }} />
-        <Stack.Screen name="profile/index" options={{ title: 'Profile' }} />
-        <Stack.Screen name="profile/favourites" options={{ title: 'Favourites' }} />
-        <Stack.Screen name="profile/recent" options={{ title: 'Recently viewed' }} />
-        <Stack.Screen name="profile/images" options={{ title: 'Your Images' }} />
-        <Stack.Screen name="profile/titles" options={{ title: 'Titles' }} />
-        <Stack.Screen name="profile/places" options={{ title: 'Places' }} />
-        <Stack.Screen name="profile/quiz" options={{ title: 'Quiz' }} />
-        <Stack.Screen name="profile/battle" options={{ title: 'Bone War' }} />
-        <Stack.Screen name="profile/peer-review" options={{ title: 'Peer Review' }} />
-        <Stack.Screen name="profile/settings" options={{ title: 'Settings' }} />
-        <Stack.Screen name="profile/edit" options={{ title: 'Edit profile' }} />
+        <Stack.Screen name="profile/index" options={{ title: t('Profile') }} />
+        <Stack.Screen name="profile/favourites" options={{ title: t('Favourites') }} />
+        <Stack.Screen name="profile/recent" options={{ title: t('Recently viewed') }} />
+        <Stack.Screen name="profile/images" options={{ title: t('Your Images') }} />
+        <Stack.Screen name="profile/titles" options={{ title: t('Titles') }} />
+        <Stack.Screen name="profile/places" options={{ title: t('Places') }} />
+        <Stack.Screen name="profile/quiz" options={{ title: t('Quiz') }} />
+        <Stack.Screen name="profile/battle" options={{ title: t('Bone War') }} />
+        <Stack.Screen name="profile/peer-review" options={{ title: t('Peer Review') }} />
+        <Stack.Screen name="profile/settings" options={{ title: t('Settings') }} />
+        <Stack.Screen name="profile/edit" options={{ title: t('Edit profile') }} />
       </Stack>
     </ThemeProvider>
   );

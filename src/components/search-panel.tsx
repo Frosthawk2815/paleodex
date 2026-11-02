@@ -11,6 +11,7 @@ import { SHARED_SHORTHANDS } from '@/data/aka';
 import { type Clade, CLADES, SPECIES, type Species } from '@/data/life';
 import { speciesInClade } from '@/lib/life';
 import { rangeOf } from '@/lib/ranges';
+import { type T, useT } from '@/lib/i18n';
 
 export type SearchResult =
   | { kind: 'event'; event: HistoryEvent }
@@ -24,6 +25,13 @@ export type SearchResult =
 type Item = { key: string; title: string; subtitle: string; words: string; names?: string[]; result: SearchResult };
 
 const LEVEL_NAMES = { all: '', era: 'Era', period: 'Period', series: 'Series', stage: 'Stage' };
+
+// Result subtitles are built once in English; their fixed words are translated when shown.
+const SUBTITLE_WORDS = /^(Species|Group|Event|Mass extinction|Era|Period|Series|Stage)\b| · also called | · also |\b(\d+) species$|\btoday$|\byears ago\b/g;
+const localSubtitle = (s: string, t: T) =>
+  s.replace(SUBTITLE_WORDS, (m, word: string | undefined, n: string | undefined) =>
+    word ? t(word) : n ? t('{n} species', { n }) : m === ' · also called ' ? ` · ${t('also called')} ` : m === ' · also ' ? ` · ${t('also')} ` : t(m),
+  );
 
 // Extra words people might search for.
 const EXTINCTION_WORDS: Record<string, string> = {
@@ -199,6 +207,7 @@ type Props = {
 
 // Search for events, mass extinctions and units of geological time.
 export function SearchPanel({ onSelect, onClose }: Props) {
+  const t = useT();
   const palette = usePalette();
   const styles = useMemo(() => applyFonts(makeStyles(palette), palette.fonts, []), [palette]);
   const [query, setQuery] = useState('');
@@ -210,24 +219,24 @@ export function SearchPanel({ onSelect, onClose }: Props) {
         <TextInput
           value={query}
           onChangeText={setQuery}
-          placeholder="Search events, extinctions, periods…"
+          placeholder={t('Search events, extinctions, periods…')}
           placeholderTextColor={palette.muted}
           autoFocus
           autoCorrect={false}
           returnKeyType="search"
           onSubmitEditing={() => results[0] && onSelect(results[0].result)}
           style={styles.input}
-          accessibilityLabel="Search"
+          accessibilityLabel={t('Search')}
         />
-        <Pressable onPress={onClose} accessibilityRole="button" accessibilityLabel="Close search" hitSlop={8} style={styles.close}>
-          <Text style={styles.closeText}>Cancel</Text>
+        <Pressable onPress={onClose} accessibilityRole="button" accessibilityLabel={t('Close search')} hitSlop={8} style={styles.close}>
+          <Text style={styles.closeText}>{t('Cancel')}</Text>
         </Pressable>
       </View>
       <FlatList
         data={results}
         keyExtractor={(i) => i.key}
         keyboardShouldPersistTaps="handled"
-        ListEmptyComponent={<Text style={styles.empty}>Nothing found for “{query}”.</Text>}
+        ListEmptyComponent={<Text style={styles.empty}>{t('Nothing found for “{query}”.', { query })}</Text>}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => onSelect(item.result)}
@@ -260,7 +269,7 @@ export function SearchPanel({ onSelect, onClose }: Props) {
                 {item.title}
               </Text>
               <Text style={styles.subtitle} numberOfLines={1}>
-                {item.subtitle}
+                {localSubtitle(item.subtitle, t)}
               </Text>
             </View>
           </Pressable>

@@ -85,7 +85,7 @@ export default function EditProfileScreen() {
         maxLength={placeholder.length}
         placeholder={placeholder}
         placeholderTextColor={palette.muted}
-        accessibilityLabel={`Birth ${label.toLowerCase()}`}
+        accessibilityLabel={t('Birth date: {part}', { part: label })}
         style={[st.input, { width }]}
       />
     </View>

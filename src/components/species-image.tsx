@@ -8,6 +8,7 @@ import { type Palette, usePalette } from '@/hooks/use-palette';
 import { imageCaption, imageOf } from '@/lib/images';
 import { applyFonts } from '@/lib/theme';
 import { useMainUserPhoto } from '@/lib/user-photos';
+import { useT } from '@/lib/i18n';
 
 const sourceName = (url: string) => (url.includes('commons.wikimedia.org') ? 'Wikimedia Commons' : 'Wikipedia');
 const open = (url?: string | null) => {
@@ -16,6 +17,7 @@ const open = (url?: string | null) => {
 
 // A species' picture with its credit: who made it, its licence, and where it was found.
 export function SpeciesImage({ speciesId, name }: { speciesId: string; name: string }) {
+  const t = useT();
   const mine = useMainUserPhoto(speciesId);
   const palette = usePalette();
   const styles = useMemo(() => applyFonts(makeStyles(palette), palette.fonts, []), [palette]);
@@ -31,9 +33,9 @@ export function SpeciesImage({ speciesId, name }: { speciesId: string; name: str
           contentFit="contain"
           transition={200}
           recyclingKey={`mine:${mine.id}`}
-          accessibilityLabel={`Your photo of ${name}`}
+          accessibilityLabel={t('Your photo of {name}', { name })}
         />
-        <Text style={styles.credit}>Your photo · manage it in Profile › Your Images</Text>
+        <Text style={styles.credit}>{t('Your photo · manage it in Profile › Your Images')}</Text>
       </View>
     );
   }
@@ -50,17 +52,17 @@ export function SpeciesImage({ speciesId, name }: { speciesId: string; name: str
         transition={200}
         cachePolicy="memory-disk"
         recyclingKey={speciesId}
-        accessibilityLabel={`Picture of ${name}${caption ? `. ${caption}` : ''}`}
+        accessibilityLabel={`${t('Picture of {name}', { name })}${caption ? `. ${caption}` : ''}`}
       />
       {!!caption && <Text style={styles.caption}>{caption}</Text>}
       <Text style={styles.credit}>
-        {'Image: '}
+        {`${t('Image:')} `}
         <Text style={styles.creditStrong}>{img.artist}</Text>
         {' · '}
         <Text style={styles.link} onPress={() => open(img.licenseUrl)} accessibilityRole="link">
           {img.license}
         </Text>
-        {' · Source: '}
+        {` · ${t('Source:')} `}
         <Text style={styles.link} onPress={() => open(img.source)} accessibilityRole="link">
           {sourceName(img.source)}
         </Text>
@@ -71,6 +73,7 @@ export function SpeciesImage({ speciesId, name }: { speciesId: string; name: str
 
 // A picture for another kind of page (e.g. an event), with its caption and credit.
 export function CreditedImage({ image, label }: { image: { thumb: string; width: number; height: number; artist: string; license: string; licenseUrl?: string; source: string; caption?: string }; label: string }) {
+  const t = useT();
   const palette = usePalette();
   const styles = useMemo(() => applyFonts(makeStyles(palette), palette.fonts, []), [palette]);
   const ratio = Math.min(2, Math.max(0.8, image.width / image.height));
@@ -86,13 +89,13 @@ export function CreditedImage({ image, label }: { image: { thumb: string; width:
       />
       {!!image.caption && <Text style={styles.caption}>{image.caption}</Text>}
       <Text style={styles.credit}>
-        {'Image: '}
+        {`${t('Image:')} `}
         <Text style={styles.creditStrong}>{image.artist}</Text>
         {' · '}
         <Text style={styles.link} onPress={() => open(image.licenseUrl ?? image.source)} accessibilityRole="link">
           {image.license}
         </Text>
-        {' · Source: '}
+        {` · ${t('Source:')} `}
         <Text style={styles.link} onPress={() => open(image.source)} accessibilityRole="link">
           {sourceName(image.source)}
         </Text>

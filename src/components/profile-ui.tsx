@@ -14,6 +14,7 @@ import { cladeById, speciesById } from '@/lib/life';
 import { type Avatar, type OpenRequest, type PageRef, useProfile, useTextScale } from '@/lib/profile';
 import { applyFonts } from '@/lib/theme';
 import { useOwnPicture } from '@/lib/user-photos';
+import { useT } from '@/lib/i18n';
 
 // What to show for a saved page: its name, a short description and a picture if it has one.
 export function pageInfo(page: PageRef): { title: string; subtitle: string; imageId?: string } | null {
@@ -94,16 +95,17 @@ export const initialsOf = (name: string) =>
 
 // The user's profile picture: a species picture, a photo they uploaded, or their initials.
 export function AvatarImage({ avatar, name, size }: { avatar: Avatar; name: string; size: number }) {
+  const t = useT();
   const palette = usePalette();
   const ownPicture = useOwnPicture();
   const uri = avatarUri(avatar, ownPicture);
   const initials = initialsOf(name) || '🦖';
   const round = { width: size, height: size, borderRadius: size / 2 };
   if (uri) {
-    return <Image source={{ uri }} style={[round, { backgroundColor: palette.track }]} contentFit="cover" accessibilityLabel="Profile picture" />;
+    return <Image source={{ uri }} style={[round, { backgroundColor: palette.track }]} contentFit="cover" accessibilityLabel={t('Profile picture')} />;
   }
   return (
-    <View style={[round, styles.initials, { backgroundColor: palette.button }]} accessibilityLabel="Profile picture">
+    <View style={[round, styles.initials, { backgroundColor: palette.button }]} accessibilityLabel={t('Profile picture')}>
       <Text style={{ color: palette.onButton, fontSize: size * 0.4, fontWeight: '700' }}>{initials}</Text>
     </View>
   );
@@ -111,6 +113,7 @@ export function AvatarImage({ avatar, name, size }: { avatar: Avatar; name: stri
 
 // A row linking to a saved page, with its picture when it has one.
 export function PageRow({ page, onPress, onRemove }: { page: PageRef; onPress: () => void; onRemove?: () => void }) {
+  const t = useT();
   const st = useProfileStyles();
   const palette = usePalette();
   const ownPicture = useOwnPicture();
@@ -122,7 +125,7 @@ export function PageRow({ page, onPress, onRemove }: { page: PageRef; onPress: (
       <Pressable
         onPress={onPress}
         accessibilityRole="button"
-        accessibilityLabel={`Open ${item.title}`}
+        accessibilityLabel={t('Open {name}', { name: item.title })}
         style={({ pressed }) => [styles.rowMain, pressed && st.pressed]}>
         {thumb ? (
           <Image source={{ uri: thumb }} style={[styles.thumb, { backgroundColor: palette.track }]} contentFit="cover" />
@@ -134,13 +137,13 @@ export function PageRow({ page, onPress, onRemove }: { page: PageRef; onPress: (
             {item.title}
           </Text>
           <Text style={st.rowSub} numberOfLines={1}>
-            {item.subtitle}
+            {t(item.subtitle).replace(/^Group · /, `${t('Group')} · `)}
           </Text>
         </View>
       </Pressable>
       {onRemove && (
-        <Pressable onPress={onRemove} accessibilityRole="button" accessibilityLabel={`Remove ${item.title}`} hitSlop={8}>
-          <Text style={st.muted}>Remove</Text>
+        <Pressable onPress={onRemove} accessibilityRole="button" accessibilityLabel={t('Remove {name}', { name: item.title })} hitSlop={8}>
+          <Text style={st.muted}>{t('Remove')}</Text>
         </Pressable>
       )}
     </View>

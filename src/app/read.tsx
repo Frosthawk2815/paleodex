@@ -14,10 +14,12 @@ import { cladeEra, type Era, eventEra, speciesEra } from '@/lib/era';
 import { EXTINCTIONS } from '@/lib/extinctions';
 import { cladeById, speciesById } from '@/lib/life';
 import { type PageRef, useProfile } from '@/lib/profile';
+import { useT } from '@/lib/i18n';
 
 // A page opened on top of another screen (e.g. "Read about…" in the quiz), so going back returns
 // there instead of leaving it. Links open further pages on top; globe-only actions are left out.
 export default function ReadScreen() {
+  const t = useT();
   const { kind, id } = useLocalSearchParams<{ kind: PageRef['kind']; id: string }>();
   const palette = usePalette();
   const insets = useSafeAreaInsets();
@@ -50,7 +52,7 @@ export default function ReadScreen() {
         {clade && <CladeInfo clade={clade} {...common} />}
         {event && <EventInfo event={event} timeMa={0} {...common} />}
         {extinction && <ExtinctionInfo extinction={extinction} {...common} />}
-        {!species && !clade && !event && !extinction && <Text style={{ color: palette.text, padding: 16 }}>This page couldn’t be found.</Text>}
+        {!species && !clade && !event && !extinction && <Text style={{ color: palette.text, padding: 16 }}>{t('This page couldn’t be found.')}</Text>}
       </PageSheet>
     </ScrollView>
   );

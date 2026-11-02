@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { ANTHROPOCENE, type Period, spanDuration, spanRange } from '@/data/periods';
 import { type Series, SERIES_BY_PERIOD, type Stage } from '@/data/subdivisions';
 import { type Palette, usePalette } from '@/hooks/use-palette';
+import { localTime, useT } from '@/lib/i18n';
 
 type Segment = { key: string; color: string; weight: number; faded?: boolean };
 
@@ -24,6 +25,7 @@ function ProportionBar({ segments, height }: { segments: Segment[]; height: numb
 }
 
 export function SeriesTimeline({ period }: { period: Period }) {
+  const t = useT();
   const palette = usePalette();
   const series = SERIES_BY_PERIOD[period.id] ?? [];
   const [open, setOpen] = useState<Set<string>>(new Set());
@@ -44,10 +46,11 @@ export function SeriesTimeline({ period }: { period: Period }) {
 
   return (
     <View style={styles.section}>
-      <Text style={[styles.heading, { color: palette.text }]}>Series and stages</Text>
+      <Text style={[styles.heading, { color: palette.text }]}>{t('Series and stages')}</Text>
       <Text style={[styles.hint, { color: palette.muted }]}>
-        The {period.name} is divided into {series.length} series
-        {showAnthropocene ? ', plus the informal Anthropocene' : ''}. Tap one to see its stages.
+        {showAnthropocene
+          ? t('The {period} is divided into {n} series, plus the informal Anthropocene. Tap one to see its stages.', { period: t(period.name), n: series.length })
+          : t('The {period} is divided into {n} series. Tap one to see its stages.', { period: t(period.name), n: series.length })}
       </Text>
 
       <ProportionBar segments={segments} height={10} />
@@ -84,8 +87,9 @@ function SeriesRow({
   onToggle: () => void;
   palette: Palette;
 }) {
+  const t = useT();
   const hasStages = series.stages.length > 0;
-  const stageCount = series.stages.length === 1 ? '1 stage' : `${series.stages.length} stages`;
+  const stageCount = series.stages.length === 1 ? t('1 stage') : t('{n} stages', { n: series.stages.length });
 
   return (
     <View style={styles.row}>
@@ -96,16 +100,16 @@ function SeriesRow({
           onPress={onToggle}
           accessibilityRole="button"
           accessibilityState={{ expanded, disabled: !hasStages }}
-          accessibilityLabel={`${series.name}, ${spanRange(series.startMa, series.endMa)}, ${hasStages ? stageCount : 'no stages'}`}>
+          accessibilityLabel={`${series.name}, ${localTime(spanRange(series.startMa, series.endMa), t)}, ${hasStages ? stageCount : t('no stages')}`}>
           {({ pressed }) => (
             <View style={[styles.cardHeader, pressed && styles.pressed]}>
               <View style={styles.cardText}>
                 <Text style={[styles.name, { color: palette.text }]}>{series.name}</Text>
                 <Text style={[styles.meta, { color: palette.muted }]}>
-                  {spanRange(series.startMa, series.endMa)} · {spanDuration(series.startMa, series.endMa)}
+                  {localTime(`${spanRange(series.startMa, series.endMa)} · ${spanDuration(series.startMa, series.endMa)}`, t)}
                 </Text>
                 <Text style={[styles.meta, { color: palette.muted }]}>
-                  {hasStages ? stageCount : 'Not divided into stages'}
+                  {hasStages ? stageCount : t('Not divided into stages')}
                 </Text>
               </View>
               {hasStages && <Text style={[styles.chevron, { color: palette.muted }]}>{expanded ? '−' : '+'}</Text>}
@@ -120,6 +124,7 @@ function SeriesRow({
 }
 
 function StageTimeline({ stages, palette }: { stages: Stage[]; palette: Palette }) {
+  const t = useT();
   return (
     <View style={[styles.stages, { borderTopColor: palette.border }]}>
       <ProportionBar
@@ -132,7 +137,7 @@ function StageTimeline({ stages, palette }: { stages: Stage[]; palette: Palette 
           <View style={styles.stageText}>
             <Text style={[styles.stageName, { color: palette.text }]}>{s.name}</Text>
             <Text style={[styles.stageMeta, { color: palette.muted }]}>
-              {spanRange(s.startMa, s.endMa)} · {spanDuration(s.startMa, s.endMa)}
+              {localTime(`${spanRange(s.startMa, s.endMa)} · ${spanDuration(s.startMa, s.endMa)}`, t)}
             </Text>
           </View>
         </View>
@@ -150,6 +155,7 @@ function AnthropoceneRow({
   onToggle: () => void;
   palette: Palette;
 }) {
+  const t = useT();
   return (
     <View style={styles.row}>
       <View style={[styles.rail, styles.railInformal, { backgroundColor: ANTHROPOCENE.color }]} />
@@ -158,18 +164,18 @@ function AnthropoceneRow({
           onPress={onToggle}
           accessibilityRole="button"
           accessibilityState={{ expanded }}
-          accessibilityLabel={`${ANTHROPOCENE.name}, informal series, ${ANTHROPOCENE.rangeLabel}`}>
+          accessibilityLabel={`${ANTHROPOCENE.name}, ${t('informal series')}, ${localTime(ANTHROPOCENE.rangeLabel, t)}`}>
           {({ pressed }) => (
             <View style={[styles.cardHeader, pressed && styles.pressed]}>
               <View style={styles.cardText}>
                 <View style={styles.titleLine}>
                   <Text style={[styles.name, { color: palette.text }]}>{ANTHROPOCENE.name}</Text>
-                  <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>Informal</Text>
+                  <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>{t('Informal')}</Text>
                 </View>
                 <Text style={[styles.meta, { color: palette.muted }]}>
                   {ANTHROPOCENE.rangeLabel} · {ANTHROPOCENE.durationLabel}
                 </Text>
-                <Text style={[styles.meta, { color: palette.muted }]}>Proposed, not on the official chart</Text>
+                <Text style={[styles.meta, { color: palette.muted }]}>{t('Proposed, not on the official chart')}</Text>
               </View>
               <Text style={[styles.chevron, { color: palette.muted }]}>{expanded ? '−' : '+'}</Text>
             </View>

@@ -16,6 +16,7 @@ import { rangeOf } from '@/lib/ranges';
 import { nameMeaning, nameMeaningText } from '@/lib/names';
 import { useUnitText } from '@/lib/profile';
 import { timeLabel } from '@/lib/time';
+import { localTime, useT } from '@/lib/i18n';
 
 type Props = {
   species: Species;
@@ -36,6 +37,7 @@ type Props = {
 // The information section for a species: what it was and the formations it's found in.
 export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onOpenEvent, onJumpRange, onJumpLastSeen, backLabel }: Props) {
   const info = useInfoStyles();
+  const t = useT();
   const u = useUnitText();
   const meaning = nameMeaning(species);
   const [tab, setTab] = useState<'about' | 'relatives'>('about');
@@ -58,7 +60,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
       <SpeciesImage speciesId={species.id} name={species.name} />
 
-      <Text style={info.kicker}>{species.status === 'full' ? 'Species' : 'Species · short entry'}</Text>
+      <Text style={info.kicker}>{species.status === 'full' ? t('Species') : t('Species · short entry')}</Text>
       <Text style={[info.title, info.italic]} accessibilityRole="header">
         {species.name}
       </Text>
@@ -75,15 +77,15 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
       {relatives.length > 0 && (
         <View style={info.tabs} accessibilityRole="tablist">
-          {(['about', 'relatives'] as const).map((t) => (
+          {(['about', 'relatives'] as const).map((k) => (
             <Pressable
-              key={t}
-              onPress={() => setTab(t)}
+              key={k}
+              onPress={() => setTab(k)}
               accessibilityRole="tab"
-              accessibilityState={{ selected: tab === t }}
-              style={[info.tab, tab === t && info.tabOn]}>
-              <Text style={[info.tabText, tab === t && info.tabTextOn]}>
-                {t === 'about' ? 'About' : `Relatives (${relatives.length})`}
+              accessibilityState={{ selected: tab === k }}
+              style={[info.tab, tab === k && info.tabOn]}>
+              <Text style={[info.tabText, tab === k && info.tabTextOn]}>
+                {k === 'about' ? t('About') : t('Relatives ({n})', { n: relatives.length })}
               </Text>
             </Pressable>
           ))}
@@ -93,8 +95,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
       {tab === 'relatives' && relatives.length > 0 ? (
         <>
           <Text style={info.note}>
-            The rest of the {family?.common.toLowerCase()}, closest relatives first. The order is approximate: their family tree
-            is still debated.
+            {t('The rest of the {family}, closest relatives first. The order is approximate: their family tree is still debated.', { family: family?.common.toLowerCase() ?? '' })}
           </Text>
           <View style={info.list}>
             {relatives.map((r) => (
@@ -106,7 +107,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
         <>
           {formations.length > 0 && (
             <>
-              <Text style={info.heading}>Found in</Text>
+              <Text style={info.heading}>{t('Found in')}</Text>
               {formations.map((f) => {
                 const index = pastPointIndex(f);
                 const point = f.points[index];
@@ -115,7 +116,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
                     key={f.id}
                     onPress={() => onOpenEvent(f, index)}
                     accessibilityRole="button"
-                    accessibilityLabel={`${f.title}: read more`}
+                    accessibilityLabel={`${f.title}: ${t('read more')}`}
                     style={({ pressed }) => [info.card, pressed && info.pressed]}>
                     <View style={info.cardRow}>
                       <PointIcon kind={point.icon ?? 'flag'} size={28} bg={badgeBg(f, point)} />
@@ -132,18 +133,18 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
           {range?.lastSeen && (
             <>
-              <Text style={info.heading}>Last seen alive</Text>
+              <Text style={info.heading}>{t('Last seen alive')}</Text>
               <Pressable
                 onPress={onJumpLastSeen}
                 disabled={!onJumpLastSeen}
                 accessibilityRole={onJumpLastSeen ? 'button' : 'text'}
-                accessibilityLabel={`${range.lastSeen.text}: show on the globe`}
+                accessibilityLabel={`${range.lastSeen.text}: ${t('show on the globe')}`}
                 style={({ pressed }) => [info.card, pressed && info.pressed]}>
                 <View style={info.cardRow}>
                   <PointIcon kind="skull" size={30} />
                   <View style={info.cardText}>
                     <Text style={info.cardTitle}>{range.lastSeen.text}{onJumpLastSeen ? ' ›' : ''}</Text>
-                    {onJumpLastSeen && <Text style={info.cardNote}>The skull marker shows on the globe up to that date</Text>}
+                    {onJumpLastSeen && <Text style={info.cardNote}>{t('The skull marker shows on the globe up to that date')}</Text>}
                   </View>
                 </View>
               </Pressable>
@@ -152,10 +153,10 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
           {range && (
             <>
-              <Text style={info.heading}>{phaseOrder.length > 1 ? 'Range over time' : 'Range'}</Text>
+              <Text style={info.heading}>{phaseOrder.length > 1 ? t('Range over time') : t('Range')}</Text>
               <Text style={info.note}>
-                {!onJumpRange ? '' : phaseOrder.length > 1 ? 'Tap a stage to see it shaded on the globe. ' : 'Tap to see it shaded on the globe. '}
-                Ranges are approximate.
+                {!onJumpRange ? '' : phaseOrder.length > 1 ? `${t('Tap a stage to see it shaded on the globe.')} ` : `${t('Tap to see it shaded on the globe.')} `}
+                {t('Ranges are approximate.')}
               </Text>
               {phaseOrder.map(({ p, i }) => (
                 <Pressable
@@ -163,14 +164,14 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
                   onPress={() => onJumpRange?.(i)}
                   disabled={!onJumpRange}
                   accessibilityRole={onJumpRange ? 'button' : 'text'}
-                  accessibilityLabel={`${p.label}: show on the globe`}
+                  accessibilityLabel={`${p.label}: ${t('show on the globe')}`}
                   style={({ pressed }) => [info.card, pressed && info.pressed]}>
                   <View style={info.cardRow}>
                     <View style={styles.swatch} />
                     <View style={info.cardText}>
                       <Text style={info.cardTitle}>{p.label}{onJumpRange ? ' ›' : ''}</Text>
                       <Text style={info.cardNote}>
-                        {timeLabel(p.fromMa)} to {p.toMa > 0 ? timeLabel(p.toMa) : 'today'}
+                        {t('{from} to {to}', { from: localTime(timeLabel(p.fromMa), t), to: p.toMa > 0 ? localTime(timeLabel(p.toMa), t) : t('today') })}
                       </Text>
                     </View>
                   </View>
@@ -181,13 +182,13 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
           {events.length > 0 && (
             <>
-              <Text style={info.heading}>Events</Text>
+              <Text style={info.heading}>{t('Events')}</Text>
               {events.map((e) => (
                 <Pressable
                   key={e.id}
                   onPress={() => onOpenEvent(e, 0)}
                   accessibilityRole="button"
-                  accessibilityLabel={`${e.title}: read more`}
+                  accessibilityLabel={`${e.title}: ${t('read more')}`}
                   style={({ pressed }) => [info.card, pressed && info.pressed]}>
                   <View style={info.cardRow}>
                     <PointIcon kind={e.points[0].icon ?? 'flag'} size={28} bg={badgeBg(e, e.points[0])} />
@@ -209,7 +210,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
 
           {species.related && species.related.length > 0 && (
             <>
-              <Text style={info.heading}>Related forms</Text>
+              <Text style={info.heading}>{t('Related forms')}</Text>
               <View style={info.list}>
                 {species.related.map((r) => {
                   const other = speciesById(r.id);
@@ -239,7 +240,7 @@ export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpen
           )}
 
           {species.status === 'brief' && (
-            <Text style={[info.note, { marginTop: 12 }]}>A full entry for this species is still to come.</Text>
+            <Text style={[info.note, { marginTop: 12 }]}>{t('A full entry for this species is still to come.')}</Text>
           )}
         </>
       )}

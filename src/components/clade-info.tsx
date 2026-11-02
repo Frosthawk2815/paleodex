@@ -8,6 +8,7 @@ import { type Clade, CLADES, type Species } from '@/data/life';
 import { childClades, cladeById, cladePath, speciesInClade } from '@/lib/life';
 import { speciesMa } from '@/lib/quiz';
 import { useUnitText } from '@/lib/profile';
+import { useT } from '@/lib/i18n';
 
 type Props = {
   clade: Clade;
@@ -32,6 +33,7 @@ function startMa(text: string): number | null {
 
 export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, backLabel }: Props) {
   const info = useInfoStyles();
+  const t = useT();
   const u = useUnitText();
   const path = cladePath(clade.id);
   const children = childClades(clade.id);
@@ -49,7 +51,7 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
     <View style={info.wrap}>
       <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} backLabel={backLabel} page={{ kind: 'clade', id: clade.id }} />
 
-      <Text style={info.kicker}>Group</Text>
+      <Text style={info.kicker}>{t('Group')}</Text>
       <Text style={info.title} accessibilityRole="header">
         {clade.common}
       </Text>
@@ -63,7 +65,7 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
 
       {children.length > 0 && (
         <>
-          <Text style={info.heading}>Groups within</Text>
+          <Text style={info.heading}>{t('Groups within')}</Text>
           <View style={info.chips}>
             {children.map((c) => (
               <Pressable
@@ -81,11 +83,11 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
       )}
 
       <Text style={info.heading}>
-        {species.length} {species.length === 1 ? 'species' : 'species'} in PaleoDex
+        {t('{n} species in PaleoDex', { n: species.length })}
       </Text>
       {sections.map(({ clade: c, members }) => (
         <View key={c.id} style={{ gap: 6 }}>
-          {sections.length > 1 && <Text style={info.meta}>{c.id === clade.id ? `Other ${clade.common.toLowerCase()}` : c.common}</Text>}
+          {sections.length > 1 && <Text style={info.meta}>{c.id === clade.id ? t('Other {group}', { group: clade.common.toLowerCase() }) : c.common}</Text>}
           <View style={info.list}>
             {members.map((s) => (
               <SpeciesRow key={s.id} species={s} onPress={() => onOpenSpecies(s.id)} />
@@ -99,6 +101,7 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
 
 export function SpeciesRow({ species, onPress }: { species: Species; onPress: () => void }) {
   const info = useInfoStyles();
+  const t = useT();
   const group = cladeById(species.clade);
   return (
     <Pressable
@@ -108,7 +111,7 @@ export function SpeciesRow({ species, onPress }: { species: Species; onPress: ()
       style={({ pressed }) => [info.row, pressed && info.pressed]}>
       <Text style={info.rowTitle}>
         <Text style={info.italic}>{species.name}</Text>
-        {species.status === 'full' && <Text style={info.badge}>{'  '}FULL ENTRY</Text>}
+        {species.status === 'full' && <Text style={info.badge}>{'  '}{t('FULL ENTRY')}</Text>}
       </Text>
       <Text style={info.rowNote} numberOfLines={2}>
         {[species.ageText.replace(/ \(.*\)$/, ''), species.placeText, group?.common].filter(Boolean).join(' · ')}

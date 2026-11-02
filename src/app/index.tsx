@@ -33,6 +33,7 @@ import { birthMaOf, type PageRef, useProfile } from '@/lib/profile';
 import { useOwnPicture } from '@/lib/user-photos';
 import { lastSeenJumpMa, phaseJumpMa, rangeOf } from '@/lib/ranges';
 import { contextAt, timeLabel } from '@/lib/time';
+import { localTime, useT } from '@/lib/i18n';
 
 // What the information section below the globe is showing.
 // How long the timeline must rest somewhere before a card or title appears.
@@ -56,6 +57,7 @@ const pageOf = (s: Selection): PageRef => ({ kind: s.kind, id: s.kind === 'event
 type Focus = { kind: 'site' | 'moon' | 'event' | 'skull' | 'range' | 'user'; id: string; index?: number; n: number };
 
 export default function GlobeScreen() {
+  const t = useT();
   const insets = useSafeAreaInsets();
   const palette = usePalette();
   const { profile, addRecent, request, setRequest, reduceMotion, markVisited } = useProfile();
@@ -63,10 +65,10 @@ export default function GlobeScreen() {
   // The user's birthplace and home, shown on the globe.
   const userPlaces = useMemo(
     () => [
-      ...(profile.birthplace ? [{ key: 'birthplace', label: 'Born here', color: '#FFD54F', place: profile.birthplace }] : []),
-      ...(profile.home ? [{ key: 'home', label: 'Home', color: '#4FC3F7', place: profile.home }] : []),
+      ...(profile.birthplace ? [{ key: 'birthplace', label: t('Born here'), color: '#FFD54F', place: profile.birthplace }] : []),
+      ...(profile.home ? [{ key: 'home', label: t('Home'), color: '#4FC3F7', place: profile.home }] : []),
     ].map((u) => ({ ...u, image: avatarUri(profile.avatar, ownPicture), initials: initialsOf(profile.name) || '★' })),
-    [profile.birthplace, profile.home, profile.avatar, profile.name, ownPicture],
+    [profile.birthplace, profile.home, profile.avatar, profile.name, ownPicture, t],
   );
   const birthMa = birthMaOf(profile);
   // Height of the visible page; the globe section fills it. Measured, because the window size
@@ -319,7 +321,7 @@ export default function GlobeScreen() {
             <Pressable
               onPress={() => setSearching(true)}
               accessibilityRole="button"
-              accessibilityLabel="Search"
+              accessibilityLabel={t('Search')}
               hitSlop={8}
               style={({ pressed }) => [styles.searchButton, pressed && styles.searchPressed]}>
               <Svg width={20} height={20} viewBox="0 0 24 24">
@@ -330,7 +332,7 @@ export default function GlobeScreen() {
             <Pressable
                 onPress={() => router.push('/profile')}
                 accessibilityRole="button"
-                accessibilityLabel="Your profile, favourites, settings and credits"
+                accessibilityLabel={t('Your profile, favourites, settings and credits')}
                 hitSlop={8}
                 style={({ pressed }) => [styles.searchButton, styles.profileButton, pressed && styles.searchPressed]}>
                 {profile.avatar ? (
@@ -344,10 +346,10 @@ export default function GlobeScreen() {
             </Pressable>
             <Text style={styles.app}>PaleoDex</Text>
             <Text style={styles.time} accessibilityLiveRegion="polite">
-              {timeLabel(timeMa)}
+              {localTime(timeLabel(timeMa), t)}
             </Text>
             <Text style={styles.context} numberOfLines={1}>
-              {period ? `${period.era} Era · ${period.name}` : ''}
+              {period ? `${t('{era} Era', { era: t(period.era) })} · ${t(period.name)}` : ''}
             </Text>
             <Text style={styles.subContext} numberOfLines={1}>
               {[series?.name, stage?.name].filter(Boolean).join(' · ')}
@@ -356,7 +358,7 @@ export default function GlobeScreen() {
               <Pressable
                 onPress={() => openExtinction(extinction.id)}
                 accessibilityRole="button"
-                accessibilityHint="Opens the page about this extinction"
+                accessibilityHint={t('Opens the page about this extinction')}
                 style={({ pressed }) => [styles.event, pressed && styles.searchPressed]}>
                 <ExtinctionIcon cause={extinction.cause} size={16} />
                 <Text style={[styles.impact, { color: CAUSE_COLORS[extinction.cause] }]} numberOfLines={2}>
@@ -366,7 +368,7 @@ export default function GlobeScreen() {
             )}
             {period && (
               <Link href={{ pathname: '/period/[id]', params: { id: period.id } }} style={styles.link}>
-                About the {period.name} ›
+                {t('About the {period} ›', { period: t(period.name) })}
               </Link>
             )}
           </View>
@@ -392,20 +394,20 @@ export default function GlobeScreen() {
                 <Pressable
                   onPress={() => openExtinction(extinction.id)}
                   accessibilityRole="button"
-                  accessibilityLabel={`Read about the ${extinction.name}`}
+                  accessibilityLabel={t('Read about the {name}', { name: t(extinction.name) })}
                   style={({ pressed }) => [styles.popupMain, pressed && styles.searchPressed]}>
                   <ExtinctionIcon cause={extinction.cause} size={22} />
                   <View style={styles.popupText}>
                     <Text style={styles.popupTitle} numberOfLines={1}>
                       {extinction.name}
                     </Text>
-                    <Text style={[styles.popupLink, { color: CAUSE_COLORS[extinction.cause] }]}>Read about it ›</Text>
+                    <Text style={[styles.popupLink, { color: CAUSE_COLORS[extinction.cause] }]}>{t('Read about it ›')}</Text>
                   </View>
                 </Pressable>
                 <Pressable
                   onPress={() => setDismissed((d) => [...d, extinction.id])}
                   accessibilityRole="button"
-                  accessibilityLabel="Close"
+                  accessibilityLabel={t('Close')}
                   hitSlop={8}
                   style={({ pressed }) => [styles.popupClose, pressed && styles.searchPressed]}>
                   <Text style={styles.popupCloseText}>×</Text>
@@ -415,7 +417,7 @@ export default function GlobeScreen() {
           </View>
 
           <TimeBar ref={bar} onChange={setTimeMa} onSite={(e) => lookAt('site', e.id)} reduceMotion={reduceMotion} birthMa={birthMa} />
-          <Text style={styles.hint}>Slide or tap the timeline to travel in time · drag to spin · pinch to zoom</Text>
+          <Text style={styles.hint}>{t('Slide or tap the timeline to travel in time · drag to spin · pinch to zoom')}</Text>
         </View>
 
         {selected && (

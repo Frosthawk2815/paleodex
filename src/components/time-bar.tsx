@@ -16,6 +16,7 @@ import { textOn } from '@/data/periods';
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { EVENT_LEAD_MA, EXTINCTIONS, type Extinction } from '@/lib/extinctions';
 import { ALL_TIME, ancestors, type Level, stepLevel, stepUnits, type Unit, unitAt, UNITS_BY_LEVEL } from '@/lib/time';
+import { useT } from '@/lib/i18n';
 
 const ALL_TIME_PX_PER_MY = 6;
 const ROWS: { level: Level; height: number; fontSize: number }[] = [
@@ -67,6 +68,7 @@ type Props = {
 // that unit. The arrows step to the next or previous unit one level down, and the middle
 // button zooms back out to all of time without moving the marker.
 export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props) {
+  const t = useT();
   const scroll = useRef<ScrollViewInstance>(null);
   const [viewWidth, setViewWidth] = useState(0);
   const [focus, setFocus] = useState<Unit>(ALL_TIME);
@@ -189,8 +191,8 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
   return (
     <View onLayout={(e: LayoutChangeEvent) => setViewWidth(e.nativeEvent.layout.width)}>
       <View style={styles.controls}>
-        <ArrowButton direction="left" label="Previous" onPress={() => step(-1)} />
-        <ArrowButton direction="reset" label="Zoom timeline out to all of time" onPress={resetZoom} disabled={focus === ALL_TIME} />
+        <ArrowButton direction="left" label={t('Previous')} onPress={() => step(-1)} />
+        <ArrowButton direction="reset" label={t('Zoom timeline out to all of time')} onPress={resetZoom} disabled={focus === ALL_TIME} />
         <View style={styles.crumbs}>
           <Text style={styles.crumbText} numberOfLines={1} ellipsizeMode="head">
             {crumbs.map((c, i) => (
@@ -200,14 +202,14 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
                   onPress={() => go(time.current, c)}
                   style={c === focus ? styles.crumbCurrent : styles.crumbLink}
                   accessibilityRole="button"
-                  accessibilityLabel={`Zoom timeline to ${c.name}`}>
+                  accessibilityLabel={t('Zoom timeline to {name}', { name: t(c.name) })}>
                   {c.name}
                 </Text>
               </Text>
             ))}
           </Text>
         </View>
-        <ArrowButton direction="right" label="Next" onPress={() => step(1)} />
+        <ArrowButton direction="right" label={t('Next')} onPress={() => step(1)} />
       </View>
 
       <View style={styles.barWrap}>
@@ -231,7 +233,7 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
                         key={u.key}
                         onPress={() => zoomInto(u)}
                         accessibilityRole="button"
-                        accessibilityLabel={`Zoom timeline to the ${u.name}`}
+                        accessibilityLabel={t('Zoom timeline to the {name}', { name: t(u.name) })}
                         style={[styles.block, { left, width: Math.max(w, 0.5), backgroundColor: u.color }]}>
                         {fits && (
                           <Text style={[styles.blockText, { fontSize: row.fontSize, color: textOn(u.color) }]} numberOfLines={1}>
@@ -254,10 +256,10 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
                   <Pressable
                     onPress={() => go(birthMa!, focus)}
                     accessibilityRole="button"
-                    accessibilityLabel="Jump to the year you were born"
+                    accessibilityLabel={t('Jump to the year you were born')}
                     hitSlop={6}
                     style={[styles.eventMarker, { left: x(birthMa!) - 30 }]}>
-                    <Text style={styles.birthText}>★ You</Text>
+                    <Text style={styles.birthText}>{t('★ You')}</Text>
                   </Pressable>
                 )}
                 {markers.map((e) => (
@@ -265,7 +267,7 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
                     key={e.id}
                     onPress={() => jumpToExtinction(e)}
                     accessibilityRole="button"
-                    accessibilityLabel={`Jump to the ${e.name}: ${e.causeText}`}
+                    accessibilityLabel={t('Jump to the {name}: {cause}', { name: t(e.name), cause: t(e.causeText) })}
                     hitSlop={6}
                     style={[styles.eventMarker, { left: x(e.ma) - 30 }]}>
                     <ExtinctionIcon cause={e.cause} />

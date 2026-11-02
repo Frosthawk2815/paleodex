@@ -10,6 +10,7 @@ import { useInfoStyles } from '@/components/info-styles';
 import type { Clade, Species } from '@/data/life';
 import { familyOf, speciesAtEvent, speciesById, speciesInFormation } from '@/lib/life';
 import { useUnitText } from '@/lib/profile';
+import { useT } from '@/lib/i18n';
 
 const CERTAINTY = { known: 'Trackmaker', likely: 'Likely trackmaker', possible: 'Possible trackmaker' } as const;
 
@@ -29,6 +30,7 @@ type Props = {
 // The information section shown below the globe for a selected event.
 export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, onJump, onOpenSpecies, onOpenClade, backLabel }: Props) {
   const info = useInfoStyles();
+  const t = useT();
   const u = useUnitText();
   // Species found here, grouped by family (e.g. tyrannosaurs).
   const families: { family: Clade | undefined; members: Species[] }[] = [];
@@ -50,7 +52,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
       <Text style={info.meta}>{event.dateText}</Text>
       <Text style={info.meta}>{event.placeText}</Text>
 
-      {event.image && <CreditedImage image={event.image} label={`Picture for ${event.title}`} />}
+      {event.image && <CreditedImage image={event.image} label={t('Picture for {name}', { name: event.title })} />}
 
       {onJump && event.points.length > 1 && (
         <View style={info.jumps}>
@@ -61,13 +63,13 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
                 key={i}
                 onPress={() => onJump(i)}
                 accessibilityRole="button"
-                accessibilityLabel={`Jump to ${p.jumpLabel}`}
+                accessibilityLabel={t('Jump to {place}', { place: p.jumpLabel })}
                 style={({ pressed }) => [info.card, here && info.cardHere, pressed && info.pressed]}>
                 <View style={info.cardRow}>
                   <PointIcon kind={p.icon ?? 'flag'} size={26} bg={badgeBg(event, p)} />
                   <View style={info.cardText}>
                     <Text style={info.cardTitle}>{here ? p.jumpLabel : `${p.jumpLabel} ›`}</Text>
-                    {here && <Text style={info.cardNote}>Showing on the globe now</Text>}
+                    {here && <Text style={info.cardNote}>{t('Showing on the globe now')}</Text>}
                   </View>
                 </View>
               </Pressable>
@@ -84,15 +86,15 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
 
       {event.trackmakers && event.trackmakers.length > 0 && (
         <>
-          <Text style={info.heading}>Who made the tracks</Text>
+          <Text style={info.heading}>{t('Who made the tracks')}</Text>
           <View style={info.list}>
-            {event.trackmakers.map((t) => {
-              const s = speciesById(t.id);
+            {event.trackmakers.map((tm) => {
+              const s = speciesById(tm.id);
               return s ? (
-                <View key={t.id}>
-                  <SpeciesRow species={s} onPress={() => onOpenSpecies(t.id)} />
+                <View key={tm.id}>
+                  <SpeciesRow species={s} onPress={() => onOpenSpecies(tm.id)} />
                   <Text style={[info.rowNote, styles.trackNote]}>
-                    {CERTAINTY[t.certainty]}. {u(t.note)}
+                    {t(CERTAINTY[tm.certainty])}. {u(tm.note)}
                   </Text>
                 </View>
               ) : null;
@@ -103,7 +105,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
 
       {speciesAtEvent(event.id).filter((s) => !event.trackmakers?.some((t) => t.id === s.id)).length > 0 && (
         <>
-          <Text style={info.heading}>Who was there</Text>
+          <Text style={info.heading}>{t('Who was there')}</Text>
           <View style={info.list}>
             {speciesAtEvent(event.id).filter((s) => !event.trackmakers?.some((t) => t.id === s.id)).map((s) => (
               <SpeciesRow key={s.id} species={s} onPress={() => onOpenSpecies(s.id)} />
@@ -114,7 +116,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
 
       {families.length > 0 && (
         <>
-          <Text style={info.heading}>Life found here</Text>
+          <Text style={info.heading}>{t('Life found here')}</Text>
           {families.map(({ family, members }) => (
             <View key={family?.id ?? 'other'} style={{ gap: 6 }}>
               {family && (
@@ -122,7 +124,7 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
                   <Pressable
                     onPress={() => onOpenClade(family.id)}
                     accessibilityRole="button"
-                    accessibilityLabel={`All ${family.common.toLowerCase()}`}
+                    accessibilityLabel={t('All {group}', { group: family.common.toLowerCase() })}
                     style={({ pressed }) => [info.chip, pressed && info.pressed]}>
                     <Text style={info.chipText}>{family.common} ›</Text>
                   </Pressable>
@@ -156,17 +158,18 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
 // Notes in three tiers: superstars as cards, microcelebs as short explainers, plebs as a list.
 function TierNotes({ heading, notes }: { heading: string; notes?: InvertebrateNote[] }) {
   const info = useInfoStyles();
+  const t = useT();
   const u = useUnitText();
   if (!notes || notes.length === 0) return null;
   const plebs = notes.filter((n) => n.tier === 'pleb');
   return (
     <>
-      <Text style={info.heading}>{heading}</Text>
+      <Text style={info.heading}>{t(heading)}</Text>
       {notes
         .filter((n) => n.tier === 'superstar')
         .map((n) => (
           <View key={n.title} style={info.card}>
-            <Text style={info.kicker}>★ Superstar</Text>
+            <Text style={info.kicker}>{t('★ Superstar')}</Text>
             <Text style={[info.rowTitle, { fontSize: 17, marginTop: 4 }]}>{n.title}</Text>
             <Text style={info.body}>{u(n.text)}</Text>
           </View>

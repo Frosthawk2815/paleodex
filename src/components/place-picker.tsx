@@ -5,10 +5,12 @@ import { Pressable, Text, TextInput, View } from 'react-native';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { makePlace, nearestCity, searchCities, type UserPlace } from '@/lib/user-places';
+import { useT } from '@/lib/i18n';
 
 // Choose a place by searching for a town or city, or from the device's location (read once, only
 // when tapped). Shows the chosen place with a button to remove it.
 export function PlacePicker({ label, value, onChange }: { label: string; value: UserPlace | null; onChange: (p: UserPlace | null) => void }) {
+  const t = useT();
   const st = useProfileStyles();
   const palette = usePalette();
   const [query, setQuery] = useState('');
@@ -29,7 +31,7 @@ export function PlacePicker({ label, value, onChange }: { label: string; value: 
       onChange(makePlace(nearestCity(pos.coords.latitude, pos.coords.longitude), pos.coords.latitude, pos.coords.longitude));
       setQuery('');
     } catch {
-      setMessage('Your location couldn’t be found. Try again, or search for a town instead.');
+      setMessage(t('Your location couldn’t be found. Try again, or search for a town instead.'));
     } finally {
       setBusy(false);
     }
@@ -42,21 +44,21 @@ export function PlacePicker({ label, value, onChange }: { label: string; value: 
           <View style={st.rowText}>
             <Text style={st.rowTitle}>{value.label}</Text>
           </View>
-          <Pressable onPress={() => onChange(null)} accessibilityRole="button" accessibilityLabel={`Remove your ${label.toLowerCase()}`} hitSlop={8}>
-            <Text style={[st.link, { color: palette.badge }]}>Remove</Text>
+          <Pressable onPress={() => onChange(null)} accessibilityRole="button" accessibilityLabel={t('Remove: {what}', { what: label })} hitSlop={8}>
+            <Text style={[st.link, { color: palette.badge }]}>{t('Remove')}</Text>
           </Pressable>
         </View>
       ) : (
-        <Text style={st.muted}>Not set.</Text>
+        <Text style={st.muted}>{t('Not set.')}</Text>
       )}
       <TextInput
         value={query}
         onChangeText={setQuery}
-        placeholder={value ? 'Search to change it…' : 'Search for a town or city…'}
+        placeholder={value ? t('Search to change it…') : t('Search for a town or city…')}
         placeholderTextColor={palette.muted}
         autoCorrect={false}
         style={st.input}
-        accessibilityLabel={`Search for your ${label.toLowerCase()}`}
+        accessibilityLabel={t('Search: {what}', { what: label })}
       />
       {results.length > 0 && (
         <View style={st.card}>
@@ -76,9 +78,9 @@ export function PlacePicker({ label, value, onChange }: { label: string; value: 
           ))}
         </View>
       )}
-      {query.trim().length >= 2 && results.length === 0 && <Text style={st.muted}>No town found. Try a nearby larger town.</Text>}
+      {query.trim().length >= 2 && results.length === 0 && <Text style={st.muted}>{t('No town found. Try a nearby larger town.')}</Text>}
       <Pressable onPress={useLocation} disabled={busy} accessibilityRole="button" hitSlop={6}>
-        <Text style={st.link}>{busy ? 'Finding you…' : '📍 Use where I am now'}</Text>
+        <Text style={st.link}>{busy ? t('Finding you…') : t('📍 Use where I am now')}</Text>
       </Pressable>
       {!!message && <Text style={st.muted}>{message}</Text>}
     </View>

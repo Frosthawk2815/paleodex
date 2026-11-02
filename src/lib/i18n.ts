@@ -66,3 +66,23 @@ export function useT(): T {
   const lang = useLanguage();
   return useCallback((text: string, vars?: Vars) => translate(lang, text, vars), [lang]);
 }
+
+// Dates and durations built from numbers ("252.2 million years ago", "11,700 years ago", "1969 CE",
+// "Today", "4.5 million years"), put into the user's language.
+const TIME_PATTERNS: [RegExp, string][] = [
+  [/([\d.,]+) billion years ago/g, '{n} billion years ago'],
+  [/([\d.,]+) million years ago/g, '{n} million years ago'],
+  [/([\d.,]+) thousand years ago/g, '{n} thousand years ago'],
+  [/([\d.,]+) years ago/g, '{n} years ago'],
+  [/([\d.,]+) million years/g, '{n} million years'],
+  [/([\d.,]+) thousand years/g, '{n} thousand years'],
+  [/([\d.,]+) years/g, '{n} years'],
+  [/(\d+) BCE/g, '{n} BCE'],
+  [/(\d+) CE/g, '{n} CE'],
+];
+export function localTime(text: string, t: T): string {
+  let out = text;
+  for (const [re, key] of TIME_PATTERNS) out = out.replace(re, (_m, n: string) => `\u0000${t(key, { n })}\u0000`);
+  out = out.replace(/\bToday\b/g, t('Today')).replace(/\btoday\b/g, t('today')).replace(/\bpresent\b/g, t('present'));
+  return out.replace(/\u0000/g, '');
+}

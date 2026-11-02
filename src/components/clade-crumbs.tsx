@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { useInfoStyles } from '@/components/info-styles';
 import type { Clade } from '@/data/life';
+import { useT } from '@/lib/i18n';
 
 // Well-known groups, best first: the collapsed path starts at the first of these it contains,
 // e.g. birds start at Dinosaurs and whales at Mammals.
@@ -19,6 +20,7 @@ const TAIL = 2;
 // groups) and expands in place to show every level, with an arrow at the end to collapse it again.
 export function CladeCrumbs({ path, onOpenClade }: { path: Clade[]; onOpenClade: (id: string) => void }) {
   const info = useInfoStyles();
+  const t = useT();
   // Which path was expanded: a different species or group starts collapsed again.
   const key = path.map((c) => c.id).join('/');
   const [openKey, setOpenKey] = useState<string | null>(null);
@@ -43,7 +45,7 @@ export function CladeCrumbs({ path, onOpenClade }: { path: Clade[]; onOpenClade:
                 onPress={() => setOpenKey(key)}
                 style={[styles.more, info.title, styles.small]}
                 accessibilityRole="button"
-                accessibilityLabel={`Show ${hidden} more groups in the family tree`}>
+                accessibilityLabel={t('Show {n} more groups in the family tree', { n: hidden })}>
                 ⋯ {hidden} more
               </Text>
               <Text style={info.crumbSep}> › </Text>
@@ -55,7 +57,7 @@ export function CladeCrumbs({ path, onOpenClade }: { path: Clade[]; onOpenClade:
         </Fragment>
       ))}
       {collapsible && open && (
-        <Text onPress={() => setOpenKey(null)} style={[styles.less, info.title, styles.small]} accessibilityRole="button" accessibilityLabel="Collapse the family tree">
+        <Text onPress={() => setOpenKey(null)} style={[styles.less, info.title, styles.small]} accessibilityRole="button" accessibilityLabel={t('Collapse the family tree')}>
           {'  ▲'}
         </Text>
       )}

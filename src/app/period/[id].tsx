@@ -10,6 +10,7 @@ import { usePalette } from '@/hooks/use-palette';
 import { PageEra } from '@/lib/era';
 import { useProfile } from '@/lib/profile';
 import { paperFont } from '@/lib/theme';
+import { localTime, useT } from '@/lib/i18n';
 
 // Periods are the ancient past, so the mixed paper theme shows them on parchment.
 export default function PeriodRoute() {
@@ -21,6 +22,7 @@ export default function PeriodRoute() {
 }
 
 function PeriodScreen() {
+  const t = useT();
   const { id } = useLocalSearchParams<{ id: string }>();
   const palette = usePalette();
   const insets = useSafeAreaInsets();
@@ -35,8 +37,8 @@ function PeriodScreen() {
   if (!period) {
     return (
       <View style={[styles.center, { backgroundColor: palette.background }]}>
-        <Stack.Screen options={{ title: 'Not found' }} />
-        <Text style={{ color: palette.text }}>That period doesn’t exist.</Text>
+        <Stack.Screen options={{ title: t('Not found') }} />
+        <Text style={{ color: palette.text }}>{t('That period doesn’t exist.')}</Text>
       </View>
     );
   }
@@ -51,25 +53,25 @@ function PeriodScreen() {
       style={{ backgroundColor: palette.background }}
       contentInsetAdjustmentBehavior="automatic"
       contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 32 }]}>
-      <Stack.Screen options={{ title: period.name }} />
+      <Stack.Screen options={{ title: t(period.name) }} />
       {palette.paper && <PaperBackground kind={palette.paper} />}
 
       <View style={[styles.banner, { backgroundColor: period.color }]}>
-        <Text style={[styles.era, { color: onColor }, paperFont(palette, 'heading')]}>{period.era} Era</Text>
-        <Text style={[styles.name, { color: onColor }, paperFont(palette, 'heading')]}>{period.name}</Text>
+        <Text style={[styles.era, { color: onColor }, paperFont(palette, 'heading')]}>{t('{era} Era', { era: t(period.era) })}</Text>
+        <Text style={[styles.name, { color: onColor }, paperFont(palette, 'heading')]}>{t(period.name)}</Text>
         <Text style={[styles.tagline, { color: onColor }, paperFont(palette, 'body')]}>{period.tagline}</Text>
       </View>
 
       <View style={styles.stats}>
-        <Stat label="When" value={rangeLabel(period)} />
-        <Stat label={period.endMa === 0 ? 'So far' : 'Lasted'} value={durationLabel(period)} />
+        <Stat label={t('When')} value={localTime(rangeLabel(period), t)} />
+        <Stat label={period.endMa === 0 ? t('So far') : t('Lasted')} value={localTime(durationLabel(period), t)} />
       </View>
 
       <Text style={[styles.body, { color: palette.text }, paperFont(palette, 'body')]}>{period.summary}</Text>
 
       <SeriesTimeline period={period} />
 
-      <Text style={[styles.heading, { color: palette.text }, paperFont(palette, 'heading')]}>Life and events</Text>
+      <Text style={[styles.heading, { color: palette.text }, paperFont(palette, 'heading')]}>{t('Life and events')}</Text>
       {period.highlights.map((h) => (
         <View key={h} style={styles.bulletRow}>
           <View style={[styles.bullet, { backgroundColor: period.color }]} />
@@ -78,13 +80,13 @@ function PeriodScreen() {
       ))}
 
       <Text style={[styles.heading, { color: palette.text }, paperFont(palette, 'heading')]}>
-        {period.endMa === 0 ? 'Where it stands' : 'How it ended'}
+        {period.endMa === 0 ? t('Where it stands') : t('How it ended')}
       </Text>
       <Text style={[styles.body, { color: palette.text }, paperFont(palette, 'body')]}>{period.ending}</Text>
 
       <View style={styles.nav}>
-        {prev ? <NavLink id={prev.id} label={`← ${prev.name}`} align="left" /> : <View style={styles.navSpacer} />}
-        {next ? <NavLink id={next.id} label={`${next.name} →`} align="right" /> : <View style={styles.navSpacer} />}
+        {prev ? <NavLink id={prev.id} label={`← ${t(prev.name)}`} align="left" /> : <View style={styles.navSpacer} />}
+        {next ? <NavLink id={next.id} label={`${t(next.name)} →`} align="right" /> : <View style={styles.navSpacer} />}
       </View>
     </ScrollView>
   );

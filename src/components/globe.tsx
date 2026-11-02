@@ -16,6 +16,7 @@ import { EXTINCTION_DRIVERS, phaseCentre, phaseIndexAt, phasePolygons, rangeOf, 
 import { speciesById } from '@/lib/life';
 import { declutter, type Group } from '@/lib/declutter';
 import type { UserPlace } from '@/lib/user-places';
+import { useT } from '@/lib/i18n';
 
 const GRATICULE = geoGraticule10();
 // SVG text defaults to a serif font on the web; match the app's sans-serif.
@@ -261,6 +262,7 @@ const K_PG = EXTINCTIONS.find((e) => e.cause === 'asteroid')!;
 const inSentence = (name: string) => (/^[A-Z][a-z]*['’]s\b/.test(name) ? name : name.charAt(0).toLowerCase() + name.slice(1));
 
 export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDragging, rangeId, onClearRange, onSelectSpecies, reduceMotion, userPlaces }: Props) {
+  const t = useT();
   const [camera, setCamera] = useState<Camera>({ lon: 0, lat: 0, zoom: 1, anchor: 'land', view: 'earth', moonZoom: 1 });
   const [pan] = useState(() => createCameraResponder(setCamera, onDragging));
   // Stop any spin when the globe goes away.
@@ -395,10 +397,10 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   }
 
   const kmAcross = (w / rPx) * EARTH_RADIUS_KM;
-  const seaLevel = geo.seaLevel !== undefined ? `Sea level ${geo.seaLevel > 0 ? '+' : ''}${Math.round(geo.seaLevel)} m` : '';
-  const scale = zoom > 1.5 ? `About ${fmtKm(Number(kmAcross.toPrecision(2)))} km across` : '';
+  const seaLevel = geo.seaLevel !== undefined ? t('Sea level {n} m', { n: `${geo.seaLevel > 0 ? '+' : ''}${Math.round(geo.seaLevel)}` }) : '';
+  const scale = zoom > 1.5 ? t('About {n} km across', { n: fmtKm(Number(kmAcross.toPrecision(2))) }) : '';
   const readout = moonOnScreen
-    ? `Earth–Moon: ${fmtKm(moonKm)} km (today ${fmtKm(MOON_DISTANCE_TODAY_KM)} km)`
+    ? t('Earth–Moon: {n} km (today {today} km)', { n: fmtKm(moonKm), today: fmtKm(MOON_DISTANCE_TODAY_KM) })
     : [seaLevel, scale].filter(Boolean).join(' · ');
   const enlarged = moonOnScreen && rPx < MIN_EARTH_PX * 1.5;
 
@@ -506,7 +508,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
     if (moonMode) setCamera((c) => ({ ...c, moonZoom: Math.min(MAX_MOON_ZOOM, c.moonZoom * 2) }));
     else setCamera({ lon: 0, lat: 0, zoom: clampZoom(zoom * 2.5), anchor: `event:${g.lead.event.id}:${g.lead.index}`, view: 'earth', moonZoom: 1 });
   };
-  const moonReadout = `Moon · ${fmtKm(moonKm)} km from Earth`;
+  const moonReadout = t('Moon · {n} km from Earth', { n: fmtKm(moonKm) });
   // In the Earth–Moon view, tapping the Moon opens the close-up.
   const moonHit = !moonMode && moonOnScreen ? Math.max(44, moonR * 2 + 16) : 0;
 
@@ -518,7 +520,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
         style={StyleSheet.absoluteFill}
         accessible
         accessibilityRole="image"
-        accessibilityLabel={`Globe showing Earth ${Math.round(timeMa)} million years ago. Drag to spin, pinch to zoom.`}>
+        accessibilityLabel={t('Globe showing Earth {n} million years ago. Drag to spin, pinch to zoom.', { n: Math.round(timeMa) })}>
         <Svg width={w} height={h}>
           <Defs>
             <RadialGradient id="ocean" cx="40%" cy="35%" r="70%">
@@ -661,10 +663,10 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
               <Circle cx={xy[0]} cy={xy[1]} r={2.5} fill="#FFFFFF" />
               <PointIconShape kind="skull" x={xy[0]} y={xy[1] - 21} size={36} />
               <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 16} fill="#05070D" stroke="#05070D" strokeWidth={4} fontSize={12} fontWeight="700" textAnchor="middle">
-                {`Last ${inSentence(name)}${extra ? ` +${extra}` : ''}`}
+                {`${t('Last {name}', { name: inSentence(name) })}${extra ? ` +${extra}` : ''}`}
               </SvgText>
               <SvgText fontFamily={SVG_FONT} x={xy[0]} y={xy[1] + 16} fill="#FFFFFF" fontSize={12} fontWeight="700" textAnchor="middle">
-                {`Last ${inSentence(name)}${extra ? ` +${extra}` : ''}`}
+                {`${t('Last {name}', { name: inSentence(name) })}${extra ? ` +${extra}` : ''}`}
               </SvgText>
             </G>
           ))}
@@ -734,7 +736,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
         <Pressable
           onPress={() => setCamera((c) => ({ ...c, view: 'moon', moonZoom: 1 }))}
           accessibilityRole="button"
-          accessibilityLabel="Look at the Moon close up"
+          accessibilityLabel={t('Look at the Moon close up')}
           style={[styles.hit, { left: mx - moonHit / 2, top: ey - moonHit / 2, width: moonHit, height: moonHit }]}
         />
       )}
@@ -753,7 +755,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
         <View style={styles.chooser}>
           <View style={styles.chooserHead}>
             <Text style={styles.chooserTitle}>{chooser.length} places here</Text>
-            <Pressable onPress={() => setChooser(null)} accessibilityRole="button" accessibilityLabel="Close the list" hitSlop={10}>
+            <Pressable onPress={() => setChooser(null)} accessibilityRole="button" accessibilityLabel={t('Close the list')} hitSlop={10}>
               <Text style={styles.rangeClose}>✕</Text>
             </Pressable>
           </View>
@@ -766,7 +768,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
                   onSelectEvent(m.event, m.index);
                 }}
                 accessibilityRole="button"
-                accessibilityLabel={`${m.event.title}: read more`}
+                accessibilityLabel={`${m.event.title}: ${t('read more')}`}
                 style={({ pressed }) => [styles.chooserItem, pressed && { opacity: 0.6 }]}>
                 <Text style={styles.chooserItemTitle}>{m.event.title}</Text>
                 <Text style={styles.chooserItemSub}>{m.event.kind}</Text>
@@ -786,8 +788,8 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
           accessibilityRole="button"
           accessibilityLabel={
             extra
-              ? `Where the last ${inSentence(name)} and ${extra} more were seen alive: zoom in`
-              : `Where the last ${inSentence(name)} was seen alive: read more`
+              ? t('Where the last {name} and {n} more were seen alive: zoom in', { name: inSentence(name), n: extra })
+              : t('Where the last {name} was seen alive: read more', { name: inSentence(name) })
           }
           style={[styles.hit, { left: xy[0] - 22, top: xy[1] - 40, width: 44, height: 56 }]}
         />
@@ -799,7 +801,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
             <Text style={styles.rangeName}>{speciesName(rangeId)}</Text>
             {phase ? ` · ${phase.label}` : ' · not alive at this time'}
           </Text>
-          <Pressable onPress={onClearRange} accessibilityRole="button" accessibilityLabel="Hide the range" hitSlop={10}>
+          <Pressable onPress={onClearRange} accessibilityRole="button" accessibilityLabel={t('Hide the range')} hitSlop={10}>
             <Text style={styles.rangeClose}>✕</Text>
           </Pressable>
         </View>
@@ -808,9 +810,9 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
         <Pressable
           onPress={() => setCamera((c) => ({ ...c, view: 'earth', zoom: 0.001 }))}
           accessibilityRole="button"
-          accessibilityLabel="Back to the Earth and Moon"
+          accessibilityLabel={t('Back to the Earth and Moon')}
           style={({ pressed }) => [styles.back, pressed && styles.buttonPressed]}>
-          <Text style={styles.backText}>‹ Earth</Text>
+          <Text style={styles.backText}>{t('‹ Earth')}</Text>
         </Pressable>
       )}
 
@@ -823,15 +825,15 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
       {moonMode ? (
         <View pointerEvents="none" style={styles.readout}>
           <Text style={styles.readoutText}>{moonReadout}</Text>
-          <Text style={styles.readoutNote}>Near side, as seen from Earth</Text>
-          {markers.length > 0 && <Text style={styles.readoutNote}>Tap a marker to read about it</Text>}
+          <Text style={styles.readoutNote}>{t('Near side, as seen from Earth')}</Text>
+          {markers.length > 0 && <Text style={styles.readoutNote}>{t('Tap a marker to read about it')}</Text>}
         </View>
       ) : (
         readout !== '' && (
           <View pointerEvents="none" style={styles.readout}>
             <Text style={styles.readoutText}>{readout}</Text>
-            {enlarged && <Text style={styles.readoutNote}>Earth and Moon enlarged · distance to scale</Text>}
-            {moonOnScreen && <Text style={styles.readoutNote}>Tap the Moon to look closer</Text>}
+            {enlarged && <Text style={styles.readoutNote}>{t('Earth and Moon enlarged · distance to scale')}</Text>}
+            {moonOnScreen && <Text style={styles.readoutNote}>{t('Tap the Moon to look closer')}</Text>}
           </View>
         )
       )}

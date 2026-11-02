@@ -7,6 +7,7 @@ import { EXTINCTION_DETAILS, type GroupNote } from '@/data/extinction-details';
 import type { Extinction } from '@/lib/extinctions';
 import { cladeById } from '@/lib/life';
 import { useUnitText } from '@/lib/profile';
+import { useT } from '@/lib/i18n';
 
 type Props = {
   extinction: Extinction;
@@ -23,6 +24,7 @@ type Props = {
 // make it through.
 export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, onShowOnTimeline, onOpenClade, backLabel }: Props) {
   const info = useInfoStyles();
+  const t = useT();
   const u = useUnitText();
   const detail = EXTINCTION_DETAILS[extinction.id];
 
@@ -30,7 +32,7 @@ export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, 
     <View style={info.wrap}>
       <InfoNav onBack={onBack} onPrevious={onPrevious} previousLabel={previousLabel} backLabel={backLabel} page={{ kind: 'extinction', id: extinction.id }} />
 
-      <Text style={info.kicker}>{extinction.bigFive ? 'Mass extinction · one of the Big Five' : 'Extinction event'}</Text>
+      <Text style={info.kicker}>{extinction.bigFive ? t('Mass extinction · one of the Big Five') : t('Extinction event')}</Text>
       <Text style={info.title} accessibilityRole="header">
         {extinction.name}
       </Text>
@@ -42,7 +44,7 @@ export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, 
 
       {onShowOnTimeline && (
         <Pressable onPress={onShowOnTimeline} accessibilityRole="button" style={({ pressed }) => [info.card, pressed && info.pressed]}>
-          <Text style={info.cardTitle}>Show it on the timeline ›</Text>
+          <Text style={info.cardTitle}>{t('Show it on the timeline ›')}</Text>
         </Pressable>
       )}
 
@@ -65,16 +67,17 @@ export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, 
           ))}
         </View>
       )}
-      <Text style={info.note}>Loss figures are estimates and vary between studies.</Text>
+      <Text style={info.note}>{t('Loss figures are estimates and vary between studies.')}</Text>
     </View>
   );
 }
 
 function Groups({ heading, notes, onOpenClade }: { heading: string; notes: GroupNote[]; onOpenClade: (id: string) => void }) {
   const info = useInfoStyles();
+  const t = useT();
   return (
     <>
-      <Text style={info.heading}>{heading}</Text>
+      <Text style={info.heading}>{t(heading)}</Text>
       <View style={info.list}>
         {notes.map((g) => {
           const linked = g.clade && cladeById(g.clade) ? g.clade : undefined;
@@ -89,7 +92,7 @@ function Groups({ heading, notes, onOpenClade }: { heading: string; notes: Group
               key={g.name}
               onPress={() => onOpenClade(linked)}
               accessibilityRole="button"
-              accessibilityLabel={`${g.name}, open group page`}
+              accessibilityLabel={`${g.name}, ${t('open group page')}`}
               style={({ pressed }) => [info.row, pressed && info.pressed]}>
               {body}
             </Pressable>
