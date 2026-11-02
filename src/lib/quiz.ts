@@ -25,8 +25,8 @@ export const DIFFICULTIES: { level: Difficulty; name: string; detail: string }[]
   { level: 5, name: 'Professor', detail: 'Rare species and the fine detail of the timescale' },
 ];
 
-export type Category = { kind: 'all' } | { kind: 'dinosaurs' } | { kind: 'mammals' } | { kind: 'alive' } | { kind: 'clade'; id: string } | { kind: 'period'; id: string };
-export const categoryKey = (c: Category) => (c.kind === 'clade' || c.kind === 'period' ? `${c.kind}:${c.id}` : c.kind);
+export type Category = { kind: 'all' } | { kind: 'dinosaurs' } | { kind: 'mammals' } | { kind: 'alive'; id?: string } | { kind: 'clade'; id: string } | { kind: 'period'; id: string };
+export const categoryKey = (c: Category) => (c.kind === 'clade' || c.kind === 'period' || (c.kind === 'alive' && c.id) ? `${c.kind}:${c.id}` : c.kind);
 
 export type Question = {
   id: string;
@@ -270,7 +270,9 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       const group = groupAt(s, tier);
       if (!group) return null;
       // A group-of-one answer is no test; neither is a group the quiz is named after.
-      if (speciesInClade(group.id).length < 2 || (c.category.kind === 'clade' && c.category.id === group.id)) return null;
+      // In a quiz on one group, the answer must be a group inside it (not "carnivorans" in a cats quiz).
+      const quizGroup = c.category.kind === 'clade' || c.category.kind === 'alive' ? c.category.id : undefined;
+      if (speciesInClade(group.id).length < 2 || (quizGroup && (group.id === quizGroup || !cladePath(group.id).some((x) => x.id === quizGroup)))) return null;
       const own = new Set(cladePath(s.clade).map((x) => x.id));
       // Wrong answers: groups at the same level, from the same branch first (other theropod
       // families for a theropod), then wider.
@@ -717,7 +719,7 @@ function extinctionQuestionsFor(category: Category, level: Difficulty): Question
 export function categoryPool(c: Category): Species[] {
   if (c.kind === 'dinosaurs') return SPECIES.filter(isDinosaur);
   if (c.kind === 'mammals') return SPECIES.filter(isSynapsid);
-  if (c.kind === 'alive') return SPECIES.filter(isAlive);
+  if (c.kind === 'alive') return (c.id ? speciesInClade(c.id) : SPECIES).filter(isAlive);
   if (c.kind === 'clade') return speciesInClade(c.id);
   if (c.kind === 'period') {
     const p = PERIODS.find((x) => x.id === c.id);
@@ -734,6 +736,27 @@ export function categoryPool(c: Category): Species[] {
 export const QUIZ_GROUPS = CLADES.filter((c) => !['animalia', 'chordata', 'vertebrata', 'mammalia', 'synapsida'].includes(c.id) && speciesInClade(c.id).length >= 12).sort((a, b) =>
   (a.common || a.name).localeCompare(b.common || b.name),
 );
+
+// Groups of living animals worth a quiz of their own (at least ten species alive today), for the
+// Alive today category.
+// Groups with exactly the same living members (birds are the only living theropods, dinosaurs,
+// coelurosaurs…) are listed once: under the everyday name if one of them has it (Birds, Mammals),
+// otherwise the narrowest.
+export const LIVING_GROUPS = (() => {
+  const bySet = new Map<string, Clade[]>();
+  for (const c of CLADES) {
+    if (['animalia', 'chordata', 'vertebrata'].includes(c.id)) continue;
+    const living = speciesInClade(c.id).filter(isAlive);
+    if (living.length < 10) continue;
+    const key = living.map((x) => x.id).sort().join(',');
+    bySet.set(key, [...(bySet.get(key) ?? []), c]);
+  }
+  const rank = (c: Clade) => {
+    const k = KINDS.findIndex((x) => x.id === c.id);
+    return k >= 0 ? k : 100 - cladePath(c.id).length;
+  };
+  return [...bySet.values()].map((cs) => cs.sort((a, b) => rank(a) - rank(b))[0]!).sort((a, b) => (a.common || a.name).localeCompare(b.common || b.name));
+})();
 
 // A round of questions at one difficulty. Subjects are drawn from the right obscurity, then the
 // neighbouring ones if the category is small.

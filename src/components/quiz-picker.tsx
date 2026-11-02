@@ -5,7 +5,7 @@ import { useProfileStyles } from '@/components/profile-ui';
 import { PERIODS } from '@/data/periods';
 import { usePalette } from '@/hooks/use-palette';
 import { cladeById } from '@/lib/life';
-import { type Category, categoryKey, DIFFICULTIES, type Difficulty, QUIZ_GROUPS } from '@/lib/quiz';
+import { type Category, categoryKey, DIFFICULTIES, type Difficulty, LIVING_GROUPS, QUIZ_GROUPS } from '@/lib/quiz';
 
 export const categoryName = (c: Category) =>
   c.kind === 'all'
@@ -15,7 +15,9 @@ export const categoryName = (c: Category) =>
       : c.kind === 'mammals'
         ? 'Mammals'
         : c.kind === 'alive'
-          ? 'Alive today'
+          ? c.id
+            ? `Alive today: ${cladeById(c.id)?.common ?? c.id}`
+            : 'Alive today'
           : c.kind === 'clade'
           ? (cladeById(c.id)?.common ?? c.id)
           : `The ${PERIODS.find((p) => p.id === c.id)?.name ?? c.id}`;
@@ -36,15 +38,21 @@ export function QuizPicker({
 }) {
   const st = useProfileStyles();
   const palette = usePalette();
-  const [picking, setPicking] = useState<'group' | 'period' | null>(null);
+  const [picking, setPicking] = useState<'group' | 'period' | 'living' | null>(null);
   const [search, setSearch] = useState('');
   const groups = useMemo(() => {
     const q = search.trim().toLowerCase();
     return QUIZ_GROUPS.filter((c) => !q || `${c.common} ${c.name}`.toLowerCase().includes(q)).slice(0, 40);
   }, [search]);
+  const [livingSearch, setLivingSearch] = useState('');
+  const livingGroups = useMemo(() => {
+    const q = livingSearch.trim().toLowerCase();
+    return LIVING_GROUPS.filter((c) => !q || `${c.common} ${c.name}`.toLowerCase().includes(q)).slice(0, 40);
+  }, [livingSearch]);
 
   const choice = (c: Category, title: string, detail: string, onPress?: () => void) => {
-    const on = categoryKey(c) === categoryKey(category) || (onPress && category.kind === c.kind);
+    // A picker row is on while one of its choices is chosen ("All living animals" has its own row).
+    const on = categoryKey(c) === categoryKey(category) || (onPress && category.kind === c.kind && (category.kind !== 'alive' || !!category.id));
     return (
       <Pressable
         onPress={onPress ?? (() => onCategory(c))}
@@ -69,8 +77,6 @@ export function QuizPicker({
         {choice({ kind: 'dinosaurs' }, 'Dinosaurs', 'From the earliest dinosaurs to the last')}
         <View style={st.divider} />
         {choice({ kind: 'mammals' }, 'Mammals', 'Mammals past and present, and their early synapsid relatives such as Dimetrodon')}
-        <View style={st.divider} />
-        {choice({ kind: 'alive' }, 'Alive today', 'Animals living in the wild now: what they are, and where they live')}
         <View style={st.divider} />
         {choice(
           category.kind === 'clade' ? category : { kind: 'clade', id: '' },
@@ -133,6 +139,49 @@ export function QuizPicker({
               </Pressable>
             </View>
           ))}
+        </View>
+      )}
+
+      <Text style={st.heading}>Or: animals alive today</Text>
+      <View style={st.card}>
+        {choice({ kind: 'alive' }, 'All living animals', 'Animals living in the wild now: what they are, and where they live')}
+        <View style={st.divider} />
+        {choice(
+          category.kind === 'alive' && category.id ? category : { kind: 'alive', id: '' },
+          category.kind === 'alive' && category.id ? categoryName(category) : 'A particular living group',
+          'Cats, primates, birds of prey, whales and more',
+          () => setPicking(picking === 'living' ? null : 'living'),
+        )}
+      </View>
+      {picking === 'living' && (
+        <View style={{ gap: 8 }}>
+          <TextInput
+            value={livingSearch}
+            onChangeText={setLivingSearch}
+            placeholder="Search living groups…"
+            placeholderTextColor={palette.muted}
+            style={st.input}
+            accessibilityLabel="Search living groups"
+          />
+          <View style={st.card}>
+            {livingGroups.map((c, i) => (
+              <View key={c.id}>
+                {i > 0 && <View style={st.divider} />}
+                <Pressable
+                  onPress={() => {
+                    onCategory({ kind: 'alive', id: c.id });
+                    setPicking(null);
+                  }}
+                  accessibilityRole="button"
+                  style={({ pressed }) => [st.row, pressed && st.pressed]}>
+                  <View style={st.rowText}>
+                    <Text style={st.rowTitle}>{c.common || c.name}</Text>
+                    <Text style={st.rowSub}>{c.name}</Text>
+                  </View>
+                </Pressable>
+              </View>
+            ))}
+          </View>
         </View>
       )}
 
