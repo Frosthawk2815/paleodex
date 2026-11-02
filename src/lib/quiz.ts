@@ -5,13 +5,13 @@
 
 import { EVENTS, type HistoryEvent } from '@/data/events';
 import { EXTINCTION_DETAILS } from '@/data/extinction-details';
-import { CLADES, SPECIES, type Species } from '@/data/life';
+import { type Clade, CLADES, SPECIES, type Species } from '@/data/life';
 import { PERIODS } from '@/data/periods';
 import { GENUS_MEANINGS, meaningNote, meaningText, SPECIES_MEANINGS } from '@/data/name-meanings';
 import { SIZE_FACTS, type SizeFact } from '@/data/quiz-sizes';
 import { isModernSpecies } from '@/lib/era';
 import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
-import { cladePath, pastPointIndex, relativesOf, speciesInClade } from '@/lib/life';
+import { cladePath, familyOf, pastPointIndex, relativesOf, speciesInClade } from '@/lib/life';
 import { phaseCentre, rangeOf } from '@/lib/ranges';
 import type { PageRef } from '@/lib/profile';
 import { UNITS_BY_LEVEL, type Unit } from '@/lib/time';
@@ -139,6 +139,41 @@ function alsoTrue(s: Species): Set<string> {
   if (ids.has('aves')) out.add('A dinosaur');
   return out;
 }
+// The groups a species belongs to at each level of detail, for harder "what is it" questions and
+// harder wrong answers: 1, its everyday kind (a dinosaur); 2, the main branch of that kind
+// (theropod, sauropod or ornithischian); 3, the branch below that (coelurosaur, duck-billed
+// dinosaur); 4, its family (abelisaurid, tyrannosaur). Missing where the tree is shallower.
+const groupCache = new Map<string, Clade | undefined>();
+function groupAt(s: Species, tier: 2 | 3 | 4): Clade | undefined {
+  const key = `${s.id}:${tier}`;
+  if (!groupCache.has(key)) groupCache.set(key, findGroup(s, tier));
+  return groupCache.get(key);
+}
+function findGroup(s: Species, tier: 2 | 3 | 4): Clade | undefined {
+  const path = cladePath(s.clade);
+  const ids = path.map((c) => c.id);
+  const k = KINDS.findIndex((x) => ids.includes(x.id));
+  if (k < 0) return undefined;
+  const at = ids.indexOf(KINDS[k]!.id);
+  if (tier < 4) return path[at + tier - 1];
+  const fam = familyOf(s);
+  return fam && ids.indexOf(fam.id) > at + 1 ? fam : path[at + 3];
+}
+// Every group at a level with at least two species, with the main branch it sits in. Worked out once.
+const tierCache = new Map<number, { group: Clade; branch?: string }[]>();
+function groupsAtTier(tier: 2 | 3 | 4) {
+  let out = tierCache.get(tier);
+  if (!out) {
+    const seen = new Map<string, { group: Clade; branch?: string }>();
+    for (const o of SPECIES) {
+      const g = groupAt(o, tier);
+      if (g && !seen.has(g.id) && speciesInClade(g.id).length >= 2) seen.set(g.id, { group: g, branch: groupAt(o, 2)?.id });
+    }
+    out = [...seen.values()];
+    tierCache.set(tier, out);
+  }
+  return out;
+}
 const lower = (text: string) => text.charAt(0).toLowerCase() + text.slice(1);
 const isDinosaur = (s: Species) => pathIds(s).has('dinosauria') && !pathIds(s).has('aves');
 // Mammals and their earlier synapsid relatives (such as Dimetrodon and the cynodonts).
@@ -216,17 +251,39 @@ const cap = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 type Ctx = { level: Difficulty; pool: Species[]; imageFor: ImageFor; category: Category };
 
 const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Question | null }[] = [
-  // What kind of animal is it?
+  // What kind of animal is it? At level 1 its everyday kind (a dinosaur); at level 2 the main branch
+  // (a theropod, sauropod or ornithischian); at level 3 the branch below (a coelurosaur, a duck-billed
+  // dinosaur); at levels 4 and 5 its family (an abelisaurid).
   {
-    levels: [1, 2],
+    levels: [1, 2, 3, 4, 5],
     make: (s, c) => {
-      const kind = kindOf(s);
-      if (!kind) return null;
-      // In the mammals quiz the answer would nearly always be "a mammal": ask only about earlier synapsids.
-      if (c.category.kind === 'mammals' && pathIds(s).has('mammalia')) return null;
-      const excluded = alsoTrue(s);
-      const wrong = sample([...new Set(KINDS.map((k) => k.label))].filter((k) => !excluded.has(k)), 3);
-      return build(`kind:${s.id}`, `What kind of animal is ${named(s)}?`, kind, wrong, `${label(s)} ${was(s)} ${lower(kind)}.`, { speciesId: s.id });
+      if (c.level === 1) {
+        const kind = kindOf(s);
+        if (!kind) return null;
+        // In the mammals quiz the answer would nearly always be "a mammal": ask only about earlier synapsids.
+        if (c.category.kind === 'mammals' && pathIds(s).has('mammalia')) return null;
+        const excluded = alsoTrue(s);
+        const wrong = sample([...new Set(KINDS.map((k) => k.label))].filter((k) => !excluded.has(k)), 3);
+        return build(`kind:${s.id}`, `What kind of animal is ${named(s)}?`, kind, wrong, `${label(s)} ${was(s)} ${lower(kind)}.`, { speciesId: s.id });
+      }
+      const tier = Math.min(c.level, 4) as 2 | 3 | 4;
+      const group = groupAt(s, tier);
+      if (!group) return null;
+      // A group-of-one answer is no test; neither is a group the quiz is named after.
+      if (speciesInClade(group.id).length < 2 || (c.category.kind === 'clade' && c.category.id === group.id)) return null;
+      const own = new Set(cladePath(s.clade).map((x) => x.id));
+      // Wrong answers: groups at the same level, from the same branch first (other theropod
+      // families for a theropod), then wider.
+      const branch = groupAt(s, 2)?.id;
+      const options = groupsAtTier(tier).filter((x) => !own.has(x.group.id));
+      const siblings = options.filter((x) => x.group.parent === group.parent);
+      const sameBranch = options.filter((x) => x.branch === branch && !siblings.includes(x));
+      const rest = options.filter((x) => !siblings.includes(x) && !sameBranch.includes(x));
+      const pool = [...shuffle(siblings), ...shuffle(sameBranch), ...shuffle(rest)].map((x) => x.group);
+      const wrong = sample(pool.slice(0, Math.max(3, siblings.length)), 3).map((g) => g.common);
+      return build(`group:${s.id}:${tier}`, `Which group ${isAlive(s) ? 'does' : 'did'} ${named(s)} belong to?`, cap(group.common), wrong.map(cap), `${label(s)} ${was(s)} one of the ${lower(group.common)} (${group.name}).`, {
+        speciesId: s.id,
+      });
     },
   },
   // Which animal is in this picture?
@@ -277,13 +334,27 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
         isAlive(s) ? 'Alive today' : `Lived ${lower(s.ageText)}`,
         `${isAlive(s) ? 'Lives in' : 'Fossils found in'}: ${s.placeText.replace(/ \(.*\)$/, '')}`,
         neighbour ? `Lived alongside ${label(neighbour)}` : null,
-        other ? `Also related to ${label(other)}` : null,
+        other ? `Also related to ${label(other)}` : familyOf(s) ? `Part of the ${lower(familyOf(s)!.common)}` : null,
       ];
       const hints = clues.slice(0, 5 - c.level).filter((h): h is string => !!h);
       const relIds = new Set([s.id, ...rel.map((r) => r.id)]);
       const kind = kindOf(s);
-      // Wrong answers: the same kind of animal from other families (or, at easy levels, anything famous).
-      const candidates = SPECIES.filter((o) => !relIds.has(o.id) && (c.level >= 3 ? kindOf(o) === kind : FAMOUS.has(o.id)));
+      // Wrong answers get closer as the level rises: anything famous at level 1; the same kind of
+      // animal from another main branch at level 2 (a sauropod or ornithischian for a theropod); the
+      // same branch at level 3 (another theropod, not a coelurosaur); the same sub-branch but another
+      // family at levels 4 and 5.
+      const same = (o: Species, tier: 2 | 3) => groupAt(o, tier)?.id === groupAt(s, tier)?.id;
+      const others = SPECIES.filter((o) => !relIds.has(o.id) && kindOf(o) === kind);
+      // If a level has too few, loosen one step at a time.
+      const steps: Species[][] = [
+        others.filter((o) => same(o, 3) && familyOf(o)?.id !== familyOf(s)?.id),
+        others.filter((o) => same(o, 2) && !same(o, 3)),
+        others.filter((o) => !same(o, 2)),
+        others,
+      ];
+      const start = c.level >= 4 ? 0 : c.level === 3 ? 1 : 2;
+      const famous = SPECIES.filter((o) => !relIds.has(o.id) && FAMOUS.has(o.id));
+      const candidates = c.level === 1 ? famous : [...steps.slice(start), famous].find((xs) => xs.length >= 3) ?? famous;
       const wrong = sample(candidates, 3).map(label);
       return build(
         `relative:${s.id}`,
