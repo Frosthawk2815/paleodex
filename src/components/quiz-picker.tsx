@@ -6,21 +6,24 @@ import { PERIODS } from '@/data/periods';
 import { usePalette } from '@/hooks/use-palette';
 import { cladeById } from '@/lib/life';
 import { type Category, categoryKey, DIFFICULTIES, type Difficulty, LIVING_GROUPS, QUIZ_GROUPS } from '@/lib/quiz';
+import { type T, translate, useT } from '@/lib/i18n';
 
-export const categoryName = (c: Category) =>
+// A quiz's name, in the user's language when given their t(). Group names stay in English for now.
+const periodName = (id: string) => PERIODS.find((p) => p.id === id)?.name ?? id;
+export const categoryName = (c: Category, t: T = (x, v) => translate('en', x, v)) =>
   c.kind === 'all'
-    ? 'All of prehistoric life'
+    ? t('All of prehistoric life')
     : c.kind === 'dinosaurs'
-      ? 'Dinosaurs'
+      ? t('Dinosaurs')
       : c.kind === 'mammals'
-        ? 'Mammals'
+        ? t('Mammals')
         : c.kind === 'alive'
           ? c.id
-            ? `Alive today: ${cladeById(c.id)?.common ?? c.id}`
-            : 'Alive today'
+            ? t('Alive today: {group}', { group: cladeById(c.id)?.common ?? c.id })
+            : t('Alive today')
           : c.kind === 'clade'
-          ? (cladeById(c.id)?.common ?? c.id)
-          : `The ${PERIODS.find((p) => p.id === c.id)?.name ?? c.id}`;
+            ? (cladeById(c.id)?.common ?? c.id)
+            : t('The {period}', { period: t(periodName(c.id)) });
 
 // Choosing what to be quizzed on (everything, dinosaurs, mammals, a group or a period) and how hard.
 export function QuizPicker({
@@ -37,6 +40,7 @@ export function QuizPicker({
   bestFor?: (c: Category, d: Difficulty) => number | undefined;
 }) {
   const st = useProfileStyles();
+  const t = useT();
   const palette = usePalette();
   const [picking, setPicking] = useState<'group' | 'period' | 'living' | null>(null);
   const [search, setSearch] = useState('');
@@ -70,32 +74,32 @@ export function QuizPicker({
 
   return (
     <>
-      <Text style={st.heading}>What do you want to be tested on?</Text>
+      <Text style={st.heading}>{t('What do you want to be tested on?')}</Text>
       <View style={st.card}>
-        {choice({ kind: 'all' }, 'Everything', 'All of prehistoric (and living) life in PaleoDex')}
+        {choice({ kind: 'all' }, t('Everything'), t('All of prehistoric (and living) life in PaleoDex'))}
         <View style={st.divider} />
-        {choice({ kind: 'dinosaurs' }, 'Dinosaurs', 'From the earliest dinosaurs to the last')}
+        {choice({ kind: 'dinosaurs' }, t('Dinosaurs'), t('From the earliest dinosaurs to the last'))}
         <View style={st.divider} />
-        {choice({ kind: 'mammals' }, 'Mammals', 'Mammals past and present, and their early synapsid relatives such as Dimetrodon')}
+        {choice({ kind: 'mammals' }, t('Mammals'), t('Mammals past and present, and their early synapsid relatives such as Dimetrodon'))}
         <View style={st.divider} />
         {choice(
           category.kind === 'clade' ? category : { kind: 'clade', id: '' },
-          category.kind === 'clade' ? `Group: ${categoryName(category)}` : 'A particular group',
-          'Tyrannosaurs, pterosaurs, sharks and more',
+          category.kind === 'clade' ? t('Group: {name}', { name: categoryName(category, t) }) : t('A particular group'),
+          t('Tyrannosaurs, pterosaurs, sharks and more'),
           () => setPicking(picking === 'group' ? null : 'group'),
         )}
         <View style={st.divider} />
         {choice(
           category.kind === 'period' ? category : { kind: 'period', id: '' },
-          category.kind === 'period' ? `Period: ${categoryName(category).replace(/^The /, '')}` : 'A period of time',
-          'The animals and timescale of one period',
+          category.kind === 'period' ? t('Period: {name}', { name: t(periodName(category.id)) }) : t('A period of time'),
+          t('The animals and timescale of one period'),
           () => setPicking(picking === 'period' ? null : 'period'),
         )}
       </View>
 
       {picking === 'group' && (
         <View style={{ gap: 8 }}>
-          <TextInput value={search} onChangeText={setSearch} placeholder="Search groups…" placeholderTextColor={palette.muted} style={st.input} accessibilityLabel="Search groups" />
+          <TextInput value={search} onChangeText={setSearch} placeholder={t('Search groups…')} placeholderTextColor={palette.muted} style={st.input} accessibilityLabel={t('Search groups')} />
           <View style={st.card}>
             {groups.map((c, i) => (
               <View key={c.id}>
@@ -131,9 +135,9 @@ export function QuizPicker({
                 style={({ pressed }) => [st.row, pressed && st.pressed]}>
                 <View style={[{ width: 14, height: 14, borderRadius: 3, backgroundColor: p.color }]} />
                 <View style={st.rowText}>
-                  <Text style={st.rowTitle}>{p.name}</Text>
+                  <Text style={st.rowTitle}>{t(p.name)}</Text>
                   <Text style={st.rowSub}>
-                    {p.era} Era · {Math.round(p.startMa)} to {Math.round(p.endMa)} million years ago
+                    {t('{era} Era · {from} to {to} million years ago', { era: t(p.era), from: Math.round(p.startMa), to: Math.round(p.endMa) })}
                   </Text>
                 </View>
               </Pressable>
@@ -142,14 +146,14 @@ export function QuizPicker({
         </View>
       )}
 
-      <Text style={st.heading}>Or: animals alive today</Text>
+      <Text style={st.heading}>{t('Or: animals alive today')}</Text>
       <View style={st.card}>
-        {choice({ kind: 'alive' }, 'All living animals', 'Animals living in the wild now: what they are, and where they live')}
+        {choice({ kind: 'alive' }, t('All living animals'), t('Animals living in the wild now: what they are, and where they live'))}
         <View style={st.divider} />
         {choice(
           category.kind === 'alive' && category.id ? category : { kind: 'alive', id: '' },
-          category.kind === 'alive' && category.id ? categoryName(category) : 'A particular living group',
-          'Cats, primates, birds of prey, whales and more',
+          category.kind === 'alive' && category.id ? categoryName(category, t) : t('A particular living group'),
+          t('Cats, primates, birds of prey, whales and more'),
           () => setPicking(picking === 'living' ? null : 'living'),
         )}
       </View>
@@ -158,10 +162,10 @@ export function QuizPicker({
           <TextInput
             value={livingSearch}
             onChangeText={setLivingSearch}
-            placeholder="Search living groups…"
+            placeholder={t('Search living groups…')}
             placeholderTextColor={palette.muted}
             style={st.input}
-            accessibilityLabel="Search living groups"
+            accessibilityLabel={t('Search living groups')}
           />
           <View style={st.card}>
             {livingGroups.map((c, i) => (
@@ -185,7 +189,7 @@ export function QuizPicker({
         </View>
       )}
 
-      <Text style={st.heading}>Difficulty</Text>
+      <Text style={st.heading}>{t('Difficulty')}</Text>
       <View style={st.card}>
         {DIFFICULTIES.map((d, i) => {
           const on = d.level === level;
@@ -200,10 +204,10 @@ export function QuizPicker({
                 style={({ pressed }) => [st.row, on && { backgroundColor: palette.linkBg }, pressed && st.pressed]}>
                 <Text style={[st.rowTitle, { width: 26 }]}>{d.level}</Text>
                 <View style={st.rowText}>
-                  <Text style={st.rowTitle}>{d.name}</Text>
-                  <Text style={st.rowSub}>{d.detail}</Text>
+                  <Text style={st.rowTitle}>{t(d.name)}</Text>
+                  <Text style={st.rowSub}>{t(d.detail)}</Text>
                 </View>
-                {best !== undefined && <Text style={st.rowSub}>Best {best}/10</Text>}
+                {best !== undefined && <Text style={st.rowSub}>{t('Best {n}/10', { n: best })}</Text>}
               </Pressable>
             </View>
           );

@@ -8,6 +8,7 @@ import { usePalette } from '@/hooks/use-palette';
 import { speciesById } from '@/lib/life';
 import { useTextScale, useUnitText } from '@/lib/profile';
 import type { Question } from '@/lib/quiz';
+import { useT } from '@/lib/i18n';
 
 
 // A lifeline (50/50, Refresh, Copy, Switcheroo): each can be used once per quiz.
@@ -16,6 +17,7 @@ export type Lifeline = { key: string; icon: string; label: string; used: boolean
 
 function LifelineBar({ lifelines, answered }: { lifelines: Lifeline[]; answered: boolean }) {
   const st = useProfileStyles();
+  const t = useT();
   const palette = usePalette();
   const scale = useTextScale();
   return (
@@ -28,7 +30,7 @@ function LifelineBar({ lifelines, answered }: { lifelines: Lifeline[]; answered:
             onPress={l.onPress}
             disabled={off}
             accessibilityRole="button"
-            accessibilityLabel={`${l.label}${l.used ? ', already used' : ''}. ${l.hint}`}
+            accessibilityLabel={`${l.label}${l.used ? t(', already used') : ''}. ${l.hint}`}
             accessibilityState={{ disabled: off }}
             style={({ pressed }) => [
               {
@@ -48,7 +50,7 @@ function LifelineBar({ lifelines, answered }: { lifelines: Lifeline[]; answered:
             <Text style={st.rowTitle}>
               {l.icon} {l.label}
             </Text>
-            <Text style={[st.rowSub, { fontSize: Math.round(11 * scale) }]}>{l.used ? 'Used' : l.afterAnswer && !answered ? 'After you answer' : l.hint}</Text>
+            <Text style={[st.rowSub, { fontSize: Math.round(11 * scale) }]}>{l.used ? t('Used') : l.afterAnswer && !answered ? t('After you answer') : l.hint}</Text>
           </Pressable>
         );
       })}
@@ -92,6 +94,7 @@ export function QuestionView({
   nextDisabled?: boolean;
 }) {
   const st = useProfileStyles();
+  const t = useT();
   const palette = usePalette();
   // Questions, answers and explanations are written in metric and shown in the user's units.
   const u = useUnitText();
@@ -101,7 +104,7 @@ export function QuestionView({
   return (
     <ScrollView style={st.screen} contentContainerStyle={st.content}>
       <Text style={st.muted}>
-        Question {index + 1} of {total} · score {score}
+        {t('Question {n} of {total} · score {score}', { n: index + 1, total, score })}
       </Text>
       <View style={{ height: 6, borderRadius: 3, backgroundColor: palette.track, overflow: 'hidden' }}>
         <View style={{ width: `${((index + (answered ? 1 : 0)) / total) * 100}%`, height: '100%', backgroundColor: palette.link }} />
@@ -115,7 +118,7 @@ export function QuestionView({
           source={{ uri: q.image }}
           style={{ width: '100%', aspectRatio: 4 / 3, borderRadius: 12, backgroundColor: palette.track }}
           contentFit="contain"
-          accessibilityLabel={answered && subject ? `Picture of ${subject.common || subject.name}` : 'Picture for this question'}
+          accessibilityLabel={answered && subject ? t('Picture of {name}', { name: subject.common || subject.name }) : t('Picture for this question')}
         />
       )}
       <Text style={st.title} accessibilityRole="header">
@@ -123,7 +126,7 @@ export function QuestionView({
       </Text>
       {!!q.hints?.length && (
         <View style={[st.card, { padding: 12, gap: 4 }]}>
-          <Text style={[st.rowSub, { fontWeight: '700' }]}>{q.hints.length === 1 ? 'Clue' : 'Clues'}</Text>
+          <Text style={[st.rowSub, { fontWeight: '700' }]}>{q.hints.length === 1 ? t('Clue') : t('Clues')}</Text>
           {q.hints.map((h) => (
             <Text key={h} style={st.rowSub}>
               • {u(h)}
@@ -144,7 +147,7 @@ export function QuestionView({
               onPress={() => onChoose(i)}
               disabled={answered}
               accessibilityRole="button"
-              accessibilityLabel={`${u(o)}${answered && isRight ? ', correct answer' : answered && isChosen ? ', your answer, wrong' : ''}`}
+              accessibilityLabel={`${u(o)}${answered && isRight ? t(', correct answer') : answered && isChosen ? t(', your answer, wrong') : ''}`}
               style={({ pressed }) => [st.card, st.row, color && { borderColor: color, borderWidth: 2, backgroundColor: tint }, pressed && st.pressed]}>
               <Text style={[st.rowTitle, { flex: 1 }]}>{u(o)}</Text>
               {answered && isRight && <Text style={[st.rowTitle, { color: palette.good }]}>✓</Text>}
@@ -157,18 +160,18 @@ export function QuestionView({
         <View style={[st.card, { padding: 14, gap: 6 }]} accessibilityLiveRegion="polite">
           <Text style={[st.rowTitle, { color: chosen === q.answer ? palette.good : palette.bad }]}>
             {chosen === q.answer
-              ? 'Correct!'
-              : `${chosen === -1 ? 'Time’s up! ' : ''}The answer is ${u(q.options[q.answer]!).replace(/^(A|An|About) /, (w) => w.toLowerCase())}.`}
+              ? t('Correct!')
+              : `${chosen === -1 ? `${t('Time’s up!')} ` : ''}${t('The answer is {answer}.', { answer: u(q.options[q.answer]!).replace(/^(A|An|About) /, (w) => w.toLowerCase()) })}`}
           </Text>
           <Text style={st.rowSub}>{u(q.explanation)}</Text>
           {allowReadMore && q.page && (
             <Pressable onPress={() => router.push({ pathname: '/read', params: { kind: q.page!.kind, id: q.page!.id } })} accessibilityRole="button" hitSlop={6}>
-              <Text style={st.link}>Read about {q.pageLabel ?? 'it'} ›</Text>
+              <Text style={st.link}>{t('Read about {name} ›', { name: q.pageLabel ?? t('it') })}</Text>
             </Pressable>
           )}
           {allowReadMore && !q.page && subject && (
             <Pressable onPress={() => router.push({ pathname: '/read', params: { kind: 'species', id: subject.id } })} accessibilityRole="button" hitSlop={6}>
-              <Text style={st.link}>Read about {subject.common || subject.name} ›</Text>
+              <Text style={st.link}>{t('Read about {name} ›', { name: subject.common || subject.name })}</Text>
             </Pressable>
           )}
         </View>

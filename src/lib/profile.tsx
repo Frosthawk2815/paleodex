@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, type ReactNode, use, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo } from 'react-native';
 
+import type { LanguageSetting } from '@/lib/i18n';
 import { type CustomTheme, DEFAULT_CUSTOM, type PaperStyle } from '@/lib/theme';
 import { yearToMa } from '@/lib/time';
 import { toImperial, type Units } from '@/lib/units';
@@ -16,7 +17,8 @@ export type PageRef = { kind: 'species' | 'clade' | 'event' | 'extinction'; id: 
 export type Avatar = { kind: 'species'; id: string } | { kind: 'upload'; uri: string } | null;
 export type Theme = 'system' | 'light' | 'dark' | 'custom' | 'paper';
 export type TextSize = 'normal' | 'large' | 'larger';
-export type Settings = { theme: Theme; textSize: TextSize; highContrast: boolean; reduceMotion: boolean; custom: CustomTheme; paper: PaperStyle; units: Units };
+// language: 'system' follows the device; see lib/i18n.ts.
+export type Settings = { theme: Theme; textSize: TextSize; highContrast: boolean; reduceMotion: boolean; custom: CustomTheme; paper: PaperStyle; units: Units; language: LanguageSetting };
 export type Profile = {
   name: string;
   // 'YYYY-MM-DD', or null if they haven't set one.
@@ -59,7 +61,7 @@ const DEFAULT: Profile = {
   birthplace: null,
   home: null,
   quizBest: {},
-  settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed', units: 'metric' },
+  settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed', units: 'metric', language: 'system' },
 };
 
 const samePage = (a: PageRef, b: PageRef) => a.kind === b.kind && a.id === b.id;

@@ -4,11 +4,13 @@ import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { useProfile } from '@/lib/profile';
 import { TITLES } from '@/lib/titles';
+import { useT } from '@/lib/i18n';
 
 // Every title: the earned ones can be chosen to show under the user's name; locked ones say how
 // to earn them (secret ones only hint).
 export default function TitlesScreen() {
   const st = useProfileStyles();
+  const t = useT();
   const palette = usePalette();
   const { profile, update } = useProfile();
   const earned = TITLES.filter((t) => profile.titles.includes(t.id));
@@ -20,31 +22,31 @@ export default function TitlesScreen() {
   return (
     <ScrollView style={st.screen} contentContainerStyle={st.content}>
       <Text style={st.muted}>
-        Earn titles by exploring. Choose one of yours to show under your name. {earned.length} of {TITLES.length} earned.
+        {t('Earn titles by exploring. Choose one of yours to show under your name. {n} of {total} earned.', { n: earned.length, total: TITLES.length })}
       </Text>
 
-      <Text style={st.heading}>Your titles</Text>
+      <Text style={st.heading}>{t('Your titles')}</Text>
       {earned.length === 0 ? (
-        <Text style={st.muted}>None yet. Open a page to earn your first.</Text>
+        <Text style={st.muted}>{t('None yet. Open a page to earn your first.')}</Text>
       ) : (
         <View style={st.card} accessibilityRole="radiogroup">
-          {earned.map((t, i) => {
-            const on = profile.title === t.id;
+          {earned.map((ti, i) => {
+            const on = profile.title === ti.id;
             return (
-              <View key={t.id}>
+              <View key={ti.id}>
                 {i > 0 && <View style={st.divider} />}
                 <Pressable
-                  onPress={() => update({ title: on ? null : t.id })}
+                  onPress={() => update({ title: on ? null : ti.id })}
                   accessibilityRole="radio"
                   accessibilityState={{ checked: on }}
-                  accessibilityHint={on ? 'Tap to stop showing this title' : 'Tap to show this title under your name'}
+                  accessibilityHint={on ? t('Tap to stop showing this title') : t('Tap to show this title under your name')}
                   style={({ pressed }) => [st.row, pressed && st.pressed]}>
-                  <Text style={{ fontSize: 22 }}>{t.level !== undefined ? '⭐' : '🏆'}</Text>
+                  <Text style={{ fontSize: 22 }}>{ti.level !== undefined ? '⭐' : '🏆'}</Text>
                   <View style={st.rowText}>
-                    <Text style={st.rowTitle}>{t.name}</Text>
-                    <Text style={st.rowSub}>{t.reveal ?? t.hint.replace(/^A secret\. /, '')}</Text>
+                    <Text style={st.rowTitle}>{ti.level !== undefined ? t(ti.name) : ti.name}</Text>
+                    <Text style={st.rowSub}>{t(ti.reveal ?? ti.hint.replace(/^A secret\. /, ''))}</Text>
                   </View>
-                  <Text style={[st.rowSub, on && { color: palette.link, fontWeight: '700' }]}>{on ? 'Showing ✓' : 'Show'}</Text>
+                  <Text style={[st.rowSub, on && { color: palette.link, fontWeight: '700' }]}>{on ? t('Showing ✓') : t('Show')}</Text>
                 </Pressable>
               </View>
             );
@@ -54,16 +56,16 @@ export default function TitlesScreen() {
 
       {(locked.length > 0 || hiddenLeft > 0) && (
         <>
-          <Text style={st.heading}>Still to earn</Text>
+          <Text style={st.heading}>{t('Still to earn')}</Text>
           <View style={st.card}>
-            {locked.map((t, i) => (
-              <View key={t.id}>
+            {locked.map((ti, i) => (
+              <View key={ti.id}>
                 {i > 0 && <View style={st.divider} />}
-                <View style={st.row} accessible accessibilityLabel={`Locked: ${t.hint.startsWith('A secret') ? 'secret title' : t.name}. ${t.hint}`}>
+                <View style={st.row} accessible accessibilityLabel={t('Locked: {name}. {hint}', { name: ti.hint.startsWith('A secret') ? t('secret title') : ti.level !== undefined ? t(ti.name) : ti.name, hint: t(ti.hint) })}>
                   <Text style={{ fontSize: 22, opacity: 0.6 }}>🔒</Text>
                   <View style={st.rowText}>
-                    <Text style={[st.rowTitle, { color: palette.muted }]}>{t.hint.startsWith('A secret') ? '???' : t.name}</Text>
-                    <Text style={st.rowSub}>{t.hint}</Text>
+                    <Text style={[st.rowTitle, { color: palette.muted }]}>{ti.hint.startsWith('A secret') ? '???' : ti.level !== undefined ? t(ti.name) : ti.name}</Text>
+                    <Text style={st.rowSub}>{t(ti.hint)}</Text>
                   </View>
                 </View>
               </View>
@@ -71,13 +73,13 @@ export default function TitlesScreen() {
             {hiddenLeft > 0 && (
               <View>
                 {locked.length > 0 && <View style={st.divider} />}
-                <View style={st.row} accessible accessibilityLabel={`${hiddenLeft} secret titles still to find`}>
+                <View style={st.row} accessible accessibilityLabel={t('{n} secret titles still to find', { n: hiddenLeft })}>
                   <Text style={{ fontSize: 22, opacity: 0.6 }}>🔒</Text>
                   <View style={st.rowText}>
                     <Text style={[st.rowTitle, { color: palette.muted }]}>
-                      {hiddenLeft} secret title{hiddenLeft === 1 ? '' : 's'} still to find
+                      {hiddenLeft === 1 ? t('1 secret title still to find') : t('{n} secret titles still to find', { n: hiddenLeft })}
                     </Text>
-                    <Text style={st.rowSub}>No clues: they turn up as you explore.</Text>
+                    <Text style={st.rowSub}>{t('No clues: they turn up as you explore.')}</Text>
                   </View>
                 </View>
               </View>

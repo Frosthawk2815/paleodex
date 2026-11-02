@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { usePalette } from '@/hooks/use-palette';
 import { allImages, type SpeciesImage } from '@/lib/images';
 import { speciesById } from '@/lib/life';
+import { useT } from '@/lib/i18n';
 
 const open = (url?: string | null) => {
   if (url) openBrowserAsync(url).catch(() => {});
@@ -16,6 +17,7 @@ type Row = { id: string; name: string; common?: string; img: SpeciesImage };
 // Every picture in the app with its artist, licence and source, plus the data behind the globe.
 export default function CreditsScreen() {
   const palette = usePalette();
+  const t = useT();
   const insets = useSafeAreaInsets();
   const rows: Row[] = allImages()
     .map(([id, img]) => ({ id, img, name: speciesById(id)?.name ?? id, common: speciesById(id)?.common }))
@@ -23,18 +25,16 @@ export default function CreditsScreen() {
 
   const header = (
     <View>
-      <Text style={[styles.heading, { color: palette.text }]}>Map and timeline data</Text>
+      <Text style={[styles.heading, { color: palette.text }]}>{t('Map and timeline data')}</Text>
       <Text style={[styles.body, { color: palette.text }]}>
-        Ancient land and sea: Scotese & Wright (2018), PALEOMAP PaleoAtlas. Sea level: Spratt & Lisiecki (2016); Bintanja & van de Wal
-        (2008). Geological time scale and colours: ICS International Chronostratigraphic Chart.
+        {t('Ancient land and sea: Scotese & Wright (2018), PALEOMAP PaleoAtlas. Sea level: Spratt & Lisiecki (2016); Bintanja & van de Wal (2008). Geological time scale and colours: ICS International Chronostratigraphic Chart.')}
       </Text>
-      <Text style={[styles.heading, { color: palette.text }]}>Species pictures ({rows.length})</Text>
+      <Text style={[styles.heading, { color: palette.text }]}>{t('Species pictures ({n})', { n: rows.length })}</Text>
       <Link href="/review" style={[styles.link, styles.review]}>
         Review candidate pictures ›
       </Link>
       <Text style={[styles.body, { color: palette.muted }]}>
-        Freely licensed images from Wikimedia Commons and Wikipedia. Each is credited to its artist or photographer under the licence
-        shown. Tap a licence or source to open it. Artists’ restorations are interpretations and may not match the latest science.
+        {t('Freely licensed images from Wikimedia Commons and Wikipedia. Each is credited to its artist or photographer under the licence shown. Tap a licence or source to open it. Artists’ restorations are interpretations and may not match the latest science.')}
       </Text>
     </View>
   );
@@ -48,7 +48,7 @@ export default function CreditsScreen() {
       keyExtractor={(r) => r.id}
       ListHeaderComponent={
         <>
-          <Stack.Screen options={{ title: 'Credits' }} />
+          <Stack.Screen options={{ title: t('Credits') }} />
           {header}
         </>
       }

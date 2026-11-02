@@ -10,6 +10,7 @@ import { imageOf } from '@/lib/images';
 import { useProfile, useUnitText } from '@/lib/profile';
 import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, fiftyFifty, makeRound, type Question, replacementQuestion } from '@/lib/quiz';
 import { useOwnPicture } from '@/lib/user-photos';
+import { useT } from '@/lib/i18n';
 
 type Stage = { kind: 'menu' } | { kind: 'setup' } | { kind: 'play'; questions: Question[]; index: number; chosen: number | null; score: number; hidden: number[] } | { kind: 'done'; score: number; total: number; best: boolean };
 
@@ -17,6 +18,7 @@ type Stage = { kind: 'menu' } | { kind: 'setup' } | { kind: 'play'; questions: Q
 // and a difficulty, then answer ten questions built from PaleoDex's own data.
 export default function QuizScreen() {
   const st = useProfileStyles();
+  const t = useT();
   const palette = usePalette();
   const { profile, update } = useProfile();
   const ownPicture = useOwnPicture();
@@ -40,25 +42,25 @@ export default function QuizScreen() {
   if (stage.kind === 'menu') {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
-        <Text style={st.text}>How much do you know about prehistoric life? Questions are drawn from everything in PaleoDex, at five levels of difficulty.</Text>
+        <Text style={st.text}>{t('How much do you know about prehistoric life? Questions are drawn from everything in PaleoDex, at five levels of difficulty.')}</Text>
         <Pressable onPress={() => setStage({ kind: 'setup' })} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>Play solo</Text>
-            <Text style={st.rowSub}>Ten questions on the subject and level you choose</Text>
+            <Text style={st.rowTitle}>{t('Play solo')}</Text>
+            <Text style={st.rowSub}>{t('Ten questions on the subject and level you choose')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <Pressable onPress={() => router.push('/profile/battle')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>Bone War</Text>
-            <Text style={st.rowSub}>Play someone on another phone with a battle code</Text>
+            <Text style={st.rowTitle}>{t('Bone War')}</Text>
+            <Text style={st.rowSub}>{t('Play someone on another phone with a battle code')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <Pressable onPress={() => router.push('/profile/peer-review')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>Peer Review</Text>
-            <Text style={st.rowSub}>A group game for 3 to 30 players, with a leaderboard after each round</Text>
+            <Text style={st.rowTitle}>{t('Peer Review')}</Text>
+            <Text style={st.rowSub}>{t('A group game for 3 to 30 players, with a leaderboard after each round')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
@@ -77,33 +79,31 @@ export default function QuizScreen() {
           accessibilityRole="button"
           style={({ pressed }) => [st.button, pressed && st.pressed, size < 8 && { opacity: 0.5 }]}>
           <Text style={st.buttonText}>
-            Start: {categoryName(category)}, level {level}
+            {t('Start: {quiz}, level {level}', { quiz: categoryName(category, t), level })}
           </Text>
         </Pressable>
-        {size < 8 && <Text style={st.muted}>Choose a group or period to start.</Text>}
+        {size < 8 && <Text style={st.muted}>{t('Choose a group or period to start.')}</Text>}
       </ScrollView>
     );
   }
 
   if (stage.kind === 'done') {
     const message =
-      stage.score === stage.total ? 'A perfect round!' : stage.score >= stage.total * 0.7 ? 'Great work.' : stage.score >= stage.total * 0.4 ? 'Not bad. Try again?' : 'A tough one. Try an easier level?';
+      stage.score === stage.total ? t('A perfect round!') : stage.score >= stage.total * 0.7 ? t('Great work.') : stage.score >= stage.total * 0.4 ? t('Not bad. Try again?') : t('A tough one. Try an easier level?');
     return (
       <ScrollView style={st.screen} contentContainerStyle={[st.content, { alignItems: 'center' }]}>
         <Text style={{ fontSize: 56 }}>{stage.score === stage.total ? '🏆' : stage.score >= stage.total * 0.7 ? '🦴' : '🥚'}</Text>
-        <Text style={st.title}>
-          {stage.score} out of {stage.total}
-        </Text>
+        <Text style={st.title}>{t('{score} out of {total}', { score: stage.score, total: stage.total })}</Text>
         <Text style={st.text}>{message}</Text>
-        {stage.best && <Text style={[st.rowTitle, { color: palette.accent }]}>New best score for this quiz!</Text>}
+        {stage.best && <Text style={[st.rowTitle, { color: palette.accent }]}>{t('New best score for this quiz!')}</Text>}
         <Text style={st.muted}>
-          {categoryName(category)} · level {level}, {DIFFICULTIES[level - 1]!.name}
+          {t('{quiz} · level {level}, {difficulty}', { quiz: categoryName(category, t), level, difficulty: t(DIFFICULTIES[level - 1]!.name) })}
         </Text>
         <Pressable onPress={start} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-          <Text style={st.buttonText}>Play again</Text>
+          <Text style={st.buttonText}>{t('Play again')}</Text>
         </Pressable>
         <Pressable onPress={() => setStage({ kind: 'setup' })} accessibilityRole="button" hitSlop={6}>
-          <Text style={st.link}>Choose a different quiz</Text>
+          <Text style={st.link}>{t('Choose a different quiz')}</Text>
         </Pressable>
       </ScrollView>
     );
@@ -114,9 +114,9 @@ export default function QuizScreen() {
   if (!q) {
     return (
       <View style={[st.screen, st.content]}>
-        <Text style={st.text}>There aren’t enough questions for this choice yet. Try another category or level.</Text>
+        <Text style={st.text}>{t('There aren’t enough questions for this choice yet. Try another category or level.')}</Text>
         <Pressable onPress={() => setStage({ kind: 'setup' })} accessibilityRole="button">
-          <Text style={st.link}>Back</Text>
+          <Text style={st.link}>{t('Back')}</Text>
         </Pressable>
       </View>
     );
@@ -145,7 +145,7 @@ export default function QuizScreen() {
           key: 'fifty',
           icon: '✂️',
           label: '50/50',
-          hint: 'Remove two wrong answers',
+          hint: t('Remove two wrong answers'),
           used: used.fifty,
           available: true,
           onPress: () => {
@@ -156,8 +156,8 @@ export default function QuizScreen() {
         {
           key: 'refresh',
           icon: '🔄',
-          label: 'Refresh',
-          hint: 'Swap for a new question',
+          label: t('Refresh'),
+          hint: t('Swap for a new question'),
           used: used.refresh,
           available: true,
           onPress: () => {
@@ -174,7 +174,7 @@ export default function QuizScreen() {
       chosen={stage.chosen}
       onChoose={choose}
       onNext={next}
-      nextLabel={stage.index + 1 < stage.questions.length ? 'Next question' : 'See your score'}
+      nextLabel={stage.index + 1 < stage.questions.length ? t('Next question') : t('See your score')}
     />
   );
 }

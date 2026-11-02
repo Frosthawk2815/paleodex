@@ -17,6 +17,7 @@ import { type Category, categorySize, DIFFICULTIES, type Difficulty, fiftyFifty,
 import { titleById } from '@/lib/titles';
 import { toImperial } from '@/lib/units';
 import { useOwnPicture } from '@/lib/user-photos';
+import { type T, useT } from '@/lib/i18n';
 
 // Peer Review: one host and 2 to 29 other players (3 to 30 in all, about a classroom), five
 // rounds of five questions on subjects the host chooses, with a leaderboard after each round.
@@ -51,7 +52,7 @@ type Stage =
   | { kind: 'ended'; message: string };
 type PlayStage = Extract<Stage, { kind: 'play' }>;
 
-const quizText = (q: Quiz) => `${categoryName(q.category)}, level ${q.level} (${DIFFICULTIES[q.level - 1]!.name})`;
+const quizText = (q: Quiz, t: T) => t('{quiz}, level {level} ({difficulty})', { quiz: categoryName(q.category, t), level: q.level, difficulty: t(DIFFICULTIES[q.level - 1]!.name) });
 const DEFAULT_ROUNDS: Quiz[] = [
   { category: { kind: 'dinosaurs' }, level: 1 },
   { category: { kind: 'mammals' }, level: 1 },
@@ -63,6 +64,7 @@ const NO_USED: Used = { fifty: false, copy: false, swap: false, hurry: false };
 
 export default function PeerReviewScreen() {
   const st = useProfileStyles();
+  const t = useT();
   const palette = usePalette();
   const { profile } = useProfile();
   const ownPicture = useOwnPicture();
@@ -102,7 +104,7 @@ export default function PeerReviewScreen() {
 
   const myName = profile.name.trim();
   const myTitle = titleById(profile.title)?.name ?? '';
-  const nameOf = (id: string) => players.find((p) => p.id === id)?.name ?? 'A player';
+  const nameOf = (id: string) => players.find((p) => p.id === id)?.name ?? t('A player');
 
   useEffect(
     () => () => {
@@ -137,7 +139,7 @@ export default function PeerReviewScreen() {
     setStage({ kind: 'lobby' });
     hub.current = openHub(c, MAX_PLAYERS - 1, {
       onState: (s) => {
-        if (s.kind === 'error') setStage({ kind: 'ended', message: s.reason === 'code-taken' ? 'That code is already in use. Try hosting again.' : 'The connection service couldn’t be reached. Check your internet connection.' });
+        if (s.kind === 'error') setStage({ kind: 'ended', message: s.reason === 'code-taken' ? t('That code is already in use. Try hosting again.') : t('The connection service couldn’t be reached. Check your internet connection.') });
       },
       onJoin: () => {},
       onLeave: (id) => handle.current(id, { t: 'left' }),
@@ -157,9 +159,9 @@ export default function PeerReviewScreen() {
         else if (s.kind === 'error')
           setStage({
             kind: 'ended',
-            message: s.reason === 'no-host' ? 'No Peer Review was found with that code, or it has already started. Check the code with the host.' : 'The connection didn’t work. Try both being on Wi-Fi.',
+            message: s.reason === 'no-host' ? t('No Peer Review was found with that code, or it has already started. Check the code with the host.') : t('The connection didn’t work. Try both being on Wi-Fi.'),
           });
-        else if (s.kind === 'closed') setStage((x) => (x.kind === 'ended' ? x : { kind: 'ended', message: 'The host has ended the Peer Review.' }));
+        else if (s.kind === 'closed') setStage((x) => (x.kind === 'ended' ? x : { kind: 'ended', message: t('The host has ended the Peer Review.') }));
       },
       (m) => handle.current(HOST, m),
     );
@@ -291,7 +293,7 @@ export default function PeerReviewScreen() {
           setStage({ kind: 'lobby' });
           break;
         case 'rejected':
-          setStage({ kind: 'ended', message: m.reason === 'full' ? `That Peer Review is full (${MAX_PLAYERS} players).` : 'That Peer Review has already started.' });
+          setStage({ kind: 'ended', message: m.reason === 'full' ? t('That Peer Review is full ({n} players).', { n: MAX_PLAYERS }) : t('That Peer Review has already started.') });
           link.current?.close();
           break;
         case 'roster':
@@ -329,22 +331,22 @@ export default function PeerReviewScreen() {
           if (stage.kind !== 'play' || !question) break;
           const last = stage.index + 1 >= stage.questions.length;
           const target = last ? stage.index : stage.index + 1;
-          const switched = { ...stage, questions: stage.questions.map((x, i) => (i === target ? question : x)), switched: { ...stage.switched, [target]: `${label} (from ${who})` } };
+          const switched = { ...stage, questions: stage.questions.map((x, i) => (i === target ? question : x)), switched: { ...stage.switched, [target]: t('{quiz} (from {who})', { quiz: label, who }) } };
           if (last) {
             const had = stage.picked !== null;
             if (had) toHost({ t: 'unanswer', round: stage.round, index: stage.index });
             setStage({ ...switched, picked: null, hidden: [], waiting: false, deadline: Date.now() + QUESTION_SECONDS * 1000 });
-            setNotice(`🔀 ${who} used Switcheroo on you! ${had ? 'Your answer doesn’t count: here’s a new question.' : 'This question has been switched.'}`);
+            setNotice(`🔀 ${t('{who} used Switcheroo on you!', { who })} ${had ? t('Your answer doesn’t count: here’s a new question.') : t('This question has been switched.')}`);
           } else {
             setStage(switched);
-            setNotice(`🔀 ${who} used Switcheroo on you! Your next question is now from ${label}.`);
+            setNotice(`🔀 ${t('{who} used Switcheroo on you! Your next question is now from {quiz}.', { who, quiz: label })}`);
           }
           break;
         }
         case 'hurried':
           if (stage.kind === 'play' && stage.picked === null) {
             setStage({ ...stage, deadline: Date.now() + Math.max(1000, (stage.deadline - Date.now()) / 2) });
-            setNotice(`⏳ ${nameOf(String(m.from))} used Hurry Up on you! Your time has been cut in half.`);
+            setNotice(`⏳ ${t('{who} used Hurry Up on you! Your time has been cut in half.', { who: nameOf(String(m.from)) })}`);
           }
           break;
         case 'lobby':
@@ -352,7 +354,7 @@ export default function PeerReviewScreen() {
           setStage({ kind: 'lobby' });
           break;
         case 'bye':
-          if (!isHost) setStage({ kind: 'ended', message: 'The host has ended the Peer Review.' });
+          if (!isHost) setStage({ kind: 'ended', message: t('The host has ended the Peer Review.') });
           break;
       }
     };
@@ -384,10 +386,10 @@ export default function PeerReviewScreen() {
       <View style={st.rowText}>
         <Text style={st.rowTitle}>
           {p.name}
-          {p.id === me ? ' (you)' : ''}
-          {p.id === HOST ? ' · host' : ''}
+          {p.id === me ? ` (${t('you')})` : ''}
+          {p.id === HOST ? ` · ${t('host')}` : ''}
         </Text>
-        <Text style={st.rowSub}>{p.connected ? p.title || 'No title yet' : 'Left the game'}</Text>
+        <Text style={st.rowSub}>{p.connected ? p.title || t('No title yet') : t('Left the game')}</Text>
       </View>
       {rank !== undefined && <Text style={st.rowTitle}>{p.score}</Text>}
     </View>
@@ -399,29 +401,26 @@ export default function PeerReviewScreen() {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
         <Text style={st.text}>
-          A quiz for a group: {MIN_PLAYERS} to {MAX_PLAYERS} players on their own phones. The host chooses five rounds of five questions, and a leaderboard
-          shows after each round.
+          {t('A quiz for a group: {min} to {max} players on their own phones. The host chooses five rounds of five questions, and a leaderboard shows after each round.', { min: MIN_PLAYERS, max: MAX_PLAYERS })}
         </Text>
         <Pressable onPress={host} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>Host a Peer Review</Text>
-            <Text style={st.rowSub}>Choose the rounds and share a battle code</Text>
+            <Text style={st.rowTitle}>{t('Host a Peer Review')}</Text>
+            <Text style={st.rowSub}>{t('Choose the rounds and share a battle code')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <Pressable onPress={() => setStage({ kind: 'join', status: 'idle' })} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>Join a Peer Review</Text>
-            <Text style={st.rowSub}>Enter the host’s battle code</Text>
+            <Text style={st.rowTitle}>{t('Join a Peer Review')}</Text>
+            <Text style={st.rowSub}>{t('Enter the host’s battle code')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <View style={[st.card, { padding: 14, gap: 4 }]}>
-          <Text style={st.rowTitle}>🔒 How the connection works</Text>
+          <Text style={st.rowTitle}>{t('🔒 How the connection works')}</Text>
           <Text style={st.rowSub}>
-            Each phone connects directly to the host’s phone, which passes the game between players. To find each other, phones briefly use a free public
-            connection service (PeerJS) and Google’s address lookup (STUN). Your name, title and a small copy of your profile picture are shared with the other
-            players for the leaderboard: your own photo, including your own photo of the animal you chose as your picture. Nothing is stored.
+            {t('Each phone connects directly to the host’s phone, which passes the game between players. To find each other, phones briefly use a free public connection service (PeerJS) and Google’s address lookup (STUN). Your name, title and a small copy of your profile picture are shared with the other players for the leaderboard: your own photo, including your own photo of the animal you chose as your picture. Nothing is stored.')}
           </Text>
         </View>
       </ScrollView>
@@ -433,25 +432,25 @@ export default function PeerReviewScreen() {
     const busy = stage.status === 'connecting';
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content} keyboardShouldPersistTaps="handled">
-        <Text style={st.heading}>Enter the battle code</Text>
+        <Text style={st.heading}>{t('Enter the battle code')}</Text>
         <TextInput
           value={code}
           onChangeText={(t) => setCode(t.replace(/\D/g, '').slice(0, 6))}
-          placeholder="6-digit code"
+          placeholder={t('6-digit code')}
           placeholderTextColor={palette.muted}
           keyboardType="number-pad"
           maxLength={6}
           editable={!busy}
           autoFocus
           style={[st.input, { fontSize: 28, letterSpacing: 6, textAlign: 'center' }]}
-          accessibilityLabel="Battle code"
+          accessibilityLabel={t('Battle code')}
           onSubmitEditing={() => valid && !busy && join()}
         />
         <Pressable onPress={join} disabled={!valid || busy} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed, (!valid || busy) && { opacity: 0.5 }]}>
           <Text style={st.buttonText}>{busy ? 'Joining…' : 'Join'}</Text>
         </Pressable>
         <Pressable onPress={leave} accessibilityRole="button" hitSlop={6} style={{ alignSelf: 'center' }}>
-          <Text style={st.link}>Cancel</Text>
+          <Text style={st.link}>{t('Cancel')}</Text>
         </Pressable>
       </ScrollView>
     );
@@ -476,18 +475,16 @@ export default function PeerReviewScreen() {
       <ScrollView style={st.screen} contentContainerStyle={st.content} keyboardShouldPersistTaps="handled">
         {isHost && (
           <View style={{ alignItems: 'center', gap: 8 }}>
-            <Text style={st.heading}>Battle code</Text>
-            <Text style={[st.title, { fontSize: 40, letterSpacing: 8, fontVariant: ['tabular-nums'] }]} selectable accessibilityLabel={`Battle code ${code.split('').join(' ')}`}>
+            <Text style={st.heading}>{t('Battle code')}</Text>
+            <Text style={[st.title, { fontSize: 40, letterSpacing: 8, fontVariant: ['tabular-nums'] }]} selectable accessibilityLabel={t('Battle code {code}', { code: code.split('').join(' ') })}>
               {code}
             </Text>
             <Pressable onPress={copy} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-              <Text style={st.buttonText}>{copied ? 'Copied!' : '📋 Copy code'}</Text>
+              <Text style={st.buttonText}>{copied ? t('Copied!') : t('📋 Copy code')}</Text>
             </Pressable>
           </View>
         )}
-        <Text style={st.heading}>
-          Players ({connected.length} of {MAX_PLAYERS})
-        </Text>
+        <Text style={st.heading}>{t('Players ({n} of {max})', { n: connected.length, max: MAX_PLAYERS })}</Text>
         <View style={st.card}>
           {connected.map((p, i) => (
             <View key={p.id}>
@@ -497,7 +494,7 @@ export default function PeerReviewScreen() {
           ))}
         </View>
 
-        <Text style={st.heading}>The rounds</Text>
+        <Text style={st.heading}>{t('The rounds')}</Text>
         <View style={st.card}>
           {rounds.map((r, i) => (
             <View key={i}>
@@ -509,12 +506,12 @@ export default function PeerReviewScreen() {
                 style={({ pressed }) => [st.row, editing === i && { backgroundColor: palette.linkBg }, pressed && st.pressed]}>
                 <Text style={[st.rowTitle, { width: 26 }]}>{i + 1}</Text>
                 <View style={st.rowText}>
-                  <Text style={st.rowTitle}>{categoryName(r.category)}</Text>
+                  <Text style={st.rowTitle}>{categoryName(r.category, t)}</Text>
                   <Text style={st.rowSub}>
-                    Level {r.level}, {DIFFICULTIES[r.level - 1]!.name}
+                    {t('Level {level}, {difficulty}', { level: r.level, difficulty: t(DIFFICULTIES[r.level - 1]!.name) })}
                   </Text>
                 </View>
-                {isHost && <Text style={st.link}>{editing === i ? 'Done' : 'Change'}</Text>}
+                {isHost && <Text style={st.link}>{editing === i ? t('Done') : t('Change')}</Text>}
               </Pressable>
               {isHost && editing === i && (
                 <View style={{ padding: 12, gap: 8 }}>
@@ -536,19 +533,19 @@ export default function PeerReviewScreen() {
               disabled={!enough || !roundsOk}
               accessibilityRole="button"
               style={({ pressed }) => [st.button, pressed && st.pressed, (!enough || !roundsOk) && { opacity: 0.5 }]}>
-              <Text style={st.buttonText}>Start the Peer Review</Text>
+              <Text style={st.buttonText}>{t('Start the Peer Review')}</Text>
             </Pressable>
-            {!enough && <Text style={st.muted}>Waiting for at least {MIN_PLAYERS} players, including you. Share the code to invite them.</Text>}
-            {!roundsOk && <Text style={st.muted}>Choose a group or period for every round.</Text>}
+            {!enough && <Text style={st.muted}>{t('Waiting for at least {n} players, including you. Share the code to invite them.', { n: MIN_PLAYERS })}</Text>}
+            {!roundsOk && <Text style={st.muted}>{t('Choose a group or period for every round.')}</Text>}
           </>
         ) : (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, alignSelf: 'center' }}>
             <ActivityIndicator color={palette.link} />
-            <Text style={st.muted}>Waiting for the host to start…</Text>
+            <Text style={st.muted}>{t('Waiting for the host to start…')}</Text>
           </View>
         )}
         <Pressable onPress={leave} accessibilityRole="button" hitSlop={6} style={{ alignSelf: 'center' }}>
-          <Text style={st.link}>{isHost ? 'Cancel the Peer Review' : 'Leave'}</Text>
+          <Text style={st.link}>{isHost ? t('Cancel the Peer Review') : t('Leave')}</Text>
         </Pressable>
       </ScrollView>
     );
@@ -560,7 +557,7 @@ export default function PeerReviewScreen() {
     if (!q) {
       return (
         <View style={[st.screen, st.content]}>
-          <Text style={st.text}>There weren’t enough questions for this round.</Text>
+          <Text style={st.text}>{t('There weren’t enough questions for this round.')}</Text>
         </View>
       );
     }
@@ -587,14 +584,14 @@ export default function PeerReviewScreen() {
         const quiz = switcherooQuiz(stage.quiz, stage.quiz);
         const question = replacementQuestion(quiz.category, quiz.level, (id) => imageOf(id)?.thumb, stage.questions, toImperial);
         if (!question) return;
-        const label = `${categoryName(quiz.category)}, level ${quiz.level}`;
+        const label = t('{quiz}, level {level}', { quiz: categoryName(quiz.category, t), level: quiz.level });
         setUsed((x) => ({ ...x, swap: true }));
         toHost({ t: 'swap', target: target.id, question, label });
-        setNotice(`🔀 Switcheroo sent: ${target.name}’s ${last ? 'question' : 'next question'} is now from ${label}.`);
+        setNotice(`🔀 ${last ? t('Switcheroo sent: {who}’s question is now from {quiz}.', { who: target.name, quiz: label }) : t('Switcheroo sent: {who}’s next question is now from {quiz}.', { who: target.name, quiz: label })}`);
       } else {
         setUsed((x) => ({ ...x, hurry: true }));
         toHost({ t: 'hurry', target: target.id });
-        setNotice(`⏳ Hurry Up sent: ${target.name}’s time is cut in half.`);
+        setNotice(`⏳ ${t('Hurry Up sent: {who}’s time is cut in half.', { who: target.name })}`);
       }
     };
     return (
@@ -606,7 +603,7 @@ export default function PeerReviewScreen() {
         chosen={stage.picked}
         onChoose={answer}
         onNext={next}
-        nextLabel={stage.waiting ? 'Waiting for everyone to answer…' : last ? 'See the leaderboard' : 'Next question'}
+        nextLabel={stage.waiting ? t('Waiting for everyone to answer…') : last ? t('See the leaderboard') : t('Next question')}
         nextDisabled={stage.waiting}
         allowReadMore={false}
         hidden={stage.hidden}
@@ -615,7 +612,7 @@ export default function PeerReviewScreen() {
             key: 'fifty',
             icon: '✂️',
             label: '50/50',
-            hint: 'Remove two wrong answers',
+            hint: t('Remove two wrong answers'),
             used: used.fifty,
             available: true,
             onPress: () => {
@@ -623,17 +620,17 @@ export default function PeerReviewScreen() {
               setStage({ ...stage, hidden: fiftyFifty(q) });
             },
           },
-          { key: 'copy', icon: '👀', label: 'Copy', hint: targets.copy.length ? 'Copy a player’s answer' : 'Once someone has answered', used: used.copy, available: targets.copy.length > 0, onPress: () => setTargeting('copy') },
-          { key: 'hurry', icon: '⏳', label: 'Hurry Up', hint: 'Halve a player’s time', afterAnswer: true, used: used.hurry, available: targets.hurry.length > 0, onPress: () => setTargeting('hurry') },
-          { key: 'swap', icon: '🔀', label: 'Switcheroo', hint: 'Switch a player’s question', used: used.swap, available: targets.swap.length > 0, onPress: () => setTargeting('swap') },
+          { key: 'copy', icon: '👀', label: t('Copy'), hint: targets.copy.length ? t('Copy a player’s answer') : t('Once someone has answered'), used: used.copy, available: targets.copy.length > 0, onPress: () => setTargeting('copy') },
+          { key: 'hurry', icon: '⏳', label: t('Hurry Up'), hint: t('Halve a player’s time'), afterAnswer: true, used: used.hurry, available: targets.hurry.length > 0, onPress: () => setTargeting('hurry') },
+          { key: 'swap', icon: '🔀', label: t('Switcheroo'), hint: t('Switch a player’s question'), used: used.swap, available: targets.swap.length > 0, onPress: () => setTargeting('swap') },
         ]}
         header={
           <>
             <Text style={st.muted}>
-              Round {stage.round + 1} of {ROUNDS}: {quizText(stage.quiz)} · {answeredCount} of {players.filter((p) => p.connected).length} answered
+              {t('Round {round} of {rounds}: {quiz} · {n} of {total} answered', { round: stage.round + 1, rounds: ROUNDS, quiz: quizText(stage.quiz, t), n: answeredCount, total: players.filter((p) => p.connected).length })}
             </Text>
             {stage.picked === null && (
-              <View style={{ gap: 4 }} accessible accessibilityLabel={`${secondsLeft} seconds left`}>
+              <View style={{ gap: 4 }} accessible accessibilityLabel={t('{n} seconds left', { n: secondsLeft })}>
                 <Text style={[st.rowTitle, secondsLeft <= 5 && { color: palette.bad }]}>⏱️ {secondsLeft} s</Text>
                 <View style={{ height: 4, borderRadius: 2, backgroundColor: palette.track, overflow: 'hidden' }}>
                   <View style={{ width: `${(secondsLeft / QUESTION_SECONDS) * 100}%`, height: '100%', backgroundColor: secondsLeft <= 5 ? palette.bad : palette.accent }} />
@@ -642,7 +639,7 @@ export default function PeerReviewScreen() {
             )}
             {!!stage.switched[stage.index] && (
               <View style={[st.card, { padding: 10, borderColor: palette.accent, borderWidth: 2 }]}>
-                <Text style={st.rowTitle}>🔀 Switched: {stage.switched[stage.index]}</Text>
+                <Text style={st.rowTitle}>🔀 {t('Switched: {quiz}', { quiz: stage.switched[stage.index]! })}</Text>
               </View>
             )}
             {!!notice && (
@@ -653,7 +650,7 @@ export default function PeerReviewScreen() {
             {targeting && (
               <View style={[st.card, { padding: 10, gap: 6 }]}>
                 <Text style={st.rowTitle}>
-                  {targeting === 'copy' ? '👀 Copy whose answer?' : targeting === 'hurry' ? '⏳ Hurry up who?' : '🔀 Switch whose question?'}
+                  {targeting === 'copy' ? t('👀 Copy whose answer?') : targeting === 'hurry' ? t('⏳ Hurry up who?') : t('🔀 Switch whose question?')}
                 </Text>
                 {targets[targeting].map((p) => (
                   <Pressable key={p.id} onPress={() => fire(targeting, p)} accessibilityRole="button" style={({ pressed }) => [pressed && st.pressed]}>
@@ -661,7 +658,7 @@ export default function PeerReviewScreen() {
                   </Pressable>
                 ))}
                 <Pressable onPress={() => setTargeting(null)} accessibilityRole="button" hitSlop={6}>
-                  <Text style={st.link}>Cancel</Text>
+                  <Text style={st.link}>{t('Cancel')}</Text>
                 </Pressable>
               </View>
             )}
@@ -677,8 +674,8 @@ export default function PeerReviewScreen() {
     const top = ranked[0];
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
-        <Text style={[st.title, { textAlign: 'center' }]}>{final ? `🏆 ${top?.id === me ? 'You win!' : `${top?.name ?? 'Nobody'} wins!`}` : `Leaderboard after round ${stage.round + 1}`}</Text>
-        {!final && <Text style={[st.muted, { textAlign: 'center' }]}>Next: round {stage.round + 2}, {quizText(rounds[stage.round + 1]!)}</Text>}
+        <Text style={[st.title, { textAlign: 'center' }]}>{final ? `🏆 ${top?.id === me ? t('You win!') : t('{who} wins!', { who: top?.name ?? t('Nobody') })}` : t('Leaderboard after round {n}', { n: stage.round + 1 })}</Text>
+        {!final && <Text style={[st.muted, { textAlign: 'center' }]}>{t('Next: round {n}, {quiz}', { n: stage.round + 2, quiz: quizText(rounds[stage.round + 1]!, t) })}</Text>}
         <View style={st.card}>
           {ranked.map((p, i) => (
             <View key={p.id}>
@@ -700,16 +697,16 @@ export default function PeerReviewScreen() {
             }}
             accessibilityRole="button"
             style={({ pressed }) => [st.button, pressed && st.pressed]}>
-            <Text style={st.buttonText}>{final ? 'New Peer Review with these players' : `Start round ${stage.round + 2}`}</Text>
+            <Text style={st.buttonText}>{final ? t('New Peer Review with these players') : t('Start round {n}', { n: stage.round + 2 })}</Text>
           </Pressable>
         ) : (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, alignSelf: 'center' }}>
             <ActivityIndicator color={palette.link} />
-            <Text style={st.muted}>{final ? 'Thanks for playing!' : 'Waiting for the host to start the next round…'}</Text>
+            <Text style={st.muted}>{final ? t('Thanks for playing!') : t('Waiting for the host to start the next round…')}</Text>
           </View>
         )}
         <Pressable onPress={leave} accessibilityRole="button" hitSlop={6} style={{ alignSelf: 'center' }}>
-          <Text style={st.link}>{isHost ? 'End the Peer Review' : 'Leave'}</Text>
+          <Text style={st.link}>{isHost ? t('End the Peer Review') : t('Leave')}</Text>
         </Pressable>
       </ScrollView>
     );
@@ -728,7 +725,7 @@ export default function PeerReviewScreen() {
         }}
         accessibilityRole="button"
         style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-        <Text style={st.buttonText}>Back to Peer Review</Text>
+        <Text style={st.buttonText}>{t('Back to Peer Review')}</Text>
       </Pressable>
     </ScrollView>
   );

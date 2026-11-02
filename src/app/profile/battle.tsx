@@ -16,6 +16,7 @@ import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty
 import { titleById } from '@/lib/titles';
 import { toImperial } from '@/lib/units';
 import { useOwnPicture } from '@/lib/user-photos';
+import { type T, useT } from '@/lib/i18n';
 
 type Pick = { category: Category; level: Difficulty };
 type Role = 'host' | 'guest';
@@ -51,7 +52,7 @@ type Stage =
   | { kind: 'ended'; message: string };
 
 const samePick = (a: Pick, b: Pick) => categoryKey(a.category) === categoryKey(b.category) && a.level === b.level;
-const pickText = (p: Pick) => `${categoryName(p.category)}, level ${p.level} (${DIFFICULTIES[p.level - 1]!.name})`;
+const pickText = (p: Pick, t: T) => t('{quiz}, level {level} ({difficulty})', { quiz: categoryName(p.category, t), level: p.level, difficulty: t(DIFFICULTIES[p.level - 1]!.name) });
 // Who goes first in the roll: the host has odds, the guest evens.
 const winnerOf = (n: number): Role => (n % 2 === 1 ? 'host' : 'guest');
 
@@ -66,6 +67,7 @@ const ERRORS: Record<Extract<LinkState, { kind: 'error' }>['reason'], string> = 
 // code, answer the same ten questions.
 export default function BattleScreen() {
   const st = useProfileStyles();
+  const t = useT();
   const palette = usePalette();
   const { profile, reduceMotion } = useProfile();
   const ownPicture = useOwnPicture();
@@ -103,7 +105,7 @@ export default function BattleScreen() {
   const myName = profile.name.trim();
   // The other player's name, or if they haven't set one, "the host" or "the challenger": `who`
   // mid-sentence, `Who` at the start of one.
-  const fallback = role === 'host' ? 'the challenger' : 'the host';
+  const fallback = role === 'host' ? t('the challenger') : t('the host');
   const who = them.name || fallback;
   const Who = them.name || fallback.charAt(0).toUpperCase() + fallback.slice(1);
   // Set once the host has decided, so a late message can't start a second round.
@@ -209,8 +211,8 @@ export default function BattleScreen() {
       else if (s.kind === 'open') {
         link.current?.send({ t: 'hello', name: myName, title: titleById(profile.title)?.name ?? '', avatar: mine });
         backToPick();
-      } else if (s.kind === 'error') setStage({ kind: 'ended', message: ERRORS[s.reason] });
-      else if (s.kind === 'closed') setStage((x) => (x.kind === 'ended' || x.kind === 'start' ? x : { kind: 'ended', message: `${Who} has left the game.` }));
+      } else if (s.kind === 'error') setStage({ kind: 'ended', message: t(ERRORS[s.reason]) });
+      else if (s.kind === 'closed') setStage((x) => (x.kind === 'ended' || x.kind === 'start' ? x : { kind: 'ended', message: t('{who} has left the game.', { who: Who }) }));
     };
     timeUp.current = () => answer(-1);
     handle.current = (m) => {
@@ -261,10 +263,10 @@ export default function BattleScreen() {
             // A switched question on screen gets a fresh 30 seconds.
             setStage({ ...switched, picked: null, score: stage.score - lost, hidden: [], waiting: false, deadline: Date.now() + QUESTION_SECONDS * 1000 });
             if (lost) link.current?.send({ t: 'score', score: stage.score - lost });
-            setNotice(`🔀 ${Who} used Switcheroo! ${hadAnswered ? 'Your answer doesn’t count: here’s a new last question.' : 'Your last question has been switched.'}`);
+            setNotice(`🔀 ${t('{who} used Switcheroo!', { who: Who })} ${hadAnswered ? t('Your answer doesn’t count: here’s a new last question.') : t('Your last question has been switched.')}`);
           } else {
             setStage(switched);
-            setNotice(`🔀 ${Who} used Switcheroo! Your next question is now from ${label}.`);
+            setNotice(`🔀 ${t('{who} used Switcheroo! Your next question is now from {quiz}.', { who: Who, quiz: label })}`);
           }
           break;
         }
@@ -273,12 +275,12 @@ export default function BattleScreen() {
           if (stage.kind === 'play' && m.index === stage.index && stage.picked === null) {
             const left = Math.max(1000, (stage.deadline - Date.now()) / 2);
             setStage({ ...stage, deadline: Date.now() + left });
-            setNotice(`⏳ ${Who} used Hurry Up! Your time has been cut in half.`);
+            setNotice(`⏳ ${t('{who} used Hurry Up! Your time has been cut in half.', { who: Who })}`);
           }
           break;
         case 'switch-missed':
           setUsed((x) => ({ ...x, swap: false }));
-          setNotice(`Too late: ${who} had already reached their last question, so your Switcheroo is back.`);
+          setNotice(t('Too late: {who} had already reached their last question, so your Switcheroo is back.', { who }));
           break;
         case 'score':
           setTheirProgress((p) => ({ ...p, score: Number(m.score) || 0 }));
@@ -291,7 +293,7 @@ export default function BattleScreen() {
           else setTheirPick(null);
           break;
         case 'bye':
-          setStage((x) => (x.kind === 'ended' ? x : { kind: 'ended', message: `${Who} has left the game.` }));
+          setStage((x) => (x.kind === 'ended' ? x : { kind: 'ended', message: t('{who} has left the game.', { who: Who }) }));
           break;
       }
     };
@@ -337,31 +339,28 @@ export default function BattleScreen() {
   if (stage.kind === 'start') {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
-        <Text style={st.text}>Play someone on another phone: you both answer the same ten questions, and the higher score wins.</Text>
+        <Text style={st.text}>{t('Play someone on another phone: you both answer the same ten questions, and the higher score wins.')}</Text>
         <Text style={st.muted}>
-          Named after the Bone Wars of the late 1800s, when rival fossil hunters Edward Drinker Cope and Othniel Marsh raced, spied on and sabotaged each other
-          to find new dinosaurs. Between them they named more than 130 new species, from Stegosaurus and Triceratops to Camarasaurus.
+          {t('Named after the Bone Wars of the late 1800s, when rival fossil hunters Edward Drinker Cope and Othniel Marsh raced, spied on and sabotaged each other to find new dinosaurs. Between them they named more than 130 new species, from Stegosaurus and Triceratops to Camarasaurus.')}
         </Text>
         <Pressable onPress={host} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>Host a game</Text>
-            <Text style={st.rowSub}>Get a battle code to send to the other player</Text>
+            <Text style={st.rowTitle}>{t('Host a game')}</Text>
+            <Text style={st.rowSub}>{t('Get a battle code to send to the other player')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <Pressable onPress={() => setStage({ kind: 'join', status: 'idle' })} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>Join a game</Text>
-            <Text style={st.rowSub}>Enter the battle code you were sent</Text>
+            <Text style={st.rowTitle}>{t('Join a game')}</Text>
+            <Text style={st.rowSub}>{t('Enter the battle code you were sent')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
         <View style={[st.card, { padding: 14, gap: 4 }]}>
-          <Text style={st.rowTitle}>🔒 How the connection works</Text>
+          <Text style={st.rowTitle}>{t('🔒 How the connection works')}</Text>
           <Text style={st.rowSub}>
-            The two phones connect directly to each other. To find each other they briefly use a free public connection service (PeerJS) and Google’s address
-            lookup (STUN), which see your internet address, as any website does. Once connected, your choices, questions and answers go only between the two
-            phones, and nothing is stored.
+            {t('The two phones connect directly to each other. To find each other they briefly use a free public connection service (PeerJS) and Google’s address lookup (STUN), which see your internet address, as any website does. Once connected, your choices, questions and answers go only between the two phones, and nothing is stored.')}
           </Text>
         </View>
       </ScrollView>
@@ -376,20 +375,20 @@ export default function BattleScreen() {
     };
     return (
       <ScrollView style={st.screen} contentContainerStyle={[st.content, { alignItems: 'center' }]}>
-        <Text style={st.heading}>Your battle code</Text>
-        <Text style={[st.title, { fontSize: 44, letterSpacing: 8, fontVariant: ['tabular-nums'] }]} accessibilityLabel={`Battle code ${stage.code.split('').join(' ')}`} selectable>
+        <Text style={st.heading}>{t('Your battle code')}</Text>
+        <Text style={[st.title, { fontSize: 44, letterSpacing: 8, fontVariant: ['tabular-nums'] }]} accessibilityLabel={t('Battle code {code}', { code: stage.code.split('').join(' ') })} selectable>
           {stage.code}
         </Text>
         <Pressable onPress={copy} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-          <Text style={st.buttonText}>{copied ? 'Copied!' : '📋 Copy code'}</Text>
+          <Text style={st.buttonText}>{copied ? t('Copied!') : t('📋 Copy code')}</Text>
         </Pressable>
-        <Text style={[st.text, { textAlign: 'center' }]}>Send this code to the other player. They choose Join a game and type it in.</Text>
+        <Text style={[st.text, { textAlign: 'center' }]}>{t('Send this code to the other player. They choose Join a game and type it in.')}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }} accessibilityLiveRegion="polite">
           <ActivityIndicator color={palette.link} />
-          <Text style={st.muted}>{stage.status === 'connecting' ? 'Setting up…' : stage.status === 'joining' ? 'Someone is joining…' : 'Waiting for someone to join…'}</Text>
+          <Text style={st.muted}>{stage.status === 'connecting' ? t('Setting up…') : stage.status === 'joining' ? t('Someone is joining…') : t('Waiting for someone to join…')}</Text>
         </View>
         <Pressable onPress={leave} accessibilityRole="button" hitSlop={6}>
-          <Text style={st.link}>Cancel</Text>
+          <Text style={st.link}>{t('Cancel')}</Text>
         </Pressable>
       </ScrollView>
     );
@@ -400,18 +399,18 @@ export default function BattleScreen() {
     const busy = stage.status === 'connecting';
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content} keyboardShouldPersistTaps="handled">
-        <Text style={st.heading}>Enter the battle code</Text>
+        <Text style={st.heading}>{t('Enter the battle code')}</Text>
         <TextInput
           value={code}
           onChangeText={(t) => setCode(t.replace(/\D/g, '').slice(0, 6))}
-          placeholder="6-digit code"
+          placeholder={t('6-digit code')}
           placeholderTextColor={palette.muted}
           keyboardType="number-pad"
           maxLength={6}
           editable={!busy}
           autoFocus
           style={[st.input, { fontSize: 28, letterSpacing: 6, textAlign: 'center' }]}
-          accessibilityLabel="Battle code"
+          accessibilityLabel={t('Battle code')}
           onSubmitEditing={() => valid && !busy && join()}
         />
         <Pressable
@@ -420,10 +419,10 @@ export default function BattleScreen() {
           accessibilityRole="button"
           accessibilityState={{ disabled: !valid || busy, busy }}
           style={({ pressed }) => [st.button, pressed && st.pressed, (!valid || busy) && { opacity: 0.5 }]}>
-          <Text style={st.buttonText}>{busy ? 'Connecting…' : 'Join'}</Text>
+          <Text style={st.buttonText}>{busy ? t('Connecting…') : t('Join')}</Text>
         </Pressable>
         <Pressable onPress={leave} accessibilityRole="button" hitSlop={6} style={{ alignSelf: 'center' }}>
-          <Text style={st.link}>Cancel</Text>
+          <Text style={st.link}>{t('Cancel')}</Text>
         </Pressable>
       </ScrollView>
     );
@@ -437,24 +436,24 @@ export default function BattleScreen() {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
             <PlayerAvatar name={them.name} avatar={them.avatar} size={44} />
             <View style={{ flex: 1 }}>
-              <Text style={st.rowTitle}>⚔️ Connected to {who}</Text>
+              <Text style={st.rowTitle}>⚔️ {t('Connected to {who}', { who })}</Text>
               {!!them.title && <Text style={st.rowSub}>{them.title}</Text>}
             </View>
           </View>
           <Text style={st.rowSub}>
-            {theirPick ? `${Who} has chosen and is ready.` : `${Who} is choosing.`} If you choose differently, a roll of odds or evens decides:{' '}
-            {role === 'host' ? 'you have odds' : 'you have evens'}.
+            {theirPick ? t('{who} has chosen and is ready.', { who: Who }) : t('{who} is choosing.', { who: Who })}{' '}
+            {role === 'host' ? t('If you choose differently, a roll of odds or evens decides: you have odds.') : t('If you choose differently, a roll of odds or evens decides: you have evens.')}
           </Text>
         </View>
         {ready ? (
           <View style={[st.card, { padding: 14, gap: 8 }]}>
-            <Text style={st.rowTitle}>Your choice: {pickText(myPick)}</Text>
+            <Text style={st.rowTitle}>{t('Your choice: {quiz}', { quiz: pickText(myPick, t) })}</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
               <ActivityIndicator color={palette.link} />
-              <Text style={st.muted}>Waiting for {who}…</Text>
+              <Text style={st.muted}>{t('Waiting for {who}…', { who })}</Text>
             </View>
             <Pressable onPress={() => setMyReady(false)} accessibilityRole="button" hitSlop={6}>
-              <Text style={st.link}>Change my choice</Text>
+              <Text style={st.link}>{t('Change my choice')}</Text>
             </Pressable>
           </View>
         ) : (
@@ -465,13 +464,13 @@ export default function BattleScreen() {
               disabled={size < 8}
               accessibilityRole="button"
               style={({ pressed }) => [st.button, pressed && st.pressed, size < 8 && { opacity: 0.5 }]}>
-              <Text style={st.buttonText}>Ready: {categoryName(category)}, level {level}</Text>
+              <Text style={st.buttonText}>{t('Ready: {quiz}, level {level}', { quiz: categoryName(category, t), level })}</Text>
             </Pressable>
-            {size < 8 && <Text style={st.muted}>Choose a group or period first.</Text>}
+            {size < 8 && <Text style={st.muted}>{t('Choose a group or period first.')}</Text>}
           </>
         )}
         <Pressable onPress={leave} accessibilityRole="button" hitSlop={6} style={{ alignSelf: 'center' }}>
-          <Text style={st.link}>Leave the game</Text>
+          <Text style={st.link}>{t('Leave the game')}</Text>
         </Pressable>
       </ScrollView>
     );
@@ -489,45 +488,43 @@ export default function BattleScreen() {
         {stage.roll === null ? (
           <>
             <Text style={{ fontSize: 48 }}>🤝</Text>
-            <Text style={[st.title, { textAlign: 'center' }]}>You both chose the same!</Text>
-            <Text style={st.text}>{pickText(stage.chosen)}</Text>
+            <Text style={[st.title, { textAlign: 'center' }]}>{t('You both chose the same!')}</Text>
+            <Text style={st.text}>{pickText(stage.chosen, t)}</Text>
           </>
         ) : (
           <>
-            <Text style={st.heading}>You chose different quizzes</Text>
+            <Text style={st.heading}>{t('You chose different quizzes')}</Text>
             <View style={[st.card, { alignSelf: 'stretch' }]}>
               <View style={st.row}>
                 <AvatarImage avatar={profile.avatar} name={profile.name} size={36} />
                 <View style={st.rowText}>
-                  <Text style={st.rowTitle}>You ({me === 'host' ? 'odds' : 'evens'})</Text>
-                  <Text style={st.rowSub}>{pickText(mine)}</Text>
+                  <Text style={st.rowTitle}>{me === 'host' ? t('You (odds)') : t('You (evens)')}</Text>
+                  <Text style={st.rowSub}>{pickText(mine, t)}</Text>
                 </View>
               </View>
               <View style={st.divider} />
               <View style={st.row}>
                 <PlayerAvatar name={them.name} avatar={them.avatar} size={36} />
                 <View style={st.rowText}>
-                  <Text style={st.rowTitle}>
-                    {Who} ({me === 'host' ? 'evens' : 'odds'})
-                  </Text>
-                  <Text style={st.rowSub}>{pickText(theirs)}</Text>
+                  <Text style={st.rowTitle}>{me === 'host' ? t('{who} (evens)', { who: Who }) : t('{who} (odds)', { who: Who })}</Text>
+                  <Text style={st.rowSub}>{pickText(theirs, t)}</Text>
                 </View>
               </View>
             </View>
-            <Text style={[st.title, { fontSize: 64, fontVariant: ['tabular-nums'] }]} accessibilityLabel={landed ? `The number is ${stage.roll}` : 'Rolling a number'}>
+            <Text style={[st.title, { fontSize: 64, fontVariant: ['tabular-nums'] }]} accessibilityLabel={landed ? t('The number is {n}', { n: stage.roll ?? '' }) : t('Rolling a number')}>
               {display ?? '–'}
             </Text>
             {landed && (
               <Text style={[st.title, { textAlign: 'center' }]} accessibilityLiveRegion="polite">
-                {stage.roll % 2 === 1 ? 'Odd' : 'Even'}: {iWon ? 'your quiz wins!' : `${who}’s quiz wins!`}
+                {stage.roll % 2 === 1 ? t('Odd') : t('Even')}: {iWon ? t('your quiz wins!') : t('{who}’s quiz wins!', { who })}
               </Text>
             )}
-            {landed && <Text style={st.text}>{pickText(stage.chosen)}</Text>}
+            {landed && <Text style={st.text}>{pickText(stage.chosen, t)}</Text>}
           </>
         )}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <ActivityIndicator color={palette.link} />
-          <Text style={st.muted}>Starting…</Text>
+          <Text style={st.muted}>{t('Starting…')}</Text>
         </View>
       </ScrollView>
     );
@@ -539,9 +536,9 @@ export default function BattleScreen() {
     if (!q) {
       return (
         <View style={[st.screen, st.content]}>
-          <Text style={st.text}>There weren’t enough questions for this choice. Choose again.</Text>
+          <Text style={st.text}>{t('There weren’t enough questions for this choice. Choose again.')}</Text>
           <Pressable onPress={backToPick} accessibilityRole="button">
-            <Text style={st.link}>Back</Text>
+            <Text style={st.link}>{t('Back')}</Text>
           </Pressable>
         </View>
       );
@@ -565,7 +562,7 @@ export default function BattleScreen() {
         chosen={stage.picked}
         onChoose={choose}
         onNext={next}
-        nextLabel={stage.waiting ? `Waiting for ${who} to answer…` : stage.index + 1 < total ? 'Next question' : 'See the result'}
+        nextLabel={stage.waiting ? t('Waiting for {who} to answer…', { who }) : stage.index + 1 < total ? t('Next question') : t('See the result')}
         nextDisabled={stage.waiting}
         allowReadMore={false}
         hidden={stage.hidden}
@@ -574,7 +571,7 @@ export default function BattleScreen() {
             key: 'fifty',
             icon: '✂️',
             label: '50/50',
-            hint: 'Remove two wrong answers',
+            hint: t('Remove two wrong answers'),
             used: used.fifty,
             available: true,
             onPress: () => {
@@ -585,8 +582,8 @@ export default function BattleScreen() {
           {
             key: 'copy',
             icon: '👀',
-            label: 'Copy',
-            hint: canCopy ? `Use ${who}’s answer` : `Once ${who} has answered`,
+            label: t('Copy'),
+            hint: canCopy ? t('Use {who}’s answer', { who }) : t('Once {who} has answered', { who }),
             used: used.copy,
             available: canCopy,
             onPress: () => {
@@ -598,34 +595,34 @@ export default function BattleScreen() {
           {
             key: 'hurry',
             icon: '⏳',
-            label: 'Hurry Up',
-            hint: `Halve ${who}’s time`,
+            label: t('Hurry Up'),
+            hint: t('Halve {who}’s time', { who }),
             afterAnswer: true,
             used: used.hurry,
             available: theirAnswers[stage.index] === undefined && !theirProgress.done,
             onPress: () => {
               setUsed((x) => ({ ...x, hurry: true }));
               link.current?.send({ t: 'hurry', index: stage.index });
-              setNotice(`⏳ Hurry Up sent: ${who}’s time for this question is cut in half.`);
+              setNotice(`⏳ ${t('Hurry Up sent: {who}’s time for this question is cut in half.', { who })}`);
             },
           },
           {
             key: 'swap',
             icon: '🔀',
-            label: 'Switcheroo',
-            hint: last ? `Change ${who}’s last question` : `Change ${who}’s next question`,
+            label: t('Switcheroo'),
+            hint: last ? t('Change {who}’s last question', { who }) : t('Change {who}’s next question', { who }),
             used: used.swap,
             available: canSwap,
             onPress: () => {
               const target = switcherooQuiz(myPick, stage.chosen);
               const question = replacementQuestion(target.category, target.level, (id) => imageOf(id)?.thumb, stage.questions, toImperial);
               if (!question) return;
-              const label = `${categoryName(target.category)}, level ${target.level}`;
+              const label = t('{quiz}, level {level}', { quiz: categoryName(target.category, t), level: target.level });
               setUsed((x) => ({ ...x, swap: true }));
               link.current?.send({ t: 'switch', index: theirProgress.answered, question, label });
               // On the last question their earlier answer no longer counts: wait for their new one.
               if (last) setTheirAnswers((a) => Object.fromEntries(Object.entries(a).filter(([k]) => Number(k) !== stage.index)));
-              setNotice(`🔀 Switcheroo sent: ${who}’s ${last ? 'last' : 'next'} question is now from ${label}.`);
+              setNotice(`🔀 ${last ? t('Switcheroo sent: {who}’s last question is now from {quiz}.', { who, quiz: label }) : t('Switcheroo sent: {who}’s next question is now from {quiz}.', { who, quiz: label })}`);
             },
           },
         ]}
@@ -634,11 +631,11 @@ export default function BattleScreen() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
               <PlayerAvatar name={them.name} avatar={them.avatar} size={24} />
               <Text style={[st.muted, { flex: 1 }]}>
-                {Who}: {theirAnswers[stage.index] !== undefined ? 'has answered' : 'still answering'} · score {theirProgress.score}
+                {theirAnswers[stage.index] !== undefined ? t('{who}: has answered · score {score}', { who: Who, score: theirProgress.score }) : t('{who}: still answering · score {score}', { who: Who, score: theirProgress.score })}
               </Text>
             </View>
             {stage.picked === null && (
-              <View style={{ gap: 4 }} accessibilityLabel={`${secondsLeft} seconds left`} accessible>
+              <View style={{ gap: 4 }} accessibilityLabel={t('{n} seconds left', { n: secondsLeft })} accessible>
                 <Text style={[st.rowTitle, secondsLeft <= 5 && { color: palette.bad }]}>⏱️ {secondsLeft} s</Text>
                 <View style={{ height: 4, borderRadius: 2, backgroundColor: palette.track, overflow: 'hidden' }}>
                   <View style={{ width: `${(secondsLeft / QUESTION_SECONDS) * 100}%`, height: '100%', backgroundColor: secondsLeft <= 5 ? palette.bad : palette.accent }} />
@@ -648,7 +645,7 @@ export default function BattleScreen() {
             {!!stage.switched[stage.index] && (
               <View style={[st.card, { padding: 10, borderColor: palette.accent, borderWidth: 2 }]}>
                 <Text style={st.rowTitle}>
-                  🔀 Switched by {who}: {stage.switched[stage.index]}
+                  🔀 {t('Switched by {who}: {quiz}', { who, quiz: stage.switched[stage.index]! })}
                 </Text>
               </View>
             )}
@@ -672,13 +669,11 @@ export default function BattleScreen() {
         {waiting ? (
           <>
             <Text style={{ fontSize: 56 }}>⏳</Text>
-            <Text style={st.title}>
-              You scored {stage.score} out of {stage.total}
-            </Text>
+            <Text style={st.title}>{t('You scored {score} out of {total}', { score: stage.score, total: stage.total })}</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }} accessibilityLiveRegion="polite">
               <ActivityIndicator color={palette.link} />
               <Text style={st.muted}>
-                Waiting for {who} to finish ({theirProgress.answered} of {stage.total})…
+                {t('Waiting for {who} to finish ({n} of {total})…', { who, n: theirProgress.answered, total: stage.total })}
               </Text>
             </View>
           </>
@@ -686,12 +681,12 @@ export default function BattleScreen() {
           <>
             <Text style={{ fontSize: 56 }}>{outcome === 'win' ? '🏆' : outcome === 'draw' ? '🤝' : '🦴'}</Text>
             <Text style={st.title} accessibilityLiveRegion="polite">
-              {outcome === 'win' ? 'You win!' : outcome === 'draw' ? 'It’s a draw!' : `${Who} wins!`}
+              {outcome === 'win' ? t('You win!') : outcome === 'draw' ? t('It’s a draw!') : t('{who} wins!', { who: Who })}
             </Text>
             <View style={[st.card, { alignSelf: 'stretch' }]}>
               <View style={st.row}>
                 <AvatarImage avatar={profile.avatar} name={profile.name} size={36} />
-                <Text style={[st.rowTitle, { flex: 1 }]}>You</Text>
+                <Text style={[st.rowTitle, { flex: 1 }]}>{t('You')}</Text>
                 <Text style={st.rowTitle}>
                   {stage.score} / {stage.total}
                 </Text>
@@ -708,7 +703,7 @@ export default function BattleScreen() {
                 </Text>
               </View>
             </View>
-            <Text style={st.muted}>{pickText(stage.chosen)}</Text>
+            <Text style={st.muted}>{pickText(stage.chosen, t)}</Text>
             <Pressable
               onPress={() => {
                 link.current?.send({ t: 'again' });
@@ -716,12 +711,12 @@ export default function BattleScreen() {
               }}
               accessibilityRole="button"
               style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-              <Text style={st.buttonText}>Play again</Text>
+              <Text style={st.buttonText}>{t('Play again')}</Text>
             </Pressable>
           </>
         )}
         <Pressable onPress={leave} accessibilityRole="button" hitSlop={6}>
-          <Text style={st.link}>Leave the game</Text>
+          <Text style={st.link}>{t('Leave the game')}</Text>
         </Pressable>
       </ScrollView>
     );
@@ -739,7 +734,7 @@ export default function BattleScreen() {
         }}
         accessibilityRole="button"
         style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-        <Text style={st.buttonText}>Back to Bone War</Text>
+        <Text style={st.buttonText}>{t('Back to Bone War')}</Text>
       </Pressable>
     </ScrollView>
   );

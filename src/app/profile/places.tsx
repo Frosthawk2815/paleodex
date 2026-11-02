@@ -8,11 +8,13 @@ import { usePalette } from '@/hooks/use-palette';
 import { formatDistance, MUSEUM_AND_ZOO_LIST, type Place, placeById, placesNear } from '@/lib/places';
 import { useProfile } from '@/lib/profile';
 import { TITLES } from '@/lib/titles';
+import { useT } from '@/lib/i18n';
 
 const ICON: Record<Place['kind'], string> = { museum: '🏛️', zoo: '🦒', site: '⛏️' };
 const KIND: Record<Place['kind'], string> = { museum: 'Natural history museum', zoo: 'Accredited zoo', site: 'Fossil site' };
 
-const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`;
+// Counts of each kind of place, worded for the user's language.
+const KIND_COUNT: Record<Place['kind'], [string, string]> = { museum: ['1 museum', '{n} museums'], zoo: ['1 zoo', '{n} zoos'], site: ['1 fossil site', '{n} fossil sites'] };
 
 type Result = { here: Place[]; nearest: { place: Place; metres: number }[] } | { error: string };
 
@@ -21,6 +23,7 @@ type Result = { here: Place[]; nearest: { place: Place; metres: number }[] } | {
 // saved.
 export default function PlacesScreen() {
   const st = useProfileStyles();
+  const t = useT();
   const palette = usePalette();
   const { profile, update } = useProfile();
   const imperial = profile.settings.units === 'imperial';
@@ -34,7 +37,7 @@ export default function PlacesScreen() {
     try {
       const { granted } = await requestForegroundPermissionsAsync();
       if (!granted) {
-        setResult({ error: 'PaleoDex needs your location to check you in. You can allow it in your device’s settings.' });
+        setResult({ error: t('PaleoDex needs your location to check you in. You can allow it in your device’s settings.') });
         return;
       }
       const pos = await getCurrentPositionAsync({ accuracy: Accuracy.High });
@@ -43,7 +46,7 @@ export default function PlacesScreen() {
       if (ids.length) update({ places: [...profile.places, ...ids] });
       setResult({ here: here.map((h) => h.place), nearest });
     } catch {
-      setResult({ error: 'Your location couldn’t be found. Check that location is turned on and try again.' });
+      setResult({ error: t('Your location couldn’t be found. Check that location is turned on and try again.') });
     } finally {
       setBusy(false);
     }
@@ -76,24 +79,22 @@ export default function PlacesScreen() {
   return (
     <ScrollView style={st.screen} contentContainerStyle={st.content}>
       <View style={[st.card, { padding: 14, gap: 4 }]}>
-        <Text style={st.rowTitle}>🔒 Your location stays with you</Text>
+        <Text style={st.rowTitle}>{t('🔒 Your location stays with you')}</Text>
         <Text style={st.rowSub}>
-          I don’t collect, store or sell your location data. Your location is read only when you tap a location button, and it never leaves your device.
-          Your birthplace, your home and the places you’ve visited are kept only on this device, and you can delete them at any time, keeping or removing
-          the titles they earned.
+          {t('I don’t collect, store or sell your location data. Your location is read only when you tap a location button, and it never leaves your device. Your birthplace, your home and the places you’ve visited are kept only on this device, and you can delete them at any time, keeping or removing the titles they earned.')}
         </Text>
       </View>
 
-      <Text style={st.heading}>Place of birth</Text>
-      <Text style={st.muted}>Your birthplace and home appear on the globe with your profile picture, and travel with the continents through time.</Text>
-      <PlacePicker label="Place of birth" value={profile.birthplace} onChange={(birthplace) => update({ birthplace })} />
+      <Text style={st.heading}>{t('Place of birth')}</Text>
+      <Text style={st.muted}>{t('Your birthplace and home appear on the globe with your profile picture, and travel with the continents through time.')}</Text>
+      <PlacePicker label={t('Place of birth')} value={profile.birthplace} onChange={(birthplace) => update({ birthplace })} />
 
-      <Text style={st.heading}>Where you live now</Text>
-      <PlacePicker label="Home" value={profile.home} onChange={(home) => update({ home })} />
+      <Text style={st.heading}>{t('Where you live now')}</Text>
+      <PlacePicker label={t('Home')} value={profile.home} onChange={(home) => update({ home })} />
 
-      <Text style={st.heading}>Where you are now</Text>
+      <Text style={st.heading}>{t('Where you are now')}</Text>
       <Text style={st.text}>
-        Visiting a natural history museum, an accredited zoo or one of the fossil sites in PaleoDex? Check in while you’re there to earn titles.
+        {t('Visiting a natural history museum, an accredited zoo or one of the fossil sites in PaleoDex? Check in while you’re there to earn titles.')}
       </Text>
       <Pressable
         onPress={checkIn}
@@ -101,7 +102,7 @@ export default function PlacesScreen() {
         accessibilityRole="button"
         accessibilityState={{ disabled: busy, busy }}
         style={({ pressed }) => [st.button, pressed && st.pressed, busy && { opacity: 0.6 }]}>
-        <Text style={st.buttonText}>{busy ? 'Finding you…' : '📍 Check in here'}</Text>
+        <Text style={st.buttonText}>{busy ? t('Finding you…') : t('📍 Check in here')}</Text>
       </Pressable>
 
       {result && 'error' in result && <Text style={st.muted}>{result.error}</Text>}
@@ -111,16 +112,15 @@ export default function PlacesScreen() {
             result.here.map((p) => (
               <View key={p.id} style={{ gap: 2 }}>
                 <Text style={st.rowTitle}>
-                  {ICON[p.kind]} You’re at {p.name}
-                  {p.spot ? ` (${p.spot})` : ''}!
+                  {ICON[p.kind]} {t('You’re at {place}!', { place: `${p.name}${p.spot ? ` (${p.spot})` : ''}` })}
                 </Text>
                 {!!p.note && <Text style={st.rowSub}>{p.note}</Text>}
               </View>
             ))
           ) : (
-            <Text style={st.rowTitle}>No museum, zoo or fossil site here yet.</Text>
+            <Text style={st.rowTitle}>{t('No museum, zoo or fossil site here yet.')}</Text>
           )}
-          <Text style={[st.rowSub, { marginTop: 4 }]}>Nearest to you:</Text>
+          <Text style={[st.rowSub, { marginTop: 4 }]}>{t('Nearest to you:')}</Text>
           {result.nearest.map(({ place, metres }) => (
             <Text key={place.id} style={st.rowSub}>
               {ICON[place.kind]} {place.name}
@@ -132,21 +132,19 @@ export default function PlacesScreen() {
 
 
       <View style={[st.card, { padding: 14, gap: 4 }]}>
-        <Text style={st.rowTitle}>⚠️ Stay safe</Text>
+        <Text style={st.rowTitle}>{t('⚠️ Stay safe')}</Text>
         <Text style={st.rowSub}>
-          I don’t want to encourage you to put yourself in danger. Formations that aren’t publicly accessible, are in very remote areas or are in conflict
-          zones don’t award titles. Please leave those to the professionals who make all of this possible.
+          {t('I don’t want to encourage you to put yourself in danger. Formations that aren’t publicly accessible, are in very remote areas or are in conflict zones don’t award titles. Please leave those to the professionals who make all of this possible.')}
         </Text>
         <Text style={st.rowSub}>
-          You don’t need to reach the rocks themselves: you’re checked in anywhere within {imperial ? '15 miles' : '25 km'} of a fossil site, so the nearest town or visitor centre is
-          enough. Only visit places open to the public, never enter quarries, mines or private land without permission, and check the tides at coastal sites.
+          {t('You don’t need to reach the rocks themselves: you’re checked in anywhere within {distance} of a fossil site, so the nearest town or visitor centre is enough. Only visit places open to the public, never enter quarries, mines or private land without permission, and check the tides at coastal sites.', { distance: imperial ? '15 mi' : '25 km' })}
         </Text>
       </View>
 
 
-      <Text style={st.heading}>Places you’ve visited</Text>
+      <Text style={st.heading}>{t('Places you’ve visited')}</Text>
       <Text style={st.muted}>
-        {plural(counts('museum'), 'museum')} · {plural(counts('zoo'), 'zoo')} · {plural(counts('site'), 'fossil site')}
+        {(['museum', 'zoo', 'site'] as const).map((k) => (counts(k) === 1 ? t(KIND_COUNT[k][0]) : t(KIND_COUNT[k][1], { n: counts(k) }))).join(' · ')}
       </Text>
       {visited.length > 0 && (
         <View style={st.card}>
@@ -157,7 +155,7 @@ export default function PlacesScreen() {
                 <Text style={{ fontSize: 22 }}>{ICON[p.kind]}</Text>
                 <View style={st.rowText}>
                   <Text style={st.rowTitle}>{p.name}</Text>
-                  <Text style={st.rowSub}>{[KIND[p.kind], p.country].filter(Boolean).join(' · ')}</Text>
+                  <Text style={st.rowSub}>{[t(KIND[p.kind]), p.country].filter(Boolean).join(' · ')}</Text>
                   {!!p.note && <Text style={st.rowSub}>{p.note}</Text>}
                 </View>
               </View>
@@ -168,31 +166,31 @@ export default function PlacesScreen() {
 
       {visited.length > 0 && !confirmDelete && (
         <Pressable onPress={() => setConfirmDelete(true)} accessibilityRole="button" hitSlop={6}>
-          <Text style={[st.link, { color: palette.badge }]}>Delete my visited places</Text>
+          <Text style={[st.link, { color: palette.badge }]}>{t('Delete my visited places')}</Text>
         </Pressable>
       )}
       {confirmDelete && (
         <View style={[st.card, { padding: 14, gap: 10 }]}>
-          <Text style={st.rowTitle}>Delete your visited places?</Text>
-          <Text style={st.rowSub}>Choose whether to keep the titles you earned by visiting them.</Text>
+          <Text style={st.rowTitle}>{t('Delete your visited places?')}</Text>
+          <Text style={st.rowSub}>{t('Choose whether to keep the titles you earned by visiting them.')}</Text>
           <Pressable onPress={() => deletePlaces(false)} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed]}>
-            <Text style={st.buttonText}>Delete places, keep my titles</Text>
+            <Text style={st.buttonText}>{t('Delete places, keep my titles')}</Text>
           </Pressable>
           <Pressable
             onPress={() => deletePlaces(true)}
             accessibilityRole="button"
             style={({ pressed }) => [st.button, { backgroundColor: '#B3261E' }, pressed && st.pressed]}>
-            <Text style={st.buttonText}>Delete places and their titles</Text>
+            <Text style={st.buttonText}>{t('Delete places and their titles')}</Text>
           </Pressable>
           <Pressable onPress={() => setConfirmDelete(false)} accessibilityRole="button" hitSlop={6} style={{ alignSelf: 'center' }}>
-            <Text style={st.link}>Cancel</Text>
+            <Text style={st.link}>{t('Cancel')}</Text>
           </Pressable>
         </View>
       )}
 
       {MUSEUM_AND_ZOO_LIST.length > 0 && (
       <Pressable onPress={() => setShowAll((v) => !v)} accessibilityRole="button" accessibilityState={{ expanded: showAll }} hitSlop={6}>
-        <Text style={st.link}>{showAll ? 'Hide the museums and zoos ▲' : `See all ${MUSEUM_AND_ZOO_LIST.length} museums and zoos ▼`}</Text>
+        <Text style={st.link}>{showAll ? t('Hide the museums and zoos ▲') : t('See all {n} museums and zoos ▼', { n: MUSEUM_AND_ZOO_LIST.length })}</Text>
       </Pressable>
       )}
       {showAll &&
@@ -207,7 +205,7 @@ export default function PlacesScreen() {
             ))}
           </View>
         ))}
-      {showAll && <Text style={st.muted}>Every fossil site in PaleoDex counts too: open a rock formation to see where it is.</Text>}
+      {showAll && <Text style={st.muted}>{t('Every fossil site in PaleoDex counts too: open a rock formation to see where it is.')}</Text>}
     </ScrollView>
   );
 }

@@ -2,16 +2,18 @@ import { ScrollView, Text, View } from 'react-native';
 
 import { PageRow, useProfileStyles, useShowOnGlobe } from '@/components/profile-ui';
 import { useProfile } from '@/lib/profile';
+import { useT } from '@/lib/i18n';
 
 // Every page the user has starred, newest first.
 export default function FavouritesScreen() {
   const st = useProfileStyles();
+  const t = useT();
   const { profile, toggleFavourite } = useProfile();
   const showOnGlobe = useShowOnGlobe();
   return (
     <ScrollView style={st.screen} contentContainerStyle={st.content}>
       {profile.favourites.length === 0 ? (
-        <Text style={st.muted}>Nothing saved yet. Tap ☆ Save at the top of any species, group or formation page to keep it here.</Text>
+        <Text style={st.muted}>{t('Nothing saved yet. Tap ☆ Save at the top of any species, group or formation page to keep it here.')}</Text>
       ) : (
         <View style={st.card}>
           {profile.favourites.map((page, i) => (

@@ -9,6 +9,7 @@ import { imageOf } from '@/lib/images';
 import { speciesById } from '@/lib/life';
 import { useProfile } from '@/lib/profile';
 import { useOwnPicture, useUserPhotos } from '@/lib/user-photos';
+import { useT } from '@/lib/i18n';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -26,6 +27,7 @@ function toDate(day: string, month: string, year: string): string | null {
 // Change the user's name, birth date and profile picture.
 export default function EditProfileScreen() {
   const st = useProfileStyles();
+  const t = useT();
   const palette = usePalette();
   const { profile, update } = useProfile();
   const [y0, m0, d0] = profile.birthDate?.split('-') ?? ['', '', ''];
@@ -44,16 +46,16 @@ export default function EditProfileScreen() {
   const saveDate = () => {
     if (!day && !month && !year) {
       update({ birthDate: null });
-      setDateMessage('Birth date removed.');
+      setDateMessage(t('Birth date removed.'));
       return;
     }
     const date = toDate(day, month, year);
     if (!date) {
-      setDateMessage('That doesn’t look like a real date. Check the day, month and year.');
+      setDateMessage(t('That doesn’t look like a real date. Check the day, month and year.'));
       return;
     }
     update({ birthDate: date });
-    setDateMessage('Saved. It’s marked on the timeline, and you can jump to it from your profile.');
+    setDateMessage(t('Saved. It’s marked on the timeline, and you can jump to it from your profile.'));
   };
 
   const pickPhoto = async () => {
@@ -63,13 +65,13 @@ export default function EditProfileScreen() {
       if (result.canceled) return;
       const asset = result.assets[0];
       if (!asset?.base64) {
-        setPhotoMessage('That photo couldn’t be read. Try another one.');
+        setPhotoMessage(t('That photo couldn’t be read. Try another one.'));
         return;
       }
       // Kept as data in the saved profile, so it survives the app clearing its temporary files.
       update({ avatar: { kind: 'upload', uri: `data:${asset.mimeType ?? 'image/jpeg'};base64,${asset.base64}` } });
     } catch {
-      setPhotoMessage('Your photos couldn’t be opened. Check that PaleoDex is allowed to use your photos.');
+      setPhotoMessage(t('Your photos couldn’t be opened. Check that PaleoDex is allowed to use your photos.'));
     }
   };
 
@@ -95,26 +97,26 @@ export default function EditProfileScreen() {
         <AvatarImage avatar={profile.avatar} name={profile.name} size={96} />
       </View>
 
-      <Text style={st.heading}>Name</Text>
+      <Text style={st.heading}>{t('Name')}</Text>
       <TextInput
         value={profile.name}
         onChangeText={(name) => update({ name })}
-        placeholder="Your name"
+        placeholder={t('Your name')}
         placeholderTextColor={palette.muted}
-        accessibilityLabel="Your name"
+        accessibilityLabel={t('Your name')}
         autoComplete="name"
         maxLength={40}
         style={st.input}
       />
 
-      <Text style={st.heading}>Birth date</Text>
-      <Text style={st.muted}>Optional. Marks the year you were born on the timeline. It stays on this device.</Text>
+      <Text style={st.heading}>{t('Birth date')}</Text>
+      <Text style={st.muted}>{t('Optional. Marks the year you were born on the timeline. It stays on this device.')}</Text>
       <View style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-end', flexWrap: 'wrap' }}>
-        {dateBox(day, setDay, 'Day', 'DD', 64)}
-        {dateBox(month, setMonth, 'Month', 'MM', 64)}
-        {dateBox(year, setYear, 'Year', 'YYYY', 90)}
+        {dateBox(day, setDay, t('Day'), t('DD'), 64)}
+        {dateBox(month, setMonth, t('Month'), t('MM'), 64)}
+        {dateBox(year, setYear, t('Year'), t('YYYY'), 90)}
         <Pressable onPress={saveDate} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed]}>
-          <Text style={st.buttonText}>Save date</Text>
+          <Text style={st.buttonText}>{t('Save date')}</Text>
         </Pressable>
       </View>
       {!!dateMessage && <Text style={st.muted}>{dateMessage}</Text>}
@@ -125,21 +127,21 @@ export default function EditProfileScreen() {
             setMonth('');
             setYear('');
             update({ birthDate: null });
-            setDateMessage('Birth date removed.');
+            setDateMessage(t('Birth date removed.'));
           }}
           accessibilityRole="button"
           hitSlop={6}>
-          <Text style={st.link}>Remove birth date</Text>
+          <Text style={st.link}>{t('Remove birth date')}</Text>
         </Pressable>
       )}
 
-      <Text style={st.heading}>Profile picture</Text>
+      <Text style={st.heading}>{t('Profile picture')}</Text>
       <Pressable onPress={pickPhoto} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed]}>
-        <Text style={st.buttonText}>Choose a photo from your device</Text>
+        <Text style={st.buttonText}>{t('Choose a photo from your device')}</Text>
       </Pressable>
       {!!photoMessage && <Text style={st.muted}>{photoMessage}</Text>}
       <Text style={st.muted}>
-        {pictures.length > 0 ? 'Or use a picture of one of your favourite species:' : 'Star species with pictures to choose them as your profile picture here.'}
+        {pictures.length > 0 ? t('Or use a picture of one of your favourite species:') : t('Star species with pictures to choose them as your profile picture here.')}
       </Text>
       {pictures.length > 0 && (
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
@@ -151,7 +153,7 @@ export default function EditProfileScreen() {
                 key={id}
                 onPress={() => update({ avatar: { kind: 'species', id } })}
                 accessibilityRole="button"
-                accessibilityLabel={`Use ${s?.common || s?.name} as your profile picture`}
+                accessibilityLabel={t('Use {name} as your profile picture', { name: s?.common || s?.name || '' })}
                 accessibilityState={{ selected: on }}
                 style={({ pressed }) => [{ borderRadius: 40, borderWidth: 3, borderColor: on ? palette.button : 'transparent' }, pressed && st.pressed]}>
                 <Image source={{ uri: ownPicture(id) ?? imageOf(id)?.thumb }} style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: palette.track }} contentFit="cover" />
@@ -162,7 +164,7 @@ export default function EditProfileScreen() {
       )}
       {allPhotos.length > 0 && (
         <>
-          <Text style={st.muted}>Or one of your own photos of species:</Text>
+          <Text style={st.muted}>{t('Or one of your own photos of species:')}</Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {allPhotos.map((p) => {
               const on = profile.avatar?.kind === 'upload' && profile.avatar.uri === p.uri;
@@ -172,7 +174,7 @@ export default function EditProfileScreen() {
                   key={`${p.speciesId}:${p.id}`}
                   onPress={() => update({ avatar: { kind: 'upload', uri: p.uri } })}
                   accessibilityRole="button"
-                  accessibilityLabel={`Use your photo of ${s?.common || s?.name} as your profile picture`}
+                  accessibilityLabel={t('Use your photo of {name} as your profile picture', { name: s?.common || s?.name || '' })}
                   accessibilityState={{ selected: on }}
                   style={({ pressed }) => [{ borderRadius: 40, borderWidth: 3, borderColor: on ? palette.button : 'transparent' }, pressed && st.pressed]}>
                   <Image source={{ uri: p.uri }} style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: palette.track }} contentFit="cover" />
@@ -184,7 +186,7 @@ export default function EditProfileScreen() {
       )}
       {profile.avatar && (
         <Pressable onPress={() => update({ avatar: null })} accessibilityRole="button" hitSlop={6}>
-          <Text style={st.link}>Remove profile picture</Text>
+          <Text style={st.link}>{t('Remove profile picture')}</Text>
         </Pressable>
       )}
     </ScrollView>

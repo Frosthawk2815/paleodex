@@ -6,6 +6,7 @@ import { isDark } from '@/lib/colors';
 import { type TextSize, type Theme, useProfile } from '@/lib/profile';
 import { compatible, type CustomTheme, type PaperStyle, readableTextColors, resolveText, SWATCHES } from '@/lib/theme';
 import type { Units } from '@/lib/units';
+import { deviceLanguage, LANGUAGES, type LanguageSetting, useT } from '@/lib/i18n';
 
 // A row of options where one is chosen.
 function Choice<T extends string>({ options, value, onChange }: { options: { value: T; label: string }[]; value: T; onChange: (v: T) => void }) {
@@ -47,84 +48,96 @@ function Toggle({ label, detail, value, onChange }: { label: string; detail: str
 // Theme, text size, units and accessibility settings.
 export default function SettingsScreen() {
   const st = useProfileStyles();
+  const t = useT();
   const { profile, updateSettings } = useProfile();
   const s = profile.settings;
   return (
     <ScrollView style={st.screen} contentContainerStyle={st.content}>
-      <Text style={st.heading}>Appearance</Text>
+      <Text style={st.heading}>{t('Language')}</Text>
+      <Choice<LanguageSetting>
+        options={[{ value: 'system', label: t('Match device') }, ...LANGUAGES.map((l) => ({ value: l.code, label: l.name }))]}
+        value={s.language ?? 'system'}
+        onChange={(language) => updateSettings({ language })}
+      />
+      <Text style={st.muted}>
+        {t('Menus, buttons and screens. Species, group and formation write-ups are still in English for now.')}
+        {(s.language ?? 'system') === 'system' ? ` ${t('Using: {language}.', { language: LANGUAGES.find((l) => l.code === deviceLanguage())!.name })}` : ''}
+      </Text>
+
+      <Text style={st.heading}>{t('Appearance')}</Text>
       <Choice<Theme>
         options={[
-          { value: 'system', label: 'Match device' },
-          { value: 'light', label: 'Light' },
-          { value: 'dark', label: 'Dark' },
-          { value: 'custom', label: 'Custom' },
-          { value: 'paper', label: 'Paper' },
+          { value: 'system', label: t('Match device') },
+          { value: 'light', label: t('Light') },
+          { value: 'dark', label: t('Dark') },
+          { value: 'custom', label: t('Custom') },
+          { value: 'paper', label: t('Paper') },
         ]}
         value={s.theme}
         onChange={(theme) => updateSettings({ theme })}
       />
-      <Text style={st.muted}>Applies to species, group and formation pages and these menus. The globe stays dark, like the night sky.</Text>
+      <Text style={st.muted}>{t('Applies to species, group and formation pages and these menus. The globe stays dark, like the night sky.')}</Text>
       {s.theme === 'custom' && <CustomColors />}
       {s.theme === 'paper' && (
         <View style={{ gap: 8, marginTop: 4 }}>
           <Choice<PaperStyle>
             options={[
-              { value: 'mixed', label: 'Mixed' },
-              { value: 'ancient', label: 'Ancient parchment' },
-              { value: 'modern', label: 'Modern notebook' },
+              { value: 'mixed', label: t('Mixed') },
+              { value: 'ancient', label: t('Ancient parchment') },
+              { value: 'modern', label: t('Modern notebook') },
             ]}
             value={s.paper}
             onChange={(paper) => updateSettings({ paper })}
           />
           <Text style={st.muted}>
             {s.paper === 'mixed'
-              ? 'Pages about prehistoric life look like old parchment written in a manuscript hand. Living animals and recent history look like a handwritten notebook, as do these menus.'
+              ? t('Pages about prehistoric life look like old parchment written in a manuscript hand. Living animals and recent history look like a handwritten notebook, as do these menus.')
               : s.paper === 'ancient'
-                ? 'Every page looks like old parchment, written in a manuscript hand.'
-                : 'Every page looks like a lined notebook, written by hand.'}
+                ? t('Every page looks like old parchment, written in a manuscript hand.')
+                : t('Every page looks like a lined notebook, written by hand.')}
           </Text>
         </View>
       )}
 
-      <Text style={st.heading}>Text size</Text>
+      <Text style={st.heading}>{t('Text size')}</Text>
       <Choice<TextSize>
         options={[
-          { value: 'normal', label: 'Normal' },
-          { value: 'large', label: 'Large' },
-          { value: 'larger', label: 'Larger' },
+          { value: 'normal', label: t('Normal') },
+          { value: 'large', label: t('Large') },
+          { value: 'larger', label: t('Larger') },
         ]}
         value={s.textSize}
         onChange={(textSize) => updateSettings({ textSize })}
       />
-      <Text style={st.muted}>Enlarges species, group and formation pages and these menus. PaleoDex also follows your device’s text size.</Text>
+      <Text style={st.muted}>{t('Enlarges species, group and formation pages and these menus. PaleoDex also follows your device’s text size.')}</Text>
 
-      <Text style={st.heading}>Units</Text>
+      <Text style={st.heading}>{t('Units')}</Text>
       <Choice<Units>
         options={[
-          { value: 'metric', label: 'Metric' },
-          { value: 'imperial', label: 'Imperial' },
+          { value: 'metric', label: t('Metric') },
+          { value: 'imperial', label: t('Imperial') },
         ]}
         value={s.units}
         onChange={(units) => updateSettings({ units })}
       />
       <Text style={st.muted}>
         {s.units === 'metric'
-          ? 'Sizes, weights and distances in metres, kilograms and kilometres.'
-          : 'Sizes, weights and distances in feet, pounds and miles, converted from the metric figures and rounded, as most are estimates.'}
+          ? t('Sizes, weights and distances in metres, kilograms and kilometres.')
+          : t('Sizes, weights and distances in feet, pounds and miles, converted from the metric figures and rounded, as most are estimates.')}
       </Text>
 
-      <Text style={st.heading}>Accessibility</Text>
+      <Text style={st.heading}>{t('Accessibility')}</Text>
       <View style={st.card}>
         <Toggle
-          label="High contrast"
-          detail="Stronger text and borders on pages and menus. With custom colours, only the most readable text colours are offered."
+          label={t('High contrast')}
+          detail={t('Stronger text and borders on pages and menus. With custom colours, only the most readable text colours are offered.')}
           value={s.highContrast}
           onChange={(highContrast) => updateSettings({ highContrast })}
         />
         <View style={st.divider} />
         <Toggle
-          label="Reduce motion"
-          detail="Jump straight to places and times instead of animating. Also on if your device asks for reduced motion."
+          label={t('Reduce motion')}
+          detail={t('Jump straight to places and times instead of animating. Also on if your device asks for reduced motion.')}
           value={s.reduceMotion}
           onChange={(reduceMotion) => updateSettings({ reduceMotion })}
         />
@@ -137,6 +150,7 @@ export default function SettingsScreen() {
 // read are shown faded and can't be chosen.
 function SwatchPicker({ label, value, onChange, allowed }: { label: string; value: string; onChange: (c: string) => void; allowed: (c: string) => boolean }) {
   const st = useProfileStyles();
+  const t = useT();
   const p = usePalette();
   return (
     <View style={{ gap: 6 }}>
@@ -154,7 +168,7 @@ function SwatchPicker({ label, value, onChange, allowed }: { label: string; valu
                   onPress={() => ok && onChange(c)}
                   disabled={!ok}
                   accessibilityRole="radio"
-                  accessibilityLabel={`${label}: ${(variant === 'light' ? sw.lightName : sw.darkName) ?? `${variant} ${sw.name.toLowerCase()}`}${ok ? '' : ', not available with your other colours'}`}
+                  accessibilityLabel={`${label}: ${t((variant === 'light' ? sw.lightName : sw.darkName) ?? `${variant} ${sw.name.toLowerCase()}`)}${ok ? '' : t(', not available with your other colours')}`}
                   accessibilityState={{ checked: on, disabled: !ok }}
                   aria-checked={on}
                   hitSlop={3}
@@ -178,6 +192,7 @@ function SwatchPicker({ label, value, onChange, allowed }: { label: string; valu
 // The user's own theme: background, panel and text colours, with a preview.
 function CustomColors() {
   const st = useProfileStyles();
+  const t = useT();
   const p = usePalette();
   const { profile, updateSettings } = useProfile();
   const { custom: c, highContrast } = profile.settings;
@@ -195,24 +210,24 @@ function CustomColors() {
 
   return (
     <View style={{ gap: 12, marginTop: 4 }}>
-      <Text style={st.rowTitle}>Background</Text>
-      <SwatchPicker label="Background" value={c.primary} onChange={setPrimary} allowed={() => true} />
+      <Text style={st.rowTitle}>{t('Background')}</Text>
+      <SwatchPicker label={t('Background')} value={c.primary} onChange={setPrimary} allowed={() => true} />
 
-      <Text style={st.rowTitle}>Panels and cards</Text>
-      <SwatchPicker label="Panels" value={c.secondary} onChange={(secondary) => set({ secondary })} allowed={(x) => compatible(c.primary, x, highContrast)} />
-      <Text style={st.muted}>Faded colours are too different from your background for any text to be readable on both.</Text>
+      <Text style={st.rowTitle}>{t('Panels and cards')}</Text>
+      <SwatchPicker label={t('Panels')} value={c.secondary} onChange={(secondary) => set({ secondary })} allowed={(x) => compatible(c.primary, x, highContrast)} />
+      <Text style={st.muted}>{t('Faded colours are too different from your background for any text to be readable on both.')}</Text>
 
-      <Text style={st.rowTitle}>Text</Text>
+      <Text style={st.rowTitle}>{t('Text')}</Text>
       <View style={styles.swatches} accessibilityRole="radiogroup">
-        {textChoices.map((t) => {
-          const on = t.color === 'auto' ? c.text === 'auto' || chosenText !== c.text : c.text === t.color;
-          const shown = t.color === 'auto' ? resolveText({ ...c, text: 'auto' }, highContrast) : t.color;
+        {textChoices.map((choice) => {
+          const on = choice.color === 'auto' ? c.text === 'auto' || chosenText !== c.text : c.text === choice.color;
+          const shown = choice.color === 'auto' ? resolveText({ ...c, text: 'auto' }, highContrast) : choice.color;
           return (
             <Pressable
-              key={t.name}
-              onPress={() => set({ text: t.color })}
+              key={choice.name}
+              onPress={() => set({ text: choice.color })}
               accessibilityRole="radio"
-              accessibilityLabel={t.color === 'auto' ? 'Automatic, the most readable text colour' : `${t.name} text`}
+              accessibilityLabel={choice.color === 'auto' ? t('Automatic, the most readable text colour') : t('{colour} text', { colour: t(choice.name) })}
               accessibilityState={{ checked: on }}
             aria-checked={on}
               style={({ pressed }) => [
@@ -221,24 +236,25 @@ function CustomColors() {
                 pressed && st.pressed,
               ]}>
               <Text style={{ color: shown, fontWeight: '700', fontSize: 15 }}>Aa</Text>
-              <Text style={{ color: shown, fontSize: 12 }}>{t.name}</Text>
+              <Text style={{ color: shown, fontSize: 12 }}>{t(choice.name)}</Text>
             </Pressable>
           );
         })}
       </View>
       <Text style={st.muted}>
-        Only text colours that are easy to read on your background and panels are offered{highContrast ? ' (with high contrast on, only the strongest)' : ''}. If you
-        change your colours, text that would become hard to read switches to Automatic.
+        {highContrast
+          ? t('Only text colours that are easy to read on your background and panels are offered (with high contrast on, only the strongest). If you change your colours, text that would become hard to read switches to Automatic.')
+          : t('Only text colours that are easy to read on your background and panels are offered. If you change your colours, text that would become hard to read switches to Automatic.')}
       </Text>
 
-      <Text style={st.rowTitle}>Preview</Text>
+      <Text style={st.rowTitle}>{t('Preview')}</Text>
       <View style={[styles.preview, { backgroundColor: p.background, borderColor: p.border }]}>
-        <Text style={{ color: p.accent, fontSize: 12, fontWeight: '700', letterSpacing: 1 }}>SPECIES</Text>
+        <Text style={{ color: p.accent, fontSize: 12, fontWeight: '700', letterSpacing: 1 }}>{t('SPECIES')}</Text>
         <Text style={{ color: p.text, fontSize: 22, fontWeight: '800', fontStyle: 'italic' }}>Tyrannosaurus rex</Text>
-        <Text style={{ color: p.muted, fontSize: 14 }}>68 to 66 million years ago</Text>
+        <Text style={{ color: p.muted, fontSize: 14 }}>{t('68 to 66 million years ago')}</Text>
         <View style={[styles.previewCard, { backgroundColor: p.card, borderColor: p.border }]}>
-          <Text style={{ color: p.text, fontSize: 15 }}>One of the largest meat-eating dinosaurs.</Text>
-          <Text style={{ color: p.link, fontSize: 15, fontWeight: '600', marginTop: 4 }}>Hell Creek Formation ›</Text>
+          <Text style={{ color: p.text, fontSize: 15 }}>{t('One of the largest meat-eating dinosaurs.')}</Text>
+          <Text style={{ color: p.link, fontSize: 15, fontWeight: '600', marginTop: 4 }}>{t('Hell Creek Formation ›')}</Text>
         </View>
       </View>
     </View>
