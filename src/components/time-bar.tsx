@@ -203,7 +203,7 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
                   style={c === focus ? styles.crumbCurrent : styles.crumbLink}
                   accessibilityRole="button"
                   accessibilityLabel={t('Zoom timeline to {name}', { name: t(c.name) })}>
-                  {c.name}
+                  {t(c.name)}
                 </Text>
               </Text>
             ))}
@@ -227,7 +227,8 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
                   {UNITS_BY_LEVEL[row.level].filter(visible).map((u) => {
                     const left = x(Math.min(u.startMa, focus.startMa));
                     const w = x(Math.max(u.endMa, focus.endMa)) - left;
-                    const fits = w > u.name.length * row.fontSize * 0.62 + 8;
+                    const name = t(u.name);
+                    const fits = w > name.length * row.fontSize * 0.62 + 8;
                     return (
                       <Pressable
                         key={u.key}
@@ -237,7 +238,7 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
                         style={[styles.block, { left, width: Math.max(w, 0.5), backgroundColor: u.color }]}>
                         {fits && (
                           <Text style={[styles.blockText, { fontSize: row.fontSize, color: textOn(u.color) }]} numberOfLines={1}>
-                            {row.level === 'era' ? u.name.toUpperCase() : u.name}
+                            {row.level === 'era' ? name.toUpperCase() : name}
                           </Text>
                         )}
                       </Pressable>
@@ -247,9 +248,9 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
               ))}
 
               <View style={styles.tickRow}>
-                {ticks.map((t) => (
-                  <Text key={t} style={[styles.tick, { left: x(t) - 35 }]}>
-                    {tickLabel(t)}
+                {ticks.map((tick) => (
+                  <Text key={tick} style={[styles.tick, { left: x(tick) - 35 }]}>
+                    {tick === 0 ? t('Today') : tickLabel(tick)}
                   </Text>
                 ))}
                 {showBirth && (

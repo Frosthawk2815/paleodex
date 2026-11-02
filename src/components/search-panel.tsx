@@ -11,7 +11,7 @@ import { SHARED_SHORTHANDS } from '@/data/aka';
 import { type Clade, CLADES, SPECIES, type Species } from '@/data/life';
 import { speciesInClade } from '@/lib/life';
 import { rangeOf } from '@/lib/ranges';
-import { type T, useT } from '@/lib/i18n';
+import { localTime, type T, useT } from '@/lib/i18n';
 
 export type SearchResult =
   | { kind: 'event'; event: HistoryEvent }
@@ -27,9 +27,9 @@ type Item = { key: string; title: string; subtitle: string; words: string; names
 const LEVEL_NAMES = { all: '', era: 'Era', period: 'Period', series: 'Series', stage: 'Stage' };
 
 // Result subtitles are built once in English; their fixed words are translated when shown.
-const SUBTITLE_WORDS = /^(Species|Group|Event|Mass extinction|Era|Period|Series|Stage)\b| · also called | · also |\b(\d+) species$|\btoday$|\byears ago\b/g;
+const SUBTITLE_WORDS = /^(Species|Group|Event|Mass extinction|Era|Period|Series|Stage)\b| · also called | · also |\b(\d+) species$/g;
 const localSubtitle = (s: string, t: T) =>
-  s.replace(SUBTITLE_WORDS, (m, word: string | undefined, n: string | undefined) =>
+  localTime(s, t).replace(SUBTITLE_WORDS, (m, word: string | undefined, n: string | undefined) =>
     word ? t(word) : n ? t('{n} species', { n }) : m === ' · also called ' ? ` · ${t('also called')} ` : m === ' · also ' ? ` · ${t('also')} ` : t(m),
   );
 
