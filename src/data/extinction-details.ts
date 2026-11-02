@@ -2,7 +2,8 @@
 // notable groups that died out or made it through (linked to their group pages where PaleoDex has
 // them). Loss figures are estimates and vary between studies. Checked November 2026.
 
-export type GroupNote = { name: string; note: string; clade?: string };
+// final: the group died out completely in this extinction (used by the quiz).
+export type GroupNote = { name: string; note: string; clade?: string; final?: true };
 
 export type ExtinctionDetail = {
   // The headline loss, e.g. "About 75% of species".
@@ -87,7 +88,7 @@ export const EXTINCTION_DETAILS: Record<string, ExtinctionDetail> = {
       'Oxygen loss in the oceans and a short ice age are the main suspects. A 2020 study found malformed plant spores from this time, suggesting a burst of harmful ultraviolet light as the ozone layer thinned, though this is still being tested.',
     ],
     lost: [
-      { name: 'Placoderms', note: 'The armoured fish died out completely.', clade: 'placodermi' },
+      { name: 'Placoderms', note: 'The armoured fish died out completely.', clade: 'placodermi', final: true },
       { name: 'Many ammonoids and trilobites', note: 'Only a few lineages of each survived.', clade: 'ammonoidea' },
     ],
     survived: [
@@ -109,11 +110,11 @@ export const EXTINCTION_DETAILS: Record<string, ExtinctionDetail> = {
       'It was triggered by the Siberian Traps, a vast outpouring of lava in what is now Siberia, which burned through coal and released enormous amounts of carbon dioxide and methane. The world heated rapidly, tropical seas may have reached about 40 °C, the oceans became acidic and lost their oxygen, and some released poisonous hydrogen sulphide. Recovery took about 10 million years.',
     ],
     lost: [
-      { name: 'Trilobites', note: 'The last ones died out, after almost 270 million years.', clade: 'trilobita' },
-      { name: 'Sea scorpions', note: 'Gone for good.', clade: 'eurypterida' },
-      { name: 'Gorgonopsians', note: 'The sabre-toothed top predators of the Permian.', clade: 'gorgonopsia' },
+      { name: 'Trilobites', note: 'The last ones died out, after almost 270 million years.', clade: 'trilobita', final: true },
+      { name: 'Sea scorpions', note: 'Gone for good.', clade: 'eurypterida', final: true },
+      { name: 'Gorgonopsians', note: 'The sabre-toothed top predators of the Permian.', clade: 'gorgonopsia', final: true },
       { name: 'Most other synapsids', note: 'Most dicynodonts and therocephalians; pareiasaurs too.', clade: 'therocephalia' },
-      { name: 'Ancient corals', note: 'The rugose and tabulate corals of the Palaeozoic.', clade: 'cnidaria' },
+      { name: 'Ancient corals', note: 'The rugose and tabulate corals of the Palaeozoic.', clade: 'cnidaria', final: true },
     ],
     survived: [
       { name: 'Lystrosaurus and a few other dicynodonts', note: 'Lystrosaurus became one of the commonest land animals in the world.', clade: 'dicynodontia' },
@@ -138,8 +139,8 @@ export const EXTINCTION_DETAILS: Record<string, ExtinctionDetail> = {
     lost: [
       { name: 'Conodonts', note: 'Gone after over 300 million years.', clade: 'conodonta' },
       { name: 'Phytosaurs', note: 'Crocodile-like Triassic predators.', clade: 'phytosauria' },
-      { name: 'Aetosaurs', note: 'Armoured plant-eaters on the crocodile side.', clade: 'aetosauria' },
-      { name: 'Rauisuchians', note: 'Big crocodile-line predators.', clade: 'rauisuchidae' },
+      { name: 'Aetosaurs', note: 'Armoured plant-eaters on the crocodile side.', clade: 'aetosauria', final: true },
+      { name: 'Rauisuchians', note: 'Big crocodile-line predators.', clade: 'rauisuchidae', final: true },
       { name: 'Many large amphibians and ammonoids', note: 'Most big temnospondyls and most ammonoids.', clade: 'temnospondyli' },
     ],
     survived: [
@@ -163,11 +164,11 @@ export const EXTINCTION_DETAILS: Record<string, ExtinctionDetail> = {
       'The enormous Deccan Traps eruptions in India were already under way and may have added to the damage, though the impact is now widely accepted as the main cause. Animals that were small, ate seeds, insects or dead matter, or lived in fresh water fared best.',
     ],
     lost: [
-      { name: 'Non-bird dinosaurs', note: 'All except birds.', clade: 'dinosauria' },
-      { name: 'Pterosaurs', note: 'Gone after about 160 million years.', clade: 'pterosauria' },
-      { name: 'Mosasaurs', note: 'The giant sea lizards.', clade: 'mosasauridae' },
-      { name: 'Plesiosaurs', note: 'The last long-necked sea reptiles.', clade: 'sauropterygia' },
-      { name: 'Ammonites', note: 'Gone after over 300 million years.', clade: 'ammonoidea' },
+      { name: 'Non-bird dinosaurs', note: 'All except birds.', clade: 'dinosauria', final: true },
+      { name: 'Pterosaurs', note: 'Gone after about 160 million years.', clade: 'pterosauria', final: true },
+      { name: 'Mosasaurs', note: 'The giant sea lizards.', clade: 'mosasauridae', final: true },
+      { name: 'Plesiosaurs', note: 'The last long-necked sea reptiles.', clade: 'sauropterygia', final: true },
+      { name: 'Ammonites', note: 'Gone after over 300 million years.', clade: 'ammonoidea', final: true },
     ],
     survived: [
       { name: 'Birds', note: 'The only dinosaurs to make it, probably small ground-living kinds.', clade: 'aves' },

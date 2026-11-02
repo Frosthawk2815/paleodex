@@ -14,7 +14,9 @@ export const categoryName = (c: Category) =>
       ? 'Dinosaurs'
       : c.kind === 'mammals'
         ? 'Mammals'
-        : c.kind === 'clade'
+        : c.kind === 'alive'
+          ? 'Alive today'
+          : c.kind === 'clade'
           ? (cladeById(c.id)?.common ?? c.id)
           : `The ${PERIODS.find((p) => p.id === c.id)?.name ?? c.id}`;
 
@@ -67,6 +69,8 @@ export function QuizPicker({
         {choice({ kind: 'dinosaurs' }, 'Dinosaurs', 'From the earliest dinosaurs to the last')}
         <View style={st.divider} />
         {choice({ kind: 'mammals' }, 'Mammals', 'Mammals past and present, and their early synapsid relatives such as Dimetrodon')}
+        <View style={st.divider} />
+        {choice({ kind: 'alive' }, 'Alive today', 'Animals living in the wild now: what they are, and where they live')}
         <View style={st.divider} />
         {choice(
           category.kind === 'clade' ? category : { kind: 'clade', id: '' },

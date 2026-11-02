@@ -1,16 +1,19 @@
 // The quiz: multiple-choice questions built from PaleoDex's own data, so every answer matches what
 // the app shows. Each round draws questions at one difficulty (1 to 5, by how obscure the subject
-// is) from a category: everything, dinosaurs, mammals (with their synapsid relatives), one group, or
-// one period.
+// is) from a category: everything, dinosaurs, mammals (with their synapsid relatives), animals alive
+// today, one group, or one period. Mass extinctions get questions of their own.
 
 import { EVENTS, type HistoryEvent } from '@/data/events';
+import { EXTINCTION_DETAILS } from '@/data/extinction-details';
 import { CLADES, SPECIES, type Species } from '@/data/life';
 import { PERIODS } from '@/data/periods';
 import { GENUS_MEANINGS, meaningNote, meaningText, SPECIES_MEANINGS } from '@/data/name-meanings';
 import { SIZE_FACTS, type SizeFact } from '@/data/quiz-sizes';
 import { isModernSpecies } from '@/lib/era';
+import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
 import { cladePath, pastPointIndex, relativesOf, speciesInClade } from '@/lib/life';
-import { rangeOf } from '@/lib/ranges';
+import { phaseCentre, rangeOf } from '@/lib/ranges';
+import type { PageRef } from '@/lib/profile';
 import { UNITS_BY_LEVEL, type Unit } from '@/lib/time';
 
 export type Difficulty = 1 | 2 | 3 | 4 | 5;
@@ -22,7 +25,7 @@ export const DIFFICULTIES: { level: Difficulty; name: string; detail: string }[]
   { level: 5, name: 'Professor', detail: 'Rare species and the fine detail of the timescale' },
 ];
 
-export type Category = { kind: 'all' } | { kind: 'dinosaurs' } | { kind: 'mammals' } | { kind: 'clade'; id: string } | { kind: 'period'; id: string };
+export type Category = { kind: 'all' } | { kind: 'dinosaurs' } | { kind: 'mammals' } | { kind: 'alive' } | { kind: 'clade'; id: string } | { kind: 'period'; id: string };
 export const categoryKey = (c: Category) => (c.kind === 'clade' || c.kind === 'period' ? `${c.kind}:${c.id}` : c.kind);
 
 export type Question = {
@@ -36,6 +39,11 @@ export type Question = {
   image?: string;
   imageLabel?: string;
   speciesId?: string;
+  // Clues shown under the question.
+  hints?: string[];
+  // Another page to open afterwards (e.g. a mass extinction), with its name.
+  page?: PageRef;
+  pageLabel?: string;
 };
 
 // Pictures for a species: the user's own photo if they have one, otherwise PaleoDex's picture.
@@ -139,6 +147,31 @@ const isSynapsid = (s: Species) => pathIds(s).has('synapsida');
 // Hadrocodium) are counted as the earliest mammals by some researchers.
 const isClearNonMammalSynapsid = (s: Species) => isSynapsid(s) && !pathIds(s).has('mammalia') && !pathIds(s).has('cynodontia');
 
+// Living in the wild today (not recently extinct).
+export function isAlive(s: Species): boolean {
+  const r = rangeOf(s.id);
+  return !!r && !r.lastSeen && r.phases[r.phases.length - 1]?.toMa === 0;
+}
+// "was" for extinct animals, "is" for living ones.
+const was = (s: Species) => (isAlive(s) ? 'is' : 'was');
+// Roughly where a living species lives: the centre of its present range. Left out for animals found
+// worldwide or kept by people everywhere, where a centre means nothing.
+const homeCache = new Map<string, [number, number] | null>();
+function homeOf(s: Species): [number, number] | null {
+  if (!homeCache.has(s.id)) homeCache.set(s.id, findHome(s));
+  return homeCache.get(s.id)!;
+}
+function findHome(s: Species): [number, number] | null {
+  if (!isAlive(s) || /worldwide|domestic|cosmopolitan|every continent/i.test(s.placeText)) return null;
+  const r = rangeOf(s.id)!;
+  return phaseCentre(r.phases[r.phases.length - 1]!);
+}
+const kmApart = ([lon1, lat1]: [number, number], [lon2, lat2]: [number, number]) => {
+  const rad = Math.PI / 180;
+  const a = Math.sin(((lat2 - lat1) * rad) / 2) ** 2 + Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(((lon2 - lon1) * rad) / 2) ** 2;
+  return 12742 * Math.asin(Math.sqrt(a));
+};
+
 export const label = (s: Species) => s.common || s.name;
 const named = (s: Species) => (s.common && s.common !== s.name ? `${s.common} (${s.name})` : s.name);
 
@@ -193,7 +226,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       if (c.category.kind === 'mammals' && pathIds(s).has('mammalia')) return null;
       const excluded = alsoTrue(s);
       const wrong = sample([...new Set(KINDS.map((k) => k.label))].filter((k) => !excluded.has(k)), 3);
-      return build(`kind:${s.id}`, `What kind of animal is ${named(s)}?`, kind, wrong, `${label(s)} was ${lower(kind)}.`, { speciesId: s.id });
+      return build(`kind:${s.id}`, `What kind of animal is ${named(s)}?`, kind, wrong, `${label(s)} ${was(s)} ${lower(kind)}.`, { speciesId: s.id });
     },
   },
   // Which animal is in this picture?
@@ -228,12 +261,25 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
   },
   // This is X. Which of these is its closest relative?
   {
-    levels: [2, 3, 4, 5],
+    levels: [1, 2, 3, 4, 5],
     make: (s, c) => {
       const image = c.imageFor(s.id);
       const rel = relativesOf(s);
       if (!image || rel.length < 1) return null;
       const right = c.level >= 4 ? rel[0]! : (pick(rel.slice(0, 3)) ?? rel[0]!);
+      // A picture alone isn't always enough, so easier levels add clues: when it lived, where it is
+      // found, an animal it lived alongside and another relative. Each level up takes one away,
+      // the most telling first; at the top level there is only the name and the picture.
+      const f = formationOf(s);
+      const neighbour = f ? pick(speciesInFormation(f.id).filter((o) => o.id !== s.id && !rel.some((r) => r.id === o.id))) : undefined;
+      const other = pick(rel.filter((r) => r.id !== right.id));
+      const clues = [
+        isAlive(s) ? 'Alive today' : `Lived ${lower(s.ageText)}`,
+        `${isAlive(s) ? 'Lives in' : 'Fossils found in'}: ${s.placeText.replace(/ \(.*\)$/, '')}`,
+        neighbour ? `Lived alongside ${label(neighbour)}` : null,
+        other ? `Also related to ${label(other)}` : null,
+      ];
+      const hints = clues.slice(0, 5 - c.level).filter((h): h is string => !!h);
       const relIds = new Set([s.id, ...rel.map((r) => r.id)]);
       const kind = kindOf(s);
       // Wrong answers: the same kind of animal from other families (or, at easy levels, anything famous).
@@ -245,7 +291,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
         label(right),
         wrong,
         `${label(right)} is in the same family as ${label(s)}.`,
-        { image, speciesId: s.id },
+        { image, speciesId: s.id, hints },
       );
     },
   },
@@ -315,7 +361,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
     make: (s, c) => {
       if (c.category.kind === 'period' || c.category.kind === 'mammals' || isDinosaur(s) || alsoTrue(s).has('A dinosaur') || !kindOf(s)) return null;
       const dinos = sample((c.category.kind === 'dinosaurs' ? c.pool : SPECIES).filter((o) => isDinosaur(o) && FAMOUS.has(o.id)), 3);
-      return build(`notdino:${s.id}`, 'Which of these is not a dinosaur?', label(s), dinos.map(label), `${label(s)} was ${lower(kindOf(s)!)}, not a dinosaur.`, {
+      return build(`notdino:${s.id}`, 'Which of these is not a dinosaur?', label(s), dinos.map(label), `${label(s)} ${was(s)} ${lower(kindOf(s)!)}, not a dinosaur.`, {
         speciesId: s.id,
       });
     },
@@ -365,6 +411,35 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
         `${label(s)} was a synapsid, an early relative of mammals: closer to mammals than to reptiles, but not a mammal itself.`,
         { speciesId: s.id },
       );
+    },
+  },
+  // Where does it live in the wild? (Living animals.)
+  {
+    levels: [2, 3, 4, 5],
+    make: (s, c) => {
+      const home = homeOf(s);
+      if (!home) return null;
+      // Wrong answers: other living animals that live far away (the same kind at harder levels).
+      const far = SPECIES.filter((o) => {
+        if (o.id === s.id || o.placeText === s.placeText || (c.level >= 4 && kindOf(o) !== kindOf(s))) return false;
+        const h = homeOf(o);
+        return !!h && kmApart(h, home) > 3000;
+      });
+      return build(`where:${s.id}`, `Where does the ${label(s)} live in the wild?`, s.placeText, sample(far, 3).map((o) => o.placeText), `${label(s)} lives here: ${s.placeText}.`, {
+        speciesId: s.id,
+      });
+    },
+  },
+  // Which of these is still alive today? (One living animal among extinct ones of the same kind.)
+  {
+    levels: [1, 2, 3],
+    make: (s, c) => {
+      if (!isAlive(s) || !['all', 'alive', 'mammals', 'clade'].includes(c.category.kind)) return null;
+      const kind = kindOf(s);
+      const extinct = SPECIES.filter((o) => !isAlive(o) && (c.level >= 2 ? kindOf(o) === kind : FAMOUS.has(o.id)) && (c.level >= 3 || FAMOUS.has(o.id) || (o.status === 'full' && !!o.common)));
+      return build(`stillalive:${s.id}`, 'Which of these is still alive today?', label(s), sample(extinct, 3).map(label), `${label(s)} is alive today; the others are extinct.`, {
+        speciesId: s.id,
+      });
     },
   },
 ];
@@ -460,12 +535,118 @@ function timescaleQuestion(level: Difficulty, period?: string): Question | null 
 }
 
 // ---------------------------------------------------------------------------------------------
+// Mass extinction questions, from the extinction pages. Each notes the groups it is about, so group,
+// dinosaur and mammal quizzes only get the ones that concern their animals.
+
+// inside: the question only suits quizzes on its groups or groups within them (not ones they contain).
+type ExtinctionQ = { q: Question; levels: Difficulty[]; clades: string[]; extinction: Extinction; inside?: boolean };
+const WELL_KNOWN_EXTINCTIONS = new Set(['k-pg', 'end-permian']);
+// The period each extinction ended (the Kellwasser event fell within the Devonian).
+const PERIOD_ENDED: Record<string, string> = {
+  'end-cambrian': 'Cambrian',
+  'end-ordovician': 'Ordovician',
+  hangenberg: 'Devonian',
+  'end-permian': 'Permian',
+  'end-triassic': 'Triassic',
+  'k-pg': 'Cretaceous',
+};
+const lowerName = (n: string) => (/^[A-Z][a-z]/.test(n) && !/^(Lystrosaurus|Dunkleosteus)/.test(n) ? lower(n) : n);
+
+// Built fresh each time, so wrong answers are shuffled differently.
+function extinctionQuestions(): ExtinctionQ[] {
+  const out: ExtinctionQ[] = [];
+  const named = EXTINCTIONS.filter((e) => e.bigFive);
+  for (const e of EXTINCTIONS) {
+    const d = EXTINCTION_DETAILS[e.id];
+    if (!d) continue;
+    const easy = WELL_KNOWN_EXTINCTIONS.has(e.id);
+    const extra = { page: { kind: 'extinction', id: e.id } as PageRef, pageLabel: `the ${e.name}` };
+    const finals = d.lost.filter((g) => g.final);
+    const add = (q: Question | null, levels: Difficulty[], clades: string[] = [], inside = false) => q && out.push({ q, levels, clades, extinction: e, inside });
+    // What caused it?
+    if (e.bigFive) {
+      const causes = [...new Set(named.map((x) => x.causeText))];
+      add(
+        build(`excause:${e.id}`, `What caused the ${e.name}?`, cap(e.causeText), causes.filter((c) => c !== e.causeText).map(cap), `${cap(e.causeText)}. ${d.summary[0]}`, extra),
+        easy ? [1, 2, 3] : [3, 4, 5],
+        finals.map((g) => g.clade).filter((c): c is string => !!c),
+      );
+    }
+    // When did it happen?
+    const when = (x: Extinction) => `About ${Math.round(x.ma)} million years ago`;
+    add(
+      build(`exwhen:${e.id}`, `When did the ${e.name} happen?`, when(e), EXTINCTIONS.filter((x) => x !== e).map(when), `${when(e)}.`, extra),
+      easy ? [2, 3] : [4, 5],
+    );
+    // Which period did it end?
+    const period = PERIOD_ENDED[e.id];
+    if (period) {
+      add(
+        build(`experiod:${e.id}`, `The ${e.name} marks the end of which period?`, period, sample(PERIODS.map((p) => p.name).filter((n) => n !== period), 3), `It marks the end of the ${period}, about ${Math.round(e.ma)} million years ago.`, extra),
+        easy ? [2, 3, 4] : [4, 5],
+      );
+    }
+    // Which extinction wiped out a group for good?
+    for (const g of finals) {
+      add(
+        build(`exended:${e.id}:${g.name}`, `Which mass extinction wiped out the last of the ${lowerName(g.name)}?`, e.name, EXTINCTIONS.filter((x) => x !== e).map((x) => x.name), `The ${e.name}. ${g.note}`, extra),
+        easy && ['dinosauria', 'pterosauria', 'ammonoidea', 'trilobita'].includes(g.clade ?? '') ? [1, 2, 3] : [3, 4, 5],
+        g.clade ? [g.clade] : [],
+      );
+    }
+    // Which of these groups made it through? (Wrong answers: groups it wiped out completely.)
+    if (finals.length >= 3) {
+      for (const g of d.survived) {
+        add(
+          build(`exsurvived:${e.id}:${g.name}`, `Which of these made it through the ${e.name}?`, g.name, finals.map((f) => f.name), `${g.name} made it through. ${g.note} The others died out.`, extra),
+          easy ? [2, 3, 4] : [4, 5],
+          // Only the survivor counts: a turtle quiz may ask which group made it through, but a
+          // tyrannosaur quiz shouldn't get this just because dinosaurs are a wrong answer.
+          g.clade ? [g.clade] : [],
+          true,
+        );
+      }
+    }
+  }
+  // The largest of all.
+  const permian = EXTINCTIONS.find((e) => e.id === 'end-permian');
+  if (permian) {
+    const q = build('exlargest', 'Which was the largest mass extinction in Earth’s history?', permian.name, EXTINCTIONS.filter((e) => e.bigFive && e !== permian).map((e) => e.name), 'The End-Permian extinction, the “Great Dying”, about 252 million years ago, wiped out about 81% of marine species.', {
+      page: { kind: 'extinction', id: permian.id },
+      pageLabel: `the ${permian.name}`,
+    });
+    if (q) out.push({ q, levels: [1, 2, 3], clades: [], extinction: permian });
+  }
+  return out;
+}
+
+// Extinction questions that suit a quiz: any for everything; for a period, the extinctions within or
+// ending it; for dinosaurs, mammals or a group, those about its animals. None for animals alive today.
+function extinctionQuestionsFor(category: Category, level: Difficulty): Question[] {
+  const all = extinctionQuestions().filter((x) => x.levels.includes(level));
+  if (category.kind === 'all') return all.map((x) => x.q);
+  if (category.kind === 'period') {
+    const p = PERIODS.find((x) => x.id === category.id);
+    if (!p) return [];
+    return all.filter((x) => x.extinction.ma <= p.startMa && x.extinction.ma >= p.endMa - 0.5).map((x) => x.q);
+  }
+  const root = category.kind === 'dinosaurs' ? 'dinosauria' : category.kind === 'mammals' ? 'synapsida' : category.kind === 'clade' ? category.id : null;
+  if (!root) return [];
+  // A question concerns the quiz's animals if one of its groups is the quiz's group, inside it, or
+  // (for broad questions such as "the non-bird dinosaurs") contains it.
+  const within = (clade: string) => cladePath(clade).some((c) => c.id === root);
+  const contains = (clade: string) => cladePath(root).some((c) => c.id === clade);
+  return all.filter((x) => x.clades.some((c) => within(c) || (!x.inside && contains(c)))).map((x) => x.q);
+}
+
+// ---------------------------------------------------------------------------------------------
 // Rounds
 
 // The species a category covers.
 export function categoryPool(c: Category): Species[] {
   if (c.kind === 'dinosaurs') return SPECIES.filter(isDinosaur);
   if (c.kind === 'mammals') return SPECIES.filter(isSynapsid);
+  if (c.kind === 'alive') return SPECIES.filter(isAlive);
   if (c.kind === 'clade') return speciesInClade(c.id);
   if (c.kind === 'period') {
     const p = PERIODS.find((x) => x.id === c.id);
@@ -523,6 +704,16 @@ export function makeRound(category: Category, level: Difficulty, imageFor: Image
     if (q && distinct(q) && !seen.has(q.id)) {
       seen.add(q.id);
       usedSpecies.add(s.id);
+      out.push(q);
+    }
+  }
+  // A mass extinction question, where one suits the quiz (two in a period quiz with more than one).
+  const exCount = category.kind === 'period' ? 2 : 1;
+  for (const q of shuffle(extinctionQuestionsFor(category, level))) {
+    if (out.filter((x) => x.id.startsWith('ex')).length >= exCount) break;
+    const sameEvent = out.some((x) => x.page && q.page && x.page.id === q.page.id);
+    if (distinct(q) && !seen.has(q.id) && !sameEvent) {
+      seen.add(q.id);
       out.push(q);
     }
   }
@@ -594,7 +785,7 @@ export function switcherooQuiz(mine: { category: Category; level: Difficulty }, 
   const same = categoryKey(mine.category) === categoryKey(playing.category) && level === playing.level;
   if (!same) return { category: mine.category, level };
   if (level < 5) return { category: mine.category, level: (level + 1) as Difficulty };
-  const basics: Category[] = [{ kind: 'all' }, { kind: 'dinosaurs' }, { kind: 'mammals' }];
+  const basics: Category[] = [{ kind: 'all' }, { kind: 'dinosaurs' }, { kind: 'mammals' }, { kind: 'alive' }];
   const topics: Category[] = [
     ...basics,
     ...PERIODS.map((p): Category => ({ kind: 'period', id: p.id })),

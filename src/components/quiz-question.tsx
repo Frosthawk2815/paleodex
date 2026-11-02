@@ -122,6 +122,16 @@ export function QuestionView({
       <Text style={st.title} accessibilityRole="header">
         {u(q.prompt)}
       </Text>
+      {!!q.hints?.length && (
+        <View style={[st.card, { padding: 12, gap: 4 }]}>
+          <Text style={[st.rowSub, { fontWeight: '700' }]}>{q.hints.length === 1 ? 'Clue' : 'Clues'}</Text>
+          {q.hints.map((h) => (
+            <Text key={h} style={st.rowSub}>
+              • {u(h)}
+            </Text>
+          ))}
+        </View>
+      )}
       <View style={{ gap: 8 }}>
         {q.options.map((o, i) => {
           if (hidden.includes(i)) return null;
@@ -151,7 +161,12 @@ export function QuestionView({
               : `${chosen === -1 ? 'Time’s up! ' : ''}The answer is ${u(q.options[q.answer]!).replace(/^(A|An|About) /, (w) => w.toLowerCase())}.`}
           </Text>
           <Text style={st.rowSub}>{u(q.explanation)}</Text>
-          {allowReadMore && subject && (
+          {allowReadMore && q.page && (
+            <Pressable onPress={() => router.push({ pathname: '/read', params: { kind: q.page!.kind, id: q.page!.id } })} accessibilityRole="button" hitSlop={6}>
+              <Text style={st.link}>Read about {q.pageLabel ?? 'it'} ›</Text>
+            </Pressable>
+          )}
+          {allowReadMore && !q.page && subject && (
             <Pressable onPress={() => router.push({ pathname: '/read', params: { kind: 'species', id: subject.id } })} accessibilityRole="button" hitSlop={6}>
               <Text style={st.link}>Read about {subject.common || subject.name} ›</Text>
             </Pressable>
