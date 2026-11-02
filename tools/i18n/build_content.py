@@ -27,8 +27,22 @@ OUT = os.path.join(HERE, '..', '..', 'src', 'i18n', 'content')
 NUM = re.compile(r'\d+(?:[.,   ]\d+)*')
 
 
+ROMAN = re.compile(r'\b[IVX]{2,5}\b')
+ROMAN_VALUES = {'I': 1, 'V': 5, 'X': 10}
+
+
+def roman(word):
+    total = 0
+    for a, b in zip(word, word[1:] + ' '):
+        v = ROMAN_VALUES[a]
+        total += -v if b != ' ' and ROMAN_VALUES[b] > v else v
+    return str(total)
+
+
 def numbers(text):
-    return sorted(n for n in (re.sub(r'\D', '', m) for m in NUM.findall(text)) if len(n) > 1)
+    """Numbers of 2+ digits, plus Roman numerals (Spanish writes centuries as "siglo XIV")."""
+    found = [re.sub(r'\D', '', m) for m in NUM.findall(text)] + [roman(w) for w in ROMAN.findall(text)]
+    return sorted(n for n in found if len(n) > 1)
 
 
 def check(lang, key, path, en, tr, problems):
