@@ -634,9 +634,9 @@ export default function PeerReviewScreen() {
             </Text>
             {stage.picked === null && (
               <View style={{ gap: 4 }} accessible accessibilityLabel={`${secondsLeft} seconds left`}>
-                <Text style={[st.rowTitle, secondsLeft <= 5 && { color: '#C62828' }]}>⏱️ {secondsLeft} s</Text>
+                <Text style={[st.rowTitle, secondsLeft <= 5 && { color: palette.bad }]}>⏱️ {secondsLeft} s</Text>
                 <View style={{ height: 4, borderRadius: 2, backgroundColor: palette.track, overflow: 'hidden' }}>
-                  <View style={{ width: `${(secondsLeft / QUESTION_SECONDS) * 100}%`, height: '100%', backgroundColor: secondsLeft <= 5 ? '#C62828' : palette.accent }} />
+                  <View style={{ width: `${(secondsLeft / QUESTION_SECONDS) * 100}%`, height: '100%', backgroundColor: secondsLeft <= 5 ? palette.bad : palette.accent }} />
                 </View>
               </View>
             )}

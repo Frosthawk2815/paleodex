@@ -153,7 +153,7 @@ export default function EditProfileScreen() {
                 accessibilityRole="button"
                 accessibilityLabel={`Use ${s?.common || s?.name} as your profile picture`}
                 accessibilityState={{ selected: on }}
-                style={({ pressed }) => [{ borderRadius: 40, borderWidth: 3, borderColor: on ? '#2F7DE1' : 'transparent' }, pressed && st.pressed]}>
+                style={({ pressed }) => [{ borderRadius: 40, borderWidth: 3, borderColor: on ? palette.button : 'transparent' }, pressed && st.pressed]}>
                 <Image source={{ uri: ownPicture(id) ?? imageOf(id)?.thumb }} style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: palette.track }} contentFit="cover" />
               </Pressable>
             );
@@ -174,7 +174,7 @@ export default function EditProfileScreen() {
                   accessibilityRole="button"
                   accessibilityLabel={`Use your photo of ${s?.common || s?.name} as your profile picture`}
                   accessibilityState={{ selected: on }}
-                  style={({ pressed }) => [{ borderRadius: 40, borderWidth: 3, borderColor: on ? '#2F7DE1' : 'transparent' }, pressed && st.pressed]}>
+                  style={({ pressed }) => [{ borderRadius: 40, borderWidth: 3, borderColor: on ? palette.button : 'transparent' }, pressed && st.pressed]}>
                   <Image source={{ uri: p.uri }} style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: palette.track }} contentFit="cover" />
                 </Pressable>
               );

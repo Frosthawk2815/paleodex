@@ -25,6 +25,14 @@ export type Palette = {
   chipBg: string;
   chipBorder: string;
   pressed: string;
+  // Right and wrong answers (quiz), with a solid tint for the card behind them.
+  good: string;
+  bad: string;
+  goodBg: string;
+  badBg: string;
+  // Main buttons, and the text on them.
+  button: string;
+  onButton: string;
   dark: boolean;
   // Set for the paper theme: which paper to draw behind pages, and its fonts (once loaded).
   paper?: Paper;
@@ -95,7 +103,18 @@ export function resolveText(c: CustomTheme, highContrast: boolean): string {
   return autoText(c.primary, c.secondary);
 }
 
-function finish(base: Omit<Palette, 'linkBg' | 'linkBorder' | 'chipBg' | 'chipBorder' | 'pressed' | 'dark'>): Palette {
+type Base = Omit<Palette, 'linkBg' | 'linkBorder' | 'chipBg' | 'chipBorder' | 'pressed' | 'good' | 'bad' | 'goodBg' | 'badBg' | 'button' | 'onButton' | 'dark'>;
+
+// The colours worked out from the main ones. Right/wrong colours keep their green and red but are
+// nudged to stay readable on the card, the page and their own tint; buttons take the link colour
+// with whichever of white or near-black reads better on it.
+function finish(base: Base, target = 4.5): Palette {
+  const dark = isDark(base.background);
+  const tint = (c: string) => mix(base.card, c, dark ? 0.22 : 0.14);
+  const goodBase = dark ? '#81C784' : '#2E7D32';
+  const badBase = dark ? '#EF9A9A' : '#C62828';
+  const goodBg = tint(goodBase);
+  const badBg = tint(badBase);
   return {
     ...base,
     linkBg: withAlpha(base.link, 0.12),
@@ -103,7 +122,13 @@ function finish(base: Omit<Palette, 'linkBg' | 'linkBorder' | 'chipBg' | 'chipBo
     chipBg: withAlpha(base.chip, 0.14),
     chipBorder: withAlpha(base.chip, 0.5),
     pressed: withAlpha(base.text, 0.14),
-    dark: isDark(base.background),
+    good: readable(goodBase, [base.card, goodBg, base.background], target),
+    bad: readable(badBase, [base.card, badBg, base.background], target),
+    goodBg,
+    badBg,
+    button: base.link,
+    onButton: contrast('#FFFFFF', base.link) >= contrast('#111111', base.link) ? '#FFFFFF' : '#111111',
+    dark,
   };
 }
 
@@ -134,8 +159,8 @@ const DARK = finish({
 });
 
 // High-contrast versions: pure black and white text, stronger secondary text and borders.
-const LIGHT_CONTRAST: Palette = { ...LIGHT, background: '#FFFFFF', text: '#000000', muted: '#2B2925', border: '#7A756B', link: '#0B3F86', accent: '#5E3D00' };
-const DARK_CONTRAST: Palette = { ...DARK, background: '#000000', card: '#111111', text: '#FFFFFF', muted: '#D6D1C7', border: '#8A857B', link: '#C4DEFF', accent: '#FFE08A' };
+const LIGHT_CONTRAST = finish({ ...LIGHT, background: '#FFFFFF', text: '#000000', muted: '#2B2925', border: '#7A756B', link: '#0B3F86', accent: '#5E3D00' }, 7);
+const DARK_CONTRAST = finish({ ...DARK, background: '#000000', card: '#111111', text: '#FFFFFF', muted: '#D6D1C7', border: '#8A857B', link: '#C4DEFF', accent: '#FFE08A' }, 7);
 
 export function presetPalette(scheme: 'light' | 'dark', highContrast: boolean): Palette {
   if (scheme === 'dark') return highContrast ? DARK_CONTRAST : DARK;
@@ -169,7 +194,7 @@ export function customPalette(c: CustomTheme, highContrast: boolean): Palette {
     accent: readable(dark ? '#FFD54A' : '#8A5A00', bgs, target),
     chip: readable(dark ? '#D9CCFF' : '#5B3FB0', bgs, target),
     badge: readable(dark ? '#FF9EC7' : '#A8305F', bgs, target),
-  });
+  }, target);
 }
 
 // Old parchment: brown-black ink, with headings in red as in medieval manuscripts.
@@ -208,15 +233,18 @@ export const PAPER_FONTS_BY_KIND: Record<Paper, PaperFonts> = {
 export function paperPalette(kind: Paper, highContrast: boolean, fontsReady: boolean): Palette {
   const base = kind === 'ancient' ? PARCHMENT : NOTEBOOK;
   const p: Palette = highContrast
-    ? {
-        ...base,
-        text: '#000000',
-        muted: base.text,
-        border: kind === 'ancient' ? '#6E5230' : '#5F7398',
-        link: readable(base.link, [base.background, base.card], 7),
-        accent: readable(base.accent, [base.background, base.card], 7),
-        badge: readable(base.badge, [base.background, base.card], 7),
-      }
+    ? finish(
+        {
+          ...base,
+          text: '#000000',
+          muted: base.text,
+          border: kind === 'ancient' ? '#6E5230' : '#5F7398',
+          link: readable(base.link, [base.background, base.card], 7),
+          accent: readable(base.accent, [base.background, base.card], 7),
+          badge: readable(base.badge, [base.background, base.card], 7),
+        },
+        7,
+      )
     : base;
   return { ...p, paper: kind, fonts: fontsReady ? PAPER_FONTS_BY_KIND[kind] : undefined };
 }

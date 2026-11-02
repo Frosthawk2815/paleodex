@@ -6,11 +6,9 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { speciesById } from '@/lib/life';
-import { useUnitText } from '@/lib/profile';
+import { useTextScale, useUnitText } from '@/lib/profile';
 import type { Question } from '@/lib/quiz';
 
-const GOOD = '#2E7D32';
-const BAD = '#C62828';
 
 // A lifeline (50/50, Refresh, Copy, Switcheroo): each can be used once per quiz.
 // afterAnswer: only usable once you have answered (Hurry Up); the others only before.
@@ -19,6 +17,7 @@ export type Lifeline = { key: string; icon: string; label: string; used: boolean
 function LifelineBar({ lifelines, answered }: { lifelines: Lifeline[]; answered: boolean }) {
   const st = useProfileStyles();
   const palette = usePalette();
+  const scale = useTextScale();
   return (
     <View style={{ flexDirection: 'row', gap: 8, flexWrap: 'wrap' }}>
       {lifelines.map((l) => {
@@ -49,7 +48,7 @@ function LifelineBar({ lifelines, answered }: { lifelines: Lifeline[]; answered:
             <Text style={st.rowTitle}>
               {l.icon} {l.label}
             </Text>
-            <Text style={[st.rowSub, { fontSize: 11 }]}>{l.used ? 'Used' : l.afterAnswer && !answered ? 'After you answer' : l.hint}</Text>
+            <Text style={[st.rowSub, { fontSize: Math.round(11 * scale) }]}>{l.used ? 'Used' : l.afterAnswer && !answered ? 'After you answer' : l.hint}</Text>
           </Pressable>
         );
       })}
@@ -137,7 +136,8 @@ export function QuestionView({
           if (hidden.includes(i)) return null;
           const isRight = i === q.answer;
           const isChosen = i === chosen;
-          const color = answered && isRight ? GOOD : answered && isChosen ? BAD : undefined;
+          const color = answered && isRight ? palette.good : answered && isChosen ? palette.bad : undefined;
+          const tint = answered && isRight ? palette.goodBg : palette.badBg;
           return (
             <Pressable
               key={o}
@@ -145,17 +145,17 @@ export function QuestionView({
               disabled={answered}
               accessibilityRole="button"
               accessibilityLabel={`${u(o)}${answered && isRight ? ', correct answer' : answered && isChosen ? ', your answer, wrong' : ''}`}
-              style={({ pressed }) => [st.card, st.row, color && { borderColor: color, borderWidth: 2, backgroundColor: `${color}22` }, pressed && st.pressed]}>
+              style={({ pressed }) => [st.card, st.row, color && { borderColor: color, borderWidth: 2, backgroundColor: tint }, pressed && st.pressed]}>
               <Text style={[st.rowTitle, { flex: 1 }]}>{u(o)}</Text>
-              {answered && isRight && <Text style={[st.rowTitle, { color: GOOD }]}>✓</Text>}
-              {answered && isChosen && !isRight && <Text style={[st.rowTitle, { color: BAD }]}>✗</Text>}
+              {answered && isRight && <Text style={[st.rowTitle, { color: palette.good }]}>✓</Text>}
+              {answered && isChosen && !isRight && <Text style={[st.rowTitle, { color: palette.bad }]}>✗</Text>}
             </Pressable>
           );
         })}
       </View>
       {answered && (
         <View style={[st.card, { padding: 14, gap: 6 }]} accessibilityLiveRegion="polite">
-          <Text style={[st.rowTitle, { color: chosen === q.answer ? GOOD : BAD }]}>
+          <Text style={[st.rowTitle, { color: chosen === q.answer ? palette.good : palette.bad }]}>
             {chosen === q.answer
               ? 'Correct!'
               : `${chosen === -1 ? 'Time’s up! ' : ''}The answer is ${u(q.options[q.answer]!).replace(/^(A|An|About) /, (w) => w.toLowerCase())}.`}

@@ -68,12 +68,12 @@ function makeStyles(p: Palette, s: number) {
       paddingHorizontal: 12,
       paddingVertical: 10,
     },
-    button: { backgroundColor: '#2F7DE1', borderRadius: 10, paddingHorizontal: 16, paddingVertical: 12, alignItems: 'center' },
-    buttonText: { color: '#FFFFFF', fontSize: Math.round(16 * s), fontWeight: '700' },
+    button: { backgroundColor: p.button, borderRadius: 10, paddingHorizontal: 16, paddingVertical: 12, alignItems: 'center' },
+    buttonText: { color: p.onButton, fontSize: Math.round(16 * s), fontWeight: '700' },
     chip: { borderRadius: 18, borderWidth: 1, borderColor: p.border, paddingHorizontal: 14, paddingVertical: 8 },
-    chipOn: { backgroundColor: '#2F7DE1', borderColor: '#2F7DE1' },
+    chipOn: { backgroundColor: p.button, borderColor: p.button },
     chipText: { color: p.text, fontSize: Math.round(15 * s) },
-    chipTextOn: { color: '#FFFFFF', fontWeight: '700' },
+    chipTextOn: { color: p.onButton, fontWeight: '700' },
   });
 }
 
@@ -103,8 +103,8 @@ export function AvatarImage({ avatar, name, size }: { avatar: Avatar; name: stri
     return <Image source={{ uri }} style={[round, { backgroundColor: palette.track }]} contentFit="cover" accessibilityLabel="Profile picture" />;
   }
   return (
-    <View style={[round, styles.initials, { backgroundColor: '#2F7DE1' }]} accessibilityLabel="Profile picture">
-      <Text style={{ color: '#FFFFFF', fontSize: size * 0.4, fontWeight: '700' }}>{initials}</Text>
+    <View style={[round, styles.initials, { backgroundColor: palette.button }]} accessibilityLabel="Profile picture">
+      <Text style={{ color: palette.onButton, fontSize: size * 0.4, fontWeight: '700' }}>{initials}</Text>
     </View>
   );
 }

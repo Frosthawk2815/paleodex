@@ -15,8 +15,8 @@ export function PlayerAvatar({ name, avatar, size }: { name: string; avatar: Sha
   const label = `${name || 'Player'}’s picture`;
   if (uri) return <Image source={{ uri }} style={[round, { backgroundColor: palette.track }]} contentFit="cover" accessibilityLabel={label} />;
   return (
-    <View style={[round, { backgroundColor: palette.link, alignItems: 'center', justifyContent: 'center' }]} accessibilityLabel={label}>
-      <Text style={{ color: '#fff', fontWeight: '700', fontSize: size * 0.38 }}>{initialsOf(name) || '🦖'}</Text>
+    <View style={[round, { backgroundColor: palette.button, alignItems: 'center', justifyContent: 'center' }]} accessibilityLabel={label}>
+      <Text style={{ color: palette.onButton, fontWeight: '700', fontSize: size * 0.38 }}>{initialsOf(name) || '🦖'}</Text>
     </View>
   );
 }
