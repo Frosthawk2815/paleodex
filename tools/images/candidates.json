@@ -29621,6 +29621,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "tylosaurus-rex": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Tylosaurus_rex_restoration.png/960px-Tylosaurus_rex_restoration.png",
+  "width": 800,
+  "height": 451,
+  "artist": "SpinoDragon145",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tylosaurus_rex_restoration.png",
+  "file": "Tylosaurus_rex_restoration.png",
+  "article": "https://en.wikipedia.org/wiki/Tylosaurus",
+  "scope": "species",
+  "kind": "restoration"
+ },
  "typothorax-coccinarum": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Typothorax_coccinarum_skeleton.jpg/960px-Typothorax_coccinarum_skeleton.jpg",
   "width": 800,
@@ -30811,6 +30824,19 @@
   "file": "Reconstrucción_en_vida_de_Yeutherium_pressor.jpg",
   "article": "https://en.wikipedia.org/wiki/Yeutherium",
   "scope": "genus",
+  "kind": "restoration"
+ },
+ "yi-qi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Yi_qi_restoration.jpg/500px-Yi_qi_restoration.jpg",
+  "width": 500,
+  "height": 839,
+  "artist": "Emily Willoughby, (e.deinonychus@gmail.com, emilywilloughby.com)",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Yi_qi_restoration.jpg",
+  "file": "Yi_qi_restoration.jpg",
+  "article": "https://en.wikipedia.org/wiki/Yi_qi",
+  "scope": "species",
   "kind": "restoration"
  },
  "yimenosaurus-youngi": {
