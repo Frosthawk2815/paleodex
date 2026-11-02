@@ -36,11 +36,11 @@ export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, 
 
       <Text style={info.kicker}>{extinction.bigFive ? t('Mass extinction · one of the Big Five') : t('Extinction event')}</Text>
       <Text style={info.title} accessibilityRole="header">
-        {extinction.name}
+        {t(extinction.name)}
       </Text>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
         <ExtinctionIcon cause={extinction.cause} size={18} />
-        <Text style={[info.meta, { color: CAUSE_COLORS[extinction.cause] }]}>{extinction.causeText}</Text>
+        <Text style={[info.meta, { color: CAUSE_COLORS[extinction.cause] }]}>{t(extinction.causeText)}</Text>
       </View>
       {detail && <Text style={[info.subtitle, { textAlign: 'center' }]}>{detail.loss}</Text>}
 

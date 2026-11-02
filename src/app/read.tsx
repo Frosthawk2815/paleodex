@@ -14,7 +14,8 @@ import { cladeEra, type Era, eventEra, speciesEra } from '@/lib/era';
 import { EXTINCTIONS } from '@/lib/extinctions';
 import { cladeById, speciesById } from '@/lib/life';
 import { type PageRef, useProfile } from '@/lib/profile';
-import { useT } from '@/lib/i18n';
+import { useLanguage, useT } from '@/lib/i18n';
+import { localize } from '@/lib/content';
 
 // A page opened on top of another screen (e.g. "Read about…" in the quiz), so going back returns
 // there instead of leaving it. Links open further pages on top; globe-only actions are left out.
@@ -42,7 +43,17 @@ export default function ReadScreen() {
   const event = kind === 'event' ? EVENTS.find((e) => e.id === id) : undefined;
   const extinction = kind === 'extinction' ? EXTINCTIONS.find((e) => e.id === id) : undefined;
   const era: Era = species ? speciesEra(species) : clade ? cladeEra(clade.id) : event ? eventEra(event) : 'ancient';
-  const title = species ? species.common || species.name : clade ? clade.common : event ? event.title : (extinction?.name ?? '');
+  // The header shows the page's name in the user's language where it has been translated.
+  const lang = useLanguage();
+  const title = species
+    ? localize(lang, `species:${species.id}`, species).common || species.name
+    : clade
+      ? localize(lang, `clade:${clade.id}`, clade).common
+      : event
+        ? localize(lang, `event:${event.id}`, event).title
+        : extinction
+          ? t(extinction.name)
+          : '';
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: palette.background }} contentContainerStyle={{ flexGrow: 1, paddingBottom: insets.bottom }}>
