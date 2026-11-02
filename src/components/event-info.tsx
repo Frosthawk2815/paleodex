@@ -4,6 +4,7 @@ import type { HistoryEvent, InvertebrateNote } from '@/data/events';
 import { badgeBg, pointVisible } from '@/lib/events';
 import { PointIcon } from '@/components/point-icon';
 import { SpeciesRow } from '@/components/clade-info';
+import { CreditedImage } from '@/components/species-image';
 import { InfoNav } from '@/components/info-nav';
 import { useInfoStyles } from '@/components/info-styles';
 import type { Clade, Species } from '@/data/life';
@@ -48,6 +49,8 @@ export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, on
       </Text>
       <Text style={info.meta}>{event.dateText}</Text>
       <Text style={info.meta}>{event.placeText}</Text>
+
+      {event.image && <CreditedImage image={event.image} label={`Picture for ${event.title}`} />}
 
       {onJump && event.points.length > 1 && (
         <View style={info.jumps}>

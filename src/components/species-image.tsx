@@ -69,6 +69,38 @@ export function SpeciesImage({ speciesId, name }: { speciesId: string; name: str
   );
 }
 
+// A picture for another kind of page (e.g. an event), with its caption and credit.
+export function CreditedImage({ image, label }: { image: { thumb: string; width: number; height: number; artist: string; license: string; licenseUrl?: string; source: string; caption?: string }; label: string }) {
+  const palette = usePalette();
+  const styles = useMemo(() => applyFonts(makeStyles(palette), palette.fonts, []), [palette]);
+  const ratio = Math.min(2, Math.max(0.8, image.width / image.height));
+  return (
+    <View style={styles.wrap}>
+      <Image
+        source={{ uri: image.thumb }}
+        style={[styles.image, { aspectRatio: ratio }]}
+        contentFit="contain"
+        transition={200}
+        cachePolicy="memory-disk"
+        accessibilityLabel={image.caption ?? label}
+      />
+      {!!image.caption && <Text style={styles.caption}>{image.caption}</Text>}
+      <Text style={styles.credit}>
+        {'Image: '}
+        <Text style={styles.creditStrong}>{image.artist}</Text>
+        {' · '}
+        <Text style={styles.link} onPress={() => open(image.licenseUrl ?? image.source)} accessibilityRole="link">
+          {image.license}
+        </Text>
+        {' · Source: '}
+        <Text style={styles.link} onPress={() => open(image.source)} accessibilityRole="link">
+          {sourceName(image.source)}
+        </Text>
+      </Text>
+    </View>
+  );
+}
+
 const makeStyles = (p: Palette) =>
   StyleSheet.create({
     wrap: { marginBottom: 14 },

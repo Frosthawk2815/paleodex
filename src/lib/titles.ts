@@ -5,7 +5,7 @@ import { EVENTS } from '@/data/events';
 import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
 import { PERIODS } from '@/data/periods';
 import { isModernSpecies } from '@/lib/era';
-import { pastPointIndex, speciesById, speciesInClade, speciesInFormation } from '@/lib/life';
+import { pastPointIndex, relativesOf, speciesById, speciesInClade, speciesInFormation } from '@/lib/life';
 import { placeById } from '@/lib/places';
 import { LEVELS, levelOf } from '@/lib/points';
 
@@ -168,10 +168,11 @@ export const TITLES: Title[] = [
 
 // Secret titles for opening particular pages: [title, what earned it, what counts, optional id].
 // Species ids (any of them), a group ({ clade }), an event page ({ event }), a moment on the
-// timeline ({ time }, e.g. "time:69" for 69 million years ago), or the mass extinction
-// pages ({ extinctions: 'any' | 'all' }). The id is given where a title was renamed, so anyone
+// timeline ({ time }, e.g. "time:69" for 69 million years ago), the mass extinction
+// pages ({ extinctions: 'any' | 'all' }), or every species on a species' Relatives tab
+// ({ relativesOf }). The id is given where a title was renamed, so anyone
 // who earned it keeps it.
-type PageTarget = string[] | { clade: string } | { event: string } | { time: string } | { extinctions: 'any' | 'all' };
+type PageTarget = string[] | { clade: string } | { event: string } | { time: string } | { extinctions: 'any' | 'all' } | { relativesOf: string };
 const PAGE_TITLES: [string, string, PageTarget, string?][] = [
   ['Oh pwincess', 'the grey wolf', ['canis-lupus']],
   ['oo ee a e a', 'the domestic cat', ['felis-catus']],
@@ -247,6 +248,11 @@ const PAGE_TITLES: [string, string, PageTarget, string?][] = [
   ['nice view from up here', 'the Apollo 11 Moon landing', { event: 'apollo-11' }],
   ['gone but not forgotten', 'a mass extinction', { extinctions: 'any' }],
   ['Its ok to cry sometimes', 'every mass extinction', { extinctions: 'all' }],
+  ['early bird gets the worm', 'Archaeopteryx', ['archaeopteryx-lithographica']],
+  ['its eyes face forward', 'Tyrannosaurus rex', ['tyrannosaurus-rex']],
+  ['you like jazz?', 'the honey bee', ['apis-mellifera']],
+  ['family family family family', 'every relative on the human page', { relativesOf: 'homo-sapiens' }],
+  ['I like turtles', 'a turtle', { clade: 'testudines' }],
 ];
 
 const slug = (t: string) =>
@@ -262,12 +268,17 @@ TITLES.push(
     name,
     hint: 'A secret.',
     hidden: true,
-    reveal: Array.isArray(target) || 'clade' in target || 'event' in target ? `You opened ${what}.` : `You travelled to ${what} on the timeline.`,
+    reveal: Array.isArray(target) || 'clade' in target || 'event' in target || 'relativesOf' in target ? `You opened ${what}.` : `You travelled to ${what} on the timeline.`,
     earned: (c) => {
       if (Array.isArray(target)) return target.some((id) => seen(c, 'species', id));
       if ('clade' in target) return speciesInClade(target.clade).some((s) => seen(c, 'species', s.id));
       if ('event' in target) return seen(c, 'event', target.event);
       if ('time' in target) return c.visited.has(target.time);
+      if ('relativesOf' in target) {
+        const s = speciesById(target.relativesOf);
+        const rel = s ? relativesOf(s) : [];
+        return rel.length > 0 && rel.every((r) => seen(c, 'species', r.id));
+      }
       const reached = (e: Extinction) => c.visited.has(`extinction:${e.id}`);
       return target.extinctions === 'all' ? EXTINCTIONS.every(reached) : EXTINCTIONS.some(reached);
     },

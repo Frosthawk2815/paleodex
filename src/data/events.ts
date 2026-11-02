@@ -32,6 +32,9 @@ export type EventPoint = {
 //   pleb        just a mention that they were there
 export type InvertebrateNote = { tier: 'superstar' | 'microceleb' | 'pleb'; title: string; text: string };
 
+// A picture for an event page, with its credit.
+export type EventImage = { thumb: string; width: number; height: number; artist: string; license: string; licenseUrl?: string; source: string; caption?: string };
+
 // Who made a trackway, and how sure scientists are.
 export type Trackmaker = { id: string; certainty: 'known' | 'likely' | 'possible'; note: string };
 
@@ -52,6 +55,7 @@ export type HistoryEvent = {
   trackmakers?: Trackmaker[];
   // Extra words the search should match.
   keywords: string[];
+  image?: EventImage;
 };
 
 const APOLLO_11_YEAR = 1969 + (201 - 1) / 365; // 20 July 1969
@@ -94,6 +98,15 @@ const BASE_EVENTS: HistoryEvent[] = [
       { label: 'Footprints', value: 'Laid 21 July 1969; with no wind or rain on the Moon, they should last for millions of years unless disturbed' },
     ],
     trackmakers: [{ id: 'homo-sapiens', certainty: 'known', note: 'Neil Armstrong and Buzz Aldrin left the first footprints on another world.' }],
+    image: {
+      thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Aldrin_Apollo_11.jpg/960px-Aldrin_Apollo_11.jpg',
+      width: 800,
+      height: 800,
+      artist: 'Neil A. Armstrong, NASA',
+      license: 'Public domain',
+      source: 'https://commons.wikimedia.org/wiki/File:Aldrin_Apollo_11.jpg',
+      caption: 'Buzz Aldrin on the Moon, photographed by Neil Armstrong, whose reflection shows in the visor.',
+    },
     keywords: ['moon landing', 'apollo', 'armstrong', 'aldrin', 'collins', 'tranquility', 'tranquillity', 'eagle', 'nasa', 'anthropocene', 'footprints', 'trackway'],
   },
   {
