@@ -193,7 +193,7 @@ const PAGE_TITLES: [string, string, PageTarget, string?][] = [
   ['I met her on the way to chicago', 'a bird-of-paradise', { clade: 'paradisaeidae' }],
   ['Finally a worthy opponent', 'the snow leopard', ['panthera-uncia']],
   ['Bear necessities', 'the sloth bear', ['melursus-ursinus']],
-  ['Oh yeah its all coming together', 'the guanaco', ['lama-guanicoe']],
+  ['Oh yeah its all coming together', 'the llama', ['lama-glama']],
   ['nice', '69 million years ago', { time: 'time:69' }],
   ['It is wednesday my dudes', 'a frog', { clade: 'anura' }],
   ['Perry the platypus!', 'the platypus', ['ornithorhynchus-anatinus']],
