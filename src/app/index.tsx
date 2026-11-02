@@ -16,6 +16,7 @@ import Svg, { Circle, Line, Path } from 'react-native-svg';
 
 import { CladeInfo } from '@/components/clade-info';
 import { EventInfo } from '@/components/event-info';
+import { ExtinctionInfo } from '@/components/extinction-info';
 import { SpeciesInfo } from '@/components/species-info';
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
 import { Globe } from '@/components/globe';
@@ -25,7 +26,7 @@ import { usePalette } from '@/hooks/use-palette';
 import { type SearchResult, SearchPanel } from '@/components/search-panel';
 import { TimeBar, type TimeBarHandle } from '@/components/time-bar';
 import { EVENTS, type HistoryEvent } from '@/data/events';
-import { extinctionAt } from '@/lib/extinctions';
+import { EXTINCTIONS, extinctionAt } from '@/lib/extinctions';
 import { cladeEra, type Era, eventEra, speciesEra } from '@/lib/era';
 import { cladeById, formationById, pastPointIndex, speciesById } from '@/lib/life';
 import { birthMaOf, type PageRef, useProfile } from '@/lib/profile';
@@ -34,7 +35,10 @@ import { lastSeenJumpMa, phaseJumpMa, rangeOf } from '@/lib/ranges';
 import { contextAt, timeLabel } from '@/lib/time';
 
 // What the information section below the globe is showing.
-type Selection = { kind: 'event'; event: HistoryEvent } | { kind: 'species'; id: string } | { kind: 'clade'; id: string };
+// How long the timeline must rest somewhere before a card or title appears.
+const LINGER_MS = 1300;
+
+type Selection = { kind: 'event'; event: HistoryEvent } | { kind: 'species'; id: string } | { kind: 'clade'; id: string } | { kind: 'extinction'; id: string };
 
 const sameSelection = (a: Selection, b: Selection) =>
   a.kind === b.kind && (a.kind === 'event' ? a.event.id === (b as typeof a).event.id : a.id === (b as typeof a).id);
@@ -42,6 +46,7 @@ const sameSelection = (a: Selection, b: Selection) =>
 // A short name for a page, shown on the "previous page" button.
 function selectionLabel(s: Selection): string {
   if (s.kind === 'event') return s.event.title;
+  if (s.kind === 'extinction') return EXTINCTIONS.find((x) => x.id === s.id)?.name ?? 'Extinction';
   const item = s.kind === 'species' ? speciesById(s.id) : cladeById(s.id);
   return item?.common || item?.name || 'Previous';
 }
@@ -76,6 +81,7 @@ export default function GlobeScreen() {
     if (!selected) return 'ancient';
     if (selected.kind === 'event') return eventEra(selected.event);
     if (selected.kind === 'clade') return cladeEra(selected.id);
+    if (selected.kind === 'extinction') return 'ancient';
     const s = speciesById(selected.id);
     return s ? speciesEra(s) : 'ancient';
   }, [selected]);
@@ -92,18 +98,28 @@ export default function GlobeScreen() {
   const scrollToInfo = useRef(false);
   // The globe can lag a frame behind the timeline so scrolling stays smooth.
   const globeTime = useDeferredValue(timeMa);
-  // Visiting 69 million years ago on the timeline earns a title.
-  const at69 = Math.floor(globeTime) === 69;
+  // Resting on 69 million years ago for a moment (the same wait as the extinction card, so
+  // scrolling past doesn't count) earns a title.
+  const at69 = Math.floor(timeMa) === 69;
   useEffect(() => {
-    if (at69) markVisited('time:69');
-  }, [at69, markVisited]);
+    if (!at69) return;
+    const t = setTimeout(() => markVisited('time:69'), LINGER_MS);
+    return () => clearTimeout(t);
+  }, [at69, timeMa, markVisited]);
   const { period, series, stage } = contextAt(timeMa);
   const extinction = extinctionAt(timeMa);
-  // Reaching a mass extinction on the timeline counts towards two titles.
   const extinctionId = extinction?.id;
+  // A card offering the extinction's page appears only once the timeline has rested in the
+  // extinction's window for a moment, so scrolling back and forth past it doesn't flood the screen.
+  // It remembers the exact time it was earned at, so any further movement hides it until the
+  // timeline rests again.
+  const [lingered, setLingered] = useState<{ id: string; at: number } | null>(null);
+  const [dismissed, setDismissed] = useState<string[]>([]);
   useEffect(() => {
-    if (extinctionId) markVisited(`extinction:${extinctionId}`);
-  }, [extinctionId, markVisited]);
+    if (!extinctionId) return;
+    const t = setTimeout(() => setLingered({ id: extinctionId, at: timeMa }), LINGER_MS);
+    return () => clearTimeout(t);
+  }, [extinctionId, timeMa]);
 
   const lookAt = (kind: Focus['kind'], id: string, index?: number) => setFocus((f) => ({ kind, id, index, n: (f?.n ?? 0) + 1 }));
 
@@ -125,7 +141,7 @@ export default function GlobeScreen() {
   // Group pages leave it as it is.
   const syncRange = (next: Selection) => {
     if (next.kind === 'species') setRangeId(rangeOf(next.id) ? next.id : undefined);
-    else if (next.kind === 'event') setRangeId(undefined);
+    else if (next.kind === 'event' || next.kind === 'extinction') setRangeId(undefined);
   };
   const showInfo = (next: Selection, scroll = true) => {
     if (selected && !sameSelection(selected, next)) setHistory((h) => [...h, selected].slice(-50));
@@ -181,6 +197,13 @@ export default function GlobeScreen() {
     showInfo({ kind: 'species', id });
   };
   const openClade = (id: string) => showInfo({ kind: 'clade', id });
+  const openExtinction = (id: string) => showInfo({ kind: 'extinction', id });
+  const showPopup =
+    extinction !== undefined &&
+    lingered?.id === extinction.id &&
+    lingered.at === timeMa &&
+    !dismissed.includes(extinction.id) &&
+    !(selected?.kind === 'extinction' && selected.id === extinction.id);
 
   // Go back to the page shown before this one, moving the globe back with it.
   const previous = history[history.length - 1];
@@ -192,6 +215,10 @@ export default function GlobeScreen() {
     syncRange(previous);
     if (previous.kind === 'species') travelToSpecies(previous.id);
     else if (previous.kind === 'event') jumpToPoint(previous.event, 0);
+    else if (previous.kind === 'extinction') {
+      const x = EXTINCTIONS.find((e) => e.id === previous.id);
+      if (x) bar.current?.jumpToExtinction(x);
+    }
     if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: !reduceMotion });
   };
   // Android's back button goes to the previous page while there is one.
@@ -238,7 +265,11 @@ export default function GlobeScreen() {
     const { kind, id } = request.page;
     if (kind === 'species') openSpecies(id);
     else if (kind === 'clade') openClade(id);
-    else {
+    else if (kind === 'extinction') {
+      const x = EXTINCTIONS.find((e) => e.id === id);
+      if (x) bar.current?.jumpToExtinction(x);
+      openExtinction(id);
+    } else {
       const event = EVENTS.find((e) => e.id === id);
       if (event) {
         jumpToPoint(event, 0);
@@ -252,7 +283,10 @@ export default function GlobeScreen() {
   const onSearchSelect = (r: SearchResult) => {
     setSearching(false);
     if (r.kind === 'unit') bar.current?.zoomTo(r.unit);
-    else if (r.kind === 'extinction') bar.current?.jumpToExtinction(r.extinction);
+    else if (r.kind === 'extinction') {
+      bar.current?.jumpToExtinction(r.extinction);
+      showInfo({ kind: 'extinction', id: r.extinction.id }, false);
+    }
     else if (r.kind === 'event') {
       // Land at the event's first point (for formations, where they formed) with its marker showing.
       jumpToPoint(r.event, 0);
@@ -319,12 +353,16 @@ export default function GlobeScreen() {
               {[series?.name, stage?.name].filter(Boolean).join(' · ')}
             </Text>
             {extinction && (
-              <View style={styles.event}>
+              <Pressable
+                onPress={() => openExtinction(extinction.id)}
+                accessibilityRole="button"
+                accessibilityHint="Opens the page about this extinction"
+                style={({ pressed }) => [styles.event, pressed && styles.searchPressed]}>
                 <ExtinctionIcon cause={extinction.cause} size={16} />
                 <Text style={[styles.impact, { color: CAUSE_COLORS[extinction.cause] }]} numberOfLines={2}>
                   {extinction.name} · {extinction.causeText}
                 </Text>
-              </View>
+              </Pressable>
             )}
             {period && (
               <Link href={{ pathname: '/period/[id]', params: { id: period.id } }} style={styles.link}>
@@ -348,6 +386,31 @@ export default function GlobeScreen() {
                 reduceMotion={reduceMotion}
                 userPlaces={userPlaces}
               />
+            )}
+            {showPopup && extinction && (
+              <View style={styles.popup} accessibilityLiveRegion="polite">
+                <Pressable
+                  onPress={() => openExtinction(extinction.id)}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Read about the ${extinction.name}`}
+                  style={({ pressed }) => [styles.popupMain, pressed && styles.searchPressed]}>
+                  <ExtinctionIcon cause={extinction.cause} size={22} />
+                  <View style={styles.popupText}>
+                    <Text style={styles.popupTitle} numberOfLines={1}>
+                      {extinction.name}
+                    </Text>
+                    <Text style={[styles.popupLink, { color: CAUSE_COLORS[extinction.cause] }]}>Read about it ›</Text>
+                  </View>
+                </Pressable>
+                <Pressable
+                  onPress={() => setDismissed((d) => [...d, extinction.id])}
+                  accessibilityRole="button"
+                  accessibilityLabel="Close"
+                  hitSlop={8}
+                  style={({ pressed }) => [styles.popupClose, pressed && styles.searchPressed]}>
+                  <Text style={styles.popupCloseText}>×</Text>
+                </Pressable>
+              </View>
             )}
           </View>
 
@@ -393,6 +456,18 @@ export default function GlobeScreen() {
             {selected.kind === 'clade' && cladeById(selected.id) && (
               <CladeInfo clade={cladeById(selected.id)!} onBack={backToGlobe} {...nav} onOpenClade={openClade} onOpenSpecies={openSpecies} />
             )}
+            {selected.kind === 'extinction' && EXTINCTIONS.find((x) => x.id === selected.id) && (
+              <ExtinctionInfo
+                extinction={EXTINCTIONS.find((x) => x.id === selected.id)!}
+                onBack={backToGlobe}
+                {...nav}
+                onOpenClade={openClade}
+                onShowOnTimeline={() => {
+                  bar.current?.jumpToExtinction(EXTINCTIONS.find((x) => x.id === selected.id)!);
+                  backToGlobe();
+                }}
+              />
+            )}
           </PageSheet>
         )}
       </ScrollView>
@@ -407,6 +482,51 @@ export default function GlobeScreen() {
 }
 
 const styles = StyleSheet.create({
+  popup: {
+    position: 'absolute',
+    left: 16,
+    right: 16,
+    bottom: 12,
+    maxWidth: 420,
+    alignSelf: 'center',
+    marginHorizontal: 'auto',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(12, 16, 28, 0.94)',
+    borderColor: 'rgba(255, 255, 255, 0.18)',
+    borderWidth: 1,
+    borderRadius: 14,
+    paddingLeft: 12,
+  },
+  popupMain: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    paddingVertical: 10,
+  },
+  popupText: {
+    flex: 1,
+    gap: 2,
+  },
+  popupTitle: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  popupLink: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  popupClose: {
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+  popupCloseText: {
+    color: '#FFFFFF',
+    fontSize: 22,
+    lineHeight: 24,
+  },
   screen: {
     flex: 1,
     backgroundColor: '#05070D',

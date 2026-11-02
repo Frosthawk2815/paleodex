@@ -2,6 +2,7 @@
 // the first time it is opened. The tally fills a bar towards the next level.
 
 import { EVENTS } from '@/data/events';
+import { EXTINCTIONS } from '@/lib/extinctions';
 import { speciesById } from '@/lib/life';
 import type { PageRef } from '@/lib/profile';
 
@@ -15,6 +16,7 @@ export function pointsFor(key: string): number {
     return s ? (s.status === 'full' ? 10 : 5) : 0;
   }
   if (kind === 'clade') return 8;
+  if (kind === 'extinction') return EXTINCTIONS.some((x) => x.id === id) ? 20 : 0;
   const e = EVENTS.find((x) => x.id === id);
   if (!e) return 0;
   return e.kind === 'Rock formation' ? 15 : 20;

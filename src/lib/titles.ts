@@ -168,8 +168,8 @@ export const TITLES: Title[] = [
 
 // Secret titles for opening particular pages: [title, what earned it, what counts, optional id].
 // Species ids (any of them), a group ({ clade }), an event page ({ event }), a moment on the
-// timeline ({ time }, e.g. "time:69" for 69 million years ago), or the mass extinctions seen on the
-// timeline ({ extinctions: 'any' | 'all' }). The id is given where a title was renamed, so anyone
+// timeline ({ time }, e.g. "time:69" for 69 million years ago), or the mass extinction
+// pages ({ extinctions: 'any' | 'all' }). The id is given where a title was renamed, so anyone
 // who earned it keeps it.
 type PageTarget = string[] | { clade: string } | { event: string } | { time: string } | { extinctions: 'any' | 'all' };
 const PAGE_TITLES: [string, string, PageTarget, string?][] = [

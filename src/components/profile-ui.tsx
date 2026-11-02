@@ -7,6 +7,7 @@ import { useMemo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { EVENTS } from '@/data/events';
+import { EXTINCTIONS } from '@/lib/extinctions';
 import { type Palette, usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
 import { cladeById, speciesById } from '@/lib/life';
@@ -24,6 +25,10 @@ export function pageInfo(page: PageRef): { title: string; subtitle: string; imag
   if (page.kind === 'clade') {
     const c = cladeById(page.id);
     return c ? { title: c.common || c.name, subtitle: `Group · ${c.name}` } : null;
+  }
+  if (page.kind === 'extinction') {
+    const x = EXTINCTIONS.find((e) => e.id === page.id);
+    return x ? { title: x.name, subtitle: x.bigFive ? 'Mass extinction' : 'Extinction event' } : null;
   }
   const e = EVENTS.find((x) => x.id === page.id);
   return e ? { title: e.title, subtitle: e.kind } : null;

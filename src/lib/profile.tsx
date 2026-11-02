@@ -11,7 +11,7 @@ import { toImperial, type Units } from '@/lib/units';
 import type { UserPlace } from '@/lib/user-places';
 
 // A page in the information section: a species, a group, or an event (formation, trackway...).
-export type PageRef = { kind: 'species' | 'clade' | 'event'; id: string };
+export type PageRef = { kind: 'species' | 'clade' | 'event' | 'extinction'; id: string };
 // A picture of one of their favourite species, or a photo they chose from their device.
 export type Avatar = { kind: 'species'; id: string } | { kind: 'upload'; uri: string } | null;
 export type Theme = 'system' | 'light' | 'dark' | 'custom' | 'paper';
