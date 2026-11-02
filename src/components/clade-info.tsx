@@ -9,6 +9,7 @@ import { childClades, cladeById, cladePath, speciesInClade } from '@/lib/life';
 import { speciesMa } from '@/lib/quiz';
 import { useUnitText } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
+import { useLocalized } from '@/lib/content';
 
 type Props = {
   clade: Clade;
@@ -31,10 +32,11 @@ function startMa(text: string): number | null {
   return m[2] || m[3] ? n : n / 1e6;
 }
 
-export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, backLabel }: Props) {
+export function CladeInfo({ clade: cladeEn, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, backLabel }: Props) {
   const info = useInfoStyles();
   const t = useT();
   const u = useUnitText();
+  const clade = useLocalized(`clade:${cladeEn.id}`, cladeEn);
   const path = cladePath(clade.id);
   const children = childClades(clade.id);
   const species = speciesInClade(clade.id);
@@ -99,9 +101,10 @@ export function CladeInfo({ clade, onBack, onPrevious, previousLabel, onOpenClad
   );
 }
 
-export function SpeciesRow({ species, onPress }: { species: Species; onPress: () => void }) {
+export function SpeciesRow({ species: speciesEn, onPress }: { species: Species; onPress: () => void }) {
   const info = useInfoStyles();
   const t = useT();
+  const species = useLocalized(`species:${speciesEn.id}`, speciesEn);
   const group = cladeById(species.clade);
   return (
     <Pressable

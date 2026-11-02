@@ -11,6 +11,7 @@ import type { Clade, Species } from '@/data/life';
 import { familyOf, speciesAtEvent, speciesById, speciesInFormation } from '@/lib/life';
 import { useUnitText } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
+import { useLocalized } from '@/lib/content';
 
 const CERTAINTY = { known: 'Trackmaker', likely: 'Likely trackmaker', possible: 'Possible trackmaker' } as const;
 
@@ -28,10 +29,11 @@ type Props = {
 };
 
 // The information section shown below the globe for a selected event.
-export function EventInfo({ event, timeMa, onBack, onPrevious, previousLabel, onJump, onOpenSpecies, onOpenClade, backLabel }: Props) {
+export function EventInfo({ event: eventEn, timeMa, onBack, onPrevious, previousLabel, onJump, onOpenSpecies, onOpenClade, backLabel }: Props) {
   const info = useInfoStyles();
   const t = useT();
   const u = useUnitText();
+  const event = useLocalized(`event:${eventEn.id}`, eventEn);
   // Species found here, grouped by family (e.g. tyrannosaurs).
   const families: { family: Clade | undefined; members: Species[] }[] = [];
   for (const s of speciesInFormation(event.id)) {

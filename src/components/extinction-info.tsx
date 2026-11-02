@@ -7,7 +7,8 @@ import { EXTINCTION_DETAILS, type GroupNote } from '@/data/extinction-details';
 import type { Extinction } from '@/lib/extinctions';
 import { cladeById } from '@/lib/life';
 import { useUnitText } from '@/lib/profile';
-import { useT } from '@/lib/i18n';
+import { useLanguage, useT } from '@/lib/i18n';
+import { localize } from '@/lib/content';
 
 type Props = {
   extinction: Extinction;
@@ -26,7 +27,8 @@ export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, 
   const info = useInfoStyles();
   const t = useT();
   const u = useUnitText();
-  const detail = EXTINCTION_DETAILS[extinction.id];
+  const lang = useLanguage();
+  const detail = EXTINCTION_DETAILS[extinction.id] && localize(lang, `extinction:${extinction.id}`, EXTINCTION_DETAILS[extinction.id]!);
 
   return (
     <View style={info.wrap}>

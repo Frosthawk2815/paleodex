@@ -10,7 +10,8 @@ import { usePalette } from '@/hooks/use-palette';
 import { PageEra } from '@/lib/era';
 import { useProfile } from '@/lib/profile';
 import { paperFont } from '@/lib/theme';
-import { localTime, useT } from '@/lib/i18n';
+import { localTime, useLanguage, useT } from '@/lib/i18n';
+import { localize } from '@/lib/content';
 
 // Periods are the ancient past, so the mixed paper theme shows them on parchment.
 export default function PeriodRoute() {
@@ -26,7 +27,9 @@ function PeriodScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const palette = usePalette();
   const insets = useSafeAreaInsets();
-  const period = getPeriod(id);
+  const lang = useLanguage();
+  const periodEn = getPeriod(id);
+  const period = periodEn && localize(lang, `period:${periodEn.id}`, periodEn);
   // Opening a period's page counts towards titles (e.g. the Cambrian's).
   const { markVisited } = useProfile();
   const periodId = period?.id;

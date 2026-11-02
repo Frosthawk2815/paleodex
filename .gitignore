@@ -51,3 +51,4 @@ tools/images/species.json
 tools/images/species-list.js
 tools/images/.api-cache.json
 tools/places/cache.json
+tools/i18n/export_content.js

@@ -17,6 +17,7 @@ import { nameMeaning, nameMeaningText } from '@/lib/names';
 import { useUnitText } from '@/lib/profile';
 import { timeLabel } from '@/lib/time';
 import { localTime, useT } from '@/lib/i18n';
+import { useLocalized } from '@/lib/content';
 
 type Props = {
   species: Species;
@@ -35,10 +36,12 @@ type Props = {
 };
 
 // The information section for a species: what it was and the formations it's found in.
-export function SpeciesInfo({ species, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onOpenEvent, onJumpRange, onJumpLastSeen, backLabel }: Props) {
+export function SpeciesInfo({ species: speciesEn, onBack, onPrevious, previousLabel, onOpenClade, onOpenSpecies, onOpenEvent, onJumpRange, onJumpLastSeen, backLabel }: Props) {
   const info = useInfoStyles();
   const t = useT();
   const u = useUnitText();
+  // The page's text in the user's language where it has been translated.
+  const species = useLocalized(`species:${speciesEn.id}`, speciesEn);
   const meaning = nameMeaning(species);
   const [tab, setTab] = useState<'about' | 'relatives'>('about');
   const path = cladePath(species.clade);
