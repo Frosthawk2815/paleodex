@@ -99,6 +99,11 @@ export default function GlobeScreen() {
   }, [at69, markVisited]);
   const { period, series, stage } = contextAt(timeMa);
   const extinction = extinctionAt(timeMa);
+  // Reaching a mass extinction on the timeline counts towards two titles.
+  const extinctionId = extinction?.id;
+  useEffect(() => {
+    if (extinctionId) markVisited(`extinction:${extinctionId}`);
+  }, [extinctionId, markVisited]);
 
   const lookAt = (kind: Focus['kind'], id: string, index?: number) => setFocus((f) => ({ kind, id, index, n: (f?.n ?? 0) + 1 }));
 

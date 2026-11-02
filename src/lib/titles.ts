@@ -2,6 +2,7 @@
 // checked against the pages they have ever opened, their favourites and their own photos.
 
 import { EVENTS } from '@/data/events';
+import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
 import { PERIODS } from '@/data/periods';
 import { isModernSpecies } from '@/lib/era';
 import { pastPointIndex, speciesById, speciesInClade, speciesInFormation } from '@/lib/life';
@@ -165,10 +166,13 @@ export const TITLES: Title[] = [
   },
 ];
 
-// Titles for opening particular pages: [title, what to open (for the hint), species that count].
-// A group instead of species: { clade }. "time:69" is a visit to 69 million years ago.
-type PageTarget = string[] | { clade: string } | { time: string };
-const PAGE_TITLES: [string, string, PageTarget][] = [
+// Secret titles for opening particular pages: [title, what earned it, what counts, optional id].
+// Species ids (any of them), a group ({ clade }), an event page ({ event }), a moment on the
+// timeline ({ time }, e.g. "time:69" for 69 million years ago), or the mass extinctions seen on the
+// timeline ({ extinctions: 'any' | 'all' }). The id is given where a title was renamed, so anyone
+// who earned it keeps it.
+type PageTarget = string[] | { clade: string } | { event: string } | { time: string } | { extinctions: 'any' | 'all' };
+const PAGE_TITLES: [string, string, PageTarget, string?][] = [
   ['Oh pwincess', 'the grey wolf', ['canis-lupus']],
   ['oo ee a e a', 'the domestic cat', ['felis-catus']],
   ['Ima snaaaake', 'a snake', { clade: 'serpentes' }],
@@ -190,7 +194,7 @@ const PAGE_TITLES: [string, string, PageTarget][] = [
   ['Finally a worthy opponent', 'the snow leopard', ['panthera-uncia']],
   ['Bear necessities', 'the sloth bear', ['melursus-ursinus']],
   ['Oh yeah its all coming together', 'the guanaco', ['lama-guanicoe']],
-  ['nice', '69 million years ago on the timeline', { time: 'time:69' }],
+  ['nice', '69 million years ago', { time: 'time:69' }],
   ['It is wednesday my dudes', 'a frog', { clade: 'anura' }],
   ['Perry the platypus!', 'the platypus', ['ornithorhynchus-anatinus']],
   ['Do you know dawe', 'an echidna', ['tachyglossus-aculeatus', 'zaglossus-bruijnii', 'zaglossus-bartoni', 'zaglossus-attenboroughi']],
@@ -227,7 +231,7 @@ const PAGE_TITLES: [string, string, PageTarget][] = [
   ['Grumpy is my default', 'Pallas’s cat', ['otocolobus-manul']],
   ['Doug dimmadome owner dimesdale dimmadome', 'Pachycephalosaurus', ['pachycephalosaurus-wyomingensis']],
   ['Glorious Purpose', 'Lokiceratops', ['lokiceratops-rangiformis']],
-  ['We got gta6 before micro in path', 'Microraptor', ['microraptor-zhaoianus']],
+  ['if not friend why friend shape', 'Microraptor', ['microraptor-zhaoianus'], 'page-we-got-gta6-before-micro-in-path'],
   ['Thag simmons got what he deserved', 'Stegosaurus', ['stegosaurus-stenops']],
   ['I am literally a tank right now, youre not my dad', 'Ankylosaurus', ['ankylosaurus-magniventris']],
   ['Cant touch this', 'Spicomellus', ['spicomellus-afer']],
@@ -238,6 +242,11 @@ const PAGE_TITLES: [string, string, PageTarget][] = [
   ['Nom nom', 'megalodon', ['otodus-megalodon']],
   ['Chuckles im in danger', 'Thalassocnus', ['thalassocnus-natans']],
   ['One shall swim one shall skink', 'Livyatan', ['livyatan-melvillei']],
+  ['smol', 'the smallest animal in PaleoDex, the springtail Rhyniella', ['rhyniella-praecursor']],
+  ['little foot', 'Apatosaurus or Brontosaurus', ['apatosaurus-ajax', 'brontosaurus-excelsus']],
+  ['nice view from up here', 'the Apollo 11 Moon landing', { event: 'apollo-11' }],
+  ['gone but not forgotten', 'a mass extinction', { extinctions: 'any' }],
+  ['Its ok to cry sometimes', 'every mass extinction', { extinctions: 'all' }],
 ];
 
 const slug = (t: string) =>
@@ -248,18 +257,20 @@ const slug = (t: string) =>
     .replace(/^-|-$/g, '');
 
 TITLES.push(
-  ...PAGE_TITLES.map(([name, what, target]): Title => ({
-    id: `page-${slug(name) || 'nice'}`,
+  ...PAGE_TITLES.map(([name, what, target, id]): Title => ({
+    id: id ?? `page-${slug(name) || 'nice'}`,
     name,
     hint: 'A secret.',
     hidden: true,
-    reveal: 'time' in target ? `You travelled to ${what}.` : `You opened ${what}.`,
-    earned: (c) =>
-      Array.isArray(target)
-        ? target.some((id) => seen(c, 'species', id))
-        : 'clade' in target
-          ? speciesInClade(target.clade).some((s) => seen(c, 'species', s.id))
-          : c.visited.has(target.time),
+    reveal: Array.isArray(target) || 'clade' in target || 'event' in target ? `You opened ${what}.` : `You travelled to ${what} on the timeline.`,
+    earned: (c) => {
+      if (Array.isArray(target)) return target.some((id) => seen(c, 'species', id));
+      if ('clade' in target) return speciesInClade(target.clade).some((s) => seen(c, 'species', s.id));
+      if ('event' in target) return seen(c, 'event', target.event);
+      if ('time' in target) return c.visited.has(target.time);
+      const reached = (e: Extinction) => c.visited.has(`extinction:${e.id}`);
+      return target.extinctions === 'all' ? EXTINCTIONS.every(reached) : EXTINCTIONS.some(reached);
+    },
   })),
 );
 
