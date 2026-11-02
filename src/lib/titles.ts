@@ -158,7 +158,9 @@ export const TITLES: Title[] = [
   {
     id: 'dr-grants-student',
     name: 'Dr. Grant’s Favourite Student',
-    hint: 'A secret. Find every dinosaur that starred in a certain 1993 film about a theme park.',
+    hint: 'A secret.',
+    hidden: true,
+    reveal: 'You found every dinosaur seen in Jurassic Park (1993).',
     earned: (c) => JURASSIC_PARK.every((ids) => ids.some((id) => seen(c, 'species', id))),
   },
 ];
@@ -281,7 +283,9 @@ TITLES.push(
   {
     id: 'night-at-the-museum',
     name: 'Night at the Museum',
-    hint: 'A secret. Visit the museum whose exhibits came to life in a 2006 film.',
+    hint: 'A secret.',
+    hidden: true,
+    reveal: 'You checked in at the American Museum of Natural History, New York.',
     inPerson: true,
     earned: (c) => c.places.has('museum-american-museum-of-natural-history'),
   },
