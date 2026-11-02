@@ -20080,6 +20080,18 @@
   "scope": "genus",
   "kind": "restoration"
  },
+ "ornimegalonyx-oteroi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg/960px-Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg.png",
+  "width": 800,
+  "height": 988,
+  "artist": "Di (they-them)",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg",
+  "file": "Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg",
+  "article": "https://commons.wikimedia.org/wiki/File:Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg",
+  "scope": "species"
+ },
  "ornithodesmus-cluniculus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ornithodesmus_sacrum.jpg/960px-Ornithodesmus_sacrum.jpg",
   "width": 800,

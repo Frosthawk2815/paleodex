@@ -21,10 +21,14 @@ decisions = json.load(open(f'{HERE}/decisions.json'))
 candidates = json.load(open(f'{HERE}/candidates.json'))
 # Pictures the owner pinned by hand (overrides.json) keep their decision: a review answer may be
 # for the picture they replaced, as the answers name the species but not the picture.
+# An answer about the pinned picture itself (it was exported for review) does count.
 try:
-    pinned = set(json.load(open(f'{HERE}/overrides.json')))
+    overrides = json.load(open(f'{HERE}/overrides.json'))
 except FileNotFoundError:
-    pinned = set()
+    overrides = {}
+norm = lambda f: (f or '').replace(' ', '_')
+pinned_file = lambda sid: norm(overrides[sid] if isinstance(overrides[sid], str) else overrides[sid].get('file'))
+pinned = {sid for sid in overrides if sid not in candidates or pinned_file(sid) != norm(candidates[sid]['file'])}
 counts = {}
 for vote in ('yes', 'no', 'outdated'):
     m = re.search(rf'^{vote}:(.*)$', text, re.MULTILINE)
