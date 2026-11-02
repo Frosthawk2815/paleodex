@@ -346,7 +346,10 @@
  },
  "allkaruen-koi": {
   "vote": "no",
-  "file": "Allkaruen.png"
+  "file": "Allkaruen.png",
+  "rejectedFiles": [
+   "Allkaruen.png"
+  ]
  },
  "allocebus-trichotis": {
   "vote": "yes",
@@ -1203,7 +1206,10 @@
  },
  "barytherium-grave": {
   "vote": "no",
-  "file": "Barytherium_skull_(BMNH_6818).png"
+  "file": "Barytherium_skull_(BMNH_6818).png",
+  "rejectedFiles": [
+   "Barytherium_skull_(BMNH_6818).png"
+  ]
  },
  "bashanosaurus-primitivus": {
   "vote": "yes",
@@ -1584,7 +1590,10 @@
  },
  "bustingorrytitan-shiva": {
   "vote": "no",
-  "file": "Bustingorrytitan_(forelimb_bones).jpg"
+  "file": "Bustingorrytitan_(forelimb_bones).jpg",
+  "rejectedFiles": [
+   "Bustingorrytitan_(forelimb_bones).jpg"
+  ]
  },
  "buteo-jamaicensis": {
   "vote": "yes",
@@ -2389,7 +2398,10 @@
  },
  "coniophis-precedens": {
   "vote": "no",
-  "file": "Coniophis.jpg"
+  "file": "Coniophis.jpg",
+  "rejectedFiles": [
+   "Coniophis.jpg"
+  ]
  },
  "connochaetes-taurinus": {
   "vote": "yes",
@@ -2529,7 +2541,10 @@
  },
  "crosbysaurus-harrisae": {
   "vote": "no",
-  "file": "Crosbysaurus_referred.png"
+  "file": "Crosbysaurus_referred.png",
+  "rejectedFiles": [
+   "Crosbysaurus_referred.png"
+  ]
  },
  "crossarchus-obscurus": {
   "vote": "yes",
@@ -2869,7 +2884,10 @@
  },
  "dinheirosaurus-lourinhanensis": {
   "vote": "no",
-  "file": "Dinheirosaurus.png"
+  "file": "Dinheirosaurus.png",
+  "rejectedFiles": [
+   "Dinheirosaurus.png"
+  ]
  },
  "dinictis-felina": {
   "vote": "yes",
@@ -5920,7 +5938,10 @@
  },
  "metriacanthosaurus-parkeri": {
   "vote": "no",
-  "file": "Metriacanthosaurus_ilium.png"
+  "file": "Metriacanthosaurus_ilium.png",
+  "rejectedFiles": [
+   "Metriacanthosaurus_ilium.png"
+  ]
  },
  "metriorhynchus-superciliosus": {
   "vote": "yes",
@@ -6081,7 +6102,10 @@
  "monoclonius-crassus": {
   "vote": "no",
   "file": "Monoclonius.jpg",
-  "note": "Outdated restoration; find a newer picture."
+  "note": "Outdated restoration; find a newer picture.",
+  "rejectedFiles": [
+   "Monoclonius.jpg"
+  ]
  },
  "monodelphis-domestica": {
   "vote": "yes",
@@ -7191,7 +7215,10 @@
  },
  "pelecanimimus-polyodon": {
   "vote": "no",
-  "file": "Pelecanimimus_047.JPG"
+  "file": "Pelecanimimus_047.JPG",
+  "rejectedFiles": [
+   "Pelecanimimus_047.JPG"
+  ]
  },
  "pelecanus-crispus": {
   "vote": "yes",
@@ -8191,7 +8218,10 @@
  },
  "rhyniognatha-hirsti": {
   "vote": "no",
-  "file": "Rhyniognatha_specimen.png"
+  "file": "Rhyniognatha_specimen.png",
+  "rejectedFiles": [
+   "Rhyniognatha_specimen.png"
+  ]
  },
  "rhynochetos-jubatus": {
   "vote": "yes",
@@ -8657,7 +8687,10 @@
  },
  "simias-concolor": {
   "vote": "no",
-  "file": "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg"
+  "file": "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg",
+  "rejectedFiles": [
+   "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg"
+  ]
  },
  "similicaudipteryx-yixianensis": {
   "vote": "yes",
@@ -9261,7 +9294,10 @@
  },
  "tendaguria-tanzaniensis": {
   "vote": "no",
-  "file": "Tendaguria.png"
+  "file": "Tendaguria.png",
+  "rejectedFiles": [
+   "Tendaguria.png"
+  ]
  },
  "tenontosaurus-tilletti": {
   "vote": "yes",
@@ -9473,7 +9509,10 @@
  },
  "tornieria-africana": {
   "vote": "no",
-  "file": "Tornieria_skull.png"
+  "file": "Tornieria_skull.png",
+  "rejectedFiles": [
+   "Tornieria_skull.png"
+  ]
  },
  "torosaurus-latus": {
   "vote": "yes",

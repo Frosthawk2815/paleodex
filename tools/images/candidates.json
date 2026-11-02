@@ -1063,17 +1063,17 @@
   "kind": "fossil"
  },
  "allkaruen-koi": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Allkaruen.png/960px-Allkaruen.png",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Allkaruen_endocast.png/960px-Allkaruen_endocast.png",
   "width": 800,
-  "height": 977,
+  "height": 591,
   "artist": "Laura Codorniú1, Ariana Paulina Carabajal2, Diego Pol​3, David Unwin4, Oliver W.M. Rauhut5",
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Allkaruen.png",
-  "file": "Allkaruen.png",
+  "source": "https://commons.wikimedia.org/wiki/File:Allkaruen_endocast.png",
+  "file": "Allkaruen_endocast.png",
   "article": "https://en.wikipedia.org/wiki/Allkaruen",
   "scope": "genus",
-  "kind": "skeletal"
+  "kind": "restoration"
  },
  "allocebus-trichotis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Allocebus_trichotis_455678727.jpg/960px-Allocebus_trichotis_455678727.jpg",
@@ -3666,14 +3666,14 @@
   "kind": "skeletal"
  },
  "barytherium-grave": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Barytherium_skull_%28BMNH_6818%29.png/960px-Barytherium_skull_%28BMNH_6818%29.png",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Barytherium_graveDB1.jpg/960px-Barytherium_graveDB1.jpg",
   "width": 800,
-  "height": 731,
-  "artist": "Sneaking stoat 2",
+  "height": 451,
+  "artist": "DiBgd",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Barytherium_skull_(BMNH_6818).png",
-  "file": "Barytherium_skull_(BMNH_6818).png",
+  "source": "https://commons.wikimedia.org/wiki/File:Barytherium_graveDB1.jpg",
+  "file": "Barytherium_graveDB1.jpg",
   "article": "https://en.wikipedia.org/wiki/Barytherium",
   "scope": "genus",
   "kind": "restoration"
@@ -4838,14 +4838,14 @@
   "kind": "fossil"
  },
  "bustingorrytitan-shiva": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Bustingorrytitan_%28forelimb_bones%29.jpg/960px-Bustingorrytitan_%28forelimb_bones%29.jpg",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Bustingorrytitan_%28axial_skeleton%29.jpg/960px-Bustingorrytitan_%28axial_skeleton%29.jpg",
   "width": 800,
-  "height": 1049,
-  "artist": "María Edith Simón and Leonardo Salgado",
+  "height": 743,
+  "artist": "M. E. Simón & L. Salgado",
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Bustingorrytitan_(forelimb_bones).jpg",
-  "file": "Bustingorrytitan_(forelimb_bones).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Bustingorrytitan_(axial_skeleton).jpg",
+  "file": "Bustingorrytitan_(axial_skeleton).jpg",
   "article": "https://en.wikipedia.org/wiki/Bustingorrytitan",
   "scope": "genus",
   "kind": "fossil"
@@ -7263,14 +7263,14 @@
   "kind": "fossil"
  },
  "coniophis-precedens": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Coniophis.jpg/500px-Coniophis.jpg",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Coniophis_holotype_Marsh_1892.png/500px-Coniophis_holotype_Marsh_1892.png",
   "width": 500,
-  "height": 407,
-  "artist": "Skye McDavid",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Coniophis.jpg",
-  "file": "Coniophis.jpg",
+  "height": 481,
+  "artist": "Othniel Charles Marsh modified by Gretarsson",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Coniophis_holotype_Marsh_1892.png",
+  "file": "Coniophis_holotype_Marsh_1892.png",
   "article": "https://en.wikipedia.org/wiki/Coniophis",
   "scope": "genus",
   "kind": "fossil"
@@ -7698,14 +7698,14 @@
   "scope": "species"
  },
  "crosbysaurus-harrisae": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Crosbysaurus_referred.png/960px-Crosbysaurus_referred.png",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Crosbysaurus_hypothetical.png/960px-Crosbysaurus_hypothetical.png",
   "width": 800,
-  "height": 544,
-  "artist": "Robert Gay, Isabella Aude",
+  "height": 282,
+  "artist": "Robert Gay",
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Crosbysaurus_referred.png",
-  "file": "Crosbysaurus_referred.png",
+  "source": "https://commons.wikimedia.org/wiki/File:Crosbysaurus_hypothetical.png",
+  "file": "Crosbysaurus_hypothetical.png",
   "article": "https://en.wikipedia.org/wiki/Crosbysaurus",
   "scope": "genus",
   "kind": "restoration"
@@ -8768,17 +8768,17 @@
   "kind": "skeletal"
  },
  "dinheirosaurus-lourinhanensis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Dinheirosaurus.png/960px-Dinheirosaurus.png",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Dinheirosaurus_holotype.png/960px-Dinheirosaurus_holotype.png",
   "width": 800,
-  "height": 383,
-  "artist": "I. Reid",
-  "license": "CC0",
-  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "source": "https://commons.wikimedia.org/wiki/File:Dinheirosaurus.png",
-  "file": "Dinheirosaurus.png",
+  "height": 577,
+  "artist": "Pedro Mocho, Rafael Royo-Torres, Fernando Escaso, Elisabete Malafaia, Carlos de Miguel Chaves, Iván Narváez, Adán Pérez-García, Nuno Pimentel, Bruno C. Silva, & Francisco Ortega",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dinheirosaurus_holotype.png",
+  "file": "Dinheirosaurus_holotype.png",
   "article": "https://en.wikipedia.org/wiki/Dinheirosaurus_lourinhanensis",
   "scope": "species",
-  "kind": "restoration"
+  "kind": "fossil"
  },
  "dinictis-felina": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Dinictis_felina%2C_South_Dakota%2C_USA%2C_Early_Oligocene_-_Royal_Ontario_Museum_-_DSC00117.JPG/960px-Dinictis_felina%2C_South_Dakota%2C_USA%2C_Early_Oligocene_-_Royal_Ontario_Museum_-_DSC00117.JPG",
@@ -18179,17 +18179,17 @@
   "kind": "restoration"
  },
  "metriacanthosaurus-parkeri": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Metriacanthosaurus_ilium.png/500px-Metriacanthosaurus_ilium.png",
-  "width": 500,
-  "height": 281,
-  "artist": "IJReid",
-  "license": "CC BY 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Metriacanthosaurus_ilium.png",
-  "file": "Metriacanthosaurus_ilium.png",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Metriacanthosaurus_holotype.png/960px-Metriacanthosaurus_holotype.png",
+  "width": 800,
+  "height": 397,
+  "artist": "Oxford Museum of Natural History and GB3D Type Fossils Database",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Metriacanthosaurus_holotype.png",
+  "file": "Metriacanthosaurus_holotype.png",
   "article": "https://en.wikipedia.org/wiki/Metriacanthosaurus",
   "scope": "genus",
-  "kind": "restoration"
+  "kind": "fossil"
  },
  "metriorhynchus-superciliosus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Thalattosuchus_%28Metriorhynchus%29_superciliosus_skeletal.png/960px-Thalattosuchus_%28Metriorhynchus%29_superciliosus_skeletal.png",
@@ -18682,17 +18682,17 @@
   "scope": "species"
  },
  "monoclonius-crassus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Monoclonius.jpg/960px-Monoclonius.jpg",
-  "width": 800,
-  "height": 536,
-  "artist": "Richard Deckert",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Monoclonius_crassus.jpg/500px-Monoclonius_crassus.jpg",
+  "width": 500,
+  "height": 302,
+  "artist": "Hatcher, J. B. , O. C. Marsh , and R. S. Lull",
   "license": "Public domain",
   "licenseUrl": null,
-  "source": "https://commons.wikimedia.org/wiki/File:Monoclonius.jpg",
-  "file": "Monoclonius.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Monoclonius_crassus.jpg",
+  "file": "Monoclonius_crassus.jpg",
   "article": "https://en.wikipedia.org/wiki/Monoclonius",
   "scope": "genus",
-  "kind": "restoration"
+  "kind": "fossil"
  },
  "monodelphis-domestica": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Monodelphis_domestica.jpg/500px-Monodelphis_domestica.jpg",
@@ -22057,14 +22057,14 @@
   "scope": "species"
  },
  "pelecanimimus-polyodon": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Pelecanimimus_047.JPG/960px-Pelecanimimus_047.JPG",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Pelecanimimus_restoration.jpeg/960px-Pelecanimimus_restoration.jpeg",
   "width": 800,
-  "height": 445,
-  "artist": "Conty",
-  "license": "Public domain",
-  "licenseUrl": null,
-  "source": "https://commons.wikimedia.org/wiki/File:Pelecanimimus_047.JPG",
-  "file": "Pelecanimimus_047.JPG",
+  "height": 582,
+  "artist": "El fosilmaníaco",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pelecanimimus_restoration.jpeg",
+  "file": "Pelecanimimus_restoration.jpeg",
   "article": "https://en.wikipedia.org/wiki/Pelecanimimus_polyodon",
   "scope": "species",
   "kind": "restoration"
@@ -25171,17 +25171,17 @@
   "scope": "species"
  },
  "rhyniognatha-hirsti": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Rhyniognatha_specimen.png/500px-Rhyniognatha_specimen.png",
-  "width": 500,
-  "height": 807,
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Partial_restorations_of_Rhyniognatha_as_myriapod.jpg/960px-Partial_restorations_of_Rhyniognatha_as_myriapod.jpg",
+  "width": 800,
+  "height": 659,
   "artist": "Carolin Haug​, Joachim T. Haug",
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Rhyniognatha_specimen.png",
-  "file": "Rhyniognatha_specimen.png",
+  "source": "https://commons.wikimedia.org/wiki/File:Partial_restorations_of_Rhyniognatha_as_myriapod.jpg",
+  "file": "Partial_restorations_of_Rhyniognatha_as_myriapod.jpg",
   "article": "https://en.wikipedia.org/wiki/Rhyniognatha",
   "scope": "genus",
-  "kind": "fossil"
+  "kind": "restoration"
  },
  "rhynochetos-jubatus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Kagu_0A2A2595.jpg/960px-Kagu_0A2A2595.jpg",
@@ -26600,14 +26600,14 @@
   "scope": "species"
  },
  "simias-concolor": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg/960px-NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg",
-  "width": 800,
-  "height": 531,
-  "artist": "National Museum of Natural History, Smithsonian Institution (W. Abbott)",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Simias_concolor.jpg/500px-Simias_concolor.jpg",
+  "width": 500,
+  "height": 144,
+  "artist": "Katie Sayers",
   "license": "CC0",
   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-  "source": "https://commons.wikimedia.org/wiki/File:NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg",
-  "file": "NMNH-usnm_121690_Simias_concolor_xray_lateral.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Simias_concolor.jpg",
+  "file": "Simias_concolor.jpg",
   "article": "https://en.wikipedia.org/wiki/Simias_concolor",
   "scope": "species"
  },
@@ -28383,17 +28383,17 @@
   "kind": "fossil"
  },
  "tendaguria-tanzaniensis": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Tendaguria.png/960px-Tendaguria.png",
-  "width": 800,
-  "height": 341,
-  "artist": "Miracusaurs",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Tendaguria_anterior_dorsal_vertebra.png/500px-Tendaguria_anterior_dorsal_vertebra.png",
+  "width": 500,
+  "height": 266,
+  "artist": "Phillip D. Mannion",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Tendaguria.png",
-  "file": "Tendaguria.png",
+  "source": "https://commons.wikimedia.org/wiki/File:Tendaguria_anterior_dorsal_vertebra.png",
+  "file": "Tendaguria_anterior_dorsal_vertebra.png",
   "article": "https://en.wikipedia.org/wiki/Tendaguria",
   "scope": "genus",
-  "kind": "restoration"
+  "kind": "fossil"
  },
  "tenontosaurus-tilletti": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Perot_Museum_Tenontosaurus.jpg/960px-Perot_Museum_Tenontosaurus.jpg",
@@ -29052,14 +29052,14 @@
   "kind": "fossil"
  },
  "tornieria-africana": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Tornieria_skull.png/500px-Tornieria_skull.png",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Tornieria_caudal.png/500px-Tornieria_caudal.png",
   "width": 500,
-  "height": 1087,
-  "artist": "John A. Whitlock",
+  "height": 696,
+  "artist": "Mathew J. Wedel, Michael P. Taylor",
   "license": "CC BY-SA 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Tornieria_skull.png",
-  "file": "Tornieria_skull.png",
+  "source": "https://commons.wikimedia.org/wiki/File:Tornieria_caudal.png",
+  "file": "Tornieria_caudal.png",
   "article": "https://en.wikipedia.org/wiki/Tornieria_africana",
   "scope": "species",
   "kind": "fossil"
