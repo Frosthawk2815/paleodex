@@ -25221,6 +25221,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "rinconraptor-pipoae": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Rinconraptor_Skeletal.svg/960px-Rinconraptor_Skeletal.svg.png",
+  "width": 800,
+  "height": 300,
+  "artist": "SlvrHwk",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rinconraptor_Skeletal.svg",
+  "file": "Rinconraptor_Skeletal.svg",
+  "article": "https://en.wikipedia.org/wiki/Rinconraptor",
+  "scope": "genus",
+  "kind": "skeletal"
+ },
  "rinconsaurus-caudamirus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Rinconsaurus_test_2.jpg/960px-Rinconsaurus_test_2.jpg",
   "width": 800,
