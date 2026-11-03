@@ -28,6 +28,10 @@ How it works
   0 to -40 m (e.g. Dogger Bank), -40 covers -40 to -80 m and -80 covers -80 to -120 m.
   Low-lying land is stored as 40, so land is anything above 20 m.
 
+Afterwards, run tools/globe-data/corrections.py (see its notes): it adds inland seas the maps miss,
+such as the Boreal (Clearwater) and Eromanga seas, and small patches so every fossil site sits on the
+right surface (sea or land). Rebuilding with this script alone would remove those corrections.
+
 Usage (needs pygplates, netCDF4, numpy, scipy, rasterio, shapely)
   python tools/globe-data/build.py <paleodem-6min-dir> <paleomap-model-dir> <sealevel-dir> src/data/globe
 """
