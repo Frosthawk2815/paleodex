@@ -175,7 +175,7 @@ export const FW_26: DataSet = {
       id: 'homo-habilis',
       name: 'Homo habilis',
       common: 'Homo habilis',
-      clade: 'hominidae',
+      clade: 'hominidae', phylo: 1.25,
       status: 'full',
       ageText: 'About 2.3 to 1.6 million years ago (Pleistocene)',
       placeText: 'East Africa',

@@ -662,7 +662,7 @@ export const CENOZOIC: DataSet = {
       id: 'panthera-atrox',
       name: 'Panthera atrox',
       common: 'American lion',
-      clade: 'felidae',
+      clade: 'felidae', phylo: 4,
       status: 'full',
       ageText: 'About 340,000 to 12,000 years ago (Pleistocene)',
       placeText: 'North America, from Alaska to Mexico',

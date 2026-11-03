@@ -43,7 +43,7 @@ export const ICE_AGE: DataSet = {
       id: 'panthera-spelaea',
       name: 'Panthera spelaea',
       common: 'Cave lion',
-      clade: 'felidae',
+      clade: 'felidae', phylo: 4.5,
       status: 'full',
       ageText: 'About 370,000 to 14,000 years ago',
       placeText: 'Europe, northern Asia, Alaska and the Yukon',

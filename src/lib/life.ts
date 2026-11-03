@@ -49,17 +49,35 @@ export function familyOf(s: Species): Clade | undefined {
 // The point of a formation for where it was laid down: the one that ends before today.
 export const pastPointIndex = (f: HistoryEvent) => Math.max(0, f.points.findIndex((p) => p.toMa > 0));
 
-// The rest of a species' family, closest relatives first (approximate, from `phylo`).
+// The rest of a species' family, most closely related first:
+//   1. species of the same genus;
+//   2. then by how specific the group they share is (the deeper their shared clade, the closer);
+//   3. within that, by `phylo` where both have it (the ladder position along the tree);
+//   4. then alphabetically, so the order is stable.
+// Approximate: family trees are often debated.
 export function relativesOf(s: Species): Species[] {
   const family = familyOf(s);
   if (!family) return [];
-  const others = speciesInClade(family.id).filter((o) => o.id !== s.id);
+  const genus = (x: Species) => x.name.split(' ')[0];
+  const myPath = cladePath(s.clade).map((c) => c.id);
+  const shared = (o: Species) => {
+    const path = cladePath(o.clade);
+    let n = 0;
+    while (n < path.length && n < myPath.length && path[n].id === myPath[n]) n++;
+    return n;
+  };
   const p = s.phylo;
-  if (p === undefined) return others;
-  return others.sort((a, b) => {
-    if (a.phylo === undefined || b.phylo === undefined) return (a.phylo === undefined ? 1 : 0) - (b.phylo === undefined ? 1 : 0);
+  const phyloOrder = (a: Species, b: Species) => {
+    if (p === undefined || a.phylo === undefined || b.phylo === undefined) {
+      return p === undefined ? 0 : (a.phylo === undefined ? 1 : 0) - (b.phylo === undefined ? 1 : 0);
+    }
     // Closer relatives share a later branch point (a higher lower-number), then sit nearer on the ladder.
     const branch = Math.min(b.phylo, p) - Math.min(a.phylo, p);
     return branch !== 0 ? branch : Math.abs(a.phylo - p) - Math.abs(b.phylo - p);
-  });
+  };
+  return speciesInClade(family.id)
+    .filter((o) => o.id !== s.id)
+    .map((o) => ({ o, sameGenus: genus(o) === genus(s) ? 1 : 0, depth: shared(o) }))
+    .sort((a, b) => b.sameGenus - a.sameGenus || b.depth - a.depth || phyloOrder(a.o, b.o) || a.o.name.localeCompare(b.o.name))
+    .map((x) => x.o);
 }
