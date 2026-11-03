@@ -6,7 +6,7 @@ import { isDark } from '@/lib/colors';
 import { type TextSize, type Theme, useProfile } from '@/lib/profile';
 import { compatible, type CustomTheme, type PaperStyle, readableTextColors, resolveText, SWATCHES } from '@/lib/theme';
 import type { Units } from '@/lib/units';
-import { deviceLanguage, LANGUAGES, type LanguageSetting, useT } from '@/lib/i18n';
+import { deviceLanguage, LANGUAGES, LANGUAGES_ENABLED, type LanguageSetting, useT } from '@/lib/i18n';
 
 // A row of options where one is chosen.
 function Choice<T extends string>({ options, value, onChange }: { options: { value: T; label: string }[]; value: T; onChange: (v: T) => void }) {
@@ -54,15 +54,21 @@ export default function SettingsScreen() {
   return (
     <ScrollView style={st.screen} contentContainerStyle={st.content}>
       <Text style={st.heading}>{t('Language')}</Text>
-      <Choice<LanguageSetting>
-        options={[{ value: 'system', label: t('Match device') }, ...LANGUAGES.map((l) => ({ value: l.code, label: l.name }))]}
-        value={s.language ?? 'system'}
-        onChange={(language) => updateSettings({ language })}
-      />
-      <Text style={st.muted}>
-        {t('Menus, buttons and screens. Species, group and formation write-ups are still in English for now.')}
-        {(s.language ?? 'system') === 'system' ? ` ${t('Using: {language}.', { language: LANGUAGES.find((l) => l.code === deviceLanguage())!.name })}` : ''}
-      </Text>
+      {LANGUAGES_ENABLED ? (
+        <>
+          <Choice<LanguageSetting>
+            options={[{ value: 'system', label: t('Match device') }, ...LANGUAGES.map((l) => ({ value: l.code, label: l.name }))]}
+            value={s.language ?? 'system'}
+            onChange={(language) => updateSettings({ language })}
+          />
+          <Text style={st.muted}>
+            {t('Menus, buttons and screens. Species, group and formation write-ups are still in English for now.')}
+            {(s.language ?? 'system') === 'system' ? ` ${t('Using: {language}.', { language: LANGUAGES.find((l) => l.code === deviceLanguage())!.name })}` : ''}
+          </Text>
+        </>
+      ) : (
+        <Text style={st.muted}>Work in progress: more languages are coming in a future update. The app is in English for now.</Text>
+      )}
 
       <Text style={st.heading}>{t('Appearance')}</Text>
       <Choice<Theme>

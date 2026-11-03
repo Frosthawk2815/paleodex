@@ -57,8 +57,13 @@ export function translate(lang: Language, text: string, vars?: Vars): string {
 }
 
 // The language the user chose, or their device's.
+// Languages are on hold until the translations are finished: the app shows English to everyone
+// and Settings says other languages are coming. Set to true to bring the picker back.
+export const LANGUAGES_ENABLED = false;
+
 export function useLanguage(): Language {
   const setting = useProfile().profile.settings.language ?? 'system';
+  if (!LANGUAGES_ENABLED) return 'en';
   return setting === 'system' ? deviceLanguage() : setting;
 }
 
