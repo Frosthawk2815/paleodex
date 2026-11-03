@@ -66,6 +66,14 @@
           "cameraPermission": "Animal Almanac does not use your camera. This is required by the connection library used for Bone War games.",
           "microphonePermission": "Animal Almanac does not use your microphone. This is required by the connection library used for Bone War games."
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraProguardRules": "# react-native-webrtc (Bone War): keep its classes and ignore optional parts it does not ship,\n# such as org.webrtc.Dav1dDecoder, so the release build's code shrinker (R8) does not fail.\n-keep class org.webrtc.** { *; }\n-dontwarn org.webrtc.**"
+          }
+        }
       ]
     ],
     "experiments": {
