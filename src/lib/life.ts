@@ -51,9 +51,10 @@ export const pastPointIndex = (f: HistoryEvent) => Math.max(0, f.points.findInde
 
 // The rest of a species' family, most closely related first:
 //   1. species of the same genus;
-//   2. then by how specific the group they share is (the deeper their shared clade, the closer);
-//   3. within that, by `phylo` where both have it (the ladder position along the tree);
-//   4. then alphabetically, so the order is stable.
+//   2. then species linked as related (either way round, e.g. a possible synonym);
+//   3. then by how specific the group they share is (the deeper their shared clade, the closer);
+//   4. within that, by `phylo` where both have it (the ladder position along the tree);
+//   5. then alphabetically, so the order is stable.
 // Approximate: family trees are often debated.
 export function relativesOf(s: Species): Species[] {
   const family = familyOf(s);
@@ -77,7 +78,12 @@ export function relativesOf(s: Species): Species[] {
   };
   return speciesInClade(family.id)
     .filter((o) => o.id !== s.id)
-    .map((o) => ({ o, sameGenus: genus(o) === genus(s) ? 1 : 0, depth: shared(o) }))
-    .sort((a, b) => b.sameGenus - a.sameGenus || b.depth - a.depth || phyloOrder(a.o, b.o) || a.o.name.localeCompare(b.o.name))
+    .map((o) => ({
+      o,
+      sameGenus: genus(o) === genus(s) ? 1 : 0,
+      linked: s.related?.some((r) => r.id === o.id) || o.related?.some((r) => r.id === s.id) ? 1 : 0,
+      depth: shared(o),
+    }))
+    .sort((a, b) => b.sameGenus - a.sameGenus || b.linked - a.linked || b.depth - a.depth || phyloOrder(a.o, b.o) || a.o.name.localeCompare(b.o.name))
     .map((x) => x.o);
 }

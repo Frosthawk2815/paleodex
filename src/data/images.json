@@ -1188,6 +1188,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "altispinax-dunkeri": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Becklespinax.jpg/960px-Becklespinax.jpg",
+  "width": 800,
+  "height": 1442,
+  "artist": "Joseph Dinkel",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Becklespinax.jpg",
+  "file": "Becklespinax.jpg",
+  "article": "https://en.wikipedia.org/wiki/Altispinax",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "alvarezsaurus-calvoi": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Alvarezsaurus.jpg/960px-Alvarezsaurus.jpg",
   "width": 800,
@@ -13549,6 +13562,19 @@
   "article": "https://en.wikipedia.org/wiki/Water_chevrotain",
   "scope": "species"
  },
+ "hylaeosaurus-armatus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Hylaeosaurus_armatus.png/960px-Hylaeosaurus_armatus.png",
+  "width": 800,
+  "height": 452,
+  "artist": "Sven Sachs, Jahn J. Hornung",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Hylaeosaurus_armatus.png",
+  "file": "Hylaeosaurus_armatus.png",
+  "article": "https://en.wikipedia.org/wiki/Hylaeosaurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "hylobates-lar": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hylobates_lar_pair_of_white_and_black_01.jpg/960px-Hylobates_lar_pair_of_white_and_black_01.jpg",
   "width": 800,
@@ -21606,6 +21632,19 @@
   "scope": "species",
   "kind": "restoration"
  },
+ "pelorosaurus-conybearei": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Pelorosaurus.PNG/960px-Pelorosaurus.PNG",
+  "width": 800,
+  "height": 1454,
+  "artist": "Paul Upchurch, Philip D. Mannion, Michael P. Taylor",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Pelorosaurus.PNG",
+  "file": "Pelorosaurus.PNG",
+  "article": "https://en.wikipedia.org/wiki/Pelorosaurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
  "pelorovis-oldowayensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Pelorovis_oldowayensis_2.jpg/960px-Pelorovis_oldowayensis_2.jpg",
   "width": 800,
@@ -27191,6 +27230,19 @@
   "source": "https://commons.wikimedia.org/wiki/File:CCM_Suchomimus_2018.jpg",
   "file": "CCM_Suchomimus_2018.jpg",
   "article": "https://en.wikipedia.org/wiki/Suchomimus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "suchosaurus-cultridens": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Suchosaurus_cultridens_holotype_tooth.jpg/960px-Suchosaurus_cultridens_holotype_tooth.jpg",
+  "width": 800,
+  "height": 658,
+  "artist": "The Trustees of the Natural History Museum, London",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Suchosaurus_cultridens_holotype_tooth.jpg",
+  "file": "Suchosaurus_cultridens_holotype_tooth.jpg",
+  "article": "https://en.wikipedia.org/wiki/Suchosaurus",
   "scope": "genus",
   "kind": "fossil"
  },

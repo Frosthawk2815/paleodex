@@ -532,6 +532,16 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
   ],
   clades: [
     {
+      // Not a recognised family: an informal grouping in the app for two tall-spined
+      // allosaur relatives whose exact place on the family tree is uncertain.
+      id: 'humpbacked-allosaurs',
+      name: 'Concavenator and Altispinax',
+      common: 'Hump-backed allosaurs',
+      parent: 'allosauroidea',
+      family: true,
+      description: 'Concavenator from Spain and Altispinax from England, Early Cretaceous allosaur relatives with very tall spines on some back vertebrae, forming a hump or ridge. They are grouped together here for their shared hump; this is not an official family. Concavenator is usually classed as a carcharodontosaur, and Altispinax is known from too little to place with confidence.',
+    },
+    {
       id: 'pholidosauridae',
       name: 'Pholidosauridae',
       common: 'Pholidosaurs',
@@ -840,7 +850,7 @@ export const MEDIA_EARLY_CRETACEOUS: DataSet = {
       id: 'concavenator-corcovatus',
       name: 'Concavenator corcovatus',
       common: 'Concavenator',
-      clade: 'allosauroidea',
+      clade: 'humpbacked-allosaurs',
       status: 'full',
       ageText: 'About 126 million years ago',
       placeText: 'Cuenca, Spain',
