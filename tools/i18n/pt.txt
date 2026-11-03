@@ -33,7 +33,7 @@
 32|Vivos hoje
 33|Vivos hoje: {group}
 34|Todos os animais vivos
-35|Toda a vida pré-histórica (e atual) do PaleoDex
+35|Toda a vida pré-histórica (e atual) do Animal Almanac
 36|Toda a vida pré-histórica
 37|Todo o tempo
 38|Todos os {group}
@@ -75,7 +75,7 @@
 74|Trocar a última pergunta de {who}
 75|Trocar a próxima pergunta de {who}
 76|Carvão
-77|Faça check-in pessoalmente em um sítio fóssil do PaleoDex.
+77|Faça check-in pessoalmente em um sítio fóssil do Animal Almanac.
 78|Faça check-in em um museu de história natural.
 79|Faça check-in em um zoológico credenciado.
 80|Impacto do asteroide de Chicxulub
@@ -129,7 +129,7 @@
 128|Extinção do fim do Ordoviciano
 129|Extinção do fim do Permiano
 130|Extinção do fim do Triássico
-131|Aumenta as páginas de espécies, grupos e formações e estes menus. O PaleoDex também segue o tamanho de texto do seu aparelho.
+131|Aumenta as páginas de espécies, grupos e formações e estes menus. O Animal Almanac também segue o tamanho de texto do seu aparelho.
 132|Digite o código de batalha
 133|Digite o código de batalha que você recebeu
 134|Digite o código de batalha do anfitrião
@@ -137,7 +137,7 @@
 136|Par
 137|Evento
 138|Eventos
-139|Todos os sítios fósseis do PaleoDex também contam: abra uma formação rochosa para ver onde ela fica.
+139|Todos os sítios fósseis do Animal Almanac também contam: abra uma formação rochosa para ver onde ela fica.
 140|Cada página parece um caderno pautado, escrito à mão.
 141|Cada página parece um pergaminho antigo, escrito com letra de manuscrito.
 142|Todo mundo começa aqui.
@@ -173,7 +173,7 @@
 172|Organizar uma partida
 173|Nomes famosos e o básico
 174|Como terminou
-175|Quanto você sabe sobre a vida pré-histórica? As perguntas vêm de todo o PaleoDex, em cinco níveis de dificuldade.
+175|Quanto você sabe sobre a vida pré-histórica? As perguntas vêm de todo o Animal Almanac, em cinco níveis de dificuldade.
 176|Pressa!
 177|Pressa! enviada: o tempo de {who} nesta pergunta foi cortado pela metade.
 178|Pressa! enviada: o tempo de {who} foi cortado pela metade.
@@ -291,7 +291,7 @@
 290|Outros {group}
 291|As páginas sobre vida pré-histórica parecem um pergaminho antigo escrito com letra de manuscrito. Os animais atuais e a história recente parecem um caderno escrito à mão, assim como estes menus.
 292|Fã de paleo
-293|O PaleoDex precisa da sua localização para fazer o check-in. Você pode permitir isso nos ajustes do seu aparelho.
+293|O Animal Almanac precisa da sua localização para fazer o check-in. Você pode permitir isso nos ajustes do seu aparelho.
 294|Paleógeno
 295|Paleozoico
 296|Painéis
@@ -468,8 +468,8 @@
 467|Usado
 468|Usando: {language}.
 469|Visite uma formação rochosa de cada período geológico, do Cambriano até hoje.
-470|Visite a formação rochosa mais antiga do PaleoDex, ou um dos animais encontrados lá.
-471|Visitando um museu de história natural, um zoológico credenciado ou um dos sítios fósseis do PaleoDex? Faça check-in enquanto estiver lá para ganhar títulos.
+470|Visite a formação rochosa mais antiga do Animal Almanac, ou um dos animais encontrados lá.
+471|Visitando um museu de história natural, um zoológico credenciado ou um dos sítios fósseis do Animal Almanac? Faça check-in enquanto estiver lá para ganhar títulos.
 472|Esperando pelo menos {n} jogadores, contando com você. Compartilhe o código para convidá-los.
 473|Esperando todos responderem…
 474|Esperando alguém entrar…
@@ -516,7 +516,7 @@
 515|Seu nome
 516|Sua foto de {name}
 517|Sua foto · gerencie em Perfil › Suas imagens
-518|Não foi possível abrir suas fotos. Verifique se o PaleoDex tem permissão para usar suas fotos.
+518|Não foi possível abrir suas fotos. Verifique se o Animal Almanac tem permissão para usar suas fotos.
 519|Seu perfil
 520|Seu perfil, favoritos, ajustes e créditos
 521|Seus títulos
@@ -565,7 +565,7 @@
 564|Faltam {n} segundos
 565|Faltam encontrar {n} títulos secretos
 566|{n} espécies
-567|{n} espécies no PaleoDex
+567|{n} espécies no Animal Almanac
 568|{n} andares
 569|{n} mil anos
 570|Há {n} mil anos

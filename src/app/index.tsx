@@ -344,7 +344,7 @@ export default function GlobeScreen() {
                   </Svg>
                 )}
             </Pressable>
-            <Text style={styles.app}>PaleoDex</Text>
+            <Text style={styles.app}>Animal Almanac</Text>
             <Text style={styles.time} accessibilityLiveRegion="polite">
               {localTime(timeLabel(timeMa), t)}
             </Text>

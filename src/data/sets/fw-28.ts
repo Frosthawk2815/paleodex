@@ -98,7 +98,7 @@ export const FW_28: DataSet = {
       formations: ['wangshi'],
       summary: [
         'A small plant-eating dinosaur, probably under a metre long, with the longest name of any dinosaur: 23 letters in the genus alone. It is known only from scrappy remains, parts of the jaws, skull, hips and legs, found on a cliff near Laiyang.',
-        'Its name means “small thick-headed lizard”, because Dong Zhiming described it in 1978 as a tiny pachycephalosaur, one of the dome-headed dinosaurs. Later studies found nothing to link it to them, and a 2011 analysis placed it instead as an early ceratopsian, a distant relative of Triceratops, though its fossils are so incomplete that this is still debated. PaleoDex places it with both groups, among the fringe-headed dinosaurs, rather than in either.',
+        'Its name means “small thick-headed lizard”, because Dong Zhiming described it in 1978 as a tiny pachycephalosaur, one of the dome-headed dinosaurs. Later studies found nothing to link it to them, and a 2011 analysis placed it instead as an early ceratopsian, a distant relative of Triceratops, though its fossils are so incomplete that this is still debated. Animal Almanac places it with both groups, among the fringe-headed dinosaurs, rather than in either.',
         'It lived long after ceratopsians and pachycephalosaurs went their separate ways in the Jurassic, so it is not a link from the time they split; if it is not an early ceratopsian, it may be a late survivor of a branch close to that split.',
       ],
       facts: [
@@ -123,7 +123,7 @@ export const FW_28: DataSet = {
       formations: ['obernkirchen'],
       summary: [
         'A small, two-legged plant-eater, about 1.5 m long, known from a single skeleton found in 1855 and preserved only as a natural mould in sandstone, with no skull. It has been called a pachycephalosaur, a ceratopsian and something in between.',
-        'A 2009 study found it fits with the fringe-headed dinosaurs but could not place it in either group, while a 2011 analysis found it to be an early ceratopsian close to Yinlong. Like Micropachycephalosaurus, PaleoDex places it with both groups.',
+        'A 2009 study found it fits with the fringe-headed dinosaurs but could not place it in either group, while a 2011 analysis found it to be an early ceratopsian close to Yinlong. Like Micropachycephalosaurus, Animal Almanac places it with both groups.',
       ],
       facts: [
         { label: 'Named', value: 'Hermann von Meyer, 1857' },

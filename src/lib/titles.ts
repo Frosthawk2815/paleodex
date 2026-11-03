@@ -135,7 +135,7 @@ export const TITLES: Title[] = [
   {
     id: 'deep-time-explorer',
     name: 'Deep Time Explorer',
-    hint: 'Visit the oldest rock formation in PaleoDex, or one of the animals found there.',
+    hint: 'Visit the oldest rock formation in Animal Almanac, or one of the animals found there.',
     earned: (c) => {
       const { formations, species } = data().oldest;
       return formations.some((id) => seen(c, 'event', id)) || species.some((id) => seen(c, 'species', id));
@@ -243,7 +243,7 @@ const PAGE_TITLES: [string, string, PageTarget, string?][] = [
   ['Nom nom', 'megalodon', ['otodus-megalodon']],
   ['Chuckles im in danger', 'Thalassocnus', ['thalassocnus-natans']],
   ['One shall swim one shall skink', 'Livyatan', ['livyatan-melvillei']],
-  ['smol', 'the smallest animal in PaleoDex, the springtail Rhyniella', ['rhyniella-praecursor']],
+  ['smol', 'the smallest animal in Animal Almanac, the springtail Rhyniella', ['rhyniella-praecursor']],
   ['little foot', 'Apatosaurus or Brontosaurus', ['apatosaurus-ajax', 'brontosaurus-excelsus']],
   ['nice view from up here', 'the Apollo 11 Moon landing', { event: 'apollo-11' }],
   ['gone but not forgotten', 'a mass extinction', { extinctions: 'any' }],
@@ -291,7 +291,7 @@ const visitedOf = (c: TitleContext, kind: string) => [...c.places].filter((id) =
 
 // Titles for checking in at real places.
 TITLES.push(
-  { id: 'boots-on-the-ground', name: 'Boots on the Ground', hint: 'Check in at a fossil site from PaleoDex, in person.', inPerson: true, earned: (c) => visitedOf(c, 'site').length >= 1 },
+  { id: 'boots-on-the-ground', name: 'Boots on the Ground', hint: 'Check in at a fossil site from Animal Almanac, in person.', inPerson: true, earned: (c) => visitedOf(c, 'site').length >= 1 },
   { id: 'prospector', name: 'Prospector', hint: 'Check in at 3 different fossil sites.', inPerson: true, earned: (c) => visitedOf(c, 'site').length >= 3 },
   { id: 'museum-goer', name: 'Museum Goer', hint: 'Check in at a natural history museum.', inPerson: true, earned: (c) => visitedOf(c, 'museum').length >= 1 },
   { id: 'gallery-regular', name: 'Gallery Regular', hint: 'Check in at 5 natural history museums.', inPerson: true, earned: (c) => visitedOf(c, 'museum').length >= 5 },

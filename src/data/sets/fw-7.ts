@@ -1,4 +1,4 @@
-// Fossil Wiki gap fill, batch 7: animals of Argentina and Chile in formations already in PaleoDex
+// Fossil Wiki gap fill, batch 7: animals of Argentina and Chile in formations already in Animal Almanac
 // (Candeleros, Huincul, Cerro Barcino, La Amarga, Anacleto, Allen, Chorrillo, Lago Colhué Huapi,
 // La Colonia, Dorotea, Santa Cruz). Candeleros and Huincul ages follow the 2026 re-dating.
 // Checked against current literature (2026).

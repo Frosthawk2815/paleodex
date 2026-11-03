@@ -1,6 +1,6 @@
 // Profile pictures for Peer Review leaderboards. A photo on the phone can't be shown on other
 // phones, so it is shrunk to a small JPEG and sent with the player's name; a species picture is
-// sent as the species, and each phone shows PaleoDex's picture of it.
+// sent as the species, and each phone shows Animal Almanac's picture of it.
 
 import { ImageManipulator, SaveFormat } from 'expo-image-manipulator';
 

@@ -1,4 +1,4 @@
-# Common pets and their wild relatives, where PaleoDex did not already have them. Ranges show the
+# Common pets and their wild relatives, where Animal Almanac did not already have them. Ranges show the
 # wild (or feral) range; domestic animals kept worldwide get worldwide ranges with how they spread.
 # Ranges are country-level outlines (clipped by boxes), so they are approximate.
 

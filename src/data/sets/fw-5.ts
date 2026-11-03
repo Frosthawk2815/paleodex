@@ -1,5 +1,5 @@
 // Fossil Wiki gap fill, batch 5: Late Cretaceous animals of the Gobi and Inner Mongolia in
-// formations already in PaleoDex (Barun Goyot, Nemegt, Bayan Shireh, Djadochta, Iren Dabasu), plus
+// formations already in Animal Almanac (Barun Goyot, Nemegt, Bayan Shireh, Djadochta, Iren Dabasu), plus
 // Parahesperornis of the Niobrara Chalk. Checked against current literature (2026).
 
 import type { DataSet } from '@/data/sets/types';

@@ -1,4 +1,4 @@
-// Fossil Wiki gap fill, batch 15: more Mesozoic animals for formations already in PaleoDex.
+// Fossil Wiki gap fill, batch 15: more Mesozoic animals for formations already in Animal Almanac.
 // Checked against current literature (2026).
 
 import type { DataSet } from '@/data/sets/types';

@@ -1,4 +1,4 @@
-// Fossil Wiki gap fill, batch 17: Permian–Triassic formations new to PaleoDex (Manda, Lossiemouth,
+// Fossil Wiki gap fill, batch 17: Permian–Triassic formations new to Animal Almanac (Manda, Lossiemouth,
 // Donguz, Dockum, Popo Agie, Löwenstein, Sakamena, Argana, Cacheuta, Yerrapalli) plus Triassic and
 // Jurassic additions to existing formations. Checked against current literature (2026).
 

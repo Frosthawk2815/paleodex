@@ -1,7 +1,7 @@
 import { type Aka, CLADE_AKA, SPECIES_AKA } from '@/data/aka';
 import { SETS } from '@/data/sets';
 
-// Living things in PaleoDex: groups (clades) arranged as a family tree, and the species in them.
+// Living things in Animal Almanac: groups (clades) arranged as a family tree, and the species in them.
 // A species belongs to one group; a group lists everything in it and in the groups below it.
 // Species link to the rock formations they are found in (events with kind 'Rock formation').
 
@@ -34,7 +34,7 @@ export type Species = {
   status: 'full' | 'brief';
   ageText: string;
   placeText: string;
-  // Formations in PaleoDex (event ids) the species is found in, in the order to show them.
+  // Formations in Animal Almanac (event ids) the species is found in, in the order to show them.
   formations: string[];
   // Events (ids in EVENTS) the species is tied to, e.g. Homo sapiens and the Moon landing.
   events?: string[];

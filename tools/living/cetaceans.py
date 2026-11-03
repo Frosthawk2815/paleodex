@@ -36,7 +36,7 @@ CLADES = [
     {'id': 'delphinidae', 'name': 'Delphinidae', 'common': 'Oceanic dolphins', 'parent': 'odontoceti', 'family': True, 'description': 'The largest cetacean family, from small dolphins to pilot whales and the orca, the largest dolphin.'},
 ]
 
-# Fossil whales already in PaleoDex, moved to their branches.
+# Fossil whales already in Animal Almanac, moved to their branches.
 UPGRADES = {
     'piscobalaena-nana': {'clade': 'mysticeti'},
     'messapicetus-gregarius': {'clade': 'ziphiidae'},

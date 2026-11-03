@@ -1,5 +1,5 @@
 // Fossil Wiki gap fill, batch 6: Late Cretaceous animals of North America in formations already in
-// PaleoDex (Judith River, Dinosaur Park, Oldman, Two Medicine, Horseshoe Canyon, Prince Creek, Hell
+// Animal Almanac (Judith River, Dinosaur Park, Oldman, Two Medicine, Horseshoe Canyon, Prince Creek, Hell
 // Creek, Lance, Aguja, Niobrara). Old names from the Bone Wars are included with their current status.
 // Checked against current literature (2026).
 

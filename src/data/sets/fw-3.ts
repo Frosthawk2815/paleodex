@@ -1,5 +1,5 @@
 // Fossil Wiki gap fill, batch 3: Late Triassic and Early Jurassic animals of formations already in
-// PaleoDex (Chinle, Elliot, Chañares, Ischigualasto, Trossingen, Kayenta). Checked against current
+// Animal Almanac (Chinle, Elliot, Chañares, Ischigualasto, Trossingen, Kayenta). Checked against current
 // literature (2026).
 
 import type { DataSet } from '@/data/sets/types';

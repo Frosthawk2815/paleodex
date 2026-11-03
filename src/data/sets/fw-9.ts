@@ -1,5 +1,5 @@
 // Fossil Wiki gap fill, batch 9: Mesozoic animals of Europe, Africa, Central Asia, India and Madagascar
-// in formations already in PaleoDex. Checked against current literature (2026).
+// in formations already in Animal Almanac. Checked against current literature (2026).
 
 import type { DataSet } from '@/data/sets/types';
 

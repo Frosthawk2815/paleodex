@@ -33,7 +33,7 @@
 32|Vivos hoy
 33|Vivos hoy: {group}
 34|Todos los animales vivos
-35|Toda la vida prehistórica (y actual) de PaleoDex
+35|Toda la vida prehistórica (y actual) de Animal Almanac
 36|Toda la vida prehistórica
 37|Todo el tiempo
 38|Todos los {group}
@@ -75,7 +75,7 @@
 74|Cambiar la última pregunta de {who}
 75|Cambiar la siguiente pregunta de {who}
 76|Carbón
-77|Visita en persona un yacimiento fósil de PaleoDex.
+77|Visita en persona un yacimiento fósil de Animal Almanac.
 78|Visita un museo de historia natural.
 79|Visita un zoo acreditado.
 80|Impacto del asteroide de Chicxulub
@@ -129,7 +129,7 @@
 128|Extinción del final del Ordovícico
 129|Extinción del final del Pérmico
 130|Extinción del final del Triásico
-131|Agranda las páginas de especies, grupos y formaciones y estos menús. PaleoDex también sigue el tamaño de texto de tu dispositivo.
+131|Agranda las páginas de especies, grupos y formaciones y estos menús. Animal Almanac también sigue el tamaño de texto de tu dispositivo.
 132|Introduce el código de batalla
 133|Introduce el código de batalla que te enviaron
 134|Introduce el código de batalla del anfitrión
@@ -137,7 +137,7 @@
 136|Par
 137|Evento
 138|Eventos
-139|Todos los yacimientos fósiles de PaleoDex también cuentan: abre una formación rocosa para ver dónde está.
+139|Todos los yacimientos fósiles de Animal Almanac también cuentan: abre una formación rocosa para ver dónde está.
 140|Cada página parece un cuaderno de rayas, escrito a mano.
 141|Cada página parece un pergamino antiguo, escrito con letra de manuscrito.
 142|Todo el mundo empieza aquí.
@@ -173,7 +173,7 @@
 172|Organizar una partida
 173|Nombres famosos y lo básico
 174|Cómo terminó
-175|¿Cuánto sabes de la vida prehistórica? Las preguntas salen de todo PaleoDex, en cinco niveles de dificultad.
+175|¿Cuánto sabes de la vida prehistórica? Las preguntas salen de todo Animal Almanac, en cinco niveles de dificultad.
 176|¡Prisa!
 177|¡Prisa! enviada: el tiempo de {who} para esta pregunta se reduce a la mitad.
 178|¡Prisa! enviada: el tiempo de {who} se reduce a la mitad.
@@ -291,7 +291,7 @@
 290|Otros {group}
 291|Las páginas sobre vida prehistórica parecen un pergamino antiguo escrito con letra de manuscrito. Los animales actuales y la historia reciente parecen un cuaderno escrito a mano, igual que estos menús.
 292|Fan de lo paleo
-293|PaleoDex necesita tu ubicación para registrar tu visita. Puedes permitirlo en los ajustes de tu dispositivo.
+293|Animal Almanac necesita tu ubicación para registrar tu visita. Puedes permitirlo en los ajustes de tu dispositivo.
 294|Paleógeno
 295|Paleozoico
 296|Paneles
@@ -468,8 +468,8 @@
 467|Usado
 468|Usando: {language}.
 469|Visita una formación rocosa de cada periodo geológico, del Cámbrico al presente.
-470|Visita la formación rocosa más antigua de PaleoDex, o uno de los animales hallados allí.
-471|¿Visitas un museo de historia natural, un zoo acreditado o uno de los yacimientos fósiles de PaleoDex? Registra tu visita mientras estás allí para ganar títulos.
+470|Visita la formación rocosa más antigua de Animal Almanac, o uno de los animales hallados allí.
+471|¿Visitas un museo de historia natural, un zoo acreditado o uno de los yacimientos fósiles de Animal Almanac? Registra tu visita mientras estás allí para ganar títulos.
 472|Esperando al menos a {n} jugadores, contándote a ti. Comparte el código para invitarlos.
 473|Esperando a que todos respondan…
 474|Esperando a que alguien se una…
@@ -516,7 +516,7 @@
 515|Tu nombre
 516|Tu foto de {name}
 517|Tu foto · gestiónala en Perfil › Tus imágenes
-518|No se pudieron abrir tus fotos. Comprueba que PaleoDex tenga permiso para usar tus fotos.
+518|No se pudieron abrir tus fotos. Comprueba que Animal Almanac tenga permiso para usar tus fotos.
 519|Tu perfil
 520|Tu perfil, favoritos, ajustes y créditos
 521|Tus títulos
@@ -565,7 +565,7 @@
 564|Quedan {n} segundos
 565|Te quedan {n} títulos secretos por encontrar
 566|{n} especies
-567|{n} especies en PaleoDex
+567|{n} especies en Animal Almanac
 568|{n} pisos
 569|{n} mil años
 570|Hace {n} mil años

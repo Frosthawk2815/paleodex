@@ -5,7 +5,7 @@ import type { DataSet } from '@/data/sets/types';
 
 export const INVERTEBRATES_1: DataSet = {
   clades: [
-    { id: 'animalia', name: 'Animalia', common: 'Animals', description: 'Many-celled organisms that eat other living things and, at least at some stage, can move. All the life in PaleoDex belongs here.' },
+    { id: 'animalia', name: 'Animalia', common: 'Animals', description: 'Many-celled organisms that eat other living things and, at least at some stage, can move. All the life in Animal Almanac belongs here.' },
     { id: 'porifera', name: 'Porifera', common: 'Sponges', parent: 'animalia', family: true, description: 'Simple filter-feeding animals without true tissues or organs, among the earliest animal groups.' },
     { id: 'cnidaria', name: 'Cnidaria', common: 'Jellyfish, corals and relatives', parent: 'animalia', family: true, description: 'Animals with stinging cells and a single body opening, from jellyfish to corals and sea anemones.' },
     { id: 'chaetognatha', name: 'Chaetognatha', common: 'Arrow worms', parent: 'animalia', family: true, description: 'Small, dart-shaped predators of the plankton today, with grasping spines around the mouth. Some early ones were giants.' },

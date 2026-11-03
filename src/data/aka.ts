@@ -13,7 +13,7 @@ export const SPECIES_AKA: Record<string, Aka> = {
   'brontosaurus-excelsus': { names: [], search: ['thunder lizard'] },
   'apatosaurus-ajax': {
     names: ['Brontosaurus'],
-    note: 'For about a century Brontosaurus was treated as a synonym of Apatosaurus. A 2015 study revived Brontosaurus as its own genus, which PaleoDex follows.',
+    note: 'For about a century Brontosaurus was treated as a synonym of Apatosaurus. A 2015 study revived Brontosaurus as its own genus, which Animal Almanac follows.',
   },
   'allosaurus-fragilis': {
     names: ['Antrodemus'],

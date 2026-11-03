@@ -85,7 +85,7 @@ export function CladeInfo({ clade: cladeEn, onBack, onPrevious, previousLabel, o
       )}
 
       <Text style={info.heading}>
-        {t('{n} species in PaleoDex', { n: species.length })}
+        {t('{n} species in Animal Almanac', { n: species.length })}
       </Text>
       {sections.map(({ clade: c, members }) => (
         <View key={c.id} style={{ gap: 6 }}>

@@ -1,4 +1,4 @@
-# Common farm animals, where PaleoDex had only their wild relatives. Ranges show where each was
+# Common farm animals, where Animal Almanac had only their wild relatives. Ranges show where each was
 # domesticated, how it spread with people, and where it is kept today; country-level outlines
 # clipped by boxes, so they are approximate. Checked November 2026.
 

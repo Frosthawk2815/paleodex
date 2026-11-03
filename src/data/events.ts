@@ -85,7 +85,7 @@ const BASE_EVENTS: HistoryEvent[] = [
     summary: [
       'On 20 July 1969 the Apollo 11 lunar module Eagle landed in the Sea of Tranquillity, a broad, flat plain of ancient lava on the Moon’s near side. Neil Armstrong radioed: “Houston, Tranquility Base here. The Eagle has landed.”',
       'About six and a half hours later Armstrong became the first person to step onto the Moon, followed by Buzz Aldrin. Michael Collins stayed in lunar orbit aboard the command module Columbia.',
-      'The astronauts left a laser retroreflector on the surface, and it is still in use. Timing laser pulses bounced off it is how scientists measure the Moon drifting away from Earth by about 3.8 cm a year, the rate PaleoDex uses for the Earth–Moon distance.',
+      'The astronauts left a laser retroreflector on the surface, and it is still in use. Timing laser pulses bounced off it is how scientists measure the Moon drifting away from Earth by about 3.8 cm a year, the rate Animal Almanac uses for the Earth–Moon distance.',
     ],
     facts: [
       { label: 'Landed', value: '20 July 1969, 20:17 UTC' },

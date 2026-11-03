@@ -89,7 +89,7 @@ export function UserPhotosProvider({ children }: { children: ReactNode }) {
       });
       return null;
     } catch {
-      return 'Your photos couldn’t be opened or saved. Check that PaleoDex is allowed to use your photos, and that there is space on your device.';
+      return 'Your photos couldn’t be opened or saved. Check that Animal Almanac is allowed to use your photos, and that there is space on your device.';
     }
   }, []);
 
@@ -145,7 +145,7 @@ export function useMainUserPhoto(speciesId: string): UserPhoto | undefined {
 }
 
 // A function giving the photo the user chose to show for a species (its "main" photo), if any.
-// Everywhere a species picture appears, this replaces PaleoDex's picture, as on species pages.
+// Everywhere a species picture appears, this replaces Animal Almanac's picture, as on species pages.
 export function useOwnPicture(): (speciesId: string) => string | undefined {
   const { photosOf } = useUserPhotos();
   return useCallback(

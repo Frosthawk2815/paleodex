@@ -15,7 +15,7 @@ import { useT } from '@/lib/i18n';
 type Stage = { kind: 'menu' } | { kind: 'setup' } | { kind: 'play'; questions: Question[]; index: number; chosen: number | null; score: number; hidden: number[] } | { kind: 'done'; score: number; total: number; best: boolean };
 
 // The quiz: choose solo play, a Bone War game against one other player or a Peer Review game with a group, then for solo play a category
-// and a difficulty, then answer ten questions built from PaleoDex's own data.
+// and a difficulty, then answer ten questions built from Animal Almanac's own data.
 export default function QuizScreen() {
   const st = useProfileStyles();
   const t = useT();
@@ -29,7 +29,7 @@ export default function QuizScreen() {
   // Lifelines used this round (each once per quiz).
   const [used, setUsed] = useState({ fifty: false, refresh: false });
 
-  // The user's own photo of a species if they have one, otherwise PaleoDex's picture.
+  // The user's own photo of a species if they have one, otherwise Animal Almanac's picture.
   const imageFor = (id: string) => ownPicture(id) ?? imageOf(id)?.thumb;
   const bestFor = (c: Category, d: Difficulty) => profile.quizBest[`${categoryKey(c)}:${d}`];
 
@@ -42,7 +42,7 @@ export default function QuizScreen() {
   if (stage.kind === 'menu') {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
-        <Text style={st.text}>{t('How much do you know about prehistoric life? Questions are drawn from everything in PaleoDex, at five levels of difficulty.')}</Text>
+        <Text style={st.text}>{t('How much do you know about prehistoric life? Questions are drawn from everything in Animal Almanac, at five levels of difficulty.')}</Text>
         <Pressable onPress={() => setStage({ kind: 'setup' })} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>{t('Play solo')}</Text>

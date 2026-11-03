@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).parent))
 from places_list import ACCREDITED, HAND, LIMIT, MUSEUMS, NOTES, TIERS, ZOOS  # noqa: E402
 
-UA = 'PaleoDex/1.0 (educational app; https://github.com/Frosthawk2815/paleodex)'
+UA = 'AnimalAlmanac/1.0 (educational app; https://github.com/Frosthawk2815/paleodex)'
 API = 'https://en.wikipedia.org/w/api.php'
 
 # Accrediting associations, as articles name them.

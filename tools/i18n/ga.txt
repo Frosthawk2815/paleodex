@@ -33,7 +33,7 @@
 32|Beo inniu
 33|Beo inniu: {group}
 34|Gach ainmhí beo
-35|Beatha réamhstairiúil (agus bheo) PaleoDex ar fad
+35|Beatha réamhstairiúil (agus bheo) Animal Almanac ar fad
 36|Beatha réamhstairiúil ar fad
 37|An t-am ar fad
 38|Gach {group}
@@ -75,7 +75,7 @@
 74|Athraigh an cheist dheireanach ag {who}
 75|Athraigh an chéad cheist eile ag {who}
 76|Gualdubh
-77|Seiceáil isteach go pearsanta ag láthair iontaise ó PaleoDex.
+77|Seiceáil isteach go pearsanta ag láthair iontaise ó Animal Almanac.
 78|Seiceáil isteach ag músaem stair an dúlra.
 79|Seiceáil isteach ag zú creidiúnaithe.
 80|Tuairteáil astaróideach Chicxulub
@@ -129,7 +129,7 @@
 128|Díothú dheireadh an Ordaivíciaigh
 129|Díothú dheireadh an Pheirmigh
 130|Díothú dheireadh an Triasaigh
-131|Méadaíonn sé leathanaigh speiceas, grúpaí agus foirmíochtaí agus na roghchláir seo. Leanann PaleoDex méid téacs do ghléis freisin.
+131|Méadaíonn sé leathanaigh speiceas, grúpaí agus foirmíochtaí agus na roghchláir seo. Leanann Animal Almanac méid téacs do ghléis freisin.
 132|Cuir isteach an cód cath
 133|Cuir isteach an cód cath a seoladh chugat
 134|Cuir isteach cód cath an óstaigh
@@ -137,7 +137,7 @@
 136|Cothrom
 137|Eachtra
 138|Eachtraí
-139|Áirítear gach láthair iontaise in PaleoDex freisin: oscail foirmíocht charraige le feiceáil cá bhfuil sí.
+139|Áirítear gach láthair iontaise in Animal Almanac freisin: oscail foirmíocht charraige le feiceáil cá bhfuil sí.
 140|Tá cuma leabhar nótaí línithe ar gach leathanach, scríofa de láimh.
 141|Tá cuma seanphár ar gach leathanach, scríofa i lámh lámhscríbhinne.
 142|Tosaíonn gach duine anseo.
@@ -173,7 +173,7 @@
 172|Bí i d’óstach ar chluiche
 173|Ainmneacha cáiliúla agus na bunrudaí
 174|Conas a chríochnaigh sé
-175|Cé mhéad atá ar eolas agat faoin mbeatha réamhstairiúil? Tagann na ceisteanna ó PaleoDex ar fad, ar chúig leibhéal deacrachta.
+175|Cé mhéad atá ar eolas agat faoin mbeatha réamhstairiúil? Tagann na ceisteanna ó Animal Almanac ar fad, ar chúig leibhéal deacrachta.
 176|Brostaigh!
 177|Seoladh Brostaigh!: tá am {who} don cheist seo gearrtha ina leath.
 178|Seoladh Brostaigh!: tá am {who} gearrtha ina leath.
@@ -291,7 +291,7 @@
 290|{group} eile
 291|Tá cuma seanphár scríofa i lámh lámhscríbhinne ar leathanaigh faoin mbeatha réamhstairiúil. Tá cuma leabhar nótaí lámhscríofa ar ainmhithe beo agus ar stair le déanaí, mar atá ar na roghchláir seo.
 292|Leannán Paleo
-293|Teastaíonn do shuíomh ó PaleoDex chun tú a sheiceáil isteach. Is féidir leat é a cheadú i socruithe do ghléis.
+293|Teastaíonn do shuíomh ó Animal Almanac chun tú a sheiceáil isteach. Is féidir leat é a cheadú i socruithe do ghléis.
 294|Pailéigineach
 295|Pailéasóch
 296|Painéil
@@ -468,8 +468,8 @@
 467|Úsáidte
 468|In úsáid: {language}.
 469|Tabhair cuairt ar fhoirmíocht charraige ó gach tréimhse gheolaíochta, ón gCaimbriach go dtí an lá inniu.
-470|Tabhair cuairt ar an bhfoirmíocht charraige is sine in PaleoDex, nó ar cheann de na hainmhithe a aimsíodh ann.
-471|Ag tabhairt cuairte ar mhúsaem stair an dúlra, ar zú creidiúnaithe nó ar cheann de láithreacha iontaise PaleoDex? Seiceáil isteach agus tú ann chun teidil a thuilleamh.
+470|Tabhair cuairt ar an bhfoirmíocht charraige is sine in Animal Almanac, nó ar cheann de na hainmhithe a aimsíodh ann.
+471|Ag tabhairt cuairte ar mhúsaem stair an dúlra, ar zú creidiúnaithe nó ar cheann de láithreacha iontaise Animal Almanac? Seiceáil isteach agus tú ann chun teidil a thuilleamh.
 472|Ag fanacht le {n} imreoir ar a laghad, tusa san áireamh. Roinn an cód chun cuireadh a thabhairt dóibh.
 473|Ag fanacht go dtabharfaidh gach duine freagra…
 474|Ag fanacht go nglacfaidh duine éigin páirt…
@@ -516,7 +516,7 @@
 515|D’ainm
 516|Do ghrianghraf de {name}
 517|Do ghrianghraf · bainistigh é in Próifíl › D’íomhánna
-518|Níorbh fhéidir do ghrianghraif a oscailt. Seiceáil go bhfuil cead ag PaleoDex do ghrianghraif a úsáid.
+518|Níorbh fhéidir do ghrianghraif a oscailt. Seiceáil go bhfuil cead ag Animal Almanac do ghrianghraif a úsáid.
 519|Do phróifíl
 520|Do phróifíl, do cheanáin, socruithe agus creidiúintí
 521|Do theidil
@@ -565,7 +565,7 @@
 564|{n} soicind fágtha
 565|Teidil rúnda fós le haimsiú: {n}
 566|Speicis: {n}
-567|Speicis in PaleoDex: {n}
+567|Speicis in Animal Almanac: {n}
 568|Ardáin: {n}
 569|{n} míle bliain
 570|{n} míle bliain ó shin

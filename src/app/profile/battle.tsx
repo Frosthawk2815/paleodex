@@ -71,7 +71,7 @@ export default function BattleScreen() {
   const palette = usePalette();
   const { profile, reduceMotion } = useProfile();
   const ownPicture = useOwnPicture();
-  // Questions come from the host with PaleoDex's pictures; each player sees their own photo of the
+  // Questions come from the host with Animal Almanac's pictures; each player sees their own photo of the
   // animal instead, if they have one (photos never leave the phone).
   const withMyPhoto = (q: Question): Question => {
     if (!q.image || !q.speciesId) return q;
@@ -194,7 +194,7 @@ export default function BattleScreen() {
     setStage({ kind: 'decide', host: mine, guest: theirs, roll, chosen });
     setTimeout(
       () => {
-        // Questions use PaleoDex's pictures (a player's own photos stay on their phone), and are
+        // Questions use Animal Almanac's pictures (a player's own photos stay on their phone), and are
         // checked to read differently in both metric and imperial.
         const questions = makeRound(chosen.category, chosen.level, (id) => imageOf(id)?.thumb, 10, toImperial);
         link.current?.send({ t: 'start', questions, chosen });

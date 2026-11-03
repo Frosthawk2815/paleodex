@@ -1,4 +1,4 @@
-// Fossil Wiki gap fill, batch 8: Palaeozoic sea life in formations already in PaleoDex (Burgess Shale,
+// Fossil Wiki gap fill, batch 8: Palaeozoic sea life in formations already in Animal Almanac (Burgess Shale,
 // Wheeler Shale, Chengjiang, Fezouata, Kuanti, Gogo, Catskill, Bear Gulch). Sea invertebrates get full
 // entries. Checked against current literature (2026).
 

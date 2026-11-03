@@ -76,7 +76,7 @@ export function QuizPicker({
     <>
       <Text style={st.heading}>{t('What do you want to be tested on?')}</Text>
       <View style={st.card}>
-        {choice({ kind: 'all' }, t('Everything'), t('All of prehistoric (and living) life in PaleoDex'))}
+        {choice({ kind: 'all' }, t('Everything'), t('All of prehistoric (and living) life in Animal Almanac'))}
         <View style={st.divider} />
         {choice({ kind: 'dinosaurs' }, t('Dinosaurs'), t('From the earliest dinosaurs to the last'))}
         <View style={st.divider} />

@@ -6,7 +6,7 @@ import { usePalette } from '@/hooks/use-palette';
 import type { SharedAvatar } from '@/lib/battle/avatar';
 import { imageOf } from '@/lib/images';
 
-// Another player's picture in Bone War and Peer Review: their own photo (sent shrunk), PaleoDex's
+// Another player's picture in Bone War and Peer Review: their own photo (sent shrunk), Animal Almanac's
 // picture of the species they chose, or their initials.
 export function PlayerAvatar({ name, avatar, size }: { name: string; avatar: SharedAvatar; size: number }) {
   const palette = usePalette();

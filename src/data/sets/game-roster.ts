@@ -1,4 +1,4 @@
-// Species from the playable rosters of Path of Titans and The Isle that PaleoDex lacked.
+// Species from the playable rosters of Path of Titans and The Isle that Animal Almanac lacked.
 // The games only suggested the names: every fact here comes from the scientific literature,
 // not from how the animals look or behave in the games. Game-invented creatures (The Isle's
 // "Omniraptor") are left out, and names now treated as synonyms ("Troodon", "Latenivenatrix")

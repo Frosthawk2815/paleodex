@@ -115,7 +115,7 @@ export default function SettingsScreen() {
         value={s.textSize}
         onChange={(textSize) => updateSettings({ textSize })}
       />
-      <Text style={st.muted}>{t('Enlarges species, group and formation pages and these menus. PaleoDex also follows your device’s text size.')}</Text>
+      <Text style={st.muted}>{t('Enlarges species, group and formation pages and these menus. Animal Almanac also follows your device’s text size.')}</Text>
 
       <Text style={st.heading}>{t('Units')}</Text>
       <Choice<Units>

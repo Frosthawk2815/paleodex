@@ -1,5 +1,5 @@
 // Real places the user can visit in person to earn titles: natural history museums, accredited
-// zoos, and the fossil sites (rock formations) in PaleoDex. Checking in compares the user's
+// zoos, and the fossil sites (rock formations) in Animal Almanac. Checking in compares the user's
 // location, read once when they tap Check in, with these places. Nothing leaves the device.
 
 import placeData from '@/data/places.json';

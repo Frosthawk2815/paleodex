@@ -33,7 +33,7 @@
 32|Heute lebend
 33|Heute lebend: {group}
 34|Alle lebenden Tiere
-35|Das ganze prähistorische (und heutige) Leben in PaleoDex
+35|Das ganze prähistorische (und heutige) Leben in Animal Almanac
 36|Das ganze prähistorische Leben
 37|Die ganze Zeit
 38|Alle {group}
@@ -75,7 +75,7 @@
 74|Die letzte Frage von {who} ändern
 75|Die nächste Frage von {who} ändern
 76|Anthrazit
-77|Checke persönlich an einer Fossilfundstätte aus PaleoDex ein.
+77|Checke persönlich an einer Fossilfundstätte aus Animal Almanac ein.
 78|Checke in einem Naturkundemuseum ein.
 79|Checke in einem akkreditierten Zoo ein.
 80|Einschlag des Chicxulub-Asteroiden
@@ -129,7 +129,7 @@
 128|Massenaussterben am Ende des Ordoviziums
 129|Massenaussterben am Ende des Perms
 130|Massenaussterben am Ende der Trias
-131|Vergrößert Arten-, Gruppen- und Formationsseiten und diese Menüs. PaleoDex folgt außerdem der Textgröße deines Geräts.
+131|Vergrößert Arten-, Gruppen- und Formationsseiten und diese Menüs. Animal Almanac folgt außerdem der Textgröße deines Geräts.
 132|Kampfcode eingeben
 133|Gib den Kampfcode ein, den du bekommen hast
 134|Gib den Kampfcode der Spielleitung ein
@@ -137,7 +137,7 @@
 136|Gerade
 137|Ereignis
 138|Ereignisse
-139|Jede Fossilfundstätte in PaleoDex zählt auch: Öffne eine Gesteinsformation, um zu sehen, wo sie liegt.
+139|Jede Fossilfundstätte in Animal Almanac zählt auch: Öffne eine Gesteinsformation, um zu sehen, wo sie liegt.
 140|Jede Seite sieht aus wie ein liniertes Notizheft, von Hand geschrieben.
 141|Jede Seite sieht aus wie altes Pergament, in Handschrift geschrieben.
 142|Hier fangen alle an.
@@ -173,7 +173,7 @@
 172|Ein Spiel starten
 173|Bekannte Namen und die Grundlagen
 174|Wie es endete
-175|Wie viel weißt du über das prähistorische Leben? Die Fragen stammen aus ganz PaleoDex, in fünf Schwierigkeitsstufen.
+175|Wie viel weißt du über das prähistorische Leben? Die Fragen stammen aus ganz Animal Almanac, in fünf Schwierigkeitsstufen.
 176|Beeil dich!
 177|Beeil dich! gesendet: Die Zeit von {who} für diese Frage ist halbiert.
 178|Beeil dich! gesendet: Die Zeit von {who} ist halbiert.
@@ -291,7 +291,7 @@
 290|Weitere {group}
 291|Seiten über prähistorisches Leben sehen aus wie altes Pergament in Handschrift. Heutige Tiere und jüngere Geschichte sehen aus wie ein handgeschriebenes Notizheft, genau wie diese Menüs.
 292|Paläo-Fan
-293|PaleoDex braucht deinen Standort zum Einchecken. Du kannst ihn in den Einstellungen deines Geräts erlauben.
+293|Animal Almanac braucht deinen Standort zum Einchecken. Du kannst ihn in den Einstellungen deines Geräts erlauben.
 294|Paläogen
 295|Paläozoikum
 296|Felder
@@ -468,8 +468,8 @@
 467|Benutzt
 468|Verwendet: {language}.
 469|Besuche eine Gesteinsformation aus jeder geologischen Periode, vom Kambrium bis heute.
-470|Besuche die älteste Gesteinsformation in PaleoDex oder eines der dort gefundenen Tiere.
-471|Du besuchst ein Naturkundemuseum, einen akkreditierten Zoo oder eine Fossilfundstätte aus PaleoDex? Checke vor Ort ein, um Titel zu verdienen.
+470|Besuche die älteste Gesteinsformation in Animal Almanac oder eines der dort gefundenen Tiere.
+471|Du besuchst ein Naturkundemuseum, einen akkreditierten Zoo oder eine Fossilfundstätte aus Animal Almanac? Checke vor Ort ein, um Titel zu verdienen.
 472|Warte auf mindestens {n} Mitspieler, dich mitgezählt. Teile den Code, um sie einzuladen.
 473|Warte, bis alle geantwortet haben…
 474|Warte, bis jemand beitritt…
@@ -516,7 +516,7 @@
 515|Dein Name
 516|Dein Foto von {name}
 517|Dein Foto · verwalten unter Profil › Deine Bilder
-518|Deine Fotos konnten nicht geöffnet werden. Prüf, ob PaleoDex deine Fotos verwenden darf.
+518|Deine Fotos konnten nicht geöffnet werden. Prüf, ob Animal Almanac deine Fotos verwenden darf.
 519|Dein Profil
 520|Dein Profil, Favoriten, Einstellungen und Danksagungen
 521|Deine Titel
@@ -565,7 +565,7 @@
 564|Noch {n} Sekunden
 565|Noch {n} geheime Titel zu finden
 566|{n} Arten
-567|{n} Arten in PaleoDex
+567|{n} Arten in Animal Almanac
 568|{n} Stufen
 569|{n} Tausend Jahre
 570|Vor {n} Tausend Jahren

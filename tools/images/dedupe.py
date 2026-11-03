@@ -3,7 +3,7 @@
 A species without its own Wikipedia article falls back to the genus article's picture, so every
 species in that genus would get the same photo (all four Allosaurus species once showed the same
 mount). For each picture used by several species this keeps it for one species: the one named in
-the file name, otherwise the genus's main species (the one listed first in PaleoDex). The others
+the file name, otherwise the genus's main species (the one listed first in Animal Almanac). The others
 get a different picture from their articles whose file name names that species, or none.
 
 A species left without a picture is recorded in decisions.json as {"vote": "no", "leaveBlank": true,

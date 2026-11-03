@@ -1,5 +1,5 @@
 // Tree of life, round 2: other vertebrates that the literature lists from formations already in
-// PaleoDex.
+// Animal Almanac.
 
 import type { DataSet } from '@/data/sets/types';
 

@@ -1,4 +1,4 @@
-# PaleoDex species by age
+# Animal Almanac species by age
 
 1387 species, oldest first. Age is when the species' first-listed formation was laid down (modern species: when their range begins).
 

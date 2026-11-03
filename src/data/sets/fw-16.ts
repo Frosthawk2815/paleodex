@@ -1,5 +1,5 @@
 // Fossil Wiki gap fill, batch 16: Palaeozoic sea life, Cretaceous crocodiles and fish,
-// and Cenozoic mammals and birds for formations already in PaleoDex. Checked against current literature (2026).
+// and Cenozoic mammals and birds for formations already in Animal Almanac. Checked against current literature (2026).
 
 import type { DataSet } from '@/data/sets/types';
 

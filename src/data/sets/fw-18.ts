@@ -1,4 +1,4 @@
-// Fossil Wiki gap fill, batch 18: Jurassic–Cretaceous formations new to PaleoDex (English Chalk, Jagua,
+// Fossil Wiki gap fill, batch 18: Jurassic–Cretaceous formations new to Animal Almanac (English Chalk, Jagua,
 // Sannine, Csehbánya, Eumeralla, Griman Creek, Crato, Kimmeridge Clay, Hastings Beds).
 // Checked against current literature (2026).
 

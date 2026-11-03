@@ -25,7 +25,7 @@ CLADES = [
     {'id': 'gavialidae', 'name': 'Gavialidae', 'common': 'Gharials', 'parent': 'crocodylia', 'family': True, 'description': 'The gharial and the false gharial (tomistoma), slender-snouted fish-eaters of South and Southeast Asia; DNA shows the two are close relatives.'},
 ]
 
-# Fossil crocodylians already in PaleoDex, moved to their families.
+# Fossil crocodylians already in Animal Almanac, moved to their families.
 UPGRADES = {
     'purussaurus-mirandai': {'clade': 'alligatoridae'},
     'mourasuchus-arendsi': {'clade': 'alligatoridae'},

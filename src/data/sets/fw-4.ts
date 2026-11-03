@@ -1,5 +1,5 @@
 // Fossil Wiki gap fill, batch 4: Middle and Late Jurassic animals of China in formations already in
-// PaleoDex (Tiaojishan, Lower and Upper Shaximiao, Shishugou). Checked against current literature (2026).
+// Animal Almanac (Tiaojishan, Lower and Upper Shaximiao, Shishugou). Checked against current literature (2026).
 
 import type { DataSet } from '@/data/sets/types';
 

@@ -1,4 +1,4 @@
-// The quiz: multiple-choice questions built from PaleoDex's own data, so every answer matches what
+// The quiz: multiple-choice questions built from Animal Almanac's own data, so every answer matches what
 // the app shows. Each round draws questions at one difficulty (1 to 5, by how obscure the subject
 // is) from a category: everything, dinosaurs, mammals (with their synapsid relatives), animals alive
 // today, one group, or one period. Mass extinctions get questions of their own.
@@ -46,7 +46,7 @@ export type Question = {
   pageLabel?: string;
 };
 
-// Pictures for a species: the user's own photo if they have one, otherwise PaleoDex's picture.
+// Pictures for a species: the user's own photo if they have one, otherwise Animal Almanac's picture.
 export type ImageFor = (speciesId: string) => string | undefined;
 
 // ---------------------------------------------------------------------------------------------

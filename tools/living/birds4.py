@@ -1,5 +1,5 @@
 # Living birds, fourth batch: more gamebirds, pigeons, parrots, hummingbirds, woodpeckers and
-# other non-songbirds, including several families PaleoDex lacked, so large families are
+# other non-songbirds, including several families Animal Almanac lacked, so large families are
 # represented in proportion to their size. Ranges are country outlines clipped by boxes, so they
 # are approximate.
 

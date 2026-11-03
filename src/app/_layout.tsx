@@ -22,7 +22,7 @@ function Screens() {
   return (
     <ThemeProvider value={navTheme}>
       <Stack>
-        <Stack.Screen name="index" options={{ title: 'PaleoDex', headerShown: false }} />
+        <Stack.Screen name="index" options={{ title: 'Animal Almanac', headerShown: false }} />
         <Stack.Screen name="period/[id]" options={{ title: '' }} />
         <Stack.Screen name="read" options={{ title: '' }} />
         <Stack.Screen name="credits" options={{ title: t('Credits') }} />

@@ -39,7 +39,7 @@ CLADES = [
     {'id': 'hylobatidae', 'name': 'Hylobatidae', 'common': 'Gibbons', 'parent': 'catarrhini', 'family': True, 'description': 'The lesser apes: small, tailless apes that swing arm over arm through the canopy and sing loud duets.'},
 ]
 
-# Fossil primates already in PaleoDex, moved to the right branches.
+# Fossil primates already in Animal Almanac, moved to the right branches.
 UPGRADES = {
     'homunculus-patagonicus': {'clade': 'platyrrhini'},
     'proteropithecia-neuquenensis': {'clade': 'platyrrhini'},

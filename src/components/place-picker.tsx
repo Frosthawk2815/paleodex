@@ -24,7 +24,7 @@ export function PlacePicker({ label, value, onChange }: { label: string; value: 
     try {
       const { granted } = await requestForegroundPermissionsAsync();
       if (!granted) {
-        setMessage('PaleoDex needs your location for this. You can allow it in your device’s settings, or search for a town instead.');
+        setMessage('Animal Almanac needs your location for this. You can allow it in your device’s settings, or search for a town instead.');
         return;
       }
       const pos = await getCurrentPositionAsync({ accuracy: Accuracy.Balanced });

@@ -1,5 +1,5 @@
 # Living birds, sixth batch: songbirds of Europe, Asia and Africa (and a few widespread families),
-# adding families PaleoDex lacked, so large families are represented in proportion to their size.
+# adding families Animal Almanac lacked, so large families are represented in proportion to their size.
 # Ranges are country outlines clipped by boxes, so they are approximate.
 
 

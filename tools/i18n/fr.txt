@@ -33,7 +33,7 @@
 32|Vivants aujourd’hui
 33|Vivants aujourd’hui : {group}
 34|Tous les animaux vivants
-35|Toute la vie préhistorique (et actuelle) de PaleoDex
+35|Toute la vie préhistorique (et actuelle) de Animal Almanac
 36|Toute la vie préhistorique
 37|Tous les temps
 38|Tous les {group}
@@ -75,7 +75,7 @@
 74|Changer la dernière question de {who}
 75|Changer la prochaine question de {who}
 76|Anthracite
-77|Rendez-vous en personne sur un site fossilifère de PaleoDex.
+77|Rendez-vous en personne sur un site fossilifère de Animal Almanac.
 78|Rendez-vous dans un musée d’histoire naturelle.
 79|Rendez-vous dans un zoo accrédité.
 80|Impact de l’astéroïde de Chicxulub
@@ -129,7 +129,7 @@
 128|Extinction de la fin de l’Ordovicien
 129|Extinction de la fin du Permien
 130|Extinction de la fin du Trias
-131|Agrandit les pages des espèces, des groupes et des formations et ces menus. PaleoDex suit aussi la taille de texte de votre appareil.
+131|Agrandit les pages des espèces, des groupes et des formations et ces menus. Animal Almanac suit aussi la taille de texte de votre appareil.
 132|Saisissez le code de bataille
 133|Saisissez le code de bataille reçu
 134|Saisissez le code de bataille de l’hôte
@@ -137,7 +137,7 @@
 136|Pair
 137|Événement
 138|Événements
-139|Tous les sites fossilifères de PaleoDex comptent aussi : ouvrez une formation rocheuse pour voir où elle se trouve.
+139|Tous les sites fossilifères de Animal Almanac comptent aussi : ouvrez une formation rocheuse pour voir où elle se trouve.
 140|Chaque page ressemble à un cahier ligné, écrit à la main.
 141|Chaque page ressemble à un vieux parchemin, écrit d’une main de copiste.
 142|Tout le monde commence ici.
@@ -173,7 +173,7 @@
 172|Organiser une partie
 173|Noms célèbres et bases
 174|Comment elle s’est terminée
-175|Que savez-vous de la vie préhistorique ? Les questions puisent dans tout PaleoDex, sur cinq niveaux de difficulté.
+175|Que savez-vous de la vie préhistorique ? Les questions puisent dans tout Animal Almanac, sur cinq niveaux de difficulté.
 176|Presse !
 177|Presse ! envoyé : le temps de {who} pour cette question est divisé par deux.
 178|Presse ! envoyé : le temps de {who} est divisé par deux.
@@ -291,7 +291,7 @@
 290|Autres {group}
 291|Les pages sur la vie préhistorique ressemblent à un vieux parchemin écrit d’une main de copiste. Les animaux actuels et l’histoire récente ressemblent à un cahier écrit à la main, tout comme ces menus.
 292|Fan de paléo
-293|PaleoDex a besoin de votre position pour enregistrer votre visite. Vous pouvez l’autoriser dans les réglages de votre appareil.
+293|Animal Almanac a besoin de votre position pour enregistrer votre visite. Vous pouvez l’autoriser dans les réglages de votre appareil.
 294|Paléogène
 295|Paléozoïque
 296|Panneaux
@@ -468,8 +468,8 @@
 467|Utilisé
 468|Langue utilisée : {language}.
 469|Visitez une formation rocheuse de chaque période géologique, du Cambrien à aujourd’hui.
-470|Visitez la plus ancienne formation rocheuse de PaleoDex, ou l’un des animaux qu’on y a trouvés.
-471|Vous visitez un musée d’histoire naturelle, un zoo accrédité ou l’un des sites fossilifères de PaleoDex ? Enregistrez votre visite sur place pour gagner des titres.
+470|Visitez la plus ancienne formation rocheuse de Animal Almanac, ou l’un des animaux qu’on y a trouvés.
+471|Vous visitez un musée d’histoire naturelle, un zoo accrédité ou l’un des sites fossilifères de Animal Almanac ? Enregistrez votre visite sur place pour gagner des titres.
 472|En attente d’au moins {n} joueurs, vous compris. Partagez le code pour les inviter.
 473|En attente des réponses de tous…
 474|En attente d’un autre joueur…
@@ -516,7 +516,7 @@
 515|Votre nom
 516|Votre photo de {name}
 517|Votre photo · gérez-la dans Profil › Vos images
-518|Impossible d’ouvrir vos photos. Vérifiez que PaleoDex est autorisé à utiliser vos photos.
+518|Impossible d’ouvrir vos photos. Vérifiez que Animal Almanac est autorisé à utiliser vos photos.
 519|Votre profil
 520|Votre profil, vos favoris, vos réglages et les crédits
 521|Vos titres
@@ -565,7 +565,7 @@
 564|Encore {n} secondes
 565|Encore {n} titres secrets à trouver
 566|{n} espèces
-567|{n} espèces dans PaleoDex
+567|{n} espèces dans Animal Almanac
 568|{n} étages
 569|{n} milliers d’années
 570|Il y a {n} milliers d’années

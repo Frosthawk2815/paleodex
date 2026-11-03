@@ -37,7 +37,7 @@ export default function PlacesScreen() {
     try {
       const { granted } = await requestForegroundPermissionsAsync();
       if (!granted) {
-        setResult({ error: t('PaleoDex needs your location to check you in. You can allow it in your device’s settings.') });
+        setResult({ error: t('Animal Almanac needs your location to check you in. You can allow it in your device’s settings.') });
         return;
       }
       const pos = await getCurrentPositionAsync({ accuracy: Accuracy.High });
@@ -94,7 +94,7 @@ export default function PlacesScreen() {
 
       <Text style={st.heading}>{t('Where you are now')}</Text>
       <Text style={st.text}>
-        {t('Visiting a natural history museum, an accredited zoo or one of the fossil sites in PaleoDex? Check in while you’re there to earn titles.')}
+        {t('Visiting a natural history museum, an accredited zoo or one of the fossil sites in Animal Almanac? Check in while you’re there to earn titles.')}
       </Text>
       <Pressable
         onPress={checkIn}
@@ -205,7 +205,7 @@ export default function PlacesScreen() {
             ))}
           </View>
         ))}
-      {showAll && <Text style={st.muted}>{t('Every fossil site in PaleoDex counts too: open a rock formation to see where it is.')}</Text>}
+      {showAll && <Text style={st.muted}>{t('Every fossil site in Animal Almanac counts too: open a rock formation to see where it is.')}</Text>}
     </ScrollView>
   );
 }

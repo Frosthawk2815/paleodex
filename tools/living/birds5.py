@@ -1,5 +1,5 @@
 # Living birds, fifth batch: songbirds and their relatives of the Americas and Australasia, adding
-# families PaleoDex lacked, so large families are represented in proportion to their size. Ranges
+# families Animal Almanac lacked, so large families are represented in proportion to their size. Ranges
 # are country outlines clipped by boxes, so they are approximate.
 
 

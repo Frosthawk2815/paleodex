@@ -71,7 +71,7 @@ export default function EditProfileScreen() {
       // Kept as data in the saved profile, so it survives the app clearing its temporary files.
       update({ avatar: { kind: 'upload', uri: `data:${asset.mimeType ?? 'image/jpeg'};base64,${asset.base64}` } });
     } catch {
-      setPhotoMessage(t('Your photos couldn’t be opened. Check that PaleoDex is allowed to use your photos.'));
+      setPhotoMessage(t('Your photos couldn’t be opened. Check that Animal Almanac is allowed to use your photos.'));
     }
   };
 

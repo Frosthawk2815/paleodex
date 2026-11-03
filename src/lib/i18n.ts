@@ -37,7 +37,7 @@ export const LANGUAGES: { code: Language; name: string; english: string }[] = [
 
 const DICTS: Record<Exclude<Language, 'en'>, Record<string, string>> = { es, fr, de, pt, ga, zh, ja, hi, ru };
 
-// The device's language if PaleoDex has it, otherwise English.
+// The device's language if Animal Almanac has it, otherwise English.
 export function deviceLanguage(): Language {
   let code = 'en';
   try {

@@ -1,4 +1,4 @@
-"""Builds PaleoDex data sets for living animals from the tables in this folder.
+"""Builds Animal Almanac data sets for living animals from the tables in this folder.
 
 Each table module (e.g. primates.py) defines CLADES, UPGRADES and GENERA. For every genus it
 writes one species entry (the genus's best-known species, mentioning the others) into

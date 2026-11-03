@@ -21,7 +21,7 @@ import urllib.error
 import urllib.request
 
 API = 'https://en.wikipedia.org/w/api.php'
-USER_AGENT = 'PaleoDex/1.0 (educational app; https://github.com/Frosthawk2815/paleodex)'
+USER_AGENT = 'AnimalAlmanac/1.0 (educational app; https://github.com/Frosthawk2815/paleodex)'
 THUMB_WIDTH = 800
 BATCH = 50
 PAUSE = 20  # seconds between requests: Wikimedia throttles anonymous API use hard

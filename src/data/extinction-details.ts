@@ -1,5 +1,5 @@
 // The story of each mass extinction, for its page: how much life was lost, what caused it, and
-// notable groups that died out or made it through (linked to their group pages where PaleoDex has
+// notable groups that died out or made it through (linked to their group pages where Animal Almanac has
 // them). Loss figures are estimates and vary between studies. Checked November 2026.
 
 // final: the group died out completely in this extinction (used by the quiz).
