@@ -1835,6 +1835,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "antarctopelta-oliveroi": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Antarctopelta_recovered_remains.jpg/960px-Antarctopelta_recovered_remains.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Levi B. Martinez-Reza",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Antarctopelta_recovered_remains.jpg",
+  "file": "Antarctopelta_recovered_remains.jpg",
+  "article": "https://en.wikipedia.org/wiki/Antarctopelta",
+  "scope": "genus",
+  "kind": "skeletal"
+ },
  "antarctosaurus-wichmannianus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Antarctosaurus-wichmannianus-Skull-Diagram-SVG-001.svg/960px-Antarctosaurus-wichmannianus-Skull-Diagram-SVG-001.svg.png",
   "width": 800,

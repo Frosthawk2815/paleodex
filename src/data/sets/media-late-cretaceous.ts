@@ -417,6 +417,34 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       ],
       keywords: ['lopez de bertodano', 'seymour island', 'marambio', 'antarctica', 'cretaceous', 'vegavis'],
     }),
+    formation({
+      id: 'santa-marta',
+      title: 'Santa Marta Formation',
+      short: 'James Ross Island',
+      dateText: 'About 84 to 74 million years ago (Late Cretaceous, Santonian–Campanian)',
+      placeText: 'Santa Marta Cove, northern James Ross Island, Antarctic Peninsula',
+      lon: -57.9,
+      lat: -63.9,
+      plate: 803,
+      fromMa: 84,
+      toMa: 74,
+      jumpMa: 75,
+      icon: 'sea',
+      summary: [
+        'Sands and muds laid down in a shallow sea off the Antarctic Peninsula, which was then forested and much warmer than today, though still far to the south. Most of its fossils are sea creatures, but the bodies of a few land animals washed out to sea and were buried there.',
+        'Those land animals include the first dinosaur ever found in Antarctica, the armoured Antarctopelta, discovered in 1986, and the small two-legged plant-eater Trinisaura.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 84 to 74 million years ago' },
+        { label: 'Where today', value: 'James Ross Island, Antarctica' },
+        { label: 'Rocks', value: 'Shallow-marine sandstone and mudstone' },
+      ],
+      invertebrates: [
+        { tier: 'pleb', title: 'Ammonites', text: 'Ammonites.' },
+        { tier: 'pleb', title: 'Clams and snails', text: 'Clams, snails and other shellfish.' },
+      ],
+      keywords: ['santa marta formation', 'james ross island', 'marambio group', 'antarctica', 'antarctic peninsula', 'cretaceous', 'antarctopelta', 'trinisaura'],
+    }),
   ],
   clades: [
     {
@@ -459,6 +487,33 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
     },
   ],
   species: [
+    {
+      id: 'antarctopelta-oliveroi',
+      name: 'Antarctopelta oliveroi',
+      common: 'Antarctopelta',
+      clade: 'parankylosauria',
+      status: 'full',
+      ageText: 'About 75 million years ago (Late Cretaceous, late Campanian)',
+      placeText: 'Santa Marta Cove, James Ross Island, Antarctica',
+      formations: ['santa-marta'],
+      summary: [
+        'The first dinosaur ever found in Antarctica. Argentine geologists Eduardo Olivero and Roberto Scasso came across its bones in January 1986 on James Ross Island, off the tip of the Antarctic Peninsula. Digging it out of frozen rock took years, and it was not formally named until 2006. Its name means “Antarctic shield”, and the species honours Olivero.',
+        'It was a small armoured dinosaur, perhaps about 4 m long, known from a partial skeleton: part of the jaw, teeth, vertebrae, limb bones and many of the bony plates (osteoderms) that covered its body. Like Borealopelta, it lived on land, but its body was carried out to sea and buried in shallow-marine sediments, among the shells of sea creatures.',
+        'It was long thought to be a nodosaurid. In 2021 the describers of Stegouros from Chile placed it in a new southern group, the parankylosaurs, with Stegouros and Kunbarrasaurus. Some of its tail bones and plates are like those of Stegouros, so it may also have had a flat, bladed tail weapon, though too little of its tail is known to be sure.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Leonardo Salgado and Zulma Gasparini, 2006' },
+        { label: 'Found', value: 'Eduardo Olivero and Roberto Scasso, January 1986' },
+        { label: 'Length', value: 'Perhaps about 4 m' },
+        { label: 'Diet', value: 'Low plants' },
+        { label: 'Claim to fame', value: 'The first dinosaur found in Antarctica' },
+      ],
+      related: [
+        { id: 'stegouros-elengassen', note: 'Its Chilean relative in the parankylosaurs, with a bladed tail weapon.' },
+        { id: 'kunbarrasaurus-ieversi', note: 'Its Australian relative in the parankylosaurs.' },
+      ],
+      keywords: ['antarctopelta', 'parankylosaur', 'ankylosaur', 'armoured dinosaur', 'antarctica', 'james ross island', 'first antarctic dinosaur', 'cretaceous'],
+    },
     {
       id: 'stegouros-elengassen',
       name: 'Stegouros elengassen',
