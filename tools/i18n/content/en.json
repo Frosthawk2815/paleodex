@@ -955,6 +955,10 @@
   "common": "Mackerel sharks",
   "description": "Sharks such as the great white, mako and megalodon, and their Cretaceous relatives."
  },
+ "clade:humpbacked-allosaurs": {
+  "common": "Hump-backed allosaurs",
+  "description": "Concavenator from Spain and Altispinax from England, Early Cretaceous allosaur relatives with very tall spines on some back vertebrae, forming a hump or ridge. They are grouped together here for their shared hump; this is not an official family. Concavenator is usually classed as a carcharodontosaur, and Altispinax is known from too little to place with confidence."
+ },
  "clade:pholidosauridae": {
   "common": "Pholidosaurs",
   "description": "Long-snouted crocodile relatives, including the giant Sarcosuchus."
@@ -5089,7 +5093,8 @@
   "ageText": "About 155 to 145 million years ago (Late Jurassic)",
   "placeText": "Western USA (and relatives in Portugal)",
   "summary": [
-   "The most common big predator of the Morrison, about 8.5 m long, with short horns over its eyes, strong arms with three large claws, and a skull that worked like a hatchet, slashing at prey with its upper teeth.",
+   "The most common big predator of the Morrison, about 8.5 m long, with short horns over its eyes, strong arms with three large claws, and jaws that could open unusually wide.",
+   "Its bite was not especially strong for its size. Instead, unusual neck muscles let it pull its head sharply back and down, so it probably gripped prey or a carcass with its teeth (and perhaps its claws) and tore flesh away by pulling, much like a bird of prey. An older idea, that it swung its open jaws down onto prey like a hatchet, is not supported by later studies of its skull and neck.",
    "Over 40 individuals were found in the Cleveland-Lloyd Quarry in Utah. “Big Al”, a young adult found in Wyoming, had broken ribs, infected toes and other injuries, showing a hard life."
   ],
   "facts": [
@@ -9093,6 +9098,46 @@
    {
     "label": "Length",
     "value": "About 6 m"
+   }
+  ]
+ },
+ "species:antarctopelta-oliveroi": {
+  "common": "Antarctopelta",
+  "ageText": "About 75 million years ago (Late Cretaceous, late Campanian)",
+  "placeText": "Santa Marta Cove, James Ross Island, Antarctica",
+  "summary": [
+   "The first dinosaur ever found in Antarctica. Argentine geologists Eduardo Olivero and Roberto Scasso came across its bones in January 1986 on James Ross Island, off the tip of the Antarctic Peninsula. Digging it out of frozen rock took years, and it was not formally named until 2006. Its name means “Antarctic shield”, and the species honours Olivero.",
+   "It was a small armoured dinosaur, perhaps about 4 m long, known from a partial skeleton: part of the jaw, teeth, vertebrae, limb bones and many of the bony plates (osteoderms) that covered its body. Like Borealopelta, it lived on land, but its body was carried out to sea and buried in shallow-marine sediments, among the shells of sea creatures.",
+   "It was long thought to be a nodosaurid. In 2021 the describers of Stegouros from Chile placed it in a new southern group, the parankylosaurs, with Stegouros and Kunbarrasaurus. Some of its tail bones and plates are like those of Stegouros, so it may also have had a flat, bladed tail weapon, though too little of its tail is known to be sure."
+  ],
+  "facts": [
+   {
+    "label": "Named",
+    "value": "Leonardo Salgado and Zulma Gasparini, 2006"
+   },
+   {
+    "label": "Found",
+    "value": "Eduardo Olivero and Roberto Scasso, January 1986"
+   },
+   {
+    "label": "Length",
+    "value": "Perhaps about 4 m"
+   },
+   {
+    "label": "Diet",
+    "value": "Low plants"
+   },
+   {
+    "label": "Claim to fame",
+    "value": "The first dinosaur found in Antarctica"
+   }
+  ],
+  "related": [
+   {
+    "note": "Its Chilean relative in the parankylosaurs, with a bladed tail weapon."
+   },
+   {
+    "note": "Its Australian relative in the parankylosaurs."
    }
   ]
  },
@@ -50739,6 +50784,134 @@
    }
   ]
  },
+ "species:pelorosaurus-conybearei": {
+  "common": "Pelorosaurus",
+  "ageText": "About 140 to 133 million years ago (Early Cretaceous, Valanginian)",
+  "placeText": "Tilgate Forest near Cuckfield, West Sussex, England",
+  "summary": [
+   "A large sauropod known from a right upper arm bone (humerus) and some tail vertebrae found in Tilgate Forest. Gideon Mantell named it in 1850; the name means “monstrous lizard”.",
+   "The humerus had a hollow marrow cavity, like a land animal’s rather than a whale’s or a sea reptile’s. Mantell used it to argue that these giant reptiles lived on land, the first sauropod recognised as a land animal. Earlier finds of sauropod bones, such as Cetiosaurus, had been thought to come from huge sea creatures.",
+   "For a century and a half many unrelated English sauropod bones were filed under Pelorosaurus; most have since been moved to other genera, such as Haestasaurus. Pelorosaurus itself is known from too little to place exactly: it is a macronarian, the group that includes Brachiosaurus and the titanosaurs, but whether it is a brachiosaurid or closer to the titanosaurs is debated. Its size is not known with any confidence."
+  ],
+  "facts": [
+   {
+    "label": "Named",
+    "value": "Gideon Mantell, 1850 (the species was first proposed as Cetiosaurus conybeari by Alfred Melville, 1849)"
+   },
+   {
+    "label": "Known from",
+    "value": "A humerus and tail vertebrae"
+   },
+   {
+    "label": "Diet",
+    "value": "Plants"
+   }
+  ],
+  "related": [
+   {
+    "note": "Another Wealden sauropod, long filed under Pelorosaurus before getting its own genus in 2015."
+   }
+  ]
+ },
+ "species:altispinax-dunkeri": {
+  "common": "Altispinax",
+  "ageText": "About 140 to 133 million years ago (Early Cretaceous, Valanginian)",
+  "placeText": "Near Battle, East Sussex, England",
+  "summary": [
+   "A large meat-eating dinosaur known from three back vertebrae with very tall spines, found in East Sussex. The spines are several times taller than the vertebrae themselves, so the animal probably had a hump or low sail along its back. Its name means “high spine”.",
+   "Its naming is tangled. The species was first named Megalosaurus dunkeri in 1884 from a single tooth from Lower Saxony, Germany. In 1923 Friedrich von Huene created the genus Altispinax for the tall-spined English vertebrae, and in 1991 the vertebrae were given yet another name, Becklespinax altispinax. Researchers still disagree over which fossils the name Altispinax properly belongs to; the tooth and the vertebrae cannot be shown to come from the same kind of animal.",
+   "What it was related to is uncertain. Its tall spines recall Concavenator from Spain, and the two are grouped together here, but the few bones known are not enough to place it with confidence."
+  ],
+  "facts": [
+   {
+    "label": "Named",
+    "value": "Friedrich von Huene, 1923 (species first named as Megalosaurus dunkeri by Wilhelm Dames, 1884)"
+   },
+   {
+    "label": "Known from",
+    "value": "Three tall-spined back vertebrae (NHMUK R1828)"
+   },
+   {
+    "label": "Diet",
+    "value": "Meat"
+   }
+  ],
+  "akaNote": "The same three vertebrae are also called Becklespinax altispinax, a name given in 1991; the original German tooth is sometimes kept apart as Megalosaurus dunkeri.",
+  "related": [
+   {
+    "note": "A Spanish allosaur relative with a similar tall-spined hump."
+   },
+   {
+    "note": "An English theropod with moderately tall spines; its bones were also once filed under Altispinax."
+   }
+  ]
+ },
+ "species:hylaeosaurus-armatus": {
+  "common": "Hylaeosaurus",
+  "ageText": "About 137 to 133 million years ago (Early Cretaceous, late Valanginian)",
+  "placeText": "Tilgate Forest, West Sussex, England",
+  "summary": [
+   "An armoured dinosaur, one of the very first dinosaurs ever named. Gideon Mantell described it in 1833 from the front half of a skeleton set in a block of stone from Tilgate Forest, with bony armour plates and spikes. Its name means “woodland lizard”, after the Weald, the old forest of south-east England.",
+   "In 1842 Richard Owen used it, with Megalosaurus and Iguanodon, as one of the three animals on which he founded the name Dinosauria. A life-size model of it still stands among the Crystal Palace dinosaurs in London, made in the 1850s.",
+   "Much of the original block has never been fully freed from the stone, so it is still poorly known. It was probably a nodosaur-like ankylosaur related to Polacanthus. Size estimates range from about 3 to 6 m."
+  ],
+  "facts": [
+   {
+    "label": "Named",
+    "value": "Gideon Mantell, 1833"
+   },
+   {
+    "label": "Length",
+    "value": "About 3–6 m (estimates vary)"
+   },
+   {
+    "label": "Diet",
+    "value": "Low plants"
+   },
+   {
+    "label": "Seen at",
+    "value": "Natural History Museum, London; model at Crystal Palace Park"
+   }
+  ],
+  "related": [
+   {
+    "note": "A spiky Wealden armoured dinosaur, probably a close relative."
+   }
+  ]
+ },
+ "species:suchosaurus-cultridens": {
+  "common": "Suchosaurus",
+  "ageText": "About 140 to 133 million years ago (Early Cretaceous)",
+  "placeText": "Tilgate Forest, West Sussex, England",
+  "summary": [
+   "A spinosaurid known only from teeth: long, slightly curved and finely ridged, with very fine serrations. Gideon Mantell collected them in Tilgate Forest, and in 1824 Georges Cuvier illustrated one, the first published picture of a spinosaurid fossil, though nobody knew it.",
+   "Richard Owen named it in 1841 as a kind of crocodile, Crocodilus (Suchosaurus) cultridens, and it was treated as a crocodile for over 150 years. Its name means “crocodile lizard”.",
+   "After Baryonyx was found in 1983, Angela Milner and later Eric Buffetaut noticed that its teeth are almost identical, so Suchosaurus may be the same animal, and as the older name it could even replace Baryonyx. Most researchers treat it as a doubtful name instead, because a single worn tooth is not enough to tell baryonychine species apart."
+  ],
+  "facts": [
+   {
+    "label": "Named",
+    "value": "Richard Owen, 1841 (as Crocodilus (Suchosaurus) cultridens)"
+   },
+   {
+    "label": "Known from",
+    "value": "Teeth"
+   },
+   {
+    "label": "Diet",
+    "value": "Probably fish and other animals"
+   },
+   {
+    "label": "Status",
+    "value": "Doubtful name; possibly the same as Baryonyx"
+   }
+  ],
+  "related": [
+   {
+    "note": "Its teeth are almost identical; Suchosaurus may be the same animal."
+   }
+  ]
+ },
  "species:ornimegalonyx-oteroi": {
   "common": "Cuban giant owl",
   "ageText": "Late Pleistocene, perhaps until about 10,000 years ago",
@@ -56495,6 +56668,49 @@
    {
     "title": "Clams and snails",
     "text": "Clams and snails."
+   }
+  ]
+ },
+ "event:santa-marta": {
+  "title": "Santa Marta Formation",
+  "dateText": "About 84 to 74 million years ago (Late Cretaceous, Santonian–Campanian)",
+  "placeText": "Santa Marta Cove, northern James Ross Island, Antarctic Peninsula",
+  "summary": [
+   "Sands and muds laid down in a shallow sea off the Antarctic Peninsula, which was then forested and much warmer than today, though still far to the south. Most of its fossils are sea creatures, but the bodies of a few land animals washed out to sea and were buried there.",
+   "Those land animals include the first dinosaur ever found in Antarctica, the armoured Antarctopelta, discovered in 1986, and the small two-legged plant-eater Trinisaura."
+  ],
+  "facts": [
+   {
+    "label": "Age",
+    "value": "About 84 to 74 million years ago"
+   },
+   {
+    "label": "Where today",
+    "value": "James Ross Island, Antarctica"
+   },
+   {
+    "label": "Rocks",
+    "value": "Shallow-marine sandstone and mudstone"
+   }
+  ],
+  "points": [
+   {
+    "label": "James Ross Island",
+    "jumpLabel": "Where it formed, about 75 million years ago"
+   },
+   {
+    "label": "James Ross Island",
+    "jumpLabel": "Where it is today"
+   }
+  ],
+  "invertebrates": [
+   {
+    "title": "Ammonites",
+    "text": "Ammonites."
+   },
+   {
+    "title": "Clams and snails",
+    "text": "Clams, snails and other shellfish."
    }
   ]
  },
