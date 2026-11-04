@@ -1153,7 +1153,8 @@ export const TRIASSIC_JURASSIC: DataSet = {
       formations: ['morrison'],
       phylo: 2,
       summary: [
-        'The most common big predator of the Morrison, about 8.5 m long, with short horns over its eyes, strong arms with three large claws, and a skull that worked like a hatchet, slashing at prey with its upper teeth.',
+        'The most common big predator of the Morrison, about 8.5 m long, with short horns over its eyes, strong arms with three large claws, and jaws that could open unusually wide.',
+        'Its bite was not especially strong for its size. Instead, unusual neck muscles let it pull its head sharply back and down, so it probably gripped prey or a carcass with its teeth (and perhaps its claws) and tore flesh away by pulling, much like a bird of prey. An older idea, that it swung its open jaws down onto prey like a hatchet, is not supported by later studies of its skull and neck.',
         'Over 40 individuals were found in the Cleveland-Lloyd Quarry in Utah. “Big Al”, a young adult found in Wyoming, had broken ribs, infected toes and other injuries, showing a hard life.',
       ],
       facts: [
