@@ -176,7 +176,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
       icon: 'forest',
       summary: [
         'River sediments from a coastal plain at about 80° north, closer to the pole than today. Dinosaurs here lived through months of winter darkness, cold and occasional snow, in forests of conifers and flowering shrubs.',
-        'They included herds of Pachyrhinosaurus and the duck-billed Ugrunaaluk, the small tyrannosaur Nanuqsaurus and troodontids. Babies found here show dinosaurs nested in the Arctic rather than migrating away.',
+        'They included herds of Pachyrhinosaurus and the duck-billed Ugrunaaluk, the small tyrannosaur Nanuqsaurus and smaller predators known mostly from teeth: large troodontids related to Troodon, by far the most common, and raptors identified tentatively as Dromaeosaurus and Saurornitholestes. Babies found here show dinosaurs nested in the Arctic rather than migrating away.',
       ],
       facts: [
         { label: 'Age', value: 'About 69 million years ago' },
@@ -184,7 +184,7 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
         { label: 'Rocks', value: 'Mudstone, sandstone and volcanic ash' },
         { label: 'Then', value: 'About 80° north' },
       ],
-      keywords: ['prince creek', 'alaska', 'arctic', 'colville', 'cretaceous', 'polar dinosaurs', 'nanuqsaurus', 'prehistoric planet', 'walking with dinosaurs'],
+      keywords: ['prince creek', 'alaska', 'arctic', 'colville', 'cretaceous', 'polar dinosaurs', 'nanuqsaurus', 'troodon', 'dromaeosaurus', 'saurornitholestes', 'prehistoric planet', 'walking with dinosaurs'],
     }),
     formation({
       id: 'hateg',
@@ -1439,19 +1439,23 @@ export const MEDIA_LATE_CRETACEOUS: DataSet = {
     },
     {
       id: 'stenonychosaurus-inequalis',
-      name: 'Stenonychosaurus inequalis',
-      common: 'Stenonychosaurus',
+      name: 'Troodon formosus',
+      common: 'Troodon',
       clade: 'troodontidae',
       status: 'full',
-      ageText: 'About 76 to 75 million years ago',
-      placeText: 'Alberta, Canada',
-      formations: ['dinosaur-park'],
-      summary: ['A troodontid about 2–2.5 m long with large forward-facing eyes and one of the biggest brains for its size of any dinosaur. Long known as Troodon, the name famous from documentaries and books.'],
+      ageText: 'About 77 to 75 million years ago',
+      placeText: 'Montana, USA, and Alberta, Canada; troodontid teeth from Alaska',
+      formations: ['two-medicine', 'dinosaur-park', 'prince-creek'],
+      summary: [
+        'A troodontid about 2–2.5 m long with large forward-facing eyes and one of the biggest brains for its size of any dinosaur. Nests of its eggs, laid in pairs and partly buried, were found at Egg Mountain in Montana.',
+        'Troodon was named in 1856 from a single tooth, and for years many scientists treated the name as doubtful and called the skeletons Stenonychosaurus instead. In 2025 David Varricchio and colleagues made a skeleton from Montana the new reference specimen (neotype) for Troodon formosus, bringing the name back; under that proposal Stenonychosaurus is the same animal. Not every scientist may agree yet.',
+        'Troodontid teeth are the most common theropod teeth in Alaska’s Prince Creek Formation, laid down near the North Pole. They are nearly twice the size of those from Alberta, so they may come from a larger Arctic species rather than Troodon itself. Big eyes may have helped troodontids hunt through the long polar winter darkness.',
+      ],
       facts: [
-        { label: 'Named', value: 'Charles Mortram Sternberg, 1932' },
+        { label: 'Named', value: 'Joseph Leidy, 1856; neotype chosen by David Varricchio and colleagues, 2025' },
         { label: 'Length', value: 'About 2–2.5 m' },
       ],
-      keywords: ['stenonychosaurus', 'troodon', 'troodontid', 'smart dinosaur', 'cretaceous'],
+      keywords: ['troodon', 'stenonychosaurus', 'latenivenatrix', 'troodontid', 'smart dinosaur', 'egg mountain', 'cretaceous'],
     },
     {
       id: 'nasutoceratops-titusi',

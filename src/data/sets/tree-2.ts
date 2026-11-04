@@ -83,8 +83,8 @@ export const TREE_2: DataSet = {
       summary: ['A short-tailed pterosaur with a wingspan of about 1 m and a low bony crest along the top of its skull.'],
       facts: [{ label: 'Named', value: 'Carl Wiman, 1925' }], keywords: ['germanodactylus', 'pterosaur', 'jurassic'] },
     // Dinosaur Park
-    { id: 'saurornitholestes-langstoni', name: 'Saurornitholestes langstoni', common: 'Saurornitholestes', clade: 'dromaeosauridae', status: 'full', ageText: 'About 77 to 75 million years ago', placeText: 'Alberta, Canada, and Montana, USA', formations: ['dinosaur-park'],
-      summary: ['A coyote-sized raptor about 1.8 m long, the most common dromaeosaur of the Dinosaur Park Formation. A pterosaur bone with one of its teeth embedded shows it ate, or scavenged, pterosaurs.'],
+    { id: 'saurornitholestes-langstoni', name: 'Saurornitholestes langstoni', common: 'Saurornitholestes', clade: 'dromaeosauridae', status: 'full', ageText: 'About 77 to 75 million years ago', placeText: 'Alberta, Canada, and Montana, USA; teeth from Alaska', formations: ['dinosaur-park', 'prince-creek'],
+      summary: ['A coyote-sized raptor about 1.8 m long, the most common dromaeosaur of the Dinosaur Park Formation. A pterosaur bone with one of its teeth embedded shows it ate, or scavenged, pterosaurs.', 'Teeth from the Prince Creek Formation on Alaska’s North Slope have been tentatively identified as Saurornitholestes, and a young raptor’s jaw found there in 2020 is most like those of Saurornitholestes and its relatives, so they lived in the Arctic too.'],
       facts: [{ label: 'Named', value: 'Hans-Dieter Sues, 1978' }, { label: 'Length', value: 'About 1.8 m' }], keywords: ['saurornitholestes', 'raptor', 'cretaceous'] },
     { id: 'hesperonychus-elizabethae', name: 'Hesperonychus elizabethae', common: 'Hesperonychus', clade: 'dromaeosauridae', status: 'full', ageText: 'About 76 million years ago', placeText: 'Alberta, Canada', formations: ['dinosaur-park'],
       summary: ['One of the smallest known non-bird dinosaurs of North America, about 1 m long and perhaps 2 kg, a relative of Microraptor.'],

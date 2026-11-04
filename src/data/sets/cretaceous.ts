@@ -1368,10 +1368,11 @@ export const CRETACEOUS: DataSet = {
       clade: 'dromaeosauridae',
       status: 'full',
       ageText: 'About 76.5 to 75 million years ago (Late Cretaceous)',
-      placeText: 'Alberta, Canada, and Montana, USA',
-      formations: ['dinosaur-park'],
+      placeText: 'Alberta, Canada, and Montana, USA; teeth from Alaska',
+      formations: ['dinosaur-park', 'prince-creek'],
       summary: [
         'The raptor that gave its family its name, about 2 m long, with a deep, strong skull and a sickle claw on each foot. Its bite was strong for its size, so it may have relied more on its jaws than its claws.',
+        'Isolated teeth from the Prince Creek Formation on Alaska’s North Slope, a few million years younger and laid down near the North Pole, have been tentatively identified as Dromaeosaurus, so it or a close relative may have ranged into the Arctic.',
       ],
       facts: [
         { label: 'Named', value: 'William Diller Matthew and Barnum Brown, 1922' },

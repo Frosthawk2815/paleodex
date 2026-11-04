@@ -20,7 +20,7 @@ export const ECOLOGY_1: DataSet = {
       summary: ['A small, hornless leptoceratopsid known from a bonebed of many individuals, close to Leptoceratops.'],
       facts: [{ label: 'Named', value: 'Brenda Chinnery, 2004' }], keywords: ['prenoceratops', 'ceratopsian', 'cretaceous'] },
     { id: 'orodromeus-makelai', name: 'Orodromeus makelai', common: 'Orodromeus', clade: 'thescelosauridae', status: 'full', ageText: 'About 77 million years ago', placeText: 'Montana, USA', formations: ['two-medicine'],
-      summary: ['A small, fast plant-eater about 2.5 m long from Egg Mountain. Eggs with embryos found there were first thought to be its own, but study of the embryos showed they belong to a troodontid. Orodromeus bones found near the troodontid nests may even be the remains of their meals.'],
+      summary: ['A small, fast plant-eater about 2.5 m long from Egg Mountain. Eggs with embryos found there were first thought to be its own, but study of the embryos showed they belong to Troodon. Orodromeus bones found near the Troodon nests may even be the remains of their meals.'],
       facts: [{ label: 'Named', value: 'Jack Horner and David Weishampel, 1988' }], keywords: ['orodromeus', 'egg mountain', 'ornithopod', 'cretaceous'] },
     // Ruseifa has its marine reptiles described in the site summary (mostly indeterminate species).
     // Collón Curá
