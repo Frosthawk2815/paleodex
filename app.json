@@ -9,10 +9,10 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/images/icon.png",
-      "bundleIdentifier": "com.frosthawk.paleodex"
+      "bundleIdentifier": "com.frosthawk.animalalmanac"
     },
     "android": {
-      "package": "com.frosthawk.paleodex",
+      "package": "com.frosthawk.animalalmanac",
       "adaptiveIcon": {
         "backgroundColor": "#05070D",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
