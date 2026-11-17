@@ -206,7 +206,8 @@ export function statsOf(id: string): Stats {
 const living = (s: Species) => /^living/i.test(s.ageText);
 
 // Animals people helped wipe out: the Ice Age giants that died out as humans spread around the world,
-// and the animals lost since, from the dodo to the thylacine. Removed by the Humans card (Homo sapiens).
+// the animals lost since, from the dodo to the thylacine, and the other, extinct human species. Removed
+// by the Humans card (Homo sapiens).
 export const LATE_PLEISTOCENE = 'late-pleistocene';
 export const PLEISTOCENE_MEGAFAUNA = new Set([
   'mammuthus-primigenius', 'mammuthus-columbi', 'mammuthus-exilis', 'mammut-americanum', 'cuvieronius-hyodon', 'notiomastodon-platensis',
@@ -220,6 +221,8 @@ export const PLEISTOCENE_MEGAFAUNA = new Set([
   'raphus-cucullatus', 'hydrodamalis-gigas', 'pinguinus-impennis', 'thylacinus-cynocephalus', 'ectopistes-migratorius', 'bos-primigenius',
   'equus-quagga-quagga', 'macrotis-leucura', 'chaeropus-ecaudatus', 'notamacropus-greyi', 'caloprymnus-campestris', 'conuropsis-carolinensis',
   'heteralocha-acutirostris', 'moho-braccatus', 'mekosuchus-inexpectatus', 'sylviornis-neocaledoniae',
+  // The other humans: every extinct species of Homo. (Living apes are never removed.)
+  'homo-habilis', 'homo-erectus', 'homo-naledi', 'homo-neanderthalensis', 'homo-floresiensis', 'homo-longi',
 ]);
 let extCache: Map<string, string | null> | null = null;
 
