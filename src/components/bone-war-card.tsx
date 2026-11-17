@@ -31,8 +31,8 @@ export const STAT_LAYOUTS: { id: StatLayout; name: string }[] = [
   { id: 'icons', name: 'Icons' },
 ];
 // The four stats, each with its symbol: attack (swords), defence (shield), speed (lightning) and
-// swim (a swimmer).
-export const STAT_ICONS = { attack: '⚔️', defence: '🛡️', speed: '⚡', swim: '🏊' } as const;
+// swim (a wave).
+export const STAT_ICONS = { attack: '⚔️', defence: '🛡️', speed: '⚡', swim: '🌊' } as const;
 const ORDER = ['attack', 'defence', 'speed', 'swim'] as const;
 
 // The four stats as an X: attack north, speed east, defence south, swim west. Each arm has three

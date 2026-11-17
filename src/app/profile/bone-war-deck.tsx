@@ -68,7 +68,7 @@ export default function BoneWarDeckScreen() {
       <Text style={st.rowTitle}>{t('Card colour (face and border)')}</Text>
       {swatchRow('border')}
       <Text style={st.rowTitle}>{t('How stats are shown')}</Text>
-      <Text style={st.muted}>{t('⚔️ attack · 🛡️ defence · ⚡ speed · 🏊 swim. Each stat is 0 to 3. Your choice is used for every card you see, your opponent’s too.')}</Text>
+      <Text style={st.muted}>{t('⚔️ attack · 🛡️ defence · ⚡ speed · 🌊 swim. Each stat is 0 to 3. Your choice is used for every card you see, your opponent’s too.')}</Text>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
         {STAT_LAYOUTS.map((l) => {
           const on = (profile.cardStyle.layout ?? 'squares') === l.id;
