@@ -7,6 +7,7 @@ import type { DataSet } from '@/data/sets/types';
 export const NEWS_2026: DataSet = {
   clades: [
     { id: 'ornithocheiridae', name: 'Ornithocheiridae', common: 'Ornithocheirids', parent: 'pterosauria', family: true, description: 'Large toothed pterosaurs of the Cretaceous seas, close relatives of the anhanguerids. Many were named from scraps of jaw from the Cambridge Greensand.' },
+    { id: 'strigiformes', name: 'Strigiformes', common: 'Owls', parent: 'aves', family: true, description: 'Owls: birds of prey with forward-facing eyes, hooked beaks and keen hearing. Most hunt at night today, but early owls may have hunted by day.' },
     { id: 'phasmatodea', name: 'Phasmatodea', common: 'Stick and leaf insects', parent: 'hexapoda', family: true, description: 'Plant-eating insects that hide by looking like sticks, bark or leaves. They include the longest insects alive.' },
   ],
   events: [
@@ -197,6 +198,47 @@ export const NEWS_2026: DataSet = {
       ],
       related: [{ id: 'prognathodon-saturator', note: 'Another heavy-jawed Prognathodon, from the Netherlands' }],
       keywords: ['prognathodon', 'cipactli', 'mosasaur', 'mexico', 'mendez', 'cretaceous'],
+    },
+    {
+      id: 'nyana-rooiwalensis',
+      name: 'Nyana rooiwalensis',
+      common: 'Nyana',
+      clade: 'sauropodomorpha',
+      status: 'full',
+      ageText: 'About 215 to 205 million years ago (Late Triassic)',
+      placeText: 'Qhemegha, Eastern Cape, South Africa',
+      formations: ['elliot'],
+      summary: [
+        'An early long-necked plant-eater, a relative of the ancestors of the giant sauropods, known from a young animal with a nearly complete skull, the earliest near-complete sauropodomorph skull from South Africa. It was found near Qhemegha village in 2018 and named in November 2026; Nyana means “child” in isiXhosa and “small” in Sesotho.',
+        'Its bones show it was only in its third year of life yet already weighed about 440 kg, so adults may have reached several tonnes, making it one of the earliest giant dinosaurs in southern Africa. Its closest relatives may be Sarahsaurus from North America or Ngwevu from South Africa.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Atashni Moopen and colleagues, 2026 (Royal Society Open Science)' },
+        { label: 'Weight', value: 'About 440 kg at 2–3 years old' },
+        { label: 'Known from', value: 'A nearly complete skull and some other bones of a juvenile' },
+      ],
+      related: [{ id: 'sarahsaurus-aurifontanalis', note: 'A possible close relative from North America' }],
+      keywords: ['nyana', 'rooiwal', 'sauropodomorph', 'prosauropod', 'south africa', 'eastern cape', 'elliot', 'triassic'],
+    },
+    {
+      id: 'masillastrix-blattophaga',
+      name: 'Masillastrix blattophaga',
+      common: 'Masillastrix',
+      clade: 'strigiformes',
+      status: 'full',
+      ageText: 'About 47 million years ago',
+      placeText: 'Messel Pit, Germany',
+      formations: ['messel'],
+      summary: [
+        'A small early owl about 12 cm long, known from a skeleton complete except for its skull, named in November 2026. Its name means “cockroach-eating owl from Messel”: its stomach still holds the shiny, blue-green wing pieces of a cockroach, its last meal.',
+        'Shiny insects like that are usually active by day, and its wing bones lack the proportions of owls built for silent night flight, so it probably hunted in daylight. That suggests owls only became night hunters later, perhaps between about 47 and 35 million years ago. It might, though, have caught the cockroach at dawn or dusk.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Gerald Mayr and colleagues, 2026 (Current Biology)' },
+        { label: 'Length', value: 'About 12 cm' },
+        { label: 'Last meal', value: 'A cockroach' },
+      ],
+      keywords: ['masillastrix', 'owl', 'fossil owl', 'messel', 'cockroach', 'eocene', 'bird'],
     },
     // ── Cambridge Greensand ──
     {

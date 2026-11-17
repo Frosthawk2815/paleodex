@@ -17208,6 +17208,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "masillastrix-blattophaga": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Masillastrix_blattophaga_%28holotype%2C_SMF-ME_11964%29.jpg/960px-Masillastrix_blattophaga_%28holotype%2C_SMF-ME_11964%29.jpg",
+  "width": 800,
+  "height": 992,
+  "artist": "G. Mayr, L. Šmídová, A. Richter & S. Wedmann",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Masillastrix_blattophaga_(holotype,_SMF-ME_11964).jpg",
+  "file": "Masillastrix_blattophaga_(holotype,_SMF-ME_11964).jpg",
+  "article": "https://en.wikipedia.org/wiki/Masillastrix",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "massetognathus-pascuali": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Massetognathus_pascuali_Romer%2C_1867.jpg/500px-Massetognathus_pascuali_Romer%2C_1867.jpg",
   "width": 500,
@@ -19769,6 +19782,19 @@
   "file": "Nurhachius_ignaciobritoi_holotype.jpg",
   "article": "https://en.wikipedia.org/wiki/Nurhachius",
   "scope": "genus",
+  "kind": "fossil"
+ },
+ "nyana-rooiwalensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Nyana_rooiwalensis_%28skull_CT_rendering_-_lateral%29.png/960px-Nyana_rooiwalensis_%28skull_CT_rendering_-_lateral%29.png",
+  "width": 800,
+  "height": 1022,
+  "artist": "A. Moopen, J. Botha, R. Benson, K. E. J. Chapelle, P. M. Barrett, K. Dollman & J. N. Choiniere",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Nyana_rooiwalensis_(skull_CT_rendering_-_lateral).png",
+  "file": "Nyana_rooiwalensis_(skull_CT_rendering_-_lateral).png",
+  "article": "https://en.wikipedia.org/wiki/Nyana_rooiwalensis",
+  "scope": "species",
   "kind": "fossil"
  },
  "nyasasaurus-parringtoni": {
