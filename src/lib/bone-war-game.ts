@@ -27,7 +27,7 @@ export const KNOCK_DAMAGE = 1;
 // HP a challenger loses for a wrong answer.
 export const MISS_DAMAGE = 1;
 // Strikes can reach a player whose front line has this many cards or fewer.
-export const STRIKE_GAP = 1;
+export const STRIKE_GAP = 0;
 // When a card attacks a faster card, its chance to miss for each point of speed between them.
 export const MISS_PER_SPEED = 0.25;
 export const missChance = (attacker: GCard, target: GCard) => Math.min(0.75, Math.max(0, stat(target, 'speed') - stat(attacker, 'speed')) * MISS_PER_SPEED);

@@ -14,7 +14,7 @@ export function BoneWarRules() {
     t('Cards go face down: up to 6 in your front line, the question line, and 3 in your backline, the player line. A backline card can move to the front, but never back.'),
     t('Challenge a card in your opponent’s front line by answering a question about it at its star level. Right: it is knocked out and they lose 1 HP. Wrong: it stays and you lose 1 HP. A card you have already seen asks a question one level easier.'),
     t('Or attack it with one of your backline cards: if its defence is lower than your card’s attack it is knocked off, but if it is faster than your card it may dodge, wasting your action.'),
-    t('When their front line is down to one card or none, strike with a backline card: its attack wears down their defence for the turn, and the rest comes off their HP. A card can’t strike or attack on the turn it was played.'),
+    t('When their front line is empty, strike with a backline card: its attack wears down their defence for the turn, and the rest comes off their HP. A card can’t strike or attack on the turn it was played.'),
     t('Backline stats: ⚔️ attack makes your opponents’ questions easier and powers strikes; 🛡️ defence blocks strikes each turn; ⚡ speed adds a second per point to your answer time and takes one from your opponent’s (20 seconds to start); 🌊 swim reveals that many of their face-down cards, once per card.'),
     t('Extinction cards go in the front line. Your opponent must answer at once: wrong, and every animal they have in play that the extinction wiped out is gone. Right, and you must answer a saving question or lose your own.'),
     t('Bring their HP to 0 to win. When both decks run out there are six more turns; then the higher HP wins.'),
