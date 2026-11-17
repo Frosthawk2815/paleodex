@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Board } from '@/components/bone-war-board';
 import { BoneWarFriend } from '@/components/bone-war-friend';
 import { SPECIES } from '@/data/life';
-import { deckCards } from '@/lib/bone-war';
+import { deckCards, NOT_CARDS } from '@/lib/bone-war';
 import { type Action, aiAnswers, aiDeck, aiMove, apply, type GameState, newGame } from '@/lib/bone-war-game';
 import { EXTINCTIONS } from '@/lib/extinctions';
 import { useProfile } from '@/lib/profile';
@@ -27,7 +27,7 @@ function ComputerGame() {
   const deck = useMemo(() => deckCards(profile), [profile]);
   const [state, setState] = useState<GameState>(() => {
     const stars = deck.length ? deck.reduce((n, c) => n + c.stars, 0) / deck.length : 2;
-    const pool = [...SPECIES.filter((s) => s.status === 'full').map((s) => `species:${s.id}`), ...EXTINCTIONS.map((e) => `extinction:${e.id}`)];
+    const pool = [...SPECIES.filter((s) => s.status === 'full' && !NOT_CARDS.has(s.id)).map((s) => `species:${s.id}`), ...EXTINCTIONS.map((e) => `extinction:${e.id}`)];
     return newGame([
       { name: profile.name || t('You'), cards: deck.map((c) => ({ key: c.key, stars: c.stars })) },
       { name: t('Animal Almanac'), cards: aiDeck(Math.max(deck.length, 20), stars, pool) },

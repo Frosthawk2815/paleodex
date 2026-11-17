@@ -108,7 +108,6 @@ const OVERRIDES: Record<string, Row> = {
   'ursus-maritimus': [3, 1, 0, 2],
   'orcinus-orca': [3, 0, 0, 3],
   'velociraptor-mongoliensis': [2, 1, 2, 0],
-  'homo-sapiens': [2, 1, 2, 1],
   'equus-caballus': [1, 1, 3, 0],
   'struthio-camelus': [1, 1, 3, 0],
   'leedsichthys-problematicus': [0, 2, 0, 3],

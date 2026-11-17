@@ -27,8 +27,12 @@ export function cardKeyForQuestion(q: { speciesId?: string; page?: PageRef }): s
   return null;
 }
 
+// Species that are never cards.
+export const NOT_CARDS = new Set(['homo-sapiens']);
+
 export function cardFor(key: string, stars: number): Card | null {
   const [kind, id] = key.split(':') as [string, string];
+  if (kind === 'species' && NOT_CARDS.has(id)) return null;
   if (kind === 'species') {
     const species = SPECIES.find((s) => s.id === id);
     if (!species) return null;
