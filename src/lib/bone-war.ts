@@ -10,6 +10,8 @@ import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
 import type { PageRef, Profile } from '@/lib/profile';
 
 export const DECK_SIZE = 30;
+// The smallest deck that can play.
+export const MIN_DECK = 10;
 export const HAND_SIZE = 5;
 
 export type Card =

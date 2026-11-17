@@ -53,6 +53,13 @@ export default function QuizScreen() {
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
+        <Pressable onPress={() => router.push('/profile/bone-war')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
+          <View style={st.rowText}>
+            <Text style={st.rowTitle}>{t('Bone War')}</Text>
+            <Text style={st.rowSub}>{t('A card battle with the animals you have collected')}</Text>
+          </View>
+          <Text style={st.chevron}>›</Text>
+        </Pressable>
         <Pressable onPress={() => router.push('/profile/battle')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>{t('Head to Head')}</Text>

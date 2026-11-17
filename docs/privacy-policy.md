@@ -1,6 +1,6 @@
 # Animal Almanac privacy policy
 
-Last updated: 16 November 2026
+Last updated: 18 November 2026
 
 Animal Almanac is an educational app about animals living and extinct. It has no accounts, no ads and no analytics or tracking, and the developer does not collect, store or sell any of your information.
 
@@ -22,11 +22,11 @@ When you tap **Check in**, the app asks for your location once to see whether yo
 
 If you choose a photo for a species page or as your profile picture, the app keeps a copy on your phone. It only sees the photos you pick.
 
-## Head to Head and Peer Review multiplayer games
+## Multiplayer games (Head to Head, Peer Review and Bone War)
 
-When you play Head to Head or Peer Review with other people, your phone connects directly to theirs. To do this:
+When you play Head to Head, Peer Review or Bone War with other people, your phone connects directly to theirs. To do this:
 
-- Your profile name, title and profile picture are sent to the other players in that game.
+- Your profile name, title and profile picture are sent to the other players in Head to Head and Peer Review. In Bone War, your name, the cards in your deck and your card colours are sent to the other player.
 - A public connection service (PeerJS, 0.peerjs.com) and Google's connection helpers (STUN servers) are used to help the phones find each other. Like any internet service, they can see your device's internet (IP) address while connecting. The game itself goes directly between the players' phones.
 
 Nothing is sent unless you start or join a game.
