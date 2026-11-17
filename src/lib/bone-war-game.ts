@@ -15,7 +15,7 @@
 // Playing an extinction card makes the opponent answer its question at once. Wrong: every species
 // they have in play that the extinction wiped out is removed. Right: the player who played it must
 // answer a saving question, or lose their own.
-// Answer time is 20 seconds, plus your backline's speed, minus the opponent's. At the end of a turn
+// Answer time is 15 seconds, plus your backline's speed, minus the opponent's. At the end of a turn
 // the player draws two cards (up to five in hand).
 
 import { cardFor, type Card } from '@/lib/bone-war';
@@ -34,7 +34,7 @@ export const missChance = (attacker: GCard, target: GCard) => Math.min(0.75, Mat
 export const FRONT = 6;
 export const BACK = 3;
 export const ACTIONS = 2;
-export const BASE_SECONDS = 20;
+export const BASE_SECONDS = 15;
 export const MIN_SECONDS = 5;
 
 // playedTurn: the turn number it was played on (it can't strike until a later turn).
@@ -136,7 +136,7 @@ function startTurn(s: GameState) {
   s.actions = ACTIONS;
 }
 
-// Seconds a player gets to answer: 20, plus their backline's speed, minus the opponent's.
+// Seconds a player gets to answer: 15, plus their backline's speed, minus the opponent's.
 export const secondsFor = (s: GameState, answerer: 0 | 1) =>
   Math.max(MIN_SECONDS, BASE_SECONDS + backTotal(s.players[answerer]!, 'speed') - backTotal(s.players[1 - answerer]!, 'speed'));
 
