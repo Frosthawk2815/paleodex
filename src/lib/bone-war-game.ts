@@ -281,7 +281,8 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       opp.shield -= blocked;
       const damage = power - blocked;
       opp.hp = Math.max(0, opp.hp - damage);
-      log(damage ? `${nameOf(g)} struck ${opp.name} for ${damage} damage${blocked ? ` (${blocked} blocked)` : ''}.` : `${nameOf(g)} struck, but ${opp.name}'s defence blocked it all.`);
+      // How much the defence soaked up isn't said.
+      log(damage ? `${nameOf(g)} struck ${opp.name} for ${damage} damage.` : `${nameOf(g)} struck, but ${opp.name}'s defence held.`);
       if (opp.hp <= 0) {
         s.winner = who;
         s.over = true;
