@@ -57549,5 +57549,375 @@
         ]
       }
     ]
+  },
+  "equus-ferus-przewalskii": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 57,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              80,
+              42,
+              100,
+              48
+            ]
+          },
+          {
+            "country": "Mongolia",
+            "bbox": [
+              88,
+              43,
+              100,
+              48
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              70,
+              43,
+              87,
+              50
+            ]
+          }
+        ]
+      },
+      {
+        "from": 34,
+        "to": 0,
+        "label": "Where it lives today (reintroduced)",
+        "regions": [
+          {
+            "country": "Mongolia",
+            "bbox": [
+              105.9,
+              47.4,
+              106.6,
+              47.9
+            ]
+          },
+          {
+            "country": "Mongolia",
+            "bbox": [
+              93.2,
+              44.9,
+              94.2,
+              45.6
+            ]
+          },
+          {
+            "country": "Mongolia",
+            "bbox": [
+              95.5,
+              47.4,
+              96.5,
+              48.0
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              88.5,
+              44.5,
+              90,
+              45.5
+            ]
+          },
+          {
+            "country": "Kazakhstan",
+            "bbox": [
+              64,
+              48,
+              67,
+              50
+            ]
+          },
+          {
+            "country": "Ukraine",
+            "bbox": [
+              29.6,
+              51.1,
+              30.4,
+              51.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "mustela-nigripes": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 45,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -112,
+              31,
+              -96,
+              49
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -114,
+              49,
+              -102,
+              53
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -109,
+              29,
+              -104,
+              32
+            ]
+          }
+        ]
+      },
+      {
+        "from": 45,
+        "to": 39,
+        "label": "The last wild ferrets, at Meeteetse",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -109.3,
+              43.9,
+              -108.5,
+              44.4
+            ]
+          }
+        ]
+      },
+      {
+        "from": 35,
+        "to": 0,
+        "label": "Where it lives today (reintroduced)",
+        "regions": [
+          {
+            "country": "United States of America",
+            "bbox": [
+              -106.5,
+              41.9,
+              -105.9,
+              42.4
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -102.6,
+              43.6,
+              -101.9,
+              44.0
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -108.0,
+              47.4,
+              -107.3,
+              47.9
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -113.3,
+              35.3,
+              -112.8,
+              35.7
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -101.3,
+              38.7,
+              -100.8,
+              39.0
+            ]
+          },
+          {
+            "country": "United States of America",
+            "bbox": [
+              -105.4,
+              43.3,
+              -104.9,
+              43.8
+            ]
+          },
+          {
+            "country": "Canada",
+            "bbox": [
+              -107.8,
+              48.9,
+              -106.8,
+              49.2
+            ]
+          },
+          {
+            "country": "Mexico",
+            "bbox": [
+              -108.6,
+              30.6,
+              -108.0,
+              31.1
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dryococelus-australis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 108,
+        "label": "Lord Howe Island",
+        "regions": [
+          {
+            "box": [
+              159.0,
+              -31.62,
+              159.15,
+              -31.47
+            ]
+          },
+          {
+            "box": [
+              159.18,
+              -31.83,
+              159.33,
+              -31.68
+            ]
+          }
+        ]
+      },
+      {
+        "from": 108,
+        "to": 0,
+        "label": "Ball’s Pyramid, its last refuge",
+        "regions": [
+          {
+            "box": [
+              159.18,
+              -31.83,
+              159.33,
+              -31.68
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "nipponia-nippon": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 45,
+        "label": "Historic range",
+        "regions": [
+          {
+            "countries": [
+              "Japan",
+              "South Korea",
+              "North Korea",
+              "Taiwan"
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              105,
+              22,
+              123,
+              42
+            ]
+          },
+          {
+            "country": "Russia",
+            "bbox": [
+              127,
+              42,
+              138,
+              50
+            ]
+          }
+        ]
+      },
+      {
+        "from": 45,
+        "to": 18,
+        "label": "The last wild birds, in Shaanxi",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              107.2,
+              33.1,
+              107.9,
+              33.6
+            ]
+          }
+        ]
+      },
+      {
+        "from": 18,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              106.3,
+              32.6,
+              110,
+              34.5
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              111,
+              33,
+              112.5,
+              34
+            ]
+          },
+          {
+            "country": "Japan",
+            "bbox": [
+              138.2,
+              37.75,
+              138.6,
+              38.35
+            ]
+          },
+          {
+            "country": "South Korea",
+            "bbox": [
+              128.3,
+              35.45,
+              128.55,
+              35.65
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

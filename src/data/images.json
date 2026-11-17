@@ -9068,6 +9068,18 @@
   "scope": "genus",
   "kind": "restoration"
  },
+ "dryococelus-australis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Lord_Howe_Island_stick_insect_Dryococelus_australis_10June2011_PalmNursery.jpg/960px-Lord_Howe_Island_stick_insect_Dryococelus_australis_10June2011_PalmNursery.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "Granitethighs",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Lord_Howe_Island_stick_insect_Dryococelus_australis_10June2011_PalmNursery.jpg",
+  "file": "Lord_Howe_Island_stick_insect_Dryococelus_australis_10June2011_PalmNursery.jpg",
+  "article": "https://en.wikipedia.org/wiki/Dryococelus",
+  "scope": "species"
+ },
  "dryocopus-martius": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/%D0%96%D0%B5%D0%BB%D0%BD%D0%B0_%28Dryocopus_martius%2C_fem%29%2C_%C2%AB%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D1%88%D1%83%D0%BC%D0%B0%D1%88%D0%B5%D1%88%D0%B0%D1%8F%C2%BB.jpg/960px-%D0%96%D0%B5%D0%BB%D0%BD%D0%B0_%28Dryocopus_martius%2C_fem%29%2C_%C2%AB%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F_%D1%88%D1%83%D0%BC%D0%B0%D1%88%D0%B5%D1%88%D0%B0%D1%8F%C2%BB.jpg",
   "width": 800,
@@ -10117,6 +10129,18 @@
   "source": "https://commons.wikimedia.org/wiki/File:Nokota_Horses_cropped.jpg",
   "file": "Nokota_Horses_cropped.jpg",
   "article": "https://en.wikipedia.org/wiki/Horse",
+  "scope": "species"
+ },
+ "equus-ferus-przewalskii": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Przewalskis_horse_02.jpg/500px-Przewalskis_horse_02.jpg",
+  "width": 500,
+  "height": 492,
+  "artist": "Claudia Feh",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Przewalskis_horse_02.jpg",
+  "file": "Przewalskis_horse_02.jpg",
+  "article": "https://en.wikipedia.org/wiki/Przewalski%27s_horse",
   "scope": "species"
  },
  "equus-occidentalis": {
@@ -12980,6 +13004,19 @@
   "file": "Hierosaurus.jpg",
   "article": "https://en.wikipedia.org/wiki/Hierosaurus",
   "scope": "genus",
+  "kind": "fossil"
+ },
+ "hintighernia-edingerae": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Ornithostoma_skull_fragment.jpg/960px-Ornithostoma_skull_fragment.jpg",
+  "width": 800,
+  "height": 288,
+  "artist": "Reginald Walter Hooley",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Ornithostoma_skull_fragment.jpg",
+  "file": "Ornithostoma_skull_fragment.jpg",
+  "article": "https://en.wikipedia.org/wiki/Hintighernia",
+  "scope": "species",
   "kind": "fossil"
  },
  "hippocamelus-bisulcus": {
@@ -18673,6 +18710,18 @@
   "article": "https://en.wikipedia.org/wiki/Ferret",
   "scope": "species"
  },
+ "mustela-nigripes": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Mustela_nigripes_2.jpg/500px-Mustela_nigripes_2.jpg",
+  "width": 500,
+  "height": 364,
+  "artist": "USFWS Mountain Prairie",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Mustela_nigripes_2.jpg",
+  "file": "Mustela_nigripes_2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Black-footed_ferret",
+  "scope": "species"
+ },
  "muttaburrasaurus-langdoni": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Muttaburrasaurus_mount.jpg/960px-Muttaburrasaurus_mount.jpg",
   "width": 800,
@@ -19429,6 +19478,18 @@
   "article": "https://en.wikipedia.org/wiki/Niobrarasaurus",
   "scope": "genus",
   "kind": "fossil"
+ },
+ "nipponia-nippon": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Nipponia_nippon_77371852.jpg/960px-Nipponia_nippon_77371852.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "belvedere04",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Nipponia_nippon_77371852.jpg",
+  "file": "Nipponia_nippon_77371852.jpg",
+  "article": "https://en.wikipedia.org/wiki/Crested_ibis",
+  "scope": "species"
  },
  "nomascus-hainanus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Nomascus_hainanus_%28Hainan_Gibbon%29_Locomotor_modes.webp/960px-Nomascus_hainanus_%28Hainan_Gibbon%29_Locomotor_modes.webp",

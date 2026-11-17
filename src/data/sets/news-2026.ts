@@ -1,0 +1,206 @@
+// Late-2026 additions: animals saved by the zoos on the globe that had no page yet, and fossils
+// named or redescribed in 2025–26.
+
+import { formation } from '@/data/sets/formation';
+import type { DataSet } from '@/data/sets/types';
+
+export const NEWS_2026: DataSet = {
+  clades: [
+    { id: 'phasmatodea', name: 'Phasmatodea', common: 'Stick and leaf insects', parent: 'hexapoda', family: true, description: 'Plant-eating insects that hide by looking like sticks, bark or leaves. They include the longest insects alive.' },
+  ],
+  events: [
+    formation({
+      id: 'mendez',
+      title: 'Méndez Formation',
+      short: 'Méndez',
+      dateText: 'About 72 to 66 million years ago (Late Cretaceous, Maastrichtian)',
+      placeText: 'Nuevo León and Tamaulipas, north-eastern Mexico',
+      lon: -99.47,
+      lat: 24.93,
+      plate: 101,
+      fromMa: 72,
+      toMa: 66,
+      jumpMa: 71,
+      icon: 'sea',
+      summary: [
+        'Grey marine mudstones and marls laid down on the floor of the western Gulf of Mexico at the very end of the age of dinosaurs.',
+        'They hold sea creatures such as mosasaurs. A mosasaur skull collected near Linares in 2001 was named Prognathodon cipactli in 2026.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 72 to 66 million years ago' },
+        { label: 'Where today', value: 'North-eastern Mexico' },
+        { label: 'Rocks', value: 'Marine mudstone and marl' },
+      ],
+      keywords: ['mendez', 'méndez', 'mexico', 'nuevo leon', 'mosasaur', 'cretaceous'],
+    }),
+    formation({
+      id: 'cambridge-greensand',
+      title: 'Cambridge Greensand',
+      short: 'Cambridge Greensand',
+      dateText: 'About 105 to 100 million years ago (Early Cretaceous, Albian)',
+      placeText: 'Cambridgeshire, England',
+      lon: 0.12,
+      lat: 52.2,
+      plate: 315,
+      fromMa: 105,
+      toMa: 100,
+      jumpMa: 101,
+      icon: 'sea',
+      summary: [
+        'A thin bed of green, phosphate-rich sand at the base of the chalk around Cambridge. In the 1800s it was dug for fertiliser, and the diggers turned up thousands of worn bones and teeth that had been washed together on the sea floor.',
+        'It is one of Britain’s richest pterosaur sites, though most of its pterosaurs are known only from broken jaw tips and bones.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 105 to 100 million years ago' },
+        { label: 'Where today', value: 'Around Cambridge, England' },
+        { label: 'Rocks', value: 'Glauconitic (green) sand with phosphate nodules' },
+      ],
+      keywords: ['cambridge greensand', 'cambridge', 'england', 'pterosaur', 'cretaceous'],
+    }),
+  ],
+  species: [
+    // ── Living animals saved by zoos ──
+    {
+      id: 'equus-ferus-przewalskii',
+      name: 'Equus ferus przewalskii',
+      common: 'Przewalski’s horse',
+      clade: 'equidae',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Steppes of Mongolia, China and Kazakhstan',
+      formations: [],
+      summary: [
+        'A stocky, dun-coloured horse with a stiff, upright mane, named after the Russian explorer Nikolai Przhevalsky, who brought a skull to Europe in 1881. Often called the last truly wild horse, though ancient DNA suggests it descends from horses herded at Botai in Kazakhstan about 5,500 years ago.',
+        'It was last seen in the wild in Mongolia in 1969. Every one alive today descends from about a dozen horses caught around 1900 and bred in zoos. Prague Zoo has kept the world studbook since 1959, and horses bred in zoos have been returned to Mongolia since 1992, to China, and in 2024 to Kazakhstan. It went from Extinct in the Wild to Endangered.',
+      ],
+      facts: [
+        { label: 'Height', value: 'About 1.2–1.4 m at the shoulder' },
+        { label: 'Chromosomes', value: '66, two more than a domestic horse' },
+        { label: 'IUCN status', value: 'Endangered' },
+      ],
+      related: [{ id: 'equus-caballus', note: 'Its closest living relative, the domestic horse' }],
+      keywords: ['przewalski', 'przewalskis horse', 'takhi', 'wild horse', 'mongolia', 'horse', 'zoo conservation'],
+    },
+    {
+      id: 'mustela-nigripes',
+      name: 'Mustela nigripes',
+      common: 'Black-footed ferret',
+      clade: 'mustelidae',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Prairies of the North American Great Plains',
+      formations: [],
+      summary: [
+        'A slim weasel with a black mask and black feet that lives in prairie dog burrows and eats almost nothing but prairie dogs. As prairie dogs were poisoned and struck by plague, it nearly vanished.',
+        'Thought extinct in 1979, it was found again near Meeteetse, Wyoming, in 1981. Disease then struck, and the last 18 were caught by 1987. Every ferret alive today descends from seven of them. Zoo-bred ferrets have been released since 1991, and in 2020 Elizabeth Ann became the first clone of an endangered North American animal, made from cells frozen in 1988. Only a few hundred live wild, and plague and drought keep setting them back.',
+      ],
+      facts: [
+        { label: 'Length', value: 'About 50–60 cm with tail' },
+        { label: 'Diet', value: 'Mostly prairie dogs' },
+        { label: 'IUCN status', value: 'Endangered' },
+      ],
+      keywords: ['black-footed ferret', 'ferret', 'prairie dog', 'meeteetse', 'clone', 'zoo conservation'],
+    },
+    {
+      id: 'dryococelus-australis',
+      name: 'Dryococelus australis',
+      common: 'Lord Howe Island stick insect',
+      clade: 'phasmatodea',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Ball’s Pyramid, a sea stack off Lord Howe Island, Australia; once Lord Howe Island itself',
+      formations: [],
+      summary: [
+        'A heavy, flightless, glossy black stick insect up to about 15 cm long, nicknamed the “tree lobster”. It hides in tree hollows by day and feeds at night.',
+        'Black rats came ashore on Lord Howe Island from a shipwreck in 1918, and within a few years the insect was gone. It was presumed extinct until 2001, when a few were found under a single bush on Ball’s Pyramid, a bare volcanic spike 23 km away. From two pairs collected in 2003, Melbourne Zoo bred thousands. A campaign to clear rats from Lord Howe Island began in 2019, so the insects may one day go home.',
+      ],
+      facts: [
+        { label: 'Length', value: 'Up to about 15 cm' },
+        { label: 'Rediscovered', value: '2001, on Ball’s Pyramid' },
+        { label: 'IUCN status', value: 'Critically Endangered' },
+      ],
+      keywords: ['lord howe island stick insect', 'tree lobster', 'stick insect', 'phasmid', 'balls pyramid', 'zoo conservation'],
+    },
+    {
+      id: 'nipponia-nippon',
+      name: 'Nipponia nippon',
+      common: 'Crested ibis',
+      clade: 'threskiornithidae',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Shaanxi, China, and Sado Island, Japan; once across East Asia',
+      formations: [],
+      summary: [
+        'A white ibis with a red face and shaggy crest whose wings glow a soft pink in flight, a colour called toki-iro in Japan. It once lived from Russia’s Far East to Japan, Korea and eastern China.',
+        'Hunting and the loss of its rice-paddy feeding grounds wiped it out almost everywhere. In 1981 Japan caught its last five wild birds, and the same year seven were found in Shaanxi, China. From those seven, careful protection and breeding have raised the world population to over 12,000. Since 2008 birds bred in Japan, including at Tama Zoo, have been released on Sado Island.',
+      ],
+      facts: [
+        { label: 'Length', value: 'About 75–80 cm' },
+        { label: 'Low point', value: '7 wild birds, found in 1981' },
+        { label: 'IUCN status', value: 'Endangered' },
+      ],
+      keywords: ['crested ibis', 'japanese crested ibis', 'toki', 'nipponia', 'ibis', 'sado', 'zoo conservation'],
+    },
+    // ── Fossils named or redescribed in 2025–26 ──
+    {
+      id: 'xiphodracon-goldencapensis',
+      name: 'Xiphodracon goldencapensis',
+      common: 'Xiphodracon',
+      clade: 'ichthyosauria',
+      status: 'full',
+      ageText: 'About 190 million years ago',
+      placeText: 'Golden Cap, Dorset, England',
+      formations: ['lyme-regis'],
+      summary: [
+        'A dolphin-sized ichthyosaur, about 3 m long, with a very long, narrow, sword-like snout; its name means “sword dragon of Golden Cap”. A skeleton found by the collector Chris Moore in 2001 sat unstudied in the Royal Ontario Museum until it was named in 2025.',
+        'It comes from a poorly known time when one set of ichthyosaurs was being replaced by another, and its skull carries bite marks from a larger predator.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Dean Lomax, Judy Massare and Erin Maxwell, 2025' },
+        { label: 'Length', value: 'About 3 m' },
+        { label: 'Rocks', value: 'Charmouth Mudstone Formation' },
+      ],
+      related: [{ id: 'ichthyosaurus-communis', note: 'An older ichthyosaur from the same coast' }],
+      keywords: ['xiphodracon', 'sword dragon', 'ichthyosaur', 'golden cap', 'dorset', 'jurassic coast', 'jurassic'],
+    },
+    {
+      id: 'prognathodon-cipactli',
+      name: 'Prognathodon cipactli',
+      common: 'Prognathodon cipactli',
+      clade: 'mosasauridae',
+      status: 'full',
+      ageText: 'About 72 million years ago',
+      placeText: 'Nuevo León, Mexico',
+      formations: ['mendez'],
+      summary: [
+        'A mosasaur with a short, deep snout and massive jaws and teeth, built to crush big fish, other marine reptiles and shelled animals. Its skull was collected near Linares in 2001 and named in 2026; cipactli is a half-reptile, half-fish sea monster of Aztec myth.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Héctor Rivera-Sylva, Nicholas Longrich and colleagues, 2026' },
+        { label: 'Known from', value: 'Most of one skull' },
+      ],
+      related: [{ id: 'prognathodon-saturator', note: 'Another heavy-jawed Prognathodon, from the Netherlands' }],
+      keywords: ['prognathodon', 'cipactli', 'mosasaur', 'mexico', 'mendez', 'cretaceous'],
+    },
+    {
+      id: 'hintighernia-edingerae',
+      name: 'Hintighernia edingerae',
+      common: 'Hintighernia',
+      clade: 'tapejaridae',
+      status: 'full',
+      ageText: 'About 105 to 100 million years ago',
+      placeText: 'Cambridgeshire, England',
+      formations: ['cambridge-greensand'],
+      summary: [
+        'A tapejarid pterosaur known from the back of a skull found in the Cambridge Greensand and first described in 1870 under another name. In 2026 CT scans of its braincase showed it was a new kind of pterosaur, with a brain shaped much like that of Brazil’s Tapejara.',
+        'It is the first tapejarid known from Britain, suggesting these crested, short-faced pterosaurs had roots in Europe. Its species name honours Tilly Edinger, who founded the study of fossil brains.',
+      ],
+      facts: [
+        { label: 'Named', value: '2026 (Zoological Journal of the Linnean Society)' },
+        { label: 'Known from', value: 'A partial skull' },
+      ],
+      related: [{ id: 'tapejara-wellnhoferi', note: 'Its Brazilian relative with a similar brain' }],
+      keywords: ['hintighernia', 'tapejarid', 'pterosaur', 'cambridge greensand', 'england', 'edinger', 'cretaceous'],
+    },
+  ],
+};

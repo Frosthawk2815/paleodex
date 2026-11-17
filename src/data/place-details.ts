@@ -905,7 +905,7 @@ export const PLACE_DETAILS: Record<string, PlaceDetail> = {
     conservation: [
       { text: 'Giant pandas Bao Li and Qing Bao arrived in 2024, continuing five decades of panda research with China.', species: ['ailuropoda-melanoleuca'] },
       { text: 'Helped return zoo-born golden lion tamarins to Brazil’s Atlantic Forest from the 1980s.', species: ['leontopithecus-rosalia'] },
-      { text: 'Breeds black-footed ferrets, once thought extinct, and helped produce the first cloned ferrets.' },
+      { text: 'Breeds black-footed ferrets, once thought extinct, and helped produce the first cloned ferrets.', species: ['mustela-nigripes'] },
     ],
   },
   'zoo-toronto-zoo': {
@@ -914,7 +914,7 @@ export const PLACE_DETAILS: Record<string, PlaceDetail> = {
     history: ['Opened in 1974 in the Rouge Valley, it is Canada’s largest zoo.'],
     conservation: [
       { text: 'Since 1997 it has bred Vancouver Island marmots, one of the rarest mammals in North America: over 140 of its pups have been released.' },
-      { text: 'Raised over 500 black-footed ferret kits for release between 1993 and 2025, and head-starts threatened Blanding’s turtles in Ontario.' },
+      { text: 'Raised over 500 black-footed ferret kits for release between 1993 and 2025, and head-starts threatened Blanding’s turtles in Ontario.', species: ['mustela-nigripes'] },
     ],
   },
   'zoo-calgary-zoo': {
@@ -949,7 +949,7 @@ export const PLACE_DETAILS: Record<string, PlaceDetail> = {
     website: 'https://www.zoo.org.au/melbourne',
     history: ['Opened in 1862, it is Australia’s oldest zoo.'],
     conservation: [
-      { text: 'Saved the Lord Howe Island stick insect, thought extinct for 80 years until a few were found on the sea stack Ball’s Pyramid. From two pairs collected in 2003, the zoo has bred thousands for return to Lord Howe Island.' },
+      { text: 'Saved the Lord Howe Island stick insect, thought extinct for 80 years until a few were found on the sea stack Ball’s Pyramid. From two pairs collected in 2003, the zoo has bred thousands for return to Lord Howe Island.', species: ['dryococelus-australis'] },
     ],
   },
   'zoo-australia-zoo': {
@@ -1019,7 +1019,7 @@ export const PLACE_DETAILS: Record<string, PlaceDetail> = {
     website: 'https://www.hellabrunn.de/en',
     history: ['Opened in 1911 and rebuilt in 1928 by Heinz Heck as the world’s first “geo-zoo”, with animals grouped by the continent they come from.'],
     conservation: [
-      { text: 'Breeds Przewalski’s horses, the last truly wild horses, and has released them, along with dama gazelles and lynx.', species: ['lynx-lynx'] },
+      { text: 'Breeds Przewalski’s horses, the last truly wild horses, and has released them, along with dama gazelles and lynx.', species: ['equus-ferus-przewalskii', 'lynx-lynx'] },
       { text: 'In the 1920s and 30s the Heck brothers bred “Heck cattle” in an attempt to recreate the extinct aurochs.', species: ['bos-primigenius'] },
     ],
   },
@@ -1029,7 +1029,7 @@ export const PLACE_DETAILS: Record<string, PlaceDetail> = {
     history: ['Opened on 9 June 1878. It became famous for breeding lions under director Karl Max Schneider. Gondwanaland, opened in 2011, is Europe’s largest indoor tropical hall.'],
     conservation: [
       { text: 'Pongoland, opened in 2001, keeps all four kinds of great ape and is used for research on ape behaviour and thinking.', species: ['pan-troglodytes', 'gorilla-gorilla'] },
-      { text: 'Takes part in over 80 breeding programmes and provides animals for reintroductions, such as European wildcats and Przewalski’s horses.', species: ['felis-silvestris'] },
+      { text: 'Takes part in over 80 breeding programmes and provides animals for reintroductions, such as European wildcats and Przewalski’s horses.', species: ['felis-silvestris', 'equus-ferus-przewalskii'] },
     ],
   },
   'zoo-sch-nbrunn-zoo': {
@@ -1168,7 +1168,7 @@ export const PLACE_DETAILS: Record<string, PlaceDetail> = {
     website: 'https://www.zoopraha.cz/en',
     history: ['Opened in 1931 on the banks of the Vltava, it has bred Przewalski’s horses since 1932.'],
     conservation: [
-      { text: 'Has kept the world studbook of Przewalski’s horse since 1959. Its Return of the Wild Horses project has flown horses back to Mongolia since 2011, and helped return them to Kazakhstan in 2024.' },
+      { text: 'Has kept the world studbook of Przewalski’s horse since 1959. Its Return of the Wild Horses project has flown horses back to Mongolia since 2011, and helped return them to Kazakhstan in 2024.', species: ['equus-ferus-przewalskii'] },
     ],
   },
   'zoo-budapest-zoo-and-botanical-garden': {
@@ -1221,7 +1221,7 @@ export const PLACE_DETAILS: Record<string, PlaceDetail> = {
     website: 'https://www.tokyo-zoo.net/english/tama/',
     history: ['Opened on 5 May 1958 in the Tama Hills. It introduced the world’s first lion bus, which carries visitors among the lions, and has a large insectarium.'],
     conservation: [
-      { text: 'Since 2008, crested ibises bred at its Wildlife Conservation Center have been released on Sado Island, bringing back a bird that had died out in the wild in Japan.' },
+      { text: 'Since 2008, crested ibises bred at its Wildlife Conservation Center have been released on Sado Island, bringing back a bird that had died out in the wild in Japan.', species: ['nipponia-nippon'] },
     ],
   },
   'zoo-singapore-zoo': {

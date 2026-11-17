@@ -1260,12 +1260,14 @@ export const MEDIA_EARLY: DataSet = {
       phylo: 1.5,
       summary: [
         'The largest land predator of Jurassic Europe, about 10 m long, a megalosaur with a deep skull and blade-like teeth up to 10 cm. Nests of Torvosaurus eggs with embryos have also been found in Portugal. It is named after James Gurney, creator of Dinotopia.',
+        'Whether it is really a separate species is disputed. It was split from the American Torvosaurus tanneri in 2014 mainly because its upper jaw has fewer teeth, but its own describers called the evidence weak, and the number of teeth can change as a dinosaur grows. Some palaeontologists treat all Torvosaurus as one species, T. tanneri, while others keep two; bones from Germany may even be a third. Treat the split as contentious.',
       ],
       facts: [
         { label: 'Named', value: 'Christophe Hendrickx and Octávio Mateus, 2014' },
         { label: 'Length', value: 'About 10 m' },
         { label: 'Diet', value: 'Large dinosaurs' },
       ],
+      related: [{ id: 'torvosaurus-tanneri', note: 'The American Torvosaurus, which may be the same species' }],
       keywords: ['torvosaurus', 'megalosaur', 'portugal', 'jurassic'],
     },
     {
@@ -1386,12 +1388,16 @@ export const MEDIA_EARLY: DataSet = {
       placeText: 'Colorado, Utah and Wyoming, USA',
       formations: ['morrison'],
       phylo: 1.4,
-      summary: ['The North American Torvosaurus, about 9–10 m long, the largest predator of the Morrison along with the biggest allosaurs.'],
+      summary: [
+        'The North American Torvosaurus, about 9–10 m long, the largest predator of the Morrison along with the biggest allosaurs.',
+        'The first and best-known Torvosaurus species. The Portuguese Torvosaurus was named as a separate species, T. gurneyi, in 2014, but that split rests on thin evidence and is disputed; some palaeontologists count all Torvosaurus as T. tanneri. Treat the number of species as contentious.',
+      ],
       facts: [
         { label: 'Named', value: 'Peter Galton and James Jensen, 1979' },
         { label: 'Length', value: 'About 9–10 m' },
         { label: 'Diet', value: 'Large dinosaurs' },
       ],
+      related: [{ id: 'torvosaurus-gurneyi', note: 'The Portuguese Torvosaurus, which may be the same species' }],
       keywords: ['torvosaurus', 'megalosaur', 'jurassic'],
     },
   ],
