@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import Svg, { Circle, ClipPath, Defs, Ellipse, G, Line, Path, Rect } from 'react-native-svg';
+import Svg, { Circle, ClipPath, Defs, Ellipse, G, Line, Path, Rect, Text as SvgText } from 'react-native-svg';
 
 export type PointIconKind =
   | 'flag'
@@ -17,7 +17,9 @@ export type PointIconKind =
   | 'tar'
   | 'pickaxe'
   | 'track'
-  | 'human-track';
+  | 'human-track'
+  | 'museum'
+  | 'zoo';
 
 // Where the foot of each flagpole is in the 24×24 box, so it can stand on the spot.
 export const FLAG_FOOT: Partial<Record<PointIconKind, [number, number]>> = {
@@ -150,6 +152,40 @@ function Art({ kind, bg }: { kind: Exclude<PointIconKind, 'flag' | 'us-flag' | '
         <Path d="M11 13 L15 11.5" stroke="#F2EDE2" strokeWidth={1.2} strokeLinecap="round" />
         <Circle cx={11} cy={13} r={0.9} fill="#F2EDE2" />
         <Circle cx={15} cy={11.5} r={0.9} fill="#F2EDE2" />
+      </G>
+    );
+  }
+  if (kind === 'museum') {
+    // A natural history museum: a classical building with a pediment, columns and steps.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill={bg ?? '#2E5E8C'} />
+        <Path d="M3.6 9.2 L12 4.2 L20.4 9.2 Z" fill="#F1E6C8" />
+        <Path d="M6.6 8.3 L12 5.3 L17.4 8.3 Z" fill="#D9C9A0" />
+        <Rect x={4.2} y={9.6} width={15.6} height={1.5} fill="#F1E6C8" />
+        {[5.2, 8.7, 13.6, 17.1].map((x) => (
+          <Rect key={x} x={x} y={11.5} width={1.7} height={5.6} fill="#F1E6C8" />
+        ))}
+        <Rect x={4.2} y={17.3} width={15.6} height={1.3} fill="#E3D5B0" />
+        <Rect x={3} y={18.8} width={18} height={1.5} fill="#D9C9A0" />
+      </G>
+    );
+  }
+  if (kind === 'zoo') {
+    // A zoo entrance: an arch with a ZOO sign on top, and a ticket kiosk beside it.
+    return (
+      <G>
+        <Circle cx={12} cy={12} r={11} fill={bg ?? '#4F8A3C'} />
+        <Rect x={0} y={19} width={24} height={5} fill="#B08A55" />
+        <Path d="M3.8 19.2 V10 H14.6 V19.2 H12.6 V13.4 Q9.2 10.6 5.8 13.4 V19.2 Z" fill="#8A5A34" />
+        <Rect x={2.8} y={5.4} width={12.8} height={4.6} rx={1} fill="#F2C14E" stroke="#8A5A34" strokeWidth={0.5} />
+        <SvgText x={9.2} y={9.05} fontSize={3.9} fontWeight="700" fontFamily="Arial, Helvetica, sans-serif" textAnchor="middle" fill="#3A2412">
+          ZOO
+        </SvgText>
+        <Path d="M15.6 12.6 L18.6 10.4 L21.6 12.6 Z" fill="#C8443A" />
+        <Rect x={16.2} y={12.6} width={4.8} height={6.6} fill="#F1E6C8" />
+        <Rect x={16.9} y={13.6} width={3.4} height={2.4} fill="#2E5E8C" />
+        <Rect x={16.2} y={16.4} width={4.8} height={0.6} fill="#8A5A34" />
       </G>
     );
   }

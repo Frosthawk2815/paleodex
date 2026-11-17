@@ -8,7 +8,8 @@ import { EARTH_RADIUS_KM, MOON_DISTANCE_TODAY_KM, MOON_RADIUS_KM, moonDistanceKm
 import { geographyAt, landCentre, QUATERNARY_MA } from '@/lib/geography';
 import { EXTINCTIONS, extinctionAt } from '@/lib/extinctions';
 import { siteAt } from '@/lib/plates';
-import { badgeBg, pointPosition, visiblePoints } from '@/lib/events';
+import { badgeBg, pointPosition, pointVisible, visiblePoints } from '@/lib/events';
+import { isPlaceEvent, PLACE_EVENTS } from '@/lib/places';
 import { EVENTS, type EventPoint, type HistoryEvent } from '@/data/events';
 import { moonView } from '@/lib/moon-surface';
 import { FLAG_FOOT, PointIconShape } from '@/components/point-icon';
@@ -203,7 +204,7 @@ const markerColor = (e: HistoryEvent) => (e.kind === 'Rock formation' ? '#FF9EC7
 function anchoredPoint(anchor: string): EventPoint | undefined {
   if (!anchor.startsWith('event:')) return undefined;
   const [, id, index] = anchor.split(':');
-  const point = EVENTS.find((e) => e.id === id)?.points[Number(index)];
+  const point = (EVENTS.find((e) => e.id === id) ?? PLACE_EVENTS.find((e) => e.id === id))?.points[Number(index)];
   return point && point.body === 'earth' ? point : undefined;
 }
 
@@ -426,7 +427,9 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   // While a modern species' range is shown, rock formations and other species' extinction markers
   // are hidden so the range stands out (except for species that helped drive extinctions).
   const showingRange = !moonMode && !!range && !!rangeId;
-  const markers: Marker[] = (moonMode ? visiblePoints('moon', timeMa) : earthR > 40 ? visiblePoints('earth', timeMa) : []).flatMap(
+  // Museums and zoos join the present-day map (not while a range is shown).
+  const placePoints = moonMode || showingRange ? [] : PLACE_EVENTS.flatMap((event) => (pointVisible(event.points[0], timeMa) ? [{ event, point: event.points[0], index: 0 }] : []));
+  const markers: Marker[] = (moonMode ? visiblePoints('moon', timeMa) : earthR > 40 ? [...visiblePoints('earth', timeMa), ...placePoints] : []).flatMap(
     (v) => {
       if (showingRange && v.event.kind === 'Rock formation') return [];
       if (moonMode) {
@@ -483,7 +486,7 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
   // Overlapping markers are grouped: the one the camera is following leads, then trackways and
   // events, then dig sites. Labels that would collide with one already drawn are hidden.
   const priority = (m: Marker) =>
-    camera.anchor === `event:${m.event.id}:${m.index}` ? 0 : m.event.kind === 'Rock formation' ? 2 : 1;
+    camera.anchor === `event:${m.event.id}:${m.index}` ? 0 : isPlaceEvent(m.event) ? 3 : m.event.kind === 'Rock formation' ? 2 : 1;
   const groupLabel = (g: { lead: Marker; members: Marker[] }) =>
     g.members.length > 1 ? `${g.lead.point.label} +${g.members.length - 1}` : g.lead.point.label;
   // Icon areas relative to the spot: flags stand up and to the right of it, badges sit above it;

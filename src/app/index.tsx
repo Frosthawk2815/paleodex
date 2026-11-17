@@ -16,6 +16,7 @@ import Svg, { Circle, Line, Path } from 'react-native-svg';
 
 import { CladeInfo } from '@/components/clade-info';
 import { EventInfo } from '@/components/event-info';
+import { PlaceInfo } from '@/components/place-info';
 import { ExtinctionInfo } from '@/components/extinction-info';
 import { SpeciesInfo } from '@/components/species-info';
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
@@ -30,6 +31,7 @@ import { EXTINCTIONS, extinctionAt } from '@/lib/extinctions';
 import { cladeEra, type Era, eventEra, speciesEra } from '@/lib/era';
 import { cladeById, formationById, pastPointIndex, speciesById } from '@/lib/life';
 import { birthMaOf, type PageRef, useProfile } from '@/lib/profile';
+import { isPlaceEvent } from '@/lib/places';
 import { useOwnPicture } from '@/lib/user-photos';
 import { lastSeenJumpMa, phaseJumpMa, rangeOf } from '@/lib/ranges';
 import { contextAt, timeLabel } from '@/lib/time';
@@ -148,7 +150,8 @@ export default function GlobeScreen() {
   const showInfo = (next: Selection, scroll = true) => {
     if (selected && !sameSelection(selected, next)) setHistory((h) => [...h, selected].slice(-50));
     setSelected(next);
-    addRecent(pageOf(next));
+    // Museums and zoos aren't pages: they aren't kept in Recently viewed or counted for points.
+    if (!(next.kind === 'event' && isPlaceEvent(next.event))) addRecent(pageOf(next));
     syncRange(next);
     if (!scroll) return;
     if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: !reduceMotion });
@@ -422,7 +425,8 @@ export default function GlobeScreen() {
 
         {selected && (
           <PageSheet era={selectedEra} onLayout={onInfoLayout} style={styles.infoSheet}>
-            {selected.kind === 'event' && (
+            {selected.kind === 'event' && isPlaceEvent(selected.event) && <PlaceInfo id={selected.event.id} onBack={backToGlobe} {...nav} />}
+            {selected.kind === 'event' && !isPlaceEvent(selected.event) && (
               <EventInfo
                 event={selected.event}
                 timeMa={timeMa}

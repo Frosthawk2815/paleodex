@@ -3,7 +3,8 @@
 // location, read once when they tap Check in, with these places. Nothing leaves the device.
 
 import placeData from '@/data/places.json';
-import { EVENTS } from '@/data/events';
+import { EVENTS, type HistoryEvent } from '@/data/events';
+import { PRESENT_FROM } from '@/data/sets/formation';
 
 export type PlaceKind = 'museum' | 'zoo' | 'site';
 // spot names the public access point a fossil site was checked in at, when it isn't the main one.
@@ -111,6 +112,25 @@ const SITES: Place[] = EVENTS.filter((e) => e.kind === 'Rock formation' && !UNSA
 export const PLACES: Place[] = [...MUSEUMS_AND_ZOOS, ...SITES];
 export const placeById = (id: string) => PLACES.find((p) => p.id === id);
 export const MUSEUM_AND_ZOO_LIST = MUSEUMS_AND_ZOOS;
+
+// Museums and zoos as globe markers on the present-day map (a classical building or a zoo
+// entrance), so they can be found and tapped like other markers. They are kept apart from EVENTS:
+// they aren't searched, saved or counted as pages.
+export const PLACE_EVENTS: HistoryEvent[] = MUSEUMS_AND_ZOOS.map((p) => ({
+  id: p.id,
+  kind: p.kind === 'museum' ? 'Natural history museum' : 'Zoo',
+  title: p.name,
+  dateText: '',
+  placeText: p.country ?? '',
+  points: [
+    { body: 'earth', lon: p.lon, lat: p.lat, label: p.name, fromMa: PRESENT_FROM, toMa: 0, jumpMa: 0, jumpLabel: p.name, zoom: 8, icon: p.kind === 'museum' ? 'museum' : 'zoo' },
+  ],
+  summary: [],
+  facts: [],
+  keywords: [],
+}));
+const PLACE_EVENT_IDS = new Set(PLACE_EVENTS.map((e) => e.id));
+export const isPlaceEvent = (e: HistoryEvent) => PLACE_EVENT_IDS.has(e.id);
 
 // How close counts as being there, in metres. Fossil sites are whole outcrops, often kilometres
 // across, and their points are approximate.
