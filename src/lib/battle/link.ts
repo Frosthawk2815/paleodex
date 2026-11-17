@@ -120,11 +120,23 @@ export function openLink(
     for (const c of pendingCandidates.splice(0)) pc.addIceCandidate(c).catch(() => {});
   };
 
+  // Our own network routes are only sent once our offer (or answer) has gone out, so the other
+  // phone never gets them before it knows who we are.
+  let described = false;
+  const outbox: RtcCandidate[] = [];
+  const sendCandidate = (c: RtcCandidate) => signal({ type: 'CANDIDATE', dst: peerId!, payload: { candidate: c } });
+  const describedTo = () => {
+    described = true;
+    for (const c of outbox.splice(0)) sendCandidate(c);
+  };
+  // The host keeps routes that arrive from a guest before that guest's offer.
+  const early: { src: string; c: RtcCandidate }[] = [];
   pc.addEventListener('icecandidate', (e) => {
-    if (e.candidate && peerId) {
-      const c = e.candidate.toJSON ? e.candidate.toJSON() : e.candidate;
-      signal({ type: 'CANDIDATE', dst: peerId, payload: { candidate: { candidate: c.candidate, sdpMid: c.sdpMid, sdpMLineIndex: c.sdpMLineIndex } } });
-    }
+    if (!e.candidate) return;
+    const j = e.candidate.toJSON ? e.candidate.toJSON() : e.candidate;
+    const c = { candidate: j.candidate, sdpMid: j.sdpMid, sdpMLineIndex: j.sdpMLineIndex };
+    if (described && peerId) sendCandidate(c);
+    else outbox.push(c);
   });
   pc.addEventListener('connectionstatechange', () => {
     if (pc.connectionState === 'failed') fail('failed');
@@ -152,6 +164,7 @@ export function openLink(
             const offer = await pc.createOffer();
             await pc.setLocalDescription(offer);
             signal({ type: 'OFFER', dst: hostId, payload: { sdp: { type: offer.type, sdp: offer.sdp } } });
+            describedTo();
           }
           break;
         case 'ID-TAKEN':
@@ -166,10 +179,12 @@ export function openLink(
           peerId = msg.src;
           onState({ kind: 'connecting' });
           await remoteReady(msg.payload.sdp);
+          for (const x of early.splice(0)) if (x.src === peerId) addCandidate(x.c);
           {
             const answer = await pc.createAnswer();
             await pc.setLocalDescription(answer);
             signal({ type: 'ANSWER', dst: peerId, payload: { sdp: { type: answer.type, sdp: answer.sdp } } });
+            describedTo();
           }
           break;
         case 'ANSWER':
@@ -179,7 +194,9 @@ export function openLink(
           }
           break;
         case 'CANDIDATE':
-          if (msg.src === peerId && msg.payload?.candidate) addCandidate(msg.payload.candidate);
+          if (!msg.payload?.candidate) break;
+          if (msg.src === peerId) addCandidate(msg.payload.candidate);
+          else if (role === 'host' && !peerId && msg.src && early.length < 50) early.push({ src: msg.src, c: msg.payload.candidate });
           break;
         case 'EXPIRE':
           // The server couldn't deliver our offer: nobody is hosting that code.
