@@ -1,6 +1,7 @@
 import { Image } from 'expo-image';
 import { useCallback, useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BoneWarCard } from '@/components/bone-war-card';
 import { useProfileStyles } from '@/components/profile-ui';
@@ -38,6 +39,7 @@ export function Board({
   const t = useT();
   const palette = usePalette();
   const { width } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
   const [pick, setPick] = useState<Pick | null>(null);
   // Questions already asked this game, so a second try at a card brings a new one.
   const [asked] = useState(() => new Set<string>());
@@ -50,7 +52,16 @@ export function Board({
   const handW = Math.min(Math.floor((W - 4 * 8) / 5), 96);
   const myTurn = state.turn === me && !state.pending && !state.over;
 
-  const card = (g: GCard | null, face: boolean, w: number, style: { back: string; border: string } | undefined, onPress: (() => void) | undefined, on = false, key?: string) => (
+  const card = (
+    g: GCard | null,
+    face: boolean,
+    w: number,
+    style: { back: string; border: string } | undefined,
+    onPress: (() => void) | undefined,
+    on = false,
+    key?: string,
+    outline?: string,
+  ) => (
     <Pressable key={key} onPress={onPress} disabled={!onPress} accessibilityRole="button" style={{ width: w }}>
       {g ? (
         <View>
@@ -58,12 +69,12 @@ export function Board({
           {face && style === undefined && !g.seen && !key?.startsWith('hand') && <Text style={styles.hiddenTag}>🙈</Text>}
         </View>
       ) : (
-        <View style={[styles.empty, { width: w, height: w * 1.4, borderColor: palette.border }]} />
+        <View style={[styles.empty, { width: w, height: w * 1.4, borderColor: outline ?? palette.border }]} />
       )}
     </Pressable>
   );
 
-  const row = (cards: (GCard | null)[], where: Pick['where'], faceFor: (g: GCard) => boolean, w: number, style?: { back: string; border: string }) => (
+  const row = (cards: (GCard | null)[], where: Pick['where'], faceFor: (g: GCard) => boolean, w: number, style?: { back: string; border: string }, outline?: string) => (
     <View style={styles.row}>
       {cards.map((g, i) =>
         card(
@@ -74,6 +85,7 @@ export function Board({
           g || (pick?.where === 'hand' && (where === 'front' || where === 'back')) || (pick?.where === 'back' && where === 'front') ? () => tapSlot(where, i) : undefined,
           pick?.where === where && pick.i === i,
           `${where}-${i}`,
+          outline,
         ),
       )}
     </View>
@@ -181,16 +193,31 @@ export function Board({
 
   return (
     <View style={st.screen}>
-      <ScrollView contentContainerStyle={[styles.board, { width: W + 24, alignSelf: 'center' }]}>
-        <View style={[styles.side, { backgroundColor: oppLook.background, borderColor: oppLook.border }]}>
+      <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + 16 }}>
+        {/* Everything above the line is the opponent's, in their colours, edge to edge. */}
+        <View style={{ backgroundColor: oppLook.background, paddingTop: insets.top + 6 }}>
+        <View style={[styles.board, { width: W + 24, alignSelf: 'center' }]}>
+          <Pressable
+            onPress={() => {
+              setPick(null);
+              act({ type: 'forfeit' });
+            }}
+            accessibilityRole="button"
+            accessibilityHint={t('Ends the game and gives the win to your opponent')}
+            hitSlop={8}
+            style={{ alignSelf: 'flex-start' }}>
+            <Text style={[st.rowSub, { color: oppLook.muted }]}>{t('🏳 Forfeit')}</Text>
+          </Pressable>
           {hp(theirs, theirs.name, oppLook)}
           <Text style={[st.muted, { color: oppLook.muted }]}>
             {t('Hand {h} · deck {d} · defence {def} · speed {s}', { h: theirs.hand.length, d: theirs.deck.length, def: backMax(theirs, 'defence'), s: backTotal(theirs, 'speed') })}
           </Text>
-          {row(theirs.back, 'oppBack', (g) => g.seen, backW, oppStyle)}
-          {row(theirs.front, 'oppFront', (g) => g.seen, slotW, oppStyle)}
+          {row(theirs.back, 'oppBack', (g) => g.seen, backW, oppStyle, oppLook.border)}
+          {row(theirs.front, 'oppFront', (g) => g.seen, slotW, oppStyle, oppLook.border)}
+        </View>
         </View>
         <View style={[styles.divider, { backgroundColor: palette.accent }]} />
+        <View style={[styles.board, { width: W + 24, alignSelf: 'center' }]}>
         {row(mine.front, 'front', () => true, slotW)}
         {row(mine.back, 'back', () => true, backW)}
         {hp(mine, mine.name)}
@@ -218,6 +245,7 @@ export function Board({
             <Text style={st.buttonText}>{t('End turn')}</Text>
           </Pressable>
         )}
+        </View>
       </ScrollView>
       {state.pending && state.pending.answerer === me && <QuestionOverlay key={state.seq} state={state} asked={asked} art={state.pending.card.uid.startsWith(`${opp}-`) ? oppArt : undefined} onAnswer={(correct) => act({ type: 'answer', correct })} />}
       {state.pending && state.pending.answerer !== me && (
@@ -235,6 +263,7 @@ function QuestionOverlay({ state, asked, art, onAnswer }: { state: GameState; as
   const t = useT();
   const palette = usePalette();
   const own = useOwnPicture();
+  const insets = useSafeAreaInsets();
   const p = state.pending!;
   // A question about the opponent's card shows their photo of the animal, if they have one.
   const imageFor = useCallback((id: string) => (art ? art[id] : own(id)) ?? imageOf(id)?.thumb, [own, art]);
@@ -277,7 +306,7 @@ function QuestionOverlay({ state, asked, art, onAnswer }: { state: GameState; as
   }
   const right = chosen === q.answer;
   return (
-    <ScrollView style={[styles.overlay, { backgroundColor: palette.background }]} contentContainerStyle={{ gap: 10, padding: 16 }}>
+    <ScrollView style={[styles.overlay, { backgroundColor: palette.background }]} contentContainerStyle={{ gap: 10, padding: 16, paddingTop: insets.top + 16, paddingBottom: insets.bottom + 16 }}>
       <Text style={[st.rowTitle, { color: palette.accent }]}>{why}</Text>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
         <View style={{ flex: 1, height: 8, borderRadius: 4, backgroundColor: palette.track }}>
@@ -325,9 +354,8 @@ const styles = StyleSheet.create({
   board: { padding: 12, gap: 8 },
   row: { flexDirection: 'row', justifyContent: 'center', gap: 6 },
   empty: { borderWidth: 1.5, borderStyle: 'dashed', borderRadius: 8 },
-  divider: { height: 2, borderRadius: 1, marginVertical: 4, opacity: 0.6 },
+  divider: { height: 2 },
   hpRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  side: { gap: 8, padding: 10, borderRadius: 14, borderWidth: 1 },
   hpTrack: { flex: 1.4, height: 12, borderRadius: 6, overflow: 'hidden' },
   panel: { flexDirection: 'row', gap: 12, padding: 12, borderRadius: 12, borderWidth: 1 },
   hiddenTag: { position: 'absolute', right: 2, bottom: 2, fontSize: 10 },

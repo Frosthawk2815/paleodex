@@ -78,7 +78,9 @@ export type Action =
   | { type: 'strike'; slot: number }
   | { type: 'swim'; slot: number }
   | { type: 'answer'; correct: boolean }
-  | { type: 'end' };
+  | { type: 'end' }
+  // Give up: the other player wins.
+  | { type: 'forfeit' };
 
 const shuffle = <T,>(xs: T[], rnd: () => number): T[] => {
   const a = [...xs];
@@ -137,6 +139,7 @@ const nameOf = (g: GCard) => {
 // What a player may do now.
 export function legal(s: GameState, who: 0 | 1, a: Action): boolean {
   if (s.over) return false;
+  if (a.type === 'forfeit') return true;
   if (a.type === 'answer') return !!s.pending && s.pending.answerer === who;
   if (s.pending || s.turn !== who) return false;
   if (a.type === 'end') return true;
@@ -174,6 +177,14 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
   const opp = s.players[(1 - who) as 0 | 1]!;
   const other = (1 - who) as 0 | 1;
   const log = (m: string) => s.log.push(m);
+
+  if (a.type === 'forfeit') {
+    s.pending = null;
+    s.over = true;
+    s.winner = other;
+    log(`${me.name} forfeited.`);
+    return s;
+  }
 
   if (a.type === 'end') {
     // Draw two, up to five in hand; then the other player's turn.

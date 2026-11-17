@@ -4,14 +4,14 @@ import { useEffect, useMemo, useState } from 'react';
 import { Board } from '@/components/bone-war-board';
 import { BoneWarFriend } from '@/components/bone-war-friend';
 import { SPECIES } from '@/data/life';
-import { AI_LOOK, deckCards } from '@/lib/bone-war';
+import { deckCards, lookOf } from '@/lib/bone-war';
+import { usePalette } from '@/hooks/use-palette';
 import { type Action, aiAnswers, aiDeck, aiMove, apply, type GameState, newGame } from '@/lib/bone-war-game';
 import { EXTINCTIONS } from '@/lib/extinctions';
 import { useProfile } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
 
 const NO_ART: Record<string, string> = {};
-const AI_STYLE = { back: '#561A1A', border: '#E8D9C8' };
 const ME = 0 as const;
 const AI = 1 as const;
 
@@ -24,6 +24,7 @@ export default function BoneWarGameScreen() {
 // A game against the computer.
 function ComputerGame() {
   const { profile } = useProfile();
+  const palette = usePalette();
   const t = useT();
   const deck = useMemo(() => deckCards(profile), [profile]);
   const [state, setState] = useState<GameState>(() => {
@@ -56,6 +57,7 @@ function ComputerGame() {
   }, [state]);
 
   const act = (a: Action) => setState((s) => apply(s, ME, a));
-  return <Board state={state} me={ME} act={act} oppStyle={AI_STYLE} oppLook={AI_LOOK} oppArt={NO_ART} onExit={() => router.back()} />;
+  // The computer plays in the player's own colours.
+  return <Board state={state} me={ME} act={act} oppStyle={profile.cardStyle} oppLook={lookOf(palette)} oppArt={NO_ART} onExit={() => router.back()} />;
 }
 
