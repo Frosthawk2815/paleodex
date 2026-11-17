@@ -383,15 +383,12 @@ function checkStuck(s: GameState) {
 // The computer opponent
 
 // How often the computer answers right at each level.
-const AI_RIGHT = [0.85, 0.72, 0.58, 0.45, 0.33];
+const AI_RIGHT = [0.9, 0.78, 0.65, 0.5, 0.38];
 export const aiAnswers = (level: Difficulty, rnd: () => number = Math.random) => rnd() < AI_RIGHT[level - 1]!;
 
-const score = (g: GCard) => {
-  const c = cardOf(g);
-  return c && c.kind === 'species' ? c.stats.attack * 2 + c.stats.defence + c.stats.speed + c.stats.swim * 0.5 : 0;
-};
-
-// The computer's next move on its turn.
+// The computer's next move on its turn. It plays like a careful swimmer: guard the front, build a
+// backline of swimmers and fighters, swim to reveal and ambush, knock off the cards it can't
+// answer, and only take on questions that look easy enough.
 export function aiMove(s: GameState, who: 0 | 1, rnd: () => number = Math.random): Action {
   const me = s.players[who]!;
   const opp = s.players[1 - who]!;
@@ -400,47 +397,44 @@ export function aiMove(s: GameState, who: 0 | 1, rnd: () => number = Math.random
   // Finish them: strike with the strongest backline card when their front line is empty.
   const strikers = me.back.map((g, i) => ({ g, i })).filter((x) => x.g && ok({ type: 'strike', slot: x.i }));
   if (strikers.length) return { type: 'strike', slot: strikers.sort((a, b) => stat(b.g, 'attack') - stat(a.g, 'attack'))[0]!.i };
-  const backFree = me.back.findIndex((x) => !x);
-  const frontFree0 = me.front.findIndex((x) => !x);
   const species = me.hand.map((g, i) => ({ g, i })).filter((x) => !isExtinctionCard(x.g));
-  // Guard first: keep at least two cards in the front line so the opponent can't strike.
-  if (frontFree0 >= 0 && species.length && me.front.filter(Boolean).length < 2) {
-    const pick = [...species].sort((a, b) => b.g.stars - a.g.stars)[0]!;
-    return { type: 'play', hand: pick.i, row: 'front', slot: frontFree0 };
-  }
-  // Then the backline, strongest animals first.
-  if (backFree >= 0 && species.length && me.back.filter(Boolean).length < 2) {
-    const best = species.sort((a, b) => score(b.g) - score(a.g))[0]!;
-    return { type: 'play', hand: best.i, row: 'back', slot: backFree };
-  }
+  const frontFree = me.front.findIndex((x) => !x);
+  const backFree = me.back.findIndex((x) => !x);
+  const frontCount = me.front.filter(Boolean).length;
+  const best = (f: (g: GCard) => number) => [...species].sort((a, b) => f(b.g) - f(a.g))[0]!.i;
+  const guardScore = (g: GCard) => stat(g, 'defence') * 2 + g.stars * 0.3;
+  const backScore = (g: GCard) => stat(g, 'swim') + stat(g, 'attack') + stat(g, 'speed') * 0.3;
   // Play an extinction card when the opponent has animals it would wipe out.
   const ext = me.hand.findIndex((g) => isExtinctionCard(g) && countVictims(opp, cardOf(g)!.id) >= 2);
-  const frontFree = me.front.findIndex((x) => !x);
-  if (ext >= 0 && frontFree >= 0 && rnd() < 0.7) return { type: 'play', hand: ext, row: 'front', slot: frontFree };
+  if (ext >= 0 && frontFree >= 0 && rnd() < 0.8) return { type: 'play', hand: ext, row: 'front', slot: frontFree };
+  // Guard first, then fill the backline.
+  if (species.length && frontFree >= 0 && frontCount < 2) return { type: 'play', hand: best(guardScore), row: 'front', slot: frontFree };
+  if (species.length && backFree >= 0) return { type: 'play', hand: best(backScore), row: 'back', slot: backFree };
+  const targets = opp.front.map((g, i) => ({ g, i })).filter((x): x is { g: GCard; i: number } => !!x.g);
   // Swim out to reveal (and maybe ambush) their face-down front line.
-  const swim0 = me.back.findIndex((g, i) => g && ok({ type: 'swim', slot: i }));
-  if (swim0 >= 0 && opp.front.some((g) => g && !g.seen) && rnd() < 0.6) return { type: 'swim', slot: swim0 };
-  // Clear their front line, easiest-looking cards first; always when it would open them up to a strike.
-  const targets = opp.front.map((g, i) => ({ g, i })).filter((x) => x.g);
-  // Knock off a seen card it can beat in a fight, when that beats answering a hard question.
-  const fighters = me.back.map((g, i) => ({ g, i })).filter((x) => x.g && x.g.playedTurn !== s.round && stat(x.g, 'attack') > 0);
-  for (const t of targets.filter((x) => x.g!.seen)) {
-    const f = fighters.filter((x) => stat(x.g, 'attack') > stat(t.g, 'defence') && missChance(x.g!, t.g!) <= 0.25)[0];
-    if (f && (levelFor(s, who, t.g!) >= 3 || targets.length <= 2)) return { type: 'attack', from: f.i, slot: t.i };
-  }
-  const readyStriker = me.back.some((g) => g && g.playedTurn !== s.round && stat(g, 'attack') > 0);
-  const easiest = () => targets.sort((a, b) => a.g!.stars - b.g!.stars)[0]!.i;
-  if (targets.length && ((readyStriker && targets.length <= s.actions + 1) || rnd() < 0.75)) return { type: 'challenge', slot: easiest() };
-  // Keep a few cards in the front line as a shield.
-  const frontCount = me.front.filter(Boolean).length;
-  if (frontFree >= 0 && species.length && frontCount < 3) {
-    const pick = species.sort((a, b) => b.g.stars - a.g.stars)[0]!;
-    return { type: 'play', hand: pick.i, row: 'front', slot: frontFree };
-  }
-  if (backFree >= 0 && species.length) return { type: 'play', hand: species[0]!.i, row: 'back', slot: backFree };
   const swimmer = me.back.findIndex((g, i) => g && ok({ type: 'swim', slot: i }));
-  if (swimmer >= 0 && rnd() < 0.5) return { type: 'swim', slot: swimmer };
-  if (targets.length) return { type: 'challenge', slot: targets[0]!.i };
+  if (swimmer >= 0 && targets.some((x) => !x.g.seen)) return { type: 'swim', slot: swimmer };
+  const level = (g: GCard) => levelFor(s, who, g);
+  // Knock off a seen card that would be a hard question, if a backline card can beat it.
+  const fighters = me.back.map((g, i) => ({ g, i })).filter((x): x is { g: GCard; i: number } => !!x.g && x.g.playedTurn !== s.round && stat(x.g, 'attack') > 0);
+  const fight = (t: { g: GCard }) => fighters.find((f) => stat(f.g, 'attack') > stat(t.g, 'defence') && missChance(f.g, t.g) <= 0.25);
+  for (const t of targets.filter((x) => x.g.seen && level(x.g) >= 3)) {
+    const f = fight(t);
+    if (f) return { type: 'attack', from: f.i, slot: t.i };
+  }
+  // Answer what looks easy enough (a seen card one level harder).
+  const easy = targets.filter((x) => level(x.g) <= (x.g.seen ? 3 : 2)).sort((a, b) => level(a.g) - level(b.g));
+  if (easy.length) return { type: 'challenge', slot: easy[0]!.i };
+  for (const t of targets.filter((x) => x.g.seen)) {
+    const f = fight(t);
+    if (f) return { type: 'attack', from: f.i, slot: t.i };
+  }
+  if (species.length && frontFree >= 0 && frontCount < 3) return { type: 'play', hand: best(guardScore), row: 'front', slot: frontFree };
+  // Move a swimmer that has used its swim up to the front, to make room for a fresh one.
+  const spent = me.back.findIndex((g) => g?.swimUsed);
+  if (spent >= 0 && frontFree >= 0 && species.some((x) => stat(x.g, 'swim') > 0)) return { type: 'advance', from: spent, to: frontFree };
+  if (targets.length) return { type: 'challenge', slot: targets.sort((a, b) => level(a.g) - level(b.g))[0]!.i };
+  if (species.length && frontFree >= 0) return { type: 'play', hand: best(guardScore), row: 'front', slot: frontFree };
   return { type: 'end' };
 }
 
