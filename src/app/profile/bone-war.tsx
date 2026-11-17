@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { BoneWarCard } from '@/components/bone-war-card';
+import { BoneWarRules } from '@/components/bone-war-rules';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { DECK_SIZE, deckCards, MIN_DECK, ownedCards } from '@/lib/bone-war';
@@ -74,17 +75,7 @@ export default function BoneWarScreen() {
       {row(t('Play a friend'), ready ? t('Two phones, connected with a battle code') : t('Build a deck first'), () => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'friend' } }), !ready)}
       {row(t('Build your deck'), t('Choose up to {max} cards from your Favourites, and the colours of your cards', { max: DECK_SIZE }), () => router.push('/profile/bone-war-deck'))}
 
-      <Text style={st.heading}>{t('How to play')}</Text>
-      <View style={[st.card, { padding: 16, gap: 8 }]}>
-        <Text style={st.text}>{t('Each player starts with 20 HP, a hand of 5 cards and two actions a turn, and draws 2 at the end of each turn.')}</Text>
-        <Text style={st.text}>{t('Cards go face down: up to 6 in your front line, the question line, and 3 in your backline, the player line. A backline card can move to the front, but never back.')}</Text>
-        <Text style={st.text}>{t('Challenge a card in your opponent’s front line by answering a question about it at its star level. Right: it is knocked out and they lose 2 HP. Wrong: it stays, and another try brings a new question.')}</Text>
-        <Text style={st.text}>{t('When their front line is empty, strike with a backline card: its attack wears down their defence for the turn, and the rest comes off their HP. A card can’t strike on the turn it was played.')}</Text>
-        <Text style={st.text}>{t('Backline stats: ⚔️ attack makes your opponents’ questions easier and powers strikes; 🛡️ defence blocks strikes each turn; ⚡ speed adds a second per point to your answer time and takes one from your opponent’s (20 seconds to start); 🌊 swim reveals that many of their face-down cards, once per card.')}</Text>
-        <Text style={st.text}>{t('Extinction cards go in the front line. Your opponent must answer at once: wrong, and every animal they have in play that the extinction wiped out is gone. Right, and you must answer a saving question or lose your own.')}</Text>
-        <Text style={st.text}>{t('The Humans card (Homo sapiens) is an extinction card too: it wipes out the animals people helped drive extinct: the Ice Age giants, from mammoths and sabre-tooths to giant ground sloths, moa and Diprotodon, those lost since, such as the dodo, Steller’s sea cow and the thylacine, and every other human species, from Homo erectus to the Neanderthals. Living apes are safe.')}</Text>
-        <Text style={st.text}>{t('Bring their HP to 0 to win. When both decks run out there are six more turns; then the higher HP wins.')}</Text>
-      </View>
+      <BoneWarRules />
     </ScrollView>
   );
 }

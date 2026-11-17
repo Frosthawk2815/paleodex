@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { Pressable, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 
 import { BoneWarCard, STAT_LAYOUTS, StatDisplay } from '@/components/bone-war-card';
+import { BoneWarRules } from '@/components/bone-war-rules';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { DECK_SIZE, MIN_DECK, ownedCards } from '@/lib/bone-war';
@@ -121,6 +122,7 @@ export default function BoneWarDeckScreen() {
           </View>
         </>
       )}
+      <BoneWarRules />
     </ScrollView>
   );
 }
