@@ -5,7 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } fr
 import { BoneWarCard } from '@/components/bone-war-card';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
-import { cardFor } from '@/lib/bone-war';
+import { cardFor, type Look } from '@/lib/bone-war';
 import { type Action, backMax, backTotal, cardOf, type GameState, type GCard, legal, levelFor, secondsFor, START_HP } from '@/lib/bone-war-game';
 import { imageOf } from '@/lib/images';
 import { type Question, questionAbout } from '@/lib/quiz';
@@ -21,12 +21,17 @@ export function Board({
   me,
   act,
   oppStyle,
+  oppLook,
+  oppArt,
   onExit,
 }: {
   state: GameState;
   me: 0 | 1;
   act: (a: Action) => void;
   oppStyle: { back: string; border: string };
+  // The opponent's theme colours, for their side of the board, and their own photos for their cards.
+  oppLook: Look;
+  oppArt: Record<string, string>;
   onExit: () => void;
 }) {
   const st = useProfileStyles();
@@ -49,7 +54,7 @@ export function Board({
     <Pressable key={key} onPress={onPress} disabled={!onPress} accessibilityRole="button" style={{ width: w }}>
       {g ? (
         <View>
-          <BoneWarCard card={cardOf(g)} width={w} faceDown={!face} cardStyle={style} highlight={on ? palette.accent : undefined} />
+          <BoneWarCard card={cardOf(g)} width={w} faceDown={!face} cardStyle={style} art={style ? oppArt : undefined} highlight={on ? palette.accent : undefined} />
           {face && style === undefined && !g.seen && !key?.startsWith('hand') && <Text style={styles.hiddenTag}>🙈</Text>}
         </View>
       ) : (
@@ -114,7 +119,7 @@ export function Board({
     const usable = buttons.filter((b) => legal(state, me, b.a));
     return (
       <View style={[styles.panel, { backgroundColor: palette.card, borderColor: palette.border }]}>
-        <BoneWarCard card={c} width={130} faceDown={!face} cardStyle={ours ? undefined : oppStyle} />
+        <BoneWarCard card={c} width={130} faceDown={!face} cardStyle={ours ? undefined : oppStyle} art={ours ? undefined : oppArt} />
         <View style={{ flex: 1, gap: 8 }}>
           {face && c?.kind === 'species' && (
             <Text style={st.rowSub}>
@@ -143,18 +148,18 @@ export function Board({
     );
   };
 
-  const hp = (p: typeof mine, who: string) => (
+  const hp = (p: typeof mine, who: string, look?: Look) => (
     <View style={styles.hpRow}>
-      <Text style={[st.rowTitle, { flex: 1 }]} numberOfLines={1}>
+      <Text style={[st.rowTitle, { flex: 1 }, look && { color: look.text }]} numberOfLines={1}>
         {who}
       </Text>
       <View
-        style={[styles.hpTrack, { backgroundColor: palette.track }]}
+        style={[styles.hpTrack, { backgroundColor: (look ?? palette).track }]}
         accessibilityRole="progressbar"
         accessibilityLabel={t('{name}: {hp} of {max} HP', { name: who, hp: p.hp, max: START_HP })}>
         <View style={{ width: `${(Math.max(0, p.hp) / START_HP) * 100}%`, height: '100%', borderRadius: 6, backgroundColor: p.hp > START_HP / 2 ? palette.good : p.hp > START_HP / 4 ? '#E0A030' : palette.bad }} />
       </View>
-      <Text style={[st.rowTitle, { minWidth: 56, textAlign: 'right' }]}>
+      <Text style={[st.rowTitle, { minWidth: 56, textAlign: 'right' }, look && { color: look.text }]}>
         {p.hp}/{START_HP}
       </Text>
     </View>
@@ -177,12 +182,14 @@ export function Board({
   return (
     <View style={st.screen}>
       <ScrollView contentContainerStyle={[styles.board, { width: W + 24, alignSelf: 'center' }]}>
-        {hp(theirs, theirs.name)}
-        <Text style={st.muted}>
-          {t('Hand {h} · deck {d} · defence {def} · speed {s}', { h: theirs.hand.length, d: theirs.deck.length, def: backMax(theirs, 'defence'), s: backTotal(theirs, 'speed') })}
-        </Text>
-        {row(theirs.back, 'oppBack', (g) => g.seen, backW, oppStyle)}
-        {row(theirs.front, 'oppFront', (g) => g.seen, slotW, oppStyle)}
+        <View style={[styles.side, { backgroundColor: oppLook.background, borderColor: oppLook.border }]}>
+          {hp(theirs, theirs.name, oppLook)}
+          <Text style={[st.muted, { color: oppLook.muted }]}>
+            {t('Hand {h} · deck {d} · defence {def} · speed {s}', { h: theirs.hand.length, d: theirs.deck.length, def: backMax(theirs, 'defence'), s: backTotal(theirs, 'speed') })}
+          </Text>
+          {row(theirs.back, 'oppBack', (g) => g.seen, backW, oppStyle)}
+          {row(theirs.front, 'oppFront', (g) => g.seen, slotW, oppStyle)}
+        </View>
         <View style={[styles.divider, { backgroundColor: palette.accent }]} />
         {row(mine.front, 'front', () => true, slotW)}
         {row(mine.back, 'back', () => true, backW)}
@@ -212,7 +219,7 @@ export function Board({
           </Pressable>
         )}
       </ScrollView>
-      {state.pending && state.pending.answerer === me && <QuestionOverlay key={state.seq} state={state} asked={asked} onAnswer={(correct) => act({ type: 'answer', correct })} />}
+      {state.pending && state.pending.answerer === me && <QuestionOverlay key={state.seq} state={state} asked={asked} art={state.pending.card.uid.startsWith(`${opp}-`) ? oppArt : undefined} onAnswer={(correct) => act({ type: 'answer', correct })} />}
       {state.pending && state.pending.answerer !== me && (
         <View style={[styles.waiting, { backgroundColor: palette.card, borderColor: palette.border }]}>
           <Text style={st.rowTitle}>{t('{name} is answering…', { name: theirs.name })}</Text>
@@ -223,13 +230,14 @@ export function Board({
 }
 
 // The question for a challenge, extinction or saving throw, with a countdown.
-function QuestionOverlay({ state, asked, onAnswer }: { state: GameState; asked: Set<string>; onAnswer: (correct: boolean) => void }) {
+function QuestionOverlay({ state, asked, art, onAnswer }: { state: GameState; asked: Set<string>; art?: Record<string, string>; onAnswer: (correct: boolean) => void }) {
   const st = useProfileStyles();
   const t = useT();
   const palette = usePalette();
   const own = useOwnPicture();
   const p = state.pending!;
-  const imageFor = useCallback((id: string) => own(id) ?? imageOf(id)?.thumb, [own]);
+  // A question about the opponent's card shows their photo of the animal, if they have one.
+  const imageFor = useCallback((id: string) => (art ? art[id] : own(id)) ?? imageOf(id)?.thumb, [own, art]);
   const [q] = useState<Question | null>(() => {
     const made = questionAbout(p.card.key, p.level, imageFor, asked);
     if (made) asked.add(made.id);
@@ -319,6 +327,7 @@ const styles = StyleSheet.create({
   empty: { borderWidth: 1.5, borderStyle: 'dashed', borderRadius: 8 },
   divider: { height: 2, borderRadius: 1, marginVertical: 4, opacity: 0.6 },
   hpRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  side: { gap: 8, padding: 10, borderRadius: 14, borderWidth: 1 },
   hpTrack: { flex: 1.4, height: 12, borderRadius: 6, overflow: 'hidden' },
   panel: { flexDirection: 'row', gap: 12, padding: 12, borderRadius: 12, borderWidth: 1 },
   hiddenTag: { position: 'absolute', right: 2, bottom: 2, fontSize: 10 },

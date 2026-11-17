@@ -67,6 +67,7 @@ export function BoneWarCard({
   faceDown = false,
   highlight,
   cardStyle,
+  art,
 }: {
   card: Card | null;
   width: number;
@@ -74,6 +75,8 @@ export function BoneWarCard({
   highlight?: string;
   // Another player's colours (default: this player's).
   cardStyle?: { back: string; border: string };
+  // Another player's photos (species id to picture); their cards never show this player's photos.
+  art?: Record<string, string>;
 }) {
   const { profile } = useProfile();
   const own = useOwnPicture();
@@ -95,7 +98,7 @@ export function BoneWarCard({
   const name = cardName(card);
   const stars = '★'.repeat(card.stars);
   const pictured = card.kind === 'species' ? card.id : card.speciesId;
-  const picture = pictured ? own(pictured) ?? imageOf(pictured)?.thumb : undefined;
+  const picture = pictured ? (art ? art[pictured] : own(pictured)) ?? imageOf(pictured)?.thumb : undefined;
   const small = width < 90;
   return (
     <View

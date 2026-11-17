@@ -8,10 +8,10 @@ import type { Avatar } from '@/lib/profile';
 
 export type SharedAvatar = { kind: 'species'; id: string } | { kind: 'image'; uri: string } | null;
 
-async function shrink(uri: string): Promise<string | null> {
+export async function shrink(uri: string, width = 96): Promise<string | null> {
   try {
     const ctx = ImageManipulator.manipulate(uri);
-    ctx.resize({ width: 96 });
+    ctx.resize({ width });
     const image = await ctx.renderAsync();
     const saved = await image.saveAsync({ format: SaveFormat.JPEG, compress: 0.6, base64: true });
     return saved.base64 ? `data:image/jpeg;base64,${saved.base64}` : null;

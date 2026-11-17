@@ -4,12 +4,13 @@ import { useEffect, useMemo, useState } from 'react';
 import { Board } from '@/components/bone-war-board';
 import { BoneWarFriend } from '@/components/bone-war-friend';
 import { SPECIES } from '@/data/life';
-import { deckCards } from '@/lib/bone-war';
+import { AI_LOOK, deckCards } from '@/lib/bone-war';
 import { type Action, aiAnswers, aiDeck, aiMove, apply, type GameState, newGame } from '@/lib/bone-war-game';
 import { EXTINCTIONS } from '@/lib/extinctions';
 import { useProfile } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
 
+const NO_ART: Record<string, string> = {};
 const AI_STYLE = { back: '#561A1A', border: '#E8D9C8' };
 const ME = 0 as const;
 const AI = 1 as const;
@@ -55,6 +56,6 @@ function ComputerGame() {
   }, [state]);
 
   const act = (a: Action) => setState((s) => apply(s, ME, a));
-  return <Board state={state} me={ME} act={act} oppStyle={AI_STYLE} onExit={() => router.back()} />;
+  return <Board state={state} me={ME} act={act} oppStyle={AI_STYLE} oppLook={AI_LOOK} oppArt={NO_ART} onExit={() => router.back()} />;
 }
 
