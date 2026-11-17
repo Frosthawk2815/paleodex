@@ -332,8 +332,19 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       g.swimUsed = true;
       const hidden = [...opp.front, ...opp.back].filter((x): x is GCard => !!x && !x.seen);
       const n = stat(g, 'swim');
-      for (const x of shuffle(hidden, rnd).slice(0, n)) x.seen = true;
-      log(`${nameOf(g)} swam out and revealed ${Math.min(n, hidden.length)} of ${opp.name}'s cards.`);
+      const revealed = shuffle(hidden, rnd).slice(0, n);
+      for (const x of revealed) x.seen = true;
+      log(`${nameOf(g)} swam out and revealed ${revealed.length} of ${opp.name}'s cards.`);
+      // An ambush from the water: it knocks off the toughest revealed front-line card whose defence
+      // is lower than its attack. Speed doesn't help the target dodge.
+      const prey = opp.front
+        .map((x, i) => ({ x, i }))
+        .filter((t) => t.x && revealed.includes(t.x) && stat(t.x, 'defence') < stat(g, 'attack'))
+        .sort((p, q) => q.x!.stars - p.x!.stars)[0];
+      if (prey) {
+        opp.front[prey.i] = null;
+        log(`${nameOf(g)} ambushed ${nameOf(prey.x!)} and knocked it off the front line.`);
+      }
       break;
     }
   }
@@ -406,6 +417,9 @@ export function aiMove(s: GameState, who: 0 | 1, rnd: () => number = Math.random
   const ext = me.hand.findIndex((g) => isExtinctionCard(g) && countVictims(opp, cardOf(g)!.id) >= 2);
   const frontFree = me.front.findIndex((x) => !x);
   if (ext >= 0 && frontFree >= 0 && rnd() < 0.7) return { type: 'play', hand: ext, row: 'front', slot: frontFree };
+  // Swim out to reveal (and maybe ambush) their face-down front line.
+  const swim0 = me.back.findIndex((g, i) => g && ok({ type: 'swim', slot: i }));
+  if (swim0 >= 0 && opp.front.some((g) => g && !g.seen) && rnd() < 0.6) return { type: 'swim', slot: swim0 };
   // Clear their front line, easiest-looking cards first; always when it would open them up to a strike.
   const targets = opp.front.map((g, i) => ({ g, i })).filter((x) => x.g);
   // Knock off a seen card it can beat in a fight, when that beats answering a hard question.

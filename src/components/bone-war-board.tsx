@@ -133,7 +133,7 @@ export function Board({
     }
     if (pick.where === 'back') {
       buttons.push({ label: t('Strike ({n})', { n: c && c.kind === 'species' ? c.stats.attack : 0 }), a: { type: 'strike', slot: pick.i } });
-      buttons.push({ label: t('Swim: reveal {n}', { n: c && c.kind === 'species' ? c.stats.swim : 0 }), a: { type: 'swim', slot: pick.i } });
+      buttons.push({ label: t('Swim: reveal {n} and ambush', { n: c && c.kind === 'species' ? c.stats.swim : 0 }), a: { type: 'swim', slot: pick.i } });
       const f = mine.front.findIndex((x) => !x);
       if (f >= 0) buttons.push({ label: t('Move to front line'), a: { type: 'advance', from: pick.i, to: f } });
     }
