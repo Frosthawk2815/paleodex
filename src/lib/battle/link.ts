@@ -12,11 +12,21 @@ import type { RtcCandidate, RtcChannel, RtcConnection, RtcDescription } from '@/
 // testing with a local server, or a server of our own later).
 const SIGNAL_URL = process.env.EXPO_PUBLIC_SIGNAL_URL ?? 'wss://0.peerjs.com:443';
 const SIGNAL_KEY = 'peerjs';
-// Public STUN servers let each phone learn its address on the internet. (Some strict mobile and
-// office networks block direct links; they would need a relay (TURN) server, which we don't run.)
-const ICE = { iceServers: [{ urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] }] };
+// Public STUN servers let each phone learn its address on the internet. Phones on different
+// networks (especially mobile data) often can't link directly, so a relay (TURN) server passes the
+// game's messages between them when needed. Its address and login come from EXPO_PUBLIC_TURN_URLS
+// (comma-separated), EXPO_PUBLIC_TURN_USERNAME and EXPO_PUBLIC_TURN_CREDENTIAL.
+const TURN_URLS = (process.env.EXPO_PUBLIC_TURN_URLS ?? '').split(',').map((u) => u.trim()).filter(Boolean);
+const ICE = {
+  iceServers: [
+    { urls: ['stun:stun.l.google.com:19302', 'stun:stun.cloudflare.com:3478'] },
+    ...(TURN_URLS.length ? [{ urls: TURN_URLS, username: process.env.EXPO_PUBLIC_TURN_USERNAME ?? '', credential: process.env.EXPO_PUBLIC_TURN_CREDENTIAL ?? '' }] : []),
+  ],
+};
 const PREFIX = 'paleodex-battle-';
 const TIMEOUT_MS = 25000;
+// Once the host has answered, a little longer for the phones to find a route (direct or relayed).
+const LINK_TIMEOUT_MS = 30000;
 
 export type LinkState =
   | { kind: 'connecting' }
@@ -55,7 +65,12 @@ export function openLink(
   };
   const heartbeat = setInterval(() => signal({ type: 'HEARTBEAT' }), 5000);
   // A guest that hasn't connected in time most likely has the wrong code.
-  const timeout = role === 'guest' ? setTimeout(() => fail('no-host'), TIMEOUT_MS) : null;
+  let timeout = role === 'guest' ? setTimeout(() => fail('no-host'), TIMEOUT_MS) : null;
+  // The host answered, so the code was right: from now on a timeout means the link itself failed.
+  const hostFound = () => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => fail('failed'), LINK_TIMEOUT_MS);
+  };
 
   const stopSignalling = () => {
     clearInterval(heartbeat);
@@ -158,7 +173,10 @@ export function openLink(
           }
           break;
         case 'ANSWER':
-          if (role === 'guest' && msg.src === hostId && msg.payload?.sdp) await remoteReady(msg.payload.sdp);
+          if (role === 'guest' && msg.src === hostId && msg.payload?.sdp) {
+            hostFound();
+            await remoteReady(msg.payload.sdp);
+          }
           break;
         case 'CANDIDATE':
           if (msg.src === peerId && msg.payload?.candidate) addCandidate(msg.payload.candidate);

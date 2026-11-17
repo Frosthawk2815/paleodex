@@ -26,4 +26,4 @@ export interface RtcConnection {
   addEventListener(type: 'connectionstatechange', fn: () => void): void;
 }
 
-export type RtcConfig = { iceServers: { urls: string | string[] }[] };
+export type RtcConfig = { iceServers: { urls: string | string[]; username?: string; credential?: string }[] };
