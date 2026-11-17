@@ -88,6 +88,8 @@ const shuffle = <T,>(xs: T[], rnd: () => number): T[] => {
 };
 
 export const cardOf = (g: GCard): Card | null => cardFor(g.key, g.stars);
+// Extinction cards, including the Humans card.
+export const isExtinctionCard = (g: GCard) => cardOf(g)?.kind === 'extinction';
 const stat = (g: GCard | null, k: 'attack' | 'defence' | 'speed' | 'swim') => {
   const c = g ? cardOf(g) : null;
   return c && c.kind === 'species' ? c.stats[k] : 0;
@@ -143,7 +145,7 @@ export function legal(s: GameState, who: 0 | 1, a: Action): boolean {
     case 'play': {
       const g = me.hand[a.hand];
       if (!g) return false;
-      const isExtinction = g.key.startsWith('extinction:');
+      const isExtinction = isExtinctionCard(g);
       if (a.row === 'back' && isExtinction) return false;
       const row = a.row === 'front' ? me.front : me.back;
       return a.slot >= 0 && a.slot < row.length && !row[a.slot];
@@ -230,9 +232,9 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
   switch (a.type) {
     case 'play': {
       const g = me.hand.splice(a.hand, 1)[0]!;
-      if (g.key.startsWith('extinction:')) {
+      if (isExtinctionCard(g)) {
         // Extinction cards strike at once: the opponent must answer.
-        const extinction = g.key.split(':')[1]!;
+        const extinction = cardOf(g)!.id;
         s.pending = { answerer: other, card: g, purpose: 'extinction', level: levelFor(s, other, g), seconds: secondsFor(s, other), extinction, player: who };
         log(`${me.name} played the ${nameOf(g)}!`);
       } else {
@@ -331,13 +333,13 @@ export function aiMove(s: GameState, who: 0 | 1, rnd: () => number = Math.random
   if (strikers.length) return { type: 'strike', slot: strikers.sort((a, b) => stat(b.g, 'attack') - stat(a.g, 'attack'))[0]!.i };
   // Fill the backline with the strongest animals first.
   const backFree = me.back.findIndex((x) => !x);
-  const species = me.hand.map((g, i) => ({ g, i })).filter((x) => !x.g.key.startsWith('extinction:'));
+  const species = me.hand.map((g, i) => ({ g, i })).filter((x) => !isExtinctionCard(x.g));
   if (backFree >= 0 && species.length && me.back.filter(Boolean).length < 2) {
     const best = species.sort((a, b) => score(b.g) - score(a.g))[0]!;
     return { type: 'play', hand: best.i, row: 'back', slot: backFree };
   }
   // Play an extinction card when the opponent has animals it would wipe out.
-  const ext = me.hand.findIndex((g) => g.key.startsWith('extinction:') && countVictims(opp, g.key.split(':')[1]!) >= 2);
+  const ext = me.hand.findIndex((g) => isExtinctionCard(g) && countVictims(opp, cardOf(g)!.id) >= 2);
   const frontFree = me.front.findIndex((x) => !x);
   if (ext >= 0 && frontFree >= 0 && rnd() < 0.7) return { type: 'play', hand: ext, row: 'front', slot: frontFree };
   // Clear their front line, easiest-looking cards first; always when it would open them up to a strike.

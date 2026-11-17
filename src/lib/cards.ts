@@ -204,6 +204,23 @@ export function statsOf(id: string): Stats {
 // Which mass extinction removes a species from play
 
 const living = (s: Species) => /^living/i.test(s.ageText);
+
+// Animals people helped wipe out: the Ice Age giants that died out as humans spread around the world,
+// and the animals lost since, from the dodo to the thylacine. Removed by the Humans card (Homo sapiens).
+export const LATE_PLEISTOCENE = 'late-pleistocene';
+export const PLEISTOCENE_MEGAFAUNA = new Set([
+  'mammuthus-primigenius', 'mammuthus-columbi', 'mammuthus-exilis', 'mammut-americanum', 'cuvieronius-hyodon', 'notiomastodon-platensis',
+  'palaeoloxodon-antiquus', 'palaeoloxodon-namadicus', 'palaeoloxodon-cypriotes', 'stegodon-florensis', 'stegodon-orientalis',
+  'coelodonta-antiquitatis', 'elasmotherium-sibiricum', 'stephanorhinus-kirchbergensis', 'megaloceros-giganteus', 'bison-antiquus',
+  'equus-occidentalis', 'camelops-hesternus', 'castoroides-ohioensis', 'smilodon-fatalis', 'smilodon-populator', 'homotherium-latidens',
+  'panthera-atrox', 'panthera-spelaea', 'aenocyon-dirus', 'arctodus-simus', 'ursus-spelaeus', 'megatherium-americanum', 'paramylodon-harlani',
+  'glyptotherium-texanum', 'doedicurus-clavicaudatus', 'macrauchenia-patachonica', 'toxodon-platensis', 'diprotodon-optatum',
+  'procoptodon-goliah', 'thylacoleo-carnifex', 'varanus-priscus', 'genyornis-newtoni', 'dinornis-robustus', 'hieraaetus-moorei',
+  // Lost to people in historic times, and on islands soon after people arrived.
+  'raphus-cucullatus', 'hydrodamalis-gigas', 'pinguinus-impennis', 'thylacinus-cynocephalus', 'ectopistes-migratorius', 'bos-primigenius',
+  'equus-quagga-quagga', 'macrotis-leucura', 'chaeropus-ecaudatus', 'notamacropus-greyi', 'caloprymnus-campestris', 'conuropsis-carolinensis',
+  'heteralocha-acutirostris', 'moho-braccatus', 'mekosuchus-inexpectatus', 'sylviornis-neocaledoniae',
+]);
 let extCache: Map<string, string | null> | null = null;
 
 // A species is wiped out by the first mass extinction its whole lineage did not live through: take
@@ -226,6 +243,10 @@ function buildExtinctions(): Map<string, string | null> {
   const kpg = EXTINCTIONS.find((e) => e.id === 'k-pg')!;
   const sorted = [...EXTINCTIONS].sort((a, b) => b.ma - a.ma);
   for (const s of SPECIES) {
+    if (PLEISTOCENE_MEGAFAUNA.has(s.id)) {
+      out.set(s.id, LATE_PLEISTOCENE);
+      continue;
+    }
     if (living(s)) {
       out.set(s.id, null);
       continue;

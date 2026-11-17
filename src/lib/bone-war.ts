@@ -5,7 +5,7 @@
 // harder correct answer later upgrades it. There is one card per species.
 
 import { SPECIES, type Species } from '@/data/life';
-import { type Stats, extinctionOf, statsOf } from '@/lib/cards';
+import { LATE_PLEISTOCENE, type Stats, extinctionOf, statsOf } from '@/lib/cards';
 import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
 import type { PageRef, Profile } from '@/lib/profile';
 
@@ -16,7 +16,20 @@ export const HAND_SIZE = 5;
 
 export type Card =
   | { key: string; kind: 'species'; id: string; stars: number; species: Species; stats: Stats; extinction: string | null }
-  | { key: string; kind: 'extinction'; id: string; stars: number; event: Extinction };
+  // speciesId: the animal pictured, for the Humans card.
+  | { key: string; kind: 'extinction'; id: string; stars: number; event: Extinction; speciesId?: string };
+
+// The Humans card: Homo sapiens plays as an extinction card, wiping out the Ice Age megafauna and
+// the animals lost to people since, such as the dodo.
+export const HUMANS_EVENT: Extinction = {
+  id: LATE_PLEISTOCENE,
+  name: 'Humans: extinctions caused by people',
+  short: '',
+  ma: 0.012,
+  cause: 'ice',
+  causeText: 'people spreading around the world, and a changing climate',
+  bigFive: false,
+};
 
 export const cardKeyOf = (page: PageRef) => `${page.kind}:${page.id}`;
 
@@ -27,12 +40,9 @@ export function cardKeyForQuestion(q: { speciesId?: string; page?: PageRef }): s
   return null;
 }
 
-// Species that are never cards.
-export const NOT_CARDS = new Set(['homo-sapiens']);
-
 export function cardFor(key: string, stars: number): Card | null {
   const [kind, id] = key.split(':') as [string, string];
-  if (kind === 'species' && NOT_CARDS.has(id)) return null;
+  if (kind === 'species' && id === 'homo-sapiens') return { key, kind: 'extinction', id: LATE_PLEISTOCENE, stars, event: HUMANS_EVENT, speciesId: id };
   if (kind === 'species') {
     const species = SPECIES.find((s) => s.id === id);
     if (!species) return null;

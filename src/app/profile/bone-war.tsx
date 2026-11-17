@@ -82,6 +82,7 @@ export default function BoneWarScreen() {
         <Text style={st.text}>{t('When their front line is empty, strike with a backline card: its attack wears down their defence for the turn, and the rest comes off their HP. A card can’t strike on the turn it was played.')}</Text>
         <Text style={st.text}>{t('Backline stats: ▲ attack makes your opponents’ questions easier and powers strikes; ▼ defence blocks strikes each turn; ▶ speed adds a second per point to your answer time and takes one from your opponent’s (20 seconds to start); ◀ swim reveals that many of their face-down cards, once per card.')}</Text>
         <Text style={st.text}>{t('Extinction cards go in the front line. Your opponent must answer at once: wrong, and every animal they have in play that the extinction wiped out is gone. Right, and you must answer a saving question or lose your own.')}</Text>
+        <Text style={st.text}>{t('The Humans card (Homo sapiens) is an extinction card too: it wipes out the animals people helped drive extinct: the Ice Age giants, from mammoths and sabre-tooths to giant ground sloths, moa and Diprotodon, and those lost since, such as the dodo, Steller’s sea cow and the thylacine.')}</Text>
         <Text style={st.text}>{t('Bring their HP to 0 to win. When both decks run out there are six more turns; then the higher HP wins.')}</Text>
       </View>
     </ScrollView>

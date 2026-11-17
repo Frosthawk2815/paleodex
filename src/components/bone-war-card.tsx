@@ -94,7 +94,8 @@ export function BoneWarCard({
   const ink = inkOn(border);
   const name = cardName(card);
   const stars = '★'.repeat(card.stars);
-  const picture = card.kind === 'species' ? own(card.id) ?? imageOf(card.id)?.thumb : undefined;
+  const pictured = card.kind === 'species' ? card.id : card.speciesId;
+  const picture = pictured ? own(pictured) ?? imageOf(pictured)?.thumb : undefined;
   const small = width < 90;
   return (
     <View
@@ -121,7 +122,7 @@ export function BoneWarCard({
         <StatCross stats={card.stats} size={height * 0.3} color={ink} empty={ink === '#FFFFFF' ? 'rgba(255,255,255,0.22)' : 'rgba(0,0,0,0.15)'} />
       ) : (
         <Text style={[styles.extinct, { color: ink, fontSize: width * 0.075 }]} numberOfLines={2}>
-          Mass extinction
+          {card.speciesId ? 'Extinction by humans' : 'Mass extinction'}
         </Text>
       )}
     </View>
