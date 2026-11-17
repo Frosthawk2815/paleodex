@@ -425,7 +425,7 @@ export default function GlobeScreen() {
 
         {selected && (
           <PageSheet era={selectedEra} onLayout={onInfoLayout} style={styles.infoSheet}>
-            {selected.kind === 'event' && isPlaceEvent(selected.event) && <PlaceInfo id={selected.event.id} onBack={backToGlobe} {...nav} />}
+            {selected.kind === 'event' && isPlaceEvent(selected.event) && <PlaceInfo id={selected.event.id} onBack={backToGlobe} {...nav} onOpenSpecies={openSpecies} />}
             {selected.kind === 'event' && !isPlaceEvent(selected.event) && (
               <EventInfo
                 event={selected.event}
