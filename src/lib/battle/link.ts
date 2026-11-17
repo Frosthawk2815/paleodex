@@ -41,7 +41,11 @@ export type Link = { send: (msg: object) => void; close: () => void };
 const randomToken = () => Math.random().toString(36).slice(2, 12);
 export const newBattleCode = () => String(Math.floor(100000 + Math.random() * 900000));
 
-type Signal = { type: string; src?: string; dst?: string; payload?: { sdp?: RtcDescription; candidate?: RtcCandidate } };
+// The public PeerJS server checks that messages look like the official PeerJS library's: each one
+// names the connection and its kind ('data'), and an offer also gives a label and serialization.
+// Messages without these are dropped and the sender is disconnected.
+type Payload = { sdp?: RtcDescription; candidate?: RtcCandidate; type?: 'data'; connectionId?: string; label?: string; reliable?: boolean; serialization?: string };
+type Signal = { type: string; src?: string; dst?: string; payload?: Payload };
 
 export function openLink(
   role: 'host' | 'guest',
@@ -52,6 +56,8 @@ export function openLink(
   const hostId = PREFIX + code;
   const myId = role === 'host' ? hostId : `${hostId}-${randomToken()}`;
   let peerId: string | null = role === 'guest' ? hostId : null;
+  // Names this connection in every message; the host takes the guest's.
+  let connectionId = `dc_${randomToken()}`;
   let channel: RtcChannel | null = null;
   let closed = false;
   let opened = false;
@@ -124,7 +130,7 @@ export function openLink(
   // phone never gets them before it knows who we are.
   let described = false;
   const outbox: RtcCandidate[] = [];
-  const sendCandidate = (c: RtcCandidate) => signal({ type: 'CANDIDATE', dst: peerId!, payload: { candidate: c } });
+  const sendCandidate = (c: RtcCandidate) => signal({ type: 'CANDIDATE', dst: peerId!, payload: { candidate: c, type: 'data', connectionId } });
   const describedTo = () => {
     described = true;
     for (const c of outbox.splice(0)) sendCandidate(c);
@@ -163,7 +169,7 @@ export function openLink(
             attachChannel(pc.createDataChannel('battle'));
             const offer = await pc.createOffer();
             await pc.setLocalDescription(offer);
-            signal({ type: 'OFFER', dst: hostId, payload: { sdp: { type: offer.type, sdp: offer.sdp } } });
+            signal({ type: 'OFFER', dst: hostId, payload: { sdp: { type: offer.type, sdp: offer.sdp }, type: 'data', connectionId, label: connectionId, reliable: true, serialization: 'json' } });
             describedTo();
           }
           break;
@@ -177,13 +183,14 @@ export function openLink(
           // Only the first friend to join is accepted.
           if (role !== 'host' || peerId || !msg.src || !msg.payload?.sdp) break;
           peerId = msg.src;
+          if (msg.payload.connectionId) connectionId = msg.payload.connectionId;
           onState({ kind: 'connecting' });
           await remoteReady(msg.payload.sdp);
           for (const x of early.splice(0)) if (x.src === peerId) addCandidate(x.c);
           {
             const answer = await pc.createAnswer();
             await pc.setLocalDescription(answer);
-            signal({ type: 'ANSWER', dst: peerId, payload: { sdp: { type: answer.type, sdp: answer.sdp } } });
+            signal({ type: 'ANSWER', dst: peerId, payload: { sdp: { type: answer.type, sdp: answer.sdp }, type: 'data', connectionId } });
             describedTo();
           }
           break;

@@ -20,7 +20,9 @@ export type Hub = {
   close: () => void;
 };
 
-type Signal = { type: string; src?: string; dst?: string; payload?: { sdp?: RtcDescription; candidate?: RtcCandidate } };
+// The public PeerJS server only passes on messages shaped like the official library's (see link.ts).
+type Payload = { sdp?: RtcDescription; candidate?: RtcCandidate; type?: 'data'; connectionId?: string; label?: string; reliable?: boolean; serialization?: string };
+type Signal = { type: string; src?: string; dst?: string; payload?: Payload };
 type Peer = { pc: RtcConnection; channel: RtcChannel | null; remoteSet: boolean; pending: RtcCandidate[]; open: boolean };
 
 const randomToken = () => Math.random().toString(36).slice(2, 12);
@@ -63,14 +65,21 @@ export function openHub(
   };
 
   // reject: connect only to say why they can't join (full, or already started), then hang up.
-  const accept = async (id: string, sdp: RtcDescription, reject?: 'full' | 'started') => {
+  const early = new Map<string, RtcCandidate[]>();
+  const accept = async (id: string, sdp: RtcDescription, connectionId: string, reject?: 'full' | 'started') => {
     const pc = newConnection(ICE);
     const peer: Peer = { pc, channel: null, remoteSet: false, pending: [], open: false };
     peers.set(id, peer);
+    // Our routes go out only after the answer, so the player knows who they're from.
+    let answered = false;
+    const outbox: RtcCandidate[] = [];
+    const sendCandidate = (c: RtcCandidate) => signal({ type: 'CANDIDATE', dst: id, payload: { candidate: c, type: 'data', connectionId } });
     pc.addEventListener('icecandidate', (e) => {
       if (!e.candidate) return;
-      const c = e.candidate.toJSON ? e.candidate.toJSON() : e.candidate;
-      signal({ type: 'CANDIDATE', dst: id, payload: { candidate: { candidate: c.candidate, sdpMid: c.sdpMid, sdpMLineIndex: c.sdpMLineIndex } } });
+      const j = e.candidate.toJSON ? e.candidate.toJSON() : e.candidate;
+      const c = { candidate: j.candidate, sdpMid: j.sdpMid, sdpMLineIndex: j.sdpMLineIndex };
+      if (answered) sendCandidate(c);
+      else outbox.push(c);
     });
     pc.addEventListener('connectionstatechange', () => {
       if (pc.connectionState === 'failed' || pc.connectionState === 'disconnected' || pc.connectionState === 'closed') drop(id);
@@ -100,10 +109,13 @@ export function openHub(
     });
     await pc.setRemoteDescription(sdp);
     peer.remoteSet = true;
-    for (const c of peer.pending.splice(0)) pc.addIceCandidate(c).catch(() => {});
+    for (const c of [...(early.get(id) ?? []), ...peer.pending.splice(0)]) pc.addIceCandidate(c).catch(() => {});
+    early.delete(id);
     const answer = await pc.createAnswer();
     await pc.setLocalDescription(answer);
-    signal({ type: 'ANSWER', dst: id, payload: { sdp: { type: answer.type, sdp: answer.sdp } } });
+    signal({ type: 'ANSWER', dst: id, payload: { sdp: { type: answer.type, sdp: answer.sdp }, type: 'data', connectionId } });
+    answered = true;
+    for (const c of outbox.splice(0)) sendCandidate(c);
   };
 
   ws.onerror = () => {
@@ -125,11 +137,17 @@ export function openHub(
         break;
       case 'OFFER':
         if (!msg.src || !msg.payload?.sdp || peers.has(msg.src)) break;
-        accept(msg.src, msg.payload.sdp, locked ? 'started' : peers.size >= maxPeers ? 'full' : undefined).catch(() => drop(msg.src!));
+        accept(msg.src, msg.payload.sdp, msg.payload.connectionId ?? `dc_${randomToken()}`, locked ? 'started' : peers.size >= maxPeers ? 'full' : undefined).catch(() => drop(msg.src!));
         break;
       case 'CANDIDATE': {
         const p = msg.src ? peers.get(msg.src) : undefined;
-        if (!p || !msg.payload?.candidate) break;
+        if (!msg.payload?.candidate || !msg.src) break;
+        // A player's routes can arrive before their offer: keep them for when it does.
+        if (!p) {
+          const list = early.get(msg.src) ?? [];
+          if (list.length < 30 && early.size < 60) early.set(msg.src, [...list, msg.payload.candidate]);
+          break;
+        }
         if (p.remoteSet) p.pc.addIceCandidate(msg.payload.candidate).catch(() => {});
         else p.pending.push(msg.payload.candidate);
         break;
