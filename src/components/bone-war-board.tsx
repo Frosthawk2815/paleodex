@@ -13,6 +13,8 @@ import { type Question, questionAbout } from '@/lib/quiz';
 import { useOwnPicture } from '@/lib/user-photos';
 import { useT } from '@/lib/i18n';
 
+const HP_RED = '#D32F2F';
+
 // A card the player has tapped: where it is.
 type Pick = { where: 'hand' | 'front' | 'back' | 'oppFront' | 'oppBack'; i: number };
 
@@ -168,12 +170,11 @@ export function Board({
       <View
         style={[styles.hpTrack, { backgroundColor: (look ?? palette).track }]}
         accessibilityRole="progressbar"
-        accessibilityLabel={t('{name}: {hp} of {max} HP', { name: who, hp: p.hp, max: START_HP })}>
-        <View style={{ width: `${(Math.max(0, p.hp) / START_HP) * 100}%`, height: '100%', borderRadius: 6, backgroundColor: p.hp > START_HP / 2 ? palette.good : p.hp > START_HP / 4 ? '#E0A030' : palette.bad }} />
+        accessibilityLabel={look ? t('{name}’s health', { name: who }) : t('{name}: {hp} of {max} HP', { name: who, hp: p.hp, max: START_HP })}>
+        <View style={{ width: `${(Math.max(0, p.hp) / START_HP) * 100}%`, height: '100%', borderRadius: 6, backgroundColor: HP_RED }} />
       </View>
-      <Text style={[st.rowTitle, { minWidth: 56, textAlign: 'right' }, look && { color: look.text }]}>
-        {p.hp}/{START_HP}
-      </Text>
+      {/* Only your own HP is shown as a number; the opponent's is just the bar. */}
+      {!look && <Text style={[st.rowTitle, { minWidth: 56, textAlign: 'right' }]}>{p.hp}/{START_HP}</Text>}
     </View>
   );
 
