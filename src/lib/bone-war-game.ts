@@ -35,7 +35,7 @@ export const FRONT = 6;
 export const BACK = 3;
 export const ACTIONS = 2;
 export const BASE_SECONDS = 15;
-export const MIN_SECONDS = 5;
+export const MIN_SECONDS = 8;
 
 // playedTurn: the turn number it was played on (it can't strike until a later turn).
 export type GCard = { uid: string; key: string; stars: number; seen: boolean; swimUsed?: boolean; playedTurn?: number };
