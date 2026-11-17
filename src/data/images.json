@@ -508,6 +508,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "aerodraco-sedgwickii": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Aerodraco_sedgwickii.jpg/500px-Aerodraco_sedgwickii.jpg",
+  "width": 500,
+  "height": 508,
+  "artist": "Borja Holgado and Rodrigo V. Pêgas",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Aerodraco_sedgwickii.jpg",
+  "file": "Aerodraco_sedgwickii.jpg",
+  "article": "https://en.wikipedia.org/wiki/Aerodraco",
+  "scope": "species"
+ },
  "aerosteon-riocoloradensis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Aerosteon_BW.jpg/500px-Aerosteon_BW.jpg",
   "width": 500,
@@ -1794,6 +1806,19 @@
   "source": "https://commons.wikimedia.org/wiki/File:Anomocephalus_and_Tiarajudens.jpg",
   "file": "Anomocephalus_and_Tiarajudens.jpg",
   "article": "https://en.wikipedia.org/wiki/Anomocephalus_africanus",
+  "scope": "species",
+  "kind": "fossil"
+ },
+ "anoplosaurus-curtonotus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Anoplosaurus_PLATE_XXXI.png/960px-Anoplosaurus_PLATE_XXXI.png",
+  "width": 800,
+  "height": 598,
+  "artist": "Harry Seeley",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Anoplosaurus_PLATE_XXXI.png",
+  "file": "Anoplosaurus_PLATE_XXXI.png",
+  "article": "https://en.wikipedia.org/wiki/Anoplosaurus",
   "scope": "species",
   "kind": "fossil"
  },
@@ -5204,6 +5229,19 @@
   "source": "https://commons.wikimedia.org/wiki/File:Campananeyen_fragilissimus.png",
   "file": "Campananeyen_fragilissimus.png",
   "article": "https://en.wikipedia.org/wiki/Campananeyen_fragilissimus",
+  "scope": "species",
+  "kind": "restoration"
+ },
+ "camposipterus-nasutus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Camposipterus.jpg/960px-Camposipterus.jpg",
+  "width": 800,
+  "height": 866,
+  "artist": "Taissa Rodrigues and Alexander Wilhelm Armin Kellner",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Camposipterus.jpg",
+  "file": "Camposipterus.jpg",
+  "article": "https://en.wikipedia.org/wiki/Camposipterus",
   "scope": "species",
   "kind": "restoration"
  },
@@ -8955,6 +8993,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "draigwenia-platystomus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Ornithocheirus_platystomus.jpg/960px-Ornithocheirus_platystomus.jpg",
+  "width": 800,
+  "height": 541,
+  "artist": "Taissa Rodrigues and Alexander Wilhelm Armin Kellner",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ornithocheirus_platystomus.jpg",
+  "file": "Ornithocheirus_platystomus.jpg",
+  "article": "https://en.wikipedia.org/wiki/Draigwenia",
+  "scope": "species",
+  "kind": "restoration"
+ },
  "dreadnoughtus-schrani": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Dreadnoughtus_schrani_Multiview_Skeletal.png/960px-Dreadnoughtus_schrani_Multiview_Skeletal.png",
   "width": 800,
@@ -10455,6 +10506,19 @@
   "file": "Eublepharis_macularius_2009_G6.jpg",
   "article": "https://en.wikipedia.org/wiki/Leopard_gecko",
   "scope": "species"
+ },
+ "eucercosaurus-tanyspondylus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Eucercosaurus_vertebrae.png/500px-Eucercosaurus_vertebrae.png",
+  "width": 500,
+  "height": 262,
+  "artist": "H.G. Seeley",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Eucercosaurus_vertebrae.png",
+  "file": "Eucercosaurus_vertebrae.png",
+  "article": "https://en.wikipedia.org/wiki/Eucercosaurus",
+  "scope": "species",
+  "kind": "fossil"
  },
  "euchambersia-mirabilis": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Euchambersia_skulls.jpg/960px-Euchambersia_skulls.jpg",
@@ -16739,6 +16803,19 @@
   "scope": "species",
   "kind": "fossil"
  },
+ "macrurosaurus-semnus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Macrurosaurus_semnus.jpg/960px-Macrurosaurus_semnus.jpg",
+  "width": 800,
+  "height": 441,
+  "artist": "Ghedoghedo",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Macrurosaurus_semnus.jpg",
+  "file": "Macrurosaurus_semnus.jpg",
+  "article": "https://en.wikipedia.org/wiki/Macrurosaurus",
+  "scope": "species",
+  "kind": "restoration"
+ },
  "madoqua-kirkii": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Madoqua_kirkii_-_male_%28Namutoni%29.jpg/960px-Madoqua_kirkii_-_male_%28Namutoni%29.jpg",
   "width": 800,
@@ -19415,6 +19492,19 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "nicorhynchus-capito": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Nicorhynchus_capito.jpg/500px-Nicorhynchus_capito.jpg",
+  "width": 500,
+  "height": 641,
+  "artist": "Borja Holgado and Rodrigo V. Pêgas",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Nicorhynchus_capito.jpg",
+  "file": "Nicorhynchus_capito.jpg",
+  "article": "https://en.wikipedia.org/wiki/Nicorhynchus",
+  "scope": "species",
+  "kind": "fossil"
+ },
  "nigersaurus-taqueti": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Nigersaurus_mount.jpg/500px-Nigersaurus_mount.jpg",
   "width": 500,
@@ -20230,6 +20320,19 @@
   "file": "Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg",
   "article": "https://commons.wikimedia.org/wiki/File:Homo_sapiens_VS_Ornimegalonyx_oteroi_size_comparison.svg",
   "scope": "species"
+ },
+ "ornithocheirus-simus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Ornithocheirus_simus.jpg/960px-Ornithocheirus_simus.jpg",
+  "width": 800,
+  "height": 990,
+  "artist": "Taissa Rodrigues and Alexander Wilhelm Armin Kellner",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ornithocheirus_simus.jpg",
+  "file": "Ornithocheirus_simus.jpg",
+  "article": "https://en.wikipedia.org/wiki/Ornithocheirus",
+  "scope": "species",
+  "kind": "restoration"
  },
  "ornithodesmus-cluniculus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ornithodesmus_sacrum.jpg/960px-Ornithodesmus_sacrum.jpg",
