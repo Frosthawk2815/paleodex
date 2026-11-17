@@ -7,6 +7,8 @@ import { categoryName, QuizPicker } from '@/components/quiz-picker';
 import { QuestionView } from '@/components/quiz-question';
 import { usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
+import { useToast } from '@/components/toast';
+import { cardFor, cardKeyForQuestion, cardName } from '@/lib/bone-war';
 import { useProfile, useUnitText } from '@/lib/profile';
 import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, fiftyFifty, makeRound, type Question, replacementQuestion } from '@/lib/quiz';
 import { useOwnPicture } from '@/lib/user-photos';
@@ -21,6 +23,7 @@ export default function QuizScreen() {
   const t = useT();
   const palette = usePalette();
   const { profile, update } = useProfile();
+  const toast = useToast();
   const ownPicture = useOwnPicture();
   const u = useUnitText();
   const [stage, setStage] = useState<Stage>({ kind: 'menu' });
@@ -124,6 +127,25 @@ export default function QuizScreen() {
   const choose = (i: number) => {
     if (stage.chosen !== null) return;
     setStage({ ...stage, chosen: i, score: stage.score + (i === q.answer ? 1 : 0) });
+    if (i === q.answer) awardCard(q);
+  };
+  // Bone War: a correct answer earns (or upgrades) a card of this level for the animal or extinction
+  // it was about. It joins the collection once the page is in Favourites.
+  const awardCard = (question: Question) => {
+    const key = cardKeyForQuestion(question);
+    if (!key || (profile.cards[key] ?? 0) >= level) return;
+    const card = cardFor(key, level);
+    if (!card) return;
+    const upgrade = !!profile.cards[key];
+    update({ cards: { ...profile.cards, [key]: level } });
+    const [kind, id] = key.split(':') as ['species' | 'extinction', string];
+    const favourite = profile.favourites.some((f) => f.kind === kind && f.id === id);
+    const stars = '★'.repeat(level);
+    toast(
+      favourite
+        ? { icon: '🃏', title: upgrade ? t('Bone War card upgraded') : t('New Bone War card'), detail: `${cardName(card)} ${stars}` }
+        : { icon: '🃏', title: t('Bone War card ready'), detail: t('Add {name} to Favourites to collect its {stars} card.', { name: cardName(card), stars }) },
+    );
   };
   const next = () => {
     if (stage.index + 1 < stage.questions.length) {

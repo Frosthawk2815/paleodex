@@ -39,6 +39,12 @@ export type Profile = {
   home: UserPlace | null;
   // Best quiz score (out of 10) for each category and difficulty, e.g. "dinosaurs:3".
   quizBest: Record<string, number>;
+  // Bone War: the hardest solo quiz level (1 to 5) answered correctly about each species or mass
+  // extinction ("species:id", "extinction:id"). A favourited one is a card of that many stars.
+  cards: Record<string, number>;
+  // The chosen Bone War deck (card keys, up to 30) and the colours of the card backs and borders.
+  deck: string[];
+  cardStyle: { back: string; border: string };
   settings: Settings;
 };
 // Something another screen (e.g. the profile) asks the main screen to show when it returns to it.
@@ -61,6 +67,9 @@ const DEFAULT: Profile = {
   birthplace: null,
   home: null,
   quizBest: {},
+  cards: {},
+  deck: [],
+  cardStyle: { back: '#14284B', border: '#C9A227' },
   settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed', units: 'metric', language: 'system' },
 };
 

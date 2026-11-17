@@ -887,3 +887,39 @@ export function switcherooQuiz(mine: { category: Category; level: Difficulty }, 
   ].filter((c) => categoryKey(c) !== categoryKey(mine.category) && categoryPool(c).length >= 20);
   return { category: pick(topics) ?? { kind: 'all' }, level: 5 };
 }
+
+// ---------------------------------------------------------------------------------------------
+// Bone War: a question about one card (a species or a mass extinction) at a given level, avoiding
+// questions already asked. Falls back to nearby levels if the card has nothing at that level.
+
+let allPool: Species[] | null = null;
+export function questionAbout(key: string, level: Difficulty, imageFor: ImageFor, avoid: Set<string> = new Set(), show: (t: string) => string = (t) => t): Question | null {
+  const distinct = (q: Question) => new Set(q.options.map(show)).size === q.options.length;
+  const [kind, id] = key.split(':');
+  const order = [level, level - 1, level + 1, level - 2, level + 2, level - 3, level + 3, level - 4, level + 4].filter((l): l is Difficulty => l >= 1 && l <= 5);
+  if (kind === 'extinction') {
+    const qs = extinctionQuestions().filter((x) => x.q.page?.id === id);
+    for (const l of order) {
+      const q = shuffle(qs.filter((x) => x.levels.includes(l) && !avoid.has(x.q.id))).find((x) => distinct(x.q));
+      if (q) return q.q;
+    }
+    return null;
+  }
+  const s = SPECIES.find((x) => x.id === id);
+  if (!s) return null;
+  allPool ??= categoryPool({ kind: 'all' });
+  for (const l of order) {
+    const ctx: Ctx = { level: l, pool: allPool, imageFor, category: { kind: 'all' } };
+    const candidates: Question[] = [];
+    for (const t of questionTypes.filter((x) => x.levels.includes(l))) {
+      const q = t.make(s, ctx);
+      if (q && distinct(q) && !avoid.has(q.id)) candidates.push(q);
+    }
+    for (const f of SIZE_FACTS.filter((x) => x.id === s.id && sizeDifficulty(x, s, imageFor) === l)) {
+      const q = sizeQuestion(f, s);
+      if (q && distinct(q) && !avoid.has(q.id)) candidates.push(q);
+    }
+    if (candidates.length) return candidates[Math.floor(Math.random() * candidates.length)]!;
+  }
+  return null;
+}
