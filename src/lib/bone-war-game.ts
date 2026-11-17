@@ -331,9 +331,15 @@ export function aiMove(s: GameState, who: 0 | 1, rnd: () => number = Math.random
   // Finish them: strike with the strongest backline card when their front line is empty.
   const strikers = me.back.map((g, i) => ({ g, i })).filter((x) => x.g && ok({ type: 'strike', slot: x.i }));
   if (strikers.length) return { type: 'strike', slot: strikers.sort((a, b) => stat(b.g, 'attack') - stat(a.g, 'attack'))[0]!.i };
-  // Fill the backline with the strongest animals first.
   const backFree = me.back.findIndex((x) => !x);
+  const frontFree0 = me.front.findIndex((x) => !x);
   const species = me.hand.map((g, i) => ({ g, i })).filter((x) => !isExtinctionCard(x.g));
+  // Guard first: keep at least two cards in the front line so the opponent can't strike.
+  if (frontFree0 >= 0 && species.length && me.front.filter(Boolean).length < 2) {
+    const pick = [...species].sort((a, b) => b.g.stars - a.g.stars)[0]!;
+    return { type: 'play', hand: pick.i, row: 'front', slot: frontFree0 };
+  }
+  // Then the backline, strongest animals first.
   if (backFree >= 0 && species.length && me.back.filter(Boolean).length < 2) {
     const best = species.sort((a, b) => score(b.g) - score(a.g))[0]!;
     return { type: 'play', hand: best.i, row: 'back', slot: backFree };
