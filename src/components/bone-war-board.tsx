@@ -53,6 +53,16 @@ export function Board({
   const backW = Math.min(slotW * 1.25, 90);
   const handW = Math.min(Math.floor((W - 4 * 8) / 5), 96);
   const myTurn = state.turn === me && !state.pending && !state.over;
+  const myAttack = backMax(mine, 'attack');
+  const myDefence = backMax(mine, 'defence');
+  // Defence is worn down during the opponent's turn and fresh again for their next one.
+  const myShield = state.turn === me ? myDefence : Math.min(mine.shield, myDefence);
+  const mySpeed = backTotal(mine, 'speed');
+  // Swim left: backline cards whose swim hasn't been used.
+  const mySwim = mine.back.reduce((n, g) => {
+    const c = g && !g.swimUsed ? cardOf(g) : null;
+    return n + (c && c.kind === 'species' ? c.stats.swim : 0);
+  }, 0);
 
   const card = (
     g: GCard | null,
@@ -173,6 +183,8 @@ export function Board({
         accessibilityLabel={look ? t('{name}’s health', { name: who }) : t('{name}: {hp} of {max} HP', { name: who, hp: p.hp, max: START_HP })}>
         <View style={{ width: `${(Math.max(0, p.hp) / START_HP) * 100}%`, height: '100%', borderRadius: 6, backgroundColor: HP_RED }} />
       </View>
+      {/* Damage taken this turn, seen by both players. */}
+      {!!p.hit && <Text style={[st.rowTitle, { color: HP_RED, minWidth: 30 }]}>−{p.hit}</Text>}
       {/* Only your own HP is shown as a number; the opponent's is just the bar. */}
       {!look && <Text style={[st.rowTitle, { minWidth: 56, textAlign: 'right' }]}>{p.hp}/{START_HP}</Text>}
     </View>
@@ -210,9 +222,7 @@ export function Board({
             <Text style={[st.rowSub, { color: oppLook.muted }]}>{t('🏳 Forfeit')}</Text>
           </Pressable>
           {hp(theirs, theirs.name, oppLook)}
-          <Text style={[st.muted, { color: oppLook.muted }]}>
-            {t('Hand {h} · deck {d} · defence {def} · speed {s}', { h: theirs.hand.length, d: theirs.deck.length, def: backMax(theirs, 'defence'), s: backTotal(theirs, 'speed') })}
-          </Text>
+          <Text style={[st.muted, { color: oppLook.muted }]}>{t('Hand {h} · deck {d}', { h: theirs.hand.length, d: theirs.deck.length })}</Text>
           {row(theirs.back, 'oppBack', (g) => g.seen, backW, oppStyle, oppLook.border)}
           {row(theirs.front, 'oppFront', (g) => g.seen, slotW, oppStyle, oppLook.border)}
         </View>
@@ -222,6 +232,17 @@ export function Board({
         {row(mine.front, 'front', () => true, slotW)}
         {row(mine.back, 'back', () => true, backW)}
         {hp(mine, mine.name)}
+        {/* Your backline together, seen only by you: best attack, defence left this turn, total speed
+            and the swim you still have to use. */}
+        <View style={styles.statsRow} accessibilityLabel={t('Your backline: attack {a}, defence {d} of {dm}, speed {s}, swim {w} left', { a: myAttack, d: myShield, dm: myDefence, s: mySpeed, w: mySwim })}>
+          <Text style={st.rowTitle}>⚔️ {myAttack}</Text>
+          <Text style={[st.rowTitle, myShield < myDefence && { color: HP_RED }]}>
+            🛡️ {myShield}
+            {myShield < myDefence ? `/${myDefence}` : ''}
+          </Text>
+          <Text style={st.rowTitle}>⚡ {mySpeed}</Text>
+          <Text style={st.rowTitle}>🌊 {mySwim}</Text>
+        </View>
         <Text style={st.muted}>
           {state.turn === me
             ? t('Your turn · {n} actions left · deck {d}', { n: state.actions, d: mine.deck.length })
@@ -357,6 +378,7 @@ const styles = StyleSheet.create({
   empty: { borderWidth: 1.5, borderStyle: 'dashed', borderRadius: 8 },
   divider: { height: 2 },
   hpRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  statsRow: { flexDirection: 'row', gap: 16, justifyContent: 'flex-end' },
   hpTrack: { flex: 1.4, height: 12, borderRadius: 6, overflow: 'hidden' },
   panel: { flexDirection: 'row', gap: 12, padding: 12, borderRadius: 12, borderWidth: 1 },
   hiddenTag: { position: 'absolute', right: 2, bottom: 2, fontSize: 10 },

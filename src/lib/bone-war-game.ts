@@ -41,6 +41,8 @@ export type PlayerState = {
   back: (GCard | null)[];
   // Defence left to soak up strikes this turn.
   shield: number;
+  // HP lost this turn (shown to both players as −x next to the health bar).
+  hit?: number;
 };
 export type Pending = {
   // Who answers, about which card, why, and at what level and time limit.
@@ -119,6 +121,8 @@ function startTurn(s: GameState) {
   const opp = s.players[1 - s.turn]!;
   // The defender's best backline defence is fresh for each of the attacker's turns.
   opp.shield = backMax(opp, 'defence');
+  // The −x from the last round stays up until this player is attacked again.
+  opp.hit = 0;
   s.actions = ACTIONS;
 }
 
@@ -216,6 +220,7 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       if (a.correct) {
         owner.front[p.slot!] = null;
         owner.hp = Math.max(0, owner.hp - KNOCK_DAMAGE);
+        owner.hit = (owner.hit ?? 0) + KNOCK_DAMAGE;
         log(`${answerer.name} answered right, knocked out ${nameOf(p.card)} and took ${KNOCK_DAMAGE} HP.`);
         if (owner.hp <= 0) {
           s.winner = p.answerer;
@@ -281,6 +286,7 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       opp.shield -= blocked;
       const damage = power - blocked;
       opp.hp = Math.max(0, opp.hp - damage);
+      opp.hit = (opp.hit ?? 0) + damage;
       // How much the defence soaked up isn't said.
       log(damage ? `${nameOf(g)} struck ${opp.name} for ${damage} damage.` : `${nameOf(g)} struck, but ${opp.name}'s defence held.`);
       if (opp.hp <= 0) {
