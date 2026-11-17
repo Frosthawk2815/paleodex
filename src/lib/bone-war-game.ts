@@ -23,7 +23,14 @@ import type { Difficulty } from '@/lib/quiz';
 
 export const START_HP = 20;
 // HP a player loses when the opponent knocks out one of their front-line cards with a right answer.
-export const KNOCK_DAMAGE = 2;
+export const KNOCK_DAMAGE = 1;
+// HP a challenger loses for a wrong answer.
+export const MISS_DAMAGE = 1;
+// Strikes can reach a player whose front line has this many cards or fewer.
+export const STRIKE_GAP = 1;
+// When a card attacks a faster card, its chance to miss for each point of speed between them.
+export const MISS_PER_SPEED = 0.25;
+export const missChance = (attacker: GCard, target: GCard) => Math.min(0.75, Math.max(0, stat(target, 'speed') - stat(attacker, 'speed')) * MISS_PER_SPEED);
 export const FRONT = 6;
 export const BACK = 3;
 export const ACTIONS = 2;
@@ -78,6 +85,9 @@ export type Action =
   | { type: 'advance'; from: number; to: number }
   | { type: 'challenge'; slot: number }
   | { type: 'strike'; slot: number }
+  // A backline card attacks a card in the opponent's front line: it's knocked off if its defence is
+  // lower than the attacker's attack.
+  | { type: 'attack'; from: number; slot: number }
   | { type: 'swim'; slot: number }
   | { type: 'answer'; correct: boolean }
   | { type: 'end' }
@@ -131,8 +141,9 @@ export const secondsFor = (s: GameState, answerer: 0 | 1) =>
   Math.max(MIN_SECONDS, BASE_SECONDS + backTotal(s.players[answerer]!, 'speed') - backTotal(s.players[1 - answerer]!, 'speed'));
 
 // The level of a question about a card for an answerer: its stars, made easier by the answerer's
-// strongest backline attack.
-export const levelFor = (s: GameState, answerer: 0 | 1, card: GCard) => Math.max(1, Math.min(5, card.stars - backMax(s.players[answerer]!, 'attack'))) as Difficulty;
+// strongest backline attack, and one level easier for a card that has been seen.
+export const levelFor = (s: GameState, answerer: 0 | 1, card: GCard) =>
+  Math.max(1, Math.min(5, card.stars - backMax(s.players[answerer]!, 'attack') - (card.seen ? 1 : 0))) as Difficulty;
 
 const clone = (s: GameState): GameState => JSON.parse(JSON.stringify(s));
 const nameOf = (g: GCard) => {
@@ -164,7 +175,9 @@ export function legal(s: GameState, who: 0 | 1, a: Action): boolean {
     case 'challenge':
       return !!opp.front[a.slot];
     case 'strike':
-      return !!me.back[a.slot] && me.back[a.slot]!.playedTurn !== s.round && opp.front.every((x) => !x) && stat(me.back[a.slot]!, 'attack') > 0;
+      return !!me.back[a.slot] && me.back[a.slot]!.playedTurn !== s.round && opp.front.filter(Boolean).length <= STRIKE_GAP && stat(me.back[a.slot]!, 'attack') > 0;
+    case 'attack':
+      return !!me.back[a.from] && me.back[a.from]!.playedTurn !== s.round && !!opp.front[a.slot] && stat(me.back[a.from]!, 'attack') > 0;
     case 'swim': {
       const g = me.back[a.slot];
       return !!g && !g.swimUsed && stat(g, 'swim') > 0 && [...opp.front, ...opp.back].some((x) => x && !x.seen);
@@ -230,7 +243,14 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       } else {
         const g = owner.front[p.slot!];
         if (g) g.seen = true;
-        log(`${answerer.name} got it wrong; ${nameOf(p.card)} stays.`);
+        answerer.hp = Math.max(0, answerer.hp - MISS_DAMAGE);
+        answerer.hit = (answerer.hit ?? 0) + MISS_DAMAGE;
+        log(`${answerer.name} got it wrong, lost ${MISS_DAMAGE} HP, and ${nameOf(p.card)} stays.`);
+        if (answerer.hp <= 0) {
+          s.winner = (1 - p.answerer) as 0 | 1;
+          s.over = true;
+          return s;
+        }
       }
     } else if (p.purpose === 'extinction') {
       if (!a.correct) {
@@ -293,6 +313,18 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
         s.winner = who;
         s.over = true;
       }
+      break;
+    }
+    case 'attack': {
+      const g = me.back[a.from]!;
+      const target = opp.front[a.slot]!;
+      g.seen = true;
+      target.seen = true;
+      if (rnd() < missChance(g, target)) log(`${nameOf(g)} attacked ${nameOf(target)}, but it was too fast and got away.`);
+      else if (stat(g, 'attack') > stat(target, 'defence')) {
+        opp.front[a.slot] = null;
+        log(`${nameOf(g)} attacked ${nameOf(target)} and knocked it off the front line.`);
+      } else log(`${nameOf(g)} attacked ${nameOf(target)}, but it held its ground.`);
       break;
     }
     case 'swim': {
@@ -376,6 +408,12 @@ export function aiMove(s: GameState, who: 0 | 1, rnd: () => number = Math.random
   if (ext >= 0 && frontFree >= 0 && rnd() < 0.7) return { type: 'play', hand: ext, row: 'front', slot: frontFree };
   // Clear their front line, easiest-looking cards first; always when it would open them up to a strike.
   const targets = opp.front.map((g, i) => ({ g, i })).filter((x) => x.g);
+  // Knock off a seen card it can beat in a fight, when that beats answering a hard question.
+  const fighters = me.back.map((g, i) => ({ g, i })).filter((x) => x.g && x.g.playedTurn !== s.round && stat(x.g, 'attack') > 0);
+  for (const t of targets.filter((x) => x.g!.seen)) {
+    const f = fighters.filter((x) => stat(x.g, 'attack') > stat(t.g, 'defence') && missChance(x.g!, t.g!) <= 0.25)[0];
+    if (f && (levelFor(s, who, t.g!) >= 3 || targets.length <= 2)) return { type: 'attack', from: f.i, slot: t.i };
+  }
   const readyStriker = me.back.some((g) => g && g.playedTurn !== s.round && stat(g, 'attack') > 0);
   const easiest = () => targets.sort((a, b) => a.g!.stars - b.g!.stars)[0]!.i;
   if (targets.length && ((readyStriker && targets.length <= s.actions + 1) || rnd() < 0.75)) return { type: 'challenge', slot: easiest() };

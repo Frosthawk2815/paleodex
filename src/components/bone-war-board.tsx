@@ -139,6 +139,12 @@ export function Board({
     }
     if (pick.where === 'oppFront') {
       buttons.push({ label: t('Challenge: level {l}, {s} s', { l: levelFor(state, me, g), s: secondsFor(state, me) }), a: { type: 'challenge', slot: pick.i } });
+      // Attack it with a backline card instead: it's knocked off if its defence is lower than the attack.
+      mine.back.forEach((b, i) => {
+        const bc = b ? cardOf(b) : null;
+        if (!b || bc?.kind !== 'species') return;
+        buttons.push({ label: t('Attack with {name} (⚔️ {n})', { name: bc.species.common || bc.species.name, n: bc.stats.attack }), a: { type: 'attack', from: i, slot: pick.i } });
+      });
     }
     const usable = buttons.filter((b) => legal(state, me, b.a));
     return (
@@ -152,6 +158,7 @@ export function Board({
           )}
           {face && c?.kind === 'extinction' && <Text style={st.rowSub}>{t('Front line only. Wipes out the opponent’s animals that died in it if they answer wrong.')}</Text>}
           {!face && <Text style={st.rowSub}>{t('Face down. Challenge it to find out what it is, or reveal it with a swimmer.')}</Text>}
+          {pick.where === 'oppFront' && <Text style={st.muted}>{t('An attack knocks it off if its defence is lower than your card’s attack. A faster card may dodge.')}</Text>}
           {pick.where === 'back' && g.playedTurn === state.round && <Text style={st.rowSub}>{t('Just played: it can strike next turn.')}</Text>}
           {myTurn &&
             usable.map((b) => (
