@@ -33,7 +33,7 @@ function Screens() {
         <Stack.Screen name="profile/titles" options={{ title: t('Titles') }} />
         <Stack.Screen name="profile/places" options={{ title: t('Places') }} />
         <Stack.Screen name="profile/quiz" options={{ title: t('Quiz') }} />
-        <Stack.Screen name="profile/battle" options={{ title: t('Bone War') }} />
+        <Stack.Screen name="profile/battle" options={{ title: t('Head to Head') }} />
         <Stack.Screen name="profile/peer-review" options={{ title: t('Peer Review') }} />
         <Stack.Screen name="profile/settings" options={{ title: t('Settings') }} />
         <Stack.Screen name="profile/edit" options={{ title: t('Edit profile') }} />

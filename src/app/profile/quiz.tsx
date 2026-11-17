@@ -14,7 +14,7 @@ import { useT } from '@/lib/i18n';
 
 type Stage = { kind: 'menu' } | { kind: 'setup' } | { kind: 'play'; questions: Question[]; index: number; chosen: number | null; score: number; hidden: number[] } | { kind: 'done'; score: number; total: number; best: boolean };
 
-// The quiz: choose solo play, a Bone War game against one other player or a Peer Review game with a group, then for solo play a category
+// The quiz: choose solo play, a Head to Head game against one other player or a Peer Review game with a group, then for solo play a category
 // and a difficulty, then answer ten questions built from Animal Almanac's own data.
 export default function QuizScreen() {
   const st = useProfileStyles();
@@ -52,7 +52,7 @@ export default function QuizScreen() {
         </Pressable>
         <Pressable onPress={() => router.push('/profile/battle')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>{t('Bone War')}</Text>
+            <Text style={st.rowTitle}>{t('Head to Head')}</Text>
             <Text style={st.rowSub}>{t('Play someone on another phone with a battle code')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>

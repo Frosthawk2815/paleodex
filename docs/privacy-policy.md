@@ -22,9 +22,9 @@ When you tap **Check in**, the app asks for your location once to see whether yo
 
 If you choose a photo for a species page or as your profile picture, the app keeps a copy on your phone. It only sees the photos you pick.
 
-## Bone War multiplayer games
+## Head to Head and Peer Review multiplayer games
 
-When you play Bone War with other people, your phone connects directly to theirs. To do this:
+When you play Head to Head or Peer Review with other people, your phone connects directly to theirs. To do this:
 
 - Your profile name, title and profile picture are sent to the other players in that game.
 - A public connection service (PeerJS, 0.peerjs.com) and Google's connection helpers (STUN servers) are used to help the phones find each other. Like any internet service, they can see your device's internet (IP) address while connecting. The game itself goes directly between the players' phones.

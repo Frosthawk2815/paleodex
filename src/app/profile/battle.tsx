@@ -23,7 +23,7 @@ type Role = 'host' | 'guest';
 type Progress = { answered: number; score: number; done: boolean };
 type PlayStage = Extract<Stage, { kind: 'play' }>;
 
-// Seconds to answer each Bone War question.
+// Seconds to answer each Head to Head question.
 const QUESTION_SECONDS = 30;
 
 type Stage =
@@ -63,7 +63,7 @@ const ERRORS: Record<Extract<LinkState, { kind: 'error' }>['reason'], string> = 
   server: 'The connection service couldn’t be reached. Check your internet connection and try again.',
 };
 
-// Bone War: two players on different phones, connected directly (peer to peer) with a battle
+// Head to Head: two players on different phones, connected directly (peer to peer) with a battle
 // code, answer the same ten questions.
 export default function BattleScreen() {
   const st = useProfileStyles();
@@ -340,9 +340,6 @@ export default function BattleScreen() {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
         <Text style={st.text}>{t('Play someone on another phone: you both answer the same ten questions, and the higher score wins.')}</Text>
-        <Text style={st.muted}>
-          {t('Named after the Bone Wars of the late 1800s, when rival fossil hunters Edward Drinker Cope and Othniel Marsh raced, spied on and sabotaged each other to find new dinosaurs. Between them they named more than 130 new species, from Stegosaurus and Triceratops to Camarasaurus.')}
-        </Text>
         <Pressable onPress={host} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
             <Text style={st.rowTitle}>{t('Host a game')}</Text>
@@ -734,7 +731,7 @@ export default function BattleScreen() {
         }}
         accessibilityRole="button"
         style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-        <Text style={st.buttonText}>{t('Back to Bone War')}</Text>
+        <Text style={st.buttonText}>{t('Back to Head to Head')}</Text>
       </Pressable>
     </ScrollView>
   );

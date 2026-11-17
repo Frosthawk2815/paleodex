@@ -1,4 +1,4 @@
-// The small part of the WebRTC API the Bone War game uses, shared by the browser and
+// The small part of the WebRTC API the Head to Head and Peer Review games use, shared by the browser and
 // react-native-webrtc so the connection code works on both.
 
 export type RtcDescription = { type: string; sdp?: string | null };

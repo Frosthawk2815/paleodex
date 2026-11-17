@@ -1,4 +1,4 @@
-// A direct, peer-to-peer link between two phones for the Bone War quiz.
+// A direct, peer-to-peer link between two phones for the Head to Head quiz.
 //
 // The phones find each other through a PeerJS signalling server: the host registers its battle
 // code there, and the guest sends a connection offer to that code. Once WebRTC has connected them,
