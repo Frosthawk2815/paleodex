@@ -1,6 +1,6 @@
 import { type Href, router } from 'expo-router';
 import { useMemo } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Linking, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { AvatarImage, useProfileStyles, useShowOnGlobe } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
@@ -86,6 +86,18 @@ export default function ProfileScreen() {
             </View>
             <Text style={st.chevron}>›</Text>
         </Pressable>
+        <View style={st.divider} />
+        <Pressable
+          onPress={() => Linking.openURL(PATREON_URL).catch(() => {})}
+          accessibilityRole="link"
+          accessibilityLabel={t('Support Animal Almanac on Patreon (opens in your browser)')}
+          style={({ pressed }) => [st.row, pressed && st.pressed]}>
+          <View style={st.rowText}>
+            <Text style={st.rowTitle}>{t('Support the app on Patreon')}</Text>
+            <Text style={st.rowSub}>{t('Help keep Animal Almanac growing. Opens in your browser.')}</Text>
+          </View>
+          <Text style={st.chevron}>↗</Text>
+        </Pressable>
       </View>
 
       <Text style={st.heading}>{t('A note from the maker')}</Text>
@@ -95,6 +107,8 @@ export default function ProfileScreen() {
     </ScrollView>
   );
 }
+
+const PATREON_URL = 'https://patreon.com/AnimalAlmanacApp?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink';
 
 // The exploration bar: points from every page opened for the first time, filling towards the next
 // level. What each page is worth stays a surprise.
