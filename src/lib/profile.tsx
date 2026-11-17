@@ -44,7 +44,8 @@ export type Profile = {
   cards: Record<string, number>;
   // The chosen Bone War deck (card keys, up to 30) and the colours of the card backs and borders.
   deck: string[];
-  cardStyle: { back: string; border: string };
+  // layout: how the four stats are drawn on cards.
+  cardStyle: { back: string; border: string; layout?: 'squares' | 'rings' | 'cross' | 'bars' | 'numbers' | 'icons' };
   settings: Settings;
 };
 // Something another screen (e.g. the profile) asks the main screen to show when it returns to it.

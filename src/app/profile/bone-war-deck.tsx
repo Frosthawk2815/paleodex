@@ -1,13 +1,16 @@
 import { router } from 'expo-router';
 import { Pressable, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 
-import { BoneWarCard } from '@/components/bone-war-card';
+import { BoneWarCard, STAT_LAYOUTS, StatDisplay } from '@/components/bone-war-card';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { DECK_SIZE, MIN_DECK, ownedCards } from '@/lib/bone-war';
 import { useProfile } from '@/lib/profile';
 import { SWATCHES } from '@/lib/theme';
 import { useT } from '@/lib/i18n';
+
+// T. rex's stats, for the layout previews.
+const SAMPLE = { attack: 3, defence: 2, speed: 1, swim: 0 };
 
 // Every colour offered for card backs and borders: each swatch's light and dark shade.
 const COLOURS = SWATCHES.flatMap((s) => [s.dark, s.light]).concat(['#C9A227', '#8C1C13']);
@@ -62,8 +65,26 @@ export default function BoneWarDeckScreen() {
       </View>
       <Text style={st.rowTitle}>{t('Card back')}</Text>
       {swatchRow('back')}
-      <Text style={st.rowTitle}>{t('Card border')}</Text>
+      <Text style={st.rowTitle}>{t('Card colour (face and border)')}</Text>
       {swatchRow('border')}
+      <Text style={st.rowTitle}>{t('How stats are shown')}</Text>
+      <Text style={st.muted}>{t('⚔️ attack · 🛡️ defence · ⚡ speed · 🏊 swim. Each stat is 0 to 3. Your choice is used for every card you see, your opponent’s too.')}</Text>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+        {STAT_LAYOUTS.map((l) => {
+          const on = (profile.cardStyle.layout ?? 'squares') === l.id;
+          return (
+            <Pressable
+              key={l.id}
+              onPress={() => update({ cardStyle: { ...profile.cardStyle, layout: l.id } })}
+              accessibilityRole="radio"
+              accessibilityState={{ selected: on }}
+              style={[st.card, { padding: 8, alignItems: 'center', gap: 4, width: 104, borderWidth: on ? 2 : 1, borderColor: on ? palette.accent : palette.border }]}>
+              <StatDisplay layout={l.id} stats={SAMPLE} width={88} height={88} color={palette.text} empty={palette.track} />
+              <Text style={[st.rowSub, on && { color: palette.accent, fontWeight: '700' }]}>{t(l.name)}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
 
       <Text style={st.heading}>{t('Your deck')}</Text>
       {owned.length === 0 ? (

@@ -135,7 +135,7 @@ export function Board({
         <View style={{ flex: 1, gap: 8 }}>
           {face && c?.kind === 'species' && (
             <Text style={st.rowSub}>
-              {t('▲ Attack {a} · ▼ Defence {d} · ▶ Speed {s} · ◀ Swim {w}', { a: c.stats.attack, d: c.stats.defence, s: c.stats.speed, w: c.stats.swim })}
+              {t('⚔️ Attack {a} · 🛡️ Defence {d} · ⚡ Speed {s} · 🏊 Swim {w}', { a: c.stats.attack, d: c.stats.defence, s: c.stats.speed, w: c.stats.swim })}
             </Text>
           )}
           {face && c?.kind === 'extinction' && <Text style={st.rowSub}>{t('Front line only. Wipes out the opponent’s animals that died in it if they answer wrong.')}</Text>}
