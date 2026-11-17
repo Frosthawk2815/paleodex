@@ -1,13 +1,13 @@
 // Bone War rules: a turn-based card battle between two players, kept as plain data so the same
 // state can drive a game against the computer or be sent between two phones.
 //
-// Each player has 10 HP, a deck of up to 30 cards and a hand of up to 5. A turn has two actions:
+// Each player has 20 HP, a deck of up to 30 cards and a hand of up to 5. A turn has two actions:
 //   play a card from the hand face down, into the front line (6 slots, the question line) or the
 //     backline (3 slots, the player line; extinction cards only go in the front line);
 //   move a backline card to the front line (never back);
 //   challenge an opponent's front-line card: answer a question about it at its star level, made
-//     easier by the attack of your backline. Right: the card is removed. Wrong: it stays, and trying
-//     again draws a new question;
+//     easier by the attack of your backline. Right: the card is removed and its owner loses 2 HP.
+//     Wrong: it stays, and trying again draws a new question;
 //   strike with a backline card when the opponent's front line is empty: its attack wears down the
 //     opponent's defence for the turn (their best backline defence) and the rest is damage. A
 //     card can't strike on the turn it was played;
@@ -21,7 +21,9 @@
 import { cardFor, type Card } from '@/lib/bone-war';
 import type { Difficulty } from '@/lib/quiz';
 
-export const START_HP = 10;
+export const START_HP = 20;
+// HP a player loses when the opponent knocks out one of their front-line cards with a right answer.
+export const KNOCK_DAMAGE = 2;
 export const FRONT = 6;
 export const BACK = 3;
 export const ACTIONS = 2;
@@ -202,7 +204,13 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       const owner = s.players[(1 - p.answerer) as 0 | 1]!;
       if (a.correct) {
         owner.front[p.slot!] = null;
-        log(`${answerer.name} answered right and knocked out ${nameOf(p.card)}.`);
+        owner.hp = Math.max(0, owner.hp - KNOCK_DAMAGE);
+        log(`${answerer.name} answered right, knocked out ${nameOf(p.card)} and took ${KNOCK_DAMAGE} HP.`);
+        if (owner.hp <= 0) {
+          s.winner = p.answerer;
+          s.over = true;
+          return s;
+        }
       } else {
         const g = owner.front[p.slot!];
         if (g) g.seen = true;

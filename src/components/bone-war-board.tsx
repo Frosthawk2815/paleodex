@@ -6,7 +6,7 @@ import { BoneWarCard } from '@/components/bone-war-card';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { cardFor } from '@/lib/bone-war';
-import { type Action, backMax, backTotal, cardOf, type GameState, type GCard, legal, levelFor, secondsFor } from '@/lib/bone-war-game';
+import { type Action, backMax, backTotal, cardOf, type GameState, type GCard, legal, levelFor, secondsFor, START_HP } from '@/lib/bone-war-game';
 import { imageOf } from '@/lib/images';
 import { type Question, questionAbout } from '@/lib/quiz';
 import { useOwnPicture } from '@/lib/user-photos';
@@ -148,8 +148,15 @@ export function Board({
       <Text style={[st.rowTitle, { flex: 1 }]} numberOfLines={1}>
         {who}
       </Text>
-      <Text style={st.rowTitle}>{'❤️'.repeat(Math.max(0, Math.min(p.hp, 10)))}</Text>
-      <Text style={st.rowSub}> {p.hp}</Text>
+      <View
+        style={[styles.hpTrack, { backgroundColor: palette.track }]}
+        accessibilityRole="progressbar"
+        accessibilityLabel={t('{name}: {hp} of {max} HP', { name: who, hp: p.hp, max: START_HP })}>
+        <View style={{ width: `${(Math.max(0, p.hp) / START_HP) * 100}%`, height: '100%', borderRadius: 6, backgroundColor: p.hp > START_HP / 2 ? palette.good : p.hp > START_HP / 4 ? '#E0A030' : palette.bad }} />
+      </View>
+      <Text style={[st.rowTitle, { minWidth: 56, textAlign: 'right' }]}>
+        {p.hp}/{START_HP}
+      </Text>
     </View>
   );
 
@@ -311,7 +318,8 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', justifyContent: 'center', gap: 6 },
   empty: { borderWidth: 1.5, borderStyle: 'dashed', borderRadius: 8 },
   divider: { height: 2, borderRadius: 1, marginVertical: 4, opacity: 0.6 },
-  hpRow: { flexDirection: 'row', alignItems: 'center' },
+  hpRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  hpTrack: { flex: 1.4, height: 12, borderRadius: 6, overflow: 'hidden' },
   panel: { flexDirection: 'row', gap: 12, padding: 12, borderRadius: 12, borderWidth: 1 },
   hiddenTag: { position: 'absolute', right: 2, bottom: 2, fontSize: 10 },
   overlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },

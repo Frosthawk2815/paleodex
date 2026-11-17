@@ -76,9 +76,9 @@ export default function BoneWarScreen() {
 
       <Text style={st.heading}>{t('How to play')}</Text>
       <View style={[st.card, { padding: 16, gap: 8 }]}>
-        <Text style={st.text}>{t('Each player starts with 10 HP, a hand of 5 cards and two actions a turn, and draws 2 at the end of each turn.')}</Text>
+        <Text style={st.text}>{t('Each player starts with 20 HP, a hand of 5 cards and two actions a turn, and draws 2 at the end of each turn.')}</Text>
         <Text style={st.text}>{t('Cards go face down: up to 6 in your front line, the question line, and 3 in your backline, the player line. A backline card can move to the front, but never back.')}</Text>
-        <Text style={st.text}>{t('Challenge a card in your opponent’s front line by answering a question about it at its star level. Right: it is knocked out. Wrong: it stays, and another try brings a new question.')}</Text>
+        <Text style={st.text}>{t('Challenge a card in your opponent’s front line by answering a question about it at its star level. Right: it is knocked out and they lose 2 HP. Wrong: it stays, and another try brings a new question.')}</Text>
         <Text style={st.text}>{t('When their front line is empty, strike with a backline card: its attack wears down their defence for the turn, and the rest comes off their HP. A card can’t strike on the turn it was played.')}</Text>
         <Text style={st.text}>{t('Backline stats: ▲ attack makes your opponents’ questions easier and powers strikes; ▼ defence blocks strikes each turn; ▶ speed adds a second per point to your answer time and takes one from your opponent’s (20 seconds to start); ◀ swim reveals that many of their face-down cards, once per card.')}</Text>
         <Text style={st.text}>{t('Extinction cards go in the front line. Your opponent must answer at once: wrong, and every animal they have in play that the extinction wiped out is gone. Right, and you must answer a saving question or lose your own.')}</Text>
