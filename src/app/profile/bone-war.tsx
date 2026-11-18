@@ -5,8 +5,8 @@ import { BoneWarCard } from '@/components/bone-war-card';
 import { BoneWarRules } from '@/components/bone-war-rules';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
-import { DECK_SIZE, deckCards, lookOf, MIN_DECK, ownedCards } from '@/lib/bone-war';
-import { CHAMPIONS, HEART_OF_THE_CARDS, invertCardStyle, invertLook, SHADOW } from '@/lib/bone-war-champions';
+import { DECK_SIZE, deckCards, MIN_DECK, ownedCards } from '@/lib/bone-war';
+import { BLACK, CHAMPIONS, HEART_OF_THE_CARDS, SHADOW, SHADOW_CARDS } from '@/lib/bone-war-champions';
 import { useProfile } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
 
@@ -109,8 +109,8 @@ export default function BoneWarScreen() {
       {heart &&
         (() => {
           // The secret champion: you, in the dark.
-          const look = invertLook(lookOf(palette));
-          const cards = invertCardStyle(profile.cardStyle);
+          const look = BLACK;
+          const cards = SHADOW_CARDS;
           const beaten = profile.champions.includes(SHADOW);
           return (
             <Pressable

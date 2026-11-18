@@ -5,7 +5,7 @@ import { Board } from '@/components/bone-war-board';
 import { BoneWarFriend } from '@/components/bone-war-friend';
 import { SPECIES } from '@/data/life';
 import { deckCards, lookOf } from '@/lib/bone-war';
-import { CHAMPIONS, championAnswers, championDeck, championMove, type ChampionStyle, invertCardStyle, invertLook, SHADOW, shadowStyle } from '@/lib/bone-war-champions';
+import { CHAMPIONS, championAnswers, championDeck, championMove, type ChampionStyle, BLACK, SHADOW, SHADOW_CARDS, shadowStyle } from '@/lib/bone-war-champions';
 import { usePalette } from '@/hooks/use-palette';
 import { type Action, aiAnswers, aiDeck, aiMove, apply, type GameState, newGame } from '@/lib/bone-war-game';
 import { EXTINCTIONS } from '@/lib/extinctions';
@@ -38,9 +38,9 @@ function ComputerGame({ champion: style, shadow = false }: { champion?: Champion
   const champion = useMemo(
     () =>
       base && shadow
-        ? { ...base, name: profile.name || t('You'), look: invertLook(lookOf(palette)), cardStyle: invertCardStyle(profile.cardStyle) }
+        ? { ...base, name: profile.name || t('You'), look: BLACK, cardStyle: SHADOW_CARDS }
         : base,
-    [base, shadow, profile.name, profile.cardStyle, palette, t],
+    [base, shadow, profile.name, t],
   );
   const key = shadow ? SHADOW : champion?.style;
   const deck = useMemo(() => deckCards(profile), [profile]);

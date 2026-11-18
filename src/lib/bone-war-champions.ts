@@ -21,19 +21,21 @@ export type Champion = {
   cardStyle: { back: string; border: string };
 };
 
-// Red, green, yellow, blue and black themes.
+// Red, green, yellow and blue themes, old parchment, and black (for the shadow).
 const RED: Look = { background: '#2A0A0A', card: '#3D1212', text: '#FBE9E7', muted: '#E0A8A0', accent: '#FF5A4E', border: '#7A2020', track: '#4A1818' };
 const GREEN: Look = { background: '#0A1F12', card: '#13301D', text: '#E8F5E9', muted: '#A5D6A7', accent: '#66BB6A', border: '#2E5E3A', track: '#1C4027' };
 const YELLOW: Look = { background: '#2A2200', card: '#3D3205', text: '#FFFDE7', muted: '#E6D98A', accent: '#FFD600', border: '#6B5A0E', track: '#4A3F0A' };
 const BLUE: Look = { background: '#071A2E', card: '#0E2A47', text: '#E3F2FD', muted: '#9EC3E6', accent: '#4FC3F7', border: '#1F4E7A', track: '#16385C' };
-const BLACK: Look = { background: '#000000', card: '#141414', text: '#F5F5F5', muted: '#A0A0A0', accent: '#E0E0E0', border: '#3A3A3A', track: '#262626' };
+// Old parchment, as in the app's ancient paper theme.
+const PARCHMENT: Look = { background: '#EAD9B2', card: '#E1CB9B', text: '#2B1C0E', muted: '#5A4329', accent: '#8C1A1A', border: '#B0905F', track: '#D8C08E' };
+export const BLACK: Look = { background: '#000000', card: '#141414', text: '#F5F5F5', muted: '#A0A0A0', accent: '#E0E0E0', border: '#3A3A3A', track: '#262626' };
 
 export const CHAMPIONS: Champion[] = [
   { style: 'aggressive', name: 'The Tyrant', blurb: 'Hard-hitting attackers and a thin front line. Expect constant challenges and card attacks.', title: 'tyrant-of-the-cards', titleName: 'Tyrant of the Cards', look: RED, cardStyle: { back: '#8C1C13', border: '#E53935' } },
   { style: 'defensive', name: 'The Aegis', blurb: 'A wall of high-defence cards that shrugs off attacks, and only answers when it can open you up.', title: 'aegis-of-knowledge', titleName: 'Aegis of Knowledge', look: GREEN, cardStyle: { back: '#1B5E20', border: '#81C784' } },
   { style: 'speedy', name: 'The Quicksilver', blurb: 'The fastest backline it can find: your clock runs short and every wrong answer costs you.', title: 'quickest-of-wits', titleName: 'Quickest of Wits', look: YELLOW, cardStyle: { back: '#B28704', border: '#FFEB3B' } },
   { style: 'swimmer', name: 'The Leviathan', blurb: 'Swimmers that reveal your cards and ambush them from the water.', title: 'ruler-of-the-waves', titleName: 'Ruler of the Waves', look: BLUE, cardStyle: { back: '#0D47A1', border: '#29B6F6' } },
-  { style: 'mixed', name: 'The Polymath', blurb: 'A bit of everything, and every move used when it counts.', title: 'jack-of-all-trades', titleName: 'Jack of all Trades', look: BLACK, cardStyle: { back: '#0A0A0A', border: '#BDBDBD' } },
+  { style: 'mixed', name: 'The Polymath', blurb: 'A bit of everything, and every move used when it counts.', title: 'jack-of-all-trades', titleName: 'Jack of all Trades', look: PARCHMENT, cardStyle: { back: '#5A4329', border: '#C9A86A' } },
 ];
 export const HEART_OF_THE_CARDS = 'heart-of-the-cards';
 
@@ -193,7 +195,7 @@ const CHAMPION_RIGHT = [0.9, 0.8, 0.67, 0.53, 0.41];
 export const championAnswers = (level: number, rnd: () => number = Math.random) => rnd() < CHAMPION_RIGHT[level - 1]!;
 
 // The secret champion, unlocked by Heart of the Cards: a dark version of the player, with their
-// name, their theme inverted, the deck style of the champion they lost to most, and 5-star cards.
+// name, a black theme, the deck style of the champion they lost to most, and 5-star cards.
 export const SHADOW = 'shadow';
 // Losses so far against each champion; with no losses (or a tie), the harder champion is chosen.
 const HARDEST_FIRST: ChampionStyle[] = ['speedy', 'aggressive', 'defensive', 'mixed', 'swimmer'];
@@ -201,20 +203,5 @@ export function shadowStyle(losses: Record<string, number>): ChampionStyle {
   return [...HARDEST_FIRST].sort((a, b) => (losses[b] ?? 0) - (losses[a] ?? 0))[0]!;
 }
 
-const invertHex = (hex: string) => {
-  const h = hex.replace('#', '');
-  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h.slice(0, 6);
-  const n = parseInt(full, 16);
-  if (Number.isNaN(n)) return hex;
-  return `#${(0xffffff - n).toString(16).padStart(6, '0')}`;
-};
-export const invertLook = (l: Look): Look => ({
-  background: invertHex(l.background),
-  card: invertHex(l.card),
-  text: invertHex(l.text),
-  muted: invertHex(l.muted),
-  accent: invertHex(l.accent),
-  border: invertHex(l.border),
-  track: invertHex(l.track),
-});
-export const invertCardStyle = (c: { back: string; border: string }) => ({ back: invertHex(c.back), border: invertHex(c.border) });
+// The shadow's card colours.
+export const SHADOW_CARDS = { back: '#0A0A0A', border: '#BDBDBD' };
