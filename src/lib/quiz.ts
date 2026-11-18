@@ -210,6 +210,10 @@ const kmApart = ([lon1, lat1]: [number, number], [lon2, lat2]: [number, number])
 export const label = (s: Species) => s.common || s.name;
 const named = (s: Species) => (s.common && s.common !== s.name ? `${s.common} (${s.name})` : s.name);
 
+// A group's everyday name mid-sentence: lower case, except names that begin with a place or a
+// proper name ("Old World monkeys", "New World deer").
+const groupWords = (text: string) => (/^(Old|New|South|North|African|Asian|American|European|Malagasy|Cuvier|Baird|Steller)\b/.test(text) ? text : lower(text));
+
 // Why the answer is its closest relative: the smallest group they share below the family (such as
 // the booted eagles), or just the family.
 function explainRelative(s: Species, right: Species): string {
@@ -217,7 +221,7 @@ function explainRelative(s: Species, right: Species): string {
   const shared = [...cladePath(s.clade)].reverse().find((c) => theirs.has(c.id));
   const family = familyOf(s);
   if (shared && family && shared.id !== family.id && cladePath(shared.id).some((c) => c.id === family.id))
-    return `${label(right)} and ${label(s)} are both ${lower(shared.common)} (${shared.name}), within the ${lower(family.common)}.`;
+    return `${label(right)} and ${label(s)} are both ${groupWords(shared.common)} (${shared.name}), within the ${groupWords(family.common)}.`;
   return `${label(right)} is in the same family as ${label(s)}.`;
 }
 

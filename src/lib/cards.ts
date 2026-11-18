@@ -8,8 +8,11 @@
 
 import { type Clade, SPECIES, type Species } from '@/data/life';
 import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
+import { MAMMAL_SUBFAMILIES } from '@/data/sets/mammal-subfamilies';
 import { cladePath } from '@/lib/life';
 import { speciesMa } from '@/lib/quiz';
+
+const QUIZ_SUBGROUPS = new Set((MAMMAL_SUBFAMILIES.clades ?? []).map((c) => c.id));
 
 export type Stats = { attack: number; defence: number; speed: number; swim: number };
 type Tier = 0 | 1 | 2; // small, medium, large
@@ -172,7 +175,9 @@ function build(): Map<string, Stats> {
     const kindId = kindOf(path);
     const kind = KINDS[kindId];
     const tier = tierOf(s, kind);
-    const fam = path[path.length - 1]?.id ?? '';
+    // Its own group, ignoring the mammal subfamilies added for the quiz, so they don't change the
+    // fallback size (and with it, card stats).
+    const fam = [...path].reverse().find((c) => !QUIZ_SUBGROUPS.has(c.id))?.id ?? '';
     if (tier !== undefined) byFamily.set(fam, [...(byFamily.get(fam) ?? []), tier]);
     return { s, kind, tier, fam };
   });
