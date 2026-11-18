@@ -1,12 +1,12 @@
 import { router } from 'expo-router';
-import { Pressable, ScrollView, Text, useWindowDimensions, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, useWindowDimensions, View } from 'react-native';
 
 import { BoneWarCard, STAT_LAYOUTS, StatDisplay } from '@/components/bone-war-card';
 import { BoneWarRules } from '@/components/bone-war-rules';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { DECK_SIZE, MIN_DECK, ownedCards } from '@/lib/bone-war';
-import { useProfile } from '@/lib/profile';
+import { LOADOUT_SLOTS, type Loadout, useProfile } from '@/lib/profile';
 import { SWATCHES } from '@/lib/theme';
 import { useT } from '@/lib/i18n';
 
@@ -101,7 +101,9 @@ export default function BoneWarDeckScreen() {
             {t('{n} of {max} cards in your deck', { n: inDeck.size, max: DECK_SIZE })}
             {inDeck.size < MIN_DECK ? ` · ${t('at least {min} to play', { min: MIN_DECK })}` : ''}
           </Text>
-          <Text style={st.muted}>{t('Tap a card to add it to your deck or take it out. Your collection is every favourite you have earned a card for.')}</Text>
+          <Text style={st.muted}>
+            {t('Tap a card to add it to your deck or take it out. Your collection is every favourite you have earned a card for, and any card kept in your deck or a loadout, even if you unfavourite the animal.')}
+          </Text>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <Pressable onPress={fill} accessibilityRole="button" style={({ pressed }) => [st.button, { flex: 1 }, pressed && st.pressed]}>
               <Text style={st.buttonText}>{t('Fill with my best cards')}</Text>
@@ -122,7 +124,76 @@ export default function BoneWarDeckScreen() {
           </View>
         </>
       )}
+      <Loadouts />
       <BoneWarRules />
     </ScrollView>
+  );
+}
+
+// Five saved decks. Saving stores the current deck and card colours; loading brings both back.
+function Loadouts() {
+  const st = useProfileStyles();
+  const t = useT();
+  const palette = usePalette();
+  const { profile, update } = useProfile();
+  const slots: (Loadout | null)[] = Array.from({ length: LOADOUT_SLOTS }, (_, i) => profile.loadouts?.[i] ?? null);
+  const setSlot = (i: number, l: Loadout | null) => update({ loadouts: slots.map((x, k) => (k === i ? l : x)) });
+  const same = (l: Loadout) => l.deck.length === profile.deck.length && l.deck.every((k) => profile.deck.includes(k)) && l.cardStyle.back === profile.cardStyle.back && l.cardStyle.border === profile.cardStyle.border;
+
+  return (
+    <>
+      <Text style={st.heading}>{t('Loadouts')}</Text>
+      <Text style={st.muted}>{t('Save your deck and its card colours in one of five slots, and switch between them. Cards in a loadout stay yours even if you unfavourite the animal.')}</Text>
+      {slots.map((l, i) => (
+        <View key={i} style={[st.card, { padding: 12, gap: 8 }, l && same(l) && { borderWidth: 2, borderColor: palette.accent }]}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <View
+              style={{ width: 22, height: 30, borderRadius: 4, backgroundColor: l ? l.cardStyle.back : palette.track, borderWidth: 3, borderColor: l ? l.cardStyle.border : palette.border }}
+              accessibilityElementsHidden
+            />
+            {l ? (
+              <TextInput
+                value={l.name}
+                onChangeText={(name) => setSlot(i, { ...l, name: name.slice(0, 30) })}
+                placeholder={t('Loadout {n}', { n: i + 1 })}
+                placeholderTextColor={palette.muted}
+                accessibilityLabel={t('Name of loadout {n}', { n: i + 1 })}
+                style={[st.input, { flex: 1, paddingVertical: 6 }]}
+              />
+            ) : (
+              <Text style={[st.rowTitle, { flex: 1, color: palette.muted }]}>{t('Empty slot {n}', { n: i + 1 })}</Text>
+            )}
+          </View>
+          {l && (
+            <Text style={st.rowSub}>
+              {l.deck.length === 1 ? t('1 card') : t('{n} cards', { n: l.deck.length })}
+              {same(l) ? ` · ${t('in use')}` : ''}
+            </Text>
+          )}
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            {l && (
+              <Pressable
+                onPress={() => update({ deck: l.deck, cardStyle: { ...l.cardStyle, layout: profile.cardStyle.layout } })}
+                accessibilityRole="button"
+                style={({ pressed }) => [st.button, { flex: 1, paddingVertical: 8 }, pressed && st.pressed]}>
+                <Text style={st.buttonText}>{t('Load')}</Text>
+              </Pressable>
+            )}
+            <Pressable
+              onPress={() => setSlot(i, { name: l?.name || t('Loadout {n}', { n: i + 1 }), deck: [...profile.deck], cardStyle: { back: profile.cardStyle.back, border: profile.cardStyle.border } })}
+              disabled={profile.deck.length === 0}
+              accessibilityRole="button"
+              style={({ pressed }) => [st.button, { flex: 1, paddingVertical: 8, backgroundColor: palette.card, borderWidth: 1, borderColor: palette.border }, pressed && st.pressed, profile.deck.length === 0 && { opacity: 0.5 }]}>
+              <Text style={[st.buttonText, { color: palette.text }]}>{l ? t('Save here') : t('Save current deck')}</Text>
+            </Pressable>
+            {l && (
+              <Pressable onPress={() => setSlot(i, null)} accessibilityRole="button" accessibilityLabel={t('Clear loadout {n}', { n: i + 1 })} hitSlop={6} style={{ justifyContent: 'center', paddingHorizontal: 6 }}>
+                <Text style={[st.link, { color: palette.bad }]}>{t('Clear')}</Text>
+              </Pressable>
+            )}
+          </View>
+        </View>
+      ))}
+    </>
   );
 }

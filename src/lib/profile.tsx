@@ -13,6 +13,10 @@ import type { UserPlace } from '@/lib/user-places';
 
 // A page in the information section: a species, a group, or an event (formation, trackway...).
 export type PageRef = { kind: 'species' | 'clade' | 'event' | 'extinction'; id: string };
+// How Bone War cards look: back and face colours, and how the stats are drawn.
+export type CardStyle = { back: string; border: string; layout?: 'squares' | 'rings' | 'cross' | 'bars' | 'numbers' | 'icons' };
+export type Loadout = { name: string; deck: string[]; cardStyle: CardStyle };
+export const LOADOUT_SLOTS = 5;
 // A picture of one of their favourite species, or a photo they chose from their device.
 export type Avatar = { kind: 'species'; id: string } | { kind: 'upload'; uri: string } | null;
 export type Theme = 'system' | 'light' | 'dark' | 'custom' | 'paper';
@@ -45,7 +49,9 @@ export type Profile = {
   // The chosen Bone War deck (card keys, up to 30) and the colours of the card backs and borders.
   deck: string[];
   // layout: how the four stats are drawn on cards.
-  cardStyle: { back: string; border: string; layout?: 'squares' | 'rings' | 'cross' | 'bars' | 'numbers' | 'icons' };
+  cardStyle: CardStyle;
+  // Up to five saved decks, each with its own name and card colours (empty slots are null).
+  loadouts: (Loadout | null)[];
   // Bone War champions beaten (their styles, from bone-war-champions.ts).
   champions: string[];
   // Losses against each champion, to find the one the player struggled with most.
@@ -75,6 +81,7 @@ const DEFAULT: Profile = {
   cards: {},
   deck: [],
   cardStyle: { back: '#14284B', border: '#C9A227' },
+  loadouts: [],
   champions: [],
   championLosses: {},
   settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed', units: 'metric', language: 'system' },

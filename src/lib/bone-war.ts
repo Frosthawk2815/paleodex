@@ -71,12 +71,22 @@ export function cardFor(key: string, stars: number): Card | null {
   return null;
 }
 
-// Every card the player owns: answered correctly in solo play and in their favourites.
+// The keys of every card the player owns: earned in a quiz and either in their favourites or kept in
+// their deck or a saved loadout (so unfavouriting an animal there doesn't lose its card).
+export function ownedKeys(profile: Profile): string[] {
+  const keys = [
+    ...profile.favourites.filter((f) => f.kind === 'species' || f.kind === 'extinction').map(cardKeyOf),
+    ...profile.deck,
+    ...(profile.loadouts ?? []).flatMap((l) => l?.deck ?? []),
+  ];
+  return [...new Set(keys)].filter((k) => !!profile.cards[k]);
+}
+export const ownsCard = (profile: Profile, key: string) => ownedKeys(profile).includes(key);
+
+// Every card the player owns.
 export function ownedCards(profile: Profile): Card[] {
-  return profile.favourites.flatMap((f) => {
-    const key = cardKeyOf(f);
-    const stars = profile.cards[key];
-    const card = stars ? cardFor(key, stars) : null;
+  return ownedKeys(profile).flatMap((key) => {
+    const card = cardFor(key, profile.cards[key]!);
     return card ? [card] : [];
   });
 }

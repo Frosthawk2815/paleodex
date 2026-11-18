@@ -73,6 +73,7 @@ export function QuestionView({
   hidden = [],
   lifelines,
   nextDisabled = false,
+  secondary,
 }: {
   q: Question;
   index: number;
@@ -92,6 +93,8 @@ export function QuestionView({
   lifelines?: Lifeline[];
   // Head to Head: waiting for the other player before moving on.
   nextDisabled?: boolean;
+  // A second choice after answering (e.g. try a favourite again at an easier level).
+  secondary?: { label: string; onPress: () => void };
 }) {
   const st = useProfileStyles();
   const t = useT();
@@ -184,6 +187,11 @@ export function QuestionView({
           accessibilityState={{ disabled: nextDisabled }}
           style={({ pressed }) => [st.button, pressed && st.pressed, nextDisabled && { opacity: 0.6 }]}>
           <Text style={st.buttonText}>{nextLabel}</Text>
+        </Pressable>
+      )}
+      {answered && secondary && (
+        <Pressable onPress={secondary.onPress} accessibilityRole="button" style={({ pressed }) => [st.button, { backgroundColor: palette.card, borderWidth: 1, borderColor: palette.border }, pressed && st.pressed]}>
+          <Text style={[st.buttonText, { color: palette.text }]}>{secondary.label}</Text>
         </Pressable>
       )}
     </ScrollView>
