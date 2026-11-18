@@ -231,7 +231,7 @@ export function Board({
     return (
       <View style={[st.screen, st.content, { alignItems: 'center', justifyContent: 'center', gap: 12 }]}>
         <Text style={{ fontSize: 56 }}>{state.winner === null ? '🤝' : won ? '🏆' : '🦴'}</Text>
-        <Text style={st.title}>{state.winner === null ? t('A draw') : won ? t('You won the Bone War!') : t('{name} won this time', { name: theirs.name })}</Text>
+        <Text style={st.title}>{state.winner === null ? t('A draw') : won ? t('You won the Bone War!') : oppGlitch ? t('Your shadow won this time') : t('{name} won this time', { name: theirs.name })}</Text>
         <Text style={st.muted}>{lastLog}</Text>
         <Pressable onPress={onExit} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
           <Text style={st.buttonText}>{t('Back to Bone War')}</Text>
