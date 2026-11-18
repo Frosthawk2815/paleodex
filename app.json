@@ -2,7 +2,7 @@
   "expo": {
     "name": "Animal Almanac",
     "slug": "paleodex",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "paleodex",
@@ -74,7 +74,9 @@
             "extraProguardRules": "# react-native-webrtc (multiplayer quiz): keep its classes and ignore optional parts it does not ship,\n# such as org.webrtc.Dav1dDecoder, so the release build's code shrinker (R8) does not fail.\n-keep class org.webrtc.** { *; }\n-dontwarn org.webrtc.**"
           }
         }
-      ]
+      ],
+      "expo-status-bar",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
