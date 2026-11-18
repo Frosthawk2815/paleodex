@@ -315,7 +315,7 @@ export function Board({
       </ScrollView>
       {state.pending && state.pending.answerer === me && <QuestionOverlay key={state.seq} state={state} asked={asked} art={state.pending.card.uid.startsWith(`${opp}-`) ? oppArt : undefined} onAnswer={(correct) => act({ type: 'answer', correct })} />}
       {state.pending && state.pending.answerer !== me && (
-        <View style={[styles.waiting, { backgroundColor: palette.card, borderColor: palette.border }]}>
+        <View style={[styles.waiting, { bottom: 24 + insets.bottom, backgroundColor: palette.card, borderColor: palette.border }]}>
           <Text style={st.rowTitle}>{t('{name} is answering…', { name: theirs.name })}</Text>
         </View>
       )}

@@ -8,6 +8,7 @@ import { AvatarImage, useProfileStyles } from '@/components/profile-ui';
 import { ShareCodeButton } from '@/components/share-code';
 import { categoryName, QuizPicker } from '@/components/quiz-picker';
 import { QuestionView } from '@/components/quiz-question';
+import { useLeaveGuard } from '@/hooks/use-leave-guard';
 import { usePalette } from '@/hooks/use-palette';
 import { type SharedAvatar, shareableAvatar } from '@/lib/battle/avatar';
 import { type Link, type LinkState, newBattleCode, openLink } from '@/lib/battle/link';
@@ -80,6 +81,7 @@ export default function BattleScreen() {
     return own ? { ...q, image: own } : q;
   };
   const [stage, setStage] = useState<Stage>({ kind: 'start' });
+  useLeaveGuard(stage.kind === 'pick' || stage.kind === 'decide' || stage.kind === 'play', true);
   const [code, setCode] = useState('');
   const [copied, setCopied] = useState(false);
   const [category, setCategory] = useState<Category>({ kind: 'dinosaurs' });

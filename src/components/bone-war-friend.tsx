@@ -5,6 +5,7 @@ import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
 import { ShareCodeButton } from '@/components/share-code';
 import { useProfileStyles } from '@/components/profile-ui';
+import { useLeaveGuard } from '@/hooks/use-leave-guard';
 import { usePalette } from '@/hooks/use-palette';
 import { AI_LOOK, deckCards, extinctionPagesOf, type Look, lookOf } from '@/lib/bone-war';
 import { shrink } from '@/lib/battle/avatar';
@@ -34,6 +35,7 @@ export function BoneWarFriend() {
   const [code, setCode] = useState('');
   const [copied, setCopied] = useState(false);
   const [state, setState] = useState<GameState | null>(null);
+  useLeaveGuard(stage.kind === 'play' && !!state && !state.over, true);
   const [theirStyle, setTheirStyle] = useState<Style>({ back: '#561A1A', border: '#E8D9C8' });
   // The other player's theme colours and their own photos for the animals in their deck.
   const [theirLook, setTheirLook] = useState<Look>(AI_LOOK);

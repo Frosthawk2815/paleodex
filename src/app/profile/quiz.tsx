@@ -5,6 +5,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useProfileStyles } from '@/components/profile-ui';
 import { categoryName, QuizPicker } from '@/components/quiz-picker';
 import { QuestionView } from '@/components/quiz-question';
+import { useLeaveGuard } from '@/hooks/use-leave-guard';
 import { usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
 import { CardRewards, type Earned } from '@/components/card-rewards';
@@ -36,6 +37,7 @@ export default function QuizScreen() {
   const ownPicture = useOwnPicture();
   const u = useUnitText();
   const [stage, setStage] = useState<Stage>({ kind: 'menu' });
+  useLeaveGuard(stage.kind === 'play' || stage.kind === 'fav');
   const [category, setCategory] = useState<Category>({ kind: 'dinosaurs' });
   const [level, setLevel] = useState<Difficulty>(1);
   // Lifelines used this round (each once per quiz).

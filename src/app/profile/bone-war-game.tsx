@@ -6,6 +6,7 @@ import { BoneWarFriend } from '@/components/bone-war-friend';
 import { SPECIES } from '@/data/life';
 import { deckCards, EXTINCTION_CARD_KEYS, lookOf } from '@/lib/bone-war';
 import { CHAMPIONS, championAnswers, championDeck, championMove, type ChampionStyle, BLACK, SHADOW, SHADOW_CARDS, shadowStyle } from '@/lib/bone-war-champions';
+import { useLeaveGuard } from '@/hooks/use-leave-guard';
 import { usePalette } from '@/hooks/use-palette';
 import { type Action, aiAnswers, aiDeck, aiMove, apply, type GameState, newGame } from '@/lib/bone-war-game';
 import { useProfile } from '@/lib/profile';
@@ -93,6 +94,7 @@ function ComputerGame({ champion: style, shadow = false }: { champion?: Champion
   }, [won, lost, key, champions, championLosses, update]);
 
   const act = (a: Action) => setState((s) => apply(s, ME, a));
+  useLeaveGuard(!state.over, true);
   // The practice computer plays in the player's own colours; a champion in their own.
   const oppStyle = champion ? { ...champion.cardStyle, layout: profile.cardStyle.layout } : profile.cardStyle;
   return <Board state={state} me={ME} act={act} oppStyle={oppStyle} oppLook={champion ? champion.look : lookOf(palette)} oppArt={NO_ART} onExit={() => router.back()} oppGlitch={shadow} />;

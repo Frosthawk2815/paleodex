@@ -314,7 +314,8 @@ export default function GlobeScreen() {
         scrollEnabled={!dragging}
         showsVerticalScrollIndicator={false}
         onLayout={(e) => setPageHeight(e.nativeEvent.layout.height)}
-        contentContainerStyle={styles.pageContent}>
+        // Room after the last page for the phone's own keys (back, home, app switcher).
+        contentContainerStyle={[styles.pageContent, { paddingBottom: insets.bottom }]}>
         <View
           style={[
             pageHeight > 0 ? { height: pageHeight } : styles.fill,

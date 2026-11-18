@@ -8,6 +8,7 @@ import { ShareCodeButton } from '@/components/share-code';
 import { useProfileStyles } from '@/components/profile-ui';
 import { categoryName, QuizPicker } from '@/components/quiz-picker';
 import { QuestionView } from '@/components/quiz-question';
+import { useLeaveGuard } from '@/hooks/use-leave-guard';
 import { usePalette } from '@/hooks/use-palette';
 import { type SharedAvatar, shareableAvatar } from '@/lib/battle/avatar';
 import { type Hub, openHub } from '@/lib/battle/hub';
@@ -70,6 +71,7 @@ export default function PeerReviewScreen() {
   const { profile } = useProfile();
   const ownPicture = useOwnPicture();
   const [stage, setStage] = useState<Stage>({ kind: 'start' });
+  useLeaveGuard(stage.kind === 'play' || stage.kind === 'board', true);
   const [role, setRole] = useState<'host' | 'guest'>('host');
   const [code, setCode] = useState('');
   const [copied, setCopied] = useState(false);

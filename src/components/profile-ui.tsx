@@ -5,6 +5,7 @@ import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useMemo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { EVENTS } from '@/data/events';
 import { EXTINCTIONS } from '@/lib/extinctions';
@@ -39,13 +40,16 @@ export function pageInfo(page: PageRef): { title: string; subtitle: string; imag
 export function useProfileStyles() {
   const palette = usePalette();
   const scale = useTextScale();
-  return useMemo(() => applyFonts(makeStyles(palette, scale), palette.fonts, ['title', 'heading']), [palette, scale]);
+  // Room below the content for the phone's own keys or gesture bar (back, home, app switcher), so
+  // the last button is never underneath them.
+  const bottom = useSafeAreaInsets().bottom;
+  return useMemo(() => applyFonts(makeStyles(palette, scale, bottom), palette.fonts, ['title', 'heading']), [palette, scale, bottom]);
 }
 
-function makeStyles(p: Palette, s: number) {
+function makeStyles(p: Palette, s: number, bottom = 0) {
   return StyleSheet.create({
     screen: { flex: 1, backgroundColor: p.background },
-    content: { padding: 16, gap: 12, maxWidth: 720, width: '100%', alignSelf: 'center' },
+    content: { padding: 16, paddingBottom: 16 + bottom, gap: 12, maxWidth: 720, width: '100%', alignSelf: 'center' },
     heading: { color: p.text, fontSize: Math.round(13 * s), fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6, marginTop: 8 },
     title: { color: p.text, fontSize: Math.round(22 * s), fontWeight: '700' },
     text: { color: p.text, fontSize: Math.round(16 * s) },
