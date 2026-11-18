@@ -2,6 +2,8 @@
 // battle code (players use openLink from link.ts as guests). The host passes messages between
 // players. The signalling connection stays open only while the lobby is accepting players.
 
+import { AppState } from 'react-native';
+
 import { newConnection } from '@/lib/battle/rtc';
 import type { RtcCandidate, RtcChannel, RtcConnection, RtcDescription } from '@/lib/battle/rtc-types';
 
@@ -41,15 +43,35 @@ export function openHub(
   const peers = new Map<string, Peer>();
   let closed = false;
   let locked = false;
-  const ws = new WebSocket(`${SIGNAL_URL}/peerjs?key=peerjs&id=${encodeURIComponent(myId)}&token=${randomToken()}&version=1.5.5`);
+  // The connection to the signalling server, reopened with the same code if the phone drops it
+  // while players are still joining (as when the host leaves the app to share the code).
+  let ws: WebSocket;
+  let signallingStopped = false;
+  let retries = 0;
+  let retryTimer: ReturnType<typeof setTimeout> | null = null;
   const signal = (msg: Signal) => {
     if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(msg));
   };
   const heartbeat = setInterval(() => signal({ type: 'HEARTBEAT' }), 5000);
   const stopSignalling = () => {
+    signallingStopped = true;
     clearInterval(heartbeat);
+    if (retryTimer) clearTimeout(retryTimer);
+    appState.remove();
     if (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) ws.close();
   };
+  const reconnect = (now = false) => {
+    if (signallingStopped || closed || locked) return;
+    if (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) return;
+    if (retryTimer) clearTimeout(retryTimer);
+    if (retries >= 8) return handlers.onState({ kind: 'error', reason: 'server' });
+    const wait = now ? 0 : Math.min(8000, 1000 * 2 ** retries);
+    retries++;
+    retryTimer = setTimeout(openSocket, wait);
+  };
+  const appState = AppState.addEventListener('change', (st) => {
+    if (st === 'active') reconnect(true);
+  });
 
   const drop = (id: string) => {
     const p = peers.get(id);
@@ -118,10 +140,16 @@ export function openHub(
     for (const c of outbox.splice(0)) sendCandidate(c);
   };
 
-  ws.onerror = () => {
-    if (!locked && !closed) handlers.onState({ kind: 'error', reason: 'server' });
+  const onLost = () => {
+    if (!signallingStopped && !locked && !closed) reconnect();
   };
-  ws.onmessage = async (event) => {
+  const openSocket = () => {
+    ws = new WebSocket(`${SIGNAL_URL}/peerjs?key=peerjs&id=${encodeURIComponent(myId)}&token=${randomToken()}&version=1.5.5`);
+    ws.onerror = onLost;
+    ws.onclose = onLost;
+    ws.onmessage = onSignal;
+  };
+  const onSignal = async (event: { data: unknown }) => {
     let msg: Signal;
     try {
       msg = JSON.parse(String(event.data));
@@ -130,10 +158,17 @@ export function openHub(
     }
     switch (msg.type) {
       case 'OPEN':
-        handlers.onState({ kind: 'open' });
+        // Only the first time: after a reconnection the lobby simply carries on.
+        if (retries === 0) handlers.onState({ kind: 'open' });
+        retries = 0;
         break;
       case 'ID-TAKEN':
-        handlers.onState({ kind: 'error', reason: 'code-taken' });
+        // Reconnecting, the server may still hold our old connection for a little while.
+        if (retries > 0) {
+          ws.onclose = null;
+          ws.close();
+          reconnect();
+        } else handlers.onState({ kind: 'error', reason: 'code-taken' });
         break;
       case 'OFFER':
         if (!msg.src || !msg.payload?.sdp || peers.has(msg.src)) break;
@@ -158,6 +193,7 @@ export function openHub(
     }
   };
 
+  openSocket();
   handlers.onState({ kind: 'connecting' });
   const sendTo = (p: Peer | undefined, msg: object) => {
     if (p?.channel && p.channel.readyState === 'open') p.channel.send(JSON.stringify(msg));

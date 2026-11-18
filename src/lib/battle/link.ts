@@ -5,6 +5,8 @@
 // the signalling connection is closed and everything (choices, questions, answers) travels directly
 // between the two phones over a WebRTC data channel. Nothing about the game is stored anywhere.
 
+import { AppState } from 'react-native';
+
 import { newConnection } from '@/lib/battle/rtc';
 import type { RtcCandidate, RtcChannel, RtcConnection, RtcDescription } from '@/lib/battle/rtc-types';
 
@@ -64,7 +66,14 @@ export function openLink(
   let remoteSet = false;
   const pendingCandidates: RtcCandidate[] = [];
 
-  const ws = new WebSocket(`${SIGNAL_URL}/peerjs?key=${SIGNAL_KEY}&id=${encodeURIComponent(myId)}&token=${randomToken()}&version=1.5.5`);
+  // The connection to the signalling server. A host waiting for a friend often leaves the app to
+  // send them the code, and the phone may drop this connection meanwhile; it is then reopened with
+  // the same code (at once on returning to the app, otherwise after growing pauses).
+  let ws: WebSocket;
+  let signallingStopped = false;
+  let retries = 0;
+  let retryTimer: ReturnType<typeof setTimeout> | null = null;
+  const MAX_RETRIES = 8;
   const pc: RtcConnection = newConnection(ICE);
   const signal = (msg: Signal) => {
     if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(msg));
@@ -79,10 +88,26 @@ export function openLink(
   };
 
   const stopSignalling = () => {
+    signallingStopped = true;
     clearInterval(heartbeat);
     if (timeout) clearTimeout(timeout);
+    if (retryTimer) clearTimeout(retryTimer);
+    appState.remove();
     if (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) ws.close();
   };
+  // Reopens the signalling connection for a host whose connection dropped before the game began.
+  const reconnect = (now = false) => {
+    if (signallingStopped || closed || opened || role !== 'host') return;
+    if (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) return;
+    if (retryTimer) clearTimeout(retryTimer);
+    if (retries >= MAX_RETRIES) return fail('server');
+    const wait = now ? 0 : Math.min(8000, 1000 * 2 ** retries);
+    retries++;
+    retryTimer = setTimeout(openSocket, wait);
+  };
+  const appState = AppState.addEventListener('change', (st) => {
+    if (st === 'active') reconnect(true);
+  });
   const finish = (s: LinkState) => {
     if (closed) return;
     closed = true;
@@ -150,10 +175,19 @@ export function openLink(
   });
   if (role === 'host') pc.addEventListener('datachannel', (e) => attachChannel(e.channel));
 
-  ws.onerror = () => {
-    if (!opened) fail('server');
+  const onLost = () => {
+    if (signallingStopped || closed || opened) return;
+    // A host keeps its code and tries again; a guest that can't reach the server gives up.
+    if (role === 'host') reconnect();
+    else fail('server');
   };
-  ws.onmessage = async (event) => {
+  const openSocket = () => {
+    ws = new WebSocket(`${SIGNAL_URL}/peerjs?key=${SIGNAL_KEY}&id=${encodeURIComponent(myId)}&token=${randomToken()}&version=1.5.5`);
+    ws.onerror = onLost;
+    ws.onclose = onLost;
+    ws.onmessage = onSignal;
+  };
+  const onSignal = async (event: { data: unknown }) => {
     let msg: Signal;
     try {
       msg = JSON.parse(String(event.data));
@@ -164,7 +198,9 @@ export function openLink(
       switch (msg.type) {
         case 'OPEN':
           if (role === 'host') {
-            onState({ kind: 'waiting' });
+            retries = 0;
+            // Back after a dropped connection mid-handshake: carry on; otherwise, waiting.
+            if (!peerId) onState({ kind: 'waiting' });
           } else {
             attachChannel(pc.createDataChannel('battle'));
             const offer = await pc.createOffer();
@@ -174,7 +210,12 @@ export function openLink(
           }
           break;
         case 'ID-TAKEN':
-          fail(role === 'host' ? 'code-taken' : 'server');
+          // Reconnecting, the server may still hold our old connection for a little while.
+          if (role === 'host' && retries > 0) {
+            ws.onclose = null;
+            ws.close();
+            reconnect();
+          } else fail(role === 'host' ? 'code-taken' : 'server');
           break;
         case 'ERROR':
           fail('server');
@@ -218,6 +259,7 @@ export function openLink(
     }
   };
 
+  openSocket();
   onState({ kind: 'connecting' });
   return {
     send: (msg) => {
