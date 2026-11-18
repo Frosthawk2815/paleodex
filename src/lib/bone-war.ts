@@ -32,7 +32,31 @@ export const HUMANS_EVENT: Extinction = {
   bigFive: false,
 };
 
-export const cardKeyOf = (page: PageRef) => `${page.kind}:${page.id}`;
+// The two Late Devonian pulses (Kellwasser and Hangenberg) are one Bone War card, which wipes out
+// the animals lost in either. Their pages and timeline marks stay separate.
+export const LATE_DEVONIAN = 'late-devonian';
+const LATE_DEVONIAN_PULSES = ['kellwasser', 'hangenberg'];
+export const LATE_DEVONIAN_EVENT: Extinction = {
+  id: LATE_DEVONIAN,
+  name: 'Late Devonian extinctions',
+  short: 'F/F, D/C',
+  ma: 372.15,
+  cause: 'anoxia',
+  causeText: 'oxygen-starved oceans, in two pulses',
+  bigFive: true,
+};
+// The card for an extinction page.
+export const extinctionCardId = (id: string) => (LATE_DEVONIAN_PULSES.includes(id) ? LATE_DEVONIAN : id);
+// The pages an extinction card stands for (two for the Late Devonian card).
+export const extinctionPagesOf = (cardId: string) => (cardId === LATE_DEVONIAN ? LATE_DEVONIAN_PULSES : [cardId]);
+// Whether an extinction card wipes out an animal lost in `speciesExtinction`.
+export const extinctionHits = (cardId: string, speciesExtinction: string | null) => !!speciesExtinction && extinctionPagesOf(cardId).includes(speciesExtinction);
+// Every extinction card's key.
+export const EXTINCTION_CARD_KEYS = [...new Set(EXTINCTIONS.map((e) => `extinction:${extinctionCardId(e.id)}`))];
+// Older saves kept the two pulses as separate cards.
+export const normalCardKey = (key: string) => (key.startsWith('extinction:') ? `extinction:${extinctionCardId(key.slice(11))}` : key);
+
+export const cardKeyOf = (page: PageRef) => (page.kind === 'extinction' ? `extinction:${extinctionCardId(page.id)}` : `${page.kind}:${page.id}`);
 
 // A player's theme colours, shown on their side of the board (and sent to the other phone).
 // font and headingFont: the paper theme's fonts, when the player uses it (names from fonts.ts).
@@ -53,7 +77,7 @@ export const AI_LOOK: Look = { background: '#1E0E0E', card: '#2E1616', text: '#F
 // The card a quiz question is about, if any.
 export function cardKeyForQuestion(q: { speciesId?: string; page?: PageRef }): string | null {
   if (q.speciesId) return `species:${q.speciesId}`;
-  if (q.page?.kind === 'extinction') return `extinction:${q.page.id}`;
+  if (q.page?.kind === 'extinction') return `extinction:${extinctionCardId(q.page.id)}`;
   return null;
 }
 
@@ -66,7 +90,7 @@ export function cardFor(key: string, stars: number): Card | null {
     return { key, kind, id, stars, species, stats: statsOf(id), extinction: extinctionOf(id) };
   }
   if (kind === 'extinction') {
-    const event = EXTINCTIONS.find((e) => e.id === id);
+    const event = id === LATE_DEVONIAN ? LATE_DEVONIAN_EVENT : LATE_DEVONIAN_PULSES.includes(id) ? undefined : EXTINCTIONS.find((e) => e.id === id);
     return event ? { key, kind, id, stars, event } : null;
   }
   return null;

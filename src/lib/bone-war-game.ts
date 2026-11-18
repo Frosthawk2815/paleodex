@@ -18,7 +18,7 @@
 // Answer time is 15 seconds, plus your backline's speed, minus the opponent's. At the end of a turn
 // the player draws two cards (up to five in hand).
 
-import { cardFor, type Card } from '@/lib/bone-war';
+import { cardFor, type Card, extinctionHits } from '@/lib/bone-war';
 import type { Difficulty } from '@/lib/quiz';
 
 export const START_HP = 20;
@@ -358,7 +358,7 @@ function wipe(p: PlayerState, extinction: string): number {
   for (const row of [p.front, p.back]) {
     row.forEach((g, i) => {
       const c = g ? cardOf(g) : null;
-      if (c && c.kind === 'species' && c.extinction === extinction) {
+      if (c && c.kind === 'species' && extinctionHits(extinction, c.extinction)) {
         row[i] = null;
         n++;
       }
@@ -441,7 +441,7 @@ export function aiMove(s: GameState, who: 0 | 1, rnd: () => number = Math.random
 const countVictims = (p: PlayerState, extinction: string) =>
   [...p.front, ...p.back].filter((g) => {
     const c = g ? cardOf(g) : null;
-    return c && c.kind === 'species' && c.extinction === extinction;
+    return c && c.kind === 'species' && extinctionHits(extinction, c.extinction);
   }).length;
 
 // A deck for the computer: random cards from all of Animal Almanac, around the player's level.

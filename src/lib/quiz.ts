@@ -931,7 +931,9 @@ export function questionAbout(key: string, level: Difficulty, imageFor: ImageFor
   const [kind, id] = key.split(':');
   const order = [level, level - 1, level + 1, level - 2, level + 2, level - 3, level + 3, level - 4, level + 4].filter((l): l is Difficulty => l >= 1 && l <= 5);
   if (kind === 'extinction') {
-    const qs = extinctionQuestions().filter((x) => x.q.page?.id === id);
+    // The Late Devonian card covers both of its pulses.
+    const pages = id === 'late-devonian' ? ['kellwasser', 'hangenberg'] : [id];
+    const qs = extinctionQuestions().filter((x) => pages.includes(x.q.page?.id ?? ''));
     for (const l of order) {
       const q = shuffle(qs.filter((x) => x.levels.includes(l) && !avoid.has(x.q.id))).find((x) => distinct(x.q));
       if (q) return q.q;

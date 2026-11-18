@@ -2,7 +2,7 @@
 // Beating a champion earns its title; beating all five earns Heart of the Cards.
 
 import { type Action, aiMove, cardOf, type GameState, type GCard, isExtinctionCard, legal, levelFor, missChance, type PlayerState } from '@/lib/bone-war-game';
-import { DECK_SIZE, type Look } from '@/lib/bone-war';
+import { DECK_SIZE, extinctionHits, type Look } from '@/lib/bone-war';
 import { statsOf, extinctionOf } from '@/lib/cards';
 
 export type ChampionStyle = 'aggressive' | 'defensive' | 'speedy' | 'swimmer' | 'mixed';
@@ -98,7 +98,7 @@ export function championDeck(
 const victims = (p: PlayerState, ext: string) =>
   [...p.front, ...p.back].filter((g) => {
     const c = g ? cardOf(g) : null;
-    return c && c.kind === 'species' && c.extinction === ext;
+    return c && c.kind === 'species' && extinctionHits(ext, c.extinction);
   }).length;
 
 // A champion's move on its turn.

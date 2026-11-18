@@ -4,11 +4,10 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Board } from '@/components/bone-war-board';
 import { BoneWarFriend } from '@/components/bone-war-friend';
 import { SPECIES } from '@/data/life';
-import { deckCards, lookOf } from '@/lib/bone-war';
+import { deckCards, EXTINCTION_CARD_KEYS, lookOf } from '@/lib/bone-war';
 import { CHAMPIONS, championAnswers, championDeck, championMove, type ChampionStyle, BLACK, SHADOW, SHADOW_CARDS, shadowStyle } from '@/lib/bone-war-champions';
 import { usePalette } from '@/hooks/use-palette';
 import { type Action, aiAnswers, aiDeck, aiMove, apply, type GameState, newGame } from '@/lib/bone-war-game';
-import { EXTINCTIONS } from '@/lib/extinctions';
 import { useProfile } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
 
@@ -47,7 +46,7 @@ function ComputerGame({ champion: style, shadow = false }: { champion?: Champion
   const [state, setState] = useState<GameState>(() => {
     const stars = deck.length ? deck.reduce((n, c) => n + c.stars, 0) / deck.length : 2;
     const species = SPECIES.filter((s) => s.status === 'full').map((s) => s.id);
-    const extinctions = EXTINCTIONS.map((e) => `extinction:${e.id}`);
+    const extinctions = EXTINCTION_CARD_KEYS;
     const pool = [...species.map((id) => `species:${id}`), ...extinctions];
     return newGame([
       { name: profile.name || t('You'), cards: deck.map((c) => ({ key: c.key, stars: c.stars })) },

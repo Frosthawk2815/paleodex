@@ -144,7 +144,22 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
               ...(saved.loadouts ?? []).flatMap((l) => l?.deck ?? []),
             ]),
           ].filter((k) => !!saved.cards?.[k]);
-        setProfile({ ...DEFAULT, ...saved, visited, collection, settings: { ...DEFAULT.settings, ...saved.settings } });
+        // The two Late Devonian extinction cards became one card ("extinction:late-devonian").
+        const merge = (k: string) => (k === 'extinction:kellwasser' || k === 'extinction:hangenberg' ? 'extinction:late-devonian' : k);
+        const keys = (ks: string[] | undefined) => (ks ? [...new Set(ks.map(merge))] : ks);
+        const cards: Record<string, number> = {};
+        for (const [k, v] of Object.entries(saved.cards ?? {})) cards[merge(k)] = Math.max(cards[merge(k)] ?? 0, v);
+        setProfile({
+          ...DEFAULT,
+          ...saved,
+          visited,
+          cards,
+          collection: keys(collection) ?? [],
+          wishlist: keys(saved.wishlist) ?? [],
+          deck: keys(saved.deck) ?? [],
+          loadouts: (saved.loadouts ?? []).map((l) => (l ? { ...l, deck: keys(l.deck) ?? [] } : l)),
+          settings: { ...DEFAULT.settings, ...saved.settings },
+        });
       })
       .catch(() => {})
       .finally(() => {

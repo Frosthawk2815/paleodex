@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
 
 import { ExtinctionIcon } from '@/components/extinction-icon';
-import { type Card, cardName } from '@/lib/bone-war';
+import { type Card, cardName, extinctionPagesOf } from '@/lib/bone-war';
 import type { Stats } from '@/lib/cards';
 import { imageOf } from '@/lib/images';
 import { useProfile } from '@/lib/profile';
@@ -229,7 +229,9 @@ export function BoneWarCard({
   // Species pictures by species id; an extinction's own photo (if the player added one) by
   // "extinction:id".
   const pictured = card.kind === 'species' ? card.id : (card.speciesId ?? `extinction:${card.id}`);
-  const picture = pictured ? (art ? art[pictured] : own(pictured)) ?? imageOf(pictured)?.thumb : undefined;
+  // An extinction card can use a photo from any of its pages (the Late Devonian card has two).
+  const ownPhoto = card.kind === 'extinction' && !card.speciesId ? extinctionPagesOf(card.id).map((p) => own(`extinction:${p}`)).find(Boolean) : own(pictured);
+  const picture = pictured ? (art ? art[pictured] : ownPhoto) ?? imageOf(pictured)?.thumb : undefined;
   const small = width < 90;
   return (
     <View
@@ -268,7 +270,7 @@ export function BoneWarCard({
             {card.speciesId ? 'Extinction by humans' : 'Mass extinction'}
           </Text>
           <Text style={[styles.when, { color: ink, fontSize: width * 0.07 }]} numberOfLines={1}>
-            {card.speciesId ? 'The last 50,000 years' : `${Math.round(card.event.ma * 10) / 10} million years ago`}
+            {card.speciesId ? 'The last 50,000 years' : card.id === 'late-devonian' ? '372 and 359 million years ago' : `${Math.round(card.event.ma * 10) / 10} million years ago`}
           </Text>
           <Text style={[styles.when, { color: ink, fontSize: width * 0.065, opacity: 0.85 }]} numberOfLines={3}>
             {/^not one of/i.test(card.event.causeText) ? 'Cause still debated' : card.event.causeText.charAt(0).toUpperCase() + card.event.causeText.slice(1)}

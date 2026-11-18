@@ -5,7 +5,7 @@ import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
-import { AI_LOOK, deckCards, type Look, lookOf } from '@/lib/bone-war';
+import { AI_LOOK, deckCards, extinctionPagesOf, type Look, lookOf } from '@/lib/bone-war';
 import { shrink } from '@/lib/battle/avatar';
 import { useOwnPicture } from '@/lib/user-photos';
 import { type Action, apply, type GameState, newGame } from '@/lib/bone-war-game';
@@ -58,7 +58,7 @@ export function BoneWarFriend() {
     link.current?.send({ t: 'bw-look', look: lookOf(palette) });
     for (const c of deckCards(profile)) {
       const id = c.kind === 'species' ? c.id : (c.speciesId ?? `extinction:${c.id}`);
-      const photo = id ? own(id) : undefined;
+      const photo = c.kind === 'extinction' && !c.speciesId ? extinctionPagesOf(c.id).map((p) => own(`extinction:${p}`)).find(Boolean) : own(id);
       const uri = photo ? await shrink(photo, 240) : null;
       if (uri) link.current?.send({ t: 'bw-art', id, uri });
     }
