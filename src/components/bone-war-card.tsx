@@ -11,6 +11,20 @@ import { useOwnPicture } from '@/lib/user-photos';
 
 const ICON = require('../../assets/images/icon.png');
 
+// The back of a default Animal Almanac card, small, for buttons and notices (in place of an emoji).
+export const DEFAULT_CARD_BACK = { back: '#14284B', border: '#C9A227' };
+export function CardBackIcon({ size = 18 }: { size?: number }) {
+  const w = size * 0.72;
+  return (
+    <View
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      style={{ width: w, height: size, borderRadius: w * 0.14, backgroundColor: DEFAULT_CARD_BACK.back, borderWidth: Math.max(1.5, w * 0.1), borderColor: DEFAULT_CARD_BACK.border, alignItems: 'center', justifyContent: 'center' }}>
+      <Image source={ICON} style={{ width: w * 0.62, height: w * 0.62, borderRadius: w * 0.14 }} contentFit="contain" />
+    </View>
+  );
+}
+
 // Card proportions: 5 wide by 7 tall, like a playing card.
 export const CARD_RATIO = 7 / 5;
 

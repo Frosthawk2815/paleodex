@@ -90,7 +90,7 @@ export default function BoneWarDeckScreen() {
       <Text style={st.heading}>{t('Your deck')}</Text>
       {owned.length === 0 ? (
         <View style={{ gap: 8 }}>
-          <Text style={st.text}>{t('You have no cards yet. Tap 🃏 Acquire card on an animal’s page, then win it in Quiz → Test your wishlist.')}</Text>
+          <Text style={st.text}>{t('You have no cards yet. Tap Acquire card on an animal’s page, then win it in Quiz → Test your wishlist.')}</Text>
           <Pressable onPress={() => router.push('/profile/quiz')} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed]}>
             <Text style={st.buttonText}>{t('Go to the quiz')}</Text>
           </Pressable>

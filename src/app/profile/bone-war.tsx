@@ -56,7 +56,7 @@ export default function BoneWarScreen() {
       {owned.length === 0 ? (
         <View style={[st.card, { padding: 16, gap: 8 }]}>
           <Text style={st.rowTitle}>{t('How to get your first cards')}</Text>
-          <Text style={st.text}>{t('1. Tap 🃏 Acquire card at the top of any animal or mass extinction page to put it on your card wishlist.')}</Text>
+          <Text style={st.text}>{t('1. Tap Acquire card at the top of any animal or mass extinction page to put it on your card wishlist.')}</Text>
           <Text style={st.text}>{t('2. In the quiz, choose Test your wishlist and answer a question on each one. Get it right and the card is yours. You can also collect cards for animals you answer right in a normal quiz.')}</Text>
           <Text style={st.text}>{t('3. Its stars match the level of the question: a level 1 question earns a 1-star card, level 5 a 5-star card. Answer a harder question later to upgrade it.')}</Text>
           <Text style={st.text}>{t('4. Build a deck of {min} to {max} cards from your collection, then play.', { min: MIN_DECK, max: DECK_SIZE })}</Text>

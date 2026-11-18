@@ -184,7 +184,7 @@ export default function QuizScreen() {
         <Pressable onPress={startFav} disabled={count === 0} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed, count === 0 && { opacity: 0.5 }]}>
           <Text style={st.buttonText}>{t('Start: {n} cards, level {level}', { n: count, level })}</Text>
         </Pressable>
-        {count === 0 && <Text style={st.muted}>{t('Your wishlist is empty. Tap 🃏 Acquire card at the top of any animal or mass extinction page to add it.')}</Text>}
+        {count === 0 && <Text style={st.muted}>{t('Your wishlist is empty. Tap Acquire card at the top of any animal or mass extinction page to add it.')}</Text>}
         {count > 0 && (
           <>
             <Text style={st.rowTitle}>{t('Your wishlist ({n})', { n: count })}</Text>

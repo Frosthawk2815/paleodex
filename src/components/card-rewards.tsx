@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
-import { BoneWarCard } from '@/components/bone-war-card';
+import { BoneWarCard, CardBackIcon } from '@/components/bone-war-card';
 import { useProfileStyles } from '@/components/profile-ui';
 import { useToast } from '@/components/toast';
 import { usePalette } from '@/hooks/use-palette';
@@ -38,7 +38,7 @@ export function CardRewards({ earned }: { earned: Earned[] }) {
     if (!card || collected.has(key)) return;
     update({ collection: [...new Set([...(profile.collection ?? []), key])], wishlist: (profile.wishlist ?? []).filter((k) => k !== key) });
     setCollected((s) => new Set(s).add(key));
-    toast({ icon: '🃏', title: t('Card acquired'), detail: `${cardName(card)} ${'★'.repeat(stars)}` });
+    toast({ icon: <CardBackIcon size={34} />, title: t('Card acquired'), detail: `${cardName(card)} ${'★'.repeat(stars)}` });
   };
 
   if (!cards.length) return null;

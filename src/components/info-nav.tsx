@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { CardBackIcon } from '@/components/bone-war-card';
 import { useInfoStyles } from '@/components/info-styles';
 import { useToast } from '@/components/toast';
 import { cardFor, cardKeyOf, cardName, ownsCard } from '@/lib/bone-war';
@@ -77,9 +78,9 @@ function CardButton({ page }: { page: PageRef }) {
   const toggle = () => {
     const list = profile.wishlist ?? [];
     update({ wishlist: wished ? list.filter((k) => k !== key) : [...list, key] });
-    if (!wished) toast({ icon: '🃏', title: t('Added to your card wishlist'), detail: t('Win the {name} card in Quiz → Test your wishlist.', { name: cardName(cardFor(key, 1)!) }) });
+    if (!wished) toast({ icon: <CardBackIcon size={34} />, title: t('Added to your card wishlist'), detail: t('Win the {name} card in Quiz → Test your wishlist.', { name: cardName(cardFor(key, 1)!) }) });
   };
-  const label = wished ? t('🃏 On wishlist') : stars ? `🃏 ${'★'.repeat(stars)}` : t('🃏 Acquire card');
+  const label = wished ? t('On wishlist') : stars ? '★'.repeat(stars) : t('Acquire card');
   return (
     <Pressable
       onPress={toggle}
@@ -88,7 +89,10 @@ function CardButton({ page }: { page: PageRef }) {
       accessibilityState={{ selected: wished }}
       hitSlop={6}
       style={({ pressed }) => [info.back, styles.button, pressed && info.pressed]}>
-      <Text style={[info.backText, wished && { color: info.kicker.color }]}>{label}</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+        <CardBackIcon size={16} />
+        <Text style={[info.backText, wished && { color: info.kicker.color }]}>{label}</Text>
+      </View>
     </Pressable>
   );
 }

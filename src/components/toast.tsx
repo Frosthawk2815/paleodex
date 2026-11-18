@@ -6,7 +6,8 @@ import { usePalette } from '@/hooks/use-palette';
 import { useProfile } from '@/lib/profile';
 import { paperFont } from '@/lib/theme';
 
-export type Toast = { icon: string; title: string; detail: string };
+// icon: an emoji, or a small picture (such as a Bone War card back).
+export type Toast = { icon: string | ReactNode; title: string; detail: string };
 
 const Context = createContext<(t: Toast) => void>(() => {});
 
@@ -56,7 +57,7 @@ function ToastView({ toast, onDone }: { toast: Toast; onDone: () => void }) {
   return (
     <Animated.View pointerEvents="none" style={[styles.wrap, { top: insets.top + 8 }, motion]} accessibilityLiveRegion="polite">
       <View style={[styles.card, { backgroundColor: palette.card, borderColor: palette.border }]}>
-        <Text style={styles.icon}>{toast.icon}</Text>
+        {typeof toast.icon === 'string' ? <Text style={styles.icon}>{toast.icon}</Text> : toast.icon}
         <View style={styles.text}>
           <Text style={[styles.title, { color: palette.accent }, paperFont(palette, 'heading')]}>{toast.title}</Text>
           <Text style={[styles.detail, { color: palette.text }, paperFont(palette, 'bold')]}>{toast.detail}</Text>
