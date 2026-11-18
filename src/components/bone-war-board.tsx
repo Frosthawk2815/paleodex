@@ -4,6 +4,7 @@ import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } fr
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BoneWarCard } from '@/components/bone-war-card';
+import { useGlitch } from '@/components/glitch';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { cardFor, type Look } from '@/lib/bone-war';
@@ -12,6 +13,7 @@ import { FontsReady, PAPER_FONTS } from '@/lib/fonts';
 import { imageOf } from '@/lib/images';
 import { type Question, questionAbout } from '@/lib/quiz';
 import { useOwnPicture } from '@/lib/user-photos';
+import { useProfile } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
 
 const HP_RED = '#D32F2F';
@@ -28,6 +30,7 @@ export function Board({
   oppLook,
   oppArt,
   onExit,
+  oppGlitch = false,
 }: {
   state: GameState;
   me: 0 | 1;
@@ -37,12 +40,20 @@ export function Board({
   oppLook: Look;
   oppArt: Record<string, string>;
   onExit: () => void;
+  // The secret shadow champion: its health bar is hidden, and below half it glitches into view.
+  oppGlitch?: boolean;
 }) {
   const st = useProfileStyles();
   const t = useT();
   const palette = usePalette();
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
+  const { reduceMotion } = useProfile();
+  const theirsLow = state.players[1 - me]!.hp < START_HP / 2;
+  // Glitch bursts only run for the shadow once it is below half health.
+  const burst = useGlitch(!oppGlitch || !theirsLow || reduceMotion);
+  // The shadow's bar: hidden, then flickering into view below half (steady with reduce motion).
+  const showOppBar = !oppGlitch || (theirsLow && (reduceMotion || !!burst));
   // The opponent's paper-theme fonts, once the fonts have loaded (only fonts the app has: a friend's
   // phone sends these names).
   const fontsReady = use(FontsReady);
@@ -191,12 +202,17 @@ export function Board({
       <Text style={[st.rowTitle, { flex: 1 }, look && { color: look.text }, look && oppHeading ? { fontFamily: oppHeading, fontWeight: 'normal' } : null]} numberOfLines={1}>
         {who}
       </Text>
-      <View
-        style={[styles.hpTrack, { backgroundColor: (look ?? palette).track }]}
-        accessibilityRole="progressbar"
-        accessibilityLabel={look ? t('{name}’s health', { name: who }) : t('{name}: {hp} of {max} HP', { name: who, hp: p.hp, max: START_HP })}>
-        <View style={{ width: `${(Math.max(0, p.hp) / START_HP) * 100}%`, height: '100%', borderRadius: 6, backgroundColor: HP_RED }} />
-      </View>
+      {look && !showOppBar ? (
+        // Hidden: an empty space where the bar would be.
+        <View style={[styles.hpTrack, { backgroundColor: 'transparent' }]} />
+      ) : (
+        <View
+          style={[styles.hpTrack, { backgroundColor: (look ?? palette).track }, look && oppGlitch && burst ? { transform: [{ translateX: burst.dx * 2 }], borderWidth: 1, borderColor: burst.seed > 0.5 ? '#22E5FF' : '#FF2A55' } : null]}
+          accessibilityRole="progressbar"
+          accessibilityLabel={look ? t('{name}’s health', { name: who }) : t('{name}: {hp} of {max} HP', { name: who, hp: p.hp, max: START_HP })}>
+          <View style={{ width: `${(Math.max(0, p.hp) / START_HP) * 100}%`, height: '100%', borderRadius: 6, backgroundColor: HP_RED }} />
+        </View>
+      )}
       {/* Damage taken this turn, seen by both players. */}
       {!!p.hit && <Text style={[st.rowTitle, { color: HP_RED, minWidth: 30 }]}>−{p.hit}</Text>}
       {/* Only your own HP is shown as a number; the opponent's is just the bar. */}

@@ -96,6 +96,6 @@ function ComputerGame({ champion: style, shadow = false }: { champion?: Champion
   const act = (a: Action) => setState((s) => apply(s, ME, a));
   // The practice computer plays in the player's own colours; a champion in their own.
   const oppStyle = champion ? { ...champion.cardStyle, layout: profile.cardStyle.layout } : profile.cardStyle;
-  return <Board state={state} me={ME} act={act} oppStyle={oppStyle} oppLook={champion ? champion.look : lookOf(palette)} oppArt={NO_ART} onExit={() => router.back()} />;
+  return <Board state={state} me={ME} act={act} oppStyle={oppStyle} oppLook={champion ? champion.look : lookOf(palette)} oppArt={NO_ART} onExit={() => router.back()} oppGlitch={shadow} />;
 }
 
