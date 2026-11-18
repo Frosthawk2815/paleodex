@@ -36,7 +36,8 @@ export function CardRewards({ earned }: { earned: Earned[] }) {
   const collect = (key: string, stars: number) => {
     const card = cardFor(key, stars);
     if (!card || collected.has(key)) return;
-    update({ collection: [...new Set([...(profile.collection ?? []), key])], wishlist: (profile.wishlist ?? []).filter((k) => k !== key) });
+    // Collected; a 5-star card also comes off the wishlist (lower ones stay, to be upgraded).
+    update({ collection: [...new Set([...(profile.collection ?? []), key])], ...(stars >= 5 ? { wishlist: (profile.wishlist ?? []).filter((k) => k !== key) } : {}) });
     setCollected((s) => new Set(s).add(key));
     toast({ icon: <CardBackIcon size={34} />, title: t('Card acquired'), detail: `${cardName(card)} ${'★'.repeat(stars)}` });
   };

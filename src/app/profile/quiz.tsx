@@ -56,21 +56,22 @@ export default function QuizScreen() {
   // Bone War: a correct answer earns (or upgrades) a card of that level for the animal or
   // extinction it was about. It's shown in the reward pool when the round ends; animals not yet
   // collected can be collected there.
-  // In a wishlist test the card is collected at once (and comes off the wishlist).
+  // In a wishlist test the card is collected at once. It stays on the wishlist, to be upgraded,
+  // until it is a 5-star card.
   const award = (key: string | null, stars: number, earned: Earned[], collect = false): Earned[] => {
     if (!key || !cardFor(key, stars)) return earned;
     const better = (profile.cards[key] ?? 0) < stars;
     // Not yet collected: offered (in a solo quiz) or collected (in a wishlist test) even if its stars
     // aren't new.
     const fresh = !ownsCard(profile, key);
-    if (!better && !fresh) {
-      if (collect) update({ wishlist: (profile.wishlist ?? []).filter((k) => k !== key) });
-      return earned;
-    }
+    if (!better && !fresh) return earned;
     const upgrade = !!profile.cards[key] && ownsCard(profile, key);
+    const top = Math.max(stars, profile.cards[key] ?? 0) >= 5;
     update({
       cards: better ? { ...profile.cards, [key]: stars } : profile.cards,
-      ...(collect ? { collection: [...new Set([...(profile.collection ?? []), key])], wishlist: (profile.wishlist ?? []).filter((k) => k !== key) } : {}),
+      ...(collect
+        ? { collection: [...new Set([...(profile.collection ?? []), key])], ...(top ? { wishlist: (profile.wishlist ?? []).filter((k) => k !== key) } : {}) }
+        : {}),
     });
     return withEarned(earned, { key, stars: Math.max(stars, profile.cards[key] ?? 0), upgrade });
   };
@@ -159,7 +160,7 @@ export default function QuizScreen() {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
         <Text style={st.text}>
-          {t('Every animal and mass extinction on your card wishlist gets one question at the level you choose. Answer right to win its Bone War card with that many stars (or upgrade it).')}
+          {t('Every animal and mass extinction on your card wishlist gets one question at the level you choose. Answer right to win its Bone War card with that many stars, or upgrade it. Cards stay on your wishlist until they reach 5 stars, and you can stop whenever you like: your progress is saved.')}
         </Text>
         <Text style={st.muted}>{t('Get one wrong and you can try again with an easier question, one level lower, for a card with one star fewer. Each new card starts back at your chosen level.')}</Text>
         <Text style={st.rowTitle}>{t('Level')}</Text>
@@ -226,11 +227,22 @@ export default function QuizScreen() {
             : t('{quiz} · level {level}, {difficulty}', { quiz: categoryName(category, t), level, difficulty: t(DIFFICULTIES[level - 1]!.name) })}
         </Text>
         <CardRewards earned={stage.earned} />
+        {stage.mode === 'fav' && (
+          <Text style={[st.muted, { textAlign: 'center' }]}>
+            {t('Your progress is saved. Cards stay on your wishlist until you have them at 5 stars.')}
+          </Text>
+        )}
         <Pressable onPress={stage.mode === 'fav' ? startFav : start} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
           <Text style={st.buttonText}>{t('Play again')}</Text>
         </Pressable>
         <Pressable onPress={() => setStage({ kind: stage.mode === 'fav' ? 'favSetup' : 'setup' })} accessibilityRole="button" hitSlop={6}>
           <Text style={st.link}>{stage.mode === 'fav' ? t('Choose a different level') : t('Choose a different quiz')}</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => setStage({ kind: 'menu' })}
+          accessibilityRole="button"
+          style={({ pressed }) => [st.button, { alignSelf: 'stretch', backgroundColor: palette.card, borderWidth: 1, borderColor: palette.border }, pressed && st.pressed]}>
+          <Text style={[st.buttonText, { color: palette.text }]}>{t('That’s enough for now')}</Text>
         </Pressable>
       </ScrollView>
     );
@@ -266,7 +278,7 @@ export default function QuizScreen() {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
             <Text style={[st.rowSub, { color: palette.accent }]}>{t('Level {level} · for a {stars} card', { level: f.attempt, stars: '★'.repeat(f.attempt) })}</Text>
             <Pressable onPress={() => finish(f.score, f.earned)} accessibilityRole="button" hitSlop={6}>
-              <Text style={st.link}>{t('Finish')}</Text>
+              <Text style={st.link}>{t('That’s enough for now')}</Text>
             </Pressable>
           </View>
         }
