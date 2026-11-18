@@ -3,6 +3,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 
 import { BoneWarCard } from '@/components/bone-war-card';
 import { BoneWarRules } from '@/components/bone-war-rules';
+import { GlitchOverlay, GlitchText, useGlitch } from '@/components/glitch';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { DECK_SIZE, deckCards, MIN_DECK, ownedCards } from '@/lib/bone-war';
@@ -106,37 +107,39 @@ export default function BoneWarScreen() {
         );
       })}
       {heart && <Text style={[st.rowTitle, { color: palette.accent, textAlign: 'center' }]}>{t('♥ Heart of the Cards: every champion beaten')}</Text>}
-      {heart &&
-        (() => {
-          // The secret champion: you, in the dark.
-          const look = BLACK;
-          const cards = SHADOW_CARDS;
-          const beaten = profile.champions.includes(SHADOW);
-          return (
-            <Pressable
-              onPress={() => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'champion', style: SHADOW } })}
-              disabled={!ready}
-              accessibilityRole="button"
-              accessibilityState={{ disabled: !ready }}
-              style={({ pressed }) => [st.card, st.row, { backgroundColor: look.background, borderColor: cards.border, borderWidth: 2 }, pressed && st.pressed, !ready && { opacity: 0.5 }]}>
-              <View style={{ width: 14, height: 40, borderRadius: 4, backgroundColor: cards.back, borderWidth: 2, borderColor: cards.border }} />
-              <View style={st.rowText}>
-                <Text style={[st.rowTitle, { color: look.text }]}>
-                  {beaten ? '✓ ' : ''}
-                  {t('Shadow {name}', { name: profile.name || t('You') })}
-                </Text>
-                <Text style={[st.rowSub, { color: look.muted }]}>
-                  {t('Your dark reflection. It plays like the champion you struggled with most, and every one of its cards is 5 stars.')}
-                </Text>
-                {beaten && <Text style={[st.rowSub, { color: look.accent, fontWeight: '700' }]}>{t('Beaten: {title}', { title: t('Banisher of Shadows') })}</Text>}
-              </View>
-              <Text style={[st.chevron, { color: look.muted }]}>›</Text>
-            </Pressable>
-          );
-        })()}
-
+      {heart && <ShadowRow ready={ready} />}
 
       <BoneWarRules />
     </ScrollView>
+  );
+}
+
+// The secret champion, you in the dark, shown with a deliberate glitch.
+function ShadowRow({ ready }: { ready: boolean }) {
+  const st = useProfileStyles();
+  const t = useT();
+  const { profile, reduceMotion } = useProfile();
+  const burst = useGlitch(reduceMotion);
+  const look = BLACK;
+  const cards = SHADOW_CARDS;
+  const beaten = profile.champions.includes(SHADOW);
+  return (
+    <Pressable
+      onPress={() => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'champion', style: SHADOW } })}
+      disabled={!ready}
+      accessibilityRole="button"
+      accessibilityState={{ disabled: !ready }}
+      style={({ pressed }) => [st.card, st.row, { backgroundColor: look.background, borderColor: cards.border, borderWidth: 2, overflow: 'hidden' }, pressed && st.pressed, !ready && { opacity: 0.5 }]}>
+      <View style={{ width: 14, height: 40, borderRadius: 4, backgroundColor: cards.back, borderWidth: 2, borderColor: cards.border, transform: [{ translateX: burst ? -burst.dx : 0 }] }} />
+      <View style={st.rowText}>
+        <GlitchText text={`${beaten ? '✓ ' : ''}${t('Shadow {name}', { name: profile.name || t('You') })}`} style={st.rowTitle} color={look.text} burst={burst} />
+        <Text style={[st.rowSub, { color: look.muted }]}>
+          {t('Your dark reflection. It plays like the champion you struggled with most, and every one of its cards is 5 stars.')}
+        </Text>
+        {beaten && <Text style={[st.rowSub, { color: look.accent, fontWeight: '700' }]}>{t('Beaten: {title}', { title: t('Banisher of Shadows') })}</Text>}
+      </View>
+      <Text style={[st.chevron, { color: look.muted }]}>›</Text>
+      <GlitchOverlay burst={burst} tint="#22E5FF" />
+    </Pressable>
   );
 }
