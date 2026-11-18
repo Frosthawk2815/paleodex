@@ -5,6 +5,7 @@ import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 
 
 import { PlayerAvatar } from '@/components/player-avatar';
 import { AvatarImage, useProfileStyles } from '@/components/profile-ui';
+import { ShareCodeButton } from '@/components/share-code';
 import { categoryName, QuizPicker } from '@/components/quiz-picker';
 import { QuestionView } from '@/components/quiz-question';
 import { usePalette } from '@/hooks/use-palette';
@@ -376,10 +377,12 @@ export default function BattleScreen() {
         <Text style={[st.title, { fontSize: 44, letterSpacing: 8, fontVariant: ['tabular-nums'] }]} accessibilityLabel={t('Battle code {code}', { code: stage.code.split('').join(' ') })} selectable>
           {stage.code}
         </Text>
-        <Pressable onPress={copy} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-          <Text style={st.buttonText}>{copied ? t('Copied!') : t('📋 Copy code')}</Text>
+        <ShareCodeButton code={stage.code} game={t('Head to Head')} />
+        <Pressable onPress={copy} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch', backgroundColor: palette.card }, pressed && st.pressed]}>
+          <Text style={[st.buttonText, { color: palette.text }]}>{copied ? t('Copied!') : t('📋 Copy code')}</Text>
         </Pressable>
         <Text style={[st.text, { textAlign: 'center' }]}>{t('Send this code to the other player. They choose Join a game and type it in.')}</Text>
+        <Text style={[st.muted, { textAlign: 'center' }]}>{t('Keep Animal Almanac open (switching apps is fine) until they join.')}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }} accessibilityLiveRegion="polite">
           <ActivityIndicator color={palette.link} />
           <Text style={st.muted}>{stage.status === 'connecting' ? t('Setting up…') : stage.status === 'joining' ? t('Someone is joining…') : t('Waiting for someone to join…')}</Text>

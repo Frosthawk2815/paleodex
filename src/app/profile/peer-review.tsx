@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
 import { PlayerAvatar } from '@/components/player-avatar';
+import { ShareCodeButton } from '@/components/share-code';
 import { useProfileStyles } from '@/components/profile-ui';
 import { categoryName, QuizPicker } from '@/components/quiz-picker';
 import { QuestionView } from '@/components/quiz-question';
@@ -479,8 +480,9 @@ export default function PeerReviewScreen() {
             <Text style={[st.title, { fontSize: 40, letterSpacing: 8, fontVariant: ['tabular-nums'] }]} selectable accessibilityLabel={t('Battle code {code}', { code: code.split('').join(' ') })}>
               {code}
             </Text>
-            <Pressable onPress={copy} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
-              <Text style={st.buttonText}>{copied ? t('Copied!') : t('📋 Copy code')}</Text>
+            <ShareCodeButton code={code} game={t('Peer Review')} />
+            <Pressable onPress={copy} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch', backgroundColor: palette.card }, pressed && st.pressed]}>
+              <Text style={[st.buttonText, { color: palette.text }]}>{copied ? t('Copied!') : t('📋 Copy code')}</Text>
             </Pressable>
           </View>
         )}

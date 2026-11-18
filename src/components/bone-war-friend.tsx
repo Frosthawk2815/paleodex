@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
+import { ShareCodeButton } from '@/components/share-code';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { AI_LOOK, deckCards, extinctionPagesOf, type Look, lookOf } from '@/lib/bone-war';
@@ -184,15 +185,17 @@ export function BoneWarFriend() {
           <Text style={[st.title, { fontSize: 44, letterSpacing: 8 }]} selectable>
             {stage.code}
           </Text>
+          <ShareCodeButton code={stage.code} game={t('Bone War')} />
           <Pressable
             onPress={async () => {
               await Clipboard.setStringAsync(stage.code);
               setCopied(true);
             }}
             accessibilityRole="button"
-            style={({ pressed }) => [st.button, pressed && st.pressed]}>
-            <Text style={st.buttonText}>{copied ? t('Copied!') : t('📋 Copy code')}</Text>
+            style={({ pressed }) => [st.button, { alignSelf: 'stretch', backgroundColor: palette.card }, pressed && st.pressed]}>
+            <Text style={[st.buttonText, { color: palette.text }]}>{copied ? t('Copied!') : t('📋 Copy code')}</Text>
           </Pressable>
+          <Text style={[st.muted, { textAlign: 'center' }]}>{t('Keep Animal Almanac open (switching apps is fine) until they join.')}</Text>
           <Text style={st.muted}>{stage.status}</Text>
         </View>
       )}
