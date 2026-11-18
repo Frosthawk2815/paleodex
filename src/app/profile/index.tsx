@@ -4,6 +4,7 @@ import { Linking, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { AvatarImage, useProfileStyles, useShowOnGlobe } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
+import { ownedCards } from '@/lib/bone-war';
 import { birthDateOf, birthMaOf, useProfile } from '@/lib/profile';
 import { levelOf, tallyOf } from '@/lib/points';
 import { titleById, TITLES } from '@/lib/titles';
@@ -23,6 +24,7 @@ export default function ProfileScreen() {
 
   const rows: { label: string; detail?: string; href: Href }[] = [
     { label: t('Favourites'), detail: t('{n} saved', { n: profile.favourites.length }), href: '/profile/favourites' },
+    { label: t('Bone War cards'), detail: t('{n} cards · build decks and loadouts', { n: ownedCards(profile).length }), href: '/profile/bone-war-deck' },
     { label: t('Recently viewed'), detail: profile.recent.length === 1 ? t('Your last page') : t('Your last {n} pages', { n: profile.recent.length }), href: '/profile/recent' },
     { label: t('Quiz'), detail: t('Test what you know: dinosaurs, groups and periods, at five levels'), href: '/profile/quiz' },
     { label: t('Titles'), detail: t('{n} of {total} earned', { n: profile.titles.length, total: TITLES.length }) + (titleById(profile.title) ? ` · ${t('showing {title}', { title: titleById(profile.title)!.name })}` : ''), href: '/profile/titles' },

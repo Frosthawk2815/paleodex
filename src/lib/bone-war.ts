@@ -104,6 +104,13 @@ export function ownedKeys(profile: Profile): string[] {
 }
 export const ownsCard = (profile: Profile, key: string) => ownedKeys(profile).includes(key);
 
+// Whether a saved loadout is the deck (and card colours) in use now.
+export const loadoutInUse = (profile: Profile, l: { deck: string[]; cardStyle: { back: string; border: string } }) =>
+  l.deck.length === profile.deck.length &&
+  l.deck.every((k) => profile.deck.includes(k)) &&
+  l.cardStyle.back === profile.cardStyle.back &&
+  l.cardStyle.border === profile.cardStyle.border;
+
 // Every card the player owns.
 export function ownedCards(profile: Profile): Card[] {
   return ownedKeys(profile).flatMap((key) => {

@@ -6,7 +6,7 @@ import { BoneWarRules } from '@/components/bone-war-rules';
 import { GlitchOverlay, GlitchText, useGlitch } from '@/components/glitch';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
-import { DECK_SIZE, deckCards, MIN_DECK, ownedCards } from '@/lib/bone-war';
+import { DECK_SIZE, deckCards, loadoutInUse, MIN_DECK, ownedCards } from '@/lib/bone-war';
 import { BLACK, CHAMPIONS, HEART_OF_THE_CARDS, SHADOW, SHADOW_CARDS } from '@/lib/bone-war-champions';
 import { useProfile } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
@@ -74,9 +74,10 @@ export default function BoneWarScreen() {
         <Text style={st.muted}>{t('You need at least {min} cards in your deck to play. Earn more in the solo quiz, then add them to your deck.', { min: MIN_DECK })}</Text>
       )}
 
+      <LoadoutPicker />
+
       {row(t('Play the computer'), ready ? t('A practice battle against Animal Almanac') : t('Build a deck first'), () => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'ai' } }), !ready)}
       {row(t('Play a friend'), ready ? t('Two phones, connected with a battle code') : t('Build a deck first'), () => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'friend' } }), !ready)}
-      {row(t('Build your deck'), t('Choose up to {max} cards from your collection, and the colours of your cards', { max: DECK_SIZE }), () => router.push('/profile/bone-war-deck'))}
 
       <Text style={st.heading}>{t('Champions')}</Text>
       <Text style={st.muted}>
@@ -141,5 +142,58 @@ function ShadowRow({ ready }: { ready: boolean }) {
       <Text style={[st.chevron, { color: look.muted }]}>›</Text>
       <GlitchOverlay burst={burst} tint="#22E5FF" />
     </Pressable>
+  );
+}
+
+// Which saved loadout to play with. Decks are built and saved in Profile › Bone War cards.
+function LoadoutPicker() {
+  const st = useProfileStyles();
+  const t = useT();
+  const palette = usePalette();
+  const { profile, update } = useProfile();
+  const saved = (profile.loadouts ?? []).flatMap((l, i) => (l ? [{ l, i }] : []));
+  const unsaved = profile.deck.length > 0 && !saved.some(({ l }) => loadoutInUse(profile, l));
+  const owned = new Set(ownedCards(profile).map((c) => c.key));
+  const swatch = (back: string, border: string) => <View style={{ width: 18, height: 26, borderRadius: 4, backgroundColor: back, borderWidth: 3, borderColor: border }} />;
+  return (
+    <>
+      <Text style={st.heading}>{t('Your loadout')}</Text>
+      {saved.length === 0 && !unsaved && <Text style={st.muted}>{t('No decks yet. Build one and save it as a loadout in Profile › Bone War cards.')}</Text>}
+      {saved.map(({ l, i }) => {
+        const on = loadoutInUse(profile, l);
+        const size = l.deck.filter((k) => owned.has(k)).length;
+        return (
+          <Pressable
+            key={i}
+            onPress={() => update({ deck: l.deck, cardStyle: { ...l.cardStyle, layout: profile.cardStyle.layout } })}
+            accessibilityRole="radio"
+            accessibilityState={{ selected: on }}
+            style={({ pressed }) => [st.card, st.row, { borderWidth: on ? 2 : 1, borderColor: on ? palette.accent : palette.border }, pressed && st.pressed]}>
+            {swatch(l.cardStyle.back, l.cardStyle.border)}
+            <View style={st.rowText}>
+              <Text style={[st.rowTitle, on && { color: palette.accent }]}>{l.name || t('Loadout {n}', { n: i + 1 })}</Text>
+              <Text style={st.rowSub}>
+                {size === 1 ? t('1 card') : t('{n} cards', { n: size })}
+                {size < MIN_DECK ? ` · ${t('at least {min} to play', { min: MIN_DECK })}` : ''}
+              </Text>
+            </View>
+            {on && <Text style={[st.rowTitle, { color: palette.accent }]}>✓</Text>}
+          </Pressable>
+        );
+      })}
+      {unsaved && (
+        <View style={[st.card, st.row, { borderWidth: 2, borderColor: palette.accent }]}>
+          {swatch(profile.cardStyle.back, profile.cardStyle.border)}
+          <View style={st.rowText}>
+            <Text style={[st.rowTitle, { color: palette.accent }]}>{t('Current deck (not saved)')}</Text>
+            <Text style={st.rowSub}>{t('{n} cards', { n: deckCards(profile).length })}</Text>
+          </View>
+          <Text style={[st.rowTitle, { color: palette.accent }]}>✓</Text>
+        </View>
+      )}
+      <Pressable onPress={() => router.push('/profile/bone-war-deck')} accessibilityRole="button" hitSlop={6}>
+        <Text style={st.link}>{t('Build and manage decks ›')}</Text>
+      </Pressable>
+    </>
   );
 }

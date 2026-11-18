@@ -6,7 +6,7 @@ import { BoneWarCard, STAT_LAYOUTS, StatDisplay } from '@/components/bone-war-ca
 import { BoneWarRules } from '@/components/bone-war-rules';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
-import { type Card, cardKeyOf, cardName, DECK_SIZE, MIN_DECK, ownedCards } from '@/lib/bone-war';
+import { type Card, cardKeyOf, cardName, DECK_SIZE, loadoutInUse, MIN_DECK, ownedCards } from '@/lib/bone-war';
 import { LOADOUT_SLOTS, type Loadout, useProfile } from '@/lib/profile';
 import { SWATCHES } from '@/lib/theme';
 import { useT } from '@/lib/i18n';
@@ -223,7 +223,7 @@ function Loadouts() {
   const { profile, update } = useProfile();
   const slots: (Loadout | null)[] = Array.from({ length: LOADOUT_SLOTS }, (_, i) => profile.loadouts?.[i] ?? null);
   const setSlot = (i: number, l: Loadout | null) => update({ loadouts: slots.map((x, k) => (k === i ? l : x)) });
-  const same = (l: Loadout) => l.deck.length === profile.deck.length && l.deck.every((k) => profile.deck.includes(k)) && l.cardStyle.back === profile.cardStyle.back && l.cardStyle.border === profile.cardStyle.border;
+  const same = (l: Loadout) => loadoutInUse(profile, l);
 
   return (
     <>

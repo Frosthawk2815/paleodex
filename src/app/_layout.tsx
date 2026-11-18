@@ -36,7 +36,7 @@ function Screens() {
         <Stack.Screen name="profile/battle" options={{ title: t('Head to Head') }} />
         <Stack.Screen name="profile/peer-review" options={{ title: t('Peer Review') }} />
         <Stack.Screen name="profile/bone-war" options={{ title: t('Bone War') }} />
-        <Stack.Screen name="profile/bone-war-deck" options={{ title: t('Your Bone War deck') }} />
+        <Stack.Screen name="profile/bone-war-deck" options={{ title: t('Bone War cards') }} />
         <Stack.Screen name="profile/bone-war-game" options={{ title: t('Bone War'), headerShown: false }} />
         <Stack.Screen name="profile/settings" options={{ title: t('Settings') }} />
         <Stack.Screen name="profile/edit" options={{ title: t('Edit profile') }} />
