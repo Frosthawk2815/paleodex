@@ -5,6 +5,7 @@ import { Board } from '@/components/bone-war-board';
 import { BoneWarFriend } from '@/components/bone-war-friend';
 import { SPECIES } from '@/data/life';
 import { deckCards, lookOf } from '@/lib/bone-war';
+import { CHAMPIONS, championAnswers, championDeck, championMove, type ChampionStyle } from '@/lib/bone-war-champions';
 import { usePalette } from '@/hooks/use-palette';
 import { type Action, aiAnswers, aiDeck, aiMove, apply, type GameState, newGame } from '@/lib/bone-war-game';
 import { EXTINCTIONS } from '@/lib/extinctions';
@@ -16,23 +17,32 @@ const ME = 0 as const;
 const AI = 1 as const;
 
 export default function BoneWarGameScreen() {
-  const { mode } = useLocalSearchParams<{ mode?: string }>();
+  const { mode, style } = useLocalSearchParams<{ mode?: string; style?: string }>();
+  const { loaded } = useProfile();
+  // The deck comes from the saved profile, so wait for it.
+  if (!loaded) return null;
   if (mode === 'friend') return <BoneWarFriend />;
-  return <ComputerGame />;
+  const champion = mode === 'champion' ? CHAMPIONS.find((c) => c.style === style) : undefined;
+  return <ComputerGame key={champion?.style ?? 'ai'} champion={champion?.style} />;
 }
 
-// A game against the computer.
-function ComputerGame() {
-  const { profile } = useProfile();
+// A game against the computer: the practice opponent, or a champion.
+function ComputerGame({ champion: style }: { champion?: ChampionStyle }) {
+  const { profile, update } = useProfile();
+  const champion = CHAMPIONS.find((c) => c.style === style);
   const palette = usePalette();
   const t = useT();
   const deck = useMemo(() => deckCards(profile), [profile]);
   const [state, setState] = useState<GameState>(() => {
     const stars = deck.length ? deck.reduce((n, c) => n + c.stars, 0) / deck.length : 2;
-    const pool = [...SPECIES.filter((s) => s.status === 'full').map((s) => `species:${s.id}`), ...EXTINCTIONS.map((e) => `extinction:${e.id}`)];
+    const species = SPECIES.filter((s) => s.status === 'full').map((s) => s.id);
+    const extinctions = EXTINCTIONS.map((e) => `extinction:${e.id}`);
+    const pool = [...species.map((id) => `species:${id}`), ...extinctions];
     return newGame([
       { name: profile.name || t('You'), cards: deck.map((c) => ({ key: c.key, stars: c.stars })) },
-      { name: t('Animal Almanac'), cards: aiDeck(Math.max(deck.length, 20), stars, pool) },
+      champion
+        ? { name: t(champion.name), cards: championDeck(champion.style, stars, species, [...extinctions, 'species:homo-sapiens']) }
+        : { name: t('Animal Almanac'), cards: aiDeck(Math.max(deck.length, 20), stars, pool) },
     ]);
   });
 
@@ -41,23 +51,31 @@ function ComputerGame() {
     if (state.over) return;
     const p = state.pending;
     if (p && p.answerer === AI) {
-      const id = setTimeout(() => setState((s) => apply(s, AI, { type: 'answer', correct: aiAnswers(p.level) })), 1400);
+      const id = setTimeout(() => setState((s) => apply(s, AI, { type: 'answer', correct: champion ? championAnswers(p.level) : aiAnswers(p.level) })), 1400);
       return () => clearTimeout(id);
     }
     if (!p && state.turn === AI) {
       const id = setTimeout(() => {
         setState((s) => {
-          const a = aiMove(s, AI);
+          const a = champion ? championMove(s, AI, champion.style) : aiMove(s, AI);
           const next = apply(s, AI, a);
           return next === s ? apply(s, AI, { type: 'end' }) : next;
         });
       }, 900);
       return () => clearTimeout(id);
     }
-  }, [state]);
+  }, [state, champion]);
+
+  // Beating a champion is remembered, which earns its title.
+  const won = state.over && state.winner === ME;
+  const { champions } = profile;
+  useEffect(() => {
+    if (won && champion && !champions.includes(champion.style)) update({ champions: [...champions, champion.style] });
+  }, [won, champion, champions, update]);
 
   const act = (a: Action) => setState((s) => apply(s, ME, a));
-  // The computer plays in the player's own colours.
-  return <Board state={state} me={ME} act={act} oppStyle={profile.cardStyle} oppLook={lookOf(palette)} oppArt={NO_ART} onExit={() => router.back()} />;
+  // The practice computer plays in the player's own colours; a champion in their own.
+  const oppStyle = champion ? { ...champion.cardStyle, layout: profile.cardStyle.layout } : profile.cardStyle;
+  return <Board state={state} me={ME} act={act} oppStyle={oppStyle} oppLook={champion ? champion.look : lookOf(palette)} oppArt={NO_ART} onExit={() => router.back()} />;
 }
 

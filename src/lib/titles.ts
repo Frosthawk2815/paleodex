@@ -2,6 +2,7 @@
 // checked against the pages they have ever opened, their favourites and their own photos.
 
 import { EVENTS } from '@/data/events';
+import { CHAMPIONS, HEART_OF_THE_CARDS } from '@/lib/bone-war-champions';
 import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
 import { PERIODS } from '@/data/periods';
 import { isModernSpecies } from '@/lib/era';
@@ -17,6 +18,8 @@ export type TitleContext = {
   points: number;
   // Museums, zoos and fossil sites checked in at in person.
   places: Set<string>;
+  // Bone War champions beaten.
+  champions: Set<string>;
 };
 
 export type Title = {
@@ -29,6 +32,8 @@ export type Title = {
   level?: number;
   // Titles earned by visiting real places.
   inPerson?: boolean;
+  // Titles earned by beating Bone War champions.
+  boneWar?: boolean;
   // Fully secret: no hint at all while locked, and not listed until earned. `reveal` says what
   // earned it, shown once it is earned.
   hidden?: boolean;
@@ -141,12 +146,27 @@ export const TITLES: Title[] = [
       return formations.some((id) => seen(c, 'event', id)) || species.some((id) => seen(c, 'species', id));
     },
   },
+  ...CHAMPIONS.map((ch) => ({
+    id: ch.title,
+    name: ch.titleName,
+    hint: `Beat ${ch.name} in a Bone War champion battle.`,
+    boneWar: true,
+    earned: (c: TitleContext) => c.champions.has(ch.style),
+  })),
+  {
+    id: HEART_OF_THE_CARDS,
+    name: 'Heart of the Cards',
+    hint: 'Beat all five Bone War champions.',
+    boneWar: true,
+    earned: (c) => CHAMPIONS.every((ch) => c.champions.has(ch.style)),
+  },
   {
     id: 'living-legend',
     name: 'Living Legend',
-    hint: 'Earn every other title (apart from those for visiting places).',
-    // Titles for visiting real places are left out, so it can be earned from anywhere.
-    earned: (c) => TITLES.every((t) => t.id === 'living-legend' || t.inPerson || t.earned(c)),
+    hint: 'Earn every other title (apart from those for visiting places and Bone War champions).',
+    // Titles for visiting real places are left out, so it can be earned from anywhere, and so are
+    // the Bone War champions' titles, so it stays a title for exploring.
+    earned: (c) => TITLES.every((t) => t.id === 'living-legend' || t.inPerson || t.boneWar || t.earned(c)),
   },
   {
     id: 'animal-i-have-become',

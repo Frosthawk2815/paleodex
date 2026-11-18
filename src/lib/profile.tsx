@@ -46,6 +46,8 @@ export type Profile = {
   deck: string[];
   // layout: how the four stats are drawn on cards.
   cardStyle: { back: string; border: string; layout?: 'squares' | 'rings' | 'cross' | 'bars' | 'numbers' | 'icons' };
+  // Bone War champions beaten (their styles, from bone-war-champions.ts).
+  champions: string[];
   settings: Settings;
 };
 // Something another screen (e.g. the profile) asks the main screen to show when it returns to it.
@@ -71,6 +73,7 @@ const DEFAULT: Profile = {
   cards: {},
   deck: [],
   cardStyle: { back: '#14284B', border: '#C9A227' },
+  champions: [],
   settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed', units: 'metric', language: 'system' },
 };
 

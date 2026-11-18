@@ -6,6 +6,7 @@ import { BoneWarRules } from '@/components/bone-war-rules';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { DECK_SIZE, deckCards, MIN_DECK, ownedCards } from '@/lib/bone-war';
+import { CHAMPIONS } from '@/lib/bone-war-champions';
 import { useProfile } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
 
@@ -74,6 +75,37 @@ export default function BoneWarScreen() {
       {row(t('Play the computer'), ready ? t('A practice battle against Animal Almanac') : t('Build a deck first'), () => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'ai' } }), !ready)}
       {row(t('Play a friend'), ready ? t('Two phones, connected with a battle code') : t('Build a deck first'), () => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'friend' } }), !ready)}
       {row(t('Build your deck'), t('Choose up to {max} cards from your Favourites, and the colours of your cards', { max: DECK_SIZE }), () => router.push('/profile/bone-war-deck'))}
+
+      <Text style={st.heading}>{t('Champions')}</Text>
+      <Text style={st.muted}>
+        {t('Hardcore battles against the computer playing one style with a deck built for it. Beat a champion to earn their title, and all five to become Heart of the Cards.')}
+      </Text>
+      {CHAMPIONS.map((c) => {
+        const beaten = profile.champions.includes(c.style);
+        return (
+          <Pressable
+            key={c.style}
+            onPress={() => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'champion', style: c.style } })}
+            disabled={!ready}
+            accessibilityRole="button"
+            accessibilityState={{ disabled: !ready }}
+            accessibilityLabel={`${t(c.name)}. ${t(c.blurb)} ${beaten ? t('Beaten: {title}', { title: t(c.titleName) }) : t('Title: {title}', { title: t(c.titleName) })}`}
+            style={({ pressed }) => [st.card, st.row, { backgroundColor: c.look.background, borderColor: c.cardStyle.border, borderWidth: 2 }, pressed && st.pressed, !ready && { opacity: 0.5 }]}>
+            <View style={{ width: 14, height: 40, borderRadius: 4, backgroundColor: c.cardStyle.back, borderWidth: 2, borderColor: c.cardStyle.border }} />
+            <View style={st.rowText}>
+              <Text style={[st.rowTitle, { color: c.look.text }]}>
+                {beaten ? '✓ ' : ''}
+                {t(c.name)}
+              </Text>
+              <Text style={[st.rowSub, { color: c.look.muted }]}>{t(c.blurb)}</Text>
+              <Text style={[st.rowSub, { color: c.look.accent, fontWeight: '700' }]}>{beaten ? t('Beaten: {title}', { title: t(c.titleName) }) : t('Title: {title}', { title: t(c.titleName) })}</Text>
+            </View>
+            <Text style={[st.chevron, { color: c.look.muted }]}>›</Text>
+          </Pressable>
+        );
+      })}
+      {CHAMPIONS.every((c) => profile.champions.includes(c.style)) && <Text style={[st.rowTitle, { color: palette.accent, textAlign: 'center' }]}>{t('♥ Heart of the Cards: every champion beaten')}</Text>}
+
 
       <BoneWarRules />
     </ScrollView>
