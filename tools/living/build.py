@@ -1,6 +1,7 @@
 """Builds Animal Almanac data sets for living animals from the tables in this folder.
 
-Each table module (e.g. primates.py) defines CLADES, UPGRADES and GENERA. For every genus it
+Each table module (e.g. primates.py) defines CLADES, UPGRADES and GENERA (and optionally
+CLADE_PARENTS, groups from other sets moved under a new parent). For every genus it
 writes one species entry (the genus's best-known species, mentioning the others) into
 src/data/sets/living-<name>.ts, and its range today into tools/globe-data/ranges-spec.json.
 Then run tools/globe-data/build_ranges.py to rebuild the range outlines.
@@ -111,7 +112,7 @@ def main():
         '',
         "import type { DataSet } from '@/data/sets/types';",
         '',
-        f'export const {const}: DataSet = {ts({"clades": mod.CLADES, "upgrades": mod.UPGRADES, "species": species})};',
+        f'export const {const}: DataSet = {ts({"clades": mod.CLADES, **({"cladeParents": mod.CLADE_PARENTS} if getattr(mod, "CLADE_PARENTS", None) else {}), "upgrades": mod.UPGRADES, "species": species})};',
         '',
     ]
     open(f'src/data/sets/living-{name}.ts', 'w').write('\n'.join(out))

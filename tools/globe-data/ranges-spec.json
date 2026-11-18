@@ -57919,5 +57919,633 @@
         ]
       }
     ]
+  },
+  "manis-pentadactyla": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              97,
+              18,
+              122,
+              32
+            ]
+          },
+          {
+            "countries": [
+              "Taiwan",
+              "Nepal",
+              "Bhutan"
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              85,
+              25,
+              97,
+              29.5
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              92,
+              20,
+              101,
+              28.5
+            ]
+          },
+          {
+            "country": "Vietnam",
+            "bbox": [
+              102,
+              18,
+              108,
+              23.5
+            ]
+          },
+          {
+            "country": "Laos",
+            "bbox": [
+              100,
+              17.5,
+              107.5,
+              22.5
+            ]
+          },
+          {
+            "country": "Thailand",
+            "bbox": [
+              97.5,
+              17,
+              101,
+              20.5
+            ]
+          },
+          {
+            "country": "China",
+            "bbox": [
+              103,
+              22,
+              122,
+              34
+            ]
+          }
+        ]
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "China",
+            "bbox": [
+              97,
+              18,
+              122,
+              32
+            ]
+          },
+          {
+            "countries": [
+              "Taiwan",
+              "Nepal",
+              "Bhutan"
+            ]
+          },
+          {
+            "country": "India",
+            "bbox": [
+              85,
+              25,
+              97,
+              29.5
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              92,
+              20,
+              101,
+              28.5
+            ]
+          },
+          {
+            "country": "Vietnam",
+            "bbox": [
+              102,
+              18,
+              108,
+              23.5
+            ]
+          },
+          {
+            "country": "Laos",
+            "bbox": [
+              100,
+              17.5,
+              107.5,
+              22.5
+            ]
+          },
+          {
+            "country": "Thailand",
+            "bbox": [
+              97.5,
+              17,
+              101,
+              20.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "manis-javanica": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Cambodia",
+              "Malaysia",
+              "Brunei",
+              "Singapore"
+            ]
+          },
+          {
+            "country": "Thailand",
+            "bbox": [
+              97,
+              5.5,
+              106,
+              19
+            ]
+          },
+          {
+            "country": "Vietnam",
+            "bbox": [
+              104,
+              8.5,
+              109.5,
+              18
+            ]
+          },
+          {
+            "country": "Laos",
+            "bbox": [
+              100,
+              13.5,
+              107.7,
+              18.5
+            ]
+          },
+          {
+            "country": "Myanmar",
+            "bbox": [
+              97.5,
+              10,
+              100,
+              17
+            ]
+          },
+          {
+            "country": "Indonesia",
+            "bbox": [
+              95,
+              -8.8,
+              119,
+              6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "manis-culionensis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "Philippines",
+            "bbox": [
+              117,
+              8,
+              120.5,
+              12.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "manis-crassicaudata": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "country": "India",
+            "bbox": [
+              68,
+              8,
+              92,
+              30
+            ]
+          },
+          {
+            "countries": [
+              "Sri Lanka"
+            ]
+          },
+          {
+            "country": "Pakistan",
+            "bbox": [
+              66,
+              24,
+              75,
+              34
+            ]
+          },
+          {
+            "country": "Bangladesh",
+            "bbox": [
+              88,
+              21,
+              92.7,
+              26.6
+            ]
+          },
+          {
+            "country": "Nepal",
+            "bbox": [
+              80,
+              26.3,
+              88.2,
+              28
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "smutsia-gigantea": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Sierra Leone",
+              "Liberia",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Cameroon",
+              "Eq. Guinea",
+              "Gabon",
+              "Congo",
+              "Uganda"
+            ]
+          },
+          {
+            "country": "Guinea",
+            "bbox": [
+              -15,
+              7.2,
+              -8,
+              10.5
+            ]
+          },
+          {
+            "country": "Nigeria",
+            "bbox": [
+              2.7,
+              4,
+              9.5,
+              8
+            ]
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              12,
+              -5,
+              31,
+              5
+            ]
+          },
+          {
+            "country": "Central African Rep.",
+            "bbox": [
+              15,
+              2,
+              27,
+              6
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "smutsia-temminckii": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Botswana",
+              "Zimbabwe",
+              "Zambia",
+              "Malawi",
+              "Mozambique",
+              "Tanzania",
+              "Kenya",
+              "Uganda",
+              "Angola",
+              "S. Sudan"
+            ]
+          },
+          {
+            "country": "South Africa",
+            "bbox": [
+              22,
+              -29,
+              32.9,
+              -22
+            ]
+          },
+          {
+            "country": "Namibia",
+            "bbox": [
+              13,
+              -24,
+              25.5,
+              -17
+            ]
+          },
+          {
+            "country": "Chad",
+            "bbox": [
+              15,
+              8,
+              24,
+              12
+            ]
+          },
+          {
+            "country": "Central African Rep.",
+            "bbox": [
+              15,
+              6,
+              27,
+              11
+            ]
+          },
+          {
+            "country": "Sudan",
+            "bbox": [
+              22,
+              9,
+              34,
+              13
+            ]
+          },
+          {
+            "country": "Ethiopia",
+            "bbox": [
+              33,
+              4,
+              38,
+              11
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "phataginus-tricuspis": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Sierra Leone",
+              "Liberia",
+              "Côte d'Ivoire",
+              "Ghana",
+              "Cameroon",
+              "Eq. Guinea",
+              "Gabon",
+              "Congo",
+              "Togo",
+              "Benin",
+              "Uganda"
+            ]
+          },
+          {
+            "country": "Guinea",
+            "bbox": [
+              -15,
+              7.2,
+              -8,
+              10.5
+            ]
+          },
+          {
+            "country": "Nigeria",
+            "bbox": [
+              3,
+              4,
+              10,
+              8
+            ]
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              12,
+              -6,
+              31,
+              5
+            ]
+          },
+          {
+            "country": "Central African Rep.",
+            "bbox": [
+              15,
+              2,
+              27,
+              6
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              11.7,
+              -9,
+              16,
+              -4.5
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "phataginus-tetradactyla": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "countries": [
+              "Gabon",
+              "Eq. Guinea",
+              "Congo",
+              "Liberia"
+            ]
+          },
+          {
+            "country": "Cameroon",
+            "bbox": [
+              8.5,
+              2,
+              16,
+              6
+            ]
+          },
+          {
+            "country": "Dem. Rep. Congo",
+            "bbox": [
+              12,
+              -5,
+              30,
+              4
+            ]
+          },
+          {
+            "country": "Central African Rep.",
+            "bbox": [
+              15,
+              2,
+              24,
+              5
+            ]
+          },
+          {
+            "country": "Sierra Leone",
+            "bbox": [
+              -13.3,
+              7,
+              -10.3,
+              9.5
+            ]
+          },
+          {
+            "country": "Côte d'Ivoire",
+            "bbox": [
+              -8.6,
+              4.3,
+              -2.5,
+              7.5
+            ]
+          },
+          {
+            "country": "Ghana",
+            "bbox": [
+              -3.3,
+              4.7,
+              0,
+              7
+            ]
+          },
+          {
+            "country": "Nigeria",
+            "bbox": [
+              5,
+              4,
+              9.5,
+              6.8
+            ]
+          },
+          {
+            "country": "Angola",
+            "bbox": [
+              11.7,
+              -6,
+              13.2,
+              -4.4
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

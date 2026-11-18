@@ -104,6 +104,16 @@ const APEX = new Set([
 
 // Animals set by hand: [attack, defence, speed, swim].
 const OVERRIDES: Record<string, Row> = {
+  // Pangolins: armoured in scales and curling into a ball, but toothless and slow; the tree
+  // pangolins are nimble climbers, the ground pangolins dig through termite mounds.
+  'manis-pentadactyla': [0, 3, 1, 0],
+  'manis-javanica': [0, 3, 1, 0],
+  'manis-culionensis': [0, 3, 1, 0],
+  'manis-crassicaudata': [1, 3, 0, 0],
+  'smutsia-gigantea': [1, 3, 0, 0],
+  'smutsia-temminckii': [1, 3, 0, 0],
+  'phataginus-tricuspis': [0, 2, 2, 0],
+  'phataginus-tetradactyla': [0, 2, 2, 0],
   'panthera-leo': [3, 1, 2, 0],
   'panthera-pardus': [2, 1, 3, 0],
   'panthera-tigris': [3, 1, 1, 1],
