@@ -2,7 +2,7 @@
 // checked against the pages they have ever opened, their favourites and their own photos.
 
 import { EVENTS } from '@/data/events';
-import { CHAMPIONS, HEART_OF_THE_CARDS } from '@/lib/bone-war-champions';
+import { CHAMPIONS, HEART_OF_THE_CARDS, SHADOW } from '@/lib/bone-war-champions';
 import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
 import { PERIODS } from '@/data/periods';
 import { isModernSpecies } from '@/lib/era';
@@ -159,6 +159,15 @@ export const TITLES: Title[] = [
     hint: 'Beat all five Bone War champions.',
     boneWar: true,
     earned: (c) => CHAMPIONS.every((ch) => c.champions.has(ch.style)),
+  },
+  {
+    id: 'banisher-of-shadows',
+    name: 'Banisher of Shadows',
+    hint: 'A secret.',
+    hidden: true,
+    boneWar: true,
+    reveal: 'You beat your own shadow, the secret Bone War champion.',
+    earned: (c) => c.champions.has(SHADOW),
   },
   {
     id: 'living-legend',

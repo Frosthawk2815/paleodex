@@ -5,8 +5,8 @@ import { BoneWarCard } from '@/components/bone-war-card';
 import { BoneWarRules } from '@/components/bone-war-rules';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
-import { DECK_SIZE, deckCards, MIN_DECK, ownedCards } from '@/lib/bone-war';
-import { CHAMPIONS } from '@/lib/bone-war-champions';
+import { DECK_SIZE, deckCards, lookOf, MIN_DECK, ownedCards } from '@/lib/bone-war';
+import { CHAMPIONS, HEART_OF_THE_CARDS, invertCardStyle, invertLook, SHADOW } from '@/lib/bone-war-champions';
 import { useProfile } from '@/lib/profile';
 import { useT } from '@/lib/i18n';
 
@@ -20,6 +20,7 @@ export default function BoneWarScreen() {
   const deck = deckCards(profile);
   const sample = owned.slice(0, 3);
   const ready = deck.length >= MIN_DECK;
+  const heart = profile.titles.includes(HEART_OF_THE_CARDS) || CHAMPIONS.every((c) => profile.champions.includes(c.style));
 
   const row = (title: string, sub: string, onPress: () => void, disabled = false) => (
     <Pressable
@@ -104,7 +105,35 @@ export default function BoneWarScreen() {
           </Pressable>
         );
       })}
-      {CHAMPIONS.every((c) => profile.champions.includes(c.style)) && <Text style={[st.rowTitle, { color: palette.accent, textAlign: 'center' }]}>{t('♥ Heart of the Cards: every champion beaten')}</Text>}
+      {heart && <Text style={[st.rowTitle, { color: palette.accent, textAlign: 'center' }]}>{t('♥ Heart of the Cards: every champion beaten')}</Text>}
+      {heart &&
+        (() => {
+          // The secret champion: you, in the dark.
+          const look = invertLook(lookOf(palette));
+          const cards = invertCardStyle(profile.cardStyle);
+          const beaten = profile.champions.includes(SHADOW);
+          return (
+            <Pressable
+              onPress={() => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'champion', style: SHADOW } })}
+              disabled={!ready}
+              accessibilityRole="button"
+              accessibilityState={{ disabled: !ready }}
+              style={({ pressed }) => [st.card, st.row, { backgroundColor: look.background, borderColor: cards.border, borderWidth: 2 }, pressed && st.pressed, !ready && { opacity: 0.5 }]}>
+              <View style={{ width: 14, height: 40, borderRadius: 4, backgroundColor: cards.back, borderWidth: 2, borderColor: cards.border }} />
+              <View style={st.rowText}>
+                <Text style={[st.rowTitle, { color: look.text }]}>
+                  {beaten ? '✓ ' : ''}
+                  {t('Shadow {name}', { name: profile.name || t('You') })}
+                </Text>
+                <Text style={[st.rowSub, { color: look.muted }]}>
+                  {t('Your dark reflection. It plays like the champion you struggled with most, and every one of its cards is 5 stars.')}
+                </Text>
+                {beaten && <Text style={[st.rowSub, { color: look.accent, fontWeight: '700' }]}>{t('Beaten: {title}', { title: t('Banisher of Shadows') })}</Text>}
+              </View>
+              <Text style={[st.chevron, { color: look.muted }]}>›</Text>
+            </Pressable>
+          );
+        })()}
 
 
       <BoneWarRules />

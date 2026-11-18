@@ -1,11 +1,11 @@
 import { router, useLocalSearchParams } from 'expo-router';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Board } from '@/components/bone-war-board';
 import { BoneWarFriend } from '@/components/bone-war-friend';
 import { SPECIES } from '@/data/life';
 import { deckCards, lookOf } from '@/lib/bone-war';
-import { CHAMPIONS, championAnswers, championDeck, championMove, type ChampionStyle } from '@/lib/bone-war-champions';
+import { CHAMPIONS, championAnswers, championDeck, championMove, type ChampionStyle, invertCardStyle, invertLook, SHADOW, shadowStyle } from '@/lib/bone-war-champions';
 import { usePalette } from '@/hooks/use-palette';
 import { type Action, aiAnswers, aiDeck, aiMove, apply, type GameState, newGame } from '@/lib/bone-war-game';
 import { EXTINCTIONS } from '@/lib/extinctions';
@@ -22,16 +22,27 @@ export default function BoneWarGameScreen() {
   // The deck comes from the saved profile, so wait for it.
   if (!loaded) return null;
   if (mode === 'friend') return <BoneWarFriend />;
+  if (mode === 'champion' && style === SHADOW) return <ComputerGame key={SHADOW} shadow />;
   const champion = mode === 'champion' ? CHAMPIONS.find((c) => c.style === style) : undefined;
   return <ComputerGame key={champion?.style ?? 'ai'} champion={champion?.style} />;
 }
 
-// A game against the computer: the practice opponent, or a champion.
-function ComputerGame({ champion: style }: { champion?: ChampionStyle }) {
+// A game against the computer: the practice opponent, a champion, or the secret shadow champion.
+function ComputerGame({ champion: style, shadow = false }: { champion?: ChampionStyle; shadow?: boolean }) {
   const { profile, update } = useProfile();
-  const champion = CHAMPIONS.find((c) => c.style === style);
   const palette = usePalette();
   const t = useT();
+  // The shadow plays the style of the champion the player lost to most.
+  const [shadowOf] = useState(() => shadowStyle(profile.championLosses ?? {}));
+  const base = CHAMPIONS.find((c) => c.style === (shadow ? shadowOf : style));
+  const champion = useMemo(
+    () =>
+      base && shadow
+        ? { ...base, name: profile.name || t('You'), look: invertLook(lookOf(palette)), cardStyle: invertCardStyle(profile.cardStyle) }
+        : base,
+    [base, shadow, profile.name, profile.cardStyle, palette, t],
+  );
+  const key = shadow ? SHADOW : champion?.style;
   const deck = useMemo(() => deckCards(profile), [profile]);
   const [state, setState] = useState<GameState>(() => {
     const stars = deck.length ? deck.reduce((n, c) => n + c.stars, 0) / deck.length : 2;
@@ -41,7 +52,7 @@ function ComputerGame({ champion: style }: { champion?: ChampionStyle }) {
     return newGame([
       { name: profile.name || t('You'), cards: deck.map((c) => ({ key: c.key, stars: c.stars })) },
       champion
-        ? { name: t(champion.name), cards: championDeck(champion.style, stars, species, [...extinctions, 'species:homo-sapiens']) }
+        ? { name: shadow ? champion.name : t(champion.name), cards: championDeck(champion.style, stars, species, [...extinctions, 'species:homo-sapiens'], Math.random, shadow ? 5 : undefined) }
         : { name: t('Animal Almanac'), cards: aiDeck(Math.max(deck.length, 20), stars, pool) },
     ]);
   });
@@ -66,12 +77,21 @@ function ComputerGame({ champion: style }: { champion?: ChampionStyle }) {
     }
   }, [state, champion]);
 
-  // Beating a champion is remembered, which earns its title.
+  // Beating a champion is remembered, which earns its title; losses are counted, to choose the
+  // shadow champion's style.
   const won = state.over && state.winner === ME;
-  const { champions } = profile;
+  const lost = state.over && state.winner === AI;
+  const { champions, championLosses } = profile;
+  const counted = useRef(false);
   useEffect(() => {
-    if (won && champion && !champions.includes(champion.style)) update({ champions: [...champions, champion.style] });
-  }, [won, champion, champions, update]);
+    if (!key) return;
+    if (won && !champions.includes(key)) update({ champions: [...champions, key] });
+    if (lost && !counted.current) {
+      counted.current = true;
+      const losses = championLosses ?? {};
+      update({ championLosses: { ...losses, [key]: (losses[key] ?? 0) + 1 } });
+    }
+  }, [won, lost, key, champions, championLosses, update]);
 
   const act = (a: Action) => setState((s) => apply(s, ME, a));
   // The practice computer plays in the player's own colours; a champion in their own.

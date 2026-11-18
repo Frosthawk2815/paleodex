@@ -72,10 +72,18 @@ const shuffle = <T,>(xs: T[], rnd: () => number): T[] => {
 // A champion's deck: the best cards for its style from a random selection of species (so each
 // match is a little different), at about the player's average stars (one
 // above for the less forceful styles), and two extinction cards.
-export function championDeck(style: ChampionStyle, playerStars: number, speciesIds: string[], extinctionKeys: string[], rnd: () => number = Math.random): { key: string; stars: number }[] {
+export function championDeck(
+  style: ChampionStyle,
+  playerStars: number,
+  speciesIds: string[],
+  extinctionKeys: string[],
+  rnd: () => number = Math.random,
+  // Every card at this many stars instead (the shadow champion's are all 5).
+  fixedStars?: number,
+): { key: string; stars: number }[] {
   // The two pressure styles are strong enough without harder cards.
   const bonus = style === 'aggressive' || style === 'speedy' ? 0 : 1;
-  const stars = Math.max(3, Math.min(5, Math.round(playerStars + bonus)));
+  const stars = fixedStars ?? Math.max(3, Math.min(5, Math.round(playerStars + bonus)));
   const sample = shuffle(speciesIds, rnd).slice(0, 600);
   // Animals a mass extinction would wipe out are slightly less wanted.
   const ranked = sample
@@ -183,3 +191,30 @@ export function championMove(s: GameState, who: 0 | 1, style: ChampionStyle, rnd
 // How often a champion answers right at each level: a little better than the practice computer.
 const CHAMPION_RIGHT = [0.9, 0.8, 0.67, 0.53, 0.41];
 export const championAnswers = (level: number, rnd: () => number = Math.random) => rnd() < CHAMPION_RIGHT[level - 1]!;
+
+// The secret champion, unlocked by Heart of the Cards: a dark version of the player, with their
+// name, their theme inverted, the deck style of the champion they lost to most, and 5-star cards.
+export const SHADOW = 'shadow';
+// Losses so far against each champion; with no losses (or a tie), the harder champion is chosen.
+const HARDEST_FIRST: ChampionStyle[] = ['speedy', 'aggressive', 'defensive', 'mixed', 'swimmer'];
+export function shadowStyle(losses: Record<string, number>): ChampionStyle {
+  return [...HARDEST_FIRST].sort((a, b) => (losses[b] ?? 0) - (losses[a] ?? 0))[0]!;
+}
+
+const invertHex = (hex: string) => {
+  const h = hex.replace('#', '');
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h.slice(0, 6);
+  const n = parseInt(full, 16);
+  if (Number.isNaN(n)) return hex;
+  return `#${(0xffffff - n).toString(16).padStart(6, '0')}`;
+};
+export const invertLook = (l: Look): Look => ({
+  background: invertHex(l.background),
+  card: invertHex(l.card),
+  text: invertHex(l.text),
+  muted: invertHex(l.muted),
+  accent: invertHex(l.accent),
+  border: invertHex(l.border),
+  track: invertHex(l.track),
+});
+export const invertCardStyle = (c: { back: string; border: string }) => ({ back: invertHex(c.back), border: invertHex(c.border) });

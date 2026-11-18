@@ -48,6 +48,8 @@ export type Profile = {
   cardStyle: { back: string; border: string; layout?: 'squares' | 'rings' | 'cross' | 'bars' | 'numbers' | 'icons' };
   // Bone War champions beaten (their styles, from bone-war-champions.ts).
   champions: string[];
+  // Losses against each champion, to find the one the player struggled with most.
+  championLosses: Record<string, number>;
   settings: Settings;
 };
 // Something another screen (e.g. the profile) asks the main screen to show when it returns to it.
@@ -74,6 +76,7 @@ const DEFAULT: Profile = {
   deck: [],
   cardStyle: { back: '#14284B', border: '#C9A227' },
   champions: [],
+  championLosses: {},
   settings: { theme: 'system', textSize: 'normal', highContrast: false, reduceMotion: false, custom: DEFAULT_CUSTOM, paper: 'mixed', units: 'metric', language: 'system' },
 };
 
