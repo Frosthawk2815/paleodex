@@ -240,6 +240,28 @@ export const NEWS_2026: DataSet = {
       ],
       keywords: ['masillastrix', 'owl', 'fossil owl', 'messel', 'cockroach', 'eocene', 'bird'],
     },
+    {
+      id: 'cronopio-dentiacutus',
+      name: 'Cronopio dentiacutus',
+      common: 'Cronopio',
+      clade: 'dryolestida',
+      status: 'full',
+      ageText: 'About 100 million years ago',
+      placeText: 'La Buitrera, Río Negro Province, Argentina',
+      formations: ['candeleros'],
+      summary: [
+        'A mouse-sized mammal with a long, narrow snout and a pair of very long, sabre-like canine teeth, about a fifth the length of its head. When it was described in 2011, newspapers called it the “sabre-toothed squirrel” for its likeness to Scrat, the acorn-chasing squirrel of the Ice Age films, which had appeared nine years earlier.',
+        'The likeness is only skin-deep: it was not a squirrel or even a rodent, but a dryolestoid, part of an extinct group closer to marsupials and placental mammals than to monotremes, which survived in South America long after it vanished elsewhere. Its sharp teeth suggest it ate insects, not acorns. It is known from two skulls found among the dinosaurs of La Buitrera.',
+        'The age of the rocks is debated: they have long been dated to about 99 to 96 million years ago, but a 2026 study suggested they may be older, around 111 million years.',
+      ],
+      facts: [
+        { label: 'Named', value: 'Guillermo Rougier and colleagues, 2011 (Nature)' },
+        { label: 'Length', value: 'Probably under about 15 cm' },
+        { label: 'Diet', value: 'Probably insects' },
+        { label: 'Name', value: 'After the cronopios in Julio Cortázar’s stories; dentiacutus means “sharp-toothed”' },
+      ],
+      keywords: ['cronopio', 'sabre-toothed squirrel', 'saber-toothed squirrel', 'scrat', 'ice age', 'dryolestoid', 'mammal', 'cretaceous', 'argentina', 'la buitrera', 'candeleros'],
+    },
     // ── Cambridge Greensand ──
     {
       id: 'ornithocheirus-simus',

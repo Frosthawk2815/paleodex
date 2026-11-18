@@ -30898,7 +30898,7 @@
   "kind": "fossil"
  },
  "manis-pentadactyla": {
-  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Manis_pentadactyla_%2829054818144%29.jpg/500px-Manis_pentadactyla_%2829054818144%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Manis_pentadactyla_%2829054818144%29.jpg/500px-Manis_pentadactyla_%2829054818144%29.jpg",
   "width": 500,
   "height": 334,
   "artist": "U.S. Fish and Wildlife Service Headquarters",
@@ -30910,7 +30910,7 @@
   "scope": "species"
  },
  "manis-javanica": {
-  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Pangolin_borneo.jpg/500px-Pangolin_borneo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Pangolin_borneo.jpg/500px-Pangolin_borneo.jpg",
   "width": 500,
   "height": 340,
   "artist": "Piekfrosch at German Wikipedia",
@@ -30922,7 +30922,7 @@
   "scope": "species"
  },
  "manis-culionensis": {
-  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Philippine_Pangolins_by_Gregg_Yan.jpg/500px-Philippine_Pangolins_by_Gregg_Yan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Philippine_Pangolins_by_Gregg_Yan.jpg/500px-Philippine_Pangolins_by_Gregg_Yan.jpg",
   "width": 500,
   "height": 349,
   "artist": "Shukran888",
@@ -30934,7 +30934,7 @@
   "scope": "species"
  },
  "manis-crassicaudata": {
-  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Scaly_ant_eater_by_Dushy_Ranetunge_2.jpg/500px-Scaly_ant_eater_by_Dushy_Ranetunge_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Scaly_ant_eater_by_Dushy_Ranetunge_2.jpg/500px-Scaly_ant_eater_by_Dushy_Ranetunge_2.jpg",
   "width": 500,
   "height": 333,
   "artist": "Dushy Ranetunge",
@@ -30946,7 +30946,7 @@
   "scope": "species"
  },
  "smutsia-gigantea": {
-  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Giant_pangolin_%28Manis_gigantea%29%2C_Natural_History_Museum%2C_London%2C_Mammals_Gallery.JPG/500px-Giant_pangolin_%28Manis_gigantea%29%2C_Natural_History_Museum%2C_London%2C_Mammals_Gallery.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Giant_pangolin_%28Manis_gigantea%29%2C_Natural_History_Museum%2C_London%2C_Mammals_Gallery.JPG/500px-Giant_pangolin_%28Manis_gigantea%29%2C_Natural_History_Museum%2C_London%2C_Mammals_Gallery.JPG",
   "width": 500,
   "height": 402,
   "artist": "John Cummings",
@@ -30958,7 +30958,7 @@
   "scope": "species"
  },
  "smutsia-temminckii": {
-  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Manis_temminckii_%2829645803646%29.jpg/500px-Manis_temminckii_%2829645803646%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Manis_temminckii_%2829645803646%29.jpg/500px-Manis_temminckii_%2829645803646%29.jpg",
   "width": 500,
   "height": 334,
   "artist": "U.S. Fish and Wildlife Service Headquarters",
@@ -30970,7 +30970,7 @@
   "scope": "species"
  },
  "phataginus-tricuspis": {
-  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Tree_pangolin_%28Phataginus_tricuspis%29_Nyamebe_Bepo.jpg/500px-Tree_pangolin_%28Phataginus_tricuspis%29_Nyamebe_Bepo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Tree_pangolin_%28Phataginus_tricuspis%29_Nyamebe_Bepo.jpg/500px-Tree_pangolin_%28Phataginus_tricuspis%29_Nyamebe_Bepo.jpg",
   "width": 500,
   "height": 750,
   "artist": "Charles J. Sharp",
@@ -30982,7 +30982,7 @@
   "scope": "species"
  },
  "phataginus-tetradactyla": {
-  "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Manis_tetradactyla_%2829645778336%29.jpg/500px-Manis_tetradactyla_%2829645778336%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Manis_tetradactyla_%2829645778336%29.jpg/500px-Manis_tetradactyla_%2829645778336%29.jpg",
   "width": 500,
   "height": 375,
   "artist": "U.S. Fish and Wildlife Service Headquarters",
@@ -30991,6 +30991,18 @@
   "source": "https://commons.wikimedia.org/wiki/File:Manis_tetradactyla_(29645778336).jpg",
   "file": "Manis_tetradactyla_(29645778336).jpg",
   "article": "https://en.wikipedia.org/wiki/Long-tailed_pangolin",
+  "scope": "species"
+ },
+ "cronopio-dentiacutus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Cronopio.svg/500px-Cronopio.svg.png",
+  "width": 500,
+  "height": 486,
+  "artist": "Hemiauchenia",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cronopio.svg",
+  "file": "Cronopio.svg",
+  "article": "https://en.wikipedia.org/wiki/Cronopio_dentiacutus",
   "scope": "species"
  }
 }
