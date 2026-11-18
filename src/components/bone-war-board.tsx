@@ -54,6 +54,11 @@ export function Board({
   const burst = useGlitch(!oppGlitch || !theirsLow || reduceMotion);
   // The shadow's bar: hidden, then flickering into view below half (steady with reduce motion).
   const showOppBar = !oppGlitch || (theirsLow && (reduceMotion || !!burst));
+  // Against the shadow, the latest message never says how much damage was done.
+  const lastLog = (() => {
+    const m = state.log.slice(-1)[0];
+    return m && oppGlitch ? m.replace(/ for \d+ damage\./, '.').replace(/ and took \d+ HP\./, '.').replace(/, lost \d+ HP,/, ',') : m;
+  })();
   // The opponent's paper-theme fonts, once the fonts have loaded (only fonts the app has: a friend's
   // phone sends these names).
   const fontsReady = use(FontsReady);
@@ -214,7 +219,8 @@ export function Board({
         </View>
       )}
       {/* Damage taken this turn, seen by both players. */}
-      {!!p.hit && <Text style={[st.rowTitle, { color: HP_RED, minWidth: 30 }]}>−{p.hit}</Text>}
+      {/* …except the shadow champion's, which stays hidden. */}
+      {!!p.hit && !(look && oppGlitch) && <Text style={[st.rowTitle, { color: HP_RED, minWidth: 30 }]}>−{p.hit}</Text>}
       {/* Only your own HP is shown as a number; the opponent's is just the bar. */}
       {!look && <Text style={[st.rowTitle, { minWidth: 56, textAlign: 'right' }]}>{p.hp}/{START_HP}</Text>}
     </View>
@@ -226,7 +232,7 @@ export function Board({
       <View style={[st.screen, st.content, { alignItems: 'center', justifyContent: 'center', gap: 12 }]}>
         <Text style={{ fontSize: 56 }}>{state.winner === null ? '🤝' : won ? '🏆' : '🦴'}</Text>
         <Text style={st.title}>{state.winner === null ? t('A draw') : won ? t('You won the Bone War!') : t('{name} won this time', { name: theirs.name })}</Text>
-        <Text style={st.muted}>{state.log.slice(-1)[0]}</Text>
+        <Text style={st.muted}>{lastLog}</Text>
         <Pressable onPress={onExit} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch' }, pressed && st.pressed]}>
           <Text style={st.buttonText}>{t('Back to Bone War')}</Text>
         </Pressable>
@@ -284,7 +290,7 @@ export function Board({
         </ScrollView>
         {panel()}
         <Text style={st.muted} numberOfLines={2}>
-          {state.log.slice(-1)[0] ?? t('Tap a card in your hand to play it.')}
+          {lastLog ?? t('Tap a card in your hand to play it.')}
         </Text>
         {myTurn && (
           <Pressable
