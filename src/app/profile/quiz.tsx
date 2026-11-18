@@ -8,7 +8,7 @@ import { QuestionView } from '@/components/quiz-question';
 import { usePalette } from '@/hooks/use-palette';
 import { imageOf } from '@/lib/images';
 import { CardRewards, type Earned } from '@/components/card-rewards';
-import { cardFor, cardKeyForQuestion, cardKeyOf } from '@/lib/bone-war';
+import { cardFor, cardKeyForQuestion, cardName, ownsCard } from '@/lib/bone-war';
 import { useProfile, useUnitText } from '@/lib/profile';
 import { type Category, categoryKey, categorySize, DIFFICULTIES, type Difficulty, fiftyFifty, makeRound, type Question, questionAbout, replacementQuestion } from '@/lib/quiz';
 import { useOwnPicture } from '@/lib/user-photos';
@@ -54,15 +54,27 @@ export default function QuizScreen() {
   // Bone War: a correct answer earns (or upgrades) a card of that level for the animal or
   // extinction it was about. It's shown in the reward pool when the round ends; animals not yet
   // collected can be collected there.
-  const award = (key: string | null, stars: number, earned: Earned[]): Earned[] => {
-    if (!key || (profile.cards[key] ?? 0) >= stars || !cardFor(key, stars)) return earned;
-    const upgrade = !!profile.cards[key];
-    update({ cards: { ...profile.cards, [key]: stars } });
-    return withEarned(earned, { key, stars, upgrade });
+  // In a wishlist test the card is collected at once (and comes off the wishlist).
+  const award = (key: string | null, stars: number, earned: Earned[], collect = false): Earned[] => {
+    if (!key || !cardFor(key, stars)) return earned;
+    const better = (profile.cards[key] ?? 0) < stars;
+    // Not yet collected: offered (in a solo quiz) or collected (in a wishlist test) even if its stars
+    // aren't new.
+    const fresh = !ownsCard(profile, key);
+    if (!better && !fresh) {
+      if (collect) update({ wishlist: (profile.wishlist ?? []).filter((k) => k !== key) });
+      return earned;
+    }
+    const upgrade = !!profile.cards[key] && ownsCard(profile, key);
+    update({
+      cards: better ? { ...profile.cards, [key]: stars } : profile.cards,
+      ...(collect ? { collection: [...new Set([...(profile.collection ?? []), key])], wishlist: (profile.wishlist ?? []).filter((k) => k !== key) } : {}),
+    });
+    return withEarned(earned, { key, stars: Math.max(stars, profile.cards[key] ?? 0), upgrade });
   };
 
-  // Favourites that can be cards (animals and mass extinctions).
-  const favKeys = profile.favourites.filter((f) => f.kind === 'species' || f.kind === 'extinction').map(cardKeyOf);
+  // The card wishlist (animals and mass extinctions added with "Acquire card" on their pages).
+  const favKeys = (profile.wishlist ?? []).filter((k) => !!cardFor(k, 1));
   // The next favourite from `from` that has a question, at `attempt`.
   const favQuestion = (keys: string[], from: number, attempt: Difficulty, asked: string[]) => {
     for (let i = from; i < keys.length; i++) {
@@ -91,8 +103,8 @@ export default function QuizScreen() {
         </Pressable>
         <Pressable onPress={() => setStage({ kind: 'favSetup' })} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>{t('Test your favourites')}</Text>
-            <Text style={st.rowSub}>{t('A question on each of your favourites, to win the Bone War cards you want')}</Text>
+            <Text style={st.rowTitle}>{t('Test your wishlist')}</Text>
+            <Text style={st.rowSub}>{t('A question on each card on your wishlist, to win the Bone War cards you want')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
@@ -145,9 +157,9 @@ export default function QuizScreen() {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
         <Text style={st.text}>
-          {t('Each of your favourite animals and mass extinctions gets one question at the level you choose. Answer right to win its Bone War card with that many stars (or upgrade it).')}
+          {t('Every animal and mass extinction on your card wishlist gets one question at the level you choose. Answer right to win its Bone War card with that many stars (or upgrade it).')}
         </Text>
-        <Text style={st.muted}>{t('Get one wrong and you can try again with an easier question, one level lower, for a card with one star fewer. Each new favourite starts back at your chosen level.')}</Text>
+        <Text style={st.muted}>{t('Get one wrong and you can try again with an easier question, one level lower, for a card with one star fewer. Each new card starts back at your chosen level.')}</Text>
         <Text style={st.rowTitle}>{t('Level')}</Text>
         <View style={{ gap: 8 }}>
           {DIFFICULTIES.map((d) => {
@@ -170,9 +182,29 @@ export default function QuizScreen() {
           })}
         </View>
         <Pressable onPress={startFav} disabled={count === 0} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed, count === 0 && { opacity: 0.5 }]}>
-          <Text style={st.buttonText}>{t('Start: {n} favourites, level {level}', { n: count, level })}</Text>
+          <Text style={st.buttonText}>{t('Start: {n} cards, level {level}', { n: count, level })}</Text>
         </Pressable>
-        {count === 0 && <Text style={st.muted}>{t('Save some animals or mass extinctions to your Favourites first (☆ Save at the top of their pages).')}</Text>}
+        {count === 0 && <Text style={st.muted}>{t('Your wishlist is empty. Tap 🃏 Acquire card at the top of any animal or mass extinction page to add it.')}</Text>}
+        {count > 0 && (
+          <>
+            <Text style={st.rowTitle}>{t('Your wishlist ({n})', { n: count })}</Text>
+            {favKeys.map((k) => (
+              <View key={k} style={[st.card, st.row, { paddingVertical: 8 }]}>
+                <Text style={[st.rowTitle, { flex: 1 }]}>
+                  {cardName(cardFor(k, 1)!)}
+                  {profile.cards[k] && ownsCard(profile, k) ? ` ${'★'.repeat(profile.cards[k]!)}` : ''}
+                </Text>
+                <Pressable
+                  onPress={() => update({ wishlist: (profile.wishlist ?? []).filter((x) => x !== k) })}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('Remove {name} from your wishlist', { name: cardName(cardFor(k, 1)!) })}
+                  hitSlop={8}>
+                  <Text style={[st.link, { color: palette.bad }]}>✕</Text>
+                </Pressable>
+              </View>
+            ))}
+          </>
+        )}
       </ScrollView>
     );
   }
@@ -188,7 +220,7 @@ export default function QuizScreen() {
         {stage.best && <Text style={[st.rowTitle, { color: palette.accent }]}>{t('New best score for this quiz!')}</Text>}
         <Text style={st.muted}>
           {stage.mode === 'fav'
-            ? t('Your favourites · level {level}, {difficulty}', { level, difficulty: t(DIFFICULTIES[level - 1]!.name) })
+            ? t('Your wishlist · level {level}, {difficulty}', { level, difficulty: t(DIFFICULTIES[level - 1]!.name) })
             : t('{quiz} · level {level}, {difficulty}', { quiz: categoryName(category, t), level, difficulty: t(DIFFICULTIES[level - 1]!.name) })}
         </Text>
         <CardRewards earned={stage.earned} />
@@ -206,7 +238,7 @@ export default function QuizScreen() {
     const f = stage;
     const right = f.chosen !== null && f.chosen === f.q.answer;
     const finish = (score: number, earned: Earned[]) => setStage({ kind: 'done', mode: 'fav', score, total: f.keys.length, best: false, earned });
-    // On to the next favourite, back at the chosen level.
+    // On to the next card, back at the chosen level.
     const nextFavourite = () => {
       const n = favQuestion(f.keys, f.index + 1, level, f.asked);
       if (!n) return finish(f.score, f.earned);
@@ -239,12 +271,12 @@ export default function QuizScreen() {
         onChoose={(i) => {
           if (f.chosen !== null) return;
           const ok = i === f.q.answer;
-          const earned = ok ? award(f.keys[f.index]!, f.attempt, f.earned) : f.earned;
+          const earned = ok ? award(f.keys[f.index]!, f.attempt, f.earned, true) : f.earned;
           setStage({ ...f, chosen: i, score: f.score + (ok ? 1 : 0), earned });
         }}
         onNext={canRetry ? retry : nextFavourite}
-        nextLabel={canRetry ? t('Try again: level {level}, for a {stars} card', { level: f.attempt - 1, stars: '★'.repeat(f.attempt - 1) }) : last ? t('See your rewards') : t('Next favourite')}
-        secondary={canRetry ? { label: last ? t('See your rewards') : t('Next favourite'), onPress: nextFavourite } : undefined}
+        nextLabel={canRetry ? t('Try again: level {level}, for a {stars} card', { level: f.attempt - 1, stars: '★'.repeat(f.attempt - 1) }) : last ? t('See your rewards') : t('Next card')}
+        secondary={canRetry ? { label: last ? t('See your rewards') : t('Next card'), onPress: nextFavourite } : undefined}
       />
     );
   }

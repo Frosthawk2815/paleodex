@@ -44,8 +44,12 @@ export type Profile = {
   // Best quiz score (out of 10) for each category and difficulty, e.g. "dinosaurs:3".
   quizBest: Record<string, number>;
   // Bone War: the hardest solo quiz level (1 to 5) answered correctly about each species or mass
-  // extinction ("species:id", "extinction:id"). A favourited one is a card of that many stars.
+  // extinction ("species:id", "extinction:id"): its card's stars.
   cards: Record<string, number>;
+  // The cards the player has collected (card keys), and the ones they want (their wishlist, tested
+  // in the quiz). Separate from Favourites, which are just bookmarks.
+  collection: string[];
+  wishlist: string[];
   // The chosen Bone War deck (card keys, up to 30) and the colours of the card backs and borders.
   deck: string[];
   // layout: how the four stats are drawn on cards.
@@ -79,6 +83,8 @@ const DEFAULT: Profile = {
   home: null,
   quizBest: {},
   cards: {},
+  collection: [],
+  wishlist: [],
   deck: [],
   cardStyle: { back: '#14284B', border: '#C9A227' },
   loadouts: [],
@@ -127,7 +133,18 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
         const saved = JSON.parse(raw) as Partial<Profile>;
         // Profiles from before points existed start with credit for their recent pages.
         const visited = saved.visited ?? (saved.recent ?? []).map((r) => `${r.kind}:${r.id}`);
-        setProfile({ ...DEFAULT, ...saved, visited, settings: { ...DEFAULT.settings, ...saved.settings } });
+        // Cards used to be collected by favouriting: those cards (and any in a deck or loadout)
+        // become the collection, so nobody loses a card.
+        const collection =
+          saved.collection ??
+          [
+            ...new Set([
+              ...(saved.favourites ?? []).filter((f) => f.kind === 'species' || f.kind === 'extinction').map((f) => `${f.kind}:${f.id}`),
+              ...(saved.deck ?? []),
+              ...(saved.loadouts ?? []).flatMap((l) => l?.deck ?? []),
+            ]),
+          ].filter((k) => !!saved.cards?.[k]);
+        setProfile({ ...DEFAULT, ...saved, visited, collection, settings: { ...DEFAULT.settings, ...saved.settings } });
       })
       .catch(() => {})
       .finally(() => {

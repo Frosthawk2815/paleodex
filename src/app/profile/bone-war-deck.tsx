@@ -16,7 +16,7 @@ const SAMPLE = { attack: 3, defence: 2, speed: 1, swim: 0 };
 // Every colour offered for card backs and borders: each swatch's light and dark shade.
 const COLOURS = SWATCHES.flatMap((s) => [s.dark, s.light]).concat(['#C9A227', '#8C1C13']);
 
-// Building the Bone War deck from the cards in Favourites, and choosing the cards' colours.
+// Building the Bone War deck from the card collection, choosing the cards' colours, and loadouts.
 export default function BoneWarDeckScreen() {
   const st = useProfileStyles();
   const t = useT();
@@ -90,7 +90,7 @@ export default function BoneWarDeckScreen() {
       <Text style={st.heading}>{t('Your deck')}</Text>
       {owned.length === 0 ? (
         <View style={{ gap: 8 }}>
-          <Text style={st.text}>{t('You have no cards yet. Answer questions correctly in the solo quiz, and save those animals or extinctions to your Favourites, to collect them.')}</Text>
+          <Text style={st.text}>{t('You have no cards yet. Tap 🃏 Acquire card on an animal’s page, then win it in Quiz → Test your wishlist.')}</Text>
           <Pressable onPress={() => router.push('/profile/quiz')} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed]}>
             <Text style={st.buttonText}>{t('Go to the quiz')}</Text>
           </Pressable>
@@ -102,7 +102,7 @@ export default function BoneWarDeckScreen() {
             {inDeck.size < MIN_DECK ? ` · ${t('at least {min} to play', { min: MIN_DECK })}` : ''}
           </Text>
           <Text style={st.muted}>
-            {t('Tap a card to add it to your deck or take it out. Your collection is every favourite you have earned a card for, and any card kept in your deck or a loadout, even if you unfavourite the animal.')}
+            {t('Tap a card to add it to your deck or take it out.')}
           </Text>
           <View style={{ flexDirection: 'row', gap: 10 }}>
             <Pressable onPress={fill} accessibilityRole="button" style={({ pressed }) => [st.button, { flex: 1 }, pressed && st.pressed]}>
@@ -143,7 +143,7 @@ function Loadouts() {
   return (
     <>
       <Text style={st.heading}>{t('Loadouts')}</Text>
-      <Text style={st.muted}>{t('Save your deck and its card colours in one of five slots, and switch between them. Cards in a loadout stay yours even if you unfavourite the animal.')}</Text>
+      <Text style={st.muted}>{t('Save your deck and its card colours in one of five slots, and switch between them.')}</Text>
       {slots.map((l, i) => (
         <View key={i} style={[st.card, { padding: 12, gap: 8 }, l && same(l) && { borderWidth: 2, borderColor: palette.accent }]}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>

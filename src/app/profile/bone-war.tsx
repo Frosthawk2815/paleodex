@@ -56,10 +56,10 @@ export default function BoneWarScreen() {
       {owned.length === 0 ? (
         <View style={[st.card, { padding: 16, gap: 8 }]}>
           <Text style={st.rowTitle}>{t('How to get your first cards')}</Text>
-          <Text style={st.text}>{t('1. Play the solo quiz. Every animal or mass extinction you answer a question about correctly can become a card.')}</Text>
-          <Text style={st.text}>{t('2. Save that animal or extinction to your Favourites (☆ Save at the top of its page). The card is yours.')}</Text>
+          <Text style={st.text}>{t('1. Tap 🃏 Acquire card at the top of any animal or mass extinction page to put it on your card wishlist.')}</Text>
+          <Text style={st.text}>{t('2. In the quiz, choose Test your wishlist and answer a question on each one. Get it right and the card is yours. You can also collect cards for animals you answer right in a normal quiz.')}</Text>
           <Text style={st.text}>{t('3. Its stars match the level of the question: a level 1 question earns a 1-star card, level 5 a 5-star card. Answer a harder question later to upgrade it.')}</Text>
-          <Text style={st.text}>{t('4. Build a deck of {min} to {max} cards from your Favourites, then play.', { min: MIN_DECK, max: DECK_SIZE })}</Text>
+          <Text style={st.text}>{t('4. Build a deck of {min} to {max} cards from your collection, then play.', { min: MIN_DECK, max: DECK_SIZE })}</Text>
           <Pressable onPress={() => router.push('/profile/quiz')} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed]}>
             <Text style={st.buttonText}>{t('Go to the quiz')}</Text>
           </Pressable>
@@ -76,7 +76,7 @@ export default function BoneWarScreen() {
 
       {row(t('Play the computer'), ready ? t('A practice battle against Animal Almanac') : t('Build a deck first'), () => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'ai' } }), !ready)}
       {row(t('Play a friend'), ready ? t('Two phones, connected with a battle code') : t('Build a deck first'), () => router.push({ pathname: '/profile/bone-war-game', params: { mode: 'friend' } }), !ready)}
-      {row(t('Build your deck'), t('Choose up to {max} cards from your Favourites, and the colours of your cards', { max: DECK_SIZE }), () => router.push('/profile/bone-war-deck'))}
+      {row(t('Build your deck'), t('Choose up to {max} cards from your collection, and the colours of your cards', { max: DECK_SIZE }), () => router.push('/profile/bone-war-deck'))}
 
       <Text style={st.heading}>{t('Champions')}</Text>
       <Text style={st.muted}>

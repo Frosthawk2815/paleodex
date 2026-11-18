@@ -1,8 +1,9 @@
 // Bone War cards: which ones a player owns, and their details.
 //
-// A card is earned by answering a solo quiz question about a species (or a mass extinction)
-// correctly and having it in Favourites. Its stars are the hardest level answered correctly; a
-// harder correct answer later upgrades it. There is one card per species.
+// A card is earned by answering a quiz question about a species (or a mass extinction) correctly:
+// straight away in a wishlist test, or by collecting it from the results of a solo quiz. Its stars
+// are the hardest level answered correctly; a harder correct answer later upgrades it. There is one
+// card per species.
 
 import { SPECIES, type Species } from '@/data/life';
 import { LATE_PLEISTOCENE, type Stats, extinctionOf, statsOf } from '@/lib/cards';
@@ -71,14 +72,10 @@ export function cardFor(key: string, stars: number): Card | null {
   return null;
 }
 
-// The keys of every card the player owns: earned in a quiz and either in their favourites or kept in
-// their deck or a saved loadout (so unfavouriting an animal there doesn't lose its card).
+// The keys of every card the player owns: their collection (and, to be safe, anything in their
+// deck or a saved loadout).
 export function ownedKeys(profile: Profile): string[] {
-  const keys = [
-    ...profile.favourites.filter((f) => f.kind === 'species' || f.kind === 'extinction').map(cardKeyOf),
-    ...profile.deck,
-    ...(profile.loadouts ?? []).flatMap((l) => l?.deck ?? []),
-  ];
+  const keys = [...(profile.collection ?? []), ...profile.deck, ...(profile.loadouts ?? []).flatMap((l) => l?.deck ?? [])];
   return [...new Set(keys)].filter((k) => !!profile.cards[k]);
 }
 export const ownsCard = (profile: Profile, key: string) => ownedKeys(profile).includes(key);
