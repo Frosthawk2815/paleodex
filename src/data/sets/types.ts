@@ -9,6 +9,8 @@ export type DataSet = {
   clades?: Clade[];
   species?: Species[];
   upgrades?: Record<string, Partial<Species>>;
+  // Groups defined in other sets moved under a new parent (group id to parent id).
+  cladeParents?: Record<string, string>;
   // Notes added to formations defined elsewhere (by event id), appended to their lists.
   eventNotes?: Record<string, { invertebrates?: InvertebrateNote[]; groupNotes?: InvertebrateNote[] }>;
 };

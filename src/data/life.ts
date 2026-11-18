@@ -1215,7 +1215,9 @@ const BASE_SPECIES: Species[] = [
 // Other everyday names (aka.ts) are merged in so search and pages can use them.
 const withAka = <T extends { id: string }>(x: T, map: Record<string, Aka>): T =>
   map[x.id] ? { ...x, aka: map[x.id].names, akaSearch: map[x.id].search, akaNote: map[x.id].note } : x;
-export const CLADES: Clade[] = [...BASE_CLADES, ...SETS.flatMap((d) => d.clades ?? [])].map((c) => withAka(c, CLADE_AKA));
+// Some sets move groups defined elsewhere under a new parent (such as bird families into orders).
+const PARENTS: Record<string, string> = Object.assign({}, ...SETS.map((d) => d.cladeParents ?? {}));
+export const CLADES: Clade[] = [...BASE_CLADES, ...SETS.flatMap((d) => d.clades ?? [])].map((c) => withAka(PARENTS[c.id] ? { ...c, parent: PARENTS[c.id] } : c, CLADE_AKA));
 // Upgrades from different sets for the same species merge field by field (later sets win per field).
 const UPGRADES: Record<string, Partial<Species>> = {};
 for (const d of SETS) for (const [id, up] of Object.entries(d.upgrades ?? {})) UPGRADES[id] = { ...UPGRADES[id], ...up };

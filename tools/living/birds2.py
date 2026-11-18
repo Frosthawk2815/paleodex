@@ -86,10 +86,13 @@ CLADES = [
     F('upupidae', 'Upupidae', 'Hoopoes', 'Crested, striped birds of Europe, Africa and Asia.'),
     F('scolopacidae', 'Scolopacidae', 'Sandpipers', 'Shorebirds including sandpipers, godwits, curlews, snipe and woodcocks, among the greatest migrants.'),
 ]
-# Tinamous belong with the ratites.
+# Tinamous belong with the ratites; the osprey, New World vultures and secretarybird with the eagles
+# and hawks in Accipitriformes (defined in ice-age.ts).
 for c in CLADES:
     if c['id'] == 'tinamidae':
         c['parent'] = 'palaeognathae'
+    if c['id'] in ('pandionidae', 'cathartidae', 'sagittariidae'):
+        c['parent'] = 'accipitriformes'
 
 UPGRADES = {}
 
@@ -100,7 +103,7 @@ def S(id, name, common, clade, place, summary, facts, keywords, rng):
 
 GENERA = [
     # ── Birds of prey ──
-    S('haliaeetus-leucocephalus', 'Haliaeetus leucocephalus', 'Bald eagle', 'accipitridae', 'North America',
+    S('haliaeetus-leucocephalus', 'Haliaeetus leucocephalus', 'Bald eagle', 'haliaeetinae', 'North America',
       'The national bird of the United States, a fish-eating sea eagle with a white head. The pesticide DDT thinned its eggshells and cut it to about 400 breeding pairs in the lower 48 states by the 1960s; after DDT was banned, it recovered to over 300,000 birds. The family Accipitridae also includes the golden eagle, harpy eagle, hawks, kites and Old World vultures.',
       [('Wingspan', 'About 1.8–2.3 m'), ('IUCN status', 'Least Concern')],
       ['bald eagle', 'eagle', 'haliaeetus', 'raptor', 'north america'],

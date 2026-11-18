@@ -15,7 +15,20 @@ export const ICE_AGE: DataSet = {
     { id: 'macropodidae', name: 'Macropodidae', common: 'Kangaroos', parent: 'diprotodontia', family: true, description: 'Kangaroos and wallabies, including giant short-faced kangaroos of the Ice Age.' },
     { id: 'varanidae', name: 'Varanidae', common: 'Monitor lizards', parent: 'squamata', family: true, description: 'Monitor lizards, from small goannas to the Komodo dragon and the extinct giant Megalania.' },
     { id: 'dromornithidae', name: 'Dromornithidae', common: 'Thunder birds', parent: 'aves', family: true, description: 'Giant flightless Australian birds, the mihirungs, related to ducks and geese.' },
-    { id: 'accipitridae', name: 'Accipitridae', common: 'Eagles and hawks', parent: 'aves', family: true, description: 'Eagles, hawks, kites and Old World vultures.' },
+    { id: 'accipitridae', name: 'Accipitridae', common: 'Eagles and hawks', parent: 'accipitriformes', family: true, description: 'Eagles, hawks, kites, harriers and Old World vultures.' },
+    // The hawk-and-eagle order, and the family's subfamilies (after Mindell et al. 2018; the exact
+    // ranks and boundaries still vary between classifications).
+    { id: 'accipitriformes', name: 'Accipitriformes', common: 'Hawks, eagles and relatives', parent: 'aves', description: 'Daytime birds of prey: eagles and hawks, the osprey, the secretarybird and the New World vultures and condors. Falcons look similar but are a separate line, closer to parrots. Whether New World vultures belong here has been debated; most classifications now include them.' },
+    { id: 'aquilinae', name: 'Aquilinae', common: 'Booted eagles', parent: 'accipitridae', description: 'Eagles with feathered legs down to the toes, including the golden eagle, wedge-tailed eagle, crowned and martial eagles, and the extinct Haast’s eagle.' },
+    { id: 'harpiinae', name: 'Harpiinae', common: 'Harpy eagles', parent: 'accipitridae', description: 'Huge forest eagles of the Americas and New Guinea that hunt monkeys and sloths from the canopy.' },
+    { id: 'circaetinae', name: 'Circaetinae', common: 'Snake eagles', parent: 'accipitridae', description: 'Snake eagles and serpent eagles, the bateleur, and the Philippine eagle, which DNA shows belongs with them rather than with the harpy eagle.' },
+    { id: 'haliaeetinae', name: 'Haliaeetinae', common: 'Sea eagles and kites', parent: 'accipitridae', description: 'Fish-eating sea eagles and their close relatives the milvine kites, such as the red kite. Some classifications fold this group into the buzzards (Buteoninae).' },
+    { id: 'buteoninae', name: 'Buteoninae', common: 'Buzzards and buteonine hawks', parent: 'accipitridae', description: 'Broad-winged soaring hawks such as the red-tailed hawk and common buzzard, with relatives including the snail kite.' },
+    { id: 'accipitrinae', name: 'Accipitrinae', common: 'Goshawks, sparrowhawks and harriers', parent: 'accipitridae', description: 'Agile woodland hunters with short wings and long tails, and the harriers, which DNA places among them.' },
+    { id: 'perninae', name: 'Perninae', common: 'Honey buzzards and relatives', parent: 'accipitridae', description: 'Honey buzzards, which dig out wasp nests, and relatives including the swallow-tailed kite.' },
+    { id: 'elaninae', name: 'Elaninae', common: 'Elanine kites', parent: 'accipitridae', description: 'Small, pale kites that hover over grassland, one of the oldest branches of the family.' },
+    { id: 'gypaetinae', name: 'Gypaetinae', common: 'Bearded and Egyptian vultures', parent: 'accipitridae', description: 'The bearded vulture and Egyptian vulture, an early branch separate from the other Old World vultures.' },
+    { id: 'aegypiinae', name: 'Aegypiinae', common: 'Old World vultures', parent: 'accipitridae', description: 'Griffon and other large Old World vultures that soar for carcasses; many are critically endangered.' },
   ],
   species: [
     {
@@ -404,7 +417,7 @@ export const ICE_AGE: DataSet = {
       id: 'hieraaetus-moorei',
       name: 'Hieraaetus moorei',
       common: 'Haast’s eagle',
-      clade: 'accipitridae',
+      clade: 'aquilinae',
       status: 'full',
       ageText: 'Until about 1400',
       placeText: 'South Island, New Zealand',

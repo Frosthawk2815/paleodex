@@ -11,7 +11,7 @@ import { GENUS_MEANINGS, meaningNote, meaningText, SPECIES_MEANINGS } from '@/da
 import { SIZE_FACTS, type SizeFact } from '@/data/quiz-sizes';
 import { isModernSpecies } from '@/lib/era';
 import { EXTINCTIONS, type Extinction } from '@/lib/extinctions';
-import { cladePath, familyOf, pastPointIndex, relativesOf, speciesInClade } from '@/lib/life';
+import { cladePath, closestRelatives, familyOf, pastPointIndex, relativesOf, speciesInClade } from '@/lib/life';
 import { phaseCentre, rangeOf } from '@/lib/ranges';
 import type { PageRef } from '@/lib/profile';
 import { UNITS_BY_LEVEL, type Unit } from '@/lib/time';
@@ -210,6 +210,17 @@ const kmApart = ([lon1, lat1]: [number, number], [lon2, lat2]: [number, number])
 export const label = (s: Species) => s.common || s.name;
 const named = (s: Species) => (s.common && s.common !== s.name ? `${s.common} (${s.name})` : s.name);
 
+// Why the answer is its closest relative: the smallest group they share below the family (such as
+// the booted eagles), or just the family.
+function explainRelative(s: Species, right: Species): string {
+  const theirs = new Set(cladePath(right.clade).map((c) => c.id));
+  const shared = [...cladePath(s.clade)].reverse().find((c) => theirs.has(c.id));
+  const family = familyOf(s);
+  if (shared && family && shared.id !== family.id && cladePath(shared.id).some((c) => c.id === family.id))
+    return `${label(right)} and ${label(s)} are both ${lower(shared.common)} (${shared.name}), within the ${lower(family.common)}.`;
+  return `${label(right)} is in the same family as ${label(s)}.`;
+}
+
 // ---------------------------------------------------------------------------------------------
 // Helpers
 
@@ -325,7 +336,9 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       const image = c.imageFor(s.id);
       const rel = relativesOf(s);
       if (!image || rel.length < 1) return null;
-      const right = c.level >= 4 ? rel[0]! : (pick(rel.slice(0, 3)) ?? rel[0]!);
+      // At the top levels, the closest relative; where several are equally close, any of them (every
+      // wrong answer comes from outside the family, so each is right).
+      const right = c.level >= 4 ? (pick(closestRelatives(s)) ?? rel[0]!) : (pick(rel.slice(0, 3)) ?? rel[0]!);
       // A picture alone isn't always enough, so easier levels add clues: when it lived, where it is
       // found, an animal it lived alongside and another relative. Each level up takes one away,
       // the most telling first; at the top level there is only the name and the picture.
@@ -347,8 +360,24 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       // family at levels 4 and 5.
       const same = (o: Species, tier: 2 | 3) => groupAt(o, tier)?.id === groupAt(s, tier)?.id;
       const others = SPECIES.filter((o) => !relIds.has(o.id) && kindOf(o) === kind);
+      // The nearest relatives outside its family: for an eagle, the osprey, secretarybird and
+      // condors (its order) rather than any bird. Widens a group at a time until there are three.
+      const myPath = cladePath(s.clade).map((x) => x.id);
+      const depthOf = (o: Species) => {
+        const path = cladePath(o.clade);
+        let n = 0;
+        while (n < path.length && n < myPath.length && path[n]!.id === myPath[n]) n++;
+        return n;
+      };
+      const outside = others.filter((o) => familyOf(o)?.id !== familyOf(s)?.id).map((o) => ({ o, d: depthOf(o) }));
+      const nearest: Species[] = [];
+      for (const d of [...new Set(outside.map((x) => x.d))].sort((a, b) => b - a)) {
+        if (nearest.length >= 3) break;
+        nearest.push(...outside.filter((x) => x.d === d).map((x) => x.o));
+      }
       // If a level has too few, loosen one step at a time.
       const steps: Species[][] = [
+        nearest,
         others.filter((o) => same(o, 3) && familyOf(o)?.id !== familyOf(s)?.id),
         others.filter((o) => same(o, 2) && !same(o, 3)),
         others.filter((o) => !same(o, 2)),
@@ -363,7 +392,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
         `This is ${named(s)}. Which of these is its closest relative?`,
         label(right),
         wrong,
-        `${label(right)} is in the same family as ${label(s)}.`,
+        explainRelative(s, right),
         { image, speciesId: s.id, hints },
       );
     },

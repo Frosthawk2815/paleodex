@@ -22,8 +22,12 @@ CLADES = []
 UPGRADES = {}
 
 
+# Subfamilies (defined in ice-age.ts, after Mindell et al. 2018).
+SUBFAMILY = {'aquila-chrysaetos': 'aquilinae', 'aquila-audax': 'aquilinae', 'stephanoaetus-coronatus': 'aquilinae', 'polemaetus-bellicosus': 'aquilinae', 'hieraaetus-moorei': 'aquilinae', 'harpia-harpyja': 'harpiinae', 'pithecophaga-jefferyi': 'circaetinae', 'terathopius-ecaudatus': 'circaetinae', 'circaetus-gallicus': 'circaetinae', 'haliaeetus-leucocephalus': 'haliaeetinae', 'haliaeetus-pelagicus': 'haliaeetinae', 'milvus-milvus': 'haliaeetinae', 'buteo-jamaicensis': 'buteoninae', 'rostrhamus-sociabilis': 'buteoninae', 'astur-gentilis': 'accipitrinae', 'accipiter-nisus': 'accipitrinae', 'circus-aeruginosus': 'accipitrinae', 'pernis-apivorus': 'perninae', 'elanoides-forficatus': 'perninae', 'elanus-caeruleus': 'elaninae', 'gypaetus-barbatus': 'gypaetinae', 'neophron-percnopterus': 'gypaetinae', 'gyps-rueppelli': 'aegypiinae', 'gyps-bengalensis': 'aegypiinae', 'aegypius-monachus': 'aegypiinae'}
+
+
 def S(id, name, common, place, summary, facts, keywords, rng):
-    return {'id': id, 'name': name, 'common': common, 'clade': 'accipitridae', 'place': place, 'summary': summary, 'facts': facts, 'keywords': keywords, 'range': rng}
+    return {'id': id, 'name': name, 'common': common, 'clade': SUBFAMILY[id], 'place': place, 'summary': summary, 'facts': facts, 'keywords': keywords, 'range': rng}
 
 
 GENERA = [

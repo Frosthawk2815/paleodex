@@ -76,14 +76,25 @@ export function relativesOf(s: Species): Species[] {
     const branch = Math.min(b.phylo, p) - Math.min(a.phylo, p);
     return branch !== 0 ? branch : Math.abs(a.phylo - p) - Math.abs(b.phylo - p);
   };
-  return speciesInClade(family.id)
+  const ranked = speciesInClade(family.id)
     .filter((o) => o.id !== s.id)
     .map((o) => ({
       o,
       sameGenus: genus(o) === genus(s) ? 1 : 0,
       linked: s.related?.some((r) => r.id === o.id) || o.related?.some((r) => r.id === s.id) ? 1 : 0,
       depth: shared(o),
-    }))
-    .sort((a, b) => b.sameGenus - a.sameGenus || b.linked - a.linked || b.depth - a.depth || phyloOrder(a.o, b.o) || a.o.name.localeCompare(b.o.name))
-    .map((x) => x.o);
+    }));
+  const closeness = (a: (typeof ranked)[number], b: (typeof ranked)[number]) => b.sameGenus - a.sameGenus || b.linked - a.linked || b.depth - a.depth || phyloOrder(a.o, b.o);
+  const sorted = ranked.sort((a, b) => closeness(a, b) || a.o.name.localeCompare(b.o.name));
+  // How many at the top are equally close (only told apart by name).
+  tiedTop.set(s.id, sorted.findIndex((x) => closeness(sorted[0]!, x) !== 0) === -1 ? sorted.length : sorted.findIndex((x) => closeness(sorted[0]!, x) !== 0));
+  return sorted.map((x) => x.o);
+}
+
+const tiedTop = new Map<string, number>();
+// The relatives that are all equally the closest: usually one, but where the data can't tell them
+// apart (no smaller group or family tree to go on), several.
+export function closestRelatives(s: Species): Species[] {
+  const rel = relativesOf(s);
+  return rel.slice(0, Math.max(1, tiedTop.get(s.id) ?? 1));
 }
