@@ -1,11 +1,12 @@
 import { router } from 'expo-router';
+import { useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, useWindowDimensions, View } from 'react-native';
 
 import { BoneWarCard, STAT_LAYOUTS, StatDisplay } from '@/components/bone-war-card';
 import { BoneWarRules } from '@/components/bone-war-rules';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
-import { DECK_SIZE, MIN_DECK, ownedCards } from '@/lib/bone-war';
+import { type Card, cardKeyOf, cardName, DECK_SIZE, MIN_DECK, ownedCards } from '@/lib/bone-war';
 import { LOADOUT_SLOTS, type Loadout, useProfile } from '@/lib/profile';
 import { SWATCHES } from '@/lib/theme';
 import { useT } from '@/lib/i18n';
@@ -25,6 +26,10 @@ export default function BoneWarDeckScreen() {
   const { profile, update } = useProfile();
   const owned = ownedCards(profile).sort((a, b) => b.stars - a.stars);
   const inDeck = new Set(profile.deck.filter((k) => owned.some((c) => c.key === k)));
+  // Its own search box, separate from the app's main search: filters and sorts the collection.
+  const [query, setQuery] = useState('');
+  const favourite = new Set(profile.favourites.map(cardKeyOf));
+  const shown = sortCollection(owned, query, favourite);
   const cols = width > 700 ? 6 : width > 480 ? 4 : 3;
   const cardW = Math.min(150, (Math.min(width, 900) - 32 - (cols - 1) * 10) / cols);
 
@@ -34,6 +39,7 @@ export default function BoneWarDeckScreen() {
     else if (deck.length < DECK_SIZE) update({ deck: [...deck, key] });
   };
   const fill = () => {
+    // The highest-star cards, whatever the search.
     const rest = owned.filter((c) => !inDeck.has(c.key)).map((c) => c.key);
     update({ deck: [...inDeck, ...rest].slice(0, DECK_SIZE) });
   };
@@ -112,8 +118,43 @@ export default function BoneWarDeckScreen() {
               <Text style={[st.buttonText, { color: palette.text }]}>{t('Clear')}</Text>
             </Pressable>
           </View>
+          <TextInput
+            value={query}
+            onChangeText={setQuery}
+            placeholder={t('Search your cards, or type a stat')}
+            placeholderTextColor={palette.muted}
+            autoCorrect={false}
+            autoCapitalize="none"
+            clearButtonMode="while-editing"
+            accessibilityLabel={t('Search your cards')}
+            style={st.input}
+          />
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
+            <Text style={st.rowSub}>{t('Sort by')}</Text>
+            {STAT_SORTS.map((x) => {
+              const on = statOf(query) === x.stat;
+              return (
+                <Pressable
+                  key={x.stat}
+                  onPress={() => setQuery(on ? '' : x.word)}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: on }}
+                  accessibilityLabel={t('Sort by {stat}', { stat: t(x.word) })}
+                  style={({ pressed }) => [st.card, { paddingVertical: 6, paddingHorizontal: 10, borderWidth: on ? 2 : 1, borderColor: on ? palette.accent : palette.border }, pressed && st.pressed]}>
+                  <Text style={[st.rowSub, on && { color: palette.accent, fontWeight: '700' }]}>
+                    {x.icon} {t(x.word)}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+          {query.trim() !== '' && (
+            <Text style={st.muted}>
+              {shown.length === 0 ? t('No cards match “{q}”.', { q: query.trim() }) : t('Showing {n} of {total} cards', { n: shown.length, total: owned.length })}
+            </Text>
+          )}
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-            {owned.map((c) => {
+            {shown.map((c) => {
               const on = inDeck.has(c.key);
               return (
                 <Pressable key={c.key} onPress={() => toggle(c.key)} accessibilityRole="checkbox" accessibilityState={{ checked: on }} style={{ opacity: on ? 1 : 0.45 }}>
@@ -128,6 +169,50 @@ export default function BoneWarDeckScreen() {
       <BoneWarRules />
     </ScrollView>
   );
+}
+
+type StatName = 'attack' | 'defence' | 'speed' | 'swim';
+const STAT_SORTS: { stat: StatName; word: string; icon: string }[] = [
+  { stat: 'attack', word: 'Attack', icon: '⚔️' },
+  { stat: 'defence', word: 'Defence', icon: '🛡️' },
+  { stat: 'speed', word: 'Speed', icon: '⚡' },
+  { stat: 'swim', word: 'Swim', icon: '🌊' },
+];
+// A search that names one of the four stats (a word, its start, or its symbol).
+function statOf(query: string): StatName | null {
+  const q = query.trim().toLowerCase();
+  if (!q) return null;
+  if (q.includes('⚔')) return 'attack';
+  if (q.includes('🛡')) return 'defence';
+  if (q.includes('⚡')) return 'speed';
+  if (q.includes('🌊')) return 'swim';
+  const words: [StatName, string[]][] = [
+    ['attack', ['attack', 'atk']],
+    ['defence', ['defence', 'defense', 'def']],
+    ['speed', ['speed', 'spd', 'fast']],
+    ['swim', ['swim', 'swimming']],
+  ];
+  for (const [stat, ws] of words) if (ws.some((w) => w === q || (q.length >= 3 && w.startsWith(q)))) return stat;
+  return null;
+}
+
+// The collection to show: a stat search lists the cards with that stat, highest first; any other
+// search keeps the cards whose animal, scientific name or keywords match. Favourited animals come
+// first, then higher stars.
+function sortCollection(cards: Card[], query: string, favourite: Set<string>): Card[] {
+  const fav = (c: Card) => (favourite.has(c.key) ? 1 : 0);
+  const base = (a: Card, b: Card) => fav(b) - fav(a) || b.stars - a.stars || cardName(a).localeCompare(cardName(b));
+  const stat = statOf(query);
+  if (stat) {
+    const value = (c: Card) => (c.kind === 'species' ? c.stats[stat] : 0);
+    return cards.filter((c) => value(c) > 0).sort((a, b) => value(b) - value(a) || base(a, b));
+  }
+  const q = query.trim().toLowerCase();
+  const match = (c: Card) =>
+    !q ||
+    cardName(c).toLowerCase().includes(q) ||
+    (c.kind === 'species' ? [c.species.name, ...(c.species.keywords ?? [])] : [c.event.name]).some((x) => x.toLowerCase().includes(q));
+  return cards.filter(match).sort(base);
 }
 
 // Five saved decks. Saving stores the current deck and card colours; loading brings both back.
