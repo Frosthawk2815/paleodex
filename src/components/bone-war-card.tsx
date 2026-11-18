@@ -180,6 +180,7 @@ export function BoneWarCard({
   highlight,
   cardStyle,
   art,
+  font,
 }: {
   card: Card | null;
   width: number;
@@ -189,6 +190,8 @@ export function BoneWarCard({
   cardStyle?: { back: string; border: string };
   // Another player's photos (species id to picture); their cards never show this player's photos.
   art?: Record<string, string>;
+  // Another player's font for the card's name (their paper theme).
+  font?: string;
 }) {
   const { profile } = useProfile();
   const own = useOwnPicture();
@@ -229,7 +232,7 @@ export function BoneWarCard({
           <Text style={{ fontSize: width * 0.3 }}>🦴</Text>
         )}
       </View>
-      <Text style={[styles.name, { color: ink, fontSize: small ? width * 0.1 : width * 0.085 }]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.6}>
+      <Text style={[styles.name, { color: ink, fontSize: small ? width * 0.1 : width * 0.085 }, font ? { fontFamily: font, fontWeight: 'normal' } : null]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.6}>
         {name}
       </Text>
       <Text style={[styles.stars, { color: ink, fontSize: width * 0.08 }]}>{stars}</Text>

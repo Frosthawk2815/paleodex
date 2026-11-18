@@ -34,8 +34,18 @@ export const HUMANS_EVENT: Extinction = {
 export const cardKeyOf = (page: PageRef) => `${page.kind}:${page.id}`;
 
 // A player's theme colours, shown on their side of the board (and sent to the other phone).
-export type Look = { background: string; card: string; text: string; muted: string; accent: string; border: string; track: string };
-export const lookOf = (p: Look): Look => ({ background: p.background, card: p.card, text: p.text, muted: p.muted, accent: p.accent, border: p.border, track: p.track });
+// font and headingFont: the paper theme's fonts, when the player uses it (names from fonts.ts).
+export type Look = { background: string; card: string; text: string; muted: string; accent: string; border: string; track: string; font?: string; headingFont?: string };
+export const lookOf = (p: Omit<Look, 'font' | 'headingFont'> & { fonts?: { body: string; heading: string } }): Look => ({
+  background: p.background,
+  card: p.card,
+  text: p.text,
+  muted: p.muted,
+  accent: p.accent,
+  border: p.border,
+  track: p.track,
+  ...(p.fonts ? { font: p.fonts.body, headingFont: p.fonts.heading } : {}),
+});
 // Colours for an opponent whose theme hasn't arrived yet: a deep red theme.
 export const AI_LOOK: Look = { background: '#1E0E0E', card: '#2E1616', text: '#F4E8E0', muted: '#C0A898', accent: '#E0A030', border: '#5A2C2C', track: '#3A2020' };
 

@@ -27,7 +27,7 @@ const GREEN: Look = { background: '#0A1F12', card: '#13301D', text: '#E8F5E9', m
 const YELLOW: Look = { background: '#2A2200', card: '#3D3205', text: '#FFFDE7', muted: '#E6D98A', accent: '#FFD600', border: '#6B5A0E', track: '#4A3F0A' };
 const BLUE: Look = { background: '#071A2E', card: '#0E2A47', text: '#E3F2FD', muted: '#9EC3E6', accent: '#4FC3F7', border: '#1F4E7A', track: '#16385C' };
 // Old parchment, as in the app's ancient paper theme.
-const PARCHMENT: Look = { background: '#EAD9B2', card: '#E1CB9B', text: '#2B1C0E', muted: '#5A4329', accent: '#8C1A1A', border: '#B0905F', track: '#D8C08E' };
+const PARCHMENT: Look = { background: '#EAD9B2', card: '#E1CB9B', text: '#2B1C0E', muted: '#5A4329', accent: '#8C1A1A', border: '#B0905F', track: '#D8C08E', font: 'IMFell', headingFont: 'UncialAntiqua' };
 export const BLACK: Look = { background: '#000000', card: '#141414', text: '#F5F5F5', muted: '#A0A0A0', accent: '#E0E0E0', border: '#3A3A3A', track: '#262626' };
 
 export const CHAMPIONS: Champion[] = [

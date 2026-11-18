@@ -26,7 +26,7 @@ If you choose a photo for a species page or as your profile picture, the app kee
 
 When you play Head to Head, Peer Review or Bone War with other people, your phone connects directly to theirs. To do this:
 
-- Your profile name, title and profile picture are sent to the other players in Head to Head and Peer Review. In Bone War, your name, the cards in your deck, your card and theme colours, and small copies of any photos you have added for the animals in your deck are sent to the other player, so they see your cards as you do. They are only shown during the game and are not kept.
+- Your profile name, title and profile picture are sent to the other players in Head to Head and Peer Review. In Bone War, your name, the cards in your deck, your card and theme colours (and fonts), and small copies of any photos you have added for the animals in your deck are sent to the other player, so they see your cards as you do. They are only shown during the game and are not kept.
 - A public connection service (PeerJS, 0.peerjs.com) and Google's and Cloudflare's connection helpers (STUN servers) are used to help the phones find each other. Like any internet service, they can see your device's internet (IP) address while connecting. The game normally goes directly between the players' phones. When the phones' networks don't allow a direct link (common on mobile data), the game's messages are passed through a relay (TURN) server; they are encrypted, so the relay cannot read them, and it keeps nothing.
 
 Nothing is sent unless you start or join a game.

@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { useCallback, useEffect, useState } from 'react';
+import { use, useCallback, useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -8,6 +8,7 @@ import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { cardFor, type Look } from '@/lib/bone-war';
 import { type Action, backMax, backTotal, cardOf, type GameState, type GCard, legal, levelFor, secondsFor, START_HP } from '@/lib/bone-war-game';
+import { FontsReady, PAPER_FONTS } from '@/lib/fonts';
 import { imageOf } from '@/lib/images';
 import { type Question, questionAbout } from '@/lib/quiz';
 import { useOwnPicture } from '@/lib/user-photos';
@@ -42,6 +43,12 @@ export function Board({
   const palette = usePalette();
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
+  // The opponent's paper-theme fonts, once the fonts have loaded (only fonts the app has: a friend's
+  // phone sends these names).
+  const fontsReady = use(FontsReady);
+  const known = (f?: string) => (fontsReady && f && f in PAPER_FONTS ? f : undefined);
+  const oppFont = known(oppLook.font);
+  const oppHeading = known(oppLook.headingFont);
   const [pick, setPick] = useState<Pick | null>(null);
   // Questions already asked this game, so a second try at a card brings a new one.
   const [asked] = useState(() => new Set<string>());
@@ -77,7 +84,7 @@ export function Board({
     <Pressable key={key} onPress={onPress} disabled={!onPress} accessibilityRole="button" style={{ width: w }}>
       {g ? (
         <View>
-          <BoneWarCard card={cardOf(g)} width={w} faceDown={!face} cardStyle={style} art={style ? oppArt : undefined} highlight={on ? palette.accent : undefined} />
+          <BoneWarCard card={cardOf(g)} width={w} faceDown={!face} cardStyle={style} art={style ? oppArt : undefined} font={style ? oppFont : undefined} highlight={on ? palette.accent : undefined} />
           {face && style === undefined && !g.seen && !key?.startsWith('hand') && <Text style={styles.hiddenTag}>🙈</Text>}
         </View>
       ) : (
@@ -181,7 +188,7 @@ export function Board({
 
   const hp = (p: typeof mine, who: string, look?: Look) => (
     <View style={styles.hpRow}>
-      <Text style={[st.rowTitle, { flex: 1 }, look && { color: look.text }]} numberOfLines={1}>
+      <Text style={[st.rowTitle, { flex: 1 }, look && { color: look.text }, look && oppHeading ? { fontFamily: oppHeading, fontWeight: 'normal' } : null]} numberOfLines={1}>
         {who}
       </Text>
       <View
@@ -226,10 +233,10 @@ export function Board({
             accessibilityHint={t('Ends the game and gives the win to your opponent')}
             hitSlop={8}
             style={{ alignSelf: 'flex-start' }}>
-            <Text style={[st.rowSub, { color: oppLook.muted }]}>{t('🏳 Forfeit')}</Text>
+            <Text style={[st.rowSub, { color: oppLook.muted }, oppFont ? { fontFamily: oppFont } : null]}>{t('🏳 Forfeit')}</Text>
           </Pressable>
           {hp(theirs, theirs.name, oppLook)}
-          <Text style={[st.muted, { color: oppLook.muted }]}>{t('Hand {h} · deck {d}', { h: theirs.hand.length, d: theirs.deck.length })}</Text>
+          <Text style={[st.muted, { color: oppLook.muted }, oppFont ? { fontFamily: oppFont } : null]}>{t('Hand {h} · deck {d}', { h: theirs.hand.length, d: theirs.deck.length })}</Text>
           {row(theirs.back, 'oppBack', (g) => g.seen, backW, oppStyle, oppLook.border)}
           {row(theirs.front, 'oppFront', (g) => g.seen, slotW, oppStyle, oppLook.border)}
         </View>
