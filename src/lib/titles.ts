@@ -254,6 +254,7 @@ const PAGE_TITLES: [string, string, PageTarget, string?][] = [
   ['The Arctic Unicorn', 'the narwhal', ['monodon-monoceros']],
   ['Spirit of the sea', 'the beluga', ['delphinapterus-leucas']],
   ['Message in a bottle', 'the bottlenose dolphin', ['tursiops-truncatus']],
+  ['I just wanna be part of your symphony', 'the bottlenose dolphin', ['tursiops-truncatus']],
   ['Meep meep', 'the roadrunner', ['geococcyx-californianus']],
   ['indomitable', 'Maip', ['maip-macrothorax']],
   ['I like rusty spoons', 'Therizinosaurus', ['therizinosaurus-cheloniformis']],
