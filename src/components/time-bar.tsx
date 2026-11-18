@@ -50,6 +50,8 @@ export type TimeBarHandle = {
   jumpToExtinction: (e: Extinction) => void;
   // Moves to a time, zooming to the stage that contains it.
   goToTime: (t: number) => void;
+  // Moves to the middle of a period, series or stage, zoomed in on it.
+  goToSpan: (level: Level, startMa: number, endMa: number) => void;
 };
 
 type Props = {
@@ -176,6 +178,11 @@ export function TimeBar({ ref, onChange, onSite, reduceMotion, birthMa }: Props)
     zoomTo: zoomInto,
     jumpToExtinction,
     goToTime: (t: number) => go(t, unitAt('stage', t) ?? ALL_TIME),
+    goToSpan: (level: Level, startMa: number, endMa: number) => {
+      const mid = (startMa + endMa) / 2;
+      const u = UNITS_BY_LEVEL[level].find((x) => Math.abs(x.startMa - startMa) < 1e-6 && Math.abs(x.endMa - endMa) < 1e-6) ?? unitAt(level, mid);
+      go(mid, u ?? ALL_TIME);
+    },
   }));
 
   const visible = (u: Unit) => u.startMa > focus.endMa && u.endMa < focus.startMa;

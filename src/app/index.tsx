@@ -1,4 +1,4 @@
-import { Link, router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useDeferredValue, useEffect, useEffectEvent, useMemo, useRef, useState } from 'react';
 import {
@@ -16,6 +16,7 @@ import Svg, { Circle, Line, Path } from 'react-native-svg';
 
 import { CladeInfo } from '@/components/clade-info';
 import { EventInfo } from '@/components/event-info';
+import { PeriodInfo } from '@/components/period-info';
 import { PlaceInfo } from '@/components/place-info';
 import { ExtinctionInfo } from '@/components/extinction-info';
 import { SpeciesInfo } from '@/components/species-info';
@@ -27,6 +28,7 @@ import { usePalette } from '@/hooks/use-palette';
 import { type SearchResult, SearchPanel } from '@/components/search-panel';
 import { TimeBar, type TimeBarHandle } from '@/components/time-bar';
 import { EVENTS, type HistoryEvent } from '@/data/events';
+import { getPeriod, PERIODS } from '@/data/periods';
 import { EXTINCTIONS, extinctionAt } from '@/lib/extinctions';
 import { cladeEra, type Era, eventEra, speciesEra } from '@/lib/era';
 import { cladeById, formationById, pastPointIndex, speciesById } from '@/lib/life';
@@ -41,7 +43,7 @@ import { localTime, useT } from '@/lib/i18n';
 // How long the timeline must rest somewhere before a card or title appears.
 const LINGER_MS = 1300;
 
-type Selection = { kind: 'event'; event: HistoryEvent } | { kind: 'species'; id: string } | { kind: 'clade'; id: string } | { kind: 'extinction'; id: string };
+type Selection = { kind: 'event'; event: HistoryEvent } | { kind: 'species'; id: string } | { kind: 'clade'; id: string } | { kind: 'extinction'; id: string } | { kind: 'period'; id: string };
 
 const sameSelection = (a: Selection, b: Selection) =>
   a.kind === b.kind && (a.kind === 'event' ? a.event.id === (b as typeof a).event.id : a.id === (b as typeof a).id);
@@ -50,11 +52,13 @@ const sameSelection = (a: Selection, b: Selection) =>
 function selectionLabel(s: Selection): string {
   if (s.kind === 'event') return s.event.title;
   if (s.kind === 'extinction') return EXTINCTIONS.find((x) => x.id === s.id)?.name ?? 'Extinction';
+  if (s.kind === 'period') return getPeriod(s.id)?.name ?? 'Period';
   const item = s.kind === 'species' ? speciesById(s.id) : cladeById(s.id);
   return item?.common || item?.name || 'Previous';
 }
 
-const pageOf = (s: Selection): PageRef => ({ kind: s.kind, id: s.kind === 'event' ? s.event.id : s.id });
+// Periods aren't kept in Recently viewed (they aren't one of the saved page kinds).
+const pageOf = (s: Exclude<Selection, { kind: 'period' }>): PageRef => ({ kind: s.kind, id: s.kind === 'event' ? s.event.id : s.id });
 
 type Focus = { kind: 'site' | 'moon' | 'event' | 'skull' | 'range' | 'user'; id: string; index?: number; n: number };
 
@@ -85,7 +89,7 @@ export default function GlobeScreen() {
     if (!selected) return 'ancient';
     if (selected.kind === 'event') return eventEra(selected.event);
     if (selected.kind === 'clade') return cladeEra(selected.id);
-    if (selected.kind === 'extinction') return 'ancient';
+    if (selected.kind === 'extinction' || selected.kind === 'period') return 'ancient';
     const s = speciesById(selected.id);
     return s ? speciesEra(s) : 'ancient';
   }, [selected]);
@@ -145,13 +149,14 @@ export default function GlobeScreen() {
   // Group pages leave it as it is.
   const syncRange = (next: Selection) => {
     if (next.kind === 'species') setRangeId(rangeOf(next.id) ? next.id : undefined);
-    else if (next.kind === 'event' || next.kind === 'extinction') setRangeId(undefined);
+    else if (next.kind === 'event' || next.kind === 'extinction' || next.kind === 'period') setRangeId(undefined);
   };
   const showInfo = (next: Selection, scroll = true) => {
     if (selected && !sameSelection(selected, next)) setHistory((h) => [...h, selected].slice(-50));
     setSelected(next);
     // Museums and zoos aren't pages: they aren't kept in Recently viewed or counted for points.
-    if (!(next.kind === 'event' && isPlaceEvent(next.event))) addRecent(pageOf(next));
+    if (next.kind === 'period') markVisited(`period:${next.id}`);
+    else if (!(next.kind === 'event' && isPlaceEvent(next.event))) addRecent(pageOf(next));
     syncRange(next);
     if (!scroll) return;
     if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: !reduceMotion });
@@ -203,6 +208,13 @@ export default function GlobeScreen() {
   };
   const openClade = (id: string) => showInfo({ kind: 'clade', id });
   const openExtinction = (id: string) => showInfo({ kind: 'extinction', id });
+  // A period's page; the timeline moves to the middle of the period.
+  const openPeriod = (id: string, scroll = true) => {
+    const p = getPeriod(id);
+    if (!p) return;
+    bar.current?.goToSpan('period', p.startMa, p.endMa);
+    showInfo({ kind: 'period', id }, scroll);
+  };
   const showPopup =
     extinction !== undefined &&
     lingered?.id === extinction.id &&
@@ -216,13 +228,16 @@ export default function GlobeScreen() {
     if (!previous) return;
     setHistory((h) => h.slice(0, -1));
     setSelected(previous);
-    addRecent(pageOf(previous));
+    if (previous.kind !== 'period') addRecent(pageOf(previous));
     syncRange(previous);
     if (previous.kind === 'species') travelToSpecies(previous.id);
     else if (previous.kind === 'event') jumpToPoint(previous.event, 0);
     else if (previous.kind === 'extinction') {
       const x = EXTINCTIONS.find((e) => e.id === previous.id);
       if (x) bar.current?.jumpToExtinction(x);
+    } else if (previous.kind === 'period') {
+      const p = getPeriod(previous.id);
+      if (p) bar.current?.goToSpan('period', p.startMa, p.endMa);
     }
     if (infoY.current !== null) page.current?.scrollTo({ y: infoY.current, animated: !reduceMotion });
   };
@@ -287,7 +302,12 @@ export default function GlobeScreen() {
 
   const onSearchSelect = (r: SearchResult) => {
     setSearching(false);
-    if (r.kind === 'unit') bar.current?.zoomTo(r.unit);
+    if (r.kind === 'unit') {
+      // A period opens its page; any unit takes the timeline to its middle.
+      const p = r.unit.level === 'period' ? PERIODS.find((x) => x.name === r.unit.name) : undefined;
+      if (p) openPeriod(p.id);
+      else bar.current?.goToSpan(r.unit.level, r.unit.startMa, r.unit.endMa);
+    }
     else if (r.kind === 'extinction') {
       bar.current?.jumpToExtinction(r.extinction);
       showInfo({ kind: 'extinction', id: r.extinction.id }, false);
@@ -371,9 +391,9 @@ export default function GlobeScreen() {
               </Pressable>
             )}
             {period && (
-              <Link href={{ pathname: '/period/[id]', params: { id: period.id } }} style={styles.link}>
-                {t('About the {period} ›', { period: t(period.name) })}
-              </Link>
+              <Pressable onPress={() => openPeriod(period.id)} accessibilityRole="link" hitSlop={6}>
+                <Text style={styles.link}>{t('About the {period} ›', { period: t(period.name) })}</Text>
+              </Pressable>
             )}
           </View>
 
@@ -472,6 +492,20 @@ export default function GlobeScreen() {
                 onShowOnTimeline={() => {
                   bar.current?.jumpToExtinction(EXTINCTIONS.find((x) => x.id === selected.id)!);
                   backToGlobe();
+                }}
+              />
+            )}
+            {selected.kind === 'period' && getPeriod(selected.id) && (
+              <PeriodInfo
+                key={selected.id}
+                period={getPeriod(selected.id)!}
+                onBack={backToGlobe}
+                {...nav}
+                onOpenPeriod={(id) => openPeriod(id)}
+                onSpan={(level, startMa, endMa) => {
+                  bar.current?.goToSpan(level, startMa, endMa);
+                  // A series opens its stages below; the period and its stages take you to the globe.
+                  if (level !== 'series') backToGlobe();
                 }}
               />
             )}

@@ -24,7 +24,8 @@ function ProportionBar({ segments, height }: { segments: Segment[]; height: numb
   );
 }
 
-export function SeriesTimeline({ period }: { period: Period }) {
+// onSpan: tapping a series or stage moves the globe and timeline to its middle (on the globe screen).
+export function SeriesTimeline({ period, onSpan }: { period: Period; onSpan?: (level: 'series' | 'stage', startMa: number, endMa: number) => void }) {
   const t = useT();
   const palette = usePalette();
   const series = SERIES_BY_PERIOD[period.id] ?? [];
@@ -61,7 +62,16 @@ export function SeriesTimeline({ period }: { period: Period }) {
             {!!s.group && s.group !== series[i - 1]?.group && (
               <Text style={[styles.group, { color: palette.muted }]}>{s.group} sub-period</Text>
             )}
-            <SeriesRow series={s} expanded={open.has(s.name)} onToggle={() => toggle(s.name)} palette={palette} />
+            <SeriesRow
+              series={s}
+              expanded={open.has(s.name)}
+              onToggle={() => {
+                toggle(s.name);
+                onSpan?.('series', s.startMa, s.endMa);
+              }}
+              onStage={onSpan ? (st) => onSpan('stage', st.startMa, st.endMa) : undefined}
+              palette={palette}
+            />
           </View>
         ))}
         {showAnthropocene && (
@@ -80,11 +90,13 @@ function SeriesRow({
   series,
   expanded,
   onToggle,
+  onStage,
   palette,
 }: {
   series: Series;
   expanded: boolean;
   onToggle: () => void;
+  onStage?: (stage: Stage) => void;
   palette: Palette;
 }) {
   const t = useT();
@@ -96,10 +108,10 @@ function SeriesRow({
       <View style={[styles.rail, { backgroundColor: series.color }]} />
       <View style={[styles.card, { backgroundColor: palette.card, borderColor: palette.border }]}>
         <Pressable
-          disabled={!hasStages}
+          disabled={!hasStages && !onStage}
           onPress={onToggle}
           accessibilityRole="button"
-          accessibilityState={{ expanded, disabled: !hasStages }}
+          accessibilityState={{ expanded, disabled: !hasStages && !onStage }}
           accessibilityLabel={`${series.name}, ${localTime(spanRange(series.startMa, series.endMa), t)}, ${hasStages ? stageCount : t('no stages')}`}>
           {({ pressed }) => (
             <View style={[styles.cardHeader, pressed && styles.pressed]}>
@@ -117,13 +129,13 @@ function SeriesRow({
           )}
         </Pressable>
 
-        {expanded && hasStages && <StageTimeline stages={series.stages} palette={palette} />}
+        {expanded && hasStages && <StageTimeline stages={series.stages} palette={palette} onStage={onStage} />}
       </View>
     </View>
   );
 }
 
-function StageTimeline({ stages, palette }: { stages: Stage[]; palette: Palette }) {
+function StageTimeline({ stages, palette, onStage }: { stages: Stage[]; palette: Palette; onStage?: (stage: Stage) => void }) {
   const t = useT();
   return (
     <View style={[styles.stages, { borderTopColor: palette.border }]}>
@@ -132,7 +144,13 @@ function StageTimeline({ stages, palette }: { stages: Stage[]; palette: Palette 
         height={6}
       />
       {stages.map((s) => (
-        <View key={s.name} style={styles.stageRow}>
+        <Pressable
+          key={s.name}
+          disabled={!onStage}
+          onPress={() => onStage?.(s)}
+          accessibilityRole={onStage ? 'button' : undefined}
+          accessibilityHint={onStage ? t('Shows the middle of the {stage} on the globe', { stage: s.name }) : undefined}
+          style={({ pressed }) => [styles.stageRow, pressed && styles.pressed]}>
           <View style={[styles.stageRail, { backgroundColor: s.color }]} />
           <View style={styles.stageText}>
             <Text style={[styles.stageName, { color: palette.text }]}>{s.name}</Text>
@@ -140,7 +158,8 @@ function StageTimeline({ stages, palette }: { stages: Stage[]; palette: Palette 
               {localTime(`${spanRange(s.startMa, s.endMa)} · ${spanDuration(s.startMa, s.endMa)}`, t)}
             </Text>
           </View>
-        </View>
+          {onStage && <Text style={[styles.stageMeta, { color: palette.muted }]}>›</Text>}
+        </Pressable>
       ))}
     </View>
   );
