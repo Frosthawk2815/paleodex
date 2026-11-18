@@ -57,7 +57,7 @@ export function BoneWarFriend() {
   const sendLook = async () => {
     link.current?.send({ t: 'bw-look', look: lookOf(palette) });
     for (const c of deckCards(profile)) {
-      const id = c.kind === 'species' ? c.id : c.speciesId;
+      const id = c.kind === 'species' ? c.id : (c.speciesId ?? `extinction:${c.id}`);
       const photo = id ? own(id) : undefined;
       const uri = photo ? await shrink(photo, 240) : null;
       if (uri) link.current?.send({ t: 'bw-art', id, uri });

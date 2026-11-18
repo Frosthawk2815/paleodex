@@ -3,6 +3,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useProfileStyles, useShowOnGlobe } from '@/components/profile-ui';
 import { SpeciesPhotoGrid } from '@/components/user-photo-gallery';
 import { usePalette } from '@/hooks/use-palette';
+import { EXTINCTIONS } from '@/lib/extinctions';
 import { speciesById } from '@/lib/life';
 import { useUserPhotos } from '@/lib/user-photos';
 import { useT } from '@/lib/i18n';
@@ -27,16 +28,18 @@ export default function YourImagesScreen() {
       )}
       {speciesIds.map((id) => {
         const s = speciesById(id);
-        const name = s ? s.common || s.name : id;
+        // Extinction pages' photos are kept under "extinction:id".
+        const ext = id.startsWith('extinction:') ? EXTINCTIONS.find((e) => `extinction:${e.id}` === id) : undefined;
+        const name = s ? s.common || s.name : ext ? t(ext.name) : id;
         return (
           <View key={id} style={{ gap: 8 }}>
             <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', gap: 12, marginTop: 8 }}>
               <Text style={[st.rowTitle, { flex: 1 }]} numberOfLines={1}>
                 {name}
               </Text>
-              {s && (
+              {(s || ext) && (
                 <Pressable
-                  onPress={() => showOnGlobe({ kind: 'page', page: { kind: 'species', id } })}
+                  onPress={() => showOnGlobe({ kind: 'page', page: ext ? { kind: 'extinction', id: ext.id } : { kind: 'species', id } })}
                   accessibilityRole="button"
                   accessibilityLabel={t('Open the {name} page', { name })}
                   hitSlop={6}>

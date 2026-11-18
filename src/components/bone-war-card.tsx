@@ -226,7 +226,9 @@ export function BoneWarCard({
   const ink = inkOn(border);
   const name = cardName(card);
   const stars = '★'.repeat(card.stars);
-  const pictured = card.kind === 'species' ? card.id : card.speciesId;
+  // Species pictures by species id; an extinction's own photo (if the player added one) by
+  // "extinction:id".
+  const pictured = card.kind === 'species' ? card.id : (card.speciesId ?? `extinction:${card.id}`);
   const picture = pictured ? (art ? art[pictured] : own(pictured)) ?? imageOf(pictured)?.thumb : undefined;
   const small = width < 90;
   return (
@@ -241,7 +243,8 @@ export function BoneWarCard({
         {picture ? (
           <Image source={{ uri: picture }} style={StyleSheet.absoluteFill} contentFit="cover" />
         ) : card.kind === 'extinction' ? (
-          <ExtinctionIcon cause={card.event.cause} size={width * 0.45} />
+          // No photo: its symbol from the timeline, filling the picture slot.
+          <ExtinctionIcon cause={card.event.cause} size={Math.min(width * 0.5, height * 0.34)} />
         ) : (
           <Text style={{ fontSize: width * 0.3 }}>🦴</Text>
         )}
@@ -260,9 +263,17 @@ export function BoneWarCard({
           empty={ink === '#FFFFFF' ? 'rgba(255,255,255,0.22)' : 'rgba(0,0,0,0.15)'}
         />
       ) : (
-        <Text style={[styles.extinct, { color: ink, fontSize: width * 0.075 }]} numberOfLines={2}>
-          {card.speciesId ? 'Extinction by humans' : 'Mass extinction'}
-        </Text>
+        <View style={{ alignItems: 'center', gap: 2, marginTop: 4, paddingHorizontal: 4 }}>
+          <Text style={[styles.extinct, { color: ink, fontSize: width * 0.075 }]} numberOfLines={1}>
+            {card.speciesId ? 'Extinction by humans' : 'Mass extinction'}
+          </Text>
+          <Text style={[styles.when, { color: ink, fontSize: width * 0.07 }]} numberOfLines={1}>
+            {card.speciesId ? 'The last 50,000 years' : `${Math.round(card.event.ma * 10) / 10} million years ago`}
+          </Text>
+          <Text style={[styles.when, { color: ink, fontSize: width * 0.065, opacity: 0.85 }]} numberOfLines={3}>
+            {/^not one of/i.test(card.event.causeText) ? 'Cause still debated' : card.event.causeText.charAt(0).toUpperCase() + card.event.causeText.slice(1)}
+          </Text>
+        </View>
       )}
     </View>
   );
@@ -273,5 +284,6 @@ const styles = StyleSheet.create({
   picture: { width: '100%', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   name: { fontWeight: '800', textAlign: 'center', marginTop: 3, paddingHorizontal: 3 },
   stars: { letterSpacing: 1 },
-  extinct: { fontWeight: '700', textAlign: 'center', marginTop: 6, paddingHorizontal: 4 },
+  extinct: { fontWeight: '700', textAlign: 'center' },
+  when: { textAlign: 'center' },
 });

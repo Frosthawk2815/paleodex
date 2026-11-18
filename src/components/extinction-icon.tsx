@@ -60,8 +60,13 @@ export function ExtinctionIcon({ cause, size = 14 }: { cause: Cause; size?: numb
       )}
       {cause === 'asteroid' && (
         <G>
-          <Path d="M10 14 L21 3 L14 10 Z" fill={c} opacity={0.7} />
-          <Path d="M4 13 L7 9 L12 10 L14 15 L11 20 L5 19 Z" fill="#8C7A68" stroke="#3E3329" strokeWidth={1} />
+          <Path d="M9 11 L21 2 L13 15 Z" fill={c} opacity={0.55} />
+          <Line x1={11} y1={11} x2={22} y2={4} stroke={c} strokeWidth={2.2} strokeLinecap="round" />
+          <Line x1={9.5} y1={9} x2={17} y2={2} stroke={c} strokeWidth={1.6} strokeLinecap="round" opacity={0.8} />
+          <Line x1={13} y1={13} x2={21} y2={9} stroke={c} strokeWidth={1.6} strokeLinecap="round" opacity={0.8} />
+          <Path d="M3 14 L6 9.5 L11 9 L14.5 13 L12.5 19.5 L6 21 L2.5 18 Z" fill="#8C7A68" stroke="#3E3329" strokeWidth={1} />
+          <Circle cx={7} cy={15} r={1.4} fill="#5D4E40" />
+          <Circle cx={10.5} cy={17} r={1} fill="#5D4E40" />
         </G>
       )}
     </Svg>

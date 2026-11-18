@@ -683,23 +683,20 @@ export function Globe({ timeMa, width: w, height: h, focus, onSelectEvent, onDra
                 <Circle cx={xy[0]} cy={xy[1]} r={3} fill={color} stroke="#05070D" strokeWidth={1} />
                 <Circle cx={cx} cy={cy} r={15} fill={color} stroke="#05070D" strokeWidth={1.5} />
                 {image ? (
-                  <>
+                  // Drawn around (0, 0) and moved into place, so the round clip never changes as the
+                  // globe turns. (A clip drawn at screen coordinates isn't always updated on phones,
+                  // leaving the picture behind its frame.)
+                  <G transform={`translate(${cx}, ${cy})`}>
                     <Defs>
                       <ClipPath id={`user-clip-${key}`}>
-                        <Circle cx={cx} cy={cy} r={12} />
+                        <Circle cx={0} cy={0} r={12} />
                       </ClipPath>
                     </Defs>
-                    <Circle cx={cx} cy={cy} r={12} fill="#2A2825" />
-                    <SvgImage
-                      href={image}
-                      x={cx - 12}
-                      y={cy - 12}
-                      width={24}
-                      height={24}
-                      preserveAspectRatio="xMidYMid slice"
-                      clipPath={`url(#user-clip-${key})`}
-                    />
-                  </>
+                    <Circle cx={0} cy={0} r={12} fill="#2A2825" />
+                    <G clipPath={`url(#user-clip-${key})`}>
+                      <SvgImage href={image} x={-12} y={-12} width={24} height={24} preserveAspectRatio="xMidYMid slice" />
+                    </G>
+                  </G>
                 ) : (
                   <>
                     <Circle cx={cx} cy={cy} r={12} fill="#2F7DE1" />

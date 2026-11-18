@@ -1,3 +1,4 @@
+import { Image } from 'expo-image';
 import { Pressable, Text, View } from 'react-native';
 
 import { CAUSE_COLORS, ExtinctionIcon } from '@/components/extinction-icon';
@@ -9,6 +10,8 @@ import { cladeById } from '@/lib/life';
 import { useUnitText } from '@/lib/profile';
 import { useLanguage, useT } from '@/lib/i18n';
 import { localize } from '@/lib/content';
+import { useMainUserPhoto } from '@/lib/user-photos';
+import { AddPhotoButton } from '@/components/user-photo-gallery';
 
 type Props = {
   extinction: Extinction;
@@ -29,6 +32,8 @@ export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, 
   const u = useUnitText();
   const lang = useLanguage();
   const detail = EXTINCTION_DETAILS[extinction.id] && localize(lang, `extinction:${extinction.id}`, EXTINCTION_DETAILS[extinction.id]!);
+  // The user's own picture for this extinction, if they added one (also used on its Bone War card).
+  const photo = useMainUserPhoto(`extinction:${extinction.id}`);
 
   return (
     <View style={info.wrap}>
@@ -43,6 +48,14 @@ export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, 
         <Text style={[info.meta, { color: CAUSE_COLORS[extinction.cause] }]}>{t(extinction.causeText)}</Text>
       </View>
       {detail && <Text style={[info.subtitle, { textAlign: 'center' }]}>{detail.loss}</Text>}
+      {photo && (
+        <Image
+          source={{ uri: photo.uri }}
+          style={{ width: '100%', aspectRatio: photo.width && photo.height ? photo.width / photo.height : 1.5, borderRadius: 12 }}
+          contentFit="cover"
+          accessibilityLabel={t('Your picture for {name}', { name: t(extinction.name) })}
+        />
+      )}
 
       {onShowOnTimeline && (
         <Pressable onPress={onShowOnTimeline} accessibilityRole="button" style={({ pressed }) => [info.card, pressed && info.pressed]}>
@@ -70,6 +83,7 @@ export function ExtinctionInfo({ extinction, onBack, onPrevious, previousLabel, 
         </View>
       )}
       <Text style={info.note}>{t('Loss figures are estimates and vary between studies.')}</Text>
+      <AddPhotoButton speciesId={`extinction:${extinction.id}`} name={t(extinction.name)} />
     </View>
   );
 }

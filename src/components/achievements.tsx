@@ -15,7 +15,8 @@ export function AchievementWatcher() {
   const { allPhotos } = useUserPhotos();
   const toast = useToast();
   const lastLevel = useRef<number | null>(null);
-  const photoSpecies = new Set(allPhotos.map((p) => p.speciesId)).size;
+  // Species only (extinction pages' photos don't count towards species titles).
+  const photoSpecies = new Set(allPhotos.map((p) => p.speciesId).filter((id) => !id.startsWith('extinction:'))).size;
   const { visited, favourites, titles, places, champions } = profile;
 
   useEffect(() => {
