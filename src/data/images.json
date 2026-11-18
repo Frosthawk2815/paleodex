@@ -31004,5 +31004,17 @@
   "file": "Cronopio.svg",
   "article": "https://en.wikipedia.org/wiki/Cronopio_dentiacutus",
   "scope": "species"
+ },
+ "purgatorius-unioensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Purgatorius_BW.jpg/500px-Purgatorius_BW.jpg",
+  "width": 500,
+  "height": 324,
+  "artist": "Nobu Tamura",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Purgatorius_BW.jpg",
+  "file": "Purgatorius_BW.jpg",
+  "article": "https://en.wikipedia.org/wiki/Purgatorius",
+  "scope": "species"
  }
 }
