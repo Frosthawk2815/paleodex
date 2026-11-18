@@ -50,8 +50,9 @@ function scramble(text: string, seed: number) {
     .join('');
 }
 
-export function GlitchText({ text, style, color, burst }: { text: string; style?: StyleProp<TextStyle>; color: string; burst: Burst }) {
-  const shown = burst ? scramble(text, burst.seed) : text;
+// clean: never scramble the letters (just split and jump).
+export function GlitchText({ text, style, color, burst, clean = false }: { text: string; style?: StyleProp<TextStyle>; color: string; burst: Burst; clean?: boolean }) {
+  const shown = burst && !clean ? scramble(text, burst.seed) : text;
   const split = burst ? burst.split : 1;
   const ghost = (c: string, dx: number) => (
     <Text style={[style, styles.ghost, { color: c, transform: [{ translateX: dx }] }]} numberOfLines={1} aria-hidden importantForAccessibility="no-hide-descendants">

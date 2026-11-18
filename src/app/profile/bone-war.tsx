@@ -129,13 +129,13 @@ function ShadowRow({ ready }: { ready: boolean }) {
       disabled={!ready}
       accessibilityRole="button"
       accessibilityState={{ disabled: !ready }}
+      accessibilityLabel={`${t('Shadow {name}', { name: profile.name || t('You') })}${beaten ? `. ${t('Beaten: {title}', { title: t('Banisher of Shadows') })}` : ''}`}
       style={({ pressed }) => [st.card, st.row, { backgroundColor: look.background, borderColor: cards.border, borderWidth: 2, overflow: 'hidden' }, pressed && st.pressed, !ready && { opacity: 0.5 }]}>
       <View style={{ width: 14, height: 40, borderRadius: 4, backgroundColor: cards.back, borderWidth: 2, borderColor: cards.border, transform: [{ translateX: burst ? -burst.dx : 0 }] }} />
       <View style={st.rowText}>
         <GlitchText text={`${beaten ? '✓ ' : ''}${t('Shadow {name}', { name: profile.name || t('You') })}`} style={st.rowTitle} color={look.text} burst={burst} />
-        <Text style={[st.rowSub, { color: look.muted }]}>
-          {t('Your dark reflection. It plays like the champion you struggled with most, and every one of its cards is 5 stars.')}
-        </Text>
+        {/* No description: only a laugh that flickers in during a glitch. */}
+        <View style={{ minHeight: 20 }}>{burst && <GlitchText text="hahahaha" style={st.rowSub} color={look.muted} burst={burst} clean />}</View>
         {beaten && <Text style={[st.rowSub, { color: look.accent, fontWeight: '700' }]}>{t('Beaten: {title}', { title: t('Banisher of Shadows') })}</Text>}
       </View>
       <Text style={[st.chevron, { color: look.muted }]}>›</Text>
