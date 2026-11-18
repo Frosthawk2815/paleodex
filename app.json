@@ -76,7 +76,8 @@
         }
       ],
       "expo-status-bar",
-      "expo-web-browser"
+      "expo-web-browser",
+      "./plugins/with-optional-screen-orientation.js"
     ],
     "experiments": {
       "typedRoutes": true,
