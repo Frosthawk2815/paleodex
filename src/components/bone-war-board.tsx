@@ -4,7 +4,7 @@ import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } fr
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BoneWarCard } from '@/components/bone-war-card';
-import { useGlitch } from '@/components/glitch';
+import { GlitchText, useGlitch } from '@/components/glitch';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { cardFor, type Look } from '@/lib/bone-war';
@@ -53,6 +53,8 @@ export function Board({
   // Glitch bursts only run for the shadow once it is below half health.
   const burst = useGlitch(!oppGlitch || !theirsLow || reduceMotion);
   // The shadow's bar: hidden, then flickering into view below half (steady with reduce motion).
+  // The shadow's name glitches now and then (it shares the player's name, which is the point).
+  const nameBurst = useGlitch(!oppGlitch || reduceMotion);
   const showOppBar = !oppGlitch || (theirsLow && (reduceMotion || !!burst));
   // Against the shadow, the latest message never says how much damage was done.
   const lastLog = (() => {
@@ -204,9 +206,15 @@ export function Board({
 
   const hp = (p: typeof mine, who: string, look?: Look) => (
     <View style={styles.hpRow}>
-      <Text style={[st.rowTitle, { flex: 1 }, look && { color: look.text }, look && oppHeading ? { fontFamily: oppHeading, fontWeight: 'normal' } : null]} numberOfLines={1}>
-        {who}
-      </Text>
+      {look && oppGlitch ? (
+        <View style={{ flex: 1 }}>
+          <GlitchText text={who} style={st.rowTitle} color={look.text} burst={nameBurst} quiet />
+        </View>
+      ) : (
+        <Text style={[st.rowTitle, { flex: 1 }, look && { color: look.text }, look && oppHeading ? { fontFamily: oppHeading, fontWeight: 'normal' } : null]} numberOfLines={1}>
+          {who}
+        </Text>
+      )}
       {look && !showOppBar ? (
         // Hidden: an empty space where the bar would be.
         <View style={[styles.hpTrack, { backgroundColor: 'transparent' }]} />

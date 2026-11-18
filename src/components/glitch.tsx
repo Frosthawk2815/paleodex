@@ -50,8 +50,28 @@ function scramble(text: string, seed: number) {
     .join('');
 }
 
-// clean: never scramble the letters (just split and jump).
-export function GlitchText({ text, style, color, burst, clean = false }: { text: string; style?: StyleProp<TextStyle>; color: string; burst: Burst; clean?: boolean }) {
+// clean: never scramble the letters (just split and jump). quiet: plain text between bursts.
+export function GlitchText({
+  text,
+  style,
+  color,
+  burst,
+  clean = false,
+  quiet = false,
+}: {
+  text: string;
+  style?: StyleProp<TextStyle>;
+  color: string;
+  burst: Burst;
+  clean?: boolean;
+  quiet?: boolean;
+}) {
+  if (quiet && !burst)
+    return (
+      <Text style={[style, { color }]} numberOfLines={1}>
+        {text}
+      </Text>
+    );
   const shown = burst && !clean ? scramble(text, burst.seed) : text;
   const split = burst ? burst.split : 1;
   const ghost = (c: string, dx: number) => (
