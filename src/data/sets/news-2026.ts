@@ -89,7 +89,43 @@ export const NEWS_2026: DataSet = {
       ],
       keywords: ['cambridge greensand', 'cambridge', 'england', 'pterosaur', 'cretaceous'],
     }),
+    formation({
+      id: 'tullock',
+      title: 'Tullock Formation',
+      short: 'Tullock',
+      dateText: 'About 66 to 64.5 million years ago (earliest Paleocene)',
+      placeText: 'North-eastern Montana, USA',
+      lon: -106.6,
+      lat: 47.6,
+      plate: 101,
+      fromMa: 66,
+      toMa: 64.5,
+      jumpMa: 65.8,
+      icon: 'swamp',
+      summary: [
+        'The rocks laid down straight on top of the Hell Creek Formation, beginning just after the asteroid struck. In the same Montana badlands, a single layer of clay marks the end of the dinosaurs; above it, the Tullock records the first million or so years of the world without them.',
+        'Its rivers and swamps were home to crocodile-like champsosaurs, turtles, gars and bowfins, and to the small mammals that survived the extinction. Sites such as the Garbani Channel and McGuire Creek, dated precisely with volcanic ash, show those mammals slowly becoming more varied, among them Purgatorius, the oldest known relative of primates.',
+      ],
+      facts: [
+        { label: 'Age', value: 'About 66 to 64.5 million years ago' },
+        { label: 'Where today', value: 'Garfield and McCone counties, Montana' },
+        { label: 'Rocks', value: 'River sandstones, mudstones, lignite coal and volcanic ash beds' },
+        { label: 'Also called', value: 'The Tullock Member of the Fort Union Formation' },
+      ],
+      groupNotes: [
+        { tier: 'microceleb', title: 'Mammals', text: 'Dozens of species of small mammals, mostly known from teeth: multituberculates, early marsupial relatives, the first archaic ungulates and the first primate relatives.' },
+        { tier: 'pleb', title: 'Reptiles', text: 'Champsosaurs, crocodylians and many turtles, which came through the extinction far better than the dinosaurs.' },
+        { tier: 'pleb', title: 'Fishes', text: 'Gars, bowfins, sturgeons and paddlefish in its rivers.' },
+      ],
+      keywords: ['tullock', 'fort union', 'montana', 'paleocene', 'palaeocene', 'after the dinosaurs', 'k-pg', 'garbani channel', 'mcguire creek'],
+    }),
   ],
+  // Animals found in the Tullock as well as elsewhere.
+  upgrades: {
+    'protungulatum-donnae': { formations: ['hell-creek', 'tullock'] },
+    'mesodma-formosa': { formations: ['hell-creek', 'tullock'] },
+    'champsosaurus': { formations: ['hell-creek', 'lance', 'tullock'] },
+  },
   species: [
     // ── Living animals saved by zoos ──
     {
@@ -285,7 +321,7 @@ export const NEWS_2026: DataSet = {
       status: 'full',
       ageText: 'About 65.9 to 63 million years ago',
       placeText: 'Garbani Channel and other sites in north-eastern Montana, USA',
-      formations: [],
+      formations: ['tullock'],
       summary: [
         'The oldest known relative of primates, a rat-sized mammal that appeared almost immediately after the dinosaurs died out. Teeth found in Montana come from within about 105,000 to 139,000 years of the asteroid impact, making it one of the first mammals of the new world.',
         'It is known mostly from teeth and jaws, but ankle bones described in 2015 show it could rotate its feet like a tree-climbing squirrel or primate, so the primate line began in the trees. It probably ate fruit and insects. Some researchers count it as the earliest primate; others as a close relative just outside the group, because it lacked features such as nails and a grasping big toe.',
