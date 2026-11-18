@@ -210,6 +210,26 @@ const kmApart = ([lon1, lat1]: [number, number], [lon2, lat2]: [number, number])
 export const label = (s: Species) => s.common || s.name;
 const named = (s: Species) => (s.common && s.common !== s.name ? `${s.common} (${s.name})` : s.name);
 
+// Everyday names ("tiger", "grey wolf") need "a" or "the" in a sentence and a small first letter;
+// names that are genera ("Allosaurus", "T. rex") don't. Names starting with a place or a person
+// ("Columbian mammoth", "Steller’s sea eagle") keep their capital.
+const PROPER_START = /^(American|African|Asian|European|Eurasian|Indian|Chinese|Japanese|Korean|Philippine|Sunda|Bornean|Sumatran|Javan|Arctic|Antarctic|Atlantic|Pacific|Australian|Tasmanian|Siberian|Bengal|Malayan|Andean|Amazonian|Columbian|Mexican|Californian|Canada|Canadian|Galápagos|Komodo|Nile|Barbary|Ethiopian|Madagascar|Malagasy|New|Arabian|Persian|Irish|Iberian|Caspian|Mongolian|Tibetan|Himalayan|Humboldt|Adélie|Guinea|Cape|Congo|Florida|Texas|Alaskan|Hawaiian|Patagonian|Brazilian|Peruvian|Chilean|Egyptian|Saharan|Sahara|Indochinese|Malagasy|Moluccan|Celebes|Sulawesi|Atlas|Alpine|Rocky|Andes|Spix|West|East|North|South|Northern|Southern|Western|Eastern|Central)\b/;
+const isProperName = (s: Species) =>
+  !s.common || s.common === s.name || /^[A-Z]\. /.test(s.common) || s.name.toLowerCase().startsWith(s.common.toLowerCase()) || s.common.split(' ')[0] === s.name.split(' ')[0];
+const commonInSentence = (common: string) => (PROPER_START.test(common) || /^\S+[’']s\b/.test(common) ? common : lower(common));
+const article = (word: string) => (/^[aeiou]/i.test(word) && !/^(eu|uni|use|one|ure)/i.test(word) ? 'an' : 'a');
+// "a tiger (Panthera tigris)" / "Allosaurus (Allosaurus fragilis)".
+const aNamed = (s: Species) => (isProperName(s) ? named(s) : `${article(commonInSentence(s.common!))} ${commonInSentence(s.common!)} (${s.name})`);
+// Names starting with a person ("Steller’s sea eagle") read best without "the".
+const possessive = (s: Species) => /^\S+[’']s\b/.test(s.common ?? '');
+// "the tiger (Panthera tigris)".
+const theNamed = (s: Species) => (isProperName(s) || possessive(s) ? named(s) : `the ${commonInSentence(s.common!)} (${s.name})`);
+// "tiger (Panthera tigris)", after an article the sentence already has ("an adult ...").
+const plainNamed = (s: Species) => (isProperName(s) ? named(s) : `${commonInSentence(s.common!)} (${s.name})`);
+// "the tiger" mid-sentence, "The tiger" at the start; a genus name as it is.
+const theLabel = (s: Species) => (isProperName(s) || possessive(s) ? label(s) : `the ${commonInSentence(s.common!)}`);
+const Subject = (s: Species) => (isProperName(s) || possessive(s) ? label(s) : `The ${commonInSentence(s.common!)}`);
+
 // A group's everyday name mid-sentence: lower case, except names that begin with a place or a
 // proper name ("Old World monkeys", "New World deer").
 const groupWords = (text: string) => (/^(Old|New|South|North|African|Asian|American|European|Malagasy|Cuvier|Baird|Steller)\b/.test(text) ? text : lower(text));
@@ -221,8 +241,8 @@ function explainRelative(s: Species, right: Species): string {
   const shared = [...cladePath(s.clade)].reverse().find((c) => theirs.has(c.id));
   const family = familyOf(s);
   if (shared && family && shared.id !== family.id && cladePath(shared.id).some((c) => c.id === family.id))
-    return `${label(right)} and ${label(s)} are both ${groupWords(shared.common)} (${shared.name}), within the ${groupWords(family.common)}.`;
-  return `${label(right)} is in the same family as ${label(s)}.`;
+    return `${Subject(right)} and ${theLabel(s)} are both ${groupWords(shared.common)} (${shared.name}), within the ${groupWords(family.common)}.`;
+  return `${Subject(right)} is in the same family as ${theLabel(s)}.`;
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -279,7 +299,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
         if (c.category.kind === 'mammals' && pathIds(s).has('mammalia')) return null;
         const excluded = alsoTrue(s);
         const wrong = sample([...new Set(KINDS.map((k) => k.label))].filter((k) => !excluded.has(k)), 3);
-        return build(`kind:${s.id}`, `What kind of animal is ${named(s)}?`, kind, wrong, `${label(s)} ${was(s)} ${lower(kind)}.`, { speciesId: s.id });
+        return build(`kind:${s.id}`, `What kind of animal is ${theNamed(s)}?`, kind, wrong, `${Subject(s)} ${was(s)} ${lower(kind)}.`, { speciesId: s.id });
       }
       const tier = Math.min(c.level, 4) as 2 | 3 | 4;
       const group = groupAt(s, tier);
@@ -298,7 +318,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       const rest = options.filter((x) => !siblings.includes(x) && !sameBranch.includes(x));
       const pool = [...shuffle(siblings), ...shuffle(sameBranch), ...shuffle(rest)].map((x) => x.group);
       const wrong = sample(pool.slice(0, Math.max(3, siblings.length)), 3).map((g) => g.common);
-      return build(`group:${s.id}:${tier}`, `Which group ${isAlive(s) ? 'does' : 'did'} ${named(s)} belong to?`, cap(group.common), wrong.map(cap), `${label(s)} ${was(s)} one of the ${lower(group.common)} (${group.name}).`, {
+      return build(`group:${s.id}:${tier}`, `Which group ${isAlive(s) ? 'does' : 'did'} ${theNamed(s)} belong to?`, cap(group.common), wrong.map(cap), `${Subject(s)} ${was(s)} one of the ${lower(group.common)} (${group.name}).`, {
         speciesId: s.id,
       });
     },
@@ -313,7 +333,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       // Easier levels mix in different kinds of animal; harder ones use close relatives.
       const others = c.level >= 3 ? relativesOf(s).slice(0, 12) : SPECIES.filter((o) => kindOf(o) === kind && o.id !== s.id && FAMOUS.has(o.id));
       const wrong = sample(others.length >= 3 ? others : SPECIES.filter((o) => o.id !== s.id && FAMOUS.has(o.id)), 3).map(label);
-      return build(`picture:${s.id}`, 'Which animal is shown in this picture?', label(s), wrong, `This is ${named(s)}.`, { image, speciesId: s.id });
+      return build(`picture:${s.id}`, 'Which animal is shown in this picture?', label(s), wrong, `This is ${aNamed(s)}.`, { image, speciesId: s.id });
     },
   },
   // In which period did it live?
@@ -330,7 +350,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       // Harder levels offer neighbouring periods.
       const near = c.level >= 3 ? PERIODS.slice(Math.max(0, i - 3), i + 4) : PERIODS;
       const wrong = sample(near.filter((p) => p !== period), 3).map((p) => p.name);
-      return build(`period:${s.id}`, `In which period did ${named(s)} live?`, period.name, wrong, `${label(s)} lived in the ${period.name}, ${lower(s.ageText)}.`, { speciesId: s.id });
+      return build(`period:${s.id}`, `In which period did ${theNamed(s)} live?`, period.name, wrong, `${Subject(s)} lived in the ${period.name}, ${lower(s.ageText)}.`, { speciesId: s.id });
     },
   },
   // This is X. Which of these is its closest relative?
@@ -393,7 +413,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       const wrong = sample(candidates, 3).map(label);
       return build(
         `relative:${s.id}`,
-        `This is ${named(s)}. Which of these is its closest relative?`,
+        `This is ${aNamed(s)}. Which of these is its closest relative?`,
         label(right),
         wrong,
         explainRelative(s, right),
@@ -418,7 +438,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       ).map(label);
       return build(
         `alongside:${s.id}`,
-        `Which of these lived in the same place and time as ${named(s)}?`,
+        `Which of these lived in the same place and time as ${theNamed(s)}?`,
         label(right),
         wrong,
         `Both ${label(s)} and ${label(right)} are found in the ${f.title}.`,
@@ -437,7 +457,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       // Harder questions choose formations of a similar age.
       const close = others.filter((e) => Math.abs((e.points[pastPointIndex(e)]?.jumpMa ?? 0) - ma) < 30);
       const wrong = sample(close.length >= 3 ? close : others, 3).map((e) => e.title);
-      return build(`formation:${s.id}`, `In which rock formation have fossils of ${named(s)} been found?`, f.title, wrong, `${label(s)} is known from the ${f.title} (${f.placeText}).`, {
+      return build(`formation:${s.id}`, `In which rock formation have fossils of ${theNamed(s)} been found?`, f.title, wrong, `${Subject(s)} is known from the ${f.title} (${f.placeText}).`, {
         speciesId: s.id,
       });
     },
@@ -456,7 +476,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
         }),
         3,
       );
-      return build(`oldest:${s.id}`, 'Which of these lived earliest?', label(s), younger.map(label), `${label(s)} lived ${lower(s.ageText)}, before the others.`, {
+      return build(`oldest:${s.id}`, 'Which of these lived earliest?', label(s), younger.map(label), `${Subject(s)} lived ${lower(s.ageText)}, before the others.`, {
         speciesId: s.id,
       });
     },
@@ -467,7 +487,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
     make: (s, c) => {
       if (c.category.kind === 'period' || c.category.kind === 'mammals' || isDinosaur(s) || alsoTrue(s).has('A dinosaur') || !kindOf(s)) return null;
       const dinos = sample((c.category.kind === 'dinosaurs' ? c.pool : SPECIES).filter((o) => isDinosaur(o) && FAMOUS.has(o.id)), 3);
-      return build(`notdino:${s.id}`, 'Which of these is not a dinosaur?', label(s), dinos.map(label), `${label(s)} ${was(s)} ${lower(kindOf(s)!)}, not a dinosaur.`, {
+      return build(`notdino:${s.id}`, 'Which of these is not a dinosaur?', label(s), dinos.map(label), `${Subject(s)} ${was(s)} ${lower(kindOf(s)!)}, not a dinosaur.`, {
         speciesId: s.id,
       });
     },
@@ -514,7 +534,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
         'Which of these is not a mammal?',
         label(s),
         sample(mammals, 3).map(label),
-        `${label(s)} was a synapsid, an early relative of mammals: closer to mammals than to reptiles, but not a mammal itself.`,
+        `${Subject(s)} was a synapsid, an early relative of mammals: closer to mammals than to reptiles, but not a mammal itself.`,
         { speciesId: s.id },
       );
     },
@@ -531,7 +551,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
         const h = homeOf(o);
         return !!h && kmApart(h, home) > 3000;
       });
-      return build(`where:${s.id}`, `Where does the ${label(s)} live in the wild?`, s.placeText, sample(far, 3).map((o) => o.placeText), `${label(s)} lives here: ${s.placeText}.`, {
+      return build(`where:${s.id}`, `Where does ${theLabel(s)} live in the wild?`, s.placeText, sample(far, 3).map((o) => o.placeText), `${Subject(s)} lives here: ${s.placeText}.`, {
         speciesId: s.id,
       });
     },
@@ -543,7 +563,7 @@ const questionTypes: { levels: Difficulty[]; make: (s: Species, c: Ctx) => Quest
       if (!isAlive(s) || !['all', 'alive', 'mammals', 'clade'].includes(c.category.kind)) return null;
       const kind = kindOf(s);
       const extinct = SPECIES.filter((o) => !isAlive(o) && (c.level >= 2 ? kindOf(o) === kind : FAMOUS.has(o.id)) && (c.level >= 3 || FAMOUS.has(o.id) || (o.status === 'full' && !!o.common)));
-      return build(`stillalive:${s.id}`, 'Which of these is still alive today?', label(s), sample(extinct, 3).map(label), `${label(s)} is alive today; the others are extinct.`, {
+      return build(`stillalive:${s.id}`, 'Which of these is still alive today?', label(s), sample(extinct, 3).map(label), `${Subject(s)} is alive today; the others are extinct.`, {
         speciesId: s.id,
       });
     },
@@ -581,7 +601,7 @@ export const sizeDifficulty = (f: SizeFact, s: Species, imageFor: ImageFor) =>
   Math.min(5, obscurity(s, !!imageFor(s.id)) + (f.sex ? 1 : 0) + (f.lesser ? 1 : 0)) as Difficulty;
 
 export function sizeQuestion(f: SizeFact, s: Species): Question | null {
-  const who = `an adult ${f.sex ? `${f.sex} ` : ''}${named(s)}`;
+  const who = `an adult ${f.sex ? `${f.sex} ` : ''}${plainNamed(s)}`;
   const what = f.measure === 'length' ? 'length' : 'weight';
   const base = f.max ? `How ${f.measure === 'length' ? 'long' : 'heavy'} can ${who} grow?` : `what is the average ${what} of ${who}?`;
   const prompt = f.max
