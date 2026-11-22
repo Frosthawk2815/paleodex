@@ -1,7 +1,8 @@
 import * as Clipboard from 'expo-clipboard';
 import { router } from 'expo-router';
+import { Image } from 'expo-image';
 import { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View } from 'react-native';
 
 import { PlayerAvatar } from '@/components/player-avatar';
 import { ShareCodeButton } from '@/components/share-code';
@@ -31,6 +32,8 @@ const MAX_ROUNDS = 10;
 const MAX_PER_ROUND = 50;
 const DEFAULT_PER_ROUND = 5;
 const QUESTION_SECONDS = 35;
+// Display mode: how long the right answer shows on the big screen before the next question.
+const REVEAL_SECONDS = 6;
 const HOST = 'host';
 
 type Quiz = { category: Category; level: Difficulty };
@@ -92,6 +95,11 @@ export default function PeerReviewScreen() {
   const [perRound, setPerRound] = useState(DEFAULT_PER_ROUND);
   // Which player is hosting (changes if the host leaves and another player takes over).
   const [hostId, setHostId] = useState(HOST);
+  // How the host takes part: 'play' (a player like everyone else) or 'display' (a shared screen,
+  // e.g. a teacher's, that shows the questions and answers but doesn't play). A player who takes
+  // over as host always plays.
+  const [mode, setMode] = useState<'play' | 'display'>('play');
+  const display = role === 'host' && mode === 'display';
   // Leaving mid-game is a forfeit; at the final results it just ends the game.
   const finalBoard = stage.kind === 'board' && stage.round + 1 >= rounds.length;
   useLeaveGuard(
@@ -100,7 +108,7 @@ export default function PeerReviewScreen() {
     finalBoard
       ? { title: t('End the game?'), message: role === 'host' ? t('This ends the Peer Review for everyone.') : t('You’ll leave the Peer Review.'), leave: t('End game') }
       : role === 'host'
-        ? { title: t('Leave the game?'), message: t('Leaving counts as a forfeit. Another player takes over as host and the game carries on.'), leave: t('Leave') }
+        ? { title: t('Leave the game?'), message: display ? t('Another player takes over as host and the game carries on.') : t('Leaving counts as a forfeit. Another player takes over as host and the game carries on.'), leave: t('Leave') }
         : undefined,
   );
   const [editing, setEditing] = useState<number | null>(null);
@@ -186,10 +194,10 @@ export default function PeerReviewScreen() {
     else hub.current?.send(addrRef.current[id] ?? id, m);
   };
   // Hosting: the hub that every other phone connects to.
-  const openAsHost = (c: string, claim: boolean) =>
+  const openAsHost = (c: string, claim: boolean, guests = MAX_PLAYERS - 1) =>
     openHub(
       c,
-      MAX_PLAYERS - 1,
+      guests,
       {
         onState: (s) => {
           if (s.kind === 'error') setStage({ kind: 'ended', message: s.reason === 'code-taken' ? t('That code is already in use. Try hosting again.') : t('The connection service couldn’t be reached. Check your internet connection.') });
@@ -202,17 +210,19 @@ export default function PeerReviewScreen() {
       { claim },
     );
 
-  const host = async () => {
+  const host = async (how: 'play' | 'display') => {
     const c = newBattleCode();
+    setMode(how);
     setRole('host');
     roleRef.current = 'host';
     setMe(HOST);
     meRef.current = HOST;
     setCode(c);
     const avatar = await shareableAvatar(profile.avatar, ownPicture);
-    putPlayers([{ id: HOST, name: myName || 'Host', title: myTitle, avatar, score: 0, connected: true }]);
+    // On a display screen the host isn't a player, so all the places go to the others.
+    putPlayers(how === 'display' ? [] : [{ id: HOST, name: myName || 'Host', title: myTitle, avatar, score: 0, connected: true }]);
     setStage({ kind: 'lobby' });
-    hub.current = openAsHost(c, false);
+    hub.current = openAsHost(c, false, how === 'display' ? MAX_PLAYERS : MAX_PLAYERS - 1);
   };
 
   // ---- Host migration: if the host's phone drops out, the next player takes over. ----
@@ -250,6 +260,7 @@ export default function PeerReviewScreen() {
     else rejoin(0);
   };
   const becomeHost = (list: Player[]) => {
+    setMode('play');
     setRole('host');
     roleRef.current = 'host';
     // Everyone else counts as away until they reconnect.
@@ -338,7 +349,8 @@ export default function PeerReviewScreen() {
   };
 
   const answer = (i: number) => {
-    if (stage.kind !== 'play' || stage.picked !== null) return;
+    // A display screen shows the questions but never answers them.
+    if (display || stage.kind !== 'play' || stage.picked !== null) return;
     const q = stage.questions[stage.index];
     if (!q) return;
     setStage({ ...stage, picked: i, hidden: stage.hidden.filter((h) => h !== i) });
@@ -561,6 +573,20 @@ export default function PeerReviewScreen() {
     return () => clearInterval(id);
   }, [deadline]);
 
+  // Display mode: once everyone has answered, the right answer shows for a few seconds, then the
+  // next question (or the leaderboard).
+  const revealed = display && stage.kind === 'play' && allIn.includes(stage.index);
+  const revealIndex = stage.kind === 'play' ? stage.index : -1;
+  useEffect(() => {
+    if (!revealed) return;
+    const id = setTimeout(() => {
+      const s = stageRef.current;
+      if (s.kind === 'play' && s.index === revealIndex) advance(s);
+    }, REVEAL_SECONDS * 1000);
+    return () => clearTimeout(id);
+  }, [revealed, revealIndex]);
+  const { width: screenWidth } = useWindowDimensions();
+
   const withMyPhoto = (q: Question): Question => {
     if (!q.image || !q.speciesId) return q;
     const own = ownPicture(q.speciesId);
@@ -593,10 +619,17 @@ export default function PeerReviewScreen() {
         <Text style={st.text}>
           {t('A quiz for a group: {min} to {max} players on their own phones. The host chooses up to {rounds} rounds of up to {questions} questions, and a leaderboard shows after each round.', { min: MIN_PLAYERS, max: MAX_PLAYERS, rounds: MAX_ROUNDS, questions: MAX_PER_ROUND })}
         </Text>
-        <Pressable onPress={host} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
+        <Pressable onPress={() => host('play')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
-            <Text style={st.rowTitle}>{t('Host a Peer Review')}</Text>
-            <Text style={st.rowSub}>{t('Choose the rounds and share a battle code')}</Text>
+            <Text style={st.rowTitle}>{t('Host and play')}</Text>
+            <Text style={st.rowSub}>{t('Choose the rounds, share a battle code and play along')}</Text>
+          </View>
+          <Text style={st.chevron}>›</Text>
+        </Pressable>
+        <Pressable onPress={() => host('display')} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
+          <View style={st.rowText}>
+            <Text style={st.rowTitle}>{t('Host on a display screen')}</Text>
+            <Text style={st.rowSub}>{t('For a teacher or a big screen: shows each question and its answers for the room. This screen doesn’t play.')}</Text>
           </View>
           <Text style={st.chevron}>›</Text>
         </Pressable>
@@ -683,6 +716,7 @@ export default function PeerReviewScreen() {
             <Pressable onPress={copy} accessibilityRole="button" style={({ pressed }) => [st.button, { alignSelf: 'stretch', backgroundColor: palette.card }, pressed && st.pressed]}>
               <Text style={[st.buttonText, { color: palette.text }]}>{copied ? t('Copied!') : t('📋 Copy code')}</Text>
             </Pressable>
+            {display && <Text style={[st.muted, { textAlign: 'center' }]}>{t('🖥️ Display screen: this screen shows the questions and answers for the room, but doesn’t play.')}</Text>}
           </View>
         )}
         <Text style={st.heading}>{t('Players ({n} of {max})', { n: connected.length, max: MAX_PLAYERS })}</Text>
@@ -738,7 +772,7 @@ export default function PeerReviewScreen() {
               style={({ pressed }) => [st.button, pressed && st.pressed, (!enough || !roundsOk) && { opacity: 0.5 }]}>
               <Text style={st.buttonText}>{t('Start the Peer Review')}</Text>
             </Pressable>
-            {!enough && <Text style={st.muted}>{t('Waiting for at least {n} players, including you. Share the code to invite them.', { n: MIN_PLAYERS })}</Text>}
+            {!enough && <Text style={st.muted}>{display ? t('Waiting for at least {n} players. Share the code to invite them.', { n: MIN_PLAYERS }) : t('Waiting for at least {n} players, including you. Share the code to invite them.', { n: MIN_PLAYERS })}</Text>}
             {!roundsOk && <Text style={st.muted}>{t('Choose a group or period for every round.')}</Text>}
           </>
         ) : (
@@ -764,9 +798,69 @@ export default function PeerReviewScreen() {
         </View>
       );
     }
-    const others = players.filter((p) => p.connected && p.id !== me);
     const here = answers[stage.index] ?? {};
     const last = stage.index === total - 1;
+    if (display) {
+      // The shared screen: the question and its answers, large, with who has answered so far. No
+      // answering and no lifelines. The right answer shows once everyone is in.
+      const big = screenWidth >= 700;
+      const inRoom = players.filter((p) => p.connected);
+      const right = inRoom.filter((p) => here[p.id]?.qid === q.id && here[p.id]?.choice === q.answer).length;
+      const secs = Math.max(0, Math.min(QUESTION_SECONDS, Math.ceil((stage.deadline - now) / 1000)));
+      const shown = withMyPhoto(q);
+      return (
+        <ScrollView style={st.screen} contentContainerStyle={[st.content, { maxWidth: 1100, width: '100%', alignSelf: 'center' }]}>
+          <Text style={[st.muted, big && { fontSize: 18 }]}>
+            {t('Round {round} of {rounds}: {quiz}', { round: stage.round + 1, rounds: rounds.length, quiz: quizText(stage.quiz, t) })} · {t('Question {n} of {total}', { n: stage.index + 1, total })}
+          </Text>
+          {!revealed && (
+            <Text style={[st.rowTitle, big && { fontSize: 22 }, secs <= 5 && { color: palette.bad }]} accessibilityLabel={t('{n} seconds left', { n: secs })}>
+              ⏱️ {secs} s
+            </Text>
+          )}
+          <Text style={[st.title, { fontSize: big ? 36 : 24, lineHeight: big ? 46 : 32 }]}>{shown.prompt}</Text>
+          {!!shown.image && <Image source={{ uri: shown.image }} style={{ width: '100%', height: big ? 320 : 200, borderRadius: 12 }} contentFit="contain" accessibilityLabel={shown.imageLabel} />}
+          <View style={{ flexDirection: big ? 'row' : 'column', flexWrap: 'wrap', gap: 12 }}>
+            {shown.options.map((o, i) => {
+              const good = revealed && i === q.answer;
+              return (
+                <View
+                  key={i}
+                  style={[st.card, { padding: big ? 20 : 14, flexBasis: big ? '48%' : undefined, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 12 }, good && { borderColor: palette.good, borderWidth: 3 }, revealed && !good && { opacity: 0.4 }]}>
+                  <Text style={[st.title, { fontSize: big ? 28 : 20, color: good ? palette.good : palette.accent }]}>{String.fromCharCode(65 + i)}</Text>
+                  <Text style={[st.rowTitle, { flex: 1, fontSize: big ? 24 : 17 }]}>{o}</Text>
+                  {good && <Text style={{ fontSize: big ? 28 : 20 }}>✓</Text>}
+                </View>
+              );
+            })}
+          </View>
+          {revealed ? (
+            <Text style={[st.rowTitle, { textAlign: 'center', fontSize: big ? 22 : 17 }]} accessibilityLiveRegion="polite">
+              {t('{n} of {total} got it right', { n: right, total: inRoom.length })}
+            </Text>
+          ) : (
+            <Text style={[st.muted, { textAlign: 'center' }, big && { fontSize: 18 }]}>{t('{n} of {total} answered', { n: inRoom.filter((p) => here[p.id]).length, total: inRoom.length })}</Text>
+          )}
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, justifyContent: 'center' }}>
+            {inRoom.map((p) => (
+              <View key={p.id} style={[st.card, { paddingVertical: 6, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 6 }, !here[p.id] && { opacity: 0.4 }]}>
+                <PlayerAvatar name={p.name} avatar={p.avatar} size={24} />
+                <Text style={st.rowSub}>
+                  {p.name}
+                  {here[p.id] ? ' ✓' : ''}
+                </Text>
+              </View>
+            ))}
+          </View>
+          {revealed && (
+            <Pressable onPress={() => advance(stage)} accessibilityRole="button" style={({ pressed }) => [st.button, pressed && st.pressed]}>
+              <Text style={st.buttonText}>{last ? t('See the leaderboard') : t('Next question')}</Text>
+            </Pressable>
+          )}
+        </ScrollView>
+      );
+    }
+    const others = players.filter((p) => p.connected && p.id !== me);
     const answeredCount = players.filter((p) => p.connected && here[p.id]).length;
     // Who each lifeline can be aimed at.
     const targets = {
