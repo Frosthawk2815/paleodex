@@ -615,6 +615,7 @@ export default function PeerReviewScreen() {
     };
     const secondsLeft = Math.max(0, Math.min(QUESTION_SECONDS, Math.ceil((stage.deadline - now) / 1000)));
     const fire = (kind: 'copy' | 'swap' | 'hurry', target: Player) => {
+      if (kind === 'hurry' && here[target.id]) return;
       setTargeting(null);
       if (kind === 'copy') {
         const a = here[target.id];
@@ -694,11 +695,24 @@ export default function PeerReviewScreen() {
                 <Text style={st.rowTitle}>
                   {targeting === 'copy' ? t('👀 Copy whose answer?') : targeting === 'hurry' ? t('⏳ Hurry up who?') : t('🔀 Switch whose question?')}
                 </Text>
-                {targets[targeting].map((p) => (
-                  <Pressable key={p.id} onPress={() => fire(targeting, p)} accessibilityRole="button" style={({ pressed }) => [pressed && st.pressed]}>
-                    <PlayerLine p={p} />
-                  </Pressable>
-                ))}
+                {/* Hurry Up lists everyone, but those who have already answered are faded and can't
+                    be picked: there's no time left to cut. */}
+                {(targeting === 'hurry' ? others : targets[targeting]).map((p) => {
+                  const done = targeting === 'hurry' && !!here[p.id];
+                  return (
+                    <Pressable
+                      key={p.id}
+                      onPress={() => fire(targeting, p)}
+                      disabled={done}
+                      accessibilityRole="button"
+                      accessibilityState={{ disabled: done }}
+                      accessibilityLabel={done ? t('{who} has already answered', { who: p.name }) : undefined}
+                      style={({ pressed }) => [done && { opacity: 0.35 }, pressed && st.pressed]}>
+                      <PlayerLine p={p} />
+                      {done && <Text style={[st.rowSub, { paddingHorizontal: 12, paddingBottom: 6 }]}>{t('Answered')}</Text>}
+                    </Pressable>
+                  );
+                })}
                 <Pressable onPress={() => setTargeting(null)} accessibilityRole="button" hitSlop={6}>
                   <Text style={st.link}>{t('Cancel')}</Text>
                 </Pressable>
