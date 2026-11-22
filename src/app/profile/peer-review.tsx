@@ -5,6 +5,7 @@ import { ActivityIndicator, Pressable, ScrollView, Text, TextInput, View } from 
 
 import { PlayerAvatar } from '@/components/player-avatar';
 import { ShareCodeButton } from '@/components/share-code';
+import { useToast } from '@/components/toast';
 import { useProfileStyles } from '@/components/profile-ui';
 import { categoryName, QuizPicker } from '@/components/quiz-picker';
 import { QuestionView } from '@/components/quiz-question';
@@ -21,13 +22,15 @@ import { toImperial } from '@/lib/units';
 import { useOwnPicture } from '@/lib/user-photos';
 import { type T, useT } from '@/lib/i18n';
 
-// Peer Review: one host and 2 to 29 other players (3 to 30 in all, about a classroom), five
-// rounds of five questions on subjects the host chooses, with a leaderboard after each round.
+// Peer Review: one host and 2 to 29 other players (3 to 30 in all, about a classroom), with as
+// many rounds (1 to 10) of as many questions (1 to 50) as the host chooses, on subjects the host
+// chooses, and a leaderboard after each round.
 const MIN_PLAYERS = 3;
 const MAX_PLAYERS = 30;
-const ROUNDS = 5;
-const PER_ROUND = 5;
-const QUESTION_SECONDS = 30;
+const MAX_ROUNDS = 10;
+const MAX_PER_ROUND = 50;
+const DEFAULT_PER_ROUND = 5;
+const QUESTION_SECONDS = 35;
 const HOST = 'host';
 
 type Quiz = { category: Category; level: Difficulty };
@@ -62,6 +65,14 @@ const DEFAULT_ROUNDS: Quiz[] = [
   { category: { kind: 'dinosaurs' }, level: 3 },
   { category: { kind: 'all' }, level: 4 },
 ];
+// Extra rounds the host adds follow on in this pattern.
+const EXTRA_ROUNDS: Quiz[] = [
+  { category: { kind: 'all' }, level: 3 },
+  { category: { kind: 'mammals' }, level: 3 },
+  { category: { kind: 'dinosaurs' }, level: 4 },
+  { category: { kind: 'all' }, level: 5 },
+  { category: { kind: 'dinosaurs' }, level: 5 },
+];
 const NO_USED: Used = { fifty: false, copy: false, swap: false, hurry: false };
 
 export default function PeerReviewScreen() {
@@ -78,11 +89,16 @@ export default function PeerReviewScreen() {
   const [me, setMe] = useState(HOST);
   const [players, setPlayers] = useState<Player[]>([]);
   const [rounds, setRounds] = useState<Quiz[]>(DEFAULT_ROUNDS);
+  // Questions in each round (the host chooses).
+  const [perRound, setPerRound] = useState(DEFAULT_PER_ROUND);
   const [editing, setEditing] = useState<number | null>(null);
   const [answers, setAnswers] = useState<Record<number, Record<string, Answer>>>({});
   const [allIn, setAllIn] = useState<number[]>([]);
   const [used, setUsed] = useState<Used>(NO_USED);
   const [notice, setNotice] = useState<string | null>(null);
+  // A pop-up for being sabotaged, saying who did it.
+  const toast = useToast();
+  const sabotaged = (who: string, what: string) => toast({ icon: '⚠️', title: t('Sabotaged by {who}', { who }), detail: what });
   const [targeting, setTargeting] = useState<'copy' | 'swap' | 'hurry' | null>(null);
   const [now, setNow] = useState(0);
 
@@ -182,7 +198,7 @@ export default function PeerReviewScreen() {
   // Host: start a round for everyone.
   const startRound = (round: number) => {
     const quiz = rounds[round]!;
-    const questions = makeRound(quiz.category, quiz.level, (id) => imageOf(id)?.thumb, PER_ROUND, toImperial);
+    const questions = makeRound(quiz.category, quiz.level, (id) => imageOf(id)?.thumb, perRound, toImperial);
     toAll({ t: 'round', round, quiz, questions });
   };
   const beginPlay = (round: number, quiz: Quiz, questions: Question[]) => {
@@ -239,7 +255,7 @@ export default function PeerReviewScreen() {
           };
           const list = [...playersRef.current.filter((x) => x.id !== from), p];
           putPlayers(list);
-          hub.current?.send(from, { t: 'welcome', you: from, rounds });
+          hub.current?.send(from, { t: 'welcome', you: from, rounds, perRound });
           toAll({ t: 'roster', players: list });
           break;
         }
@@ -293,6 +309,7 @@ export default function PeerReviewScreen() {
         case 'welcome':
           setMe(String(m.you));
           setRounds(m.rounds as Quiz[]);
+          if (typeof m.perRound === 'number') setPerRound(m.perRound);
           setStage({ kind: 'lobby' });
           break;
         case 'rejected':
@@ -304,6 +321,7 @@ export default function PeerReviewScreen() {
           break;
         case 'rounds':
           setRounds(m.rounds as Quiz[]);
+          if (typeof m.perRound === 'number') setPerRound(m.perRound);
           break;
         case 'round':
           beginPlay(Number(m.round), m.quiz as Quiz, m.questions as Question[]);
@@ -340,18 +358,25 @@ export default function PeerReviewScreen() {
             if (had) toHost({ t: 'unanswer', round: stage.round, index: stage.index });
             setStage({ ...switched, picked: null, hidden: [], waiting: false, deadline: Date.now() + QUESTION_SECONDS * 1000 });
             setNotice(`🔀 ${t('{who} used Switcheroo on you!', { who })} ${had ? t('Your answer doesn’t count: here’s a new question.') : t('This question has been switched.')}`);
+            sabotaged(who, t('Switcheroo! This question has been switched.'));
           } else {
             setStage(switched);
             setNotice(`🔀 ${t('{who} used Switcheroo on you! Your next question is now from {quiz}.', { who, quiz: label })}`);
+            sabotaged(who, t('Switcheroo! Your next question is now from {quiz}.', { quiz: label }));
           }
           break;
         }
-        case 'hurried':
+        case 'hurried': {
+          const who = nameOf(String(m.from));
           if (stage.kind === 'play' && stage.picked === null) {
             setStage({ ...stage, deadline: Date.now() + Math.max(1000, (stage.deadline - Date.now()) / 2) });
-            setNotice(`⏳ ${t('{who} used Hurry Up on you! Your time has been cut in half.', { who: nameOf(String(m.from)) })}`);
+            setNotice(`⏳ ${t('{who} used Hurry Up on you! Your time has been cut in half.', { who })}`);
+            sabotaged(who, t('Hurry Up! Your time has been cut in half.'));
+          } else if (stage.kind === 'play') {
+            sabotaged(who, t('Hurry Up, but you had already answered.'));
           }
           break;
+        }
         case 'lobby':
           if (!isHost) putPlayers((m.players as Player[]) ?? playersRef.current);
           setStage({ kind: 'lobby' });
@@ -392,7 +417,8 @@ export default function PeerReviewScreen() {
           {p.id === me ? ` (${t('you')})` : ''}
           {p.id === HOST ? ` · ${t('host')}` : ''}
         </Text>
-        <Text style={st.rowSub}>{p.connected ? p.title || t('No title yet') : t('Left the game')}</Text>
+        {/* A player without a title shows nothing there. */}
+        {(!p.connected || !!p.title) && <Text style={st.rowSub}>{p.connected ? p.title : t('Left the game')}</Text>}
       </View>
       {rank !== undefined && <Text style={st.rowTitle}>{p.score}</Text>}
     </View>
@@ -404,7 +430,7 @@ export default function PeerReviewScreen() {
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content}>
         <Text style={st.text}>
-          {t('A quiz for a group: {min} to {max} players on their own phones. The host chooses five rounds of five questions, and a leaderboard shows after each round.', { min: MIN_PLAYERS, max: MAX_PLAYERS })}
+          {t('A quiz for a group: {min} to {max} players on their own phones. The host chooses up to {rounds} rounds of up to {questions} questions, and a leaderboard shows after each round.', { min: MIN_PLAYERS, max: MAX_PLAYERS, rounds: MAX_ROUNDS, questions: MAX_PER_ROUND })}
         </Text>
         <Pressable onPress={host} accessibilityRole="button" style={({ pressed }) => [st.card, st.row, pressed && st.pressed]}>
           <View style={st.rowText}>
@@ -469,11 +495,21 @@ export default function PeerReviewScreen() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     };
-    const setRound = (i: number, q: Quiz) => {
-      const list = rounds.map((r, j) => (j === i ? q : r));
+    const share = (list: Quiz[], n: number) => {
       setRounds(list);
-      hub.current?.broadcast({ t: 'rounds', rounds: list });
+      setPerRound(n);
+      hub.current?.broadcast({ t: 'rounds', rounds: list, perRound: n });
     };
+    const setRound = (i: number, q: Quiz) => share(rounds.map((r, j) => (j === i ? q : r)), perRound);
+    // The host sets how many rounds (1 to 10) and questions per round (1 to 50).
+    const setRoundCount = (n: number) => {
+      const count = Math.max(1, Math.min(MAX_ROUNDS, n));
+      const list = rounds.slice(0, count);
+      while (list.length < count) list.push((DEFAULT_ROUNDS.concat(EXTRA_ROUNDS))[list.length] ?? { category: { kind: 'all' }, level: 3 });
+      setEditing(null);
+      share(list, perRound);
+    };
+    const setPerRoundCount = (n: number) => share(rounds, Math.max(1, Math.min(MAX_PER_ROUND, n)));
     return (
       <ScrollView style={st.screen} contentContainerStyle={st.content} keyboardShouldPersistTaps="handled">
         {isHost && (
@@ -499,6 +535,8 @@ export default function PeerReviewScreen() {
         </View>
 
         <Text style={st.heading}>{t('The rounds')}</Text>
+        <Stepper label={t('Rounds')} value={rounds.length} min={1} max={MAX_ROUNDS} onChange={setRoundCount} steps={[-1, 1]} editable={isHost} />
+        <Stepper label={t('Questions per round')} value={perRound} min={1} max={MAX_PER_ROUND} onChange={setPerRoundCount} steps={[-5, -1, 1, 5]} editable={isHost} />
         <View style={st.card}>
           {rounds.map((r, i) => (
             <View key={i}>
@@ -631,7 +669,7 @@ export default function PeerReviewScreen() {
         header={
           <>
             <Text style={st.muted}>
-              {t('Round {round} of {rounds}: {quiz} · {n} of {total} answered', { round: stage.round + 1, rounds: ROUNDS, quiz: quizText(stage.quiz, t), n: answeredCount, total: players.filter((p) => p.connected).length })}
+              {t('Round {round} of {rounds}: {quiz} · {n} of {total} answered', { round: stage.round + 1, rounds: rounds.length, quiz: quizText(stage.quiz, t), n: answeredCount, total: players.filter((p) => p.connected).length })}
             </Text>
             {stage.picked === null && (
               <View style={{ gap: 4 }} accessible accessibilityLabel={t('{n} seconds left', { n: secondsLeft })}>
@@ -673,7 +711,7 @@ export default function PeerReviewScreen() {
   }
 
   if (stage.kind === 'board') {
-    const final = stage.round + 1 >= ROUNDS;
+    const final = stage.round + 1 >= rounds.length;
     const isHost = role === 'host';
     const top = ranked[0];
     return (
@@ -732,5 +770,38 @@ export default function PeerReviewScreen() {
         <Text style={st.buttonText}>{t('Back to Peer Review')}</Text>
       </Pressable>
     </ScrollView>
+  );
+}
+
+// A number the host can change with − and + buttons (others just see it).
+function Stepper({ label, value, min, max, onChange, steps, editable }: { label: string; value: number; min: number; max: number; onChange: (n: number) => void; steps: number[]; editable: boolean }) {
+  const st = useProfileStyles();
+  return (
+    <View style={[st.card, st.row, { flexWrap: 'wrap', gap: 8 }]}>
+      <Text style={[st.rowTitle, { flex: 1, minWidth: 140 }]}>{label}</Text>
+      {editable ? (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          {steps.map((d) => {
+            const off = value + d < min || value + d > max;
+            return (
+              <Pressable
+                key={d}
+                onPress={() => onChange(value + d)}
+                disabled={off}
+                accessibilityRole="button"
+                accessibilityLabel={`${label}: ${d > 0 ? '+' : ''}${d}`}
+                style={({ pressed }) => [st.card, { paddingVertical: 6, paddingHorizontal: 10 }, pressed && st.pressed, off && { opacity: 0.35 }]}>
+                <Text style={st.rowTitle}>{d > 0 ? `+${d}` : `−${-d}`}</Text>
+              </Pressable>
+            );
+          })}
+          <Text style={[st.title, { minWidth: 40, textAlign: 'center', fontVariant: ['tabular-nums'] }]} accessibilityLiveRegion="polite">
+            {value}
+          </Text>
+        </View>
+      ) : (
+        <Text style={st.title}>{value}</Text>
+      )}
+    </View>
   );
 }
