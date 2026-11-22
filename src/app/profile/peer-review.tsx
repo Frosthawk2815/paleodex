@@ -82,7 +82,6 @@ export default function PeerReviewScreen() {
   const { profile } = useProfile();
   const ownPicture = useOwnPicture();
   const [stage, setStage] = useState<Stage>({ kind: 'start' });
-  useLeaveGuard(stage.kind === 'play' || stage.kind === 'board', true);
   const [role, setRole] = useState<'host' | 'guest'>('host');
   const [code, setCode] = useState('');
   const [copied, setCopied] = useState(false);
@@ -91,6 +90,19 @@ export default function PeerReviewScreen() {
   const [rounds, setRounds] = useState<Quiz[]>(DEFAULT_ROUNDS);
   // Questions in each round (the host chooses).
   const [perRound, setPerRound] = useState(DEFAULT_PER_ROUND);
+  // Which player is hosting (changes if the host leaves and another player takes over).
+  const [hostId, setHostId] = useState(HOST);
+  // Leaving mid-game is a forfeit; at the final results it just ends the game.
+  const finalBoard = stage.kind === 'board' && stage.round + 1 >= rounds.length;
+  useLeaveGuard(
+    stage.kind === 'play' || stage.kind === 'board',
+    true,
+    finalBoard
+      ? { title: t('End the game?'), message: role === 'host' ? t('This ends the Peer Review for everyone.') : t('You’ll leave the Peer Review.'), leave: t('End game') }
+      : role === 'host'
+        ? { title: t('Leave the game?'), message: t('Leaving counts as a forfeit. Another player takes over as host and the game carries on.'), leave: t('Leave') }
+        : undefined,
+  );
   const [editing, setEditing] = useState<number | null>(null);
   const [answers, setAnswers] = useState<Record<number, Record<string, Answer>>>({});
   const [allIn, setAllIn] = useState<number[]>([]);
@@ -120,6 +132,27 @@ export default function PeerReviewScreen() {
     setAnswers(a);
   };
   const timeUp = useRef<() => void>(() => {});
+  // Kept in refs too, for the connection callbacks (which outlive a render).
+  const stageRef = useRef<Stage>(stage);
+  const roundsRef = useRef(rounds);
+  const meRef = useRef(me);
+  const roleRef = useRef(role);
+  const hostIdRef = useRef(hostId);
+  useEffect(() => {
+    stageRef.current = stage;
+    roundsRef.current = rounds;
+    meRef.current = me;
+    roleRef.current = role;
+    hostIdRef.current = hostId;
+  });
+  // Set when this phone leaves on purpose (not a dropped host).
+  const leavingRef = useRef(false);
+  // Host after a migration: players' new connection ids, both ways (players keep their old ids).
+  const addrRef = useRef<Record<string, string>>({});
+  const pidRef = useRef<Record<string, string>>({});
+  const pidOf = (conn: string) => pidRef.current[conn] ?? conn;
+  // Host after a migration: a short wait for everyone to reconnect before moving on.
+  const migratingRef = useRef(false);
 
   const myName = profile.name.trim();
   const myTitle = titleById(profile.title)?.name ?? '';
@@ -127,7 +160,12 @@ export default function PeerReviewScreen() {
 
   useEffect(
     () => () => {
-      hub.current?.close();
+      // A host who leaves mid-game with the back key just goes: another player takes over and
+      // the game carries on. Ending the game with a button (or leaving the lobby or the final
+      // results) tells everyone it's over.
+      const st0 = stageRef.current;
+      const midGame = st0.kind === 'play' || (st0.kind === 'board' && st0.round + 1 < roundsRef.current.length);
+      hub.current?.close(leavingRef.current || !midGame);
       link.current?.close();
     },
     [],
@@ -136,38 +174,125 @@ export default function PeerReviewScreen() {
   // ---- Messages. The host applies everything it broadcasts to itself too. ----
 
   const toHost = (m: object) => {
-    if (role === 'host') handle.current(HOST, m as Record<string, unknown>);
+    if (roleRef.current === 'host') handle.current(meRef.current, m as Record<string, unknown>);
     else link.current?.send(m);
   };
   const toAll = (m: object) => {
     hub.current?.broadcast(m);
-    handle.current(HOST, { ...(m as Record<string, unknown>), _self: true });
+    handle.current(meRef.current, { ...(m as Record<string, unknown>), _self: true });
   };
   const toPlayer = (id: string, m: object) => {
-    if (id === HOST) handle.current(HOST, { ...(m as Record<string, unknown>), _self: true });
-    else hub.current?.send(id, m);
+    if (id === meRef.current) handle.current(id, { ...(m as Record<string, unknown>), _self: true });
+    else hub.current?.send(addrRef.current[id] ?? id, m);
   };
+  // Hosting: the hub that every other phone connects to.
+  const openAsHost = (c: string, claim: boolean) =>
+    openHub(
+      c,
+      MAX_PLAYERS - 1,
+      {
+        onState: (s) => {
+          if (s.kind === 'error') setStage({ kind: 'ended', message: s.reason === 'code-taken' ? t('That code is already in use. Try hosting again.') : t('The connection service couldn’t be reached. Check your internet connection.') });
+        },
+        onJoin: () => {},
+        onLeave: (id) => handle.current(pidOf(id), { t: 'left' }),
+        // A reconnecting player is known by their connection until their rejoin message names them.
+        onMessage: (id, m) => handle.current(m.t === 'rejoin' ? id : pidOf(id), m),
+      },
+      { claim },
+    );
 
   const host = async () => {
     const c = newBattleCode();
     setRole('host');
+    roleRef.current = 'host';
     setMe(HOST);
+    meRef.current = HOST;
     setCode(c);
     const avatar = await shareableAvatar(profile.avatar, ownPicture);
     putPlayers([{ id: HOST, name: myName || 'Host', title: myTitle, avatar, score: 0, connected: true }]);
     setStage({ kind: 'lobby' });
-    hub.current = openHub(c, MAX_PLAYERS - 1, {
-      onState: (s) => {
-        if (s.kind === 'error') setStage({ kind: 'ended', message: s.reason === 'code-taken' ? t('That code is already in use. Try hosting again.') : t('The connection service couldn’t be reached. Check your internet connection.') });
+    hub.current = openAsHost(c, false);
+  };
+
+  // ---- Host migration: if the host's phone drops out, the next player takes over. ----
+
+  // The answer this phone gave to the question in progress, to send again after reconnecting.
+  const currentAnswer = () => {
+    const st0 = stageRef.current;
+    if (st0.kind !== 'play' || st0.picked === null) return null;
+    const q = st0.questions[st0.index];
+    return q ? { round: st0.round, index: st0.index, qid: q.id, choice: st0.picked, right: st0.picked === q.answer } : null;
+  };
+  const hostLost = () => {
+    const st0 = stageRef.current;
+    if (leavingRef.current || st0.kind === 'ended') return;
+    const over = st0.kind === 'board' && st0.round + 1 >= roundsRef.current.length;
+    if (st0.kind === 'start' || st0.kind === 'join' || over) {
+      setStage({ kind: 'ended', message: t('The host has ended the Peer Review.') });
+      return;
+    }
+    // Everyone works out the same successor: the first remaining player in joining order.
+    const oldHost = hostIdRef.current;
+    const list = playersRef.current.map((p) => (p.id === oldHost ? { ...p, connected: false } : p));
+    const next = list.find((p) => p.connected);
+    if (!next) {
+      setStage({ kind: 'ended', message: t('The host has ended the Peer Review.') });
+      return;
+    }
+    putPlayers(list);
+    setHostId(next.id);
+    hostIdRef.current = next.id;
+    link.current = null;
+    const mine = next.id === meRef.current;
+    toast({ icon: '🔁', title: t('The host left'), detail: mine ? t('You’re the host now. The game carries on.') : t('{who} is taking over. Reconnecting…', { who: next.name }) });
+    if (mine) becomeHost(list);
+    else rejoin(0);
+  };
+  const becomeHost = (list: Player[]) => {
+    setRole('host');
+    roleRef.current = 'host';
+    // Everyone else counts as away until they reconnect.
+    putPlayers(list.map((p) => (p.id === meRef.current ? p : { ...p, connected: false })));
+    const st0 = stageRef.current;
+    if (st0.kind === 'play') {
+      // Answers to the question in progress are sent again as players reconnect (the old host
+      // had counted them; this phone's scores are from the last finished question).
+      const a = { ...answersRef.current };
+      delete a[st0.index];
+      putAnswers(a);
+      setAllIn((x) => x.filter((i) => i !== st0.index));
+      const mineNow = currentAnswer();
+      if (mineNow) handle.current(meRef.current, { t: 'answer', ...mineNow });
+    }
+    migratingRef.current = true;
+    setTimeout(() => {
+      migratingRef.current = false;
+      const s2 = stageRef.current;
+      if (s2.kind === 'play') checkAllIn(s2.index);
+    }, 20000);
+    hub.current = openAsHost(code, true);
+  };
+  const rejoin = (tries: number) => {
+    if (leavingRef.current) return;
+    link.current = openLink(
+      'guest',
+      code,
+      (s) => {
+        if (s.kind === 'open') link.current?.send({ t: 'rejoin', id: meRef.current, current: currentAnswer() });
+        else if (s.kind === 'error') {
+          // The new host may still be setting up: keep trying for about a minute.
+          if (tries < 12) setTimeout(() => rejoin(tries + 1), 3000);
+          else setStage({ kind: 'ended', message: t('Couldn’t reconnect to the new host.') });
+        } else if (s.kind === 'closed') hostLost();
       },
-      onJoin: () => {},
-      onLeave: (id) => handle.current(id, { t: 'left' }),
-      onMessage: (id, m) => handle.current(id, m),
-    });
+      (m) => handle.current(HOST, m),
+    );
   };
 
   const join = async () => {
     setRole('guest');
+    roleRef.current = 'guest';
     setStage({ kind: 'join', status: 'connecting' });
     const avatar = await shareableAvatar(profile.avatar, ownPicture);
     link.current = openLink(
@@ -180,13 +305,15 @@ export default function PeerReviewScreen() {
             kind: 'ended',
             message: s.reason === 'no-host' ? t('No Peer Review was found with that code, or it has already started. Check the code with the host.') : t('The connection didn’t work. Try both being on Wi-Fi.'),
           });
-        else if (s.kind === 'closed') setStage((x) => (x.kind === 'ended' ? x : { kind: 'ended', message: t('The host has ended the Peer Review.') }));
+        // The host dropped out (rather than ending the game): another player takes over.
+        else if (s.kind === 'closed') hostLost();
       },
       (m) => handle.current(HOST, m),
     );
   };
 
   const leave = () => {
+    leavingRef.current = true;
     hub.current?.close();
     link.current?.close();
     hub.current = null;
@@ -232,6 +359,7 @@ export default function PeerReviewScreen() {
 
   // Host: everyone still connected has answered this question?
   const checkAllIn = (index: number, a = answersRef.current, list = playersRef.current) => {
+    if (migratingRef.current) return;
     const done = list.filter((p) => p.connected).every((p) => a[index]?.[p.id]);
     if (done) toAll({ t: 'all', index, players: list });
   };
@@ -239,11 +367,16 @@ export default function PeerReviewScreen() {
   useEffect(() => {
     timeUp.current = () => answer(-1);
     handle.current = (from, m) => {
-      const isHost = role === 'host';
+      const isHost = roleRef.current === 'host';
       switch (m.t) {
         // ---- Host receives ----
         case 'hello': {
           if (!isHost) break;
+          // New players can't join a game in progress (only reconnect, below).
+          if (stage.kind !== 'lobby') {
+            hub.current?.send(from, { t: 'rejected', reason: 'started' });
+            break;
+          }
           const n = playersRef.current.length + 1;
           const p: Player = {
             id: from,
@@ -255,8 +388,27 @@ export default function PeerReviewScreen() {
           };
           const list = [...playersRef.current.filter((x) => x.id !== from), p];
           putPlayers(list);
-          hub.current?.send(from, { t: 'welcome', you: from, rounds, perRound });
-          toAll({ t: 'roster', players: list });
+          hub.current?.send(from, { t: 'welcome', you: from, rounds, perRound, host: meRef.current });
+          toAll({ t: 'roster', players: list, host: meRef.current });
+          break;
+        }
+        case 'rejoin': {
+          // A player reconnecting after the host changed: keep their place, score and id.
+          if (!isHost) break;
+          const old = String(m.id);
+          if (!playersRef.current.some((p) => p.id === old)) {
+            hub.current?.send(from, { t: 'rejected', reason: 'started' });
+            break;
+          }
+          addrRef.current[old] = from;
+          pidRef.current[from] = old;
+          const list = playersRef.current.map((p) => (p.id === old ? { ...p, connected: true } : p));
+          putPlayers(list);
+          hub.current?.send(from, { t: 'welcome-back', you: old, host: meRef.current, rounds, perRound, players: list });
+          toAll({ t: 'roster', players: list, host: meRef.current });
+          const cur = m.current as { round: number; index: number; qid: string; choice: number; right: boolean } | null;
+          if (cur && stage.kind === 'play' && cur.round === stage.round) handle.current(old, { t: 'answer', ...cur });
+          else if (stage.kind === 'play' && !migratingRef.current) checkAllIn(stage.index);
           break;
         }
         case 'left': {
@@ -265,7 +417,7 @@ export default function PeerReviewScreen() {
           // In the lobby, someone who leaves is simply removed.
           const shown = stage.kind === 'lobby' ? list.filter((p) => p.id !== from) : list;
           putPlayers(shown);
-          toAll({ t: 'roster', players: shown });
+          toAll({ t: 'roster', players: shown, host: meRef.current });
           if (stage.kind === 'play') checkAllIn(stage.index);
           break;
         }
@@ -306,8 +458,16 @@ export default function PeerReviewScreen() {
         }
 
         // ---- Everyone receives ----
+        case 'welcome-back':
+          setMe(String(m.you));
+          meRef.current = String(m.you);
+          if (typeof m.host === 'string') setHostId(m.host);
+          putPlayers(m.players as Player[]);
+          break;
         case 'welcome':
           setMe(String(m.you));
+          meRef.current = String(m.you);
+          if (typeof m.host === 'string') setHostId(m.host);
           setRounds(m.rounds as Quiz[]);
           if (typeof m.perRound === 'number') setPerRound(m.perRound);
           setStage({ kind: 'lobby' });
@@ -318,6 +478,7 @@ export default function PeerReviewScreen() {
           break;
         case 'roster':
           if (!isHost) putPlayers(m.players as Player[]);
+          if (typeof m.host === 'string') setHostId(m.host);
           break;
         case 'rounds':
           setRounds(m.rounds as Quiz[]);
@@ -415,7 +576,7 @@ export default function PeerReviewScreen() {
         <Text style={st.rowTitle}>
           {p.name}
           {p.id === me ? ` (${t('you')})` : ''}
-          {p.id === HOST ? ` · ${t('host')}` : ''}
+          {p.id === hostId ? ` · ${t('host')}` : ''}
         </Text>
         {/* A player without a title shows nothing there. */}
         {(!p.connected || !!p.title) && <Text style={st.rowSub}>{p.connected ? p.title : t('Left the game')}</Text>}

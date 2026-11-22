@@ -19,7 +19,8 @@ export type Hub = {
   drop: (peer: string) => void;
   // Stop letting new players join (closes the signalling connection).
   lock: () => void;
-  close: () => void;
+  // bye: tell the players the game is over (false: just go, so another player can take over).
+  close: (bye?: boolean) => void;
 };
 
 // The public PeerJS server only passes on messages shaped like the official library's (see link.ts).
@@ -38,6 +39,10 @@ export function openHub(
     onLeave: (peer: string) => void;
     onMessage: (peer: string, msg: Record<string, unknown>) => void;
   },
+  // claim: taking over a code another phone was hosting a moment ago (a host migration). The
+  // server may still hold the old host's connection briefly, so a taken code is retried for about
+  // a minute instead of failing.
+  options: { claim?: boolean } = {},
 ): Hub {
   const myId = PREFIX + code;
   const peers = new Map<string, Peer>();
@@ -163,8 +168,8 @@ export function openHub(
         retries = 0;
         break;
       case 'ID-TAKEN':
-        // Reconnecting, the server may still hold our old connection for a little while.
-        if (retries > 0) {
+        // Reconnecting (or taking over), the server may still hold the old connection for a while.
+        if (retries > 0 || options.claim) {
           ws.onclose = null;
           ws.close();
           reconnect();
@@ -208,12 +213,12 @@ export function openHub(
       locked = true;
       stopSignalling();
     },
-    close: () => {
+    close: (bye = true) => {
       if (closed) return;
       closed = true;
       stopSignalling();
       for (const [id, p] of peers) {
-        sendTo(p, { t: 'bye' });
+        if (bye) sendTo(p, { t: 'bye' });
         drop(id);
       }
       handlers.onState({ kind: 'closed' });
