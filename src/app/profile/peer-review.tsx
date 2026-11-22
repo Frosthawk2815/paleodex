@@ -535,8 +535,8 @@ export default function PeerReviewScreen() {
         </View>
 
         <Text style={st.heading}>{t('The rounds')}</Text>
-        <Stepper label={t('Rounds')} value={rounds.length} min={1} max={MAX_ROUNDS} onChange={setRoundCount} steps={[-1, 1]} editable={isHost} />
-        <Stepper label={t('Questions per round')} value={perRound} min={1} max={MAX_PER_ROUND} onChange={setPerRoundCount} steps={[-5, -1, 1, 5]} editable={isHost} />
+        <Stepper label={t('Rounds')} value={rounds.length} min={1} max={MAX_ROUNDS} onChange={setRoundCount} editable={isHost} />
+        <Stepper label={t('Questions per round')} value={perRound} min={1} max={MAX_PER_ROUND} onChange={setPerRoundCount} picks={[5, 10, 15, 20, 30, 40, 50]} editable={isHost} />
         <View style={st.card}>
           {rounds.map((r, i) => (
             <View key={i}>
@@ -787,34 +787,41 @@ export default function PeerReviewScreen() {
   );
 }
 
-// A number the host can change with − and + buttons (others just see it).
-function Stepper({ label, value, min, max, onChange, steps, editable }: { label: string; value: number; min: number; max: number; onChange: (n: number) => void; steps: number[]; editable: boolean }) {
+// A number the host can change: − and + either side of it, and optional quick picks (others just
+// see the number).
+function Stepper({ label, value, min, max, onChange, picks = [], editable }: { label: string; value: number; min: number; max: number; onChange: (n: number) => void; picks?: number[]; editable: boolean }) {
   const st = useProfileStyles();
+  const palette = usePalette();
+  const t = useT();
+  const button = (text: string, next: number, a11y: string, on = false) => {
+    const off = next < min || next > max;
+    return (
+      <Pressable
+        key={a11y}
+        onPress={() => onChange(next)}
+        disabled={off}
+        accessibilityRole="button"
+        accessibilityLabel={a11y}
+        accessibilityState={{ disabled: off, selected: on }}
+        style={({ pressed }) => [st.card, { minWidth: 40, paddingVertical: 6, paddingHorizontal: 10, alignItems: 'center' }, on && { borderColor: palette.accent, borderWidth: 2 }, pressed && st.pressed, off && { opacity: 0.35 }]}>
+        <Text style={[st.rowTitle, on && { color: palette.accent }]}>{text}</Text>
+      </Pressable>
+    );
+  };
   return (
-    <View style={[st.card, st.row, { flexWrap: 'wrap', gap: 8 }]}>
-      <Text style={[st.rowTitle, { flex: 1, minWidth: 140 }]}>{label}</Text>
-      {editable ? (
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-          {steps.map((d) => {
-            const off = value + d < min || value + d > max;
-            return (
-              <Pressable
-                key={d}
-                onPress={() => onChange(value + d)}
-                disabled={off}
-                accessibilityRole="button"
-                accessibilityLabel={`${label}: ${d > 0 ? '+' : ''}${d}`}
-                style={({ pressed }) => [st.card, { paddingVertical: 6, paddingHorizontal: 10 }, pressed && st.pressed, off && { opacity: 0.35 }]}>
-                <Text style={st.rowTitle}>{d > 0 ? `+${d}` : `−${-d}`}</Text>
-              </Pressable>
-            );
-          })}
-          <Text style={[st.title, { minWidth: 40, textAlign: 'center', fontVariant: ['tabular-nums'] }]} accessibilityLiveRegion="polite">
-            {value}
-          </Text>
+    <View style={[st.card, { padding: 12, gap: 10 }]}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+        <Text style={[st.rowTitle, { flex: 1 }]}>{label}</Text>
+        {editable && button('−', value - 1, t('One fewer'))}
+        <Text style={[st.title, { minWidth: 36, textAlign: 'center', fontVariant: ['tabular-nums'] }]} accessibilityLiveRegion="polite">
+          {value}
+        </Text>
+        {editable && button('+', value + 1, t('One more'))}
+      </View>
+      {editable && picks.length > 0 && (
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+          {picks.map((n) => button(String(n), n, t('{n} questions', { n }), n === value))}
         </View>
-      ) : (
-        <Text style={st.title}>{value}</Text>
       )}
     </View>
   );
