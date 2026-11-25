@@ -372,8 +372,9 @@ export function frillShapes(f: FrillSpec): FrillShapes {
 
 // Diabloceratops, drawn from its skull seen from the front: a tall, fairly narrow frill (about as
 // wide as the skull) with nearly parallel sides lined with rounded knobs, two large openings
-// either side of a central bar, and a shallow U between the bases of its two very long horns, which
-// rise from the top corners and curve outward, their tips pointing out to the sides.
+// either side of a central bar, a straight seat for each horn's root with a narrow U between them,
+// and two very long horns, which rise from those seats and curve outward, their tips pointing out
+// to the sides.
 const knobs = (side: 1 | -1) =>
   [68, 79, 90, 101, 112, 123].map((y) => {
     const x = 50 + side * (23 + (y - 70) * 0.078 + 1.2);
@@ -383,18 +384,19 @@ const knobs = (side: 1 | -1) =>
 const mirror = (d: string) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x: string, y: string) => `${(100 - Number(x)).toFixed(1)} ${y}`);
 // One smooth curve (a C): rising almost straight up from the corner, then bending steadily outward
 // to its tip.
-const DIABLO_HORN = 'M29 64 C30 38 25 16 5 5 C25 13 35 33 43 61 Z';
+const DIABLO_HORN = 'M31 63 C31 38 25 16 5 5 C25 13 35 33 42 63 Z';
 
 export const HAND_DRAWN: Record<string, FrillShapes> = {
   'diabloceratops-eatoni': {
-    outline: 'M22 134 C21 110 23 86 27 70 Q29 60 35 57 Q50 71 65 57 Q71 60 73 70 C77 86 79 110 78 134 Q50 118 22 134 Z',
+    // The top: a straight seat for each horn's root, and a narrow U between them.
+    outline: 'M22 134 C21 110 23 86 26 70 Q27 60 31 58 L42 58 Q46 58 47.5 62 Q50 67 52.5 62 Q54 58 58 58 L69 58 Q73 60 74 70 C77 86 79 110 78 134 Q50 118 22 134 Z',
     holes: [
       { cx: 37.5, cy: 92, rx: 8.5, ry: 22 },
       { cx: 62.5, cy: 92, rx: 8.5, ry: 22 },
     ],
     ornaments: [DIABLO_HORN, mirror(DIABLO_HORN), ...knobs(-1), ...knobs(1)],
     hooks: [],
-    midline: 'M50 70 L50 126',
+    midline: 'M50 67 L50 126',
     grooves: [],
   },
 };
