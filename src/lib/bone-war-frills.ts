@@ -257,7 +257,7 @@ export type FrillShapes = {
   outline: string;
   holes: { cx: number; cy: number; rx: number; ry: number }[];
   ornaments: string[];
-  // Hooks curl over the frill, so they're drawn on top of it.
+  // Hooks curl over the frill and curved horns grow out of it, so they're drawn on top of it.
   hooks: string[];
   midline: string;
   grooves: string[];
@@ -308,10 +308,15 @@ export function frillShapes(f: FrillSpec): FrillShapes {
         const [dx, dy] = [bx * Math.cos(r) - by * Math.sin(r), bx * Math.sin(r) + by * Math.cos(r)];
         const [px, py] = [-by, bx];
         const wd = ed.width ?? 3;
+        // Rooted a little inside the frill, with a broad base, so the horn grows out of it (drawn
+        // over the frill, not tucked behind it).
+        const inset = Math.min(wd * 1.4, 5);
+        const [rx, ry] = [e.x - bx * inset, e.y - by * inset];
+        const bw = Math.min(wd * 1.5, 7);
         const tip = [e.x + dx * len, e.y + dy * len];
         const c = [e.x + bx * len * 0.6, e.y + by * len * 0.6];
-        ornaments.push(
-          `M${f1(e.x + px * wd)} ${f1(e.y + py * wd)} Q${f1(c[0]! + px * wd * 0.8)} ${f1(c[1]! + py * wd * 0.8)} ${f1(tip[0]!)} ${f1(tip[1]!)} Q${f1(c[0]! - px * wd * 0.8)} ${f1(c[1]! - py * wd * 0.8)} ${f1(e.x - px * wd)} ${f1(e.y - py * wd)} Z`,
+        hooks.push(
+          `M${f1(rx + px * bw)} ${f1(ry + py * bw)} Q${f1(c[0]! + px * wd)} ${f1(c[1]! + py * wd)} ${f1(tip[0]!)} ${f1(tip[1]!)} Q${f1(c[0]! - px * wd)} ${f1(c[1]! - py * wd)} ${f1(rx - px * bw)} ${f1(ry - py * bw)} Z`,
         );
       });
     if (ed.kind === 'hooks')
