@@ -16,7 +16,8 @@ export type Edge =
   // curved: the spike sweeps round in a curve as it goes out (bending the given way) rather than
   // standing straight.
   // bend may be one value for all, or one per spike (for frills whose two sides don't match).
-  | { kind: 'spikes'; at: number[]; len: number[]; bend?: number | number[]; width?: number; curved?: boolean }
+  // dir: instead of following the edge, point this many degrees out from straight up.
+  | { kind: 'spikes'; at: number[]; len: number[]; bend?: number | number[]; width?: number; curved?: boolean; dir?: number }
   // Hooks that curl forward over the frill, towards its middle.
   | { kind: 'hooks'; at: number[]; len: number };
 
@@ -133,16 +134,18 @@ export const FRILLS: Record<string, FrillSpec> = {
   // Two long, straight spikes sticking up from the back of the frill.
   'einiosaurus-procurvicornis': { len: 0.5, width: 0.76, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.44, 0.56], len: [38, 38], bend: 4, width: 4 }] },
   'achelousaurus-horneri': { len: 0.52, width: 0.78, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.43, 0.57], len: [32, 32], bend: 6, width: 4 }] },
-  // A tall, rounded frill with a scalloped edge of small rounded bumps, and from the top of it two
-  // very long horns curving up, their tips turning a little outward ("devil horns").
+  // A tall, rounded frill with a scalloped edge of small rounded bumps and a dip in the middle of its
+  // back edge; either side of the dip, a very long horn curving up, its tip turning a little outward
+  // ("devil horns").
   'diabloceratops-eatoni': {
     len: 0.6,
     width: 0.66,
     shape: 'square',
+    notch: true,
     holes: 0.45,
     edge: [
       { kind: 'bumps', n: 13, size: 3.2 },
-      { kind: 'spikes', at: [0.445, 0.555], len: [56, 56], bend: 12, width: 4.5, curved: true },
+      { kind: 'spikes', at: [0.455, 0.545], len: [56, 56], bend: 14, width: 4.5, curved: true, dir: 4 },
     ],
   },
 
@@ -237,7 +240,7 @@ function edgeAt(f: FrillSpec, t: number): { x: number; y: number; nx: number; ny
     let x = 50 + W * c;
     let y = BASE + L * s;
     if (f.shape === 'flared') x = 50 + W * c * (0.45 + 0.55 * Math.abs(s) ** 1.6);
-    if (f.shape === 'heart' || f.notch) y += L * (f.notch ? 0.12 : 0.16) * Math.exp(-(((u - 0.5) / 0.06) ** 2));
+    if (f.shape === 'heart' || f.notch) y += L * (f.notch ? 0.12 : 0.16) * Math.exp(-(((u - 0.5) / (f.shape === 'square' ? 0.03 : 0.06)) ** 2));
     return [x, y] as const;
   };
   const [x, y] = at(t);
@@ -299,11 +302,14 @@ export function frillShapes(f: FrillSpec): FrillShapes {
         const e = edgeAt(f, t);
         const side = t < 0.5 ? -1 : 1;
         const r = (bend * side * Math.PI) / 180;
-        const [dx, dy] = [e.nx * Math.cos(r) - e.ny * Math.sin(r), e.nx * Math.sin(r) + e.ny * Math.cos(r)];
-        const [px, py] = [-e.ny, e.nx];
+        // The direction it leaves the frill: the edge's outward direction, or straight up turned
+        // out by dir.
+        const [bx, by] = ed.dir !== undefined ? [side * Math.sin((ed.dir * Math.PI) / 180), -Math.cos((ed.dir * Math.PI) / 180)] : [e.nx, e.ny];
+        const [dx, dy] = [bx * Math.cos(r) - by * Math.sin(r), bx * Math.sin(r) + by * Math.cos(r)];
+        const [px, py] = [-by, bx];
         const wd = ed.width ?? 3;
         const tip = [e.x + dx * len, e.y + dy * len];
-        const c = [e.x + e.nx * len * 0.6, e.y + e.ny * len * 0.6];
+        const c = [e.x + bx * len * 0.6, e.y + by * len * 0.6];
         ornaments.push(
           `M${f1(e.x + px * wd)} ${f1(e.y + py * wd)} Q${f1(c[0]! + px * wd * 0.8)} ${f1(c[1]! + py * wd * 0.8)} ${f1(tip[0]!)} ${f1(tip[1]!)} Q${f1(c[0]! - px * wd * 0.8)} ${f1(c[1]! - py * wd * 0.8)} ${f1(e.x - px * wd)} ${f1(e.y - py * wd)} Z`,
         );
