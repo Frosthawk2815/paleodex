@@ -26,7 +26,9 @@ export type Jaw =
 // Footprints for a stomp.
 export type Foot = 'sauropod' | 'elephant' | 'ornithopod' | 'bird' | 'ostrich' | 'rhino' | 'horse' | 'cloven' | 'wombat' | 'kangaroo';
 // Weapons for a bash, rising from below (and the spear humans thrust).
-export type Bash = 'spear' | 'ceratopsian' | 'rhino' | 'twin' | 'bovid' | 'antlers' | 'dome' | 'club' | 'spikes' | 'tusks' | 'lance' | 'fluke' | 'forked';
+// Tail weapons: the thagomizer, clubs and fish tail fins swing in an arc; whales and manatees
+// slap their flukes down.
+export type Bash = 'thagomizer' | 'slap' | 'tailfin' | 'spear' | 'ceratopsian' | 'rhino' | 'twin' | 'bovid' | 'antlers' | 'dome' | 'club' | 'spikes' | 'tusks' | 'lance' | 'forked';
 
 export type Weapon =
   | { kind: 'bite'; jaw: Jaw }
@@ -70,7 +72,7 @@ const BY_CLADE: Record<string, Weapon> = {
   ceratopsidae: bash('ceratopsian'),
   pachycephalosauridae: bash('dome'),
   parankylosauria: bash('club'),
-  stegosauria: bash('spikes'),
+  stegosauria: bash('thagomizer'),
   scelidosauridae: bash('spikes'),
   // Pterosaurs
   pterosauria: bite('conical'),
@@ -132,8 +134,8 @@ const BY_CLADE: Record<string, Weapon> = {
   thylacoleonidae: bite('thylacoleo'),
   odobenidae: bash('tusks'),
   cetacea: bite('peg'),
-  mysticeti: bash('fluke'),
-  sirenia: bash('fluke'),
+  mysticeti: bash('slap'), // flukes move up and down, so whales slap rather than swing
+  sirenia: bash('slap'),
   proboscidea: stomp('elephant'),
   rhinocerotidae: bash('rhino'),
   brontotheriidae: bash('forked'),
@@ -166,8 +168,8 @@ const BY_CLADE: Record<string, Weapon> = {
   // Fish
   vertebrata: bite('conical'),
   chondrichthyes: bite('shark'),
-  batoidea: bash('fluke'),
-  rhincodontidae: bash('fluke'),
+  batoidea: bash('slap'), // mantas slap down with their wings
+  rhincodontidae: bash('tailfin'), // sharks sweep their tails side to side
   placodermi: bite('blades'),
   xiphiidae: bash('lance'),
   // Invertebrates
@@ -290,8 +292,8 @@ const BY_SPECIES: Record<string, Weapon> = {
   'heliobatis-radians': bite('pavement'),
   'onchopristis-numida': bash('lance'), // sawfish: the toothed rostrum
   'atlanticopristis-equatorialis': bash('lance'),
-  'cetorhinus-maximus': bash('fluke'), // the basking shark filters its food
-  'leedsichthys-problematicus': bash('fluke'),
+  'cetorhinus-maximus': bash('tailfin'), // the basking shark filters its food
+  'leedsichthys-problematicus': bash('tailfin'),
   'limusaurus-inextricabilis': bite('beak'), // toothless as an adult
   'pelecanimimus-polyodon': bite('peg'), // over 200 tiny teeth
   'incisivosaurus-gauthieri': bite('incisors'), // rodent-like front teeth

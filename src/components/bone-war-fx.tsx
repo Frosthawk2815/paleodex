@@ -440,7 +440,7 @@ function basher(shape: Bash): ReactNode {
     case 'club':
       return (
         <G stroke={LINE} strokeWidth={1}>
-          <Path d="M42 100 L46 42 L54 42 L58 100 Z" fill="#7C6A4E" />
+          <Path d="M44 100 Q46 60 47.5 40 L52.5 40 Q54 60 56 100 Z" fill="#7C6A4E" />
           <Ellipse cx={50} cy={30} rx={28} ry={19} fill="#8E7A58" />
           <Ellipse cx={36} cy={30} rx={9} ry={12} fill="#9E8A66" />
           <Ellipse cx={64} cy={30} rx={9} ry={12} fill="#9E8A66" />
@@ -469,11 +469,33 @@ function basher(shape: Bash): ReactNode {
           <Path d="M46 84 L54 78 M47 64 L53 58 M48 44 L52 38 M49 24 L51 20" stroke={LINE} strokeWidth={1} />
         </G>
       );
-    case 'fluke':
+    case 'slap':
+      // A whale's flukes seen from above, tail stock at the top, coming down flat.
       return (
         <G fill="#5C6B78" stroke={LINE} strokeWidth={1}>
-          <Path d="M43 100 L45 50 L55 50 L57 100 Z" />
-          <Path d="M50 54 Q20 32 2 8 Q30 18 50 32 Q70 18 98 8 Q80 32 50 54 Z" />
+          <Path d="M45 0 L55 0 L54 50 L46 50 Z" />
+          <Path d="M50 46 Q24 50 3 72 Q26 64 47 74 L50 70 L53 74 Q74 64 97 72 Q76 50 50 46 Z" />
+        </G>
+      );
+    case 'tailfin':
+      // A shark's or big fish's tail: the stalk and an upright tail fin.
+      return (
+        <G fill="#66727C" stroke={LINE} strokeWidth={1}>
+          <Path d="M45 100 L47 46 L53 46 L55 100 Z" />
+          <Path d="M50 52 Q32 30 20 2 Q42 18 50 36 Q60 20 84 6 Q68 34 50 52 Z" />
+        </G>
+      );
+    case 'thagomizer':
+      // A stegosaur's tail tip with its two pairs of long spikes splaying outwards.
+      return (
+        <G stroke={LINE} strokeWidth={1}>
+          <Path d="M43 100 Q46 50 49 12 L51 12 Q54 50 57 100 Z" fill="#7C6A4E" />
+          <G fill="#CDB98E">
+            <Path d="M46.5 46 L10 20 L48 38 Z" />
+            <Path d="M53.5 46 L90 20 L52 38 Z" />
+            <Path d="M47.5 28 L20 2 L49 21 Z" />
+            <Path d="M52.5 28 L80 2 L51 21 Z" />
+          </G>
         </G>
       );
     case 'forked':
@@ -481,7 +503,52 @@ function basher(shape: Bash): ReactNode {
   }
 }
 
-function BashUp({ shape, w, v }: { shape: Bash; w: number; v: Animated.Value }) {
+// Tail weapons that swing: from the bottom corner, in an arc up and across the card.
+const SWINGS: Bash[] = ['thagomizer', 'club', 'tailfin'];
+
+function BashUp({ shape, w, h, v }: { shape: Bash; w: number; h: number; v: Animated.Value }) {
+  if (SWINGS.includes(shape)) {
+    const s = w;
+    return (
+      <Animated.View
+        style={{
+          position: 'absolute',
+          left: -s / 2,
+          top: h - s,
+          width: s,
+          height: s,
+          opacity: v.interpolate({ inputRange: [0, 0.25, 1], outputRange: [0, 1, 1] }),
+          // Pivoting where the tail meets the body, at the card's bottom corner.
+          transformOrigin: '50% 100%',
+          transform: [{ rotate: v.interpolate({ inputRange: [0, 1], outputRange: ['-100deg', '35deg'] }) }],
+        }}>
+        <Svg width={s} height={s} viewBox="0 0 100 100">
+          {basher(shape)}
+        </Svg>
+      </Animated.View>
+    );
+  }
+  if (shape === 'slap') {
+    // Flukes coming down from above onto the middle of the card.
+    const bw = w * 1.1;
+    const bh = h * 0.7;
+    return (
+      <Animated.View
+        style={{
+          position: 'absolute',
+          left: -w * 0.05,
+          top: 0,
+          width: bw,
+          height: bh,
+          opacity: v.interpolate({ inputRange: [0, 0.25, 1], outputRange: [0, 1, 1] }),
+          transform: [{ translateY: v.interpolate({ inputRange: [0, 1], outputRange: [-h * 0.9, -h * 0.02] }) }],
+        }}>
+        <Svg width={bw} height={bh} viewBox="0 0 100 100" preserveAspectRatio="none">
+          {basher(shape)}
+        </Svg>
+      </Animated.View>
+    );
+  }
   const s = w * 0.9;
   return (
     <Animated.View
@@ -497,6 +564,32 @@ function BashUp({ shape, w, v }: { shape: Bash; w: number; v: Animated.Value }) 
       }}>
       <Svg width={s} height={s} viewBox="0 0 100 100">
         {basher(shape)}
+      </Svg>
+    </Animated.View>
+  );
+}
+
+// One splash of water where a fluke slaps down.
+function SlapSplash({ w, h }: { w: number; h: number }) {
+  const v = useValue(0);
+  useEffect(() => {
+    Animated.sequence([Animated.delay(CONTACT_MS - 20), run(v, 1, 520, Easing.out(Easing.cubic))]).start();
+  }, [v]);
+  const s = w * 1.2;
+  return (
+    <Animated.View
+      style={{
+        position: 'absolute',
+        left: (w - s) / 2,
+        top: h / 2 - s * 0.62,
+        width: s,
+        height: s * 0.7,
+        opacity: v.interpolate({ inputRange: [0, 0.05, 0.6, 1], outputRange: [0, 0.95, 0.8, 0] }),
+        transformOrigin: '50% 100%',
+        transform: [{ scaleX: v.interpolate({ inputRange: [0, 1], outputRange: [0.4, 1.15] }) }, { scaleY: v.interpolate({ inputRange: [0, 0.5, 1], outputRange: [0.2, 1, 1.1] }) }],
+      }}>
+      <Svg width={s} height={s * 0.7} viewBox="0 0 100 70">
+        <Path d="M4 70 Q14 44 10 26 Q22 40 26 34 Q24 14 34 4 Q38 26 44 24 Q46 8 52 0 Q56 22 60 24 Q66 8 74 6 Q72 28 78 34 Q86 26 92 22 Q86 44 96 70 Z" fill={WATER} stroke="#BFE6FF" strokeWidth={1.5} />
       </Svg>
     </Animated.View>
   );
@@ -521,14 +614,25 @@ export function WeaponFx({ weapon, w, h }: { weapon: Weapon; w: number; h: numbe
       {weapon.kind === 'grip' && <Grip style={weapon.style} w={w} h={h} v={v} />}
       {weapon.kind === 'slash' && <Slash claws={weapon.claws} w={w} h={h} v={v} />}
       {weapon.kind === 'stomp' && <Stomp foot={weapon.foot} w={w} h={h} v={v} />}
-      {weapon.kind === 'bash' && <BashUp shape={weapon.shape} w={w} v={v} />}
+      {weapon.kind === 'bash' && <BashUp shape={weapon.shape} w={w} h={h} v={v} />}
+      {weapon.kind === 'bash' && weapon.shape === 'slap' && <SlapSplash w={w} h={h} />}
     </Animated.View>
   );
 }
 
 // How the target card reacts to each kind of attack.
 export const joltFor = (weapon: Weapon, result: 'hit' | 'held' | 'miss'): 'dodge' | 'shake' | 'up' | 'down' =>
-  result === 'miss' ? 'dodge' : weapon.kind === 'bash' ? 'up' : weapon.kind === 'stomp' ? 'down' : 'shake';
+  result === 'miss'
+    ? 'dodge'
+    : weapon.kind === 'bash'
+      ? weapon.shape === 'slap'
+        ? 'down'
+        : SWINGS.includes(weapon.shape)
+          ? 'shake'
+          : 'up'
+      : weapon.kind === 'stomp'
+        ? 'down'
+        : 'shake';
 
 const styles = StyleSheet.create({
   eyeBadge: { position: 'absolute', right: 2, bottom: 2, backgroundColor: '#00000099', alignItems: 'center', justifyContent: 'center' },
