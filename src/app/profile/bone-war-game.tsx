@@ -72,7 +72,8 @@ function ComputerGame({ champion: style, shadow = false }: { champion?: Champion
           const next = apply(s, AI, a);
           return next === s ? apply(s, AI, { type: 'end' }) : next;
         });
-      }, 900);
+        // A longer pause after an animated move, so it plays out before the next one.
+      }, state.fx?.length ? 1700 : 900);
       return () => clearTimeout(id);
     }
   }, [state, champion]);

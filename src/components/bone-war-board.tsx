@@ -4,11 +4,13 @@ import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } fr
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BoneWarCard } from '@/components/bone-war-card';
+import { CrocEye, FadeOut, Jolt, joltFor, Splash, WeaponFx } from '@/components/bone-war-fx';
 import { GlitchText, useGlitch } from '@/components/glitch';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { cardFor, type Look } from '@/lib/bone-war';
-import { type Action, backMax, backTotal, cardOf, type GameState, type GCard, legal, levelFor, secondsFor, START_HP } from '@/lib/bone-war-game';
+import { type Action, backMax, backTotal, cardOf, type Fx, type GameState, type GCard, legal, levelFor, secondsFor, START_HP } from '@/lib/bone-war-game';
+import { weaponOf } from '@/lib/bone-war-weapons';
 import { FontsReady, PAPER_FONTS } from '@/lib/fonts';
 import { imageOf } from '@/lib/images';
 import { type Question, questionAbout } from '@/lib/quiz';
@@ -89,6 +91,15 @@ export function Board({
     return n + (c && c.kind === 'species' ? c.stats.swim : 0);
   }, 0);
 
+  // The last action's animations (none with reduce motion on). Each is keyed to the action, so it
+  // plays once when it happens.
+  const fx: Fx[] = reduceMotion ? [] : (state.fx ?? []);
+  const fxAt = (where: Pick['where'], i: number) => {
+    const side = where === 'oppFront' || where === 'oppBack' ? opp : me;
+    const r = where === 'front' || where === 'oppFront' ? 'front' : where === 'back' || where === 'oppBack' ? 'back' : null;
+    return fx.filter((f) => f.t !== 'strike' && f.side === side && (f.t === 'weapon' ? r === 'front' : f.row === r) && f.slot === i);
+  };
+
   const card = (
     g: GCard | null,
     face: boolean,
@@ -98,18 +109,46 @@ export function Board({
     on = false,
     key?: string,
     outline?: string,
-  ) => (
-    <Pressable key={key} onPress={onPress} disabled={!onPress} accessibilityRole="button" style={{ width: w }}>
-      {g ? (
-        <View>
-          <BoneWarCard card={cardOf(g)} width={w} faceDown={!face} cardStyle={style} art={style ? oppArt : undefined} font={style ? oppFont : undefined} highlight={on ? palette.accent : undefined} />
-          {face && style === undefined && !g.seen && !key?.startsWith('hand') && <Text style={styles.hiddenTag}>🙈</Text>}
-        </View>
-      ) : (
-        <View style={[styles.empty, { width: w, height: w * 1.4, borderColor: outline ?? palette.border }]} />
-      )}
-    </Pressable>
-  );
+    at?: { where: Pick['where']; i: number },
+  ) => {
+    const h = w * 1.4;
+    const here = at ? fxAt(at.where, at.i) : [];
+    const weapon = here.find((f) => f.t === 'weapon');
+    const gone = here.find((f) => f.t === 'gone');
+    const splash = here.find((f) => f.t === 'splash');
+    const look = (x: GCard, shown: boolean) => (
+      <BoneWarCard card={cardOf(x)} width={w} faceDown={!shown} cardStyle={style} art={style ? oppArt : undefined} font={style ? oppFont : undefined} highlight={on ? palette.accent : undefined} />
+    );
+    const fxKey = `${state.seq}`;
+    return (
+      <Pressable key={key} onPress={onPress} disabled={!onPress} accessibilityRole="button" style={{ width: w, zIndex: here.length ? 2 : 0 }}>
+        {g ? (
+          <View>
+            {weapon ? (
+              <Jolt key={fxKey} kind={joltFor(weaponOf(weapon.by), weapon.result)} w={w}>
+                {look(g, face)}
+              </Jolt>
+            ) : (
+              look(g, face)
+            )}
+            {/* On the board, a crocodile eye: closed while the card is hidden from the opponent (or,
+                on their side, from you), open once it has been revealed. */}
+            {!!at && <CrocEye open={g.seen} size={Math.max(12, Math.min(18, w * 0.19))} />}
+          </View>
+        ) : (
+          <View style={[styles.empty, { width: w, height: h, borderColor: outline ?? palette.border }]} />
+        )}
+        {/* A card just beaten, fading out where it was (or vanishing under an ambush). */}
+        {!g && gone && (
+          <FadeOut key={fxKey} delay={gone.delay} ambush={gone.how === 'ambush'}>
+            {look(gone.card, gone.card.seen || style === undefined)}
+          </FadeOut>
+        )}
+        {weapon && <WeaponFx key={`w${fxKey}`} weapon={weaponOf(weapon.by)} w={w} h={h} />}
+        {(splash || gone?.how === 'ambush') && <Splash key={`s${fxKey}`} w={w} h={h} big={gone?.how === 'ambush'} />}
+      </Pressable>
+    );
+  };
 
   const row = (cards: (GCard | null)[], where: Pick['where'], faceFor: (g: GCard) => boolean, w: number, style?: { back: string; border: string }, outline?: string) => (
     <View style={styles.row}>
@@ -123,6 +162,7 @@ export function Board({
           pick?.where === where && pick.i === i,
           `${where}-${i}`,
           outline,
+          { where, i },
         ),
       )}
     </View>
@@ -204,8 +244,15 @@ export function Board({
     );
   };
 
+  const struck = (p: typeof mine) => fx.find((f): f is Extract<Fx, { t: 'strike' }> => f.t === 'strike' && state.players[f.side] === p);
   const hp = (p: typeof mine, who: string, look?: Look) => (
     <View style={styles.hpRow}>
+      {/* A strike lands on the player's health bar. */}
+      {!!struck(p) && (
+        <View pointerEvents="none" style={styles.strikeBox}>
+          <WeaponFx key={state.seq} weapon={weaponOf(struck(p)!.by)} w={84} h={64} />
+        </View>
+      )}
       {look && oppGlitch ? (
         <View style={{ flex: 1 }}>
           <GlitchText text={who} style={st.rowTitle} color={look.text} burst={nameBurst} quiet />
@@ -425,7 +472,7 @@ const styles = StyleSheet.create({
   statsRow: { flexDirection: 'row', gap: 16, justifyContent: 'flex-end' },
   hpTrack: { flex: 1.4, height: 12, borderRadius: 6, overflow: 'hidden' },
   panel: { flexDirection: 'row', gap: 12, padding: 12, borderRadius: 12, borderWidth: 1 },
-  hiddenTag: { position: 'absolute', right: 2, bottom: 2, fontSize: 10 },
+  strikeBox: { position: 'absolute', left: '50%', marginLeft: -42, top: -26, width: 84, height: 64, zIndex: 3 },
   overlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
   waiting: { position: 'absolute', left: 16, right: 16, bottom: 24, padding: 16, borderRadius: 12, borderWidth: 1, alignItems: 'center' },
 });

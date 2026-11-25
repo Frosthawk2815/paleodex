@@ -64,6 +64,18 @@ export type Pending = {
   // Who played the extinction card.
   player?: 0 | 1;
 };
+// What the last action did to cards on the board, for the board to animate (on both phones).
+// side: whose card (or, for a strike, whose health). by: the attacking card's key.
+export type Fx =
+  // A card removed: it fades out, or (ambushed) disappears under a splash of water.
+  | { t: 'gone'; side: 0 | 1; row: 'front' | 'back'; slot: number; card: GCard; how: 'fade' | 'ambush'; delay?: number }
+  // A card revealed by a swimmer: splashed with water.
+  | { t: 'splash'; side: 0 | 1; row: 'front' | 'back'; slot: number }
+  // A backline card attacking a front-line card: it hits, the target holds, or the target dodges.
+  | { t: 'weapon'; side: 0 | 1; slot: number; by: string; result: 'hit' | 'held' | 'miss' }
+  // A strike at a player.
+  | { t: 'strike'; side: 0 | 1; by: string };
+
 export type GameState = {
   players: [PlayerState, PlayerState];
   turn: 0 | 1;
@@ -78,6 +90,8 @@ export type GameState = {
   round: number;
   log: string[];
   seq: number;
+  // The last action's effects (empty for most actions).
+  fx?: Fx[];
 };
 
 export type Action =
@@ -190,6 +204,8 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
   if (!legal(s0, who, a)) return s0;
   const s = clone(s0);
   s.seq++;
+  s.fx = [];
+  const fx = (f: Fx) => s.fx!.push(f);
   const me = s.players[who]!;
   const opp = s.players[(1 - who) as 0 | 1]!;
   const other = (1 - who) as 0 | 1;
@@ -231,6 +247,8 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
     if (p.purpose === 'challenge') {
       const owner = s.players[(1 - p.answerer) as 0 | 1]!;
       if (a.correct) {
+        const gone = owner.front[p.slot!];
+        if (gone) fx({ t: 'gone', side: (1 - p.answerer) as 0 | 1, row: 'front', slot: p.slot!, card: gone, how: 'fade' });
         owner.front[p.slot!] = null;
         owner.hp = Math.max(0, owner.hp - KNOCK_DAMAGE);
         owner.hit = (owner.hit ?? 0) + KNOCK_DAMAGE;
@@ -254,7 +272,7 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       }
     } else if (p.purpose === 'extinction') {
       if (!a.correct) {
-        const lost = wipe(answerer, p.extinction!);
+        const lost = wipe(answerer, p.extinction!, (row, slot, card) => fx({ t: 'gone', side: p.answerer, row, slot, card, how: 'fade' }));
         log(`${answerer.name} got it wrong: the ${nameOf(p.card)} wiped out ${lost} of their animals.`);
       } else {
         // The player who played it must now save themselves.
@@ -264,7 +282,7 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       }
     } else if (p.purpose === 'saving') {
       if (!a.correct) {
-        const lost = wipe(answerer, p.extinction!);
+        const lost = wipe(answerer, p.extinction!, (row, slot, card) => fx({ t: 'gone', side: p.answerer, row, slot, card, how: 'fade' }));
         log(`It blew back: ${answerer.name} lost ${lost} of their own animals.`);
       } else log(`${answerer.name} escaped the extinction.`);
     }
@@ -307,6 +325,7 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       const damage = power - blocked;
       opp.hp = Math.max(0, opp.hp - damage);
       opp.hit = (opp.hit ?? 0) + damage;
+      fx({ t: 'strike', side: other, by: g.key });
       // How much the defence soaked up isn't said.
       log(damage ? `${nameOf(g)} struck ${opp.name} for ${damage} damage.` : `${nameOf(g)} struck, but ${opp.name}'s defence held.`);
       if (opp.hp <= 0) {
@@ -320,11 +339,18 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
       const target = opp.front[a.slot]!;
       g.seen = true;
       target.seen = true;
-      if (rnd() < missChance(g, target)) log(`${nameOf(g)} attacked ${nameOf(target)}, but it was too fast and got away.`);
-      else if (stat(g, 'attack') > stat(target, 'defence')) {
+      if (rnd() < missChance(g, target)) {
+        fx({ t: 'weapon', side: other, slot: a.slot, by: g.key, result: 'miss' });
+        log(`${nameOf(g)} attacked ${nameOf(target)}, but it was too fast and got away.`);
+      } else if (stat(g, 'attack') > stat(target, 'defence')) {
         opp.front[a.slot] = null;
+        fx({ t: 'weapon', side: other, slot: a.slot, by: g.key, result: 'hit' });
+        fx({ t: 'gone', side: other, row: 'front', slot: a.slot, card: target, how: 'fade', delay: 550 });
         log(`${nameOf(g)} attacked ${nameOf(target)} and knocked it off the front line.`);
-      } else log(`${nameOf(g)} attacked ${nameOf(target)}, but it held its ground.`);
+      } else {
+        fx({ t: 'weapon', side: other, slot: a.slot, by: g.key, result: 'held' });
+        log(`${nameOf(g)} attacked ${nameOf(target)}, but it held its ground.`);
+      }
       break;
     }
     case 'swim': {
@@ -341,7 +367,15 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
         .map((x, i) => ({ x, i }))
         .filter((t) => t.x && revealed.includes(t.x) && stat(t.x, 'defence') < stat(g, 'attack'))
         .sort((p, q) => q.x!.stars - p.x!.stars)[0];
+      // Every revealed card is splashed; the ambushed one disappears under the water.
+      opp.front.forEach((x, i) => {
+        if (x && revealed.includes(x) && i !== prey?.i) fx({ t: 'splash', side: other, row: 'front', slot: i });
+      });
+      opp.back.forEach((x, i) => {
+        if (x && revealed.includes(x)) fx({ t: 'splash', side: other, row: 'back', slot: i });
+      });
       if (prey) {
+        fx({ t: 'gone', side: other, row: 'front', slot: prey.i, card: prey.x!, how: 'ambush' });
         opp.front[prey.i] = null;
         log(`${nameOf(g)} ambushed ${nameOf(prey.x!)} and knocked it off the front line.`);
       }
@@ -353,12 +387,13 @@ export function apply(s0: GameState, who: 0 | 1, a: Action, rnd: () => number = 
 }
 
 // Removes every species a player has in play that the extinction wiped out; returns how many.
-function wipe(p: PlayerState, extinction: string): number {
+function wipe(p: PlayerState, extinction: string, removed?: (row: 'front' | 'back', slot: number, card: GCard) => void): number {
   let n = 0;
   for (const row of [p.front, p.back]) {
     row.forEach((g, i) => {
       const c = g ? cardOf(g) : null;
       if (c && c.kind === 'species' && extinctionHits(extinction, c.extinction)) {
+        removed?.(row === p.front ? 'front' : 'back', i, g!);
         row[i] = null;
         n++;
       }
