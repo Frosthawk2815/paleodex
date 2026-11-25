@@ -190,7 +190,7 @@ function teeth(jaw: Jaw, lower: boolean): { paths: string[]; fill: string; back?
     case 'fangs':
       return { paths: [...row([8, 14, 86, 92], 6, 12), ...row([38, 46, 54, 62], 7, 14), ...row([25, 75], 12, 46, lower ? -3 : 3)], fill: IVORY };
     case 'sabre':
-      return lower ? { paths: row(range(20, 80, 8), 6, 12), fill: IVORY } : { paths: [...row(range(40, 60, 7), 6, 10), crusher(27, 15, 68, -3), crusher(73, 15, 68, 3)], fill: IVORY };
+      return lower ? { paths: row(range(20, 80, 8), 6, 12), fill: IVORY } : { paths: [...row(range(37.5, 62.5, 5), 4.6, 10), crusher(27, 15, 68, -3), crusher(73, 15, 68, 3)], fill: IVORY };
     case 'venom':
       return lower ? { paths: [], fill: IVORY } : { paths: row([38, 62], 7, 52, 4), fill: '#FFFDF6' };
     case 'incisors':
