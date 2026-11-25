@@ -50,7 +50,7 @@ export function Board({
   const palette = usePalette();
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
-  const { reduceMotion } = useProfile();
+  const { reduceMotion, profile } = useProfile();
   const theirsLow = state.players[1 - me]!.hp < START_HP / 2;
   // Glitch bursts only run for the shadow once it is below half health.
   const burst = useGlitch(!oppGlitch || !theirsLow || reduceMotion);
@@ -131,9 +131,9 @@ export function Board({
             ) : (
               look(g, face)
             )}
-            {/* On the board, a crocodile eye: closed while the card is hidden from the opponent (or,
-                on their side, from you), open once it has been revealed. */}
-            {!!at && <CrocEye open={g.seen} size={Math.max(12, Math.min(18, w * 0.19))} />}
+            {/* On your cards in play, a crocodile eye: closed while the opponent hasn't seen the card,
+                open once it has been revealed. */}
+            {!!at && style === undefined && <CrocEye open={g.seen} size={Math.max(8, Math.min(11, w * 0.114))} colours={profile.cardStyle.eye} />}
           </View>
         ) : (
           <View style={[styles.empty, { width: w, height: h, borderColor: outline ?? palette.border }]} />

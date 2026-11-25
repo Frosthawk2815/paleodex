@@ -165,7 +165,7 @@ function LoadoutPicker() {
         return (
           <Pressable
             key={i}
-            onPress={() => update({ deck: l.deck, cardStyle: { ...l.cardStyle, layout: profile.cardStyle.layout } })}
+            onPress={() => update({ deck: l.deck, cardStyle: { ...l.cardStyle, layout: profile.cardStyle.layout, eye: profile.cardStyle.eye } })}
             accessibilityRole="radio"
             accessibilityState={{ selected: on }}
             style={({ pressed }) => [st.card, st.row, { borderWidth: on ? 2 : 1, borderColor: on ? palette.accent : palette.border }, pressed && st.pressed]}>

@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, useWindowDimensions, View } from 'react-native';
 
 import { BoneWarCard, STAT_LAYOUTS, StatDisplay } from '@/components/bone-war-card';
+import { CrocEye, DEFAULT_EYE } from '@/components/bone-war-fx';
 import { BoneWarRules } from '@/components/bone-war-rules';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { type Card, cardKeyOf, cardName, DECK_SIZE, loadoutInUse, MIN_DECK, ownedCards } from '@/lib/bone-war';
-import { LOADOUT_SLOTS, type Loadout, useProfile } from '@/lib/profile';
+import { type EyeColours, LOADOUT_SLOTS, type Loadout, useProfile } from '@/lib/profile';
 import { SWATCHES } from '@/lib/theme';
 import { useT } from '@/lib/i18n';
 
@@ -17,6 +18,14 @@ const SAMPLE = { attack: 3, defence: 2, speed: 1, swim: 0 };
 // Every colour offered for card backs and borders: each swatch's light and dark shade.
 const COLOURS = SWATCHES.flatMap((s) => [s.dark, s.light]).concat(['#C9A227', '#8C1C13']);
 
+// Choices for the crocodile eye on your cards in play.
+const EYE_CHOICES: Record<keyof EyeColours, string[]> = {
+  light: ['#7D8C45', '#A3A86B', '#5E7A3A', '#8C7A4A', '#B59A5C', '#9A8F7A', '#6F8A8A', '#C9C2A8'],
+  dark: ['#3F4A24', '#2B3318', '#4A3B22', '#33302A', '#1F2A22', '#5A3A22', '#2A2A2A', '#24343F'],
+  iris: ['#C8B43A', '#E8E070', '#D9A030', '#8FB03A', '#B05A2A', '#C23B2B', '#3A8FB0', '#7A5ACC'],
+  sclera: ['#E8E2B8', '#F4F1E6', '#D9CFA0', '#C9D9B0', '#E6C9A8', '#BFBFBF', '#F0D8D8', '#2E2E2E'],
+};
+
 // Building the Bone War deck from the card collection, choosing the cards' colours, and loadouts.
 export default function BoneWarDeckScreen() {
   const st = useProfileStyles();
@@ -25,6 +34,7 @@ export default function BoneWarDeckScreen() {
   const { width } = useWindowDimensions();
   const { profile, update } = useProfile();
   const owned = ownedCards(profile).sort((a, b) => b.stars - a.stars);
+  const eye = profile.cardStyle.eye ?? DEFAULT_EYE;
   const inDeck = new Set(profile.deck.filter((k) => owned.some((c) => c.key === k)));
   // Its own search box, separate from the app's main search: filters and sorts the collection.
   const [query, setQuery] = useState('');
@@ -74,6 +84,39 @@ export default function BoneWarDeckScreen() {
       {swatchRow('back')}
       <Text style={st.rowTitle}>{t('Card colour (face and border)')}</Text>
       {swatchRow('border')}
+      <Text style={st.rowTitle}>{t('Crocodile eye')}</Text>
+      <Text style={st.muted}>{t('Shown on your cards in play: closed while your opponent hasn’t seen the card, open once it’s revealed. Only you see it.')}</Text>
+      <View style={{ flexDirection: 'row', gap: 16, alignItems: 'center' }}>
+        <CrocEye open={false} size={56} colours={eye} badge={false} />
+        <CrocEye open size={56} colours={eye} badge={false} />
+      </View>
+      {(
+        [
+          ['light', t('Light scales')],
+          ['dark', t('Dark scales')],
+          ['iris', t('Iris')],
+          ['sclera', t('White of the eye')],
+        ] as const
+      ).map(([part, label]) => (
+        <View key={part} style={{ gap: 6 }}>
+          <Text style={st.rowSub}>{label}</Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {EYE_CHOICES[part].map((c) => {
+              const on = eye[part].toLowerCase() === c.toLowerCase();
+              return (
+                <Pressable
+                  key={`${part}-${c}`}
+                  onPress={() => update({ cardStyle: { ...profile.cardStyle, eye: { ...eye, [part]: c } } })}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: on }}
+                  accessibilityLabel={`${label} ${c}`}
+                  style={{ width: 30, height: 30, borderRadius: 15, backgroundColor: c, borderWidth: on ? 3 : 1, borderColor: on ? palette.accent : palette.border }}
+                />
+              );
+            })}
+          </View>
+        </View>
+      ))}
       <Text style={st.rowTitle}>{t('How stats are shown')}</Text>
       <Text style={st.muted}>{t('⚔️ attack · 🛡️ defence · ⚡ speed · 🌊 swim. Each stat is 0 to 3. Your choice is used for every card you see, your opponent’s too.')}</Text>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
@@ -258,7 +301,7 @@ function Loadouts() {
           <View style={{ flexDirection: 'row', gap: 8 }}>
             {l && (
               <Pressable
-                onPress={() => update({ deck: l.deck, cardStyle: { ...l.cardStyle, layout: profile.cardStyle.layout } })}
+                onPress={() => update({ deck: l.deck, cardStyle: { ...l.cardStyle, layout: profile.cardStyle.layout, eye: profile.cardStyle.eye } })}
                 accessibilityRole="button"
                 style={({ pressed }) => [st.button, { flex: 1, paddingVertical: 8 }, pressed && st.pressed]}>
                 <Text style={st.buttonText}>{t('Load')}</Text>

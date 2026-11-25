@@ -14,7 +14,10 @@ import type { UserPlace } from '@/lib/user-places';
 // A page in the information section: a species, a group, or an event (formation, trackway...).
 export type PageRef = { kind: 'species' | 'clade' | 'event' | 'extinction'; id: string };
 // How Bone War cards look: back and face colours, and how the stats are drawn.
-export type CardStyle = { back: string; border: string; layout?: 'squares' | 'rings' | 'cross' | 'bars' | 'numbers' | 'icons' };
+// eye: the colours of the crocodile eye on your cards in play (light and dark scales, iris, and the
+// white of the eye).
+export type EyeColours = { light: string; dark: string; iris: string; sclera: string };
+export type CardStyle = { back: string; border: string; layout?: 'squares' | 'rings' | 'cross' | 'bars' | 'numbers' | 'icons'; eye?: EyeColours };
 export type Loadout = { name: string; deck: string[]; cardStyle: CardStyle };
 export const LOADOUT_SLOTS = 5;
 // A picture of one of their favourite species, or a photo they chose from their device.

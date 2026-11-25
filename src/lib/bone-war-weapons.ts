@@ -8,7 +8,7 @@ import { cladePath } from '@/lib/life';
 import { cardFor } from '@/lib/bone-war';
 
 // Teeth (and beaks) for a bite.
-export type Jaw = 'serrated' | 'conical' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
+export type Jaw = 'crusher' | 'serrated' | 'conical' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
 // Footprints for a stomp.
 export type Foot = 'sauropod' | 'elephant' | 'ornithopod' | 'bird' | 'ostrich' | 'rhino' | 'horse' | 'cloven' | 'wombat' | 'kangaroo';
 // Weapons for a bash, rising from below.
@@ -33,11 +33,11 @@ const PINCER: Weapon = { kind: 'grip', style: 'pincer' };
 const BY_CLADE: Record<string, Weapon> = {
   // Dinosaurs
   theropoda: bite('serrated'),
+  tyrannosauridae: bite('crusher'), // thick, bone-crushing teeth
   spinosauridae: bite('conical'),
-  dromaeosauridae: slash(1), // the sickle claw
-  unenlagiinae: bite('conical'),
-  halszkaraptorinae: bite('conical'),
-  alvarezsauridae: slash(1),
+  // Raptors held prey down with the sickle claw but struck with the three claws on each arm.
+  dromaeosauridae: slash(3),
+  alvarezsauridae: slash(1), // the one big claw on each arm
   therizinosauria: slash(3),
   megaraptora: slash(3),
   ornithomimosauria: bite('beak'),

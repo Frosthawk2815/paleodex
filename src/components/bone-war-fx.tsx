@@ -8,6 +8,7 @@ import { Animated, Easing, Platform, StyleSheet, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
 
 import type { Bash, Foot, Jaw, Weapon } from '@/lib/bone-war-weapons';
+import type { EyeColours } from '@/lib/profile';
 
 const native = Platform.OS !== 'web';
 const run = (v: Animated.Value, to: number, ms: number, easing = Easing.out(Easing.quad), delay = 0) => Animated.timing(v, { toValue: to, duration: ms, easing, delay, useNativeDriver: native });
@@ -19,32 +20,40 @@ export const CONTACT_MS = 260;
 
 const IVORY = '#F4EEDC';
 const LINE = '#3A2E22';
-const GUM = '#6E1B1B';
 const KERATIN = '#2E2824';
 const WATER = '#2E86C1';
 
 // ---- The crocodile eye: closed while a card is hidden, open once it's revealed. ----
 
-export function CrocEye({ open, size = 18 }: { open: boolean; size?: number }) {
+export const DEFAULT_EYE: EyeColours = { light: '#7D8C45', dark: '#3F4A24', iris: '#C8B43A', sclera: '#E8E2B8' };
+
+export function CrocEye({ open, size = 18, colours = DEFAULT_EYE, badge = true }: { open: boolean; size?: number; colours?: EyeColours; badge?: boolean }) {
+  const { light, dark, iris, sclera } = colours;
+  const svg = (
+    <Svg width={size} height={size * 0.72} viewBox="0 0 24 17">
+      {open ? (
+        <>
+          <Path d="M2 9.5 Q12 1 22 9.5 Q12 16 2 9.5 Z" fill={sclera} stroke={dark} strokeWidth={1} />
+          <Ellipse cx={12} cy={9.4} rx={6.2} ry={4.6} fill={iris} />
+          <Ellipse cx={12} cy={9.4} rx={1.5} ry={4.4} fill="#111" />
+          <Circle cx={9.6} cy={7.6} r={0.9} fill="#FFFFFF99" />
+          <Path d="M1 7 Q6 1.2 12 2 Q18 1.2 23 7" stroke={light} strokeWidth={2.2} fill="none" strokeLinecap="round" />
+          <Path d="M5 4.6 L6 3.2 M9.5 3 L10 1.8 M14.5 3 L14 1.8 M19 4.6 L18 3.2" stroke={dark} strokeWidth={0.9} strokeLinecap="round" />
+        </>
+      ) : (
+        <>
+          <Path d="M2 9.5 Q12 2.5 22 9.5 Q12 13.5 2 9.5 Z" fill={light} stroke={dark} strokeWidth={1} />
+          <Path d="M2 9.5 Q12 13.5 22 9.5" stroke={dark} strokeWidth={1.6} fill="none" strokeLinecap="round" />
+          <Path d="M6 7.4 L7 6 M10 6.4 L10.6 5 M14 6.4 L13.6 5 M18 7.4 L17 6" stroke={dark} strokeWidth={0.9} strokeLinecap="round" />
+          <Path d="M1 7 Q6 1.2 12 2 Q18 1.2 23 7" stroke={light} strokeWidth={2.2} fill="none" strokeLinecap="round" />
+        </>
+      )}
+    </Svg>
+  );
+  if (!badge) return svg;
   return (
-    <View style={[styles.eyeBadge, { width: size + 6, height: size * 0.72 + 4 }]} pointerEvents="none">
-      <Svg width={size} height={size * 0.72} viewBox="0 0 24 17">
-        {open ? (
-          <>
-            <Path d="M2 9.5 Q12 1 22 9.5 Q12 16 2 9.5 Z" fill="#C8B43A" stroke="#4E5B2E" strokeWidth={1} />
-            <Ellipse cx={12} cy={9.4} rx={1.5} ry={5.2} fill="#111" />
-            <Circle cx={9.5} cy={7.2} r={0.9} fill="#FFF8" />
-            <Path d="M1 7 Q6 1.2 12 2 Q18 1.2 23 7" stroke="#55663A" strokeWidth={2} fill="none" strokeLinecap="round" />
-          </>
-        ) : (
-          <>
-            <Path d="M2 9.5 Q12 2.5 22 9.5 Q12 13.5 2 9.5 Z" fill="#6B7A3A" stroke="#4E5B2E" strokeWidth={1} />
-            <Path d="M2 9.5 Q12 13.5 22 9.5" stroke="#26301A" strokeWidth={1.6} fill="none" strokeLinecap="round" />
-            <Path d="M6 7 L7 5.6 M10 6 L10.6 4.6 M14 6 L13.6 4.6 M18 7 L17 5.6" stroke="#4E5B2E" strokeWidth={0.9} strokeLinecap="round" />
-            <Path d="M1 7 Q6 1.2 12 2 Q18 1.2 23 7" stroke="#55663A" strokeWidth={2} fill="none" strokeLinecap="round" />
-          </>
-        )}
-      </Svg>
+    <View style={[styles.eyeBadge, { width: size + 4, height: size * 0.72 + 3, borderRadius: size / 3 }]} pointerEvents="none">
+      {svg}
     </View>
   );
 }
@@ -157,35 +166,39 @@ export function Splash({ w, h, big = false }: { w: number; h: number; big?: bool
 
 // ---- Attacks ----
 
-// One tooth hanging from a gum at y=12: centre x, base width, length, and how far the tip curves.
-const tooth = (x: number, wd: number, len: number, curve = 0) => `M${x - wd / 2} 12 Q${x + curve - wd * 0.1} ${12 + len * 0.6} ${x + curve} ${12 + len} Q${x + curve * 0.4 + wd * 0.2} ${12 + len * 0.5} ${x + wd / 2} 12 Z`;
+// One tooth hanging from the jaw line at the top: centre x, base width, length, and how far the tip curves.
+const tooth = (x: number, wd: number, len: number, curve = 0) => `M${x - wd / 2} 0 Q${x + curve - wd * 0.1} ${len * 0.6} ${x + curve} ${len} Q${x + curve * 0.4 + wd * 0.2} ${len * 0.5} ${x + wd / 2} 0 Z`;
+// A thick tooth with a rounded tip.
+const blunt = (x: number, wd: number, len: number) => `M${x - wd / 2} 0 L${x - wd * 0.42} ${len - wd * 0.4} Q${x} ${len + wd * 0.35} ${x + wd * 0.42} ${len - wd * 0.4} L${x + wd / 2} 0 Z`;
 const row = (xs: number[], wd: number, len: number | ((i: number) => number), curve = 0) => xs.map((x, i) => tooth(x, wd, typeof len === 'number' ? len : len(i), curve));
 const range = (from: number, to: number, step: number) => Array.from({ length: Math.floor((to - from) / step) + 1 }, (_, i) => from + i * step);
 
 // The teeth of one jaw, in a 100 × 70 box, hanging from the top (the lower jaw is drawn flipped).
-function teeth(jaw: Jaw, lower: boolean): { paths: string[]; fill: string; back?: string[]; gum: boolean } {
+function teeth(jaw: Jaw, lower: boolean): { paths: string[]; fill: string; back?: string[] } {
   switch (jaw) {
+    case 'crusher':
+      // Tyrannosaurs: thick, blunt, banana-shaped teeth for crushing bone.
+      return { paths: range(10, 90, 16).map((x, i) => blunt(x, 14, [34, 46, 52, 46, 38, 30][i] ?? 30)), fill: IVORY };
     case 'serrated':
-      return { paths: row(range(9, 93, 12), 10, (i) => [30, 40, 50, 54, 46, 40, 34, 28][i] ?? 30, lower ? -5 : 5), fill: IVORY, gum: true };
+      return { paths: row(range(9, 93, 12), 10, (i) => [30, 40, 50, 54, 46, 40, 34, 28][i] ?? 30, lower ? -5 : 5), fill: IVORY };
     case 'conical':
-      return { paths: row(range(6, 94, 8), 7, (i) => 24 + ((i * 7) % 3) * 5), fill: IVORY, gum: true };
+      return { paths: row(range(6, 94, 8), 7, (i) => 24 + ((i * 7) % 3) * 5), fill: IVORY };
     case 'shark':
-      return { paths: row(range(8, 92, 12), 12, 34), back: row(range(14, 86, 12), 9, 20), fill: '#FBF8EE', gum: true };
+      return { paths: row(range(8, 92, 12), 12, 34), back: row(range(14, 86, 12), 9, 20), fill: '#FBF8EE' };
     case 'fangs':
-      return { paths: [...row([8, 14, 86, 92], 6, 12), ...row([38, 46, 54, 62], 7, 14), ...row([25, 75], 12, 46, lower ? -3 : 3)], fill: IVORY, gum: true };
+      return { paths: [...row([8, 14, 86, 92], 6, 12), ...row([38, 46, 54, 62], 7, 14), ...row([25, 75], 12, 46, lower ? -3 : 3)], fill: IVORY };
     case 'sabre':
-      return lower ? { paths: row(range(20, 80, 8), 6, 12), fill: IVORY, gum: true } : { paths: [...row(range(40, 60, 7), 6, 10), ...row([27, 73], 12, 66, -3)], fill: IVORY, gum: true };
+      return lower ? { paths: row(range(20, 80, 8), 6, 12), fill: IVORY } : { paths: [...row(range(40, 60, 7), 6, 10), ...row([27, 73], 12, 66, -3)], fill: IVORY };
     case 'venom':
-      return lower ? { paths: [], fill: IVORY, gum: true } : { paths: row([38, 62], 7, 52, 4), fill: '#FFFDF6', gum: true };
+      return lower ? { paths: [], fill: IVORY } : { paths: row([38, 62], 7, 52, 4), fill: '#FFFDF6' };
     case 'incisors':
-      return { paths: [`M39 12 L39 46 Q44 52 49 46 L49 12 Z`, `M51 12 L51 46 Q56 52 61 46 L61 12 Z`], fill: lower ? '#F2E2B0' : '#F0D27A', gum: true };
+      return { paths: [`M39 0 L39 36 Q44 42 49 36 L49 0 Z`, `M51 0 L51 36 Q56 42 61 36 L61 0 Z`], fill: lower ? '#F2E2B0' : '#F0D27A' };
     case 'blades':
-      return { paths: [lower ? 'M0 10 L18 30 L34 18 L50 46 L66 18 L82 30 L100 10 Z' : 'M0 10 L20 40 L36 22 L50 58 L64 22 L80 40 L100 10 Z'], fill: '#D8CDB2', gum: false };
+      return { paths: [lower ? 'M0 10 L18 30 L34 18 L50 46 L66 18 L82 30 L100 10 Z' : 'M0 10 L20 40 L36 22 L50 58 L64 22 L80 40 L100 10 Z'], fill: '#D8CDB2' };
     case 'beak':
       return {
         paths: [lower ? 'M0 0 L100 0 L100 8 Q66 12 50 44 Q34 12 0 8 Z' : 'M0 0 L100 0 L100 10 Q70 14 54 60 L50 68 L46 58 Q32 14 0 10 Z'],
         fill: lower ? '#4A433C' : KERATIN,
-        gum: false,
       };
   }
 }
@@ -205,7 +218,6 @@ function Jaws({ jaw, w, h, v }: { jaw: Jaw; w: number; h: number; v: Animated.Va
           transform: [{ translateY: v.interpolate({ inputRange: [0, 1], outputRange: [lower ? h * 0.5 : -h * 0.5, 0] }) }],
         }}>
         <Svg width={w * 1.12} height={h * 0.52} viewBox="0 0 100 70" preserveAspectRatio="none" style={lower ? { transform: [{ scaleY: -1 }] } : undefined}>
-          {t.gum && <Rect x={0} y={0} width={100} height={13} rx={4} fill={GUM} />}
           {t.back?.map((d, i) => <Path key={`b${i}`} d={d} fill="#E7DFC8" stroke={LINE} strokeWidth={0.6} />)}
           {t.paths.map((d, i) => (
             <Path key={i} d={d} fill={t.fill} stroke={LINE} strokeWidth={0.8} />
@@ -545,5 +557,5 @@ export const joltFor = (weapon: Weapon, result: 'hit' | 'held' | 'miss'): 'dodge
   result === 'miss' ? 'dodge' : weapon.kind === 'bash' ? 'up' : weapon.kind === 'stomp' ? 'down' : 'shake';
 
 const styles = StyleSheet.create({
-  eyeBadge: { position: 'absolute', right: 2, bottom: 2, borderRadius: 6, backgroundColor: '#1E2A16CC', alignItems: 'center', justifyContent: 'center' },
+  eyeBadge: { position: 'absolute', right: 2, bottom: 2, backgroundColor: '#00000099', alignItems: 'center', justifyContent: 'center' },
 });
