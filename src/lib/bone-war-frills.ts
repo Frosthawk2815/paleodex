@@ -49,6 +49,9 @@ export type FrillSpec = {
 const CHASMO: FrillSpec = { len: 0.74, width: 0.84, shape: 'round', holes: 0.8, edge: [{ kind: 'points', n: 12, len: 6 }] };
 const CENTRO: FrillSpec = { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 10, len: 6 }] };
 
+// Only well-known animals whose frills are certain are drawn individually here (and Diabloceratops
+// by hand, below). The rest use a plain frill typical of their group until they're
+// drawn from references.
 export const FRILLS: Record<string, FrillSpec> = {
   // ---- Chasmosaurines: long frills ----
   // The longest frill of all: a huge, rounded sheet of bone with two big openings and small
@@ -57,68 +60,10 @@ export const FRILLS: Record<string, FrillSpec> = {
   // Very long, widening to the back into a triangular shield, with a V-notch in the back edge and
   // enormous openings.
   'chasmosaurus-belli': { len: 0.86, width: 0.95, shape: 'fan', notch: true, holes: 1.15, edge: [{ kind: 'points', n: 12, len: 4 }] },
-  // Long and slightly narrower, notched at the back, with larger points.
-  'pentaceratops-sternbergii': { len: 0.9, width: 0.8, shape: 'heart', holes: 0.9, edge: [{ kind: 'points', n: 12, len: 8 }] },
-  // Broad, squarish and shorter.
-  'utahceratops-gettyi': { len: 0.68, width: 0.88, shape: 'square', holes: 0.8, edge: [{ kind: 'points', n: 12, len: 6 }] },
-  // A short frill with small openings and ten hooks along the back, most curling forward.
-  'kosmoceratops-richardsoni': {
-    len: 0.58,
-    width: 0.8,
-    shape: 'square',
-    holes: 0.45,
-    edge: [{ kind: 'hooks', at: [0.14, 0.22, 0.3, 0.38, 0.46, 0.54, 0.62, 0.7, 0.78, 0.86], len: 17 }],
-  },
-  // Short and broad, with very small openings and a row of flattened points curled forward.
-  'vagaceratops-irvinensis': {
-    len: 0.6,
-    width: 0.92,
-    shape: 'square',
-    holes: 0.35,
-    edge: [{ kind: 'hooks', at: [0.18, 0.27, 0.36, 0.45, 0.55, 0.64, 0.73, 0.82], len: 12 }],
-  },
-  // A long, narrow, rectangular frill with big points along the back edge.
-  'anchiceratops-ornatus': {
-    len: 0.78,
-    width: 0.68,
-    shape: 'square',
-    holes: 0.65,
-    edge: [
-      { kind: 'points', n: 8, len: 5 },
-      { kind: 'spikes', at: [0.32, 0.41, 0.5, 0.59, 0.68], len: [11, 12, 12, 12, 11], width: 3 },
-    ],
-  },
-  // Broad and rounded.
-  'arrhinoceratops-brachyops': { len: 0.74, width: 0.88, shape: 'round', holes: 0.7, edge: [{ kind: 'points', n: 12, len: 6 }] },
-  // Large triangular points at the back of the frill.
-  'judiceratops-tyrannus': { len: 0.72, width: 0.84, shape: 'round', holes: 0.8, edge: [{ kind: 'points', n: 10, len: 9 }] },
-  // Some points along the back curl forward, others jut out to the sides.
-  'spiclypeus-shipporum': {
-    len: 0.72,
-    width: 0.86,
-    shape: 'square',
-    holes: 0.7,
-    edge: [
-      { kind: 'hooks', at: [0.38, 0.46, 0.54, 0.62], len: 14 },
-      { kind: 'spikes', at: [0.2, 0.8], len: [12, 12], bend: 30, width: 3 },
-    ],
-  },
-  // A solid frill with two small, uneven holes (a single, much-debated skull).
-  'nedoceratops-hatcheri': { len: 0.68, width: 0.86, shape: 'round', holes: 0.25, edge: [{ kind: 'points', n: 14, len: 5 }], grooves: true },
-  // Known from parts of the frill or skull only: drawn like their closest relatives.
-  'agujaceratops-mariscalensis': CHASMO,
-  'sierraceratops-turneri': CHASMO,
-  'bisticeratops-froeseorum': CHASMO,
-  'agathaumas-sylvestris': CHASMO,
-  'ceratops-montanus': CHASMO,
   // Triceratops and its closest relatives: a shorter, solid frill, grooved by blood vessels, with
   // triangular points round its edge.
   'triceratops-horridus': { len: 0.66, width: 0.88, shape: 'round', holes: 0, edge: [{ kind: 'points', n: 16, len: 6 }], grooves: true },
   'triceratops-prorsus': { len: 0.64, width: 0.86, shape: 'round', holes: 0, edge: [{ kind: 'points', n: 16, len: 6 }], grooves: true },
-  'eotriceratops-xerinsularis': { len: 0.7, width: 0.88, shape: 'round', holes: 0, edge: [{ kind: 'points', n: 16, len: 6 }], grooves: true },
-  'ojoceratops-fowleri': { len: 0.66, width: 0.86, shape: 'round', holes: 0, edge: [{ kind: 'points', n: 14, len: 6 }], grooves: true },
-  // A horned dinosaur from before the ceratopsids, with a smaller, simpler frill.
-  'turanoceratops-tardabilis': { len: 0.44, width: 0.72, shape: 'round', holes: 0.4, edge: [] },
 
   // ---- Centrosaurines: shorter frills, with spikes and hooks ----
   // Four to six long, straight spikes at the back of the frill.
@@ -134,38 +79,6 @@ export const FRILLS: Record<string, FrillSpec> = {
   },
   // Two hooks at the back of the frill curving forward over it.
   'centrosaurus-apertus': { len: 0.5, width: 0.78, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 10, len: 5 }, { kind: 'hooks', at: [0.42, 0.58], len: 22 }] },
-  // A pair of spikes curving up and out from the top of the frill.
-  'pachyrhinosaurus-canadensis': { len: 0.52, width: 0.8, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 10, len: 5 }, { kind: 'spikes', at: [0.38, 0.62], len: [26, 26], bend: 42, width: 4, curved: true }] },
-  'pachyrhinosaurus-perotorum': { len: 0.52, width: 0.8, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 10, len: 5 }, { kind: 'spikes', at: [0.38, 0.62], len: [24, 24], bend: 44, width: 4, curved: true }] },
-  // Two long, straight spikes sticking up from the back of the frill.
-  'einiosaurus-procurvicornis': { len: 0.5, width: 0.76, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.44, 0.56], len: [38, 38], bend: 4, width: 4 }] },
-  'achelousaurus-horneri': { len: 0.52, width: 0.78, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.43, 0.57], len: [32, 32], bend: 6, width: 4 }] },
-
-
-
-  // A big pair of hooks curving out to the sides.
-  'albertaceratops-nesmoi': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.4, 0.6], len: [30, 30], bend: 70, width: 4, curved: true }] },
-
-
-  // A crown of short spikes clustered at the top of the frill.
-  'coronosaurus-brinkmani': {
-    len: 0.5,
-    width: 0.76,
-    shape: 'round',
-    holes: 0.5,
-    edge: [{ kind: 'spikes', at: [0.34, 0.39, 0.44, 0.48, 0.52, 0.56, 0.61, 0.66], len: [12, 14, 16, 14, 14, 16, 14, 12], bend: 6, width: 2.5 }],
-  },
-  // Hooks curling forward all along the back edge.
-  'wendiceratops-pinhornensis': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'hooks', at: [0.24, 0.34, 0.44, 0.56, 0.66, 0.76], len: 18 }] },
-  'sinoceratops-zhuchengensis': { len: 0.5, width: 0.8, shape: 'round', holes: 0.5, edge: [{ kind: 'hooks', at: [0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88], len: 14 }] },
-  // A triangular frill with a dip in the back edge, and either side of it a long spike curving
-  // forward and up like a sabre; no other points round its edge.
-  'machairoceratops-cronusi': { len: 0.54, width: 0.8, shape: 'fan', notch: true, holes: 0.45, edge: [{ kind: 'spikes', at: [0.42, 0.58], len: [32, 32], bend: 6, width: 4.5, curved: true }] },
-  // A broad frill with a plain, scalloped edge: no big spikes.
-  'nasutoceratops-titusi': { len: 0.54, width: 0.82, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 9, len: 7 }] },
-  // A young animal (Avaceratops), and a dubious name (Monoclonius): simple edges.
-  'avaceratops-lammersi': { ...CENTRO, len: 0.44 },
-  'monoclonius-crassus': CENTRO,
 
   // ---- Earlier horned dinosaurs ----
   // Protoceratops and kin: narrow at the base, flaring wide at the back, with a smooth edge.
@@ -180,7 +93,7 @@ for (const id of ['leptoceratops-gracilis', 'prenoceratops-pieganensis', 'udanoc
 
 // The frill for a species, or the usual one for its kind of frill.
 export const frillSpec = (id: string | undefined, kind: 'frill' | 'solidfrill' | 'spikyfrill'): FrillSpec =>
-  (id && FRILLS[id]) || (kind === 'solidfrill' ? FRILLS['triceratops-horridus']! : kind === 'spikyfrill' ? FRILLS['centrosaurus-apertus']! : CHASMO);
+  (id && FRILLS[id]) || (kind === 'solidfrill' ? FRILLS['triceratops-horridus']! : kind === 'spikyfrill' ? CENTRO : CHASMO);
 
 // ---- Geometry ----
 
@@ -368,44 +281,8 @@ const mirror = (d: string) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, 
 // to its tip.
 const DIABLO_HORN = 'M31 63 C31 38 25 16 5 5 C25 13 35 33 42 63 Z';
 
-// Lokiceratops, drawn from a life reconstruction seen from the front. The frill is shaped like an
-// apple cut in half: two rounded lobes at the top with a dip between them, rounded sides and a
-// narrower base. In the dip stand two uneven spikes, a small one and a much taller one. From the
-// top of each lobe a huge, broad blade arcs up and out, then curls down at its tip like a ram's
-// horn: the biggest frill ornaments of any centrosaurine. Small triangular spikes line the sides.
-// (Its skeleton has openings in the frill; in life they were covered, so none show here.)
-const LOKI_BLADE = 'M35 60 C33 30 12 16 1 31 C-6 44 -4 64 4 82 C6 67 4 52 9 43 C15 33 26 40 28 61 Z';
-const lokiSide = (side: 1 | -1) =>
-  [
-    [72, 15],
-    [82, 13.2],
-    [92, 13],
-    [102, 13.8],
-    [112, 15.6],
-    [122, 19],
-  ].map(([y, x]) => {
-    const bx = side < 0 ? x! : 100 - x!;
-    const o = side * 7;
-    return `M${bx.toFixed(1)} ${y! - 3} L${(bx + o).toFixed(1)} ${y! - 2} L${bx.toFixed(1)} ${y! + 3} Z`;
-  });
-
 export const HAND_DRAWN: Record<string, FrillShapes> = {
-  'lokiceratops-rangiformis': {
-    outline: 'M30 136 C18 122 12 100 13 82 C14 66 22 56 34 54 C42 53 47 57 50 62 C53 57 58 53 66 54 C78 56 86 66 87 82 C88 100 82 122 70 136 Q50 130 30 136 Z',
-    holes: [],
-    // Behind the frill: the two blades, the uneven spikes in the dip, and the side spikes.
-    ornaments: [
-      LOKI_BLADE,
-      mirror(LOKI_BLADE),
-      'M37 62 L40.5 43 L46 61 Z',
-      'M46.5 66 L52 30 L58.5 64 Z',
-      ...lokiSide(-1),
-      ...lokiSide(1),
-    ],
-    hooks: [],
-    midline: 'M50 64 L50 64',
-    grooves: [],
-  },
+
   'diabloceratops-eatoni': {
     // The top: a straight seat for each horn's root, and a narrow U between them.
     outline: 'M22 134 C21 110 23 86 26 70 Q27 60 31 58 L42 58 C42 67.5 58 67.5 58 58 L69 58 Q73 60 74 70 C77 86 79 110 78 134 Q50 118 22 134 Z',

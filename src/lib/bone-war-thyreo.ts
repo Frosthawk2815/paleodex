@@ -34,45 +34,15 @@ export type StegoSpec = {
 // A row of plates down the back, from neck (y≈22) to tail (y≈110).
 const row = (ys: number[], lens: number[], kind: Plate['kind'], wd = 9): Plate[] => ys.map((y, i) => ({ y, len: lens[i] ?? lens[lens.length - 1]!, wd, kind }));
 
-const STEGO_DEFAULT: StegoSpec = {
-  arrangement: 'paired',
-  plates: [...row([24, 34, 44, 54], [10, 13, 15, 16], 'tall'), ...row([66, 78, 90], [14, 12, 10], 'spike', 6)],
-  tailPairs: 2,
-  tailLen: 22,
-};
-
 export const STEGOS: Record<string, StegoSpec> = {
   // Two staggered rows of huge, broad plates, biggest over the hips; two pairs of tail spikes.
   'stegosaurus-stenops': { arrangement: 'alternate', plates: row([20, 30, 41, 52, 63, 74, 85, 96], [8, 12, 17, 22, 26, 24, 18, 12], 'plate', 14), tailPairs: 2, tailLen: 26 },
-  // Like Stegosaurus, but with longer, lower, oval plates.
-  'hesperosaurus-mjosi': { arrangement: 'alternate', plates: row([22, 34, 46, 58, 70, 82, 94], [9, 13, 16, 18, 17, 14, 10], 'plate', 18), tailPairs: 2, tailLen: 24 },
-  // Very long tail spikes (its plates are barely known: drawn like Stegosaurus's).
-  'alcovasaurus-longispinus': { arrangement: 'alternate', plates: row([22, 34, 46, 58, 70, 82], [8, 12, 16, 18, 15, 11], 'plate', 13), tailPairs: 2, tailLen: 36 },
   // Small plates over the neck and front of the back, then pairs of long spikes over the hips and
   // tail, and a long spike from each shoulder.
   kentrosaurus: { arrangement: 'paired', plates: [...row([22, 32, 42], [8, 10, 11], 'tall', 8), ...row([56, 68, 80, 92], [18, 20, 20, 18], 'spike', 5)], shoulder: { len: 26, kind: 'spine' }, tailPairs: 3, tailLen: 22 },
-  // Pairs of tall, pointed triangular plates all along the back.
-  'tuojiangosaurus-multispinus': { arrangement: 'paired', plates: row([22, 32, 42, 52, 62, 72, 82, 92], [9, 12, 15, 17, 17, 15, 12, 10], 'tall', 8), tailPairs: 2, tailLen: 22 },
-  // Small, thick paired plates; three pairs of tail spikes pointing out and one pointing back.
-  'chungkingosaurus-jiangbeiensis': { arrangement: 'paired', plates: row([24, 34, 44, 54, 64, 74, 84], [7, 9, 11, 12, 11, 10, 8], 'tall', 7), tailPairs: 4, tailLen: 20 },
-  // Enormous spines from the shoulders, with small plates along the back.
-  'gigantspinosaurus-sichuanensis': { arrangement: 'paired', plates: row([26, 36, 62, 74, 86], [6, 8, 9, 9, 8], 'tall', 7), shoulder: { len: 44, kind: 'spine' }, tailPairs: 2, tailLen: 22 },
-  // An early, small stegosaur: small paired plates and spikes, and shoulder spikes.
-  'huayangosaurus-taibaii': { arrangement: 'paired', plates: [...row([22, 32, 42, 52], [6, 8, 9, 9], 'tall', 6), ...row([64, 76, 88], [10, 10, 9], 'spike', 4)], shoulder: { len: 18, kind: 'spine' }, tailPairs: 2, tailLen: 18 },
-  // A long neck lined with small triangular plates.
-  'miragaia-longicollum': { arrangement: 'paired', plates: row([10, 18, 26, 34, 44, 54, 64, 74, 84], [6, 7, 8, 9, 11, 13, 13, 12, 10], 'tall', 6), tailPairs: 2, tailLen: 22 },
-  // Small plates in front, then spikes over the hips and tail.
-  'dacentrurus-armatus': { arrangement: 'paired', plates: [...row([24, 34, 44], [8, 10, 11], 'tall', 7), ...row([58, 70, 82, 94], [14, 15, 14, 12], 'spike', 5)], tailPairs: 2, tailLen: 22 },
-  // Paired plates and a long spine at each shoulder.
-  'loricatosaurus-priscus': { arrangement: 'paired', plates: row([24, 36, 48, 60, 72, 84], [8, 10, 12, 12, 11, 9], 'tall', 7), shoulder: { len: 26, kind: 'spine' }, tailPairs: 2, tailLen: 22 },
-  // A broad, wing-like plate at each shoulder.
-  'yingshanosaurus-jichuanensis': { arrangement: 'paired', plates: row([24, 34, 60, 72, 84], [7, 9, 10, 10, 9], 'tall', 7), shoulder: { len: 28, kind: 'wing' }, tailPairs: 2, tailLen: 20 },
-  // Known from fragments: drawn like other early stegosaurs.
-  'adratiklit-boulahfa': STEGO_DEFAULT,
-  'jiangjunosaurus-junggarensis': STEGO_DEFAULT,
-  'bashanosaurus-primitivus': STEGO_DEFAULT,
-  'chialingosaurus-kuani': STEGO_DEFAULT,
 };
+// Only well-known animals whose armour is certain are drawn individually; the rest use the plain
+// armour typical of their group until they're drawn from references.
 STEGOS['kentrosaurus-aethiopicus'] = STEGOS.kentrosaurus!;
 delete STEGOS.kentrosaurus;
 
@@ -145,7 +115,6 @@ export type AnkySpec = {
   tail: 'club' | 'spikes' | 'macuahuitl' | 'plain';
 };
 
-const NODO: AnkySpec = { body: 'wide', rings: 2, ringPlates: 4, across: 6, keel: 'low', flank: 6, flankLen: 6, shoulder: { n: 2, len: 14, kind: 'long' }, tail: 'plain' };
 const ANKY: AnkySpec = { body: 'wide', rings: 2, ringPlates: 6, across: 7, keel: 'low', flank: 7, flankLen: 6, tail: 'club' };
 
 export const ANKYS: Record<string, AnkySpec> = {
@@ -154,70 +123,6 @@ export const ANKYS: Record<string, AnkySpec> = {
   'ankylosaurus-magniventris': { ...ANKY, across: 8, keel: 'flat', flank: 6, flankLen: 5 },
   // Keeled osteoderms in bands across the back, and two neck half-rings.
   'euoplocephalus-tutus': { ...ANKY, keel: 'tall' },
-  // Tall, cone-shaped osteoderms and long spikes on the neck rings.
-  'scolosaurus-cutleri': { ...ANKY, keel: 'tall', shoulder: { n: 2, len: 16, kind: 'long' } },
-  // Rows of spikes along its sides as well as a club.
-  'zuul-crurivastator': { ...ANKY, keel: 'tall', flank: 9, flankLen: 11 },
-  // Lightly armoured with tall-keeled osteoderms.
-  'pinacosaurus-grangeri': { ...ANKY, across: 6, keel: 'tall' },
-  // Heavily armoured, including armour on the belly.
-  'saichania-chulsanensis': { ...ANKY, across: 8, keel: 'tall', flank: 8, flankLen: 7 },
-  'tarchia-tumanovae': { ...ANKY, keel: 'tall' },
-  'talarurus-plicatospineus': { ...ANKY, keel: 'low' },
-  'akainacephalus-johnsoni': { ...ANKY, keel: 'tall' },
-  'anodontosaurus-lambei': { ...ANKY, keel: 'low' },
-  'zaraapelta-nomadis': { ...ANKY, keel: 'tall' },
-  'tsagantegia-longicranialis': ANKY,
-  'minotaurasaurus-ramachandrani': ANKY,
-  'oohkotokia-horneri': ANKY,
-  'nodocephalosaurus-kirtlandensis': ANKY,
-  // Early ankylosaurids, without a club.
-  'shamosaurus-scutatus': { ...ANKY, tail: 'plain' },
-  'liaoningosaurus-paradoxus': { body: 'narrow', rings: 1, ringPlates: 2, across: 4, keel: 'flat', flank: 4, flankLen: 4, tail: 'plain' },
-  'cedarpelta-bilbeyhallorum': { ...ANKY, tail: 'plain' },
-
-  // ---- Nodosaurids: no club; big spikes at the shoulders ----
-  // Big forked spikes jutting forward from the shoulders.
-  'edmontonia-rugosidens': { ...NODO, shoulder: { n: 2, len: 18, kind: 'forked' } },
-  'denversaurus-schlessmani': { ...NODO, shoulder: { n: 2, len: 16, kind: 'forked' } },
-  // Very long spikes along the neck and shoulders.
-  'sauropelta-edwardsorum': { ...NODO, shoulder: { n: 3, len: 22, kind: 'long' } },
-  // Long shoulder spikes, kept with its skin in the fossil.
-  'borealopelta-markmitchelli': { ...NODO, shoulder: { n: 2, len: 24, kind: 'long' } },
-  // Flat, closely fitted plates and no big spikes.
-  'panoplosaurus-mirus': { ...NODO, keel: 'flat', flank: 6, flankLen: 4, shoulder: undefined },
-  'niobrarasaurus-coleii': { ...NODO, shoulder: { n: 2, len: 12, kind: 'long' } },
-  'hierosaurus-sternbergii': NODO,
-  'animantarx-ramaljonesi': NODO,
-  'glyptodontopelta-mimus': { ...NODO, shoulder: undefined, hipShield: true },
-
-  // ---- Polacanthids and other early ankylosaurs ----
-  // Long spikes at the shoulders and along the sides, a shield of fused armour over the hips, and
-  // spikes along the tail.
-  'polacanthus-foxii': { ...NODO, shoulder: { n: 3, len: 18, kind: 'long' }, flank: 6, flankLen: 10, hipShield: true, tail: 'spikes' },
-  'gastonia-burgei': { ...NODO, shoulder: { n: 3, len: 18, kind: 'blade' }, flank: 6, flankLen: 10, hipShield: true, tail: 'spikes' },
-  'hylaeosaurus-armatus': { ...NODO, shoulder: { n: 3, len: 16, kind: 'long' } },
-  'mymoorapelta-maysi': { ...NODO, hipShield: true, tail: 'spikes' },
-  'gargoyleosaurus-parkpinorum': { ...NODO, shoulder: { n: 2, len: 14, kind: 'long' }, flank: 7, flankLen: 8 },
-  'vectipelta-barretti': { ...NODO, shoulder: { n: 3, len: 16, kind: 'blade' }, tail: 'spikes' },
-  'dracopelta-zbyszewskii': NODO,
-  'anoplosaurus-curtonotus': NODO,
-  // The oldest ankylosaur, and the spikiest: a bony neck collar with two pairs of huge spikes (the
-  // longest 87 cm), spikes fused to its ribs, blades along its sides, big hip spikes, and fused tail
-  // bones (a "handle") suggesting a tail club (Maidment et al. 2025).
-  'spicomellus-afer': { ...NODO, rings: 1, ringPlates: 4, shoulder: { n: 2, len: 34, kind: 'long' }, flank: 8, flankLen: 14, hipSpikes: { n: 2, len: 20 }, tail: 'club' },
-
-  // ---- Parankylosaurs ----
-  'stegouros-elengassen': { body: 'narrow', rings: 1, ringPlates: 2, across: 3, keel: 'low', flank: 3, flankLen: 4, tail: 'macuahuitl' },
-  'antarctopelta-oliveroi': { body: 'narrow', rings: 1, ringPlates: 2, across: 4, keel: 'low', flank: 4, flankLen: 5, tail: 'macuahuitl' },
-  'kunbarrasaurus-ieversi': { body: 'narrow', rings: 1, ringPlates: 2, across: 4, keel: 'low', flank: 4, flankLen: 4, tail: 'plain' },
-  'patagopelta-cristata': { ...NODO, body: 'narrow', across: 5, shoulder: undefined },
-
-  // ---- Early thyreophorans ----
-  // Scelidosaurus: parallel rows of keeled scutes along the body and tail.
-  'scelidosaurus-harrisonii': { body: 'narrow', rings: 0, across: 5, keel: 'tall', flank: 5, flankLen: 5, tail: 'plain' },
-  // Scutellosaurus: hundreds of small scutes.
-  'scutellosaurus-lawleri': { body: 'narrow', rings: 0, across: 4, keel: 'low', flank: 0, flankLen: 0, tail: 'plain' },
 };
 
 export function ankyShapes(s: AnkySpec): Shape[] {
