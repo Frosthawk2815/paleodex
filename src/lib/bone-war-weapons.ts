@@ -28,7 +28,21 @@ export type Foot = 'sauropod' | 'elephant' | 'ornithopod' | 'bird' | 'ostrich' |
 // Weapons for a bash, rising from below (and the spear humans thrust).
 // Tail weapons: the thagomizer, clubs and fish tail fins swing in an arc; whales and manatees
 // slap their flukes down.
-export type Bash = 'thagomizer' | 'slap' | 'tailfin' | 'spear' | 'ceratopsian' | 'rhino' | 'twin' | 'bovid' | 'antlers' | 'dome' | 'club' | 'spikes' | 'tusks' | 'lance' | 'forked';
+export type Bash =
+  | 'thagomizer'
+  | 'thagomizer4'
+  | 'kentro'
+  | 'macuahuitl'
+  | 'spikedclub'
+  | 'mace'
+  | 'ringed'
+  | 'slap'
+  | 'humpback'
+  | 'paddle'
+  | 'manta'
+  | 'tailfin'
+  | 'sharktail'
+  | 'spear' | 'ceratopsian' | 'rhino' | 'twin' | 'bovid' | 'antlers' | 'dome' | 'club' | 'spikes' | 'tusks' | 'lance' | 'forked';
 
 export type Weapon =
   | { kind: 'bite'; jaw: Jaw }
@@ -71,7 +85,7 @@ const BY_CLADE: Record<string, Weapon> = {
   iguanodontia: stomp('ornithopod'),
   ceratopsidae: bash('ceratopsian'),
   pachycephalosauridae: bash('dome'),
-  parankylosauria: bash('club'),
+  parankylosauria: bash('spikes'), // tails unknown for most; Stegouros's macuahuitl is below
   stegosauria: bash('thagomizer'),
   scelidosauridae: bash('spikes'),
   // Pterosaurs
@@ -135,7 +149,8 @@ const BY_CLADE: Record<string, Weapon> = {
   odobenidae: bash('tusks'),
   cetacea: bite('peg'),
   mysticeti: bash('slap'), // flukes move up and down, so whales slap rather than swing
-  sirenia: bash('slap'),
+  sirenia: bash('slap'), // dugongs and Steller's sea cow have whale-like flukes
+  trichechidae: bash('paddle'), // manatees have a rounded paddle
   proboscidea: stomp('elephant'),
   rhinocerotidae: bash('rhino'),
   brontotheriidae: bash('forked'),
@@ -147,7 +162,7 @@ const BY_CLADE: Record<string, Weapon> = {
   diprotodontidae: stomp('wombat'),
   pilosa: slash(3),
   cingulata: slash(3),
-  glyptodontidae: bash('club'),
+  glyptodontidae: bash('ringed'), // a tail armoured in flexible rings; only Doedicurus had a club
   pholidota: slash(3),
   tubulidentata: slash(4),
   perissodactyla: stomp('horse'),
@@ -168,8 +183,8 @@ const BY_CLADE: Record<string, Weapon> = {
   // Fish
   vertebrata: bite('conical'),
   chondrichthyes: bite('shark'),
-  batoidea: bash('slap'), // mantas slap down with their wings
-  rhincodontidae: bash('tailfin'), // sharks sweep their tails side to side
+  batoidea: bash('manta'), // mantas slap down with their wings
+  rhincodontidae: bash('sharktail'), // sharks sweep their tails side to side
   placodermi: bite('blades'),
   xiphiidae: bash('lance'),
   // Invertebrates
@@ -292,7 +307,7 @@ const BY_SPECIES: Record<string, Weapon> = {
   'heliobatis-radians': bite('pavement'),
   'onchopristis-numida': bash('lance'), // sawfish: the toothed rostrum
   'atlanticopristis-equatorialis': bash('lance'),
-  'cetorhinus-maximus': bash('tailfin'), // the basking shark filters its food
+  'cetorhinus-maximus': bash('sharktail'), // the basking shark filters its food
   'leedsichthys-problematicus': bash('tailfin'),
   'limusaurus-inextricabilis': bite('beak'), // toothless as an adult
   'pelecanimimus-polyodon': bite('peg'), // over 200 tiny teeth
@@ -321,7 +336,15 @@ const BY_SPECIES: Record<string, Weapon> = {
   'minotaurasaurus-ramachandrani': bash('club'),
   'oohkotokia-horneri': bash('club'),
   'nodocephalosaurus-kirtlandensis': bash('club'),
-  'zuul-crurivastator': bash('club'),
+  'zuul-crurivastator': bash('spikedclub'), // spikes along the tail as well as the club
+  // Tails checked one by one
+  'kentrosaurus-aethiopicus': bash('kentro'), // pairs of spikes all along the back half of the tail
+  'chungkingosaurus-jiangbeiensis': bash('thagomizer4'), // three pairs pointing out and one pair back
+  'stegouros-elengassen': bash('macuahuitl'), // a flat frond of paired bony blades
+  'antarctopelta-oliveroi': bash('macuahuitl'), // probably, from its tail vertebrae and osteoderms
+  'doedicurus-clavicaudatus': bash('mace'), // a fused, spiked tail club about 1 m long
+  'megaptera-novaeangliae': bash('humpback'), // flukes with a scalloped trailing edge
+  'protosiren-smithae': bash('paddle'),
 
   'anteosaurus-magnificus': bite('fangs'),
   'moschops-capensis': bash('dome'),

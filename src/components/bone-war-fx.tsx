@@ -441,9 +441,9 @@ function basher(shape: Bash): ReactNode {
       return (
         <G stroke={LINE} strokeWidth={1}>
           <Path d="M44 100 Q46 60 47.5 40 L52.5 40 Q54 60 56 100 Z" fill="#7C6A4E" />
-          <Ellipse cx={50} cy={30} rx={28} ry={19} fill="#8E7A58" />
-          <Ellipse cx={36} cy={30} rx={9} ry={12} fill="#9E8A66" />
-          <Ellipse cx={64} cy={30} rx={9} ry={12} fill="#9E8A66" />
+          {/* The knob: two big bony plates either side, meeting in the middle, small ones at the tip. */}
+          <Path d="M50 48 Q24 48 22 31 Q22 14 37 12 Q44 9 50 13 Q56 9 63 12 Q78 14 78 31 Q76 48 50 48 Z" fill="#8E7A58" />
+          <Path d="M50 14 L50 46 M30 22 Q36 30 30 40 M70 22 Q64 30 70 40" stroke="#6E5C40" strokeWidth={1.2} fill="none" />
         </G>
       );
     case 'spikes':
@@ -482,7 +482,146 @@ function basher(shape: Bash): ReactNode {
       return (
         <G fill="#66727C" stroke={LINE} strokeWidth={1}>
           <Path d="M45 100 L47 46 L53 46 L55 100 Z" />
-          <Path d="M50 52 Q32 30 20 2 Q42 18 50 36 Q60 20 84 6 Q68 34 50 52 Z" />
+          <Path d="M50 52 Q30 32 16 4 Q40 20 50 36 Q60 20 84 4 Q70 32 50 52 Z" />
+        </G>
+      );
+    case 'thagomizer4':
+      // Chungkingosaurus: three pairs of spikes pointing out and a last pair pointing back.
+      return (
+        <G stroke={LINE} strokeWidth={1}>
+          <Path d="M43 100 Q46 50 49 10 L51 10 Q54 50 57 100 Z" fill="#7C6A4E" />
+          <G fill="#CDB98E">
+            <Path d="M46 58 L14 40 L47.5 51 Z" />
+            <Path d="M54 58 L86 40 L52.5 51 Z" />
+            <Path d="M47 44 L12 22 L48 37 Z" />
+            <Path d="M53 44 L88 22 L52 37 Z" />
+            <Path d="M47.5 30 L16 6 L49 23 Z" />
+            <Path d="M52.5 30 L84 6 L51 23 Z" />
+            <Path d="M48.5 18 L42 0 L50 12 Z" />
+            <Path d="M51.5 18 L58 0 L50 12 Z" />
+          </G>
+        </G>
+      );
+    case 'kentro':
+      // Kentrosaurus: pairs of spikes all along the back half of the tail, longest near the base.
+      return (
+        <G stroke={LINE} strokeWidth={1}>
+          <Path d="M43 100 Q46 50 49 6 L51 6 Q54 50 57 100 Z" fill="#7C6A4E" />
+          <G fill="#CDB98E">
+            {[
+              [84, 34],
+              [68, 30],
+              [52, 27],
+              [37, 24],
+              [22, 20],
+              [9, 16],
+            ].map(([y, len]) => (
+              <G key={y}>
+                <Path d={`M${46 + (100 - y!) * 0.03} ${y! + 4} L${50 - len!} ${y! - len! * 0.55} L${47 + (100 - y!) * 0.025} ${y! - 3} Z`} />
+                <Path d={`M${54 - (100 - y!) * 0.03} ${y! + 4} L${50 + len!} ${y! - len! * 0.55} L${53 - (100 - y!) * 0.025} ${y! - 3} Z`} />
+              </G>
+            ))}
+          </G>
+        </G>
+      );
+    case 'macuahuitl':
+      // Stegouros: the end of the tail encased in a flat frond of paired bony blades.
+      return (
+        <G stroke={LINE} strokeWidth={1}>
+          <Path d="M44 100 Q46 70 47 56 L53 56 Q54 70 56 100 Z" fill="#7C6A4E" />
+          <G fill="#A68D62">
+            {[58, 48, 38, 28, 18, 9].map((y, i) => {
+              const r = 16 - i * 1.8;
+              return (
+                <G key={y}>
+                  <Path d={`M50 ${y + 6} L${50 - r} ${y + 4} Q${50 - r - 3} ${y - 2} ${50 - r + 2} ${y - 5} L50 ${y - 3} Z`} />
+                  <Path d={`M50 ${y + 6} L${50 + r} ${y + 4} Q${50 + r + 3} ${y - 2} ${50 + r - 2} ${y - 5} L50 ${y - 3} Z`} />
+                </G>
+              );
+            })}
+          </G>
+        </G>
+      );
+    case 'spikedclub':
+      // Zuul: a tail club, with rows of spikes along the sides of the tail.
+      return (
+        <G stroke={LINE} strokeWidth={1}>
+          <Path d="M44 100 Q46 60 47.5 40 L52.5 40 Q54 60 56 100 Z" fill="#7C6A4E" />
+          <G fill="#B9A27A">
+            {[86, 72, 58, 46].map((y) => (
+              <G key={y}>
+                <Path d={`M46 ${y + 4} L${34 - (100 - y) * 0.05} ${y - 4} L47 ${y - 3} Z`} />
+                <Path d={`M54 ${y + 4} L${66 + (100 - y) * 0.05} ${y - 4} L53 ${y - 3} Z`} />
+              </G>
+            ))}
+          </G>
+          <Path d="M50 44 Q26 44 24 29 Q24 13 38 11 Q44 8 50 12 Q56 8 62 11 Q76 13 76 29 Q74 44 50 44 Z" fill="#8E7A58" />
+          <Path d="M50 13 L50 42 M31 20 Q37 28 31 37 M69 20 Q63 28 69 37" stroke="#6E5C40" strokeWidth={1.2} fill="none" />
+        </G>
+      );
+    case 'mace':
+      // Doedicurus: armoured rings at the base, then a fused bony tube ending in a spiked mace.
+      return (
+        <G stroke={LINE} strokeWidth={1}>
+          {[92, 84, 76].map((y, i) => (
+            <Rect key={y} x={40 + i} y={y} width={20 - 2 * i} height={8} rx={2} fill="#9C8664" />
+          ))}
+          <Path d="M43 76 L40 26 Q50 14 60 26 L57 76 Z" fill="#8E7A58" />
+          <G fill="#CDB98E">
+            <Path d="M41 30 L26 18 L42 24 Z" />
+            <Path d="M59 30 L74 18 L58 24 Z" />
+            <Path d="M44 22 L36 4 L47 18 Z" />
+            <Path d="M56 22 L64 4 L53 18 Z" />
+            <Path d="M41 42 L28 36 L41 37 Z" />
+            <Path d="M59 42 L72 36 L59 37 Z" />
+          </G>
+        </G>
+      );
+    case 'ringed':
+      // Glyptotherium and most glyptodonts: a tail armoured in rings of bony plates, no club.
+      return (
+        <G stroke={LINE} strokeWidth={1} fill="#9C8664">
+          {[90, 79, 68, 57, 46, 35, 24].map((y, i) => (
+            <G key={y}>
+              <Rect x={38 + i * 1.4} y={y} width={24 - i * 2.8} height={10} rx={3} />
+              <Circle cx={39.5 + i * 1.4} cy={y + 5} r={2} fill="#7A6548" />
+              <Circle cx={60.5 - i * 1.4} cy={y + 5} r={2} fill="#7A6548" />
+            </G>
+          ))}
+          <Path d="M47 25 L48 12 Q50 9 52 12 L53 25 Z" />
+        </G>
+      );
+    case 'humpback':
+      // Humpback flukes: long, with a scalloped trailing edge.
+      return (
+        <G fill="#4F5B66" stroke={LINE} strokeWidth={1}>
+          <Path d="M45 0 L55 0 L54 50 L46 50 Z" />
+          <Path d="M50 46 Q24 48 2 70 Q8 72 12 69 Q16 74 22 70 Q27 75 32 71 Q38 76 43 72 Q47 76 50 70 Q53 76 57 72 Q62 76 68 71 Q73 75 78 70 Q84 74 88 69 Q92 72 98 70 Q76 48 50 46 Z" />
+        </G>
+      );
+    case 'paddle':
+      // A manatee's rounded paddle of a tail.
+      return (
+        <G fill="#7D8890" stroke={LINE} strokeWidth={1}>
+          <Path d="M44 0 L56 0 L58 40 L42 40 Z" />
+          <Ellipse cx={50} cy={60} rx={26} ry={24} />
+        </G>
+      );
+    case 'manta':
+      // A manta ray seen from above, wings spread, coming down on the card.
+      return (
+        <G fill="#2F3A45" stroke={LINE} strokeWidth={1}>
+          <Path d="M50 30 Q30 36 2 62 Q30 60 44 76 L50 98 L56 76 Q70 60 98 62 Q70 36 50 30 Z" />
+          <Path d="M44 32 L40 20 L46 30 M56 32 L60 20 L54 30" fill="none" />
+          <Path d="M50 76 L50 100" fill="none" />
+        </G>
+      );
+    case 'sharktail':
+      // A shark's tail: the upper lobe longer than the lower.
+      return (
+        <G fill="#66727C" stroke={LINE} strokeWidth={1}>
+          <Path d="M45 100 L47 46 L53 46 L55 100 Z" />
+          <Path d="M50 52 Q36 34 34 22 Q44 32 50 38 Q58 22 86 0 Q70 32 50 52 Z" />
         </G>
       );
     case 'thagomizer':
@@ -504,7 +643,9 @@ function basher(shape: Bash): ReactNode {
 }
 
 // Tail weapons that swing: from the bottom corner, in an arc up and across the card.
-const SWINGS: Bash[] = ['thagomizer', 'club', 'tailfin'];
+const SWINGS: Bash[] = ['thagomizer', 'thagomizer4', 'kentro', 'macuahuitl', 'club', 'spikedclub', 'mace', 'ringed', 'tailfin', 'sharktail'];
+// Tails that move up and down slap down from above.
+const SLAPS: Bash[] = ['slap', 'humpback', 'paddle', 'manta'];
 
 function BashUp({ shape, w, h, v }: { shape: Bash; w: number; h: number; v: Animated.Value }) {
   if (SWINGS.includes(shape)) {
@@ -528,7 +669,7 @@ function BashUp({ shape, w, h, v }: { shape: Bash; w: number; h: number; v: Anim
       </Animated.View>
     );
   }
-  if (shape === 'slap') {
+  if (SLAPS.includes(shape)) {
     // Flukes coming down from above onto the middle of the card.
     const bw = w * 1.1;
     const bh = h * 0.7;
@@ -615,7 +756,7 @@ export function WeaponFx({ weapon, w, h }: { weapon: Weapon; w: number; h: numbe
       {weapon.kind === 'slash' && <Slash claws={weapon.claws} w={w} h={h} v={v} />}
       {weapon.kind === 'stomp' && <Stomp foot={weapon.foot} w={w} h={h} v={v} />}
       {weapon.kind === 'bash' && <BashUp shape={weapon.shape} w={w} h={h} v={v} />}
-      {weapon.kind === 'bash' && weapon.shape === 'slap' && <SlapSplash w={w} h={h} />}
+      {weapon.kind === 'bash' && SLAPS.includes(weapon.shape) && <SlapSplash w={w} h={h} />}
     </Animated.View>
   );
 }
@@ -625,7 +766,7 @@ export const joltFor = (weapon: Weapon, result: 'hit' | 'held' | 'miss'): 'dodge
   result === 'miss'
     ? 'dodge'
     : weapon.kind === 'bash'
-      ? weapon.shape === 'slap'
+      ? SLAPS.includes(weapon.shape)
         ? 'down'
         : SWINGS.includes(weapon.shape)
           ? 'shake'
