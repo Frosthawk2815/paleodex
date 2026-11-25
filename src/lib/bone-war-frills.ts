@@ -381,7 +381,9 @@ const knobs = (side: 1 | -1) =>
     return `M${(x - r).toFixed(1)} ${y} A${r} ${r} 0 1 0 ${(x + r).toFixed(1)} ${y} A${r} ${r} 0 1 0 ${(x - r).toFixed(1)} ${y} Z`;
   });
 const mirror = (d: string) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x: string, y: string) => `${(100 - Number(x)).toFixed(1)} ${y}`);
-const DIABLO_HORN = 'M31 64 C25 52 23 40 21 28 C19 18 15 10 8 3 C16 9 22 17 25.5 27 C29 40 35 53 42 61 Z';
+// One smooth curve (a C): rising almost straight up from the corner, then bending steadily outward
+// to its tip.
+const DIABLO_HORN = 'M29 64 C30 38 25 16 5 5 C25 13 35 33 43 61 Z';
 
 export const HAND_DRAWN: Record<string, FrillShapes> = {
   'diabloceratops-eatoni': {
