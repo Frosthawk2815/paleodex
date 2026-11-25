@@ -389,7 +389,7 @@ const DIABLO_HORN = 'M31 63 C31 38 25 16 5 5 C25 13 35 33 42 63 Z';
 export const HAND_DRAWN: Record<string, FrillShapes> = {
   'diabloceratops-eatoni': {
     // The top: a straight seat for each horn's root, and a narrow U between them.
-    outline: 'M22 134 C21 110 23 86 26 70 Q27 60 31 58 L42 58 Q46 58 47.5 62 Q50 67 52.5 62 Q54 58 58 58 L69 58 Q73 60 74 70 C77 86 79 110 78 134 Q50 118 22 134 Z',
+    outline: 'M22 134 C21 110 23 86 26 70 Q27 60 31 58 L42 58 C42 67.5 58 67.5 58 58 L69 58 Q73 60 74 70 C77 86 79 110 78 134 Q50 118 22 134 Z',
     holes: [
       { cx: 37.5, cy: 92, rx: 8.5, ry: 22 },
       { cx: 62.5, cy: 92, rx: 8.5, ry: 22 },
