@@ -145,25 +145,7 @@ export const FRILLS: Record<string, FrillSpec> = {
 
   // A big pair of hooks curving out to the sides.
   'albertaceratops-nesmoi': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.4, 0.6], len: [30, 30], bend: 70, width: 4, curved: true }] },
-  // The biggest frill ornaments of any centrosaurine: the second pair of points from the middle
-  // grew into huge blades that curve out sideways in the plane of the frill, and the two sides
-  // don't match (hence "rangiformis", like a reindeer's uneven antlers). They rise from the high
-  // points either side of a dip in the frill's back edge, which holds small, uneven spikes. No nose
-  // horn. (Some researchers think it may be a mature Medusaceratops.)
-  'lokiceratops-rangiformis': {
-    len: 0.54,
-    width: 0.8,
-    shape: 'round',
-    holes: 0.55,
-    dip: { half: 0.07, depth: 0.12, peak: 0.05 },
-    edge: [
-      { kind: 'points', n: 8, len: 4 },
-      // At the high points either side: the huge curved blades, unequal.
-      { kind: 'spikes', at: [0.425, 0.575], len: [50, 42], bend: [32, 20], width: 5, curved: true, dir: 50 },
-      // In the dip: small, uneven spikes.
-      { kind: 'spikes', at: [0.475, 0.52], len: [20, 13], bend: [-10, 18], width: 2.6, dir: 0 },
-    ],
-  },
+
 
   // A crown of short spikes clustered at the top of the frill.
   'coronosaurus-brinkmani': {
@@ -386,7 +368,44 @@ const mirror = (d: string) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, 
 // to its tip.
 const DIABLO_HORN = 'M31 63 C31 38 25 16 5 5 C25 13 35 33 42 63 Z';
 
+// Lokiceratops, drawn from a life reconstruction seen from the front. The frill is shaped like an
+// apple cut in half: two rounded lobes at the top with a dip between them, rounded sides and a
+// narrower base. In the dip stand two uneven spikes, a small one and a much taller one. From the
+// top of each lobe a huge, broad blade arcs up and out, then curls down at its tip like a ram's
+// horn: the biggest frill ornaments of any centrosaurine. Small triangular spikes line the sides.
+// (Its skeleton has openings in the frill; in life they were covered, so none show here.)
+const LOKI_BLADE = 'M35 60 C33 30 12 16 1 31 C-6 44 -4 64 4 82 C6 67 4 52 9 43 C15 33 26 40 28 61 Z';
+const lokiSide = (side: 1 | -1) =>
+  [
+    [72, 15],
+    [82, 13.2],
+    [92, 13],
+    [102, 13.8],
+    [112, 15.6],
+    [122, 19],
+  ].map(([y, x]) => {
+    const bx = side < 0 ? x! : 100 - x!;
+    const o = side * 7;
+    return `M${bx.toFixed(1)} ${y! - 3} L${(bx + o).toFixed(1)} ${y! - 2} L${bx.toFixed(1)} ${y! + 3} Z`;
+  });
+
 export const HAND_DRAWN: Record<string, FrillShapes> = {
+  'lokiceratops-rangiformis': {
+    outline: 'M30 136 C18 122 12 100 13 82 C14 66 22 56 34 54 C42 53 47 57 50 62 C53 57 58 53 66 54 C78 56 86 66 87 82 C88 100 82 122 70 136 Q50 130 30 136 Z',
+    holes: [],
+    // Behind the frill: the two blades, the uneven spikes in the dip, and the side spikes.
+    ornaments: [
+      LOKI_BLADE,
+      mirror(LOKI_BLADE),
+      'M37 62 L40.5 43 L46 61 Z',
+      'M46.5 66 L52 30 L58.5 64 Z',
+      ...lokiSide(-1),
+      ...lokiSide(1),
+    ],
+    hooks: [],
+    midline: 'M50 64 L50 64',
+    grooves: [],
+  },
   'diabloceratops-eatoni': {
     // The top: a straight seat for each horn's root, and a narrow U between them.
     outline: 'M22 134 C21 110 23 86 26 70 Q27 60 31 58 L42 58 C42 67.5 58 67.5 58 58 L69 58 Q73 60 74 70 C77 86 79 110 78 134 Q50 118 22 134 Z',
