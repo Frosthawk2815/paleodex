@@ -373,7 +373,7 @@ export function frillShapes(f: FrillSpec): FrillShapes {
 // Diabloceratops, drawn from its skull seen from the front: a tall, fairly narrow frill (about as
 // wide as the skull) with nearly parallel sides lined with rounded knobs, two large openings
 // either side of a central bar, and a shallow U between the bases of its two very long horns, which
-// curve outward from the top corners and sweep up, their tips curling back in like a lyre.
+// rise from the top corners and curve outward, their tips pointing out to the sides.
 const knobs = (side: 1 | -1) =>
   [68, 79, 90, 101, 112, 123].map((y) => {
     const x = 50 + side * (23 + (y - 70) * 0.078 + 1.2);
@@ -381,7 +381,7 @@ const knobs = (side: 1 | -1) =>
     return `M${(x - r).toFixed(1)} ${y} A${r} ${r} 0 1 0 ${(x + r).toFixed(1)} ${y} A${r} ${r} 0 1 0 ${(x - r).toFixed(1)} ${y} Z`;
   });
 const mirror = (d: string) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x: string, y: string) => `${(100 - Number(x)).toFixed(1)} ${y}`);
-const DIABLO_HORN = 'M31 64 C21 55 17 42 18 28 C19 18 22 10 27 2 C25.5 11 25 21 26.5 31 C28 44 34 54 42 61 Z';
+const DIABLO_HORN = 'M31 64 C25 52 23 40 21 28 C19 18 15 10 8 3 C16 9 22 17 25.5 27 C29 40 35 53 42 61 Z';
 
 export const HAND_DRAWN: Record<string, FrillShapes> = {
   'diabloceratops-eatoni': {
