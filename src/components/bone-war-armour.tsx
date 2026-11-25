@@ -6,6 +6,7 @@ import type { ReactNode } from 'react';
 import { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
 
 import type { Defence } from '@/lib/bone-war-defences';
+import { frillShapes, frillSpec } from '@/lib/bone-war-frills';
 
 const LINE = '#2E2418';
 
@@ -16,48 +17,33 @@ const arc = (cx: number, cy: number, rx: number, ry: number, a0: number, a1: num
     return [cx + rx * Math.cos(a), cy + ry * Math.sin(a), a] as const;
   });
 
-// Small bony points (epoccipitals) round a frill's edge, or longer spikes.
-const edgePoints = (cx: number, cy: number, rx: number, ry: number, n: number, len: number, wd: number, fill: string) =>
-  arc(cx, cy, rx, ry, -165, -15, n).map(([x, y, a], i) => {
-    const [ox, oy] = [Math.cos(a), Math.sin(a)];
-    const [px, py] = [-oy, ox];
-    return <Path key={i} d={`M${x + px * wd} ${y + py * wd} L${x + ox * len} ${y + oy * len} L${x - px * wd} ${y - py * wd} Z`} fill={fill} stroke={LINE} strokeWidth={0.6} />;
-  });
-
-export function armour(d: Defence): ReactNode {
+// speciesId: the animal, for armour drawn to the individual species (the frills).
+export function armour(d: Defence, speciesId?: string): ReactNode {
   switch (d) {
     case 'frill':
-      // A long frill with a pair of openings, edged with small bony points.
-      return (
-        <G>
-          {edgePoints(50, 92, 44, 78, 13, 7, 3, '#B89468')}
-          <Path d="M6 132 Q2 30 50 14 Q98 30 94 132 Q50 112 6 132 Z" fill="#9A7650" stroke={LINE} strokeWidth={1} />
-          <Ellipse cx={31} cy={66} rx={11} ry={21} fill="#5E4630" stroke={LINE} strokeWidth={0.8} />
-          <Ellipse cx={69} cy={66} rx={11} ry={21} fill="#5E4630" stroke={LINE} strokeWidth={0.8} />
-          <Path d="M50 18 L50 120" stroke="#7A5C3C" strokeWidth={3} />
-        </G>
-      );
     case 'solidfrill':
-      // Triceratops: a solid frill of bone, grooved by blood vessels, edged with bony points.
+    case 'spikyfrill': {
+      // Each horned dinosaur's own frill: its proportions, openings and edge ornaments.
+      const f = frillShapes(frillSpec(speciesId, d));
       return (
         <G>
-          {edgePoints(50, 96, 42, 70, 13, 6, 3, '#B89468')}
-          <Path d="M8 132 Q4 40 50 26 Q96 40 92 132 Q50 114 8 132 Z" fill="#9A7650" stroke={LINE} strokeWidth={1} />
-          {[-60, -35, -12, 12, 35, 60].map((a) => (
-            <Path key={a} d={`M50 120 Q${50 + a * 0.35} 90 ${50 + a * 0.62} 46`} stroke="#7A5C3C" strokeWidth={1.2} fill="none" />
+          {f.ornaments.map((o, i) => (
+            <Path key={i} d={o} fill="#D2BC92" stroke={LINE} strokeWidth={0.6} />
+          ))}
+          <Path d={f.outline} fill="#9A7650" stroke={LINE} strokeWidth={1} />
+          {f.grooves.map((g, i) => (
+            <Path key={`g${i}`} d={g} stroke="#7A5C3C" strokeWidth={1.2} fill="none" />
+          ))}
+          {f.holes.map((h, i) => (
+            <Ellipse key={`h${i}`} cx={h.cx} cy={h.cy} rx={h.rx} ry={h.ry} fill="#5E4630" stroke={LINE} strokeWidth={0.8} />
+          ))}
+          <Path d={f.midline} stroke="#7A5C3C" strokeWidth={3} />
+          {f.hooks.map((o, i) => (
+            <Path key={`k${i}`} d={o} fill="#D2BC92" stroke={LINE} strokeWidth={0.6} />
           ))}
         </G>
       );
-    case 'spikyfrill':
-      // Centrosaurines (Styracosaurus and kin): a shorter frill edged with long spikes and hooks.
-      return (
-        <G>
-          {edgePoints(50, 104, 38, 52, 6, 40, 4.5, '#D8C39A')}
-          <Path d="M10 132 Q6 66 50 50 Q94 66 90 132 Q50 116 10 132 Z" fill="#9A7650" stroke={LINE} strokeWidth={1} />
-          <Ellipse cx={34} cy={88} rx={8} ry={12} fill="#5E4630" stroke={LINE} strokeWidth={0.8} />
-          <Ellipse cx={66} cy={88} rx={8} ry={12} fill="#5E4630" stroke={LINE} strokeWidth={0.8} />
-        </G>
-      );
+    }
     case 'shell': {
       // A turtle's carapace: five scutes down the middle, four either side, and a rim of marginals.
       const hex = (cy: number, s: number) => `M${50 - s} ${cy} L${50 - s * 0.55} ${cy - s} L${50 + s * 0.55} ${cy - s} L${50 + s} ${cy} L${50 + s * 0.55} ${cy + s} L${50 - s * 0.55} ${cy + s} Z`;

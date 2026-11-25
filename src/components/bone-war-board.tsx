@@ -146,7 +146,7 @@ export function Board({
           </FadeOut>
         )}
         {/* An attack the target's defence held off: its armour shows and the attack bounces off it. */}
-        {weapon?.result === 'held' && g && defenceOf(g.key) && <DefenceFx key={`d${fxKey}`} defence={defenceOf(g.key)!} w={w} h={h} />}
+        {weapon?.result === 'held' && g && defenceOf(g.key) && <DefenceFx key={`d${fxKey}`} defence={defenceOf(g.key)!} w={w} h={h} speciesId={g.key.split(':')[1]} />}
         {weapon && <WeaponFx key={`w${fxKey}`} weapon={weaponOf(weapon.by)} w={w} h={h} blocked={weapon.result === 'held'} />}
         {(splash || gone?.how === 'ambush') && <Splash key={`s${fxKey}`} w={w} h={h} big={gone?.how === 'ambush'} />}
       </Pressable>

@@ -787,7 +787,7 @@ export function WeaponFx({ weapon, w, h, blocked = false }: { weapon: Weapon; w:
 // The target's armour when an attack bounces off it: it shows as the attack lands, a gleam of light
 // runs across it, and it fades once the attacker has pulled back. Ink is a cloud that spreads and
 // thins instead.
-export function DefenceFx({ defence, w, h }: { defence: Defence; w: number; h: number }) {
+export function DefenceFx({ defence, w, h, speciesId }: { defence: Defence; w: number; h: number; speciesId?: string }) {
   const show = useValue(0);
   const gleam = useValue(0);
   useEffect(() => {
@@ -823,7 +823,7 @@ export function DefenceFx({ defence, w, h }: { defence: Defence; w: number; h: n
   return (
     <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { opacity: show, borderRadius: 8, overflow: 'hidden' }]}>
       <Svg width={w} height={h} viewBox="0 0 100 140" preserveAspectRatio="none">
-        {armour(defence)}
+        {armour(defence, speciesId)}
       </Svg>
       {/* Sunlight catching the armour: a bright band sweeping across it. */}
       <Animated.View
