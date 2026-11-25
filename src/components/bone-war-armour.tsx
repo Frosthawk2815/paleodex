@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 import { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
 
 import type { Defence } from '@/lib/bone-war-defences';
-import { frillShapes, frillSpec } from '@/lib/bone-war-frills';
+import { frillShapes, frillSpec, HAND_DRAWN } from '@/lib/bone-war-frills';
 import { thyreoShapes } from '@/lib/bone-war-thyreo';
 
 const LINE = '#2E2418';
@@ -37,7 +37,7 @@ export function armour(d: Defence, speciesId?: string): ReactNode {
     case 'solidfrill':
     case 'spikyfrill': {
       // Each horned dinosaur's own frill: its proportions, openings and edge ornaments.
-      const f = frillShapes(frillSpec(speciesId, d));
+      const f = (speciesId && HAND_DRAWN[speciesId]) || frillShapes(frillSpec(speciesId, d));
       return (
         <G>
           {f.ornaments.map((o, i) => (

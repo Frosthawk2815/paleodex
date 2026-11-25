@@ -140,23 +140,7 @@ export const FRILLS: Record<string, FrillSpec> = {
   // Two long, straight spikes sticking up from the back of the frill.
   'einiosaurus-procurvicornis': { len: 0.5, width: 0.76, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.44, 0.56], len: [38, 38], bend: 4, width: 4 }] },
   'achelousaurus-horneri': { len: 0.52, width: 0.78, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.43, 0.57], len: [32, 32], bend: 6, width: 4 }] },
-  // A frill widest at the skull, narrowing to the back, with large openings and small pointed spikes
-  // down its sides; from its two back corners, either side of a narrow dip, two very long horns
-  // rise in a V and sweep up like a lyre ("devil horns").
-  'diabloceratops-eatoni': {
-    len: 0.62,
-    width: 0.74,
-    shape: 'taper',
-    // A narrow U between the horns, which rise from the two back corners.
-    dip: { half: 0.1, depth: 0.1, peak: 0.02 },
-    holes: 0.62,
-    edge: [
-      // Small pointed spikes lining the sides.
-      { kind: 'spikes', at: [0.05, 0.12, 0.19, 0.26, 0.33, 0.67, 0.74, 0.81, 0.88, 0.95], len: [6, 7, 7, 7, 6, 6, 7, 7, 7, 6], width: 2.2 },
-      // The horns: out in a V from the back corners, then sweeping up like a lyre.
-      { kind: 'spikes', at: [0.4, 0.6], len: [58, 58], bend: -26, width: 3.8, curved: true, dir: 28 },
-    ],
-  },
+
 
 
   // A big pair of hooks curving out to the sides.
@@ -383,3 +367,32 @@ export function frillShapes(f: FrillSpec): FrillShapes {
     : [];
   return { outline, holes, ornaments, hooks, midline, grooves };
 }
+
+// ---- Drawn by hand ----
+
+// Diabloceratops, drawn from its skull seen from the front: a tall, fairly narrow frill (about as
+// wide as the skull) with nearly parallel sides lined with rounded knobs, two large openings
+// either side of a central bar, and a shallow U between the bases of its two very long horns, which
+// curve outward from the top corners and sweep up, their tips curling back in like a lyre.
+const knobs = (side: 1 | -1) =>
+  [68, 79, 90, 101, 112, 123].map((y) => {
+    const x = 50 + side * (23 + (y - 70) * 0.078 + 1.2);
+    const r = 3.6;
+    return `M${(x - r).toFixed(1)} ${y} A${r} ${r} 0 1 0 ${(x + r).toFixed(1)} ${y} A${r} ${r} 0 1 0 ${(x - r).toFixed(1)} ${y} Z`;
+  });
+const mirror = (d: string) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x: string, y: string) => `${(100 - Number(x)).toFixed(1)} ${y}`);
+const DIABLO_HORN = 'M31 64 C21 55 17 42 18 28 C19 18 22 10 27 2 C25.5 11 25 21 26.5 31 C28 44 34 54 42 61 Z';
+
+export const HAND_DRAWN: Record<string, FrillShapes> = {
+  'diabloceratops-eatoni': {
+    outline: 'M22 134 C21 110 23 86 27 70 Q29 60 35 57 Q50 71 65 57 Q71 60 73 70 C77 86 79 110 78 134 Q50 118 22 134 Z',
+    holes: [
+      { cx: 37.5, cy: 92, rx: 8.5, ry: 22 },
+      { cx: 62.5, cy: 92, rx: 8.5, ry: 22 },
+    ],
+    ornaments: [DIABLO_HORN, mirror(DIABLO_HORN), ...knobs(-1), ...knobs(1)],
+    hooks: [],
+    midline: 'M50 70 L50 126',
+    grooves: [],
+  },
+};
