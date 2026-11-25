@@ -123,6 +123,9 @@ export const ANKYS: Record<string, AnkySpec> = {
   'ankylosaurus-magniventris': { ...ANKY, across: 8, keel: 'flat', flank: 6, flankLen: 5 },
   // Keeled osteoderms in bands across the back, and two neck half-rings.
   'euoplocephalus-tutus': { ...ANKY, keel: 'tall' },
+  // Borealopelta, preserved in three dimensions with its armour in place: a big pair of spines at
+  // each shoulder, plates on the neck rings, rows of keeled plates down the back, and no club.
+  'borealopelta-markmitchelli': { body: 'wide', rings: 2, ringPlates: 4, across: 6, keel: 'low', flank: 6, flankLen: 6, shoulder: { n: 2, len: 24, kind: 'long' }, tail: 'plain' },
 };
 
 export function ankyShapes(s: AnkySpec): Shape[] {
