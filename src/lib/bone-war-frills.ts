@@ -9,6 +9,8 @@
 export type Edge =
   // Small bony points (epoccipitals), evenly round the edge.
   | { kind: 'points'; n: number; len: number }
+  // Small rounded bumps giving a scalloped edge.
+  | { kind: 'bumps'; n: number; size: number }
   // Long spikes at given places along the back edge (t from 0, the left end, to 1, the right),
   // bent outward (bend > 0) or towards the middle (bend < 0), in degrees.
   // curved: the spike sweeps round in a curve as it goes out (bending the given way) rather than
@@ -131,16 +133,19 @@ export const FRILLS: Record<string, FrillSpec> = {
   // Two long, straight spikes sticking up from the back of the frill.
   'einiosaurus-procurvicornis': { len: 0.5, width: 0.76, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.44, 0.56], len: [38, 38], bend: 4, width: 4 }] },
   'achelousaurus-horneri': { len: 0.52, width: 0.78, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.43, 0.57], len: [32, 32], bend: 6, width: 4 }] },
-  // A triangular frill, widening to the back, with a dip in the middle of its back edge, and either
-  // side of it a long spike curving up and out ("devil horns").
+  // A tall, rounded frill with a scalloped edge of small rounded bumps, and from the top of it two
+  // very long horns curving up, their tips turning a little outward ("devil horns").
   'diabloceratops-eatoni': {
-    len: 0.54,
-    width: 0.8,
-    shape: 'fan',
-    notch: true,
+    len: 0.6,
+    width: 0.66,
+    shape: 'square',
     holes: 0.45,
-    edge: [{ kind: 'points', n: 6, len: 4 }, { kind: 'spikes', at: [0.42, 0.58], len: [40, 40], bend: 28, width: 4, curved: true }],
+    edge: [
+      { kind: 'bumps', n: 13, size: 3.2 },
+      { kind: 'spikes', at: [0.445, 0.555], len: [56, 56], bend: 12, width: 4.5, curved: true },
+    ],
   },
+
   // A big pair of hooks curving out to the sides.
   'albertaceratops-nesmoi': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.4, 0.6], len: [30, 30], bend: 70, width: 4, curved: true }] },
   // The biggest frill ornaments of any centrosaurine: the second pair of points from the middle
@@ -278,6 +283,12 @@ export function frillShapes(f: FrillSpec): FrillShapes {
     return `M${(e.x + px * wd).toFixed(1)} ${(e.y + py * wd).toFixed(1)} L${(e.x + dx * len).toFixed(1)} ${(e.y + dy * len).toFixed(1)} L${(e.x - px * wd).toFixed(1)} ${(e.y - py * wd).toFixed(1)} Z`;
   };
   for (const ed of f.edge) {
+    if (ed.kind === 'bumps')
+      for (let i = 0; i < ed.n; i++) {
+        const e = edgeAt(f, 0.06 + (0.88 * i) / Math.max(1, ed.n - 1));
+        const [cx, cy, r] = [e.x + e.nx * ed.size * 0.35, e.y + e.ny * ed.size * 0.35, ed.size];
+        ornaments.push(`M${f1(cx - r)} ${f1(cy)} A${r} ${r} 0 1 0 ${f1(cx + r)} ${f1(cy)} A${r} ${r} 0 1 0 ${f1(cx - r)} ${f1(cy)} Z`);
+      }
     if (ed.kind === 'points') for (let i = 0; i < ed.n; i++) ornaments.push(tri(0.06 + (0.88 * i) / Math.max(1, ed.n - 1), ed.len, 2.4, 0));
     if (ed.kind === 'spikes')
       ed.at.forEach((t, i) => {
