@@ -7,6 +7,7 @@ import { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
 
 import type { Defence } from '@/lib/bone-war-defences';
 import { frillShapes, frillSpec } from '@/lib/bone-war-frills';
+import { thyreoShapes } from '@/lib/bone-war-thyreo';
 
 const LINE = '#2E2418';
 
@@ -19,6 +20,18 @@ const arc = (cx: number, cy: number, rx: number, ry: number, a0: number, a1: num
 
 // speciesId: the animal, for armour drawn to the individual species (the frills).
 export function armour(d: Defence, speciesId?: string): ReactNode {
+  // Stegosaurs and ankylosaurs: each drawn to its own armour, seen from above.
+  if (d === 'plates' || d === 'osteoderms') {
+    const own = thyreoShapes(speciesId);
+    if (own)
+      return (
+        <G>
+          {own.map((p, i) => (
+            <Path key={i} d={p.d} fill={p.fill} stroke={p.fill === 'none' ? '#5E4C34' : LINE} strokeWidth={p.line ?? 0.7} />
+          ))}
+        </G>
+      );
+  }
   switch (d) {
     case 'frill':
     case 'solidfrill':
