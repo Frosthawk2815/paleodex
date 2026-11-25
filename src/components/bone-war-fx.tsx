@@ -168,8 +168,10 @@ export function Splash({ w, h, big = false }: { w: number; h: number; big?: bool
 
 // One tooth hanging from the jaw line at the top: centre x, base width, length, and how far the tip curves.
 const tooth = (x: number, wd: number, len: number, curve = 0) => `M${x - wd / 2} 0 Q${x + curve - wd * 0.1} ${len * 0.6} ${x + curve} ${len} Q${x + curve * 0.4 + wd * 0.2} ${len * 0.5} ${x + wd / 2} 0 Z`;
-// A thick tooth with a rounded tip.
-const blunt = (x: number, wd: number, len: number) => `M${x - wd / 2} 0 L${x - wd * 0.42} ${len - wd * 0.4} Q${x} ${len + wd * 0.35} ${x + wd * 0.42} ${len - wd * 0.4} L${x + wd / 2} 0 Z`;
+// A tyrannosaur tooth: thick and swollen at the base like a banana, narrowing to a sharp,
+// slightly backward-curving point.
+const crusher = (x: number, wd: number, len: number, curve: number) =>
+  `M${x - wd / 2} 0 C${x - wd * 0.62} ${len * 0.35} ${x - wd * 0.3} ${len * 0.75} ${x + curve} ${len} C${x + wd * 0.42} ${len * 0.7} ${x + wd * 0.62} ${len * 0.3} ${x + wd / 2} 0 Z`;
 const row = (xs: number[], wd: number, len: number | ((i: number) => number), curve = 0) => xs.map((x, i) => tooth(x, wd, typeof len === 'number' ? len : len(i), curve));
 const range = (from: number, to: number, step: number) => Array.from({ length: Math.floor((to - from) / step) + 1 }, (_, i) => from + i * step);
 
@@ -177,8 +179,8 @@ const range = (from: number, to: number, step: number) => Array.from({ length: M
 function teeth(jaw: Jaw, lower: boolean): { paths: string[]; fill: string; back?: string[] } {
   switch (jaw) {
     case 'crusher':
-      // Tyrannosaurs: thick, blunt, banana-shaped teeth for crushing bone.
-      return { paths: range(10, 90, 16).map((x, i) => blunt(x, 14, [34, 46, 52, 46, 38, 30][i] ?? 30)), fill: IVORY };
+      // Tyrannosaurs: thick, banana-shaped teeth with sharp points, for crushing bone.
+      return { paths: range(10, 90, 16).map((x, i) => crusher(x, 14, [36, 48, 56, 50, 42, 34][i] ?? 34, lower ? -3 : 3)), fill: IVORY };
     case 'serrated':
       return { paths: row(range(9, 93, 12), 10, (i) => [30, 40, 50, 54, 46, 40, 34, 28][i] ?? 30, lower ? -5 : 5), fill: IVORY };
     case 'conical':
