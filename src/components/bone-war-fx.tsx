@@ -5,7 +5,10 @@
 
 import { type ReactNode, useEffect, useState } from 'react';
 import { Animated, Easing, Platform, StyleSheet, View } from 'react-native';
-import Svg, { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
+import Svg, { Circle, Defs, Ellipse, G, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
+
+import { armour } from '@/components/bone-war-armour';
+import type { Defence } from '@/lib/bone-war-defences';
 
 import { teeth } from '@/lib/bone-war-teeth';
 import type { Bash, Foot, Jaw, Weapon } from '@/lib/bone-war-weapons';
@@ -746,18 +749,29 @@ function SlapSplash({ w, h }: { w: number; h: number }) {
 }
 
 // The attack itself over the target (w × h): in to CONTACT_MS, a short hold, then away.
-export function WeaponFx({ weapon, w, h }: { weapon: Weapon; w: number; h: number }) {
+// blocked: the target's defence held, so the attack stops short and bounces off.
+export function WeaponFx({ weapon, w, h, blocked = false }: { weapon: Weapon; w: number; h: number; blocked?: boolean }) {
   const v = useValue(0);
   const fade = useValue(1);
   useEffect(() => {
     const stays = weapon.kind === 'slash' || weapon.kind === 'stomp';
+    if (blocked) {
+      // In, stopped short by the armour, then knocked back.
+      Animated.sequence([
+        run(v, 0.74, CONTACT_MS, Easing.in(Easing.quad)),
+        run(v, 0.62, 70, Easing.out(Easing.quad)),
+        run(v, 0.7, 70, Easing.inOut(Easing.quad)),
+        Animated.parallel([run(v, 0, 300, Easing.out(Easing.quad)), run(fade, 0, 300, Easing.in(Easing.quad), 120)]),
+      ]).start();
+      return;
+    }
     Animated.sequence([
       run(v, 1, CONTACT_MS, weapon.kind === 'stomp' ? Easing.in(Easing.cubic) : Easing.in(Easing.quad)),
       Animated.delay(stays ? 300 : 160),
       // Marks and footprints fade where they are; jaws, talons and bashing weapons pull away.
       stays ? run(fade, 0, 450) : run(v, 0, 260, Easing.inOut(Easing.quad)),
     ]).start();
-  }, [v, fade, weapon.kind]);
+  }, [v, fade, weapon.kind, blocked]);
   return (
     <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { opacity: fade, overflow: 'visible' }]}>
       {weapon.kind === 'bite' && <Jaws jaw={weapon.jaw} w={w} h={h} v={v} />}
@@ -766,6 +780,71 @@ export function WeaponFx({ weapon, w, h }: { weapon: Weapon; w: number; h: numbe
       {weapon.kind === 'stomp' && <Stomp foot={weapon.foot} w={w} h={h} v={v} />}
       {weapon.kind === 'bash' && <BashUp shape={weapon.shape} w={w} h={h} v={v} />}
       {weapon.kind === 'bash' && SLAPS.includes(weapon.shape) && <SlapSplash w={w} h={h} />}
+    </Animated.View>
+  );
+}
+
+// The target's armour when an attack bounces off it: it shows as the attack lands, a gleam of light
+// runs across it, and it fades once the attacker has pulled back. Ink is a cloud that spreads and
+// thins instead.
+export function DefenceFx({ defence, w, h }: { defence: Defence; w: number; h: number }) {
+  const show = useValue(0);
+  const gleam = useValue(0);
+  useEffect(() => {
+    if (defence === 'ink') {
+      Animated.sequence([Animated.delay(CONTACT_MS - 80), run(show, 1, 900, Easing.out(Easing.cubic))]).start();
+      return;
+    }
+    Animated.sequence([
+      Animated.delay(CONTACT_MS - 120),
+      run(show, 1, 140),
+      Animated.parallel([run(gleam, 1, 560, Easing.inOut(Easing.quad)), Animated.delay(620)]),
+      run(show, 0, 380, Easing.in(Easing.quad)),
+    ]).start();
+  }, [show, gleam, defence]);
+  if (defence === 'ink')
+    return (
+      <Animated.View
+        pointerEvents="none"
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: w,
+          height: h,
+          opacity: show.interpolate({ inputRange: [0, 0.15, 0.6, 1], outputRange: [0, 0.9, 0.7, 0] }),
+          transform: [{ scale: show.interpolate({ inputRange: [0, 1], outputRange: [0.3, 1.35] }) }],
+        }}>
+        <Svg width={w} height={h} viewBox="0 0 100 140">
+          {armour('ink')}
+        </Svg>
+      </Animated.View>
+    );
+  return (
+    <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { opacity: show, borderRadius: 8, overflow: 'hidden' }]}>
+      <Svg width={w} height={h} viewBox="0 0 100 140" preserveAspectRatio="none">
+        {armour(defence)}
+      </Svg>
+      {/* Sunlight catching the armour: a bright band sweeping across it. */}
+      <Animated.View
+        style={{
+          position: 'absolute',
+          top: -h * 0.3,
+          width: w * 0.4,
+          height: h * 1.6,
+          transform: [{ translateX: gleam.interpolate({ inputRange: [0, 1], outputRange: [-w * 0.7, w * 1.2] }) }, { rotate: '22deg' }],
+        }}>
+        <Svg width={w * 0.4} height={h * 1.6}>
+          <Defs>
+            <LinearGradient id="gleam" x1="0" y1="0" x2="1" y2="0">
+              <Stop offset="0" stopColor="#FFFFFF" stopOpacity={0} />
+              <Stop offset="0.5" stopColor="#FFFDF0" stopOpacity={0.75} />
+              <Stop offset="1" stopColor="#FFFFFF" stopOpacity={0} />
+            </LinearGradient>
+          </Defs>
+          <Rect x={0} y={0} width={w * 0.4} height={h * 1.6} fill="url(#gleam)" />
+        </Svg>
+      </Animated.View>
     </Animated.View>
   );
 }

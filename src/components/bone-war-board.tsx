@@ -4,12 +4,13 @@ import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } fr
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BoneWarCard } from '@/components/bone-war-card';
-import { CrocEye, FadeOut, Jolt, joltFor, Splash, WeaponFx } from '@/components/bone-war-fx';
+import { CrocEye, DefenceFx, FadeOut, Jolt, joltFor, Splash, WeaponFx } from '@/components/bone-war-fx';
 import { GlitchText, useGlitch } from '@/components/glitch';
 import { useProfileStyles } from '@/components/profile-ui';
 import { usePalette } from '@/hooks/use-palette';
 import { cardFor, type Look } from '@/lib/bone-war';
 import { type Action, backMax, backTotal, cardOf, type Fx, type GameState, type GCard, legal, levelFor, secondsFor, START_HP } from '@/lib/bone-war-game';
+import { defenceOf } from '@/lib/bone-war-defences';
 import { weaponOf } from '@/lib/bone-war-weapons';
 import { FontsReady, PAPER_FONTS } from '@/lib/fonts';
 import { imageOf } from '@/lib/images';
@@ -144,7 +145,9 @@ export function Board({
             {look(gone.card, gone.card.seen || style === undefined)}
           </FadeOut>
         )}
-        {weapon && <WeaponFx key={`w${fxKey}`} weapon={weaponOf(weapon.by)} w={w} h={h} />}
+        {/* An attack the target's defence held off: its armour shows and the attack bounces off it. */}
+        {weapon?.result === 'held' && g && defenceOf(g.key) && <DefenceFx key={`d${fxKey}`} defence={defenceOf(g.key)!} w={w} h={h} />}
+        {weapon && <WeaponFx key={`w${fxKey}`} weapon={weaponOf(weapon.by)} w={w} h={h} blocked={weapon.result === 'held'} />}
         {(splash || gone?.how === 'ambush') && <Splash key={`s${fxKey}`} w={w} h={h} big={gone?.how === 'ambush'} />}
       </Pressable>
     );
