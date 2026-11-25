@@ -13,7 +13,8 @@ export type Edge =
   // bent outward (bend > 0) or towards the middle (bend < 0), in degrees.
   // curved: the spike sweeps round in a curve as it goes out (bending the given way) rather than
   // standing straight.
-  | { kind: 'spikes'; at: number[]; len: number[]; bend?: number; width?: number; curved?: boolean }
+  // bend may be one value for all, or one per spike (for frills whose two sides don't match).
+  | { kind: 'spikes'; at: number[]; len: number[]; bend?: number | number[]; width?: number; curved?: boolean }
   // Hooks that curl forward over the frill, towards its middle.
   | { kind: 'hooks'; at: number[]; len: number };
 
@@ -24,7 +25,10 @@ export type FrillSpec = {
   // round: a rounded back edge; heart: rounded with a notch in the middle of the back edge;
   // square: squared-off corners and a flat back edge; flared: narrow at the base, flaring wide
   // at the back (protoceratopsids).
-  shape: 'round' | 'heart' | 'square' | 'flared';
+  // triangle: rising to a point at the back (Diabloceratops, Machairoceratops), with notch: a dip
+  // in the middle of the back edge.
+  shape: 'round' | 'heart' | 'square' | 'flared' | 'triangle';
+  notch?: boolean;
   // Size of the two openings (0 for a solid frill).
   holes: number;
   edge: Edge[];
@@ -125,18 +129,32 @@ export const FRILLS: Record<string, FrillSpec> = {
   // Two long, straight spikes sticking up from the back of the frill.
   'einiosaurus-procurvicornis': { len: 0.5, width: 0.76, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.44, 0.56], len: [38, 38], bend: 4, width: 4 }] },
   'achelousaurus-horneri': { len: 0.52, width: 0.78, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.43, 0.57], len: [32, 32], bend: 6, width: 4 }] },
-  // A pair of long spikes curving up and out from the top of the frill.
-  'diabloceratops-eatoni': { len: 0.5, width: 0.78, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.42, 0.58], len: [36, 36], bend: 34, width: 4, curved: true }] },
+  // A triangular frill with a dip in the middle of its back edge, and either side of it a long
+  // spike curving up and out ("devil horns").
+  'diabloceratops-eatoni': {
+    len: 0.54,
+    width: 0.8,
+    shape: 'triangle',
+    notch: true,
+    holes: 0.45,
+    edge: [{ kind: 'points', n: 6, len: 4 }, { kind: 'spikes', at: [0.455, 0.545], len: [40, 40], bend: -8, width: 4, curved: true }],
+  },
   // A big pair of hooks curving out to the sides.
   'albertaceratops-nesmoi': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.4, 0.6], len: [30, 30], bend: 70, width: 4, curved: true }] },
-  // The biggest frill spikes known: two pairs of huge, blade-like spikes sweeping out to the sides
-  // in curves.
+  // The biggest frill ornaments of any centrosaurine: the second pair of points from the middle
+  // grew into huge blades that curve out sideways in the plane of the frill, and the two sides
+  // don't match (hence "rangiformis", like a reindeer's uneven antlers). Small points between them;
+  // no nose horn. (Some researchers think it may be a mature Medusaceratops.)
   'lokiceratops-rangiformis': {
     len: 0.54,
     width: 0.8,
     shape: 'round',
     holes: 0.55,
-    edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.36, 0.44, 0.56, 0.64], len: [34, 42, 42, 34], bend: 60, width: 5, curved: true }],
+    edge: [
+      { kind: 'points', n: 8, len: 4 },
+      { kind: 'spikes', at: [0.47, 0.53], len: [9, 7], width: 2.5 },
+      { kind: 'spikes', at: [0.41, 0.59], len: [50, 42], bend: [54, 40], width: 7, curved: true },
+    ],
   },
   // A crown of short spikes clustered at the top of the frill.
   'coronosaurus-brinkmani': {
@@ -150,7 +168,7 @@ export const FRILLS: Record<string, FrillSpec> = {
   'wendiceratops-pinhornensis': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'hooks', at: [0.24, 0.34, 0.44, 0.56, 0.66, 0.76], len: 18 }] },
   'sinoceratops-zhuchengensis': { len: 0.5, width: 0.8, shape: 'round', holes: 0.5, edge: [{ kind: 'hooks', at: [0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88], len: 14 }] },
   // Two long spikes from the back of the frill, curving forward and down like sabres.
-  'machairoceratops-cronusi': { len: 0.5, width: 0.78, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'hooks', at: [0.42, 0.58], len: 30 }] },
+  'machairoceratops-cronusi': { len: 0.54, width: 0.8, shape: 'triangle', notch: true, holes: 0.45, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'hooks', at: [0.42, 0.58], len: 30 }] },
   // A broad frill with a plain, scalloped edge: no big spikes.
   'nasutoceratops-titusi': { len: 0.54, width: 0.82, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 9, len: 7 }] },
   // A young animal (Avaceratops), and a dubious name (Monoclonius): simple edges.
@@ -192,7 +210,8 @@ function edgeAt(f: FrillSpec, t: number): { x: number; y: number; nx: number; ny
     let x = 50 + W * c;
     let y = BASE + L * s;
     if (f.shape === 'flared') x = 50 + W * c * (0.45 + 0.55 * Math.abs(s) ** 1.6);
-    if (f.shape === 'heart') y += L * 0.16 * Math.exp(-(((u - 0.5) / 0.07) ** 2));
+    if (f.shape === 'triangle') y = BASE - L * Math.max(0, 1 - Math.abs(c)) ** 0.85 * Math.abs(s) ** 0.3;
+    if (f.shape === 'heart' || f.notch) y += L * (f.notch ? 0.12 : 0.16) * Math.exp(-(((u - 0.5) / 0.06) ** 2));
     return [x, y] as const;
   };
   const [x, y] = at(t);
@@ -242,11 +261,12 @@ export function frillShapes(f: FrillSpec): FrillShapes {
     if (ed.kind === 'spikes')
       ed.at.forEach((t, i) => {
         const len = ed.len[i] ?? ed.len[0]!;
-        if (!ed.curved) return ornaments.push(tri(t, len, ed.width ?? 3, ed.bend ?? 0));
+        const bend = Array.isArray(ed.bend) ? (ed.bend[i] ?? 0) : (ed.bend ?? 0);
+        if (!ed.curved) return ornaments.push(tri(t, len, ed.width ?? 3, bend));
         // A curved blade: starts out straight from the edge, then sweeps round to its bent tip.
         const e = edgeAt(f, t);
         const side = t < 0.5 ? -1 : 1;
-        const r = ((ed.bend ?? 0) * side * Math.PI) / 180;
+        const r = (bend * side * Math.PI) / 180;
         const [dx, dy] = [e.nx * Math.cos(r) - e.ny * Math.sin(r), e.nx * Math.sin(r) + e.ny * Math.cos(r)];
         const [px, py] = [-e.ny, e.nx];
         const wd = ed.width ?? 3;
