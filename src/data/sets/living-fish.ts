@@ -273,6 +273,30 @@ export const LIVING_FISH: DataSet = {
       keywords: ['tiger shark', 'galeocerdo', 'shark'],
     },
     {
+      id: 'alopias-vulpinus',
+      name: 'Alopias vulpinus',
+      common: 'Common thresher shark',
+      clade: 'lamniformes',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Temperate and tropical oceans worldwide',
+      formations: [],
+      summary: [
+        'A shark whose scythe-shaped upper tail lobe is about as long as the rest of its body. It herds schools of fish such as sardines and mackerel, then whips its tail through them to stun them before eating the dazed fish. The largest of the three thresher sharks, it is caught by fisheries around the world.',
+      ],
+      facts: [
+        {
+          label: 'Length',
+          value: 'Up to about 5.7 m, half of it tail',
+        },
+        {
+          label: 'IUCN status',
+          value: 'Vulnerable',
+        },
+      ],
+      keywords: ['thresher shark', 'common thresher', 'alopias', 'thresher', 'shark'],
+    },
+    {
       id: 'carcharhinus-leucas',
       name: 'Carcharhinus leucas',
       common: 'Bull shark',

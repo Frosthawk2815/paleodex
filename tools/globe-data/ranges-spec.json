@@ -58547,5 +58547,30 @@
         ]
       }
     ]
+  },
+  "alopias-vulpinus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              -180,
+              -45,
+              180,
+              60
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

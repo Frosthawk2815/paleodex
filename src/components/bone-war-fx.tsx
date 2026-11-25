@@ -616,6 +616,15 @@ function basher(shape: Bash): ReactNode {
           <Path d="M50 76 L50 100" fill="none" />
         </G>
       );
+    case 'thresher':
+      // A thresher shark's tail: a small lower lobe and a huge, scythe-shaped upper lobe.
+      return (
+        <G fill="#5E6E80" stroke={LINE} strokeWidth={1}>
+          <Path d="M46 100 L47.5 64 L52.5 64 L54 100 Z" />
+          <Path d="M50 68 Q38 62 33 52 Q43 57 50 61 Z" />
+          <Path d="M49 68 Q54 42 64 20 Q72 6 86 0 Q74 14 66 36 Q59 54 53 68 Z" />
+        </G>
+      );
     case 'sharktail':
       // A shark's tail: the upper lobe longer than the lower.
       return (
@@ -643,7 +652,7 @@ function basher(shape: Bash): ReactNode {
 }
 
 // Tail weapons that swing: from the bottom corner, in an arc up and across the card.
-const SWINGS: Bash[] = ['thagomizer', 'thagomizer4', 'kentro', 'macuahuitl', 'club', 'spikedclub', 'mace', 'ringed', 'tailfin', 'sharktail'];
+const SWINGS: Bash[] = ['thagomizer', 'thagomizer4', 'kentro', 'macuahuitl', 'club', 'spikedclub', 'mace', 'ringed', 'tailfin', 'sharktail', 'thresher'];
 // Tails that move up and down slap down from above.
 const SLAPS: Bash[] = ['slap', 'humpback', 'paddle', 'manta'];
 

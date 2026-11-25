@@ -42,6 +42,7 @@ export type Bash =
   | 'manta'
   | 'tailfin'
   | 'sharktail'
+  | 'thresher'
   | 'spear' | 'ceratopsian' | 'rhino' | 'twin' | 'bovid' | 'antlers' | 'dome' | 'club' | 'spikes' | 'tusks' | 'lance' | 'forked';
 
 export type Weapon =
@@ -307,7 +308,8 @@ const BY_SPECIES: Record<string, Weapon> = {
   'heliobatis-radians': bite('pavement'),
   'onchopristis-numida': bash('lance'), // sawfish: the toothed rostrum
   'atlanticopristis-equatorialis': bash('lance'),
-  'cetorhinus-maximus': bash('sharktail'), // the basking shark filters its food
+  'cetorhinus-maximus': bash('sharktail'),
+  'alopias-vulpinus': bash('thresher'), // whips its huge tail to stun fish // the basking shark filters its food
   'leedsichthys-problematicus': bash('tailfin'),
   'limusaurus-inextricabilis': bite('beak'), // toothless as an adult
   'pelecanimimus-polyodon': bite('peg'), // over 200 tiny teeth

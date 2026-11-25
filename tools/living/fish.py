@@ -80,6 +80,11 @@ GENERA = [
       [('Length', 'Up to about 5 m'), ('IUCN status', 'Near Threatened')],
       ['tiger shark', 'galeocerdo', 'shark'],
       WARM_SEAS),
+    S('alopias-vulpinus', 'Alopias vulpinus', 'Common thresher shark', 'lamniformes', 'Temperate and tropical oceans worldwide',
+      'A shark whose scythe-shaped upper tail lobe is about as long as the rest of its body. It herds schools of fish such as sardines and mackerel, then whips its tail through them to stun them before eating the dazed fish. The largest of the three thresher sharks, it is caught by fisheries around the world.',
+      [('Length', 'Up to about 5.7 m, half of it tail'), ('IUCN status', 'Vulnerable')],
+      ['thresher shark', 'common thresher', 'alopias', 'thresher', 'shark'],
+      [sea(-180, -45, 180, 60)]),
     S('carcharhinus-leucas', 'Carcharhinus leucas', 'Bull shark', 'carcharhiniformes', 'Warm coasts, estuaries and rivers worldwide',
       'A stocky shark that can live in fresh water as well as the sea. Bull sharks have been found about 4,000 km up the Amazon in Peru, up the Mississippi as far as Illinois, and in Lake Nicaragua. Because it hunts in murky, shallow water near people, it causes many bites.',
       [('Length', 'Up to about 3.5 m'), ('IUCN status', 'Vulnerable')],
@@ -248,4 +253,4 @@ HISTORIC_CHANGED = {
     # Introduced to Spain, Italy and France from the 1970s.
     'silurus-glanis': {'without': [3, 4, 5]},
 }
-HISTORIC = {**{sid: 'same' for sid in ['carcharodon-carcharias', 'rhincodon-typus', 'cetorhinus-maximus', 'galeocerdo-cuvier', 'carcharhinus-leucas', 'sphyrna-mokarran', 'somniosus-microcephalus', 'mobula-birostris', 'latimeria-chalumnae', 'neoceratodus-forsteri', 'atractosteus-spatula', 'amia-calva', 'arapaima-gigas', 'clupea-harengus', 'carassius-auratus', 'gadus-morhua', 'thunnus-thynnus', 'xiphias-gladius', 'pygocentrus-nattereri', 'amphiprion-ocellaris', 'takifugu-rubripes', 'hippocampus-hippocampus', 'mola-mola', 'regalecus-glesne', 'anguilla-anguilla', 'electrophorus-electricus', 'melanocetus-johnsonii', 'esox-lucius', 'betta-splendens']}, **HISTORIC_CHANGED}
+HISTORIC = {**{sid: 'same' for sid in ['carcharodon-carcharias', 'rhincodon-typus', 'cetorhinus-maximus', 'alopias-vulpinus', 'galeocerdo-cuvier', 'carcharhinus-leucas', 'sphyrna-mokarran', 'somniosus-microcephalus', 'mobula-birostris', 'latimeria-chalumnae', 'neoceratodus-forsteri', 'atractosteus-spatula', 'amia-calva', 'arapaima-gigas', 'clupea-harengus', 'carassius-auratus', 'gadus-morhua', 'thunnus-thynnus', 'xiphias-gladius', 'pygocentrus-nattereri', 'amphiprion-ocellaris', 'takifugu-rubripes', 'hippocampus-hippocampus', 'mola-mola', 'regalecus-glesne', 'anguilla-anguilla', 'electrophorus-electricus', 'melanocetus-johnsonii', 'esox-lucius', 'betta-splendens']}, **HISTORIC_CHANGED}
