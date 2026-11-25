@@ -31,7 +31,9 @@ export type FrillSpec = {
   // fan: the 'triangular' frill of the papers: narrow where it meets the skull, widening in straight
   // lines to a broad back edge (Chasmosaurus, Diabloceratops, Machairoceratops). notch: a dip in
   // the middle of the back edge.
-  shape: 'round' | 'heart' | 'square' | 'flared' | 'fan';
+  // taper: widest at the skull, narrowing towards the back to the base of a pair of horns
+  // (Diabloceratops).
+  shape: 'round' | 'heart' | 'square' | 'flared' | 'fan' | 'taper';
   notch?: boolean;
   // A dip in the middle of the back edge, between two high points (where the main spikes rise):
   // how far each high point is from the middle (in t), how deep the dip is and how high the points
@@ -138,20 +140,24 @@ export const FRILLS: Record<string, FrillSpec> = {
   // Two long, straight spikes sticking up from the back of the frill.
   'einiosaurus-procurvicornis': { len: 0.5, width: 0.76, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.44, 0.56], len: [38, 38], bend: 4, width: 4 }] },
   'achelousaurus-horneri': { len: 0.52, width: 0.78, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.43, 0.57], len: [32, 32], bend: 6, width: 4 }] },
-  // A tall, rounded frill with a scalloped edge of small rounded bumps and a dip in the middle of its
-  // back edge; either side of the dip, a very long horn curving up, its tip turning a little outward
-  // ("devil horns").
+  // A frill widest at the skull, narrowing to the back, with large openings and small pointed spikes
+  // down its sides; from its two back corners, either side of a narrow dip, two very long horns
+  // rise in a V and sweep up like a lyre ("devil horns").
   'diabloceratops-eatoni': {
-    len: 0.6,
-    width: 0.66,
-    shape: 'square',
-    dip: { half: 0.035, depth: 0.1, peak: 0.04 },
-    holes: 0.45,
+    len: 0.62,
+    width: 0.74,
+    shape: 'taper',
+    // A narrow U between the horns, which rise from the two back corners.
+    dip: { half: 0.1, depth: 0.1, peak: 0.02 },
+    holes: 0.62,
     edge: [
-      { kind: 'bumps', n: 13, size: 3.2 },
-      { kind: 'spikes', at: [0.465, 0.535], len: [56, 56], bend: 14, width: 4.5, curved: true, dir: 4 },
+      // Small pointed spikes lining the sides.
+      { kind: 'spikes', at: [0.05, 0.12, 0.19, 0.26, 0.33, 0.67, 0.74, 0.81, 0.88, 0.95], len: [6, 7, 7, 7, 6, 6, 7, 7, 7, 6], width: 2.2 },
+      // The horns: out in a V from the back corners, then sweeping up like a lyre.
+      { kind: 'spikes', at: [0.4, 0.6], len: [58, 58], bend: -26, width: 3.8, curved: true, dir: 28 },
     ],
   },
+
 
   // A big pair of hooks curving out to the sides.
   'albertaceratops-nesmoi': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.4, 0.6], len: [30, 30], bend: 70, width: 4, curved: true }] },
@@ -229,18 +235,30 @@ function edgeAt(f: FrillSpec, t: number): { x: number; y: number; nx: number; ny
     return down - up;
   };
   const at = (u: number) => {
-    if (f.shape === 'fan') {
-      // Narrow base, straight sides widening to the back corners, then a straight back edge.
-      const pts: [number, number][] = [
-        [50 - W * 0.4, BASE],
-        [50 - W, BASE - L * 0.9],
-        [50, BASE - L],
-        [50 + W, BASE - L * 0.9],
-        [50 + W * 0.4, BASE],
-      ];
-      const seg = [0, 0.3, 0.5, 0.7, 1];
+    if (f.shape === 'fan' || f.shape === 'taper') {
+      // fan: narrow base, straight sides widening to the back corners, then a straight back edge.
+      // taper: wide base, sides narrowing to two back corners close together.
+      const pts: [number, number][] =
+        f.shape === 'fan'
+          ? [
+              [50 - W * 0.4, BASE],
+              [50 - W, BASE - L * 0.9],
+              [50, BASE - L],
+              [50 + W, BASE - L * 0.9],
+              [50 + W * 0.4, BASE],
+            ]
+          : [
+              [50 - W, BASE],
+              [50 - W * 0.9, BASE - L * 0.45],
+              [50 - W * 0.3, BASE - L],
+              [50, BASE - L],
+              [50 + W * 0.3, BASE - L],
+              [50 + W * 0.9, BASE - L * 0.45],
+              [50 + W, BASE],
+            ];
+      const seg = f.shape === 'fan' ? [0, 0.3, 0.5, 0.7, 1] : [0, 0.17, 0.4, 0.5, 0.6, 0.83, 1];
       let k = 0;
-      while (k < 3 && u > seg[k + 1]!) k++;
+      while (k < seg.length - 2 && u > seg[k + 1]!) k++;
       const v = (u - seg[k]!) / (seg[k + 1]! - seg[k]!);
       const [ax, ay] = pts[k]!;
       const [bx, by] = pts[k + 1]!;
