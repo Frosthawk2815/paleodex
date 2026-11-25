@@ -24,9 +24,17 @@ const shear = (x: number, wd: number, len: number, left: boolean) => {
   return `M${x - wd / 2} 0 L${x - wd / 2} ${a - 2} Q${x - wd / 2} ${a} ${x - wd / 2 + 2} ${a} L${x + wd / 2 - 2} ${b} Q${x + wd / 2} ${b} ${x + wd / 2} ${b - 2} L${x + wd / 2} 0 Z`;
 };
 
+// A triangular cheek tooth with small points (denticles) down both edges, like early whales'.
+const saw = (x: number, wd: number, len: number) => {
+  const p = [[-0.5, 0], [-0.4, 0.36], [-0.3, 0.3], [-0.22, 0.64], [-0.1, 0.58], [0, 1], [0.1, 0.58], [0.22, 0.64], [0.3, 0.3], [0.4, 0.36], [0.5, 0]];
+  return `M${p.map(([a, b]) => `${x + a! * wd} ${b! * len}`).join(' L')} Z`;
+};
+// A leaf-shaped plant-eater's tooth: broad, with a rounded point.
+const leaf = (x: number, wd: number, len: number) => `M${x - wd / 2} 0 Q${x - wd * 0.75} ${len * 0.6} ${x} ${len} Q${x + wd * 0.75} ${len * 0.6} ${x + wd / 2} 0 Z`;
+
 // One tooth on one side of the jaw: how far back from the front it sits (the middle of the card is
 // the front of the jaw), its width and length, its shape, and how far its tip leans outward.
-type Shape = 'cone' | 'thick' | 'chisel' | 'molar' | 'shear';
+type Shape = 'cone' | 'thick' | 'chisel' | 'molar' | 'shear' | 'saw' | 'leaf';
 type T = [back: number, width: number, length: number, shape?: Shape, lean?: number];
 // Both sides, mirrored about the middle.
 const both = (side: T[]) =>
@@ -34,13 +42,15 @@ const both = (side: T[]) =>
     [50 - off, 50 + off].map((x) => {
       const c = x < 50 ? -lean : lean;
       if (shape === 'shear') return shear(x, wd, len, x < 50);
+      if (shape === 'saw') return saw(x, wd, len);
+      if (shape === 'leaf') return leaf(x, wd, len);
       return shape === 'thick' ? crusher(x, wd, len, c) : shape === 'chisel' ? chisel(x, wd, len) : shape === 'molar' ? molar(x, wd, len) : tooth(x, wd, len, c);
     }),
   );
 
 // Each jaw's teeth from the front of the mouth (the middle) back along the jaw (to each side).
 // Upper and lower rows, each in a 100 × 70 box hanging from the top (the lower jaw is drawn flipped).
-const DENTITION: Record<Exclude<Jaw, 'beak' | 'blades'>, { upper: T[]; lower: T[]; back?: { upper: T[]; lower: T[] }; fill?: string }> = {
+const DENTITION: Record<Exclude<Jaw, 'beak' | 'blades' | 'toothless'>, { upper: T[]; lower: T[]; back?: { upper: T[]; lower: T[] }; fill?: string }> = {
   // Tyrannosaurs: small, D-shaped premaxillary teeth at the front, then huge, thick maxillary teeth,
   // biggest just behind the front and smaller further back.
   crusher: {
@@ -111,6 +121,63 @@ const DENTITION: Record<Exclude<Jaw, 'beak' | 'blades'>, { upper: T[]; lower: T[
     upper: [[4, 8, 44, 'thick'], [11, 3, 6], [15, 3, 6], [28, 17, 26, 'shear'], [40.5, 5, 6, 'molar'], [46.5, 4, 5, 'molar']],
     lower: [[4, 7, 40, 'thick'], [28, 17, 24, 'shear'], [41, 6, 8, 'molar'], [47, 4, 6, 'molar']],
   },
+  // Early whales (Basilosaurus, Dorudon, Ambulocetus): cone-shaped front teeth, then triangular
+  // cheek teeth with saw-like points down their edges.
+  archaeocete: {
+    upper: [[3, 4, 22], [9, 4, 25], [15, 4.5, 28], [21.5, 6, 34], [30, 9, 24, 'saw'], [39, 9, 22, 'saw'], [47, 7, 16, 'saw']],
+    lower: [[3, 4, 22], [9, 4, 25], [15, 4.5, 26], [21.5, 6, 30], [30, 9, 22, 'saw'], [39, 9, 20, 'saw'], [47, 7, 14, 'saw']],
+  },
+  // Sperm whales: big peg teeth in the lower jaw only; the upper jaw has sockets they fit into.
+  sperm: {
+    upper: [],
+    lower: [[4, 6.5, 30], [10, 6.5, 32], [16, 6.5, 32], [22, 6.5, 30], [28, 6, 28], [34, 6, 26], [40, 5.5, 22], [46, 5, 18]],
+  },
+  // Beaked whales: no working teeth except one pair of tusks in the lower jaw.
+  tusked: { upper: [], lower: [[6, 7, 24, 'thick']] },
+  // Lemurs, lorises and galagos: a toothcomb at the front of the lower jaw (six thin teeth lying
+  // forward, close together) behind which sits a canine-like premolar; above, small incisors with a
+  // gap between them, then a canine.
+  toothcomb: {
+    upper: [[5, 3, 8], [9, 3, 8], [16, 6, 30, 'thick'], [25, 5, 10], [32, 6, 12], [40, 7, 8, 'molar'], [47, 6, 7, 'molar']],
+    lower: [[1.5, 2.4, 30], [4.5, 2.4, 30], [7.5, 2.6, 28], [14, 5, 20], [24, 5, 10], [33, 7, 8, 'molar'], [41, 7, 8, 'molar'], [48, 5, 7, 'molar']],
+  },
+  // Humans and their extinct relatives: flat, spade-shaped incisors, small canines barely longer
+  // than the other teeth, then premolars and broad, flat-topped molars.
+  hominin: {
+    upper: [[3, 6, 16, 'chisel'], [9, 5, 14, 'chisel'], [15, 5.5, 16], [21.5, 6, 12, 'molar'], [28, 6, 12, 'molar'], [35.5, 8, 11, 'molar'], [43.5, 8, 11, 'molar']],
+    lower: [[2.5, 5, 14, 'chisel'], [7.5, 5, 14, 'chisel'], [13, 5, 15], [19.5, 6, 12, 'molar'], [26, 6, 12, 'molar'], [33.5, 8, 11, 'molar'], [42, 8, 11, 'molar']],
+  },
+  // Paranthropus ("Nutcracker Man") and Gigantopithecus: tiny front teeth and blunt canines, with
+  // huge, flat grinding premolars and molars.
+  robust: {
+    upper: [[3, 5, 10, 'chisel'], [8.5, 4.5, 9, 'chisel'], [13.5, 4.5, 10], [21, 8, 12, 'molar'], [29.5, 9, 12, 'molar'], [39.5, 11, 12, 'molar']],
+    lower: [[2.5, 4.5, 9, 'chisel'], [7, 4.5, 9, 'chisel'], [12, 4.5, 10], [19.5, 8, 12, 'molar'], [28, 9, 12, 'molar'], [38, 11, 12, 'molar']],
+  },
+  // Crushing tooth plates (lungfish, chimaeras, placodonts, rays that eat shellfish): broad, flat
+  // and blunt.
+  pavement: {
+    upper: [[5, 9, 8, 'molar'], [15, 9, 9, 'molar'], [25, 9.5, 10, 'molar'], [35, 9, 9, 'molar'], [45, 8, 8, 'molar']],
+    lower: [[5, 9, 8, 'molar'], [15, 9, 9, 'molar'], [25, 9.5, 10, 'molar'], [35, 9, 9, 'molar'], [45, 8, 8, 'molar']],
+  },
+  // Helicoprion: a spiral whorl of teeth in the middle of the lower jaw, and small crushing teeth
+  // above.
+  whorl: {
+    upper: [[12, 7, 6, 'molar'], [22, 7, 6, 'molar'], [32, 7, 6, 'molar'], [42, 6, 5, 'molar']],
+    lower: [[0, 16, 50], [0, 12, 36], [0, 8, 22]],
+  },
+  // Pterosaurs that strained food (Ctenochasma, Pterodaustro) and deep-sea anglerfish: many long,
+  // thin needle teeth.
+  needles: {
+    upper: range(1.5, 48, 2.6).map((o) => [o, 1.4, 26 - o * 0.2] as T),
+    lower: range(2.8, 48, 2.6).map((o) => [o, 1.4, 24 - o * 0.2] as T),
+  },
+  // Frogs: a row of tiny teeth in the upper jaw only (the lower jaw is toothless).
+  frog: { upper: range(3.5, 46, 3.5).map((o) => [o, 2, 5] as T), lower: [] },
+  // Iguanas and other plant-eating lizards: rows of small leaf-shaped teeth.
+  leaf: {
+    upper: range(4, 46, 6).map((o) => [o, 5, 12, 'leaf'] as T),
+    lower: range(4, 46, 6).map((o) => [o, 5, 12, 'leaf'] as T),
+  },
   // Rodents and rabbits: two long chisel incisors, a wide toothless gap, then flat grinding molars
   // at the back.
   incisors: {
@@ -128,6 +195,9 @@ export function teeth(jaw: Jaw, lower: boolean): { paths: string[]; fill: string
       paths: [lower ? 'M0 0 L100 0 L100 8 Q66 12 50 44 Q34 12 0 8 Z' : 'M0 0 L100 0 L100 10 Q70 14 54 60 L50 68 L46 58 Q32 14 0 10 Z'],
       fill: lower ? '#4A433C' : KERATIN,
     };
+  if (jaw === 'toothless')
+    // No teeth in the mouth at all (carp and goldfish, herring, sturgeons, seahorses): soft lips.
+    return { paths: [lower ? 'M0 0 L100 0 L100 5 Q50 14 0 5 Z' : 'M0 0 L100 0 L100 6 Q50 16 0 6 Z'], fill: '#C98F86' };
   if (jaw === 'blades')
     // Placoderms had no teeth: bony jaw plates, with a pair of fang-like points meeting at the front
     // and a shearing edge with a second point further back.

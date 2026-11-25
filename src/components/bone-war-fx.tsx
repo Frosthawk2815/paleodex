@@ -381,6 +381,16 @@ function Stomp({ foot, w, h, v }: { foot: Foot; w: number; h: number; v: Animate
 function basher(shape: Bash): ReactNode {
   const horn = '#6B5E4E';
   switch (shape) {
+    case 'spear':
+      // A wooden shaft with a knapped stone point bound on with sinew.
+      return (
+        <G stroke={LINE} strokeWidth={1}>
+          <Path d="M47.5 100 L47.5 30 L52.5 30 L52.5 100 Z" fill="#8B6A43" />
+          <Path d="M43 34 L50 2 L57 34 L50 40 Z" fill="#8E8A84" />
+          <Path d="M46 30 L50 18 M54 30 L50 18 M47 24 L53 24" stroke="#5E5A55" strokeWidth={0.8} />
+          <Path d="M47 36 L53 39 M47 40 L53 43 M47 44 L53 47" stroke="#C9B48A" strokeWidth={1.4} />
+        </G>
+      );
     case 'ceratopsian':
       return (
         <G>
