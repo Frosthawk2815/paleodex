@@ -17,15 +17,23 @@ const range = (from: number, to: number, step: number) => Array.from({ length: M
 const chisel = (x: number, wd: number, len: number) => `M${x - wd / 2} 0 L${x - wd / 2} ${len - 2} Q${x} ${len + 3} ${x + wd / 2} ${len - 2} L${x + wd / 2} 0 Z`;
 const molar = (x: number, wd: number, len: number) => `M${x - wd / 2} 0 L${x - wd / 2} ${len - 1.5} Q${x - wd / 4} ${len + 1} ${x} ${len - 1} Q${x + wd / 4} ${len + 1} ${x + wd / 2} ${len - 1.5} L${x + wd / 2} 0 Z`;
 
+// A long, flat slicing blade (like Thylacoleo's premolars), its cutting edge sloping down towards
+// the back of the jaw.
+const shear = (x: number, wd: number, len: number, left: boolean) => {
+  const [a, b] = left ? [len, len * 0.55] : [len * 0.55, len];
+  return `M${x - wd / 2} 0 L${x - wd / 2} ${a - 2} Q${x - wd / 2} ${a} ${x - wd / 2 + 2} ${a} L${x + wd / 2 - 2} ${b} Q${x + wd / 2} ${b} ${x + wd / 2} ${b - 2} L${x + wd / 2} 0 Z`;
+};
+
 // One tooth on one side of the jaw: how far back from the front it sits (the middle of the card is
 // the front of the jaw), its width and length, its shape, and how far its tip leans outward.
-type Shape = 'cone' | 'thick' | 'chisel' | 'molar';
+type Shape = 'cone' | 'thick' | 'chisel' | 'molar' | 'shear';
 type T = [back: number, width: number, length: number, shape?: Shape, lean?: number];
 // Both sides, mirrored about the middle.
 const both = (side: T[]) =>
   side.flatMap(([off, wd, len, shape = 'cone', lean = 0]) =>
     [50 - off, 50 + off].map((x) => {
       const c = x < 50 ? -lean : lean;
+      if (shape === 'shear') return shear(x, wd, len, x < 50);
       return shape === 'thick' ? crusher(x, wd, len, c) : shape === 'chisel' ? chisel(x, wd, len) : shape === 'molar' ? molar(x, wd, len) : tooth(x, wd, len, c);
     }),
   );
@@ -95,6 +103,13 @@ const DENTITION: Record<Exclude<Jaw, 'beak' | 'blades'>, { upper: T[]; lower: T[
     upper: [[11, 6, 54, 'cone', 2]],
     lower: range(5, 45, 6).map((o) => [o, 3.5, 11, 'cone', 1] as T),
     fill: '#FFFDF6',
+  },
+  // Thylacoleo, the marsupial lion: no real canines. Big stabbing incisors at the front (the lower
+  // ones long and jutting forward), tiny teeth and a gap, then each side's huge slicing premolar
+  // blade, and only small molars behind it.
+  thylacoleo: {
+    upper: [[4, 8, 44, 'thick'], [11, 3, 6], [15, 3, 6], [28, 17, 26, 'shear'], [40.5, 5, 6, 'molar'], [46.5, 4, 5, 'molar']],
+    lower: [[4, 7, 40, 'thick'], [28, 17, 24, 'shear'], [41, 6, 8, 'molar'], [47, 4, 6, 'molar']],
   },
   // Rodents and rabbits: two long chisel incisors, a wide toothless gap, then flat grinding molars
   // at the back.

@@ -8,7 +8,7 @@ import { cladePath } from '@/lib/life';
 import { cardFor } from '@/lib/bone-war';
 
 // Teeth (and beaks) for a bite.
-export type Jaw = 'crusher' | 'serrated' | 'notched' | 'conical' | 'rosette' | 'peg' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
+export type Jaw = 'thylacoleo' | 'crusher' | 'serrated' | 'notched' | 'conical' | 'rosette' | 'peg' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
 // Footprints for a stomp.
 export type Foot = 'sauropod' | 'elephant' | 'ornithopod' | 'bird' | 'ostrich' | 'rhino' | 'horse' | 'cloven' | 'wombat' | 'kangaroo';
 // Weapons for a bash, rising from below.
@@ -117,6 +117,7 @@ const BY_CLADE: Record<string, Weapon> = {
   mammalia: bite('fangs'),
   machairodontinae: bite('sabre'),
   nimravidae: bite('sabre'),
+  thylacoleonidae: bite('thylacoleo'),
   odobenidae: bash('tusks'),
   cetacea: bite('peg'),
   mysticeti: bash('fluke'),
