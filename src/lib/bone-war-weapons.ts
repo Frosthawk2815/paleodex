@@ -8,7 +8,7 @@ import { cladePath } from '@/lib/life';
 import { cardFor } from '@/lib/bone-war';
 
 // Teeth (and beaks) for a bite.
-export type Jaw = 'crusher' | 'serrated' | 'conical' | 'rosette' | 'peg' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
+export type Jaw = 'crusher' | 'serrated' | 'notched' | 'conical' | 'rosette' | 'peg' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
 // Footprints for a stomp.
 export type Foot = 'sauropod' | 'elephant' | 'ornithopod' | 'bird' | 'ostrich' | 'rhino' | 'horse' | 'cloven' | 'wombat' | 'kangaroo';
 // Weapons for a bash, rising from below.
@@ -35,6 +35,9 @@ const BY_CLADE: Record<string, Weapon> = {
   theropoda: bite('serrated'),
   tyrannosauridae: bite('crusher'), // thick, bone-crushing teeth
   spinosauridae: bite('rosette'),
+  // A toothless gap (the subnarial notch) between the snout tip and the upper jaw.
+  dilophosauridae: bite('notched'),
+  coelophysidae: bite('notched'),
   // Raptors held prey down with the sickle claw but struck with the three claws on each arm.
   dromaeosauridae: slash(3),
   alvarezsauridae: slash(1), // the one big claw on each arm

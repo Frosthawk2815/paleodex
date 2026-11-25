@@ -45,6 +45,13 @@ const DENTITION: Record<Exclude<Jaw, 'beak' | 'blades'>, { upper: T[]; lower: T[
     upper: [[3, 4.5, 16, 'cone', 1], [8, 4.5, 19, 'cone', 1], [14, 6.5, 40, 'cone', 3], [22, 6.5, 46, 'cone', 3], [30, 6.5, 42, 'cone', 3], [38, 6, 34, 'cone', 2], [45, 5, 26, 'cone', 2]],
     lower: [[4, 5, 22, 'cone', 1], [11, 6, 32, 'cone', 2], [19, 6.5, 40, 'cone', 3], [27, 6.5, 38, 'cone', 3], [35, 6, 32, 'cone', 2], [43, 5, 24, 'cone', 2]],
   },
+  // Dilophosaurus, Coelophysis and their kin: like the other theropods, but with a toothless gap in
+  // the upper row (the subnarial notch) between the snout tip and the main upper jaw, where an
+  // enlarged lower tooth fits.
+  notched: {
+    upper: [[3, 4.5, 18, 'cone', 1], [8, 4.5, 21, 'cone', 1], [12.5, 4.5, 18, 'cone', 1], [25, 6, 40, 'cone', 3], [32, 6, 44, 'cone', 3], [39, 5.5, 36, 'cone', 2], [46, 5, 26, 'cone', 2]],
+    lower: [[4, 5, 20, 'cone', 1], [10, 5, 24, 'cone', 1], [18.5, 6.5, 38, 'cone', 2], [26, 5.5, 30, 'cone', 2], [33, 5.5, 30, 'cone', 2], [40, 5, 26, 'cone', 2], [46.5, 4.5, 20, 'cone', 1]],
+  },
   // Crocodiles and their kin: uneven cones, with an enlarged fourth tooth in the lower jaw that fits
   // a notch behind the snout tip, and an enlarged fifth upper tooth.
   conical: {
