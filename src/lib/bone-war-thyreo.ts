@@ -139,6 +139,8 @@ export type AnkySpec = {
   shoulder?: { n: number; len: number; kind: 'long' | 'forked' | 'blade' };
   // A shield of small fused osteoderms over the hips.
   hipShield?: boolean;
+  // Big spikes over the hips (pairs) and their length.
+  hipSpikes?: { n: number; len: number };
   // The end of the tail.
   tail: 'club' | 'spikes' | 'macuahuitl' | 'plain';
 };
@@ -200,8 +202,10 @@ export const ANKYS: Record<string, AnkySpec> = {
   'vectipelta-barretti': { ...NODO, shoulder: { n: 3, len: 16, kind: 'blade' }, tail: 'spikes' },
   'dracopelta-zbyszewskii': NODO,
   'anoplosaurus-curtonotus': NODO,
-  // Spikes fused to its ribs, sticking straight out: unlike any other animal.
-  'spicomellus-afer': { ...NODO, shoulder: undefined, flank: 8, flankLen: 18 },
+  // The oldest ankylosaur, and the spikiest: a bony neck collar with two pairs of huge spikes (the
+  // longest 87 cm), spikes fused to its ribs, blades along its sides, big hip spikes, and fused tail
+  // bones (a "handle") suggesting a tail club (Maidment et al. 2025).
+  'spicomellus-afer': { ...NODO, rings: 1, ringPlates: 4, shoulder: { n: 2, len: 34, kind: 'long' }, flank: 8, flankLen: 14, hipSpikes: { n: 2, len: 20 }, tail: 'club' },
 
   // ---- Parankylosaurs ----
   'stegouros-elengassen': { body: 'narrow', rings: 1, ringPlates: 2, across: 3, keel: 'low', flank: 3, flankLen: 4, tail: 'macuahuitl' },
@@ -263,6 +267,14 @@ export function ankyShapes(s: AnkySpec): Shape[] {
     out.push({ d: ell(50, 88, rx * 0.8, 13), fill: '#8A7454' });
     for (let r = 0; r < 4; r++) for (let c = 0; c < 7; c++) out.push({ d: ell(50 - rx * 0.62 + c * rx * 0.2 + (r % 2 ? rx * 0.1 : 0), 79 + r * 6, 1.8, 1.8), fill: SPIKE });
   }
+  // Big spikes over the hips.
+  if (s.hipSpikes)
+    for (let k = 0; k < s.hipSpikes.n; k++)
+      for (const side of [-1, 1]) {
+        const y = 86 + k * 8;
+        const x = 50 + side * (rx * 0.5 + k * 3);
+        out.push({ d: `M${x} ${y - 3} L${x + side * s.hipSpikes.len} ${y - s.hipSpikes.len * 0.5} L${x} ${y + 3} Z`, fill: SPIKE });
+      }
   // Spikes along the sides.
   for (let i = 0; i < s.flank; i++) {
     const y = 44 + (i * 56) / Math.max(1, s.flank);

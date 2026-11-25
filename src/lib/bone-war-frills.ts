@@ -25,9 +25,10 @@ export type FrillSpec = {
   // round: a rounded back edge; heart: rounded with a notch in the middle of the back edge;
   // square: squared-off corners and a flat back edge; flared: narrow at the base, flaring wide
   // at the back (protoceratopsids).
-  // triangle: rising to a point at the back (Diabloceratops, Machairoceratops), with notch: a dip
-  // in the middle of the back edge.
-  shape: 'round' | 'heart' | 'square' | 'flared' | 'triangle';
+  // fan: the 'triangular' frill of the papers: narrow where it meets the skull, widening in straight
+  // lines to a broad back edge (Chasmosaurus, Diabloceratops, Machairoceratops). notch: a dip in
+  // the middle of the back edge.
+  shape: 'round' | 'heart' | 'square' | 'flared' | 'fan';
   notch?: boolean;
   // Size of the two openings (0 for a solid frill).
   holes: number;
@@ -44,8 +45,9 @@ export const FRILLS: Record<string, FrillSpec> = {
   // The longest frill of all: a huge, rounded sheet of bone with two big openings and small
   // triangular points round its edge.
   'torosaurus-latus': { len: 0.9, width: 0.84, shape: 'round', holes: 1, edge: [{ kind: 'points', n: 16, len: 5 }] },
-  // Very long and broad, with enormous openings and a notch in the middle of the back edge.
-  'chasmosaurus-belli': { len: 0.86, width: 0.92, shape: 'heart', holes: 1.15, edge: [{ kind: 'points', n: 12, len: 4 }] },
+  // Very long, widening to the back into a triangular shield, with a V-notch in the back edge and
+  // enormous openings.
+  'chasmosaurus-belli': { len: 0.86, width: 0.95, shape: 'fan', notch: true, holes: 1.15, edge: [{ kind: 'points', n: 12, len: 4 }] },
   // Long and slightly narrower, notched at the back, with larger points.
   'pentaceratops-sternbergii': { len: 0.9, width: 0.8, shape: 'heart', holes: 0.9, edge: [{ kind: 'points', n: 12, len: 8 }] },
   // Broad, squarish and shorter.
@@ -129,15 +131,15 @@ export const FRILLS: Record<string, FrillSpec> = {
   // Two long, straight spikes sticking up from the back of the frill.
   'einiosaurus-procurvicornis': { len: 0.5, width: 0.76, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.44, 0.56], len: [38, 38], bend: 4, width: 4 }] },
   'achelousaurus-horneri': { len: 0.52, width: 0.78, shape: 'round', holes: 0.5, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.43, 0.57], len: [32, 32], bend: 6, width: 4 }] },
-  // A triangular frill with a dip in the middle of its back edge, and either side of it a long
-  // spike curving up and out ("devil horns").
+  // A triangular frill, widening to the back, with a dip in the middle of its back edge, and either
+  // side of it a long spike curving up and out ("devil horns").
   'diabloceratops-eatoni': {
     len: 0.54,
     width: 0.8,
-    shape: 'triangle',
+    shape: 'fan',
     notch: true,
     holes: 0.45,
-    edge: [{ kind: 'points', n: 6, len: 4 }, { kind: 'spikes', at: [0.455, 0.545], len: [40, 40], bend: -8, width: 4, curved: true }],
+    edge: [{ kind: 'points', n: 6, len: 4 }, { kind: 'spikes', at: [0.42, 0.58], len: [40, 40], bend: 28, width: 4, curved: true }],
   },
   // A big pair of hooks curving out to the sides.
   'albertaceratops-nesmoi': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.4, 0.6], len: [30, 30], bend: 70, width: 4, curved: true }] },
@@ -167,8 +169,9 @@ export const FRILLS: Record<string, FrillSpec> = {
   // Hooks curling forward all along the back edge.
   'wendiceratops-pinhornensis': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'hooks', at: [0.24, 0.34, 0.44, 0.56, 0.66, 0.76], len: 18 }] },
   'sinoceratops-zhuchengensis': { len: 0.5, width: 0.8, shape: 'round', holes: 0.5, edge: [{ kind: 'hooks', at: [0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88], len: 14 }] },
-  // Two long spikes from the back of the frill, curving forward and down like sabres.
-  'machairoceratops-cronusi': { len: 0.54, width: 0.8, shape: 'triangle', notch: true, holes: 0.45, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'hooks', at: [0.42, 0.58], len: 30 }] },
+  // A triangular frill with a dip in the back edge, and either side of it a long spike curving
+  // forward and up like a sabre; no other points round its edge.
+  'machairoceratops-cronusi': { len: 0.54, width: 0.8, shape: 'fan', notch: true, holes: 0.45, edge: [{ kind: 'spikes', at: [0.42, 0.58], len: [32, 32], bend: 6, width: 4.5, curved: true }] },
   // A broad frill with a plain, scalloped edge: no big spikes.
   'nasutoceratops-titusi': { len: 0.54, width: 0.82, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 9, len: 7 }] },
   // A young animal (Avaceratops), and a dubious name (Monoclonius): simple edges.
@@ -200,6 +203,25 @@ function edgeAt(f: FrillSpec, t: number): { x: number; y: number; nx: number; ny
   const W = 46 * f.width;
   const L = 124 * f.len;
   const at = (u: number) => {
+    if (f.shape === 'fan') {
+      // Narrow base, straight sides widening to the back corners, then a straight back edge.
+      const pts: [number, number][] = [
+        [50 - W * 0.4, BASE],
+        [50 - W, BASE - L * 0.9],
+        [50, BASE - L],
+        [50 + W, BASE - L * 0.9],
+        [50 + W * 0.4, BASE],
+      ];
+      const seg = [0, 0.3, 0.5, 0.7, 1];
+      let k = 0;
+      while (k < 3 && u > seg[k + 1]!) k++;
+      const v = (u - seg[k]!) / (seg[k + 1]! - seg[k]!);
+      const [ax, ay] = pts[k]!;
+      const [bx, by] = pts[k + 1]!;
+      let y = ay + (by - ay) * v;
+      if (f.notch) y += L * 0.14 * Math.exp(-(((u - 0.5) / 0.06) ** 2));
+      return [ax + (bx - ax) * v, y] as const;
+    }
     const a = Math.PI + u * Math.PI; // 180° (left) over the top to 360° (right)
     let c = Math.cos(a);
     let s = Math.sin(a); // negative: upward
@@ -210,7 +232,6 @@ function edgeAt(f: FrillSpec, t: number): { x: number; y: number; nx: number; ny
     let x = 50 + W * c;
     let y = BASE + L * s;
     if (f.shape === 'flared') x = 50 + W * c * (0.45 + 0.55 * Math.abs(s) ** 1.6);
-    if (f.shape === 'triangle') y = BASE - L * Math.max(0, 1 - Math.abs(c)) ** 0.85 * Math.abs(s) ** 0.3;
     if (f.shape === 'heart' || f.notch) y += L * (f.notch ? 0.12 : 0.16) * Math.exp(-(((u - 0.5) / 0.06) ** 2));
     return [x, y] as const;
   };
