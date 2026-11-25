@@ -8,7 +8,7 @@ import { cladePath } from '@/lib/life';
 import { cardFor } from '@/lib/bone-war';
 
 // Teeth (and beaks) for a bite.
-export type Jaw = 'crusher' | 'serrated' | 'conical' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
+export type Jaw = 'crusher' | 'serrated' | 'conical' | 'rosette' | 'peg' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
 // Footprints for a stomp.
 export type Foot = 'sauropod' | 'elephant' | 'ornithopod' | 'bird' | 'ostrich' | 'rhino' | 'horse' | 'cloven' | 'wombat' | 'kangaroo';
 // Weapons for a bash, rising from below.
@@ -34,7 +34,7 @@ const BY_CLADE: Record<string, Weapon> = {
   // Dinosaurs
   theropoda: bite('serrated'),
   tyrannosauridae: bite('crusher'), // thick, bone-crushing teeth
-  spinosauridae: bite('conical'),
+  spinosauridae: bite('rosette'),
   // Raptors held prey down with the sickle claw but struck with the three claws on each arm.
   dromaeosauridae: slash(3),
   alvarezsauridae: slash(1), // the one big claw on each arm
@@ -89,16 +89,16 @@ const BY_CLADE: Record<string, Weapon> = {
   ornithosuchidae: bite('serrated'),
   poposauroidea: bite('beak'),
   aetosauria: bash('spikes'),
-  mosasauridae: bite('conical'),
-  sauropterygia: bite('conical'),
-  ichthyosauria: bite('conical'),
+  mosasauridae: bite('peg'),
+  sauropterygia: bite('rosette'),
+  ichthyosauria: bite('peg'),
   thalattosauria: bite('conical'),
   testudines: bite('beak'),
   squamata: bite('conical'),
   varanidae: bite('serrated'),
   serpentes: bite('venom'),
-  boidae: bite('conical'), // constrictors: rows of hooked teeth, no fangs
-  pythonidae: bite('conical'),
+  boidae: bite('peg'), // constrictors: rows of hooked teeth, no fangs
+  pythonidae: bite('peg'),
   pareiasauria: bash('dome'),
   rhynchosauria: bite('beak'),
   // Synapsids
@@ -115,7 +115,7 @@ const BY_CLADE: Record<string, Weapon> = {
   machairodontinae: bite('sabre'),
   nimravidae: bite('sabre'),
   odobenidae: bash('tusks'),
-  cetacea: bite('conical'),
+  cetacea: bite('peg'),
   mysticeti: bash('fluke'),
   sirenia: bash('fluke'),
   proboscidea: stomp('elephant'),

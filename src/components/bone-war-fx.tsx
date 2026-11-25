@@ -7,6 +7,7 @@ import { type ReactNode, useEffect, useState } from 'react';
 import { Animated, Easing, Platform, StyleSheet, View } from 'react-native';
 import Svg, { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
 
+import { teeth } from '@/lib/bone-war-teeth';
 import type { Bash, Foot, Jaw, Weapon } from '@/lib/bone-war-weapons';
 import type { EyeColours } from '@/lib/profile';
 
@@ -165,45 +166,6 @@ export function Splash({ w, h, big = false }: { w: number; h: number; big?: bool
 }
 
 // ---- Attacks ----
-
-// One tooth hanging from the jaw line at the top: centre x, base width, length, and how far the tip curves.
-const tooth = (x: number, wd: number, len: number, curve = 0) => `M${x - wd / 2} 0 Q${x + curve - wd * 0.1} ${len * 0.6} ${x + curve} ${len} Q${x + curve * 0.4 + wd * 0.2} ${len * 0.5} ${x + wd / 2} 0 Z`;
-// A tyrannosaur tooth (and, longer, a sabre): thick and swollen at the base like a banana, narrowing to a sharp,
-// slightly backward-curving point.
-const crusher = (x: number, wd: number, len: number, curve: number) =>
-  `M${x - wd / 2} 0 C${x - wd * 0.62} ${len * 0.35} ${x - wd * 0.3} ${len * 0.75} ${x + curve} ${len} C${x + wd * 0.42} ${len * 0.7} ${x + wd * 0.62} ${len * 0.3} ${x + wd / 2} 0 Z`;
-const row = (xs: number[], wd: number, len: number | ((i: number) => number), curve = 0) => xs.map((x, i) => tooth(x, wd, typeof len === 'number' ? len : len(i), curve));
-const range = (from: number, to: number, step: number) => Array.from({ length: Math.floor((to - from) / step) + 1 }, (_, i) => from + i * step);
-
-// The teeth of one jaw, in a 100 × 70 box, hanging from the top (the lower jaw is drawn flipped).
-function teeth(jaw: Jaw, lower: boolean): { paths: string[]; fill: string; back?: string[] } {
-  switch (jaw) {
-    case 'crusher':
-      // Tyrannosaurs: thick, banana-shaped teeth with sharp points, for crushing bone.
-      return { paths: range(10, 90, 16).map((x, i) => crusher(x, 14, [36, 48, 56, 50, 42, 34][i] ?? 34, lower ? -3 : 3)), fill: IVORY };
-    case 'serrated':
-      return { paths: row(range(9, 93, 12), 10, (i) => [30, 40, 50, 54, 46, 40, 34, 28][i] ?? 30, lower ? -5 : 5), fill: IVORY };
-    case 'conical':
-      return { paths: row(range(6, 94, 8), 7, (i) => 24 + ((i * 7) % 3) * 5), fill: IVORY };
-    case 'shark':
-      return { paths: row(range(8, 92, 12), 12, 34), back: row(range(14, 86, 12), 9, 20), fill: '#FBF8EE' };
-    case 'fangs':
-      return { paths: [...row([8, 14, 86, 92], 6, 12), ...row([38, 46, 54, 62], 7, 14), ...row([25, 75], 12, 46, lower ? -3 : 3)], fill: IVORY };
-    case 'sabre':
-      return lower ? { paths: row(range(20, 80, 8), 6, 12), fill: IVORY } : { paths: [...row(range(37.5, 62.5, 5), 4.6, 10), crusher(27, 15, 68, -3), crusher(73, 15, 68, 3)], fill: IVORY };
-    case 'venom':
-      return lower ? { paths: [], fill: IVORY } : { paths: row([38, 62], 7, 52, 4), fill: '#FFFDF6' };
-    case 'incisors':
-      return { paths: [`M39 0 L39 36 Q44 42 49 36 L49 0 Z`, `M51 0 L51 36 Q56 42 61 36 L61 0 Z`], fill: lower ? '#F2E2B0' : '#F0D27A' };
-    case 'blades':
-      return { paths: [lower ? 'M0 10 L18 30 L34 18 L50 46 L66 18 L82 30 L100 10 Z' : 'M0 10 L20 40 L36 22 L50 58 L64 22 L80 40 L100 10 Z'], fill: '#D8CDB2' };
-    case 'beak':
-      return {
-        paths: [lower ? 'M0 0 L100 0 L100 8 Q66 12 50 44 Q34 12 0 8 Z' : 'M0 0 L100 0 L100 10 Q70 14 54 60 L50 68 L46 58 Q32 14 0 10 Z'],
-        fill: lower ? '#4A433C' : KERATIN,
-      };
-  }
-}
 
 function Jaws({ jaw, w, h, v }: { jaw: Jaw; w: number; h: number; v: Animated.Value }) {
   const half = (lower: boolean) => {
