@@ -33,6 +33,10 @@ export type FrillSpec = {
   // the middle of the back edge.
   shape: 'round' | 'heart' | 'square' | 'flared' | 'fan';
   notch?: boolean;
+  // A dip in the middle of the back edge, between two high points (where the main spikes rise):
+  // how far each high point is from the middle (in t), how deep the dip is and how high the points
+  // rise (both as a share of the frill's length).
+  dip?: { half: number; depth: number; peak: number };
   // Size of the two openings (0 for a solid frill).
   holes: number;
   edge: Edge[];
@@ -141,11 +145,11 @@ export const FRILLS: Record<string, FrillSpec> = {
     len: 0.6,
     width: 0.66,
     shape: 'square',
-    notch: true,
+    dip: { half: 0.035, depth: 0.1, peak: 0.04 },
     holes: 0.45,
     edge: [
       { kind: 'bumps', n: 13, size: 3.2 },
-      { kind: 'spikes', at: [0.455, 0.545], len: [56, 56], bend: 14, width: 4.5, curved: true, dir: 4 },
+      { kind: 'spikes', at: [0.465, 0.535], len: [56, 56], bend: 14, width: 4.5, curved: true, dir: 4 },
     ],
   },
 
@@ -153,19 +157,24 @@ export const FRILLS: Record<string, FrillSpec> = {
   'albertaceratops-nesmoi': { len: 0.52, width: 0.8, shape: 'round', holes: 0.55, edge: [{ kind: 'points', n: 8, len: 4 }, { kind: 'spikes', at: [0.4, 0.6], len: [30, 30], bend: 70, width: 4, curved: true }] },
   // The biggest frill ornaments of any centrosaurine: the second pair of points from the middle
   // grew into huge blades that curve out sideways in the plane of the frill, and the two sides
-  // don't match (hence "rangiformis", like a reindeer's uneven antlers). Small points between them;
-  // no nose horn. (Some researchers think it may be a mature Medusaceratops.)
+  // don't match (hence "rangiformis", like a reindeer's uneven antlers). They rise from the high
+  // points either side of a dip in the frill's back edge, which holds small, uneven spikes. No nose
+  // horn. (Some researchers think it may be a mature Medusaceratops.)
   'lokiceratops-rangiformis': {
     len: 0.54,
     width: 0.8,
     shape: 'round',
     holes: 0.55,
+    dip: { half: 0.07, depth: 0.12, peak: 0.05 },
     edge: [
       { kind: 'points', n: 8, len: 4 },
-      { kind: 'spikes', at: [0.47, 0.53], len: [9, 7], width: 2.5 },
-      { kind: 'spikes', at: [0.41, 0.59], len: [50, 42], bend: [54, 40], width: 7, curved: true },
+      // At the high points either side: the huge curved blades, unequal.
+      { kind: 'spikes', at: [0.425, 0.575], len: [50, 42], bend: [32, 20], width: 5, curved: true, dir: 50 },
+      // In the dip: small, uneven spikes.
+      { kind: 'spikes', at: [0.475, 0.52], len: [20, 13], bend: [-10, 18], width: 2.6, dir: 0 },
     ],
   },
+
   // A crown of short spikes clustered at the top of the frill.
   'coronosaurus-brinkmani': {
     len: 0.5,
@@ -210,6 +219,15 @@ const BASE = 132;
 function edgeAt(f: FrillSpec, t: number): { x: number; y: number; nx: number; ny: number } {
   const W = 46 * f.width;
   const L = 124 * f.len;
+  // The dip and its two high points, if the frill has them.
+  const dipAt = (u: number) => {
+    if (!f.dip) return 0;
+    const { half, depth, peak } = f.dip;
+    const d = Math.abs(u - 0.5);
+    const down = d < half ? L * depth * (1 - (d / half) ** 1.6) : 0;
+    const up = L * peak * Math.exp(-(((d - half) / (half * 0.7)) ** 2));
+    return down - up;
+  };
   const at = (u: number) => {
     if (f.shape === 'fan') {
       // Narrow base, straight sides widening to the back corners, then a straight back edge.
@@ -228,7 +246,7 @@ function edgeAt(f: FrillSpec, t: number): { x: number; y: number; nx: number; ny
       const [bx, by] = pts[k + 1]!;
       let y = ay + (by - ay) * v;
       if (f.notch) y += L * 0.14 * Math.exp(-(((u - 0.5) / 0.06) ** 2));
-      return [ax + (bx - ax) * v, y] as const;
+      return [ax + (bx - ax) * v, y + dipAt(u)] as const;
     }
     const a = Math.PI + u * Math.PI; // 180° (left) over the top to 360° (right)
     let c = Math.cos(a);
@@ -241,6 +259,7 @@ function edgeAt(f: FrillSpec, t: number): { x: number; y: number; nx: number; ny
     let y = BASE + L * s;
     if (f.shape === 'flared') x = 50 + W * c * (0.45 + 0.55 * Math.abs(s) ** 1.6);
     if (f.shape === 'heart' || f.notch) y += L * (f.notch ? 0.12 : 0.16) * Math.exp(-(((u - 0.5) / (f.shape === 'square' ? 0.03 : 0.06)) ** 2));
+    y += dipAt(u);
     return [x, y] as const;
   };
   const [x, y] = at(t);
@@ -311,7 +330,7 @@ export function frillShapes(f: FrillSpec): FrillShapes {
         // Rooted inside the frill and drawn behind it, so the frill's edge covers the root and the
         // horn rises from it.
         const inset = Math.max(wd * 2, 8);
-        const [rx, ry] = [e.x - bx * inset, e.y - by * inset];
+        const [rx, ry] = [e.x - e.nx * inset, e.y - e.ny * inset];
         const bw = Math.min(wd * 1.5, 7);
         const tip = [e.x + dx * len, e.y + dy * len];
         const c = [e.x + bx * len * 0.6, e.y + by * len * 0.6];
