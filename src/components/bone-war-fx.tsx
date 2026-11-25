@@ -168,7 +168,7 @@ export function Splash({ w, h, big = false }: { w: number; h: number; big?: bool
 
 // One tooth hanging from the jaw line at the top: centre x, base width, length, and how far the tip curves.
 const tooth = (x: number, wd: number, len: number, curve = 0) => `M${x - wd / 2} 0 Q${x + curve - wd * 0.1} ${len * 0.6} ${x + curve} ${len} Q${x + curve * 0.4 + wd * 0.2} ${len * 0.5} ${x + wd / 2} 0 Z`;
-// A tyrannosaur tooth: thick and swollen at the base like a banana, narrowing to a sharp,
+// A tyrannosaur tooth (and, longer, a sabre): thick and swollen at the base like a banana, narrowing to a sharp,
 // slightly backward-curving point.
 const crusher = (x: number, wd: number, len: number, curve: number) =>
   `M${x - wd / 2} 0 C${x - wd * 0.62} ${len * 0.35} ${x - wd * 0.3} ${len * 0.75} ${x + curve} ${len} C${x + wd * 0.42} ${len * 0.7} ${x + wd * 0.62} ${len * 0.3} ${x + wd / 2} 0 Z`;
@@ -190,7 +190,7 @@ function teeth(jaw: Jaw, lower: boolean): { paths: string[]; fill: string; back?
     case 'fangs':
       return { paths: [...row([8, 14, 86, 92], 6, 12), ...row([38, 46, 54, 62], 7, 14), ...row([25, 75], 12, 46, lower ? -3 : 3)], fill: IVORY };
     case 'sabre':
-      return lower ? { paths: row(range(20, 80, 8), 6, 12), fill: IVORY } : { paths: [...row(range(40, 60, 7), 6, 10), ...row([27, 73], 12, 66, -3)], fill: IVORY };
+      return lower ? { paths: row(range(20, 80, 8), 6, 12), fill: IVORY } : { paths: [...row(range(40, 60, 7), 6, 10), crusher(27, 15, 68, -3), crusher(73, 15, 68, 3)], fill: IVORY };
     case 'venom':
       return lower ? { paths: [], fill: IVORY } : { paths: row([38, 62], 7, 52, 4), fill: '#FFFDF6' };
     case 'incisors':
