@@ -9,7 +9,8 @@ The drawing is split into the areas its lines enclose. Each area is filled by wh
 A small area can be marked bone to keep it from being filled as a knob, or clear to leave it unfilled
 (the background shows through). "close": n bridges gaps of
 up to about 2n pixels where the drawing's lines don't quite meet, when finding the areas, and
-"add": [[x1, y1, x2, y2], ...] draws in short lines the owner asked to have closed.
+"add": [[x1, y1, x2, y2], ...] draws in short lines the owner asked to have closed, and "cuts": a
+picture the same size as the drawing whose dark lines only divide areas and are never drawn.
 and the owner's own lines are drawn on top, so the result matches the drawing.
 
 Needs numpy, scipy, Pillow and potracer (pip install numpy scipy pillow potracer).
@@ -34,6 +35,7 @@ src, sid, marks = sys.argv[1], sys.argv[2], json.loads(sys.argv[3])
 close = marks.pop('close', 0)
 add = marks.pop('add', [])
 clear_at = marks.pop('clear', [])
+cuts = marks.pop('cuts', None)
 img = Image.open(src)
 a = np.asarray(img.convert('RGBA')).astype(int)
 # Dark lines on a transparent or light background (or, once flattened, on black).
@@ -48,12 +50,18 @@ if add:
     for x1, y1, x2, y2 in add:
         ImageDraw.Draw(m).line([(x1, y1), (x2, y2)], fill=255, width=5)
     ink = np.asarray(m) > 0
+# Lines that divide areas but aren't drawn (kept the full size of the drawing until it's cropped).
+cutmask = np.zeros_like(ink)
+if cuts:
+    cutmask = np.asarray(Image.open(cuts).convert('L')) < 128
 # Crop to the drawing, with a margin, so blank canvas doesn't shrink it. Marks stay in the
 # original drawing's pixels.
 ys, xs = np.nonzero(ink)
 x0, y0 = max(xs.min() - 20, 0), max(ys.min() - 20, 0)
 ink = ink[y0:ys.max() + 21, x0:xs.max() + 21]
-closed = nd.binary_dilation(nd.binary_closing(ink, iterations=close) if close else ink, iterations=3)
+cutmask = cutmask[y0:y0 + ink.shape[0], x0:x0 + ink.shape[1]]
+seen = ink | cutmask
+closed = nd.binary_dilation(nd.binary_closing(seen, iterations=close) if close else seen, iterations=3)
 lab, n = nd.label(~closed)
 border = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
 h, w = ink.shape
@@ -78,7 +86,7 @@ silhouette[np.isin(lab, list(border))] = False
 
 # What's truly outside the drawing, up to the outer edge of its lines (bridged gaps aside), so no
 # fill strays past an outline.
-loose = nd.binary_dilation(ink, iterations=1)
+loose = nd.binary_dilation(seen, iterations=1)
 llab, _ = nd.label(~loose)
 lborder = np.unique(np.concatenate([llab[0], llab[-1], llab[:, 0], llab[:, -1]]))
 outside = np.isin(llab, lborder[lborder > 0]) & nd.binary_dilation(~silhouette, iterations=8)
