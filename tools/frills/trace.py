@@ -35,6 +35,11 @@ if a[:, :, 3].min() < 128:
 else:
     lum = a[:, :, :3].sum(2)
     ink = (a[:, :, 2] > 12) if lum.mean() < 60 else (lum < 384)
+# Crop to the drawing, with a margin, so blank canvas doesn't shrink it. Marks stay in the
+# original drawing's pixels.
+ys, xs = np.nonzero(ink)
+x0, y0 = max(xs.min() - 20, 0), max(ys.min() - 20, 0)
+ink = ink[y0:ys.max() + 21, x0:xs.max() + 21]
 closed = nd.binary_dilation(ink, iterations=3)
 lab, n = nd.label(~closed)
 border = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
@@ -45,6 +50,7 @@ ox, oy = (W - w * s) / 2, (H - h * s) / 2
 kind = {}
 for k, pts in marks.items():
     for x, y in pts:
+        x, y = x - x0, y - y0
         r = lab[int(y), int(x)]
         if not r:
             # On a line: take the area most of the nearby pixels belong to.
