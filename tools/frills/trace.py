@@ -6,7 +6,8 @@ The drawing is split into the areas its lines enclose. Each area is filled by wh
   hole   an opening right through the bone (the frill's fenestrae)
   horn   horns, and the small knobs and bumps (any area smaller than KNOB of the picture)
   ridge  a raised bar, like the frill's midline
-A small area can be marked bone to keep it from being filled as a knob.
+A small area can be marked bone to keep it from being filled as a knob. "close": n bridges gaps of
+up to about 2n pixels where the drawing's lines don't quite meet, when finding the areas.
 and the owner's own lines are drawn on top, so the result matches the drawing.
 
 Needs numpy, scipy, Pillow and potracer (pip install numpy scipy pillow potracer).
@@ -28,6 +29,7 @@ OUT = 'src/lib/bone-war-traced.ts'
 W, H = 100, 140
 
 src, sid, marks = sys.argv[1], sys.argv[2], json.loads(sys.argv[3])
+close = marks.pop('close', 0)
 img = Image.open(src)
 a = np.asarray(img.convert('RGBA')).astype(int)
 # Dark lines on a transparent or light background (or, once flattened, on black).
@@ -41,7 +43,7 @@ else:
 ys, xs = np.nonzero(ink)
 x0, y0 = max(xs.min() - 20, 0), max(ys.min() - 20, 0)
 ink = ink[y0:ys.max() + 21, x0:xs.max() + 21]
-closed = nd.binary_dilation(ink, iterations=3)
+closed = nd.binary_dilation(nd.binary_closing(ink, iterations=close) if close else ink, iterations=3)
 lab, n = nd.label(~closed)
 border = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
 h, w = ink.shape
