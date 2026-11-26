@@ -82,7 +82,7 @@ lborder = np.unique(np.concatenate([llab[0], llab[-1], llab[:, 0], llab[:, -1]])
 outside = np.isin(llab, lborder[lborder > 0]) & nd.binary_dilation(~silhouette, iterations=8)
 inside = ~nd.binary_dilation(outside, iterations=1)
 
-def trace(mask, grow: int | None = 4):
+def trace(mask, grow: int | None = 4, speck: int = 6):
     # Grow each area under its neighbouring lines, so the fills meet with no gaps. (The lines
     # themselves are kept close to as drawn, so close hatching stays readable.)
     if grow is not None:
@@ -91,7 +91,7 @@ def trace(mask, grow: int | None = 4):
     # Trace at a third of the size: the drawing only ever shows a few hundred pixels across. (The
     # tracer outlines the False pixels, hence the inversion.)
     small = np.asarray(Image.fromarray(mask.astype(np.uint8) * 255).resize((w // 3, h // 3), Image.BILINEAR)) > 100
-    paths = potrace.Bitmap(~small).trace(turdsize=6, alphamax=1.1, opttolerance=1.0)
+    paths = potrace.Bitmap(~small).trace(turdsize=speck, alphamax=1.1, opttolerance=1.0)
     f = lambda p: f'{p.x * 3 * s + ox:.1f} {p.y * 3 * s + oy:.1f}'
     out = []
     for c in paths:
@@ -116,7 +116,7 @@ reached = np.unique(llab[(lab > 0) & ~np.isin(lab, list(border))])
 tiny = (llab > 0) & ~np.isin(llab, reached) & ~np.isin(llab, lborder)
 for k in ('ridge', 'hole', 'horn'):
     if k == 'horn' and tiny.any() and not groups[k]:
-        layers.append((k, trace(tiny, grow=2)))
+        layers.append((k, trace(tiny, grow=2, speck=1)))
         continue
     if groups[k]:
         # Spread each fill out to the drawn lines (bridging gaps also fills narrow corners, like
@@ -124,7 +124,8 @@ for k in ('ridge', 'hole', 'horn'):
         region = nd.binary_dilation(np.isin(lab, groups[k]), iterations=close + 4, mask=~loose & closed)
         if k == 'horn':
             region |= tiny
-        layers.append((k, trace(region)))
+        # Keep the tiniest knobs, which would otherwise be dropped as specks.
+        layers.append((k, trace(region, speck=1 if k == 'horn' else 6)))
 layers.append(('line', trace(nd.binary_dilation(ink, iterations=1), grow=None)))
 
 entry = f"  '{sid}': [\n" + ''.join(f"    {{ fill: '{k}', d: '{d}' }},\n" for k, d in layers) + '  ],\n'
