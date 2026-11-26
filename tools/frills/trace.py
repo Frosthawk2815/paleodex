@@ -6,6 +6,7 @@ The drawing is split into the areas its lines enclose. Each area is filled by wh
   hole   an opening right through the bone (the frill's fenestrae)
   horn   horns, and the small knobs and bumps (any area smaller than KNOB of the picture)
   ridge  a raised bar, like the frill's midline
+A small area can be marked bone to keep it from being filled as a knob.
 and the owner's own lines are drawn on top, so the result matches the drawing.
 
 Needs numpy, scipy, Pillow and potracer (pip install numpy scipy pillow potracer).
@@ -88,7 +89,7 @@ for r in range(1, n + 1):
     if r in border:
         continue
     k = kind.get(r) or ('horn' if sizes[r] < KNOB * h * w else None)
-    if k:
+    if k and k != 'bone':
         groups[k].append(r)
 for k in ('ridge', 'hole', 'horn'):
     if groups[k]:
