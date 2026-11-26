@@ -63,9 +63,11 @@ sizes = nd.sum(np.ones_like(lab), lab, range(n + 1))
 silhouette = ~np.isin(lab, list(border)) & (lab >= 0)
 silhouette[np.isin(lab, list(border))] = False
 
-def trace(mask):
-    # Grow each area under its neighbouring lines, so the fills meet with no gaps.
-    mask = nd.binary_dilation(mask, iterations=4)
+def trace(mask, grow=4):
+    # Grow each area under its neighbouring lines, so the fills meet with no gaps. (The lines
+    # themselves are kept close to as drawn, so close hatching stays readable.)
+    if grow:
+        mask = nd.binary_dilation(mask, iterations=grow)
     # Trace at a third of the size: the drawing only ever shows a few hundred pixels across. (The
     # tracer outlines the False pixels, hence the inversion.)
     small = np.asarray(Image.fromarray(mask.astype(np.uint8) * 255).resize((w // 3, h // 3), Image.BILINEAR)) > 100
@@ -79,7 +81,8 @@ def trace(mask):
         out.append(d + 'Z')
     return ''.join(out)
 
-layers = [('bone', trace(silhouette))]
+# The skull's fill stops at the middle of its outline, so none shows outside it.
+layers = [('bone', trace(nd.binary_erosion(silhouette, iterations=2), grow=0))]
 groups = {'ridge': [], 'hole': [], 'horn': []}
 for r in range(1, n + 1):
     if r in border:
@@ -90,7 +93,7 @@ for r in range(1, n + 1):
 for k in ('ridge', 'hole', 'horn'):
     if groups[k]:
         layers.append((k, trace(np.isin(lab, groups[k]))))
-layers.append(('line', trace(nd.binary_dilation(ink, iterations=1) & ~nd.binary_dilation(~silhouette, iterations=0) | (ink & silhouette))))
+layers.append(('line', trace(ink, grow=1)))
 
 entry = f"  '{sid}': [\n" + ''.join(f"    {{ fill: '{k}', d: '{d}' }},\n" for k, d in layers) + '  ],\n'
 try:
