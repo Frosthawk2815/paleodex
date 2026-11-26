@@ -1,0 +1,104 @@
+"""Trace the owner's line drawing of a horned dinosaur's skull (or other armour) into the shapes
+Bone War draws when that animal's armour turns an attack.
+
+The drawing is split into the areas its lines enclose. Each area is filled by what it is:
+  bone   the skull and frill (anything not listed)
+  hole   an opening right through the bone (the frill's fenestrae)
+  horn   horns, and the small knobs and bumps (any area smaller than KNOB of the picture)
+  ridge  a raised bar, like the frill's midline
+and the owner's own lines are drawn on top, so the result matches the drawing.
+
+Needs numpy, scipy, Pillow and potracer (pip install numpy scipy pillow potracer).
+
+Usage (from the project root):
+    python3 -I tools/frills/trace.py <drawing> <species-id> '<json: {"hole": [[x, y], ...], ...}>'
+Points are pixel positions in the drawing, one inside each area of that kind. The traced shapes are
+written into src/lib/bone-war-traced.ts.
+"""
+
+import json, re, sys
+import numpy as np
+from PIL import Image
+from scipy import ndimage as nd
+import potrace
+
+KNOB = 0.0025
+OUT = 'src/lib/bone-war-traced.ts'
+W, H = 100, 140
+
+src, sid, marks = sys.argv[1], sys.argv[2], json.loads(sys.argv[3])
+img = Image.open(src)
+a = np.asarray(img.convert('RGBA')).astype(int)
+# Dark lines on a transparent or light background (or, once flattened, on black).
+if a[:, :, 3].min() < 128:
+    ink = a[:, :, 3] > 128
+else:
+    lum = a[:, :, :3].sum(2)
+    ink = (a[:, :, 2] > 12) if lum.mean() < 60 else (lum < 384)
+closed = nd.binary_dilation(ink, iterations=3)
+lab, n = nd.label(~closed)
+border = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
+h, w = ink.shape
+s = min(W / w, H / h)
+ox, oy = (W - w * s) / 2, (H - h * s) / 2
+
+kind = {}
+for k, pts in marks.items():
+    for x, y in pts:
+        r = lab[int(y), int(x)]
+        if not r:
+            # On a line: take the area most of the nearby pixels belong to.
+            win = lab[max(0, int(y) - 15):int(y) + 16, max(0, int(x) - 15):int(x) + 16].ravel()
+            win = win[win > 0]
+            r = np.bincount(win).argmax() if len(win) else 0
+        assert r and r not in border, f'{k} point {x},{y} is not inside an area'
+        kind[r] = k
+sizes = nd.sum(np.ones_like(lab), lab, range(n + 1))
+silhouette = ~np.isin(lab, list(border)) & (lab >= 0)
+silhouette[np.isin(lab, list(border))] = False
+
+def trace(mask):
+    # Grow each area under its neighbouring lines, so the fills meet with no gaps.
+    mask = nd.binary_dilation(mask, iterations=4)
+    # Trace at a third of the size: the drawing only ever shows a few hundred pixels across. (The
+    # tracer outlines the False pixels, hence the inversion.)
+    small = np.asarray(Image.fromarray(mask.astype(np.uint8) * 255).resize((w // 3, h // 3), Image.BILINEAR)) > 100
+    paths = potrace.Bitmap(~small).trace(turdsize=6, alphamax=1.1, opttolerance=1.0)
+    f = lambda p: f'{p.x * 3 * s + ox:.1f} {p.y * 3 * s + oy:.1f}'
+    out = []
+    for c in paths:
+        d = f'M{f(c.start_point)}'
+        for seg in c.segments:
+            d += f'L{f(seg.c)}L{f(seg.end_point)}' if seg.is_corner else f'C{f(seg.c1)} {f(seg.c2)} {f(seg.end_point)}'
+        out.append(d + 'Z')
+    return ''.join(out)
+
+layers = [('bone', trace(silhouette))]
+groups = {'ridge': [], 'hole': [], 'horn': []}
+for r in range(1, n + 1):
+    if r in border:
+        continue
+    k = kind.get(r) or ('horn' if sizes[r] < KNOB * h * w else None)
+    if k:
+        groups[k].append(r)
+for k in ('ridge', 'hole', 'horn'):
+    if groups[k]:
+        layers.append((k, trace(np.isin(lab, groups[k]))))
+layers.append(('line', trace(nd.binary_dilation(ink, iterations=1) & ~nd.binary_dilation(~silhouette, iterations=0) | (ink & silhouette))))
+
+entry = f"  '{sid}': [\n" + ''.join(f"    {{ fill: '{k}', d: '{d}' }},\n" for k, d in layers) + '  ],\n'
+try:
+    text = open(OUT).read()
+except FileNotFoundError:
+    text = None
+if not text:
+    text = (
+        "// Bone War: armour traced from the owner's own drawings by tools/frills/trace.py. Do not edit by hand:\n"
+        "// change the drawing and trace it again.\n\n"
+        "export type TracedLayer = { fill: 'bone' | 'ridge' | 'hole' | 'horn' | 'line'; d: string };\n\n"
+        'export const TRACED: Record<string, TracedLayer[]> = {\n};\n'
+    )
+text = re.sub(rf"  '{re.escape(sid)}': \[\n(?:    .*\n)*?  \],\n", '', text)
+text = text.replace('\n};\n', '\n' + entry + '};\n', 1) if '\n};\n' in text else text
+open(OUT, 'w').write(text)
+print(f'{sid}: ' + ', '.join(f'{k} {len(d) // 1000}k' for k, d in layers))

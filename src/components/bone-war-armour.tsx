@@ -7,9 +7,11 @@ import { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
 
 import type { Defence } from '@/lib/bone-war-defences';
 import { frillShapes, frillSpec, HAND_DRAWN } from '@/lib/bone-war-frills';
+import { TRACED } from '@/lib/bone-war-traced';
 import { thyreoShapes } from '@/lib/bone-war-thyreo';
 
 const LINE = '#2E2418';
+const TRACED_FILL = { bone: '#9A7650', ridge: '#7A5C3C', hole: '#5E4630', horn: '#D2BC92', line: LINE };
 
 // Points around an ellipse, from angle a0 to a1 (degrees; 0 is to the right, -90 straight up).
 const arc = (cx: number, cy: number, rx: number, ry: number, a0: number, a1: number, n: number) =>
@@ -36,6 +38,16 @@ export function armour(d: Defence, speciesId?: string): ReactNode {
     case 'frill':
     case 'solidfrill':
     case 'spikyfrill': {
+      // Traced from the owner's own drawing of this animal's skull, when there is one.
+      const traced = speciesId ? TRACED[speciesId] : undefined;
+      if (traced)
+        return (
+          <G>
+            {traced.map((l, i) => (
+              <Path key={i} d={l.d} fill={TRACED_FILL[l.fill]} />
+            ))}
+          </G>
+        );
       // Each horned dinosaur's own frill: its proportions, openings and edge ornaments.
       const f = (speciesId && HAND_DRAWN[speciesId]) || frillShapes(frillSpec(speciesId, d));
       return (
