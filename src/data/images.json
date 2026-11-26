@@ -31069,15 +31069,15 @@
   "scope": "species"
  },
  "alopias-vulpinus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/VOSHAAI%2C_TRESHERSHARK.png/500px-VOSHAAI%2C_TRESHERSHARK.png",
-  "width": 500,
-  "height": 375,
-  "artist": "Ria van BAAREN",
-  "license": "CC BY-SA 4.0",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:VOSHAAI,_TRESHERSHARK.png",
-  "file": "VOSHAAI,_TRESHERSHARK.png",
+  "thumb": "https://raw.githubusercontent.com/Frosthawk2815/paleodex/main/tools/images/hosted/alopias-pelagicus-hunting.jpg",
+  "width": 480,
+  "height": 272,
+  "artist": "Oliver S, Turner J, Gann K, Silvosa M, D'Urban Jackson T (frame from video of a pelagic thresher hunting)",
+  "license": "CC BY 2.5",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Thresher-Sharks-Use-Tail-Slaps-as-a-Hunting-Strategy-pone.0067380.s002.ogv",
+  "file": "Thresher-Sharks-Use-Tail-Slaps-as-a-Hunting-Strategy-pone.0067380.s002.ogv",
   "article": "https://en.wikipedia.org/wiki/Common_thresher",
-  "scope": "species"
+  "scope": "genus"
  }
 }
