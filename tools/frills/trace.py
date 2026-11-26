@@ -107,7 +107,8 @@ groups = {'ridge': [], 'hole': [], 'horn': []}
 for r in range(1, n + 1):
     if r in border:
         continue
-    k = kind.get(r) or ('horn' if sizes[r] < KNOB * h * w else None)
+    # (Specks of a few pixels, squeezed between close lines, aren't knobs.)
+    k = kind.get(r) or ('horn' if 10 <= sizes[r] < KNOB * h * w else None)
     if k and k != 'bone':
         groups[k].append(r)
 # Knobs too small and thin to survive the line thickening above: closed areas between the lines
