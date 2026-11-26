@@ -23,7 +23,7 @@ export type Jaw =
   | 'frog'
   | 'leaf'
   | 'toothless'
-  | 'crusher' | 'serrated' | 'notched' | 'conical' | 'rosette' | 'peg' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
+  | 'crusher' | 'serrated' | 'notched' | 'spinosaur' | 'conical' | 'rosette' | 'peg' | 'shark' | 'fangs' | 'sabre' | 'venom' | 'beak' | 'incisors' | 'blades';
 // Footprints for a stomp.
 export type Foot = 'sauropod' | 'elephant' | 'ornithopod' | 'bird' | 'ostrich' | 'rhino' | 'horse' | 'cloven' | 'wombat' | 'kangaroo';
 // Weapons for a bash, rising from below (and the spear humans thrust).
@@ -73,7 +73,8 @@ const BY_CLADE: Record<string, Weapon> = {
   // Dinosaurs
   theropoda: bite('serrated'),
   tyrannosauridae: bite('crusher'), // thick, bone-crushing teeth
-  spinosauridae: bite('rosette'),
+  // Interlocking snout-tip rosettes with a notch between them: a fish trap.
+  spinosauridae: bite('spinosaur'),
   // A toothless gap (the subnarial notch) between the snout tip and the upper jaw.
   dilophosauridae: bite('notched'),
   coelophysidae: bite('notched'),

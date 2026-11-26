@@ -70,14 +70,23 @@ const DENTITION: Record<Exclude<Jaw, 'beak' | 'blades' | 'toothless'>, { upper: 
     upper: [[3, 4.5, 18, 'cone', 1], [8, 4.5, 21, 'cone', 1], [12.5, 4.5, 18, 'cone', 1], [25, 6, 40, 'cone', 3], [32, 6, 44, 'cone', 3], [39, 5.5, 36, 'cone', 2], [46, 5, 26, 'cone', 2]],
     lower: [[4, 5, 20, 'cone', 1], [10, 5, 24, 'cone', 1], [18.5, 6.5, 38, 'cone', 2], [26, 5.5, 30, 'cone', 2], [33, 5.5, 30, 'cone', 2], [40, 5, 26, 'cone', 2], [46.5, 4.5, 20, 'cone', 1]],
   },
+  // Spinosaurs: a rosette of long, straight, unserrated cones at the snout tip, then a notch in the
+  // upper jaw holding only small teeth, then the maxillary teeth. The lower jaw's tip is a second
+  // rosette of big teeth that sits in that notch when the mouth closes, so the two rosettes
+  // interlock into a trap for slippery fish. (Dilophosaurus's notch looks similar, but there it is
+  // thought to come from a loose joint between two snout bones, not a fish trap.)
+  spinosaur: {
+    upper: [[3, 5, 30], [8, 6, 40], [13, 6, 42], [20, 3.5, 12], [26, 3.5, 12], [32, 5.5, 34], [38.5, 5, 28], [44.5, 4.5, 22]],
+    lower: [[3, 4.5, 22], [9, 5.5, 32], [16.5, 6.5, 42], [23, 6.5, 44], [29.5, 4.5, 20], [35.5, 4.5, 24], [41.5, 4.5, 22], [47, 4, 18]],
+  },
   // Crocodiles and their kin: uneven cones, with an enlarged fourth tooth in the lower jaw that fits
   // a notch behind the snout tip, and an enlarged fifth upper tooth.
   conical: {
     upper: [[4, 4.5, 16], [9.5, 4.5, 22], [15, 5.5, 30], [25, 7, 42], [31.5, 5, 26], [37, 5, 22], [42.5, 4.5, 20], [48, 4, 16]],
     lower: [[4, 5, 26], [10, 4.5, 18], [18, 7, 42], [25.5, 5, 20], [31, 5, 24], [36.5, 4.5, 22], [42, 4.5, 18], [47.5, 4, 14]],
   },
-  // Spinosaurs and plesiosaurs: a rosette of long, interlocking fangs at the snout tip, then
-  // smaller cones further back.
+  // Plesiosaurs, fish-eating pterosaurs and fish like Xiphactinus: a rosette of long, interlocking
+  // fangs at the snout tip, then smaller cones further back.
   rosette: {
     upper: [[3, 5.5, 34], [8.5, 6, 42], [14, 5.5, 36], [23, 5, 26], [29, 4.5, 24], [35, 4.5, 22], [41, 4, 20], [47, 4, 18]],
     lower: [[3.5, 5.5, 38], [9, 6, 42], [15, 5, 30], [24, 4.5, 22], [30, 4.5, 22], [36, 4.5, 20], [42, 4, 18], [47.5, 4, 16]],
