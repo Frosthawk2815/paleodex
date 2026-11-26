@@ -11,7 +11,7 @@ import { armour } from '@/components/bone-war-armour';
 import type { Defence } from '@/lib/bone-war-defences';
 
 import { teeth } from '@/lib/bone-war-teeth';
-import type { Bash, Foot, Jaw, Weapon } from '@/lib/bone-war-weapons';
+import type { Bash, Foot, Jaw, Palate, Weapon } from '@/lib/bone-war-weapons';
 import type { EyeColours } from '@/lib/profile';
 
 const native = Platform.OS !== 'web';
@@ -170,9 +170,9 @@ export function Splash({ w, h, big = false }: { w: number; h: number; big?: bool
 
 // ---- Attacks ----
 
-function Jaws({ jaw, w, h, v }: { jaw: Jaw; w: number; h: number; v: Animated.Value }) {
+function Jaws({ jaw, palate, w, h, v }: { jaw: Jaw; palate?: Palate; w: number; h: number; v: Animated.Value }) {
   const half = (lower: boolean) => {
-    const t = teeth(jaw, lower);
+    const t = teeth(jaw, lower, palate);
     return (
       <Animated.View
         style={{
@@ -774,7 +774,7 @@ export function WeaponFx({ weapon, w, h, blocked = false }: { weapon: Weapon; w:
   }, [v, fade, weapon.kind, blocked]);
   return (
     <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { opacity: fade, overflow: 'visible' }]}>
-      {weapon.kind === 'bite' && <Jaws jaw={weapon.jaw} w={w} h={h} v={v} />}
+      {weapon.kind === 'bite' && <Jaws jaw={weapon.jaw} palate={weapon.palate} w={w} h={h} v={v} />}
       {weapon.kind === 'grip' && <Grip style={weapon.style} w={w} h={h} v={v} />}
       {weapon.kind === 'slash' && <Slash claws={weapon.claws} w={w} h={h} v={v} />}
       {weapon.kind === 'stomp' && <Stomp foot={weapon.foot} w={w} h={h} v={v} />}

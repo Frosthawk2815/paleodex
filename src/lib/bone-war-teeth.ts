@@ -1,7 +1,7 @@
 // Bone War: the teeth for each kind of bite, as SVG paths. Seen from the front: the middle of the
 // card is the front of the jaw, and each side runs back along the jaw, mirrored.
 
-import type { Jaw } from '@/lib/bone-war-weapons';
+import type { Jaw, Palate } from '@/lib/bone-war-weapons';
 
 const IVORY = '#F4EEDC';
 const KERATIN = '#2E2824';
@@ -187,8 +187,29 @@ const DENTITION: Record<Exclude<Jaw, 'beak' | 'blades' | 'toothless'>, { upper: 
   },
 };
 
-// The teeth of one jaw.
-export function teeth(jaw: Jaw, lower: boolean): { paths: string[]; fill: string; back?: string[] } {
+// Rows of teeth on the roof of the mouth, drawn behind the upper teeth.
+// Each row sits further back in the mouth, so it's drawn lower (drop), showing between and below the
+// main teeth.
+const PALATE: Record<Palate, { row: T[]; drop: number }> = {
+  // A short row near the middle of the palate, curving back.
+  pterygoid: { row: [6.5, 11, 15.5, 20, 24.5].map((o) => [o, 3.2, 16, 'cone', 1.5] as T), drop: 10 },
+  // A long row running alongside the main teeth.
+  palatine: { row: range(5.5, 40, 4.5).map((o) => [o, 2.6, 11, 'cone', 1] as T), drop: 11 },
+  // A big fang on each side of the palate, with smaller teeth behind it.
+  fangs: { row: [[14, 5, 28] as T, [24, 2.5, 9] as T, [30, 2.5, 9] as T, [36, 2.5, 8] as T], drop: 8 },
+};
+// A path moved down by dy.
+const lowered = (d: string, dy: number) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x: string, y: string) => `${x} ${(Number(y) + dy).toFixed(1)}`);
+
+// The teeth of one jaw (and, for the upper jaw, any on the roof of the mouth).
+export function teeth(jaw: Jaw, lower: boolean, palate?: Palate): { paths: string[]; fill: string; back?: string[] } {
+  const t = jawTeeth(jaw, lower);
+  if (lower || !palate) return t;
+  const p = PALATE[palate];
+  return { ...t, back: [...(t.back ?? []), ...both(p.row).map((d) => lowered(d, p.drop))] };
+}
+
+function jawTeeth(jaw: Jaw, lower: boolean): { paths: string[]; fill: string; back?: string[] } {
   if (jaw === 'beak')
     return {
       // A hooked beak: its tip at the front, in the middle.

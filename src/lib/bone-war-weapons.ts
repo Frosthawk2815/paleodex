@@ -45,15 +45,22 @@ export type Bash =
   | 'thresher'
   | 'spear' | 'ceratopsian' | 'rhino' | 'twin' | 'bovid' | 'antlers' | 'dome' | 'club' | 'spikes' | 'tusks' | 'lance' | 'forked';
 
+// Teeth on the roof of the mouth: pterygoid teeth (a short row near the middle, as in mosasaurs and
+// iguanas), palatine teeth (a row running alongside the main teeth, as in snakes, the tuatara, pike
+// and salmon), or palatal fangs (big fangs on the palate, as in early tetrapods, temnospondyls and
+// lobe-finned fish).
+export type Palate = 'pterygoid' | 'palatine' | 'fangs';
+
 export type Weapon =
-  | { kind: 'bite'; jaw: Jaw }
+  // palate: a second row of teeth on the roof of the mouth, seen behind the main row.
+  | { kind: 'bite'; jaw: Jaw; palate?: Palate }
   // Closing feet (birds of prey) or pincers (crabs, sea scorpions, radiodonts, insects' mandibles).
   | { kind: 'grip'; style: 'talons' | 'pincer' }
   | { kind: 'slash'; claws: number }
   | { kind: 'stomp'; foot: Foot }
   | { kind: 'bash'; shape: Bash };
 
-const bite = (jaw: Jaw): Weapon => ({ kind: 'bite', jaw });
+const bite = (jaw: Jaw, palate?: Palate): Weapon => (palate ? { kind: 'bite', jaw, palate } : { kind: 'bite', jaw });
 const stomp = (foot: Foot): Weapon => ({ kind: 'stomp', foot });
 const bash = (shape: Bash): Weapon => ({ kind: 'bash', shape });
 const slash = (claws: number): Weapon => ({ kind: 'slash', claws });
@@ -121,16 +128,16 @@ const BY_CLADE: Record<string, Weapon> = {
   ornithosuchidae: bite('serrated'),
   poposauroidea: bite('beak'),
   aetosauria: bash('spikes'),
-  mosasauridae: bite('peg'),
+  mosasauridae: bite('peg', 'pterygoid'),
   sauropterygia: bite('rosette'),
   ichthyosauria: bite('peg'),
   thalattosauria: bite('conical'),
   testudines: bite('beak'),
   squamata: bite('conical'),
   varanidae: bite('serrated'),
-  serpentes: bite('venom'),
-  boidae: bite('peg'), // constrictors: rows of hooked teeth, no fangs
-  pythonidae: bite('peg'),
+  serpentes: bite('venom', 'palatine'), // snakes' palatine and pterygoid rows, behind the fangs
+  boidae: bite('peg', 'palatine'), // constrictors: rows of hooked teeth, no fangs, and more on the palate
+  pythonidae: bite('peg', 'palatine'),
   pareiasauria: bash('dome'),
   rhynchosauria: bite('beak'),
   // Synapsids
@@ -205,10 +212,10 @@ const BY_CLADE: Record<string, Weapon> = {
   mahajangasuchidae: bite('fangs'),
   gavialidae: bite('peg'),
   silesauridae: bite('beak'),
-  rhynchocephalia: bite('peg'),
+  rhynchocephalia: bite('peg', 'palatine'), // the tuatara's second row, which the lower teeth bite between
   procolophonidae: bite('peg'),
   edaphosauridae: bite('peg'),
-  iguanidae: bite('leaf'),
+  iguanidae: bite('leaf', 'pterygoid'),
   agamidae: bite('peg'),
   chamaeleonidae: bite('peg'),
   gekkonidae: bite('peg'),
@@ -242,7 +249,12 @@ const BY_CLADE: Record<string, Weapon> = {
   serrasalmidae: bite('shark'), // a single row of triangular, razor-edged teeth
   melanocetidae: bite('needles'),
   lepisosteidae: bite('conical'),
-  esocidae: bite('conical'),
+  esocidae: bite('conical', 'palatine'), // pike: rows of teeth on the roof of the mouth too
+  salmonidae: bite('peg', 'palatine'), // salmon: vomerine and palatine teeth
+  temnospondyli: bite('conical', 'fangs'),
+  tetrapodomorpha: bite('conical', 'fangs'),
+  sarcopterygii: bite('conical', 'fangs'),
+  actinistia: bite('conical'),
   ichthyodectidae: bite('rosette'), // Xiphactinus: big fangs at the front
   aulopiformes: bite('rosette'), // Enchodus, the "sabre-toothed herring"
   dipnoi: bite('pavement'),
