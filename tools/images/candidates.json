@@ -1190,14 +1190,14 @@
   "kind": "fossil"
  },
  "alopias-vulpinus": {
-  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Alopias_vulpinus_noaa2.jpg/500px-Alopias_vulpinus_noaa2.jpg",
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/VOSHAAI%2C_TRESHERSHARK.png/500px-VOSHAAI%2C_TRESHERSHARK.png",
   "width": 500,
-  "height": 334,
-  "artist": "NOAA/PIER",
-  "license": "Public domain",
-  "licenseUrl": null,
-  "source": "https://commons.wikimedia.org/wiki/File:Alopias_vulpinus_noaa2.jpg",
-  "file": "Alopias_vulpinus_noaa2.jpg",
+  "height": 375,
+  "artist": "Ria van BAAREN",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:VOSHAAI,_TRESHERSHARK.png",
+  "file": "VOSHAAI,_TRESHERSHARK.png",
   "article": "https://en.wikipedia.org/wiki/Common_thresher",
   "scope": "species"
  },
