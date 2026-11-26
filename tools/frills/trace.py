@@ -6,7 +6,8 @@ The drawing is split into the areas its lines enclose. Each area is filled by wh
   hole   an opening right through the bone (the frill's fenestrae)
   horn   horns, and the small knobs and bumps (any area smaller than KNOB of the picture)
   ridge  a raised bar, like the frill's midline
-A small area can be marked bone to keep it from being filled as a knob. "close": n bridges gaps of
+A small area can be marked bone to keep it from being filled as a knob, or clear to leave it unfilled
+(the background shows through). "close": n bridges gaps of
 up to about 2n pixels where the drawing's lines don't quite meet, when finding the areas, and
 "add": [[x1, y1, x2, y2], ...] draws in short lines the owner asked to have closed.
 and the owner's own lines are drawn on top, so the result matches the drawing.
@@ -32,6 +33,7 @@ W, H = 100, 140
 src, sid, marks = sys.argv[1], sys.argv[2], json.loads(sys.argv[3])
 close = marks.pop('close', 0)
 add = marks.pop('add', [])
+clear_at = marks.pop('clear', [])
 img = Image.open(src)
 a = np.asarray(img.convert('RGBA')).astype(int)
 # Dark lines on a transparent or light background (or, once flattened, on black).
@@ -102,19 +104,22 @@ def trace(mask, grow: int | None = 4, speck: int = 6, cut: int = 100):
     return ''.join(out)
 
 # The skull's fill, clipped to the outline like every other fill.
-layers = [('bone', trace(silhouette, grow=0))]
+# Areas left unfilled, right up to the lines round them (however small).
+clear = np.isin(llab, [llab[int(y) - y0, int(x) - x0] for x, y in clear_at if llab[int(y) - y0, int(x) - x0] > 0])
+layers = [('bone', trace(silhouette & ~nd.binary_dilation(clear, iterations=3), grow=0))]
 groups = {'ridge': [], 'hole': [], 'horn': []}
 for r in range(1, n + 1):
     if r in border:
         continue
     # (Specks of a few pixels, squeezed between close lines, aren't knobs.)
     k = kind.get(r) or ('horn' if 10 <= sizes[r] < KNOB * h * w else None)
-    if k and k != 'bone':
+    if k and k != 'bone' and not clear[lab == r].any():
         groups[k].append(r)
 # Knobs too small and thin to survive the line thickening above: closed areas between the lines
 # as drawn that no other area reaches into.
 reached = np.unique(llab[(lab > 0) & ~np.isin(lab, list(border))])
 tiny = (llab > 0) & ~np.isin(llab, reached) & ~np.isin(llab, lborder)
+tiny &= ~clear
 for k in ('ridge', 'hole', 'horn'):
     if k == 'horn' and tiny.any() and not groups[k]:
         layers.append((k, trace(tiny, grow=2, speck=1)))
