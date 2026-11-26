@@ -7,7 +7,8 @@ The drawing is split into the areas its lines enclose. Each area is filled by wh
   horn   horns, and the small knobs and bumps (any area smaller than KNOB of the picture)
   ridge  a raised bar, like the frill's midline
 A small area can be marked bone to keep it from being filled as a knob. "close": n bridges gaps of
-up to about 2n pixels where the drawing's lines don't quite meet, when finding the areas.
+up to about 2n pixels where the drawing's lines don't quite meet, when finding the areas, and
+"add": [[x1, y1, x2, y2], ...] draws in short lines the owner asked to have closed.
 and the owner's own lines are drawn on top, so the result matches the drawing.
 
 Needs numpy, scipy, Pillow and potracer (pip install numpy scipy pillow potracer).
@@ -30,6 +31,7 @@ W, H = 100, 140
 
 src, sid, marks = sys.argv[1], sys.argv[2], json.loads(sys.argv[3])
 close = marks.pop('close', 0)
+add = marks.pop('add', [])
 img = Image.open(src)
 a = np.asarray(img.convert('RGBA')).astype(int)
 # Dark lines on a transparent or light background (or, once flattened, on black).
@@ -38,6 +40,12 @@ if a[:, :, 3].min() < 128:
 else:
     lum = a[:, :, :3].sum(2)
     ink = (a[:, :, 2] > 12) if lum.mean() < 60 else (lum < 384)
+if add:
+    from PIL import ImageDraw
+    m = Image.fromarray(ink.astype(np.uint8) * 255)
+    for x1, y1, x2, y2 in add:
+        ImageDraw.Draw(m).line([(x1, y1), (x2, y2)], fill=255, width=5)
+    ink = np.asarray(m) > 0
 # Crop to the drawing, with a margin, so blank canvas doesn't shrink it. Marks stay in the
 # original drawing's pixels.
 ys, xs = np.nonzero(ink)
@@ -66,11 +74,20 @@ sizes = nd.sum(np.ones_like(lab), lab, range(n + 1))
 silhouette = ~np.isin(lab, list(border)) & (lab >= 0)
 silhouette[np.isin(lab, list(border))] = False
 
-def trace(mask, grow=4):
+# What's truly outside the drawing, up to the outer edge of its lines (bridged gaps aside), so no
+# fill strays past an outline.
+loose = nd.binary_dilation(ink, iterations=1)
+llab, _ = nd.label(~loose)
+lborder = np.unique(np.concatenate([llab[0], llab[-1], llab[:, 0], llab[:, -1]]))
+outside = np.isin(llab, lborder[lborder > 0]) & nd.binary_dilation(~silhouette, iterations=8)
+inside = ~nd.binary_dilation(outside, iterations=1)
+
+def trace(mask, grow: int | None = 4):
     # Grow each area under its neighbouring lines, so the fills meet with no gaps. (The lines
     # themselves are kept close to as drawn, so close hatching stays readable.)
-    if grow:
-        mask = nd.binary_dilation(mask, iterations=grow)
+    if grow is not None:
+        # Fills (not the lines themselves) are kept inside the outline.
+        mask = (nd.binary_dilation(mask, iterations=grow) if grow else mask) & inside
     # Trace at a third of the size: the drawing only ever shows a few hundred pixels across. (The
     # tracer outlines the False pixels, hence the inversion.)
     small = np.asarray(Image.fromarray(mask.astype(np.uint8) * 255).resize((w // 3, h // 3), Image.BILINEAR)) > 100
@@ -84,8 +101,8 @@ def trace(mask, grow=4):
         out.append(d + 'Z')
     return ''.join(out)
 
-# The skull's fill stops at the middle of its outline, so none shows outside it.
-layers = [('bone', trace(nd.binary_erosion(silhouette, iterations=2), grow=0))]
+# The skull's fill, clipped to the outline like every other fill.
+layers = [('bone', trace(silhouette, grow=0))]
 groups = {'ridge': [], 'hole': [], 'horn': []}
 for r in range(1, n + 1):
     if r in border:
@@ -95,8 +112,11 @@ for r in range(1, n + 1):
         groups[k].append(r)
 for k in ('ridge', 'hole', 'horn'):
     if groups[k]:
-        layers.append((k, trace(np.isin(lab, groups[k]))))
-layers.append(('line', trace(ink, grow=1)))
+        # Spread each fill out to the drawn lines (bridging gaps also fills narrow corners, like
+        # the tips of spikes), without crossing any line.
+        region = nd.binary_dilation(np.isin(lab, groups[k]), iterations=14, mask=~loose)
+        layers.append((k, trace(region)))
+layers.append(('line', trace(nd.binary_dilation(ink, iterations=1), grow=None)))
 
 entry = f"  '{sid}': [\n" + ''.join(f"    {{ fill: '{k}', d: '{d}' }},\n" for k, d in layers) + '  ],\n'
 try:
