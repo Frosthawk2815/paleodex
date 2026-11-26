@@ -58572,5 +58572,38 @@
         ]
       }
     ]
+  },
+  "gymnothorax-javanicus": {
+    "phases": [
+      {
+        "from": 1000,
+        "to": 150,
+        "label": "Historic range (much as today)",
+        "sameAs": 1
+      },
+      {
+        "from": 150,
+        "to": 0,
+        "label": "Where it lives today",
+        "regions": [
+          {
+            "sea": [
+              30,
+              -30,
+              180,
+              30
+            ]
+          },
+          {
+            "sea": [
+              -180,
+              -30,
+              -135,
+              25
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

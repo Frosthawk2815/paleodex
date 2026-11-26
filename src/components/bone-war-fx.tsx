@@ -170,7 +170,7 @@ export function Splash({ w, h, big = false }: { w: number; h: number; big?: bool
 
 // ---- Attacks ----
 
-function Jaws({ jaw, palate, w, h, v }: { jaw: Jaw; palate?: Palate; w: number; h: number; v: Animated.Value }) {
+function Jaws({ jaw, palate, w, h, v, blocked }: { jaw: Jaw; palate?: Palate; w: number; h: number; v: Animated.Value; blocked: boolean }) {
   const half = (lower: boolean) => {
     const t = teeth(jaw, lower, palate);
     return (
@@ -197,7 +197,57 @@ function Jaws({ jaw, palate, w, h, v }: { jaw: Jaw; palate?: Palate; w: number; 
     <>
       {half(false)}
       {half(true)}
+      {/* Only when the bite lands. */}
+      {jaw === 'moray' && !blocked && <ThroatJaws w={w} h={h} />}
     </>
+  );
+}
+
+// A moray's second set of jaws (the pharyngeal jaws): once the main jaws close, they shoot forward
+// out of the throat to grip the prey, then pull back to drag it down.
+function ThroatJaws({ w, h }: { w: number; h: number }) {
+  const p = useValue(0);
+  useEffect(() => {
+    Animated.sequence([
+      Animated.delay(CONTACT_MS - 30),
+      run(p, 1, 170, Easing.out(Easing.back(1.6))),
+      Animated.delay(120),
+      run(p, 0, 240, Easing.in(Easing.quad)),
+    ]).start();
+  }, [p]);
+  const bw = w * 0.7;
+  const bh = bw * 0.6;
+  const fang = (x: number, top: boolean) => {
+    const [y0, dir] = top ? [12, 1] : [48, -1];
+    const len = 13 - Math.abs(x - 50) * 0.12;
+    // Curving back into the throat (towards the middle).
+    return `M${x - 3} ${y0} Q${x - 1} ${y0 + dir * len * 0.7} ${x + (x < 50 ? 2.5 : -2.5)} ${y0 + dir * len} Q${x + 1} ${y0 + dir * len * 0.5} ${x + 3} ${y0} Z`;
+  };
+  const xs = [22, 30, 38, 46, 54, 62, 70, 78];
+  return (
+    <Animated.View
+      pointerEvents="none"
+      style={{
+        position: 'absolute',
+        left: (w - bw) / 2,
+        top: h / 2 - bh / 2,
+        width: bw,
+        height: bh,
+        opacity: p.interpolate({ inputRange: [0, 0.15, 1], outputRange: [0, 1, 1] }),
+        transform: [{ scale: p.interpolate({ inputRange: [0, 1], outputRange: [0.3, 1.1] }) }],
+      }}>
+      <Svg width={bw} height={bh} viewBox="0 0 100 60">
+        <Ellipse cx={50} cy={30} rx={46} ry={27} fill="#2A0E0E" stroke={LINE} strokeWidth={1} />
+        <Path d="M10 22 Q50 2 90 22 L90 14 Q50 -4 10 14 Z" fill="#7A2A2A" />
+        <Path d="M10 38 Q50 58 90 38 L90 46 Q50 64 10 46 Z" fill="#7A2A2A" />
+        {xs.map((x) => (
+          <Path key={`t${x}`} d={fang(x, true)} fill={IVORY} stroke={LINE} strokeWidth={0.6} />
+        ))}
+        {xs.map((x) => (
+          <Path key={`b${x}`} d={fang(x, false)} fill={IVORY} stroke={LINE} strokeWidth={0.6} />
+        ))}
+      </Svg>
+    </Animated.View>
   );
 }
 
@@ -774,7 +824,7 @@ export function WeaponFx({ weapon, w, h, blocked = false }: { weapon: Weapon; w:
   }, [v, fade, weapon.kind, blocked]);
   return (
     <Animated.View pointerEvents="none" style={[StyleSheet.absoluteFill, { opacity: fade, overflow: 'visible' }]}>
-      {weapon.kind === 'bite' && <Jaws jaw={weapon.jaw} palate={weapon.palate} w={w} h={h} v={v} />}
+      {weapon.kind === 'bite' && <Jaws jaw={weapon.jaw} palate={weapon.palate} w={w} h={h} v={v} blocked={blocked} />}
       {weapon.kind === 'grip' && <Grip style={weapon.style} w={w} h={h} v={v} />}
       {weapon.kind === 'slash' && <Slash claws={weapon.claws} w={w} h={h} v={v} />}
       {weapon.kind === 'stomp' && <Stomp foot={weapon.foot} w={w} h={h} v={v} />}

@@ -9,6 +9,7 @@ import { cardFor } from '@/lib/bone-war';
 
 // Teeth (and beaks) for a bite.
 export type Jaw =
+  | 'moray'
   | 'thylacoleo'
   | 'archaeocete'
   | 'sperm'
@@ -249,6 +250,8 @@ const BY_CLADE: Record<string, Weapon> = {
   serrasalmidae: bite('shark'), // a single row of triangular, razor-edged teeth
   melanocetidae: bite('needles'),
   lepisosteidae: bite('conical'),
+  // Morays: long fangs, and a second set of jaws in the throat that shoots forward to grab prey.
+  muraenidae: bite('moray'),
   esocidae: bite('conical', 'palatine'), // pike: rows of teeth on the roof of the mouth too
   salmonidae: bite('peg', 'palatine'), // salmon: vomerine and palatine teeth
   temnospondyli: bite('conical', 'fangs'),

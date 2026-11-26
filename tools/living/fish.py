@@ -44,6 +44,7 @@ CLADES = [
     F('molidae', 'Molidae', 'Ocean sunfish', A, 'Giant, disc-shaped ocean fish with no true tail, related to pufferfish.'),
     F('regalecidae', 'Regalecidae', 'Oarfish', A, 'Long, ribbon-like deep-sea fish with a red crest along the back.'),
     F('anguillidae', 'Anguillidae', 'Freshwater eels', A, 'About 20 species of eels that grow up in rivers and lakes and migrate to the ocean to spawn once and die.'),
+    F('muraenidae', 'Muraenidae', 'Moray eels', A, 'About 200 species of eels of reefs and rocky coasts. Behind their main jaws they have a second set, the pharyngeal jaws, which shoot forward from the throat to grab prey and drag it down.'),
     F('gymnotidae', 'Gymnotidae', 'Naked-back knifefishes', A, 'South American knifefishes that sense and communicate with electric fields; they include the electric eels.'),
     F('melanocetidae', 'Melanocetidae', 'Black seadevils', A, 'Deep-sea anglerfish whose females dangle a glowing lure in front of a huge, toothy mouth.'),
     F('esocidae', 'Esocidae', 'Pikes', A, 'Long-bodied ambush predators of northern fresh waters: pikes and pickerels.'),
@@ -207,6 +208,11 @@ GENERA = [
       [('Length', 'Up to about 8 m'), ('IUCN status', 'Least Concern')],
       ['giant oarfish', 'oarfish', 'regalecus', 'sea serpent', 'longest fish'],
       [sea(-180, -50, 180, 60)]),
+    S('gymnothorax-javanicus', 'Gymnothorax javanicus', 'Giant moray', 'muraenidae', 'Coral reefs of the Indian and Pacific Oceans',
+      'The heaviest moray eel, up to about 3 m long and over 30 kg, which hides in reef crevices by day. Like other morays it has a second set of jaws in its throat: once it bites, these pharyngeal jaws shoot forward into its mouth, grip the prey and drag it down into the gullet, as a study showed in 2007. In the Red Sea, roving coral groupers recruit it to hunt together: the grouper shakes its head to signal, the moray chases fish out of crevices, and fish that escape one hunter are caught by the other.',
+      [('Length', 'Up to about 3 m'), ('Weight', 'Over 30 kg'), ('IUCN status', 'Least Concern')],
+      ['giant moray', 'moray', 'moray eel', 'gymnothorax', 'pharyngeal jaws', 'eel', 'coral reef'],
+      [sea(30, -30, 180, 30), sea(-180, -30, -135, 25)]),
     S('anguilla-anguilla', 'Anguilla anguilla', 'European eel', 'anguillidae', 'Rivers of Europe and North Africa; spawns in the Sargasso Sea',
       'Eels hatch in the Sargasso Sea, drift to Europe as see-through larvae, and spend 5–20 years or more in rivers before swimming thousands of kilometres back to spawn and die. No one has ever seen them spawn. The number of young eels reaching Europe has fallen by over 90% since the 1980s, and smuggling of baby eels to Asia is one of the largest wildlife crimes.',
       [('Length', 'Usually 40–80 cm'), ('IUCN status', 'Critically Endangered')],
@@ -253,4 +259,4 @@ HISTORIC_CHANGED = {
     # Introduced to Spain, Italy and France from the 1970s.
     'silurus-glanis': {'without': [3, 4, 5]},
 }
-HISTORIC = {**{sid: 'same' for sid in ['carcharodon-carcharias', 'rhincodon-typus', 'cetorhinus-maximus', 'alopias-vulpinus', 'galeocerdo-cuvier', 'carcharhinus-leucas', 'sphyrna-mokarran', 'somniosus-microcephalus', 'mobula-birostris', 'latimeria-chalumnae', 'neoceratodus-forsteri', 'atractosteus-spatula', 'amia-calva', 'arapaima-gigas', 'clupea-harengus', 'carassius-auratus', 'gadus-morhua', 'thunnus-thynnus', 'xiphias-gladius', 'pygocentrus-nattereri', 'amphiprion-ocellaris', 'takifugu-rubripes', 'hippocampus-hippocampus', 'mola-mola', 'regalecus-glesne', 'anguilla-anguilla', 'electrophorus-electricus', 'melanocetus-johnsonii', 'esox-lucius', 'betta-splendens']}, **HISTORIC_CHANGED}
+HISTORIC = {**{sid: 'same' for sid in ['carcharodon-carcharias', 'rhincodon-typus', 'cetorhinus-maximus', 'alopias-vulpinus', 'gymnothorax-javanicus', 'galeocerdo-cuvier', 'carcharhinus-leucas', 'sphyrna-mokarran', 'somniosus-microcephalus', 'mobula-birostris', 'latimeria-chalumnae', 'neoceratodus-forsteri', 'atractosteus-spatula', 'amia-calva', 'arapaima-gigas', 'clupea-harengus', 'carassius-auratus', 'gadus-morhua', 'thunnus-thynnus', 'xiphias-gladius', 'pygocentrus-nattereri', 'amphiprion-ocellaris', 'takifugu-rubripes', 'hippocampus-hippocampus', 'mola-mola', 'regalecus-glesne', 'anguilla-anguilla', 'electrophorus-electricus', 'melanocetus-johnsonii', 'esox-lucius', 'betta-splendens']}, **HISTORIC_CHANGED}

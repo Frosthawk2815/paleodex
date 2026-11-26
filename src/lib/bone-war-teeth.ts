@@ -178,6 +178,13 @@ const DENTITION: Record<Exclude<Jaw, 'beak' | 'blades' | 'toothless'>, { upper: 
     upper: range(4, 46, 6).map((o) => [o, 5, 12, 'leaf'] as T),
     lower: range(4, 46, 6).map((o) => [o, 5, 12, 'leaf'] as T),
   },
+  // Moray eels: long, backward-curving fangs at the front of the jaws (a big one in the middle of
+  // the upper jaw), getting smaller further back. (The second set of jaws in the throat is drawn as
+  // its own animation.)
+  moray: {
+    upper: [[2.5, 3.6, 32, 'cone', -1], [8, 3.2, 24, 'cone', 2], [13.5, 3, 21, 'cone', 2], [19, 3, 18, 'cone', 2], [25, 2.8, 16], [31, 2.6, 14], [37, 2.5, 12], [43, 2.4, 10]],
+    lower: [[3, 3.4, 27, 'cone', -1], [9, 3, 22, 'cone', 2], [15, 3, 18, 'cone', 2], [21, 2.8, 16], [27, 2.6, 14], [33, 2.5, 12], [39, 2.4, 10], [45, 2.2, 8]],
+  },
   // Rodents and rabbits: two long chisel incisors, a wide toothless gap, then flat grinding molars
   // at the back.
   incisors: {

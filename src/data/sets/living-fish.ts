@@ -134,6 +134,14 @@ export const LIVING_FISH: DataSet = {
       description: 'About 20 species of eels that grow up in rivers and lakes and migrate to the ocean to spawn once and die.',
     },
     {
+      id: 'muraenidae',
+      name: 'Muraenidae',
+      common: 'Moray eels',
+      parent: 'actinopterygii',
+      family: true,
+      description: 'About 200 species of eels of reefs and rocky coasts. Behind their main jaws they have a second set, the pharyngeal jaws, which shoot forward from the throat to grab prey and drag it down.',
+    },
+    {
       id: 'gymnotidae',
       name: 'Gymnotidae',
       common: 'Naked-back knifefishes',
@@ -871,6 +879,34 @@ export const LIVING_FISH: DataSet = {
         },
       ],
       keywords: ['giant oarfish', 'oarfish', 'regalecus', 'sea serpent', 'longest fish'],
+    },
+    {
+      id: 'gymnothorax-javanicus',
+      name: 'Gymnothorax javanicus',
+      common: 'Giant moray',
+      clade: 'muraenidae',
+      status: 'full',
+      ageText: 'Living today',
+      placeText: 'Coral reefs of the Indian and Pacific Oceans',
+      formations: [],
+      summary: [
+        'The heaviest moray eel, up to about 3 m long and over 30 kg, which hides in reef crevices by day. Like other morays it has a second set of jaws in its throat: once it bites, these pharyngeal jaws shoot forward into its mouth, grip the prey and drag it down into the gullet, as a study showed in 2007. In the Red Sea, roving coral groupers recruit it to hunt together: the grouper shakes its head to signal, the moray chases fish out of crevices, and fish that escape one hunter are caught by the other.',
+      ],
+      facts: [
+        {
+          label: 'Length',
+          value: 'Up to about 3 m',
+        },
+        {
+          label: 'Weight',
+          value: 'Over 30 kg',
+        },
+        {
+          label: 'IUCN status',
+          value: 'Least Concern',
+        },
+      ],
+      keywords: ['giant moray', 'moray', 'moray eel', 'gymnothorax', 'pharyngeal jaws', 'eel', 'coral reef'],
     },
     {
       id: 'anguilla-anguilla',
