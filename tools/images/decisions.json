@@ -387,6 +387,11 @@
   "vote": "yes",
   "file": "Alnashetri_cerropoliciensis_(MPCA_Pv_377).jpg"
  },
+ "alopias-vulpinus": {
+  "vote": "no",
+  "file": "Alopias_vulpinus_noaa2.jpg",
+  "note": "caught on a fishing line; want a free-swimming one"
+ },
  "alouatta-palliata": {
   "vote": "yes",
   "file": "Panamanian_Male_Adult_Howler_Monkey.jpg"
@@ -4125,6 +4130,10 @@
   "vote": "yes",
   "file": "Cracticus_tibicen_hypoleuca_male_domain.jpg"
  },
+ "gymnothorax-javanicus": {
+  "vote": "yes",
+  "file": "Moray_eel_komodo.jpg"
+ },
  "gypaetus-barbatus": {
   "vote": "yes",
   "file": "010e_Wild_Bearded_Vulture_in_flight_at_Pfyn-Finges_(Switzerland)_Photo_by_Giles_Laurent.jpg"
@@ -5603,6 +5612,10 @@
  "mambawakale-ruhuhu": {
   "vote": "yes",
   "file": "Mambawakale.gif"
+ },
+ "mamenchisaurus-hochuanensis": {
+  "vote": "yes",
+  "file": "Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg"
  },
  "mamenchisaurus-sinocanadorum": {
   "vote": "yes",
@@ -7254,6 +7267,10 @@
   "vote": "yes",
   "file": "Perdix_perdix_Turvey_3.jpg"
  },
+ "peregocetus-pacificus": {
+  "vote": "yes",
+  "file": "Peregocetus_Size.png"
+ },
  "pernis-apivorus": {
   "vote": "yes",
   "file": "Wespenbussard_European_honey_buzzard_Pernis_apivorus,_crop.jpg"
@@ -7261,6 +7278,10 @@
  "perodicticus-potto": {
   "vote": "yes",
   "file": "West_African_potto_(Perodicticus_potto)_Ankasa.jpg"
+ },
+ "perucetus-colossus": {
+  "vote": "yes",
+  "file": "Perucetus_colossus_Holotype_skeletal_drawing.png"
  },
  "petauroides-volans": {
   "vote": "yes",

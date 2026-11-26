@@ -31016,5 +31016,56 @@
   "file": "Purgatorius_BW.jpg",
   "article": "https://en.wikipedia.org/wiki/Purgatorius",
   "scope": "species"
+ },
+ "mamenchisaurus-hochuanensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg/960px-Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Zhangzhugang",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg",
+  "file": "Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg",
+  "article": "https://en.wikipedia.org/wiki/Mamenchisaurus",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "perucetus-colossus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Perucetus_colossus_Holotype_skeletal_drawing.png/960px-Perucetus_colossus_Holotype_skeletal_drawing.png",
+  "width": 800,
+  "height": 346,
+  "artist": "Ivan Iofrida",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Perucetus_colossus_Holotype_skeletal_drawing.png",
+  "file": "Perucetus_colossus_Holotype_skeletal_drawing.png",
+  "article": "https://en.wikipedia.org/wiki/Perucetus",
+  "scope": "genus",
+  "kind": "skeletal"
+ },
+ "peregocetus-pacificus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Peregocetus_Size.png/960px-Peregocetus_Size.png",
+  "width": 800,
+  "height": 402,
+  "artist": "Conty",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Peregocetus_Size.png",
+  "file": "Peregocetus_Size.png",
+  "article": "https://en.wikipedia.org/wiki/Peregocetus",
+  "scope": "genus",
+  "kind": "restoration"
+ },
+ "gymnothorax-javanicus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Moray_eel_komodo.jpg/960px-Moray_eel_komodo.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "Nhobgood Nick Hobgood",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Moray_eel_komodo.jpg",
+  "file": "Moray_eel_komodo.jpg",
+  "article": "https://en.wikipedia.org/wiki/Giant_moray",
+  "scope": "species"
  }
 }

@@ -1189,6 +1189,18 @@
   "scope": "genus",
   "kind": "fossil"
  },
+ "alopias-vulpinus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Alopias_vulpinus_noaa2.jpg/500px-Alopias_vulpinus_noaa2.jpg",
+  "width": 500,
+  "height": 334,
+  "artist": "NOAA/PIER",
+  "license": "Public domain",
+  "licenseUrl": null,
+  "source": "https://commons.wikimedia.org/wiki/File:Alopias_vulpinus_noaa2.jpg",
+  "file": "Alopias_vulpinus_noaa2.jpg",
+  "article": "https://en.wikipedia.org/wiki/Common_thresher",
+  "scope": "species"
+ },
  "alouatta-palliata": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Panamanian_Male_Adult_Howler_Monkey.jpg/960px-Panamanian_Male_Adult_Howler_Monkey.jpg",
   "width": 800,
@@ -12612,6 +12624,18 @@
   "article": "https://en.wikipedia.org/wiki/Australian_magpie",
   "scope": "species"
  },
+ "gymnothorax-javanicus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Moray_eel_komodo.jpg/960px-Moray_eel_komodo.jpg",
+  "width": 800,
+  "height": 600,
+  "artist": "Nhobgood Nick Hobgood",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Moray_eel_komodo.jpg",
+  "file": "Moray_eel_komodo.jpg",
+  "article": "https://en.wikipedia.org/wiki/Giant_moray",
+  "scope": "species"
+ },
  "gypaetus-barbatus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/010e_Wild_Bearded_Vulture_in_flight_at_Pfyn-Finges_%28Switzerland%29_Photo_by_Giles_Laurent.jpg/960px-010e_Wild_Bearded_Vulture_in_flight_at_Pfyn-Finges_%28Switzerland%29_Photo_by_Giles_Laurent.jpg",
   "width": 800,
@@ -17196,6 +17220,19 @@
   "source": "https://commons.wikimedia.org/wiki/File:Mambawakale.gif",
   "file": "Mambawakale.gif",
   "article": "https://en.wikipedia.org/wiki/Mambawakale",
+  "scope": "genus",
+  "kind": "fossil"
+ },
+ "mamenchisaurus-hochuanensis": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg/960px-Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg",
+  "width": 800,
+  "height": 533,
+  "artist": "Zhangzhugang",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg",
+  "file": "Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg",
+  "article": "https://en.wikipedia.org/wiki/Mamenchisaurus",
   "scope": "genus",
   "kind": "fossil"
  },
@@ -22204,6 +22241,19 @@
   "article": "https://en.wikipedia.org/wiki/Grey_partridge",
   "scope": "species"
  },
+ "peregocetus-pacificus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Peregocetus_Size.png/960px-Peregocetus_Size.png",
+  "width": 800,
+  "height": 402,
+  "artist": "Conty",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Peregocetus_Size.png",
+  "file": "Peregocetus_Size.png",
+  "article": "https://en.wikipedia.org/wiki/Peregocetus",
+  "scope": "genus",
+  "kind": "restoration"
+ },
  "pernis-apivorus": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Wespenbussard_European_honey_buzzard_Pernis_apivorus%2C_crop.jpg/960px-Wespenbussard_European_honey_buzzard_Pernis_apivorus%2C_crop.jpg",
   "width": 800,
@@ -22227,6 +22277,19 @@
   "file": "West_African_potto_(Perodicticus_potto)_Ankasa.jpg",
   "article": "https://en.wikipedia.org/wiki/West_African_potto",
   "scope": "species"
+ },
+ "perucetus-colossus": {
+  "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Perucetus_colossus_Holotype_skeletal_drawing.png/960px-Perucetus_colossus_Holotype_skeletal_drawing.png",
+  "width": 800,
+  "height": 346,
+  "artist": "Ivan Iofrida",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Perucetus_colossus_Holotype_skeletal_drawing.png",
+  "file": "Perucetus_colossus_Holotype_skeletal_drawing.png",
+  "article": "https://en.wikipedia.org/wiki/Perucetus",
+  "scope": "genus",
+  "kind": "skeletal"
  },
  "petauroides-volans": {
   "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/GG_-_Sam_Horton4.jpg/960px-GG_-_Sam_Horton4.jpg",
