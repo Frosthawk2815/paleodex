@@ -82,7 +82,7 @@ lborder = np.unique(np.concatenate([llab[0], llab[-1], llab[:, 0], llab[:, -1]])
 outside = np.isin(llab, lborder[lborder > 0]) & nd.binary_dilation(~silhouette, iterations=8)
 inside = ~nd.binary_dilation(outside, iterations=1)
 
-def trace(mask, grow: int | None = 4, speck: int = 6):
+def trace(mask, grow: int | None = 4, speck: int = 6, cut: int = 100):
     # Grow each area under its neighbouring lines, so the fills meet with no gaps. (The lines
     # themselves are kept close to as drawn, so close hatching stays readable.)
     if grow is not None:
@@ -90,7 +90,7 @@ def trace(mask, grow: int | None = 4, speck: int = 6):
         mask = (nd.binary_dilation(mask, iterations=grow) if grow else mask) & inside
     # Trace at a third of the size: the drawing only ever shows a few hundred pixels across. (The
     # tracer outlines the False pixels, hence the inversion.)
-    small = np.asarray(Image.fromarray(mask.astype(np.uint8) * 255).resize((w // 3, h // 3), Image.BILINEAR)) > 100
+    small = np.asarray(Image.fromarray(mask.astype(np.uint8) * 255).resize((w // 3, h // 3), Image.BILINEAR)) > cut
     paths = potrace.Bitmap(~small).trace(turdsize=speck, alphamax=1.1, opttolerance=1.0)
     f = lambda p: f'{p.x * 3 * s + ox:.1f} {p.y * 3 * s + oy:.1f}'
     out = []
@@ -126,7 +126,10 @@ for k in ('ridge', 'hole', 'horn'):
             region |= tiny
         # Keep the tiniest knobs, which would otherwise be dropped as specks.
         layers.append((k, trace(region, speck=1 if k == 'horn' else 6)))
-layers.append(('line', trace(nd.binary_dilation(ink, iterations=1), grow=None)))
+# The lines, kept whole but not swollen, so small knobs' colour still shows inside them.
+# The outline round the outside is drawn a little fuller, so it covers the fills' edges.
+rim = nd.binary_dilation(ink, iterations=3) & nd.binary_dilation(outside, iterations=3)
+layers.append(('line', trace(nd.binary_dilation(ink, iterations=1) | rim, grow=None, cut=150)))
 
 entry = f"  '{sid}': [\n" + ''.join(f"    {{ fill: '{k}', d: '{d}' }},\n" for k, d in layers) + '  ],\n'
 try:
