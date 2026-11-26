@@ -203,50 +203,60 @@ function Jaws({ jaw, palate, w, h, v, blocked }: { jaw: Jaw; palate?: Palate; w:
   );
 }
 
-// A moray's second set of jaws (the pharyngeal jaws): once the main jaws close, they shoot forward
-// out of the throat to grip the prey, then pull back to drag it down.
+// A moray's second set of jaws (the pharyngeal jaws): once the main jaws close, a smaller second
+// set of teeth shoots forward and bites, upper and lower rows snapping shut, then pulls back.
 function ThroatJaws({ w, h }: { w: number; h: number }) {
   const p = useValue(0);
   useEffect(() => {
     Animated.sequence([
       Animated.delay(CONTACT_MS - 30),
-      run(p, 1, 170, Easing.out(Easing.back(1.6))),
+      run(p, 1, 180, Easing.out(Easing.back(1.4))),
       Animated.delay(120),
       run(p, 0, 240, Easing.in(Easing.quad)),
     ]).start();
   }, [p]);
   const bw = w * 0.7;
-  const bh = bw * 0.6;
-  const fang = (x: number, top: boolean) => {
-    const [y0, dir] = top ? [12, 1] : [48, -1];
-    const len = 13 - Math.abs(x - 50) * 0.12;
-    // Curving back into the throat (towards the middle).
-    return `M${x - 3} ${y0} Q${x - 1} ${y0 + dir * len * 0.7} ${x + (x < 50 ? 2.5 : -2.5)} ${y0 + dir * len} Q${x + 1} ${y0 + dir * len * 0.5} ${x + 3} ${y0} Z`;
+  const bh = bw * 0.32;
+  // A row of hooked teeth hanging from the top of a 100 × 30 box, curving back towards the middle.
+  const xs = [18, 27, 36, 45, 55, 64, 73, 82];
+  const fang = (x: number) => {
+    const len = 22 - Math.abs(x - 50) * 0.18;
+    const c = x < 50 ? 2.5 : -2.5;
+    return `M${x - 3} 0 Q${x - 1} ${len * 0.7} ${x + c} ${len} Q${x + 1} ${len * 0.5} ${x + 3} 0 Z`;
   };
-  const xs = [22, 30, 38, 46, 54, 62, 70, 78];
+  const row = (lower: boolean) => (
+    <Animated.View
+      style={{
+        position: 'absolute',
+        left: 0,
+        width: bw,
+        height: bh,
+        ...(lower ? { bottom: 0 } : { top: 0 }),
+        // The two rows snap shut as the jaws shoot forward.
+        transform: [{ translateY: p.interpolate({ inputRange: [0, 1], outputRange: [lower ? bh * 0.6 : -bh * 0.6, 0] }) }],
+      }}>
+      <Svg width={bw} height={bh} viewBox="0 0 100 30" preserveAspectRatio="none" style={lower ? { transform: [{ scaleY: -1 }] } : undefined}>
+        {(lower ? xs.map((x) => x + 4.5) : xs).map((x) => (
+          <Path key={x} d={fang(x)} fill={IVORY} stroke={LINE} strokeWidth={0.7} />
+        ))}
+      </Svg>
+    </Animated.View>
+  );
   return (
     <Animated.View
       pointerEvents="none"
       style={{
         position: 'absolute',
         left: (w - bw) / 2,
-        top: h / 2 - bh / 2,
+        top: h / 2 - bh,
         width: bw,
-        height: bh,
+        height: bh * 2,
         opacity: p.interpolate({ inputRange: [0, 0.15, 1], outputRange: [0, 1, 1] }),
-        transform: [{ scale: p.interpolate({ inputRange: [0, 1], outputRange: [0.3, 1.1] }) }],
+        // Small (deep in the mouth) to full size (forward), and back.
+        transform: [{ scale: p.interpolate({ inputRange: [0, 1], outputRange: [0.35, 1.1] }) }],
       }}>
-      <Svg width={bw} height={bh} viewBox="0 0 100 60">
-        <Ellipse cx={50} cy={30} rx={46} ry={27} fill="#2A0E0E" stroke={LINE} strokeWidth={1} />
-        <Path d="M10 22 Q50 2 90 22 L90 14 Q50 -4 10 14 Z" fill="#7A2A2A" />
-        <Path d="M10 38 Q50 58 90 38 L90 46 Q50 64 10 46 Z" fill="#7A2A2A" />
-        {xs.map((x) => (
-          <Path key={`t${x}`} d={fang(x, true)} fill={IVORY} stroke={LINE} strokeWidth={0.6} />
-        ))}
-        {xs.map((x) => (
-          <Path key={`b${x}`} d={fang(x, false)} fill={IVORY} stroke={LINE} strokeWidth={0.6} />
-        ))}
-      </Svg>
+      {row(false)}
+      {row(true)}
     </Animated.View>
   );
 }
