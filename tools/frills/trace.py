@@ -110,11 +110,20 @@ for r in range(1, n + 1):
     k = kind.get(r) or ('horn' if sizes[r] < KNOB * h * w else None)
     if k and k != 'bone':
         groups[k].append(r)
+# Knobs too small and thin to survive the line thickening above: closed areas between the lines
+# as drawn that no other area reaches into.
+reached = np.unique(llab[(lab > 0) & ~np.isin(lab, list(border))])
+tiny = (llab > 0) & ~np.isin(llab, reached) & ~np.isin(llab, lborder)
 for k in ('ridge', 'hole', 'horn'):
+    if k == 'horn' and tiny.any() and not groups[k]:
+        layers.append((k, trace(tiny, grow=2)))
+        continue
     if groups[k]:
         # Spread each fill out to the drawn lines (bridging gaps also fills narrow corners, like
         # the tips of spikes), without crossing any line.
-        region = nd.binary_dilation(np.isin(lab, groups[k]), iterations=14, mask=~loose)
+        region = nd.binary_dilation(np.isin(lab, groups[k]), iterations=close + 4, mask=~loose & closed)
+        if k == 'horn':
+            region |= tiny
         layers.append((k, trace(region)))
 layers.append(('line', trace(nd.binary_dilation(ink, iterations=1), grow=None)))
 
