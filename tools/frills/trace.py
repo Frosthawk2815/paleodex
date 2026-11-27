@@ -128,6 +128,8 @@ for r in range(1, n + 1):
 reached = np.unique(llab[(lab > 0) & ~np.isin(lab, list(border))])
 tiny = (llab > 0) & ~np.isin(llab, reached) & ~np.isin(llab, lborder)
 tiny &= ~clear
+# Nor any the owner marked as bone.
+tiny &= ~np.isin(llab, [llab[int(y) - y0, int(x) - x0] for x, y in marks.get('bone', []) if llab[int(y) - y0, int(x) - x0] > 0])
 for k in ('ridge', 'hole', 'horn'):
     if k == 'horn' and tiny.any() and not groups[k]:
         layers.append((k, trace(tiny, grow=2, speck=1)))
