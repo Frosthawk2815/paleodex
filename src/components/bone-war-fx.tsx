@@ -7,7 +7,7 @@ import { type ReactNode, useEffect, useState } from 'react';
 import { Animated, Easing, Platform, StyleSheet, View } from 'react-native';
 import Svg, { Circle, Defs, Ellipse, G, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 
-import { armour } from '@/components/bone-war-armour';
+import { armour, tracedSkull } from '@/components/bone-war-armour';
 import type { Defence } from '@/lib/bone-war-defences';
 
 import { teeth } from '@/lib/bone-war-teeth';
@@ -719,7 +719,31 @@ const SWINGS: Bash[] = ['thagomizer', 'thagomizer4', 'kentro', 'macuahuitl', 'cl
 // Tails that move up and down slap down from above.
 const SLAPS: Bash[] = ['slap', 'humpback', 'paddle', 'manta'];
 
-function BashUp({ shape, w, h, v }: { shape: Bash; w: number; h: number; v: Animated.Value }) {
+function BashUp({ shape, w, h, v, attacker }: { shape: Bash; w: number; h: number; v: Animated.Value; attacker?: string }) {
+  // A horned dinosaur whose skull the owner has drawn charges with that skull: snout and horns
+  // first, up from below, the frill trailing off the bottom of the card.
+  const skull = !SWINGS.includes(shape) && !SLAPS.includes(shape) ? tracedSkull(attacker) : null;
+  if (skull) {
+    const sw = w * 0.9;
+    const sh = sw * 1.4;
+    return (
+      <Animated.View
+        style={{
+          position: 'absolute',
+          left: (w - sw) / 2,
+          bottom: 0,
+          width: sw,
+          height: sh,
+          opacity: v.interpolate({ inputRange: [0, 0.3, 1], outputRange: [0, 1, 1] }),
+          // From below the card until the snout reaches past the middle.
+          transform: [{ translateY: v.interpolate({ inputRange: [0, 1], outputRange: [sh, sh * 0.32] }) }, { rotate: '180deg' }],
+        }}>
+        <Svg width={sw} height={sh} viewBox="0 0 100 140">
+          {skull}
+        </Svg>
+      </Animated.View>
+    );
+  }
   if (SWINGS.includes(shape)) {
     const s = w;
     return (
@@ -810,7 +834,8 @@ function SlapSplash({ w, h }: { w: number; h: number }) {
 
 // The attack itself over the target (w × h): in to CONTACT_MS, a short hold, then away.
 // blocked: the target's defence held, so the attack stops short and bounces off.
-export function WeaponFx({ weapon, w, h, blocked = false }: { weapon: Weapon; w: number; h: number; blocked?: boolean }) {
+// attacker: the attacking animal's species id, for attacks drawn to the individual animal.
+export function WeaponFx({ weapon, w, h, blocked = false, attacker }: { weapon: Weapon; w: number; h: number; blocked?: boolean; attacker?: string }) {
   const v = useValue(0);
   const fade = useValue(1);
   useEffect(() => {
@@ -838,7 +863,7 @@ export function WeaponFx({ weapon, w, h, blocked = false }: { weapon: Weapon; w:
       {weapon.kind === 'grip' && <Grip style={weapon.style} w={w} h={h} v={v} />}
       {weapon.kind === 'slash' && <Slash claws={weapon.claws} w={w} h={h} v={v} />}
       {weapon.kind === 'stomp' && <Stomp foot={weapon.foot} w={w} h={h} v={v} />}
-      {weapon.kind === 'bash' && <BashUp shape={weapon.shape} w={w} h={h} v={v} />}
+      {weapon.kind === 'bash' && <BashUp shape={weapon.shape} w={w} h={h} v={v} attacker={attacker} />}
       {weapon.kind === 'bash' && SLAPS.includes(weapon.shape) && <SlapSplash w={w} h={h} />}
     </Animated.View>
   );

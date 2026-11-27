@@ -20,6 +20,20 @@ const arc = (cx: number, cy: number, rx: number, ry: number, a0: number, a1: num
     return [cx + rx * Math.cos(a), cy + ry * Math.sin(a), a] as const;
   });
 
+// A skull traced from the owner's drawing (in the 100 × 140 box, frill at the top), or null if this
+// animal has none.
+export function tracedSkull(speciesId: string | undefined): ReactNode {
+  const traced = speciesId ? TRACED[speciesId] : undefined;
+  if (!traced) return null;
+  return (
+    <G>
+      {traced.map((l, i) => (
+        <Path key={i} d={l.d} fill={TRACED_FILL[l.fill]} />
+      ))}
+    </G>
+  );
+}
+
 // speciesId: the animal, for armour drawn to the individual species (the frills).
 export function armour(d: Defence, speciesId?: string): ReactNode {
   // Stegosaurs and ankylosaurs: each drawn to its own armour, seen from above.
@@ -39,15 +53,8 @@ export function armour(d: Defence, speciesId?: string): ReactNode {
     case 'solidfrill':
     case 'spikyfrill': {
       // Traced from the owner's own drawing of this animal's skull, when there is one.
-      const traced = speciesId ? TRACED[speciesId] : undefined;
-      if (traced)
-        return (
-          <G>
-            {traced.map((l, i) => (
-              <Path key={i} d={l.d} fill={TRACED_FILL[l.fill]} />
-            ))}
-          </G>
-        );
+      const traced = tracedSkull(speciesId);
+      if (traced) return traced;
       // Each horned dinosaur's own frill: its proportions, openings and edge ornaments.
       const f = (speciesId && HAND_DRAWN[speciesId]) || frillShapes(frillSpec(speciesId, d));
       return (

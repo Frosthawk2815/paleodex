@@ -147,7 +147,7 @@ export function Board({
         )}
         {/* An attack the target's defence held off: its armour shows and the attack bounces off it. */}
         {weapon?.result === 'held' && g && defenceOf(g.key) && <DefenceFx key={`d${fxKey}`} defence={defenceOf(g.key)!} w={w} h={h} speciesId={g.key.split(':')[1]} />}
-        {weapon && <WeaponFx key={`w${fxKey}`} weapon={weaponOf(weapon.by)} w={w} h={h} blocked={weapon.result === 'held'} />}
+        {weapon && <WeaponFx key={`w${fxKey}`} weapon={weaponOf(weapon.by)} w={w} h={h} blocked={weapon.result === 'held'} attacker={weapon.by.split(':')[1]} />}
         {(splash || gone?.how === 'ambush') && <Splash key={`s${fxKey}`} w={w} h={h} big={gone?.how === 'ambush'} />}
       </Pressable>
     );
@@ -253,7 +253,7 @@ export function Board({
       {/* A strike lands on the player's health bar. */}
       {!!struck(p) && (
         <View pointerEvents="none" style={styles.strikeBox}>
-          <WeaponFx key={state.seq} weapon={weaponOf(struck(p)!.by)} w={84} h={64} />
+          <WeaponFx key={state.seq} weapon={weaponOf(struck(p)!.by)} w={84} h={64} attacker={struck(p)!.by.split(':')[1]} />
         </View>
       )}
       {look && oppGlitch ? (
