@@ -116,11 +116,23 @@ def trace(mask, grow: int | None = 4, speck: int = 6, cut: int = 100):
 clear = np.isin(llab, [llab[int(y) - y0, int(x) - x0] for x, y in clear_at if llab[int(y) - y0, int(x) - x0] > 0])
 layers = [('bone', trace(silhouette & ~nd.binary_dilation(clear, iterations=3), grow=0))]
 groups = {'ridge': [], 'hole': [], 'horn': []}
+# The areas, as drawn, that hold each kind of mark.
+# (Only small ones: a mark inside a big area already reaches all of it.)
+lsize = np.bincount(llab.ravel())
+at = lambda k: np.isin(llab, [i for x, y in marks.get(k, []) if 0 < (i := llab[int(y) - y0, int(x) - x0]) and lsize[i] < KNOB * h * w])
+marked_hole, marked_bone = at('hole'), at('bone')
 for r in range(1, n + 1):
     if r in border:
         continue
     # (Specks of a few pixels, squeezed between close lines, aren't knobs.)
     k = kind.get(r) or ('horn' if 10 <= sizes[r] < KNOB * h * w else None)
+    # A small piece inside an area the owner marked takes that mark (e.g. a crumb of an opening).
+    if r not in kind:
+        piece = lab == r
+        if marked_hole[piece].any():
+            k = 'hole'
+        elif marked_bone[piece].any():
+            k = None
     if k and k != 'bone' and not clear[lab == r].any():
         groups[k].append(r)
 # Knobs too small and thin to survive the line thickening above: closed areas between the lines
@@ -128,8 +140,11 @@ for r in range(1, n + 1):
 reached = np.unique(llab[(lab > 0) & ~np.isin(lab, list(border))])
 tiny = (llab > 0) & ~np.isin(llab, reached) & ~np.isin(llab, lborder)
 tiny &= ~clear
+# Openings too small to survive the line thickening are still filled dark.
+holes_small = marked_hole & ~np.isin(llab, reached)
+tiny &= ~holes_small
 # Nor any the owner marked as bone.
-tiny &= ~np.isin(llab, [llab[int(y) - y0, int(x) - x0] for x, y in marks.get('bone', []) if llab[int(y) - y0, int(x) - x0] > 0])
+tiny &= ~marked_bone
 for k in ('ridge', 'hole', 'horn'):
     if k == 'horn' and tiny.any() and not groups[k]:
         layers.append((k, trace(tiny, grow=2, speck=1)))
@@ -140,6 +155,8 @@ for k in ('ridge', 'hole', 'horn'):
         region = nd.binary_dilation(np.isin(lab, groups[k]), iterations=close + 4, mask=~loose & closed)
         if k == 'horn':
             region |= tiny
+        if k == 'hole':
+            region |= holes_small
         # Keep the tiniest knobs, which would otherwise be dropped as specks.
         layers.append((k, trace(region, speck=1 if k == 'horn' else 6)))
 # The lines, kept whole but not swollen, so small knobs' colour still shows inside them.
