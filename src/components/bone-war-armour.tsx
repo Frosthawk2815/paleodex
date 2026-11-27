@@ -7,6 +7,7 @@ import { Circle, Ellipse, G, Path, Rect } from 'react-native-svg';
 
 import type { Defence } from '@/lib/bone-war-defences';
 import { frillShapes, frillSpec, HAND_DRAWN } from '@/lib/bone-war-frills';
+import { skullOf } from '@/lib/bone-war-skull-stand-ins';
 import { TRACED } from '@/lib/bone-war-traced';
 import { thyreoShapes } from '@/lib/bone-war-thyreo';
 
@@ -21,9 +22,9 @@ const arc = (cx: number, cy: number, rx: number, ry: number, a0: number, a1: num
   });
 
 // A skull traced from the owner's drawing (in the 100 × 140 box, frill at the top), or null if this
-// animal has none.
+// animal has none (an animal known without its skull borrows a stand-in's).
 export function tracedSkull(speciesId: string | undefined): ReactNode {
-  const traced = speciesId ? TRACED[speciesId] : undefined;
+  const traced = speciesId ? TRACED[skullOf(speciesId)] : undefined;
   if (!traced) return null;
   return (
     <G>

@@ -4,6 +4,7 @@
 //   npx -y esbuild@0.24.0 tools/frills/todo.ts --bundle --platform=node --alias:@=./src --loader:.png=empty --loader:.jpg=empty --log-level=error | node - <out.md>
 import { SPECIES } from '@/data/life';
 import { defenceOf } from '@/lib/bone-war-defences';
+import { SKULL_STAND_INS } from '@/lib/bone-war-skull-stand-ins';
 import { TRACED } from '@/lib/bone-war-traced';
 import { cladePath } from '@/lib/life';
 
@@ -27,6 +28,8 @@ for (const s of SPECIES) {
       ? 'Small horned dinosaurs'
       : d === 'spikyfrill' ? 'Spiky frills' : 'Long frills'
     : path.includes('scelidosauridae') ? 'Early armoured dinosaurs' : d === 'plates' ? 'Stegosaurs' : 'Ankylosaurs';
+  // Animals that borrow another's skull need no drawing of their own.
+  if (SKULL_STAND_INS[s.id]) continue;
   groups.get(group)!.push({ name: s.name, done: !!TRACED[s.id] });
 }
 const all = [...groups.values()].flat();
