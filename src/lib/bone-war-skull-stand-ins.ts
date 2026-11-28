@@ -7,6 +7,10 @@ export const SKULL_STAND_INS: Record<string, string> = {
   'agathaumas-sylvestris': 'triceratops-horridus',
   // A close relative of Pentaceratops; the owner chose to use its skull.
   'bisticeratops-froeseorum': 'pentaceratops-sternbergii',
+  // Known only from two brow horn cores and part of the back of the skull. The horn cores can't be
+  // told apart from Albertaceratops's (Mallon et al. 2016), a long-horned relative from the same rocks
+  // and age; an older study (Penkalski & Dodson 1999) linked it to Avaceratops instead.
+  'ceratops-montanus': 'albertaceratops-nesmoi',
 };
 
 // The species whose traced skull this animal uses.
