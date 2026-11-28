@@ -9,8 +9,9 @@ export const FW_6: DataSet = {
   species: [
     // ---- Judith River Formation ----
     {
+      // The species is J. tigris; the id kept an earlier mistake so saved cards and favourites still work.
       id: 'judiceratops-tyrannus',
-      name: 'Judiceratops tyrannus',
+      name: 'Judiceratops tigris',
       common: 'Judiceratops',
       clade: 'ceratopsidae',
       status: 'full',
@@ -18,10 +19,10 @@ export const FW_6: DataSet = {
       placeText: 'Montana, USA',
       formations: ['judith-river'],
       summary: [
-        'The oldest known chasmosaurine, the long-frilled branch of the horned dinosaurs that later produced Triceratops. It is known from parts of the frill and horns; its frill had a scalloped edge and its brow horns were probably fairly large. Its species name, tyrannus, means “tyrant”.',
+        'The oldest known chasmosaurine, the long-frilled branch of the horned dinosaurs that later produced Triceratops. It is known from parts of the frill and horns; its frill had a scalloped edge and its brow horns were probably fairly large. Its species name, tigris, is for the tiger, the mascot of Princeton University, whose team first dug up the fossils.',
       ],
       facts: [{ label: 'Named', value: 'Nicholas Longrich, 2013' }],
-      keywords: ['judiceratops', 'chasmosaurine', 'ceratopsid', 'horned dinosaur', 'montana', 'cretaceous'],
+      keywords: ['judiceratops', 'tigris', 'chasmosaurine', 'ceratopsid', 'horned dinosaur', 'montana', 'cretaceous'],
     },
     {
       id: 'lokiceratops-rangiformis',
