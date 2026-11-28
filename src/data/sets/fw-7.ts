@@ -476,8 +476,9 @@ export const FW_7: DataSet = {
 
     // ---- Dorotea Formation ----
     {
+      // The species is O. tzen; the id kept an earlier mistake so saved cards and favourites still work.
       id: 'orretherium-tsalkin',
-      name: 'Orretherium tsalkin',
+      name: 'Orretherium tzen',
       common: 'Orretherium',
       clade: 'mammalia',
       status: 'full',

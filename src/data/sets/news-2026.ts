@@ -314,8 +314,9 @@ export const NEWS_2026: DataSet = {
       keywords: ['cronopio', 'sabre-toothed squirrel', 'saber-toothed squirrel', 'scrat', 'ice age', 'dryolestoid', 'mammal', 'cretaceous', 'argentina', 'la buitrera', 'candeleros'],
     },
     {
+      // The species is P. unio; the id kept an earlier mistake so saved cards and favourites still work.
       id: 'purgatorius-unioensis',
-      name: 'Purgatorius unioensis',
+      name: 'Purgatorius unio',
       common: 'Purgatorius',
       clade: 'purgatoriidae',
       status: 'full',
@@ -325,10 +326,10 @@ export const NEWS_2026: DataSet = {
       summary: [
         'The oldest known relative of primates, a rat-sized mammal that appeared almost immediately after the dinosaurs died out. Teeth found in Montana come from within about 105,000 to 139,000 years of the asteroid impact, making it one of the first mammals of the new world.',
         'It is known mostly from teeth and jaws, but ankle bones described in 2015 show it could rotate its feet like a tree-climbing squirrel or primate, so the primate line began in the trees. It probably ate fruit and insects. Some researchers count it as the earliest primate; others as a close relative just outside the group, because it lacked features such as nails and a grasping big toe.',
-        'Its name comes from Purgatory Hill in Montana, where the first teeth were found. Several species are known, among them P. janisae and P. mckeeveri, named in 2021.',
+        'Its name comes from Purgatory Hill in Montana, where the first teeth were found. Several species are known; the teeth from so soon after the impact belong to P. janisae and P. mckeeveri, the second named in 2021.',
       ],
       facts: [
-        { label: 'Named', value: 'The genus by Leigh Van Valen and Robert Sloan, 1965; this species by William Clemens, 1974' },
+        { label: 'Named', value: 'Leigh Van Valen and Robert Sloan, 1965' },
         { label: 'Length', value: 'About 15 cm, plus a long tail' },
         { label: 'Weight', value: 'About 40 g' },
         { label: 'Diet', value: 'Fruit and insects' },
